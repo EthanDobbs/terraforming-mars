@@ -130,6 +130,7 @@ export class GameHandler extends Handler {
             customCeos: gameReq.customCeos,
             startingCeos: gameReq.startingCeos,
             starWarsExpansion: gameReq.starWarsExpansion,
+            chemicalExpansion: gameReq.chemicalExpansion,
           };
 
           let game: IGame;

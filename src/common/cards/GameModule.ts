@@ -13,6 +13,7 @@ export const GAME_MODULES = [
   'pathfinders',
   'ceo',
   'starwars',
+  'chemical',
 ] as const;
 export type GameModule = typeof GAME_MODULES[number];
 
@@ -31,4 +32,5 @@ export const MODULE_NAMES: Readonly<Record<GameModule, string>> = {
   'pathfinders': 'Pathfinders',
   'ceo': 'CEOs',
   'starwars': 'Star Wars',
+  'chemical': 'Chemical',
 };

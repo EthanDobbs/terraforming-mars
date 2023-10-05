@@ -856,4 +856,6 @@ export enum CardName {
     TAKONDA_CASTLE = 'Takonda Castle (VII)',
     TOOL_WITH_THE_FIRST_ORDER = 'Tool with the First Order (VIII)',
     REY_SKYWALKER = 'Rey ... Skywalker?! (IX)',
+
+    OVERGROWTH = "Overgrowth",
 }

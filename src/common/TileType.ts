@@ -50,6 +50,8 @@ export enum TileType {
     CRASHLANDING, // 39
 
     MARS_NOMADS, // 40
+
+    OVERGROWTH, // 41
 }
 
 const TO_STRING_MAP: Record<TileType, string> = {
@@ -95,6 +97,7 @@ const TO_STRING_MAP: Record<TileType, string> = {
   [TileType.MARTIAN_NATURE_WONDERS]: 'Martian Nature Wonders',
   [TileType.CRASHLANDING]: 'Crashlanding',
   [TileType.MARS_NOMADS]: 'Mars Nomads',
+  [TileType.OVERGROWTH]: 'Overgrowth',
 };
 
 export namespace TileType {

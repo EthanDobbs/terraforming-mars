@@ -15,6 +15,7 @@ import {MOON_CARD_MANIFEST} from './moon/MoonCardManifest';
 import {PATHFINDERS_CARD_MANIFEST} from './pathfinders/PathfindersCardManifest';
 import {PRELUDE2_CARD_MANIFEST} from './prelude2/Prelude2CardManifest';
 import {STAR_WARS_CARD_MANIFEST} from './starwars/StarwarsCardManifest';
+import {CHEMICAL_CARD_MANIFEST} from './chemical/ChemicalCardManifest';
 
 export const ALL_MODULE_MANIFESTS: Array<ModuleManifest> = [
   BASE_CARD_MANIFEST,
@@ -31,4 +32,6 @@ export const ALL_MODULE_MANIFESTS: Array<ModuleManifest> = [
   PATHFINDERS_CARD_MANIFEST,
   CEO_CARD_MANIFEST,
   STAR_WARS_CARD_MANIFEST,
+  CHEMICAL_CARD_MANIFEST,
+
 ];

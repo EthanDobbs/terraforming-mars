@@ -328,6 +328,15 @@ export class Game implements IGame, Logger {
           for (let i = 0; i < 10; i++) {
             player.dealtProjectCards.push(projectDeck.draw(game));
           }
+          //For testing purposes
+          if (gameOptions.chemicalExpansion) {
+            const card = new CardFinder().getProjectCardByName(CardName.OVERGROWTH)
+            if (card !== undefined) {
+              player.dealtProjectCards.push(card);
+            } else {
+             throw new Error('I did not expect this.');
+            }
+          }
         }
         if (gameOptions.preludeExtension) {
           for (let i = 0; i < constants.PRELUDE_CARDS_DEALT_PER_PLAYER; i++) {

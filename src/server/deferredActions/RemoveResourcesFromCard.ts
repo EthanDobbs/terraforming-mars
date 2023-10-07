@@ -42,15 +42,12 @@ export class RemoveResourcesFromCard extends DeferredAction {
       this.title,
       'Remove resource(s)',
       resourceCards,
-      ([card]) => {
+      {showOwner: true})
+      .andThen(([card]) => {
         const owner = this.player.game.getCardPlayerOrThrow(card.name);
         owner.removeResourceFrom(card, this.count, {removingPlayer: this.player});
         return undefined;
-      },
-      {
-        showOwner: true,
-      },
-    );
+      });
 
     if (this.mandatory) {
       if (resourceCards.length === 1) {
@@ -64,10 +61,7 @@ export class RemoveResourcesFromCard extends DeferredAction {
 
     return new OrOptions(
       selectCard,
-      new SelectOption('Do not remove', 'Confirm', () => {
-        return undefined;
-      }),
-    );
+      new SelectOption('Do not remove', 'Confirm'));
   }
 
   public static getAvailableTargetCards(player: IPlayer, resourceType: CardResource | undefined, ownCardsOnly: boolean = false): Array<ICard> {

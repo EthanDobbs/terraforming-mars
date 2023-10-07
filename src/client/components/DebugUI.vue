@@ -197,6 +197,7 @@ const moduleAbbreviations: Record<GameModule, string> = {
   pathfinders: 'P',
   ceo: 'l', // ceo abbreviation is 'l' for leader, since both 'C' are already taken
   starwars: 'w',
+  chemical: 'x',
 };
 
 // TODO(kberg): make this use suffixModules.
@@ -314,6 +315,7 @@ export default (Vue as WithRefs<Refs>).extend({
         pathfinders: true,
         ceo: true,
         starwars: true,
+        chemical: true,
       },
       types: {
         event: true,
@@ -510,6 +512,7 @@ export default (Vue as WithRefs<Refs>).extend({
       case 'pathfinders': return 'Pathfinders';
       case 'ceo': return 'CEOs';
       case 'starwars': return 'Star Wars';
+      case 'chemical': return 'Chemical';
       }
     },
     filterByTags(card: ClientCard): boolean {

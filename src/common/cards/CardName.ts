@@ -857,5 +857,10 @@ export enum CardName {
     TOOL_WITH_THE_FIRST_ORDER = 'Tool with the First Order (VIII)',
     REY_SKYWALKER = 'Rey ... Skywalker?! (IX)',
 
-    OVERGROWTH = "Overgrowth",
+    // Chemical's Cards
+    OVERGROWTH = 'Overgrowth',
+    WILDFIRES = 'Wildfires',
+    ASTEROID_MINING_EXPEDITION = 'Asteroid Mining Expedition',
+    ARTIFICIAL_ASTEROID = 'Artificial Asteroid',
+    TEMPORARY_SMELTING_PLANT = 'Temporary Smelting Plant',
 }

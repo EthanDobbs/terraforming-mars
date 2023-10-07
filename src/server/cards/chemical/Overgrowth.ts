@@ -11,10 +11,11 @@ import {AdjacencyBonus} from '../../ares/AdjacencyBonus';
 import {ICardMetadata} from '../../../common/cards/ICardMetadata';
 import {CardRenderer} from '../render/CardRenderer';
 import {Board} from '../../boards/Board';
-import {Resource} from '@/common/Resource';
-import {OrOptions} from '@/server/inputs/OrOptions';
-import {SelectPlayer} from '@/server/inputs/SelectPlayer';
-import {SelectOption} from '@/server/inputs/SelectOption';
+import {OrOptions} from '../../../server/inputs/OrOptions';
+import {SelectPlayer} from '../../../server/inputs/SelectPlayer';
+import {SelectOption} from '../../../server/inputs/SelectOption';
+import {all} from '../Options';
+import {Resource} from '../../../common/Resource';
 
 export class Overgrowth extends Card implements IProjectCard {
   constructor(
@@ -23,12 +24,13 @@ export class Overgrowth extends Card implements IProjectCard {
     adjacencyBonus: AdjacencyBonus | undefined = undefined,
     metadata: ICardMetadata = {
       description: {
-        text: 'Requires that YOU have a greenery tile. Place this tile adjacent to ANY greenery.',
+        text: 'Requires that YOU have a greenery tile. Raise the oxygen 1 step. Place this tile adjacent to ANY greenery. IF THERE ARE TILES ADJACENT TO THIS TILE, YOU MAY REMOVE 4 M€ FROM THE OWNER OF ONE OF THOSE TILES.',
         align: 'left',
       },
-      cardNumber: 'CH001',
+      cardNumber: 'x001',
       renderData: CardRenderer.builder((b) => {
-        b.tile(TileType.OVERGROWTH, true).asterix();
+        b.tile(TileType.OVERGROWTH, true).asterix().nbsp.minus().megacredits(4, {all}).asterix();
+        b.oxygen(1).br;
       }),
     },
   ) {
@@ -40,6 +42,10 @@ export class Overgrowth extends Card implements IProjectCard {
       adjacencyBonus,
       requirements: {greeneries: 1},
       metadata,
+      victoryPoints: -1,
+      behavior: {
+        global: {oxygen: 1},
+      },
     });
   }
 

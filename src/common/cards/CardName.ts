@@ -863,4 +863,8 @@ export enum CardName {
     ASTEROID_MINING_EXPEDITION = 'Asteroid Mining Expedition',
     ARTIFICIAL_ASTEROID = 'Artificial Asteroid',
     TEMPORARY_SMELTING_PLANT = 'Temporary Smelting Plant',
+    ECOLOGICAL_SHIPMENT = 'Ecological Shipment',
+    OXYGEN_SHIPMENT = 'Oxygen Shipment',
+    CONDENSED_GAS_CONVOY = 'Condensed Gas Convoy',
+    IMPORTED_FUEL = 'Imported Fuel',
 }

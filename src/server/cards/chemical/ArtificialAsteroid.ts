@@ -5,14 +5,13 @@ import {CardType} from '../../../common/cards/CardType';
 import {IPlayer} from '../../IPlayer';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import {digit} from '../Options';
 
 export class ArtificialAsteroid extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.EVENT,
       name: CardName.ARTIFICIAL_ASTEROID,
-      tags: [Tag.SPACE],
+      tags: [Tag.SPACE, Tag.EARTH],
       cost: 3,
 
       behavior: {
@@ -22,7 +21,7 @@ export class ArtificialAsteroid extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x004',
         renderData: CardRenderer.builder((b) => {
-          b.temperature(1).nbsp.minus().energy(2, {digit});
+          b.temperature(1).nbsp.minus().energy(2);
         }),
         description: 'Raise the temperature 1 step. Lose 2 energy resources.',
       },

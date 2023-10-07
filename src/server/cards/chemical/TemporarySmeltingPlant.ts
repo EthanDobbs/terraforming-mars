@@ -29,7 +29,7 @@ export class TemporarySmeltingPlant extends Card implements IProjectCard {
           b.minus().energy(3, {digit}).nbsp.or(Size.SMALL).nbsp.minus().heat(5, {digit}).br;
           b.oxygen(1).steel(2);
         }),
-        description: 'Lose 2 energy or 5 heat. Raise the oxygen 1 step and gain 2 steel.',
+        description: 'Lose 3 energy or 5 heat. Raise the oxygen 1 step and gain 2 steel.',
       },
     });
   }

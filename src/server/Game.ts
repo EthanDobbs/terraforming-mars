@@ -330,7 +330,7 @@ export class Game implements IGame, Logger {
           }
           //For testing purposes
           if (gameOptions.chemicalExpansion) {
-            const card = new CardFinder().getProjectCardByName(CardName.TEMPORARY_SMELTING_PLANT)
+            const card = new CardFinder().getProjectCardByName(CardName.ASTEROID_STUDY)
             if (card !== undefined) {
               player.dealtProjectCards.push(card);
             } else {

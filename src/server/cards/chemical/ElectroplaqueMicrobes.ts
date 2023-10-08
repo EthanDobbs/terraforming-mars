@@ -10,26 +10,25 @@ import {SelectAmount} from '../../inputs/SelectAmount';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Card} from '../Card';
-import {digit} from '../Options';
 
-export class MTypeAsteroidMining extends Card implements IActionCard {
+export class ElectroplaqueMicrobes extends Card implements IActionCard {
   constructor() {
     super({
       name: CardName.M_TYPE_ASTEROID_MINING,
       type: CardType.ACTIVE,
-      tags: [Tag.SPACE],
-      cost: 26,
-      resourceType: CardResource.ASTEROID,
+      tags: [Tag.SCIENCE, Tag.MICROBE],
+      cost: 9,
+      resourceType: CardResource.MICROBE,
 
       metadata: {
-        cardNumber: 'x035',
+        cardNumber: 'x049',
         renderData: CardRenderer.builder((b) => {
-          b.action('Add 1 asteroid to this card.', (eb) => {
-            eb.empty().startAction.asteroids(1);
+          b.action('Add 2 microbes to this card.', (eb) => {
+            eb.empty().startAction.microbes(2);
           }).br;
           b.or().br;
-          b.action('Spend any number of asteroids here to gain triple amount of steel.', (eb) => {
-            eb.text('x').asteroids(1).startAction.text('x').steel(3, {digit});
+          b.action('Spend any number of microbes here to gain that amount of energy.', (eb) => {
+            eb.text('x').microbes(1).startAction.text('x').energy(1);
           });
         }),
       },
@@ -41,18 +40,18 @@ export class MTypeAsteroidMining extends Card implements IActionCard {
   public action(player: IPlayer) {
     const opts: Array<PlayerInput> = [];
 
-    const addResource = new SelectOption('Add 1 asteroid to this card', 'Add asteroid', () => {
-      player.addResourceTo(this, {log: true});
+    const addResource = new SelectOption('Add 2 microbes to this card', 'Add microbes', () => {
+      player.addResourceTo(this, 2);
       return undefined;
     });
-    const spendResource = new SelectAmount('Remove any number of asteroids to gain 3 steel per asteroid removed', 'Remove asteroids', (amount: number) => this.spendResource(player, amount), 1, this.resourceCount, true);
+    const spendResource = new SelectAmount('Remove any number of microbes to gain 1 energy per microbe removed', 'Remove microbes', (amount: number) => this.spendResource(player, amount), 1, this.resourceCount, true);
 
     opts.push(addResource);
 
     if (this.resourceCount > 0) {
       opts.push(spendResource);
     } else {
-      player.addResourceTo(this, {log: true});
+      player.addResourceTo(this, 2);
       return undefined;
     }
 
@@ -62,11 +61,10 @@ export class MTypeAsteroidMining extends Card implements IActionCard {
   private spendResource(player: IPlayer, amount: number) {
     player.removeResourceFrom(this, amount, {log: false});
 
-    const steelGained = 3 * amount;
-    player.steel += steelGained;
+    player.energy += amount;
 
-    player.game.log('${0} removed ${1} asteroids from ${2} to gain ${3} steel', (b) =>
-      b.player(player).number(amount).card(this).number(steelGained));
+    player.game.log('${0} removed ${1} microbes from ${2} to gain ${3} energy', (b) =>
+      b.player(player).number(amount).card(this).number(amount));
 
     return undefined;
   }

@@ -6,42 +6,44 @@ import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 
-export class FloatingWeatherProbes extends ActionCard implements IProjectCard {
+export class WaterSplittingMicrobes extends ActionCard implements IProjectCard {
   constructor() {
     super({
       type: CardType.ACTIVE,
-      name: CardName.FLOATING_WEATHER_PROBES,
-      tags: [Tag.SCIENCE],
-      cost: 10,
-      resourceType: CardResource.FLOATER,
+      name: CardName.WATER_SPLITTING_MICROBES,
+      tags: [Tag.MICROBE],
+      cost: 5,
+      requirements: {oceans: 3},
+      resourceType: CardResource.MICROBE,
 
       action: {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 2 floaters to increase the oxygen 1 step',
+            title: 'Remove 2 microbes to increase the oxygen 1 step',
             spend: {resourcesHere: 2},
             global: {oxygen: 1},
           },
           {
-            title: 'Spend 2 energy to add 2 floaters to this card',
-            spend: {energy: 2},
-            addResources: 2,
+            title: 'Spend 1MC to add 1 microbe to this card',
+            spend: {megacredits: 1},
+            addResources: 1,
           }],
         },
       },
 
       metadata: {
-        cardNumber: 'x036',
+        cardNumber: 'x044',
         renderData: CardRenderer.builder((b) => {
-          b.action('Spend 2 energy to add 2 floaters to this card.', (eb) => {
-            eb.energy(2).startAction.floaters(2);
+          b.action('Spend 1MC to add 1 microbe to this card.', (eb) => {
+            eb.megacredits(1).startAction.microbes(1);
           }).br;
           b.or().br;
-          b.action('Remove 2 floaters from this card to raise the oxygen 1 step.', (eb) => {
-            eb.floaters(2).startAction.oxygen(1);
+          b.action('Remove 2 microbes from this card to raise the oxygen 1 step.', (eb) => {
+            eb.microbes(2).startAction.oxygen(1);
           }).br;
         }),
+        description: 'Requires 3 oceans or more.'
       },
     });
   }

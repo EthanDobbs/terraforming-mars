@@ -10,6 +10,8 @@ import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred
 import {CardRenderer} from '../render/CardRenderer';
 import {Card} from '../Card';
 import {TITLES} from '../../inputs/titles';
+import {ICard} from '../ICard';
+import {SelectCard} from '../../../server/inputs/SelectCard';
 
 export class OxygenatedComets extends Card implements IActionCard {
   constructor() {
@@ -39,15 +41,16 @@ export class OxygenatedComets extends Card implements IActionCard {
   }
 
   public action(player: IPlayer) {
+    const asteroidCards = player.getResourceCards(CardResource.ASTEROID);
     const opts: Array<SelectOption> = [];
 
-    const addResource = new SelectOption('Pay 6 M€ to add 1 asteroid to this card', 'Pay', () => this.addResource(player));
+    const addResource = new SelectOption('Pay 6 M€ to add 1 asteroid to this card', 'Pay', () => this.addResource(player, asteroidCards));
     const spendResource = new SelectOption('Remove 1 asteroid to raise the oxygen step', 'Remove asteroid', () => this.spendResource(player));
 
     if (this.resourceCount > 0) {
       opts.push(spendResource);
     } else {
-      return this.addResource(player);
+      return this.addResource(player, asteroidCards);
     }
 
     if (player.canAfford({cost: 6, titanium: true})) {
@@ -59,10 +62,23 @@ export class OxygenatedComets extends Card implements IActionCard {
     return new OrOptions(...opts);
   }
 
-  private addResource(player: IPlayer) {
-    player.game.defer(new SelectPaymentDeferred(player, 6, {canUseTitanium: true, title: TITLES.payForCardAction(this.name)}));
-    player.addResourceTo(this, {log: true});
-    return undefined;
+  private addResource(player: IPlayer, asteroidCards: ICard[]) {
+     player.game.defer(new SelectPaymentDeferred(player, 6, {canUseTitanium: true, title: TITLES.payForCardAction(this.name)}));
+
+    if (asteroidCards.length === 1) {
+      player.addResourceTo(this, {log: true});
+      return undefined;
+    }
+
+    return new SelectCard(
+      'Select card to add 1 asteroid',
+      'Add asteroid',
+      asteroidCards,
+      ([card]) => {
+        player.addResourceTo(card, {log: true});
+        return undefined;
+      },
+    );
   }
 
   private spendResource(player: IPlayer) {

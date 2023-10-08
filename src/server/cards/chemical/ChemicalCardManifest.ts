@@ -34,6 +34,18 @@ import { KuiperBeltIceAsteroids } from './KuiperBeltIceAsteroids';
 import { CeresMiningOperations } from './CeresMiningOperations';
 import { AmmoniaHeavyAsteroids } from './AmmoniaHeavyAsteroids';
 import { MTypeAsteroidMining } from './MTypeAsteroidMining';
+import { FloatingWeatherProbes } from './FloatingWeatherProbes';
+import { ProductionDrones } from './ProductionDrones';
+import { JovianBacteria } from './JovianBacteria';
+import { Termites } from './Termites';
+import { MimicryArchea } from './MimicryArchea';
+import { MyceliumFungi } from './MyceliumFungi';
+import { Macroplankton } from './Macroplankton';
+import { WaterSplittingMicrobes } from './WaterSplittingMicrobes';
+import { AntiOxidationBacteria } from './AntiOxidationBacteria';
+import { ThallophyteProtists } from './ThallophyteProtists';
+import { EnzymeConstructors } from './EnzymeConstructors';
+import { LatticeConstructionMicrobes } from './LatticeConstructionMicrobes';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -77,6 +89,18 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.KUIPER_BELT_ICE_ASTEROIDS]: {Factory: KuiperBeltIceAsteroids},
     [CardName.CERES_MINING_OPERATIONS]: {Factory: CeresMiningOperations},
     [CardName.AMMONIA_HEAVY_ASTEROIDS]: {Factory: AmmoniaHeavyAsteroids},
-    [CardName.M_TYPE_ASTEROID_MINING]: {Factory:MTypeAsteroidMining},
+    [CardName.M_TYPE_ASTEROID_MINING]: {Factory: MTypeAsteroidMining},
+    [CardName.FLOATING_WEATHER_PROBES]: {Factory: FloatingWeatherProbes},
+    [CardName.PRODUCTION_DRONES]: {Factory: ProductionDrones},
+    [CardName.JOVIAN_BACTERIA]: {Factory: JovianBacteria},
+    [CardName.TERMITES]: {Factory: Termites},
+    [CardName.MIMICRY_ARCHEA]: {Factory: MimicryArchea},
+    [CardName.MYCELIUM_FUNGI]: {Factory: MyceliumFungi},
+    [CardName.MACROPLANKTON]: {Factory: Macroplankton},
+    [CardName.WATER_SPLITTING_MICROBES]: {Factory: WaterSplittingMicrobes},
+    [CardName.ANTI_OXIDATION_BACTERIA]: {Factory: AntiOxidationBacteria},
+    [CardName.THALLOPHYTE_PROTISTS]: {Factory: ThallophyteProtists},
+    [CardName.ENZYME_CONSTRUCTORS]: {Factory: EnzymeConstructors},
+    [CardName.LATTICE_CONSTRUCTION_MICROBES]: {Factory: LatticeConstructionMicrobes},
   },
 });

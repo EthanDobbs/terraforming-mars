@@ -59,10 +59,8 @@ export class Overgrowth extends Card implements IProjectCard {
   }
 
   public override bespokePlay(player: IPlayer) {
-    return new SelectSpace(
-      'Select space next to greenery for special tile',
-      this.getAvailableSpaces(player),
-      (requestedSpace: Space) => {
+    return new SelectSpace('Select space next to greenery for special tile', this.getAvailableSpaces(player))
+      .andThen((requestedSpace: Space) => {
         player.game.addTile(player, requestedSpace, {
           tileType: TileType.OVERGROWTH,
         });
@@ -77,24 +75,17 @@ export class Overgrowth extends Card implements IProjectCard {
 
         if (adjacentPlayers.size > 0) {
           return new OrOptions(
-            new SelectPlayer(
-              Array.from(adjacentPlayers),
-              'Select adjacent player to remove 4 M€ from',
-              'Remove credits',
-              (selectedPlayer: IPlayer) => {
+            new SelectPlayer(Array.from(adjacentPlayers), 'Select adjacent player to remove 4 M€ from', 'Remove credits')
+              .andThen((selectedPlayer: IPlayer) => {
                 selectedPlayer.stock.deduct(Resource.MEGACREDITS, 4, {log: true, from: player});
                 return undefined;
-              },
-            ),
-            new SelectOption(
-              'Don\'t remove M€ from adjacent player',
-              'Confirm',
-              () => {
+              }),
+            new SelectOption('Don\'t remove M€ from adjacent player', 'Confirm')
+              .andThen(() => {
                 return undefined;
-              },
-            ),
-          );
-        }
+              }),
+          )
+        };
         return undefined;
       },
     );

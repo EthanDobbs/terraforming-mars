@@ -46,6 +46,20 @@ import { AntiOxidationBacteria } from './AntiOxidationBacteria';
 import { ThallophyteProtists } from './ThallophyteProtists';
 import { EnzymeConstructors } from './EnzymeConstructors';
 import { LatticeConstructionMicrobes } from './LatticeConstructionMicrobes';
+import { ElectroplaqueMicrobes } from './ElectroplaqueMicrobes';
+//import { LargeAquaticMammals } from './LargeAquaticMammals';
+import { TundraWildlife } from './TundraWildlife';
+import { Poultry } from './Poultry';
+import { FishFarmingLake } from './FishFarmingLake';
+import { NonHypoxicSmallAnimals } from './NonHypoxicSmallAnimals';
+import { SubterranianCreatures } from './SubterranianCreatures';
+import { AridRegionReptiles } from './AridRegionReptiles';
+import { AntarcticKrill } from './AntarcticKrill';
+import { AncientArthopods } from './AncientArthropods';
+import { HabitatDomes } from './HabitatDomes';
+import { Aquaponics } from './Aquaponics';
+//import { Cephalopods } from './Cephalopods';
+//import { EndangeredSpeciesRefuge } from './EndangeredSpeciesRefuge';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -102,5 +116,19 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.THALLOPHYTE_PROTISTS]: {Factory: ThallophyteProtists},
     [CardName.ENZYME_CONSTRUCTORS]: {Factory: EnzymeConstructors},
     [CardName.LATTICE_CONSTRUCTION_MICROBES]: {Factory: LatticeConstructionMicrobes},
+    [CardName.ELECTROPLAQUE_MICROBES]: {Factory: ElectroplaqueMicrobes},
+    //[CardName.LARGE_AQUATIC_MAMMALS]: {Factory: LargeAquaticMammals},
+    [CardName.TUNDRA_WILDLIFE]: {Factory: TundraWildlife},
+    [CardName.POULTRY]: {Factory: Poultry},
+    [CardName.FISH_FARMING_LAKE]: {Factory: FishFarmingLake},
+    //[CardName.CEPHALOPODS]: {Factory: Cephalopods},
+    //[CardName.ENDANGERED_SPECIES_REFUGE]: {Factory: EndangeredSpeciesRefuge},
+    [CardName.NON_HYPOXIC_SMALL_ANIMALS]: {Factory: NonHypoxicSmallAnimals},
+    [CardName.SUBTERRANEAN_CREATURES]: {Factory: SubterranianCreatures},
+    [CardName.ARID_REGION_REPTILES]: {Factory: AridRegionReptiles},
+    [CardName.ANTARCTIC_KRILL]: {Factory: AntarcticKrill},
+    [CardName.ANCIENT_ARTHROPODS]: {Factory: AncientArthopods},
+    [CardName.HABITAT_DOMES]: {Factory: HabitatDomes},
+    [CardName.AQUAPONICS]: {Factory: Aquaponics},
   },
 });

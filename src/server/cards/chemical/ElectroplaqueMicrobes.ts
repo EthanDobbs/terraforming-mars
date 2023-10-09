@@ -14,7 +14,7 @@ import {Card} from '../Card';
 export class ElectroplaqueMicrobes extends Card implements IActionCard {
   constructor() {
     super({
-      name: CardName.M_TYPE_ASTEROID_MINING,
+      name: CardName.ELECTROPLAQUE_MICROBES,
       type: CardType.ACTIVE,
       tags: [Tag.SCIENCE, Tag.MICROBE],
       cost: 9,
@@ -40,11 +40,12 @@ export class ElectroplaqueMicrobes extends Card implements IActionCard {
   public action(player: IPlayer) {
     const opts: Array<PlayerInput> = [];
 
-    const addResource = new SelectOption('Add 2 microbes to this card', 'Add microbes', () => {
+    const addResource = new SelectOption('Add 2 microbes to this card', 'Add microbes').andThen( () => {
       player.addResourceTo(this, 2);
       return undefined;
     });
-    const spendResource = new SelectAmount('Remove any number of microbes to gain 1 energy per microbe removed', 'Remove microbes', (amount: number) => this.spendResource(player, amount), 1, this.resourceCount, true);
+    const spendResource = new SelectAmount('Remove any number of microbes to gain 1 energy per microbe removed', 'Remove microbes', 1, this.resourceCount, true)
+      .andThen( (amount: number) => this.spendResource(player, amount) );
 
     opts.push(addResource);
 

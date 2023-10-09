@@ -41,11 +41,12 @@ export class MTypeAsteroidMining extends Card implements IActionCard {
   public action(player: IPlayer) {
     const opts: Array<PlayerInput> = [];
 
-    const addResource = new SelectOption('Add 1 asteroid to this card', 'Add asteroid', () => {
+    const addResource = new SelectOption('Add 1 asteroid to this card', 'Add asteroid').andThen( () => {
       player.addResourceTo(this, {log: true});
       return undefined;
     });
-    const spendResource = new SelectAmount('Remove any number of asteroids to gain 3 steel per asteroid removed', 'Remove asteroids', (amount: number) => this.spendResource(player, amount), 1, this.resourceCount, true);
+    const spendResource = new SelectAmount('Remove any number of asteroids to gain 3 steel per asteroid removed', 'Remove asteroids', 1, this.resourceCount, true)
+      .andThen((amount) => this.spendResource(player, amount));
 
     opts.push(addResource);
 

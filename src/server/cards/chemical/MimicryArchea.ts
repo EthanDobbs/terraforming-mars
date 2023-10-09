@@ -52,7 +52,7 @@ export class MimicryArchea extends Card implements IProjectCard {
       player.game.defer(new SimpleDeferredAction(player,() => new SelectCard(
         'Select card to add 1 microbe from Mimicry Archea (' + String(i + 1) + '/' + String(resourceCount) + ')',
         'Add microbe',
-        microbeCards,
+        microbeCards).andThen(
         ([card]) => {
           player.addResourceTo(card, {log: true});
           return undefined;

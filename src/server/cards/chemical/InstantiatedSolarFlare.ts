@@ -57,7 +57,7 @@ export class InstantiatedSolarFlare extends Card implements IProjectCard {
     if (removeAnimals !== undefined) {
       orOptions.options.push(removeAnimals);
     }
-    orOptions.options.push(new SelectOption('Skip removal', 'Confirm', () => {
+    orOptions.options.push(new SelectOption('Skip removal', 'Confirm').andThen(() => {
       return undefined;
     }));
 

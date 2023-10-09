@@ -47,11 +47,11 @@ export class TemporarySmeltingPlant extends Card implements IProjectCard {
       return undefined;
     }
     const orOptions = new OrOptions();
-    orOptions.options.push(new SelectOption('Lose 3 energy', 'Confirm', () => {
+    orOptions.options.push(new SelectOption('Lose 3 energy', 'Confirm').andThen( () => {
       player.energy -= 3;
       return undefined;
     }));
-    orOptions.options.push(new SelectOption('Lose 5 heat', 'Confirm', () => {
+    orOptions.options.push(new SelectOption('Lose 5 heat', 'Confirm').andThen( () => {
       player.heat -= 5;
       return undefined;
     }));

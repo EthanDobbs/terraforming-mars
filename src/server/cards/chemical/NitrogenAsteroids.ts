@@ -26,7 +26,7 @@ export class NitrogenAsteroids extends Card implements IActionCard {
         cardNumber: 'x030',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 6 M€ to add an asteroid resource to this card [TITANIUM MAY BE USED].', (eb) => {
-            eb.megacredits(6).openBrackets.titanium(1).closeBrackets.startAction.asteroids(1);
+            eb.megacredits(6).openBrackets.titanium(1).closeBrackets.startAction.asteroids(1).asterix();
           }).br;
           b.action('Spend 1 resource from this card to increase your TR 1 step.', (eb) => {
             eb.or().asteroids(1).startAction.tr(1);
@@ -44,8 +44,8 @@ export class NitrogenAsteroids extends Card implements IActionCard {
     const asteroidCards = player.getResourceCards(CardResource.ASTEROID);
     const opts: Array<SelectOption> = [];
 
-    const addResource = new SelectOption('Pay 6 M€ to add 1 asteroid to this card', 'Pay', () => this.addResource(player, asteroidCards));
-    const spendResource = new SelectOption('Remove 1 asteroid to raise your TR 1 step', 'Remove asteroid', () => this.spendResource(player));
+    const addResource = new SelectOption('Pay 6 M€ to add 1 asteroid to any card', 'Pay').andThen( () => this.addResource(player, asteroidCards) );
+    const spendResource = new SelectOption('Remove 1 asteroid to raise your TR 1 step', 'Remove asteroid').andThen( () => this.spendResource(player) );
 
     if (this.resourceCount > 0) {
       opts.push(spendResource);
@@ -73,8 +73,7 @@ export class NitrogenAsteroids extends Card implements IActionCard {
     return new SelectCard(
       'Select card to add 1 asteroid',
       'Add asteroid',
-      asteroidCards,
-      ([card]) => {
+      asteroidCards).andThen( ([card]) => {
         player.addResourceTo(card, {log: true});
         return undefined;
       },

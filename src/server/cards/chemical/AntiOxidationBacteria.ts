@@ -11,6 +11,7 @@ import {Resource} from '../../../common/Resource';
 import {OrOptions} from '../../inputs/OrOptions';
 import {SelectOption} from '../../inputs/SelectOption';
 import {Size} from '../../../common/cards/render/Size';
+import {played} from '../Options';
 
 export class AntiOxidationBacteria extends Card implements IProjectCard {
   constructor() {
@@ -26,9 +27,8 @@ export class AntiOxidationBacteria extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x045',
         renderData: CardRenderer.builder((b) => {
-          b.effect('When you play a building tag, either add a microbe to this card or remove a microbe from this card to raise your MC production 1 step.', (eb) => {
-            eb.building().startEffect.microbes(1).nbsp.or(Size.SMALL).br.minus().microbes(1).nbsp.plus().production((pb) => pb.megacredits(1));
-          }).br;
+          b.building(1, {played}).colon().microbes(1).or(Size.SMALL).minus().microbes(1).plus().production((pb) => pb.megacredits(1)).br;
+          b.description('When you play a building tag, either add a microbe to this card or remove a microbe from this card to raise your MC production 1 step.').br;
         }),
         description: 'Requires 2% oxygen or higher.'
       },
@@ -43,12 +43,12 @@ export class AntiOxidationBacteria extends Card implements IProjectCard {
       return undefined;
     }
   
-    const addResource = new SelectOption('Add a microbe resource to Anti-Oxidation Bacteria', 'Add microbe', () => {
+    const addResource = new SelectOption('Add a microbe resource to Anti-Oxidation Bacteria', 'Add microbe').andThen( () => {
       player.addResourceTo(this);
       return undefined;
     });
 
-    const spendResource = new SelectOption('Remove 1 microbe from Anti-Oxidation Bacteria and increase MC production 1 step', 'Remove microbe', () => {
+    const spendResource = new SelectOption('Remove 1 microbe from Anti-Oxidation Bacteria and increase MC production 1 step', 'Remove microbe').andThen( () => {
       player.removeResourceFrom(this, 1);
       player.production.add(Resource.MEGACREDITS, 1);
       return undefined;

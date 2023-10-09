@@ -47,14 +47,14 @@ export class OxygenShipment extends Card implements IProjectCard {
 
     if (availableMicrobeCards.length === 1) {
       const targetMicrobeCard = availableMicrobeCards[0];
-      availableActions.push(new SelectOption('Add 3 microbes to ' + targetMicrobeCard.name, 'Add microbes', () => {
+      availableActions.push(new SelectOption('Add 3 microbes to ' + targetMicrobeCard.name, 'Add microbes').andThen( () => {
         player.addResourceTo(targetMicrobeCard, {qty: 3, log: true});
         return undefined;
       }));
     } else if (availableMicrobeCards.length > 1) {
       availableActions.push(new SelectCard('Add 3 microbes to a card',
         'Add microbes',
-        availableMicrobeCards, ([card]) => {
+        availableMicrobeCards).andThen( ([card]) => {
           player.addResourceTo(card, {qty: 3, log: true});
           return undefined;
         }));
@@ -62,12 +62,12 @@ export class OxygenShipment extends Card implements IProjectCard {
 
     if (availableAnimalCards.length === 1) {
       const targetAnimalCard = availableAnimalCards[0];
-      availableActions.push(new SelectOption('Add 3 animals to ' + targetAnimalCard.name, 'Add animals', () => {
+      availableActions.push(new SelectOption('Add 3 animals to ' + targetAnimalCard.name, 'Add animals').andThen( () => {
         player.addResourceTo(targetAnimalCard, {qty: 3, log: true});
         return undefined;
       }));
     } else if (availableAnimalCards.length > 1) {
-      availableActions.push(new SelectCard('Add 3 animals to a card', 'Add animals', availableAnimalCards, ([card]) => {
+      availableActions.push(new SelectCard('Add 3 animals to a card', 'Add animals', availableAnimalCards).andThen( ([card]) => {
         player.addResourceTo(card, {qty: 3, log: true});
         return undefined;
       }));

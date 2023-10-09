@@ -39,7 +39,7 @@ export class LatticeConstructionMicrobes extends ActionCard implements IProjectC
           }).br;
           b.or().br;
           b.action('Remove 1 microbe from this card to gain 1 steel and 1 titanium.', (eb) => {
-            eb.microbes(2).startAction.steel(1).titanium(1);
+            eb.microbes(1).startAction.steel(1).titanium(1);
           }).br;
         }),
         description: 'Requires that you have a microbe tag.'

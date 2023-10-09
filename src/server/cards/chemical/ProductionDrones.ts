@@ -38,11 +38,11 @@ export class ProductionDrones extends Card implements IActionCard {
   public action(player: IPlayer) {
     const opts: Array<SelectOption> = [];
 
-    const addResource = new SelectOption('Add 1 floater to this card', 'Add floater', () => {
+    const addResource = new SelectOption('Add 1 floater to this card', 'Add floater').andThen( () => {
       player.addResourceTo(this, {log: true});
       return undefined;
     });
-    const spendResource = new SelectOption('Remove a floater from this card to increase your lowest production 1 step', 'Remove floater', () => this.spendResource(player));
+    const spendResource = new SelectOption('Remove a floater from this card to increase your lowest production 1 step', 'Remove floater').andThen( () => this.spendResource(player));
 
     opts.push(addResource);
 
@@ -62,7 +62,7 @@ export class ProductionDrones extends Card implements IActionCard {
     let lowest: Array<SelectOption> = [];
 
     ALL_RESOURCES.forEach((resource) => {
-      const option = new SelectOption('Increase ' + resource + ' production 1 step', 'Select', () => {
+      const option = new SelectOption('Increase ' + resource + ' production 1 step', 'Select').andThen( () => {
         player.production.add(resource, 1, {log: true});
         return undefined;
       });

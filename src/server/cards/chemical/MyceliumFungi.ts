@@ -44,8 +44,7 @@ export class MyceliumFungi extends Card implements IProjectCard {
       activePlayer.game.defer(new SimpleDeferredAction(activePlayer,() => new SelectCard(
         'Select card to add 1 microbe for Mycelium Fungi',
         'Add microbe',
-        microbeCards,
-        ([card]) => {
+        microbeCards).andThen( ([card]) => {
           activePlayer.addResourceTo(card, {log: true});
           return undefined;
         },

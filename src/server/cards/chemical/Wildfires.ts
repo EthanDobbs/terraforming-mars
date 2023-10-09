@@ -26,7 +26,7 @@ export class Wildfires extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x002',
         renderData: CardRenderer.builder((b) => {
-          b.heat(4);
+          b.heat(4, {digit});
           b.nbsp.minus().plants(4, {all, digit});
           b.nbsp.minus().animals(2, {all, digit});
         }),
@@ -55,9 +55,9 @@ export class Wildfires extends Card implements IProjectCard {
     if (removeAnimals !== undefined) {
       orOptions.options.push(removeAnimals);
     }
-    orOptions.options.push(new SelectOption('Skip removal', 'Confirm', () => {
-      return undefined;
-    }));
+    orOptions.options.push(new SelectOption('Skip removal', 'Confirm')
+      .andThen(() => {return undefined})
+    );
 
     return orOptions;
   }

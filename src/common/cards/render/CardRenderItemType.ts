@@ -90,4 +90,6 @@ export enum CardRenderItemType {
 
   // Star Wars
   CLONE_TROOPER = 'clone-trooper',
+
+  BUILDING_RESOURCE = 'building-resource'
 }

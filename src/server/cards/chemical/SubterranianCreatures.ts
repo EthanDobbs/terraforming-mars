@@ -19,7 +19,7 @@ export class SubterranianCreatures extends ActionCard implements IProjectCard {
     super({
       type: CardType.ACTIVE,
       name: CardName.SUBTERRANEAN_CREATURES,
-      tags: [Tag.SCIENCE, Tag.ANIMAL],
+      tags: [Tag.ANIMAL],
       cost: 8,
 
       action: {

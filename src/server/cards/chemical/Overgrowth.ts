@@ -29,7 +29,7 @@ export class Overgrowth extends Card implements IProjectCard {
       },
       cardNumber: 'x001',
       renderData: CardRenderer.builder((b) => {
-        b.tile(TileType.OVERGROWTH, true).asterix().nbsp.minus().megacredits(4, {all}).asterix();
+        b.tile(TileType.OVERGROWTH, false).asterix().nbsp.minus().megacredits(4, {all}).asterix();
         b.oxygen(1).br;
       }),
     },

@@ -310,6 +310,10 @@ abstract class Builder<T> {
     return this._appendToRow(new CardRenderItem(CardRenderItemType.CAMPS, amount));
   }
 
+  public buildingResource(amount: number = 1) {
+    return this._appendToRow(new CardRenderItem(CardRenderItemType.BUILDING_RESOURCE, amount));
+  }
+
   public selfReplicatingRobots() {
     return this._appendToRow(new CardRenderItem(CardRenderItemType.SELF_REPLICATING));
   }

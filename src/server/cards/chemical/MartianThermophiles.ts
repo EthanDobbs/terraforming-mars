@@ -11,7 +11,7 @@ export class MartianThermophiles extends ActionCard implements IProjectCard {
   constructor() {
     super({
       type: CardType.ACTIVE,
-      name: CardName.TERMITES,
+      name: CardName.MARTIAN_THERMOPHILES,
       tags: [Tag.MICROBE],
       cost: 4,
       resourceType: CardResource.MICROBE,

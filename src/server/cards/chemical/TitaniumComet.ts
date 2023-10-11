@@ -24,9 +24,9 @@ export class TitaniumComet extends Card implements IProjectCard {
         cardNumber: 'x013',
         renderData: CardRenderer.builder((b) => {
           b.temperature(1);
-          b.oceans(1).nbsp;
+          b.oceans(1);
           b.titanium(3, {digit}).nbsp;
-          b.minus().plants(5, {all, digit});
+          b.minus().plants(3, {all, digit});
         }),
         description: 'Raise the temperature 1 step, place an ocean tile, and gain 3 titanium. Remove up to 3 plants from any player.',
       },

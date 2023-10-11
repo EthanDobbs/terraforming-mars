@@ -14,7 +14,7 @@ export class AntarcticKrill extends ActionCard implements IProjectCard {
     super({
       type: CardType.ACTIVE,
       name: CardName.ANTARCTIC_KRILL,
-      tags: [Tag.SCIENCE, Tag.ANIMAL],
+      tags: [Tag.ANIMAL],
       cost: 7,
 
       action: {

@@ -137,7 +137,10 @@ const TILE_CLASSES: Record<TileType, Classes> = {
   [TileType.MARS_NOMADS]: {}, // This isn't shown on a card
   [TileType.OVERGROWTH]: {
     tile: 'card-tile-overgrowth',
-  }
+  },
+  [TileType.IMPERATIVE_SETTLEMENT]: {
+    tile: 'card-tile-imperative-settlement',
+  },
 };
 
 export default Vue.extend({

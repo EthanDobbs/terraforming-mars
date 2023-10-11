@@ -5,11 +5,11 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {max} from '../Options';
 
-export class EarlyExpedition extends Card implements IProjectCard {
+export class EarlyExpeditionChemical extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.EVENT,
-      name: CardName.MINOR_IMPACTOR,
+      name: CardName.EARLY_EXPEDITION_CHEMICAL,
       cost: 3,
       behavior: {
         stock: {plants: 2},

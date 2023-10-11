@@ -17,7 +17,7 @@ export class WetlandsChemical extends Card implements IProjectCard {
     metadata: ICardMetadata = {
       cardNumber: 'x125',
       renderData: CardRenderer.builder((b) => {
-        b.tile(TileType.WETLANDS_CHEMICAL, false).plants(3).br.microbes(2).asterix();
+        b.tile(TileType.WETLANDS_CHEMICAL, false).nbsp.plants(3).br.microbes(2).asterix();
       }),
       description: 'Requires -6°C or higher. Place this tile, gain 3 plants, and add 3 microbes to ANOTHER card.'
     },

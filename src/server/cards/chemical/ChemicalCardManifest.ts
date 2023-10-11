@@ -148,6 +148,26 @@ import { FuelCellProduction } from './FuelCellProduction';
 import { EnergyMohole } from './EnergyMohole';
 import { EfficientBatteries } from './EfficientBatteries';
 import { AdvancedHydropower } from './AdvancedHydropower';
+import { HighPowerBetavoltaics } from './HighPowerBetavoltaics';
+import { CentralPowerPlant } from './CentralPowerPlant';
+import { OsmoticPower } from './OsmoticPower';
+import { SolidStateWildEnergy } from './SolidStateWildEnergy';
+import { AtmosphericPressureEngine } from './AtmosphericPressureEngine';
+import { IsotopeEnrichingBacteria } from './IsotopeEnrichingBacteria';
+import { AnaerobicBacteria } from './AnaerobicBacteria';
+import { CarbonateDeposit } from './CarbonateDeposit';
+import { HFCProduction } from './HFCProduction';
+import { GHGFactoryDistrict } from './GHGFactoryDistrict';
+import { LaserCannon } from './LaserCannon';
+import { NaturalGasExtraction } from './NaturalGasExtraction';
+import { OzoneFactories } from './OzoneFactories';
+import { SyntheticGrowthHormones } from './SyntheticGrowthHormones';
+import { ProbioticTreatment } from './ProbioticTreatment';
+import { MirandaLabs } from './MirandaLabs';
+import { MarsLifeScienceInstitute } from './MarsLifeScienceInstitute';
+import { SpeciesCryopreservation } from './SpeciesCryopreservation';
+import { EarlyPolarOutpost } from './EarlyPolarOutpost';
+import { RuralHousing } from './RuralHousing';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -306,5 +326,26 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.ENERGY_MOHOLE]: {Factory: EnergyMohole},
     [CardName.EFFICIENT_BATTERIES]: {Factory: EfficientBatteries},
     [CardName.ADVANCED_HYDROPOWER]: {Factory: AdvancedHydropower},
+    [CardName.HIGH_POWER_BETAVOLTAICS]: {Factory: HighPowerBetavoltaics},
+    [CardName.CENTRAL_POWER_PLANT]: {Factory: CentralPowerPlant},
+    [CardName.OSMOTIC_POWER]: {Factory: OsmoticPower},
+    [CardName.SOLID_STATE_WIND_ENERGY]: {Factory: SolidStateWildEnergy},
+    [CardName.ATMOSPHERIC_PRESSURE_ENGINE]: {Factory: AtmosphericPressureEngine},
+    [CardName.ISOTOPE_ENRICHING_BACTERIA]: {Factory: IsotopeEnrichingBacteria},
+    [CardName.ANAEROBIC_BACTERIA]: {Factory: AnaerobicBacteria},
+    [CardName.CARBONATE_DEPOSIT]: {Factory: CarbonateDeposit},
+    [CardName.HFC_PRODUCTION]: {Factory: HFCProduction},
+    [CardName.GHG_FACTORY_DISTRICT]: {Factory: GHGFactoryDistrict},
+    [CardName.LASER_CANNON]: {Factory: LaserCannon},
+    [CardName.NATURAL_GAS_EXTRACTION]: {Factory: NaturalGasExtraction},
+    [CardName.OZONE_FACTORIES]: {Factory: OzoneFactories},
+    [CardName.SYNTHETIC_GROWTH_HORMONES]: {Factory: SyntheticGrowthHormones},
+    [CardName.PROBIOTIC_TREATMENT]: {Factory: ProbioticTreatment},
+    [CardName.MIRANDA_LABS]: {Factory: MirandaLabs},
+    [CardName.MARS_LIFE_SCIENCE_INSTITUTE]: {Factory: MarsLifeScienceInstitute},
+    [CardName.SPECIES_CRYOPRESERVATION]: {Factory: SpeciesCryopreservation},
+    [CardName.EARLY_POLAR_OUTPOST]: {Factory: EarlyPolarOutpost},
+    [CardName.RURAL_HOUSING]: {Factory: RuralHousing},
   },
 });
+

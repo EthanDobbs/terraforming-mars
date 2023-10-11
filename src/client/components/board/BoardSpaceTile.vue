@@ -53,7 +53,9 @@ const tileTypeToCssClass: Record<TileType, string> = {
   [TileType.CRASHLANDING]: 'crashlanding',
   [TileType.MARS_NOMADS]: '', // This never actually renders.
   [TileType.OVERGROWTH]: 'overgrowth',
-  [TileType.IMPERATIVE_SETTLEMENT]: 'imperative-settlement'
+  [TileType.IMPERATIVE_SETTLEMENT]: 'imperative-settlement',
+  [TileType.WETLANDS_CHEMICAL]: 'wetlands-chemical',
+  [TileType.MASSIVE_SOLAR_FARM]: 'massive-solar-farm',
 };
 
 const tileTypeToCssClassAresOverride = new Map<TileType, string>([
@@ -115,7 +117,9 @@ const descriptions: Record<TileType, string> = {
   [TileType.CRASHLANDING]: 'Crashlanding',
   [TileType.MARS_NOMADS]: '', // This never actually renders.
   [TileType.OVERGROWTH]: 'Overgrowth: Remove up to 4MC from the owner of an adjacent tile',
-  [TileType.IMPERATIVE_SETTLEMENT]: 'Imperative Settlement'
+  [TileType.IMPERATIVE_SETTLEMENT]: 'Imperative Settlement',
+  [TileType.WETLANDS_CHEMICAL]: 'Wetlands',
+  [TileType.MASSIVE_SOLAR_FARM]: 'Massive Solar Farm',
 };
 
 export default Vue.extend({

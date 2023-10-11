@@ -30,7 +30,7 @@ export class TemperateRainforest extends Card implements IProjectCard {
           b.effect('Greenergy tiles grant you an adjacency bonus of 1MC.', (eb) => {
             eb.greenery({withO2: false}).emptyTile().startEffect.megacredits(1);
           }).br;
-          b.greenery().animals(2).asterix
+          b.greenery().animals(2).asterix();
         }),
         description: 'Requires 0°C or higher. Place a greenery tile and add 2 animals to ANOTHER card.'
       },

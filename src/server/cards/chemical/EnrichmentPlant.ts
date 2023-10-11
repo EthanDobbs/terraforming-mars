@@ -5,25 +5,27 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import { Tag } from '../../../common/cards/Tag';
 
-export class GeothermalReserviorHeating extends Card implements IProjectCard {
+export class EnrichmentPlant extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.AUTOMATED,
-      name: CardName.GEOTHERMAL_RESERVIOR_HEATING,
-      cost: 18,
-      tags: [Tag.BUILDING],
+      name: CardName.ENRICHMENT_PLANT,
+      cost: 11,
+      tags: [Tag.SCIENCE, Tag.POWER, Tag.BUILDING],
 
       behavior: {
-        ocean: {},
-        production: {megacredits: 2},
+        production: {megacredits: -1, energy: 2},
       },
 
       metadata: {
-        cardNumber: 'x096',
+        cardNumber: 'x144',
         renderData: CardRenderer.builder((b) => {
-          b.oceans(1).production((pb) => pb.megacredits(2));
+          b.production((pb) => {
+            pb.minus().megacredits(1).br;
+            pb.plus().energy(2)
+          });
         }),
-        description: 'Place an ocean tile and raise your MC production 2 steps.',
+        description: 'Lower your MC production 1 step and raise your energy production 2 steps.',
       },
     });
   }

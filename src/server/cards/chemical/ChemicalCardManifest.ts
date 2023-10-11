@@ -106,9 +106,48 @@ import { LithiumMine } from './LithiumMine';
 import { ChasmaExcavation } from './ChasmaExcavation';
 import { DeepPolarExtraction } from './DeepPolarExtraction';
 import { PhobosMiningOperations } from './PhobosMiningOperations';
+import { CallistoOperations } from './CallistoOperations';
 import { LaserFactory } from './LaserFactory';
-
-
+import { RegolithAeration } from './RegolithAeration';
+import { Mixotrophs } from './Mixotrophs';
+import { BotanicalLab } from './BotanicalLab';
+import { Composting } from './Composting';
+import { EnzymaticTreatment } from './EnzymaticTreatment';
+import { ExtremeNitrophiles } from './ExtremeNitrophiles';
+import { VascularTundraPlants } from './VascularTundraPlants';
+import { Bamboo } from './Bamboo';
+import { ErosionReducingGreenery } from './ErosionReducingGreenery';
+import { DwarfWillow } from './DwarfWillow';
+import { Wildberries } from './Wildberries';
+import { AnaerobicEnergyCropping } from './AnaerobicEnergyCropping';
+import { AdaptedHardwood } from './AdaptedHardwood';
+import { AquaticBiodomes } from './AquaticBiodomes';
+import { Conifers } from './Conifers';
+import { Barley } from './Barley';
+import { WetlandsChemical } from './WetlandsChemical';
+import { Cacti } from './Cacti';
+import { AdaptedFruitFarming } from './AdaptedFruitFarming';
+import { RiceFields } from './RiceFields';
+import { CoralReef } from './CoralReef';
+import { CyanobacteriaChemical } from './CyanobacteriaChemical';
+import { HydroponicsFacility } from './HydroponicsFacility';
+import { RedAlgae } from './RedAlgae';
+import { Irrigation } from './Irrigation';
+import { Monsoons } from './Monsoons';
+import { HeavyRespirators } from './HeavyRespirators';
+import { BeeFarming } from './BeeFarming';
+import { SaturnGasMine } from './SaturnGasMine';
+import { SpaceBasedSolarPower } from './SpaceBasedSolarPower';
+import { LargePowerPlant } from './LargePowerPlant';
+import { HydrocarbonSynthesis } from './HydrocarbonSynthesis';
+import { AtmosphericProcessing } from './AtmosphericProcessing';
+import { UraniumDeposit } from './UraniumDeposit';
+import { MassiveSolarFarm } from './MassiveSolarFarm';
+import { EnrichmentPlant } from './EnrichmentPlant';
+import { FuelCellProduction } from './FuelCellProduction';
+import { EnergyMohole } from './EnergyMohole';
+import { EfficientBatteries } from './EfficientBatteries';
+import { AdvancedHydropower } from './AdvancedHydropower';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -225,6 +264,47 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.CHASMA_EXCAVATION]: {Factory: ChasmaExcavation},
     [CardName.DEEP_POLAR_EXTRACTION]: {Factory: DeepPolarExtraction},
     [CardName.PHOBOS_MINING_OPERATIONS]: {Factory: PhobosMiningOperations},
+    [CardName.CALLISTO_OPERATIONS]: {Factory: CallistoOperations},
     [CardName.LASER_FACTORY]: {Factory: LaserFactory},
+    [CardName.REGOLITH_AERATION]: {Factory: RegolithAeration},
+    [CardName.MIXOTROPHS]: {Factory: Mixotrophs},
+    [CardName.BOTANICAL_LAB]: {Factory: BotanicalLab},
+    [CardName.COMPOSTING]: {Factory: Composting},
+    [CardName.ENZYMATIC_TREATMENT]: {Factory: EnzymaticTreatment},
+    [CardName.EXTREME_NITROPHILES]: {Factory: ExtremeNitrophiles},
+    [CardName.VASCULAR_TUNDRA_PLANTS]: {Factory: VascularTundraPlants},
+    [CardName.BAMBOO]: {Factory: Bamboo},
+    [CardName.EROSION_REDUCING_GREENERY]: {Factory: ErosionReducingGreenery},
+    [CardName.DWARF_WILLOW]: {Factory: DwarfWillow},
+    [CardName.WILDBERRIES]: {Factory: Wildberries},
+    [CardName.ANAEROBIC_ENERGY_CROPPING]: {Factory: AnaerobicEnergyCropping},
+    [CardName.ADAPTED_HARDWOOD]: {Factory: AdaptedHardwood},
+    [CardName.AQUATIC_BIODOMES]: {Factory: AquaticBiodomes},
+    [CardName.CONIFERS]: {Factory: Conifers},
+    [CardName.BARLEY]: {Factory: Barley},
+    [CardName.WETLANDS_CHEMICAL]: {Factory: WetlandsChemical},
+    [CardName.CACTI]: {Factory: Cacti},
+    [CardName.ADAPTED_FRUIT_FARMING]: {Factory: AdaptedFruitFarming},
+    [CardName.RICE_FIELDS]: {Factory: RiceFields},
+    [CardName.CORAL_REEF]: {Factory: CoralReef},
+    [CardName.CYANOBACTERIA_CHEMICAL]: {Factory: CyanobacteriaChemical},
+    [CardName.HYDROPONICS_FACILITY]: {Factory: HydroponicsFacility},
+    [CardName.RED_ALGAE]: {Factory: RedAlgae},
+    [CardName.IRRIGATION]: {Factory: Irrigation},
+    [CardName.MONSOONS]: {Factory: Monsoons},
+    [CardName.HEAVY_RESPIRATORS]: {Factory: HeavyRespirators},
+    [CardName.BEE_FARMING]: {Factory: BeeFarming},
+    [CardName.SATURN_GAS_MINE]: {Factory: SaturnGasMine},
+    [CardName.SPACE_BASED_SOLAR_POWER]: {Factory: SpaceBasedSolarPower},
+    [CardName.LARGE_POWER_PLANT]: {Factory: LargePowerPlant},
+    [CardName.HYDROCARBON_SYNTHESIS]: {Factory: HydrocarbonSynthesis},
+    [CardName.ATMOSPHERIC_PROCESSING]: {Factory: AtmosphericProcessing},
+    [CardName.URANIUM_DEPOSIT]: {Factory: UraniumDeposit},
+    [CardName.MASSIVE_SOLAR_FARM]: {Factory: MassiveSolarFarm},
+    [CardName.ENRICHMENT_PLANT]: {Factory: EnrichmentPlant},
+    [CardName.FUEL_CELL_PRODUCTION]: {Factory: FuelCellProduction},
+    [CardName.ENERGY_MOHOLE]: {Factory: EnergyMohole},
+    [CardName.EFFICIENT_BATTERIES]: {Factory: EfficientBatteries},
+    [CardName.ADVANCED_HYDROPOWER]: {Factory: AdvancedHydropower},
   },
 });

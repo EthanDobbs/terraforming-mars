@@ -14,7 +14,7 @@ export class PanspermicAsteroid extends Card implements IProjectCard {
       name: CardName.PANSPERMIC_ASTEROID,
       tags: [Tag.SPACE],
       cost: 25,
-      victoryPoints: 1,
+      victoryPoints: 3,
 
       behavior: {
         addResourcesToAnyCard: [

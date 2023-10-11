@@ -10,7 +10,7 @@ export class EarlyExpeditionChemical extends Card implements IProjectCard {
     super({
       type: CardType.EVENT,
       name: CardName.EARLY_EXPEDITION_CHEMICAL,
-      cost: 3,
+      cost: 6,
       behavior: {
         stock: {plants: 2},
       },

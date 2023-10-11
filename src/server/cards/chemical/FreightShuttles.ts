@@ -21,6 +21,7 @@ export class FreightShuttles extends Card implements IProjectCard {
       tags: [Tag.SPACE],
       cost: 12,
       victoryPoints: 1,
+      requirements: {oxygen: 5},
 
       behavior: {
         production: {megacredits: 5, energy: -2}

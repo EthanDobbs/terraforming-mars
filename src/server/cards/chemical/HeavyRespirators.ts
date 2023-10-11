@@ -5,25 +5,26 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import { Tag } from '../../../common/cards/Tag';
 
-export class GeothermalReserviorHeating extends Card implements IProjectCard {
+export class HeavyRespirators extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.AUTOMATED,
-      name: CardName.GEOTHERMAL_RESERVIOR_HEATING,
-      cost: 18,
-      tags: [Tag.BUILDING],
+      name: CardName.HEAVY_RESPIRATORS,
+      cost: 10,
+      tags: [Tag.PLANT],
+      requirements: {oxygen: 7},
 
       behavior: {
-        ocean: {},
-        production: {megacredits: 2},
+        greenery: {},
+        global: {oxygen: -1},
       },
 
       metadata: {
-        cardNumber: 'x096',
+        cardNumber: 'x135',
         renderData: CardRenderer.builder((b) => {
-          b.oceans(1).production((pb) => pb.megacredits(2));
+          b.greenery({withO2: false}).asterix();
         }),
-        description: 'Place an ocean tile and raise your MC production 2 steps.',
+        description: 'Requires 7% oxygen or higher. Place a greenery tile BUT DO NOT RAISE THE OXYGEN.',
       },
     });
   }

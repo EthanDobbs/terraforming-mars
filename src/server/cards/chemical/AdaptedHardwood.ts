@@ -5,25 +5,25 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import { Tag } from '../../../common/cards/Tag';
 
-export class GeothermalReserviorHeating extends Card implements IProjectCard {
+export class AdaptedHardwood extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.AUTOMATED,
-      name: CardName.GEOTHERMAL_RESERVIOR_HEATING,
-      cost: 18,
-      tags: [Tag.BUILDING],
+      name: CardName.ADAPTED_HARDWOOD,
+      cost: 22,
+      tags: [Tag.PLANT],
+      requirements: {temperature: -10},
 
       behavior: {
-        ocean: {},
-        production: {megacredits: 2},
+        production: {plants: 3, megacredits: 3},
       },
 
       metadata: {
-        cardNumber: 'x096',
+        cardNumber: 'x121',
         renderData: CardRenderer.builder((b) => {
-          b.oceans(1).production((pb) => pb.megacredits(2));
+          b.production((pb) => pb.megacredits(3).br.plants(3));
         }),
-        description: 'Place an ocean tile and raise your MC production 2 steps.',
+        description: 'Requires -10°C or higher. Raise your MC production 3 steps and your plant production 3 steps.',
       },
     });
   }

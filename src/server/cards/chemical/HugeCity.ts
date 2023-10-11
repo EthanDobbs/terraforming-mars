@@ -50,8 +50,9 @@ export class HugeCity extends Card implements IProjectCard {
 
   public override bespokePlay(player: IPlayer) {
     return new SelectSpace('Select a space for the first city', this.getSpacesForFirstCity(player)).andThen((firstCity) => {
-      return new SelectSpace('Select a space for the second city adjacent to the first city', this.getSpacesForSecondCity(player, firstCity)).andThen((secondCity) => {
-        player.game.addCity(player, firstCity);
+      const spacesForSecondCity = this.getSpacesForSecondCity(player, firstCity);
+      player.game.addCity(player, firstCity);
+      return new SelectSpace('Select a space for the second city adjacent to the first city', spacesForSecondCity).andThen((secondCity) => {
         player.game.addCity(player, secondCity);
         return undefined;
       });

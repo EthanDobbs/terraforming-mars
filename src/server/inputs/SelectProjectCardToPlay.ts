@@ -60,6 +60,8 @@ export class SelectProjectCardToPlay extends BasePlayerInput<IProjectCard> {
       seeds: player.getSpendableSeedResources(),
       graphene: player.getSpendableGraphene(),
       kuiperAsteroids: player.getSpendableKuiperAsteroids(),
+      heavyAerospaceTechSteel: player.cardIsInEffect(CardName.HEAVY_AEROSPACE_TECH),
+      ecologicalContractPlants: player.cardIsInEffect(CardName.ECOLOGICAL_CONTRACT),
     };
   }
 

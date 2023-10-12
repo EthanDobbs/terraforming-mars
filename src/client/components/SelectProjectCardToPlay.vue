@@ -210,12 +210,14 @@ export default Vue.extend({
         return this.playerinput.paymentOptions.heat === true;
       case 'steel':
         return this.tags.includes(Tag.BUILDING) ||
-          this.thisPlayer.lastCardPlayed === CardName.LAST_RESORT_INGENUITY;
+          this.thisPlayer.lastCardPlayed === CardName.LAST_RESORT_INGENUITY ||
+          (this.playerinput.heavyAerospaceTechSteel && this.tags.includes(Tag.SPACE));
       case 'titanium':
         return this.canUseTitaniumRegularly() ||
           this.playerinput.paymentOptions.lunaTradeFederationTitanium === true;
       case 'plants':
-        return this.tags.includes(Tag.BUILDING) && this.playerinput.paymentOptions.plants === true;
+        return this.tags.includes(Tag.BUILDING) && this.playerinput.paymentOptions.plants === true ||
+        (this.playerinput.ecologicalContractPlants && this.tags.includes(Tag.PLANT));
       case 'microbes':
         return this.tags.includes(Tag.PLANT);
       case 'floaters':

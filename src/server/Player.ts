@@ -851,10 +851,13 @@ export class Player implements IPlayer {
   }
 
   private paymentOptionsForCard(card: IProjectCard): PaymentOptions {
+    const heavyAerospaceTech = card.tags.includes(Tag.SPACE) && this.cardIsInEffect(CardName.HEAVY_AEROSPACE_TECH);
+    const ecologicalContract = card.tags.includes(Tag.PLANT) && this.cardIsInEffect(CardName.ECOLOGICAL_CONTRACT);
+    const martianLumberCorp = card.tags.includes(Tag.BUILDING) && this.cardIsInEffect(CardName.MARTIAN_LUMBER_CORP);
     return {
       heat: this.canUseHeatAsMegaCredits,
-      steel: this.lastCardPlayed === CardName.LAST_RESORT_INGENUITY || card.tags.includes(Tag.BUILDING),
-      plants: card.tags.includes(Tag.BUILDING) && this.cardIsInEffect(CardName.MARTIAN_LUMBER_CORP),
+      steel: this.lastCardPlayed === CardName.LAST_RESORT_INGENUITY || card.tags.includes(Tag.BUILDING) || heavyAerospaceTech,
+      plants: martianLumberCorp || ecologicalContract,
       titanium: this.lastCardPlayed === CardName.LAST_RESORT_INGENUITY || card.tags.includes(Tag.SPACE),
       lunaTradeFederationTitanium: this.canUseTitaniumAsMegacredits,
       seeds: card.tags.includes(Tag.PLANT) || card.name === CardName.GREENERY_STANDARD_PROJECT,

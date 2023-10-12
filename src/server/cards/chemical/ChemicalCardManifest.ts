@@ -49,12 +49,12 @@ import { ThallophyteProtists } from './ThallophyteProtists';
 import { EnzymeConstructors } from './EnzymeConstructors';
 import { LatticeConstructionMicrobes } from './LatticeConstructionMicrobes';
 import { ElectroplaqueMicrobes } from './ElectroplaqueMicrobes';
-//import { LargeAquaticMammals } from './LargeAquaticMammals';
+import { LargeAquaticMammals } from './LargeAquaticMammals';
 import { TundraWildlife } from './TundraWildlife';
 import { Poultry } from './Poultry';
 import { FishFarmingLake } from './FishFarmingLake';
 //import { Cephalopods } from './Cephalopods';
-//import { EndangeredSpeciesRefuge } from './EndangeredSpeciesRefuge';
+import { EndangeredSpeciesRefuge } from './EndangeredSpeciesRefuge';
 import { NonHypoxicSmallAnimals } from './NonHypoxicSmallAnimals';
 import { SubterranianCreatures } from './SubterranianCreatures';
 import { AridRegionReptiles } from './AridRegionReptiles';
@@ -69,12 +69,12 @@ import { AluminumFoundry } from './AluminumFoundry';
 import { LocalTemperatureControl } from './LocalTemperatureControl';
 import { AdvancedGeneticAdaption } from './AdvancedGeneticAdaption';
 import { OceanographyResearch } from './OceanographyResearch';
-//import { HeavyAerospaceTech } from './HeavyAerospaceTech';
+import { HeavyAerospaceTech } from './HeavyAerospaceTech';
 import { FreightShuttles } from './FreightShuttles';
 import { GeneticEngineeringLab } from './GeneticEngineeringLab';
 import { CO2Vents } from './CO2Vents';
 import { PublicLand } from './PublicLand';
-//import { EcologicalContract } from './EcologicalContract';
+import { EcologicalContract } from './EcologicalContract';
 import { Biodomes } from './Biodomes';
 import { TemperateRainforest } from './TemperateRainforest';
 import { BiomassReactor } from './BiomassReactor';
@@ -227,12 +227,12 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.ENZYME_CONSTRUCTORS]: {Factory: EnzymeConstructors},
     [CardName.LATTICE_CONSTRUCTION_MICROBES]: {Factory: LatticeConstructionMicrobes},
     [CardName.ELECTROPLAQUE_MICROBES]: {Factory: ElectroplaqueMicrobes},
-    //[CardName.LARGE_AQUATIC_MAMMALS]: {Factory: LargeAquaticMammals},
+    [CardName.LARGE_AQUATIC_MAMMALS]: {Factory: LargeAquaticMammals},
     [CardName.TUNDRA_WILDLIFE]: {Factory: TundraWildlife},
     [CardName.POULTRY]: {Factory: Poultry},
     [CardName.FISH_FARMING_LAKE]: {Factory: FishFarmingLake},
     //[CardName.CEPHALOPODS]: {Factory: Cephalopods},
-    //[CardName.ENDANGERED_SPECIES_REFUGE]: {Factory: EndangeredSpeciesRefuge},
+    [CardName.ENDANGERED_SPECIES_REFUGE]: {Factory: EndangeredSpeciesRefuge},
     [CardName.NON_HYPOXIC_SMALL_ANIMALS]: {Factory: NonHypoxicSmallAnimals},
     [CardName.SUBTERRANEAN_CREATURES]: {Factory: SubterranianCreatures},
     [CardName.ARID_REGION_REPTILES]: {Factory: AridRegionReptiles},
@@ -247,12 +247,12 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.LOCAL_TEMPERATURE_CONTROL]: {Factory: LocalTemperatureControl},
     [CardName.ADVANCED_GENETIC_ADAPTION]: {Factory: AdvancedGeneticAdaption},
     [CardName.OCEANOGRAPHY_RESEARCH]: {Factory: OceanographyResearch},
-    //[CardName.HEAVY_AEROSPACE_TECH]: {Factory: HeavyAerospaceTech},
+    [CardName.HEAVY_AEROSPACE_TECH]: {Factory: HeavyAerospaceTech},
     [CardName.FREIGHT_SHUTTLES]: {Factory: FreightShuttles},
     [CardName.GENETIC_ENGINEERING_LAB]: {Factory: GeneticEngineeringLab},
     [CardName.CO2_VENTS]: {Factory: CO2Vents},
     [CardName.PUBLIC_LAND]: {Factory: PublicLand},
-    //[CardName.ECOLOGICAL_CONTRACT]: {Factory: EcologicalContract}
+    [CardName.ECOLOGICAL_CONTRACT]: {Factory: EcologicalContract},
     [CardName.BIODOMES]: {Factory: Biodomes},
     [CardName.TEMPERATE_RAINFOREST]: {Factory: TemperateRainforest},
     [CardName.BIOMASS_REACTOR]: {Factory: BiomassReactor},

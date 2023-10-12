@@ -330,7 +330,7 @@ export class Game implements IGame, Logger {
           }
           //For testing purposes
           if (gameOptions.chemicalExpansion) {
-            const card = new CardFinder().getProjectCardByName(CardName.WETLANDS_CHEMICAL)
+            const card = new CardFinder().getProjectCardByName(CardName.HEAVY_AEROSPACE_TECH)
             if (card !== undefined) {
               player.dealtProjectCards.push(card);
             } else {

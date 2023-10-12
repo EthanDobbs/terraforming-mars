@@ -8,7 +8,7 @@ import {ICard} from '../cards/ICard';
 import {DeferredAction, Priority} from './DeferredAction';
 
 // TODO (kberg chosta): Make this a card attribute instead
-const animalsProtectedCards = [CardName.PETS, CardName.BIOENGINEERING_ENCLOSURE];
+const animalsProtectedCards = [CardName.PETS, CardName.BIOENGINEERING_ENCLOSURE, CardName.ENDANGERED_SPECIES_REFUGE];
 
 export class RemoveResourcesFromCard extends DeferredAction {
   public override priority = Priority.ATTACK_OPPONENT;

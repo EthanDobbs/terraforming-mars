@@ -25,7 +25,7 @@ export class MyceliumFungi extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x042',
         renderData: CardRenderer.builder((b) => {
-          b.effect('When you play a plant, microbe, or an animal tag, including this, add a microbe to ANY card.', (eb) => {
+          b.effect('When you play a greenery tile, add a microbe to ANY card.', (eb) => {
             eb.greenery().startEffect.microbes(1).asterix();
           }).br;
           b.vpText('1 VP per 3 Microbes on this card.').br;

@@ -23,7 +23,7 @@ export class AridRegionReptiles extends Card implements IProjectCard {
       },
 
       resourceType: CardResource.ANIMAL,
-      victoryPoints: {resourcesHere: 2},
+      victoryPoints: {resourcesHere: {}, per: 2},
       requirements: {oxygen: 5},
 
       metadata: {

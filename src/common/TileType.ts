@@ -56,7 +56,9 @@ export enum TileType {
     WETLANDS_CHEMICAL, // 43
     MASSIVE_SOLAR_FARM, // 44
     GHG_FACTORY_DISTRICT, // 45
-}
+    MILITARY_BASE, //46
+    GREAT_HARBOR, //47
+  }
 
 const TO_STRING_MAP: Record<TileType, string> = {
   [TileType.GREENERY]: 'greenery',
@@ -105,7 +107,9 @@ const TO_STRING_MAP: Record<TileType, string> = {
   [TileType.IMPERATIVE_SETTLEMENT]: 'Imperative Settlement',
   [TileType.WETLANDS_CHEMICAL]: 'Wetlands',
   [TileType.MASSIVE_SOLAR_FARM]: 'Massive Solar Farm',
-  [TileType.GHG_FACTORY_DISTRICT]: 'GHG Factory District'
+  [TileType.GHG_FACTORY_DISTRICT]: 'GHG Factory District',
+  [TileType.MILITARY_BASE]: 'Military Base',
+  [TileType.GREAT_HARBOR]: 'Great Harbor',
 };
 
 export namespace TileType {

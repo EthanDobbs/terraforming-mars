@@ -8,6 +8,7 @@ import {CardName} from '../../../common/cards/CardName';
 import {Resource} from '../../../common/Resource';
 import {CardRenderer} from '../render/CardRenderer';
 import { all } from '../Options';
+import { Size } from '../../../common/cards/render/Size';
 
 export class PublicLand extends Card implements IProjectCard {
   constructor() {
@@ -25,7 +26,7 @@ export class PublicLand extends Card implements IProjectCard {
         cardNumber: 'x074',
         renderData: CardRenderer.builder((b) => {
           b.effect('Whenever a tile is placed, gain 1MC.', (eb) => {
-            eb.emptyTile('normal', {all}).startEffect.megacredits(1);
+            eb.emptyTile('normal', {size: Size.SMALL, all}).startEffect.megacredits(1);
           });
         }),
       },

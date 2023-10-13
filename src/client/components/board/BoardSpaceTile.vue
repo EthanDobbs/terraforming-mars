@@ -57,6 +57,8 @@ const tileTypeToCssClass: Record<TileType, string> = {
   [TileType.WETLANDS_CHEMICAL]: 'wetlands-chemical',
   [TileType.MASSIVE_SOLAR_FARM]: 'massive-solar-farm',
   [TileType.GHG_FACTORY_DISTRICT]: 'ghg-factory-district',
+  [TileType.MILITARY_BASE]: 'military-base',
+  [TileType.GREAT_HARBOR]: 'great-harbor',
 };
 
 const tileTypeToCssClassAresOverride = new Map<TileType, string>([
@@ -122,6 +124,8 @@ const descriptions: Record<TileType, string> = {
   [TileType.WETLANDS_CHEMICAL]: 'Wetlands',
   [TileType.MASSIVE_SOLAR_FARM]: 'Massive Solar Farm',
   [TileType.GHG_FACTORY_DISTRICT]: 'GHG Factory District',
+  [TileType.MILITARY_BASE]: 'Military Base',
+  [TileType.GREAT_HARBOR]: 'Great Harbor',
 };
 
 export default Vue.extend({

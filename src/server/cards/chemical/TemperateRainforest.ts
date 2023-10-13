@@ -9,6 +9,7 @@ import {Resource} from '../../../common/Resource';
 import {CardRenderer} from '../render/CardRenderer';
 import { Board } from '../../boards/Board';
 import { CardResource } from '../../../common/CardResource';
+import { Size } from '../../../common/cards/render/Size';
 
 export class TemperateRainforest extends Card implements IProjectCard {
   constructor() {
@@ -28,7 +29,7 @@ export class TemperateRainforest extends Card implements IProjectCard {
         cardNumber: 'x077',
         renderData: CardRenderer.builder((b) => {
           b.effect('Greenergy tiles grant you an adjacency bonus of 1MC.', (eb) => {
-            eb.greenery({withO2: false}).emptyTile().startEffect.megacredits(1);
+            eb.greenery({withO2: false, size: Size.SMALL}).emptyTile('normal', {size: Size.SMALL}).startEffect.megacredits(1);
           }).br;
           b.greenery().animals(2).asterix();
         }),

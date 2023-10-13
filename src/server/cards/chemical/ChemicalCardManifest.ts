@@ -53,7 +53,7 @@ import { LargeAquaticMammals } from './LargeAquaticMammals';
 import { TundraWildlife } from './TundraWildlife';
 import { Poultry } from './Poultry';
 import { FishFarmingLake } from './FishFarmingLake';
-//import { Cephalopods } from './Cephalopods';
+import { Cephalopods } from './Cephalopods';
 import { EndangeredSpeciesRefuge } from './EndangeredSpeciesRefuge';
 import { NonHypoxicSmallAnimals } from './NonHypoxicSmallAnimals';
 import { SubterranianCreatures } from './SubterranianCreatures';
@@ -83,7 +83,7 @@ import { BiodiversityContract } from './BiodiversityContract';
 import { ImperativeSettlement } from './ImperativeSettlement';
 import { EcoCentral } from './EcoCentral';
 import { SprawlingCity } from './SprawlingCity';
-//84
+import { ThawMining } from './ThawMining';
 import { IndependentSettlement } from './IndependentSettlement';
 import { MultifunctionalDome } from './MultifunctionalDome';
 import { MiningCommunity } from './MiningCommunity';
@@ -168,6 +168,78 @@ import { MarsLifeScienceInstitute } from './MarsLifeScienceInstitute';
 import { SpeciesCryopreservation } from './SpeciesCryopreservation';
 import { EarlyPolarOutpost } from './EarlyPolarOutpost';
 import { RuralHousing } from './RuralHousing';
+import { Parasite } from './Parasite';
+import { PowerFailure } from './PowerFailure';
+import { FailedSpaceMission } from './FailedSpaceMission';
+import { AquiferRelocation } from './AquiferRelocation';
+import { PublicRecords } from './PublicRecords';
+import { AssetLiquidation } from './AssetLiquidation';
+import { SmallSupplyDrop } from './SmallSupplyDrop';
+import { PatentTrading } from './PatentTrading';
+import { TechnologyExhibition } from './TechnologyExhibition';
+import { ResearchDonation } from './ResearchDonation';
+import { PopulationBoom } from './PopulationBoom';
+//import { GeneticBreakthrough } from './GeneticBreakthrough';
+import { AstrophysicsCenter } from './AstrophysicsCenter';
+import { CentaurLandings } from './CentaurLandings';
+import { VestaObservatory } from './VestaObservatory';
+import { EnceladusOutpost } from './EnceladusOutpost';
+import { MeasurementDrones } from './MeasurementDrones';
+import { AdvancedBiomachinery } from './AdvancedBiomachinery';
+import { ViralAmeboid } from './ViralAmeboid';
+import { LongTermEvolutionStudy } from './LongTermEvolutionStudy';
+import { LaserLightsails } from './LaserLightsails';
+import { AlloyFactory } from './AlloyFactory';
+import { UndergroundTestSite } from './UndergroundTestSite';
+import { ScientificMegaopolis } from './ScientificMegaopolis';
+import { AlchemicReactions } from './AlchemicReactions';
+import { WirelessEnergyTransfer } from './WirelessEnergyTransfer';
+import { Kugelblitz } from './Kugelblitz';
+import { ScientificLogs } from './ScientificLogs';
+import { SponsoredResearchFirm } from './SponsoredResearchFirm';
+import { NeuralEnhancers } from './NeuralEnchancers';
+import { ConstructionCenter } from './ConstructionCenter';
+import { BiodiversityGrants } from './BiodiversityGrants';
+import { MarsBuinessInvestments } from './MarsBusinessInvestments';
+import { Canals } from './Canals';
+import { SteelExports } from './SteelExports';
+import { JovianSuppliers } from './JovianSuppliers';
+import { ProjectAdvancement } from './ProjectAdvancement';
+import { SuccessfulCommerce } from './SuccessfulCommerce';
+import { ScientificSupport } from './ScientificSupport';
+import { GalileanGovernor } from './GalileanGovernor';
+import { MediaConglomerate } from './MediaConglomerate';
+import { MilitaryBase } from './MilitaryBase';
+import { MilitarySpacePort } from './MilitarySpacePort';
+import { MartianBanking } from './MartianBanking';
+import { ChemicalPlant } from './ChemicalPlant';
+import { SaltMine } from './SaltMine';
+import { GrandStadium } from './GrandStadium';
+import { LuxuryResort } from './LuxuryResort';
+import { ManufacturingPlant } from './ManufacturingPlant';
+import { ContractedConstruction } from './ContractedConstruction';
+import { MolecularScienceLab } from './MolecularScienceLab';
+import { Crowdfunding } from './Crowdfunding';
+import { CommunicationsHub } from './CommunicationsHub';
+import { TitanTradeHub } from './TitanTradeHub';
+import { ConcreteFactory } from './ConcreteFactory';
+import { MountaintopRemoval } from './MountaintopRemoval';
+import { ExplosiveMining } from './ExplosiveMining';
+import { PrintManufacturing } from './PrintManufacturing';
+import { VolcanicFoundry } from './VolcanicFoundry';
+import { Shipyard } from './Shipyard';
+import { HydrualicMining } from './HydrualicMining';
+import { UpperMantleBoring } from './UpperMantleBoring';
+import { SeedSuppliers } from './SeedSuppliers';
+import { CashCrops } from './CashCrops';
+import { ExtremePowerEfficiency } from './ExtremePowerEfficiency';
+import { ColdFusionPower } from './ColdFusionPower';
+import { NuclearForcePower } from './NuclearForcePower';
+import { ArtificialMicrobialLife } from './ArtificialMicrobialLife';
+import { AcquiredResearchFirm } from './AcquiredResearchFirm';
+import { InterstellarProbe } from './InterstallarProbe';
+import { TheoryOfEverything } from './TheoryOfEverything';
+import { GreatHarbor } from './GreatHarbor';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -231,7 +303,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.TUNDRA_WILDLIFE]: {Factory: TundraWildlife},
     [CardName.POULTRY]: {Factory: Poultry},
     [CardName.FISH_FARMING_LAKE]: {Factory: FishFarmingLake},
-    //[CardName.CEPHALOPODS]: {Factory: Cephalopods},
+    [CardName.CEPHALOPODS]: {Factory: Cephalopods},
     [CardName.ENDANGERED_SPECIES_REFUGE]: {Factory: EndangeredSpeciesRefuge},
     [CardName.NON_HYPOXIC_SMALL_ANIMALS]: {Factory: NonHypoxicSmallAnimals},
     [CardName.SUBTERRANEAN_CREATURES]: {Factory: SubterranianCreatures},
@@ -261,7 +333,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.IMPERATIVE_SETTLEMENT]: {Factory: ImperativeSettlement},
     [CardName.ECO_CENTRAL]: {Factory: EcoCentral},
     [CardName.SPRAWLING_CITY]: {Factory: SprawlingCity},
-    //84
+    [CardName.THAW_MINING]: {Factory: ThawMining},
     [CardName.INDEPENDENT_SETTLEMENT]: {Factory: IndependentSettlement},
     [CardName.MULTIFUNCTIONAL_DOME]: {Factory: MultifunctionalDome},
     [CardName.MINING_COMMUNITY]: {Factory: MiningCommunity},
@@ -346,6 +418,79 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.SPECIES_CRYOPRESERVATION]: {Factory: SpeciesCryopreservation},
     [CardName.EARLY_POLAR_OUTPOST]: {Factory: EarlyPolarOutpost},
     [CardName.RURAL_HOUSING]: {Factory: RuralHousing},
+
+    [CardName.PARASITE]: {Factory: Parasite},
+    [CardName.POWER_FAILURE]: {Factory: PowerFailure},
+    [CardName.FAILED_SPACE_MISSION]: {Factory: FailedSpaceMission},
+    [CardName.AQUIFER_RELOCATION]: {Factory: AquiferRelocation},
+    [CardName.PUBLIC_RECORDS]: {Factory: PublicRecords},
+    [CardName.ASSET_LIQUIDATION]: {Factory: AssetLiquidation},
+    [CardName.SMALL_SUPPLY_DROP]: {Factory: SmallSupplyDrop},
+    [CardName.PATENT_TRADING]: {Factory: PatentTrading},
+    [CardName.TECHNOLOGY_EXHIBITION]: {Factory: TechnologyExhibition},
+    [CardName.RESEARCH_DONATION]: {Factory: ResearchDonation},
+    [CardName.POPULATION_BOOM]: {Factory: PopulationBoom},
+    //[CardName.GENETIC_BREAKTHROUGH]: {Factory: GeneticBreakthrough},
+    [CardName.ASTROPHYSICS_CENTER]: {Factory: AstrophysicsCenter},
+    [CardName.CENTAUR_LANDINGS]: {Factory: CentaurLandings},
+    [CardName.VESTA_OBSERVATORY]: {Factory: VestaObservatory},
+    [CardName.ENCELADUS_OUTPOST]: {Factory: EnceladusOutpost},
+    [CardName.MEASUREMENT_DRONES]: {Factory: MeasurementDrones},
+    [CardName.ADVANCED_BIOMACHINERY]: {Factory: AdvancedBiomachinery},
+    [CardName.VIRAL_AMEBOID]: {Factory: ViralAmeboid},
+    [CardName.LONG_TERM_EVOLUTION_STUDY]: {Factory: LongTermEvolutionStudy},
+    [CardName.LASER_LIGHTSAILS]: {Factory: LaserLightsails},
+    [CardName.ALLOY_FACTORY]: {Factory: AlloyFactory},
+    [CardName.UNDERGROUND_TEST_SITE]: {Factory: UndergroundTestSite},
+    [CardName.SCIENTIFIC_MEGAOPOLIS]: {Factory: ScientificMegaopolis},
+    [CardName.ALCHEMIC_REACTIONS]: {Factory: AlchemicReactions},
+    [CardName.WIRELESS_ENERGY_TRANSFER]: {Factory: WirelessEnergyTransfer},
+    [CardName.KUGELBLITZ]: {Factory: Kugelblitz},
+    [CardName.SCIENTIFIC_LOGS]: {Factory: ScientificLogs},
+    [CardName.SPONSORED_RESEARCH_FIRM]: {Factory: SponsoredResearchFirm},
+    [CardName.NEURAL_ENCHANCERS]: {Factory: NeuralEnhancers},
+    [CardName.CONSTRUCTION_CENTER]: {Factory: ConstructionCenter},
+    [CardName.BIODIVERSITY_GRANTS]: {Factory: BiodiversityGrants},
+    [CardName.MARS_BUSINESS_INVESTMENTS]: {Factory: MarsBuinessInvestments},
+    [CardName.CANALS]: {Factory: Canals},
+    [CardName.STEEL_EXPORTS]: {Factory: SteelExports},
+    [CardName.JOVIAN_SUPPLIERS]: {Factory: JovianSuppliers},
+    [CardName.PROJECT_ADVANCEMENT]: {Factory: ProjectAdvancement},
+    [CardName.SUCCESSFUL_COMMERCE]: {Factory: SuccessfulCommerce},
+    [CardName.SCIENTIFIC_SUPPORT]: {Factory: ScientificSupport},
+    [CardName.GALILEAN_GOVERNOR]: {Factory: GalileanGovernor},
+    [CardName.MEDIA_CONGLOMARATE]: {Factory: MediaConglomerate},
+    [CardName.MARTIAN_BANKING]: {Factory: MartianBanking},
+    [CardName.MILITARY_BASE]: {Factory: MilitaryBase},
+    [CardName.MILITARY_SPACE_PORT]: {Factory: MilitarySpacePort},
+    [CardName.CHEMICAL_PLANT]: {Factory: ChemicalPlant},
+    [CardName.SALT_MINE]: {Factory: SaltMine},
+    [CardName.GRAND_STADIUM]: {Factory: GrandStadium},
+    [CardName.LUXURY_RESORT]: {Factory: LuxuryResort},
+    [CardName.MANUFACTURING_PLANT]: {Factory: ManufacturingPlant},
+    [CardName.CONTRACTED_CONSTRUCTION]: {Factory: ContractedConstruction},
+    [CardName.MOLECULAR_SCIENCE_LAB]: {Factory: MolecularScienceLab},
+    [CardName.CROWDFUNDING]: {Factory: Crowdfunding},
+    [CardName.COMMUNICATIONS_HUB]: {Factory: CommunicationsHub},
+    [CardName.TITAN_TRADE_HUB]: {Factory: TitanTradeHub},
+    [CardName.CONCRETE_FACTORY]: {Factory: ConcreteFactory},
+    [CardName.MOUNTAINTOP_REMOVAL]: {Factory: MountaintopRemoval},
+    [CardName.EXPLOSIVE_MINING]: {Factory: ExplosiveMining},
+    [CardName.PRINT_MANUFACTURING]: {Factory: PrintManufacturing},
+    [CardName.VOLCANIC_FOUNDRY]: {Factory: VolcanicFoundry},
+    [CardName.SHIPYARD]: {Factory: Shipyard},
+    [CardName.HYDRUALIC_MINING]: {Factory: HydrualicMining},
+    [CardName.UPPER_MANTLE_BORING]: {Factory: UpperMantleBoring},
+    [CardName.SEED_SUPPLIERS]: {Factory: SeedSuppliers},
+    [CardName.CASH_CROPS]: {Factory: CashCrops},
+    [CardName.EXTREME_POWER_EFFICIENCY]: {Factory: ExtremePowerEfficiency},
+    [CardName.COLD_FUSION_POWER]: {Factory: ColdFusionPower},
+    [CardName.NUCLEAR_FORCE_POWER]: {Factory: NuclearForcePower},
+    [CardName.ARTIFICIAL_MICROBIAL_LIFE]: {Factory: ArtificialMicrobialLife},
+    [CardName.ACQUIRED_RESEARCH_FIRM]: {Factory: AcquiredResearchFirm},
+    [CardName.INTERSTELLAR_PROBE]: {Factory: InterstellarProbe},
+    [CardName.THEORY_OF_EVERYTHING]: {Factory: TheoryOfEverything},
+    [CardName.GREAT_HARBOR]: {Factory: GreatHarbor},
   },
 });
 

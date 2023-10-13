@@ -29,7 +29,7 @@ export class MTypeAsteroidMining extends Card implements IActionCard {
           }).br;
           b.or().br;
           b.action('Spend any number of asteroids here to gain triple amount of steel.', (eb) => {
-            eb.text('x').asteroids(1).startAction.text('x').steel(3, {digit});
+            eb.text('X').asteroids(1).startAction.text('X').steel(3, {digit});
           });
         }),
       },

@@ -11,7 +11,7 @@ import { ICardMetadata } from '../../../common/cards/ICardMetadata';
 export class MassiveSolarFarm extends Card implements IProjectCard {
   constructor(
     name = CardName.MASSIVE_SOLAR_FARM,
-    cost = 26,
+    cost = 28,
     adjacencyBonus: AdjacencyBonus | undefined = undefined,
     metadata: ICardMetadata = {
       cardNumber: 'x143',

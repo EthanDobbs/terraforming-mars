@@ -150,6 +150,12 @@ const TILE_CLASSES: Record<TileType, Classes> = {
   [TileType.GHG_FACTORY_DISTRICT]: {
     tile: 'card-tile-ghg-factory-district',
   },
+  [TileType.MILITARY_BASE]: {
+    tile: 'card-tile-military-base',
+  },
+  [TileType.GREAT_HARBOR]: {
+    tile: 'card-tile-great-harbor',
+  },
 };
 
 export default Vue.extend({

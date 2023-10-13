@@ -22,7 +22,7 @@ export class AncientArthopods extends Card implements IProjectCard {
       },
 
       resourceType: CardResource.ANIMAL,
-      victoryPoints: {resourcesHere: 2},
+      victoryPoints: {resourcesHere: {}, per: 2},
       requirements: {oceans: 4},
 
       metadata: {

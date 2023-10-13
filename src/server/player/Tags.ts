@@ -83,6 +83,10 @@ export class Tags {
       if (tag !== Tag.WILD) {
         tagCount += this.rawCount(Tag.WILD, includeEvents);
       }
+      //Public Records hook
+      if (this.player.lastCardPlayed === CardName.PUBLIC_RECORDS) {
+        tagCount += 1;
+      }
     }
 
     // Habitat Marte hook

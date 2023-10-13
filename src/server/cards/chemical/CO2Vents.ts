@@ -8,6 +8,7 @@ import {CardName} from '../../../common/cards/CardName';
 import {Resource} from '../../../common/Resource';
 import {CardRenderer} from '../render/CardRenderer';
 import { SpaceType } from '../../../common/boards/SpaceType';
+import { Size } from '../../../common/cards/render/Size';
 
 export class CO2Vents extends Card implements IProjectCard {
   constructor() {
@@ -25,7 +26,7 @@ export class CO2Vents extends Card implements IProjectCard {
         cardNumber: 'x073',
         renderData: CardRenderer.builder((b) => {
           b.effect('When you place a tile ON MARS, gain 2 heat.', (eb) => {
-            eb.emptyTile().asterix().startEffect.heat(2);
+            eb.emptyTile('normal', {size: Size.SMALL}).asterix().startEffect.heat(2);
           }).br;
           b.production((pb) => pb.heat(1));
         }),

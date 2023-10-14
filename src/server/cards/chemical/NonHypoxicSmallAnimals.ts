@@ -46,7 +46,10 @@ export class NonHypoxicSmallAnimals extends ActionCard implements IProjectCard {
   }
  
   public override bespokeCanPlay(player: IPlayer, _canAffordOptions?: CanAffordOptions | undefined): boolean {
-      return player.game.getPlayers().filter((p) => p.plants >= 2 && ( p.id !== player.id && !p.plantsAreProtected() ) ).length >= 1;
+    if (player.game.isSoloMode()) {
+      return true;
+    }
+    return player.game.getPlayers().filter((p) => p.plants >= 2 && ( p.id !== player.id && !p.plantsAreProtected() ) ).length >= 1;
   }
   public override bespokePlay(player: IPlayer) {
     if (player.game.isSoloMode()) {

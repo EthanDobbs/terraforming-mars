@@ -20,7 +20,7 @@ export class HabitatDomes extends ActionCard implements IProjectCard {
       },
 
       resourceType: CardResource.ANIMAL,
-      victoryPoints: {resourcesHere: 2},
+      victoryPoints: {resourcesHere: {}, per: 2},
 
       metadata: {
         cardNumber: 'x061',

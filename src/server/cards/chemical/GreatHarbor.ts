@@ -33,6 +33,7 @@ export class GreatHarbor extends Card implements IProjectCard {
       name,
       cost,
       tags: [Tag.BUILDING],
+      requirements: {temperature: 2},
       victoryPoints: 1,
       adjacencyBonus,
       metadata,

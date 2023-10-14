@@ -4,6 +4,7 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
+import { played } from '../Options';
 
 export class ResearchDonation extends Card implements IProjectCard {
   constructor() {
@@ -21,7 +22,7 @@ export class ResearchDonation extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x178',
         renderData: CardRenderer.builder((b) => {
-          b.cards(1).nbsp.megacredits(2).slash().science(1);
+          b.cards(1).nbsp.megacredits(2).slash().science(1, {played});
         }),
         description: 'Draw a card and gain 2MC for each science tag you have.',
       },

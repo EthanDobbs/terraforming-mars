@@ -40,7 +40,10 @@ export class AntarcticKrill extends ActionCard implements IProjectCard {
   }
  
   public override bespokeCanPlay(player: IPlayer, _canAffordOptions?: CanAffordOptions | undefined): boolean {
-      return RemoveResourcesFromCard.getAvailableTargetCards(player, CardResource.MICROBE, false).filter( (card) => card.resourceCount >= 2).length >= 1;
+    if (player.game.isSoloMode()) {
+      return true;
+    }
+    return RemoveResourcesFromCard.getAvailableTargetCards(player, CardResource.MICROBE, false).filter( (card) => card.resourceCount >= 2).length >= 1;
   }
   public override bespokePlay(player: IPlayer) {
     if (player.game.isSoloMode()) {

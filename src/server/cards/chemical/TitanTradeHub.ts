@@ -10,7 +10,7 @@ export class TitanTradeHub extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.TITAN_TRADE_HUB,
-      tags: [Tag.JOVIAN],
+      tags: [Tag.JOVIAN, Tag.SPACE],
       cost: 28,
       victoryPoints: {tag: Tag.JOVIAN},
 

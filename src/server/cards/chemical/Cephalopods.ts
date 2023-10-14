@@ -29,7 +29,7 @@ export class Cephalopods extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x054',
         renderData: CardRenderer.builder((b) => {
-          b.action('Add an animal to this card ONLY IF you\'ve raised the temperature this generation.', (eb) => {
+          b.action('Add an animal to this card ONLY IF you\'ve raised the temperature this generation (or if the parameter is maxed).', (eb) => {
             eb.plus().temperature(1).asterix().nbsp.colon().nbsp.startAction.animals(1);
           }).br;
           b.production((pb) => pb.minus().plants(1, {all})).br;
@@ -51,7 +51,7 @@ export class Cephalopods extends Card implements IProjectCard {
     }
   }
   public canAct(player: IPlayer): boolean {
-    return this.data.lastGenerationIncreasedTemperature === player.game.generation;
+    return this.data.lastGenerationIncreasedTemperature === player.game.generation || player.game.getTemperature() === 8;
   }
   public action(player: IPlayer) {
     player.addResourceTo(this, 1);

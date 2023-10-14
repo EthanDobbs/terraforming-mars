@@ -24,7 +24,7 @@ export class LongTermEvolutionStudy extends ActionCard implements IProjectCard {
           autoSelect: true,
           behaviors: [{
             title: 'Add an animal to this card',
-            addResourcesToAnyCard: {type: CardResource.MICROBE, count: 1}
+            addResources: 1,
           },
           {
             title: 'Spend 1 animal to draw a card',

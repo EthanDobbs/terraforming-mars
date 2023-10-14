@@ -179,7 +179,7 @@ import { PatentTrading } from './PatentTrading';
 import { TechnologyExhibition } from './TechnologyExhibition';
 import { ResearchDonation } from './ResearchDonation';
 import { PopulationBoom } from './PopulationBoom';
-//import { GeneticBreakthrough } from './GeneticBreakthrough';
+import { GeneticBreakthrough } from './GeneticBreakthrough';
 import { AstrophysicsCenter } from './AstrophysicsCenter';
 import { CentaurLandings } from './CentaurLandings';
 import { VestaObservatory } from './VestaObservatory';
@@ -430,7 +430,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.TECHNOLOGY_EXHIBITION]: {Factory: TechnologyExhibition},
     [CardName.RESEARCH_DONATION]: {Factory: ResearchDonation},
     [CardName.POPULATION_BOOM]: {Factory: PopulationBoom},
-    //[CardName.GENETIC_BREAKTHROUGH]: {Factory: GeneticBreakthrough},
+    [CardName.GENETIC_BREAKTHROUGH]: {Factory: GeneticBreakthrough},
     [CardName.ASTROPHYSICS_CENTER]: {Factory: AstrophysicsCenter},
     [CardName.CENTAUR_LANDINGS]: {Factory: CentaurLandings},
     [CardName.VESTA_OBSERVATORY]: {Factory: VestaObservatory},

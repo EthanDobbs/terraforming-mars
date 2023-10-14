@@ -338,7 +338,7 @@ export class Game implements IGame, Logger {
           }
           //For testing purposes
           if (gameOptions.chemicalExpansion) {
-            const card = new CardFinder().getProjectCardByName(CardName.ALCHEMIC_REACTIONS)
+            const card = new CardFinder().getProjectCardByName(CardName.GENETIC_BREAKTHROUGH);
             if (card !== undefined) {
               player.dealtProjectCards.push(card);
             } else {

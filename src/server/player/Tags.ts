@@ -178,6 +178,9 @@ export class Tags {
     }
 
     if (mode !== 'award') {
+      //Public Records hook
+      if (this.player.lastCardPlayed === CardName.PUBLIC_RECORDS) tagCount += 1;
+
       tagCount += this.rawCount(Tag.WILD, false);
       // Chimera has 2 wild tags but should only count as one for milestones.
       if (this.player.isCorporation(CardName.CHIMERA) && mode === 'milestone') tagCount--;
@@ -237,6 +240,9 @@ export class Tags {
 
     if (mode === 'milestone' && this.player.isCorporation(CardName.CHIMERA)) wildTagCount--;
 
+    //Public Records hook
+    if (this.player.lastCardPlayed === CardName.PUBLIC_RECORDS) wildTagCount++;
+
     // TODO(kberg): it might be more correct to count all the tags
     // in a game regardless of expansion? But if that happens it needs
     // to be done once, during set-up so that this operation doesn't
@@ -259,6 +265,7 @@ export class Tags {
         distinctCount++;
       }
     });
+    if(this.player.lastCardPlayed === CardName.PUBLIC_RECORDS) distinctCount++;
     if (distinctCount + this.count(Tag.WILD) >= tags.length) {
       return true;
     }

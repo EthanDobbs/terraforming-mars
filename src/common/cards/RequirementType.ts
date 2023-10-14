@@ -9,6 +9,7 @@ export enum RequirementType {
     TAG = 'tag',
     PRODUCTION = 'production',
     REMOVED_PLANTS = 'Removed plants',
+    SUM_TAGS = 'Sum tags',
 
     // Venus/Colonies
     VENUS = 'Venus',

@@ -8,13 +8,13 @@ import {CardResource} from '../../../common/CardResource';
 import {SimpleDeferredAction} from '../../deferredActions/DeferredAction';
 import {CardRenderer} from '../render/CardRenderer';
 import {played} from '../Options';
-import {SelectCard} from '../../../server/inputs/SelectCard';
+import {SelectCard} from '../../inputs/SelectCard';
 
-export class MimicryArchea extends Card implements IProjectCard {
+export class MimicryArchaea extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.ACTIVE,
-      name: CardName.MIMICRY_ARCHEA,
+      name: CardName.MIMICRY_ARCHAEA,
       tags: [Tag.SCIENCE, Tag.MICROBE],
       cost: 15,
       resourceType: CardResource.MICROBE,

@@ -22,13 +22,13 @@ export class MeasurementDrones extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Add a floater to this card',
-            addResources: 1,
-          },
-          {
             title: 'Spend 2 floaters to draw a card',
             spend: {resourcesHere: 2},
             drawCard: 1,
+          },
+          {
+            title: 'Add a floater to this card',
+            addResources: 1,
           }],
         },
       },

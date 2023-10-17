@@ -49,6 +49,7 @@ export default Vue.extend({
       auroraiData: 0,
       kuiperAsteroids: 0,
       spireScience: 0,
+      bioengineeringStudiesAnimals: 0,
       warning: undefined,
     };
   },

@@ -26,7 +26,7 @@ export class AquaticBiodomes extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.plants(2)).oceans(1).animals(2).asterix();
         }),
-        description: 'Requires -10°C or higher. Raise your plant production 2 stepa, place an ocean tile, and add 2 animals to ANOTHER card.',
+        description: 'Requires -10°C or higher. Raise your plant production 2 steps, place an ocean tile, and add 2 animals to ANOTHER card.',
       },
     });
   }

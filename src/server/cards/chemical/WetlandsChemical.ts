@@ -19,7 +19,7 @@ export class WetlandsChemical extends Card implements IProjectCard {
       renderData: CardRenderer.builder((b) => {
         b.tile(TileType.WETLANDS_CHEMICAL, false).nbsp.plants(3).br.microbes(2).asterix();
       }),
-      description: 'Requires -6°C or higher. Place this tile, gain 3 plants, and add 3 microbes to ANOTHER card.'
+      description: 'Requires -6°C or higher. Place this tile, gain 3 plants, and add 2 microbes to ANOTHER card.'
     },
   ) {
     super({

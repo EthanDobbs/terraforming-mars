@@ -26,6 +26,7 @@ export type SelectPaymentDataModel = {
     auroraiData?: number;
     graphene?: number; // Graphene isn't used in this component, but it simplifies testing.
     kuiperAsteroids: number;
+    bioengineeringStudiesAnimals?: number;
 }
 
 export type SelectProjectCardToPlayDataModel = SelectPaymentDataModel & {
@@ -185,6 +186,7 @@ export const PaymentWidgetMixin = {
       case 'auroraiData':
       case 'graphene':
       case 'kuiperAsteroids':
+      case 'bioengineeringStudiesAnimals':
         // TODO(kberg): remove 'as any'. You can do it.
         amount = (model.playerinput as any)[unit];
         break;

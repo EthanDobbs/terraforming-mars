@@ -49,4 +49,8 @@ export enum SpaceName {
     APOLLINARIS_MONS = '27',
     HADRIACUS_MONS = '38',
     TYRRHENUS_MONS = '21',
+
+    //Chemical Off-world Cities
+    //TOWERS_OF_FREYJA = '101'
 }
+

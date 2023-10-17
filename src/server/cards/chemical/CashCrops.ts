@@ -24,7 +24,7 @@ export class CashCrops extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(3).plants(1)).plants(1);
         }),
-        description: 'Requires -8°C or higher. Raise your MC production 3 steps, your plant production 1 step, and gain 1 plant.',
+        description: 'Requires -4°C or higher. Raise your MC production 3 steps, your plant production 1 step, and gain 1 plant.',
       },
     });
   }

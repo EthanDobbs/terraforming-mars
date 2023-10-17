@@ -62,13 +62,13 @@ export class OxygenShipment extends Card implements IProjectCard {
 
     if (availableAnimalCards.length === 1) {
       const targetAnimalCard = availableAnimalCards[0];
-      availableActions.push(new SelectOption('Add 3 animals to ' + targetAnimalCard.name, 'Add animals').andThen( () => {
-        player.addResourceTo(targetAnimalCard, {qty: 3, log: true});
+      availableActions.push(new SelectOption('Add 2 animals to ' + targetAnimalCard.name, 'Add animals').andThen( () => {
+        player.addResourceTo(targetAnimalCard, {qty: 2, log: true});
         return undefined;
       }));
     } else if (availableAnimalCards.length > 1) {
-      availableActions.push(new SelectCard('Add 3 animals to a card', 'Add animals', availableAnimalCards).andThen( ([card]) => {
-        player.addResourceTo(card, {qty: 3, log: true});
+      availableActions.push(new SelectCard('Add 2 animals to a card', 'Add animals', availableAnimalCards).andThen( ([card]) => {
+        player.addResourceTo(card, {qty: 2, log: true});
         return undefined;
       }));
     }

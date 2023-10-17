@@ -23,7 +23,7 @@ export class HugeGlacier extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.oceans(2);
         }),
-        description: 'Place 2 ocean tiles.',
+        description: 'Requires -10°C or lower. Place 2 ocean tiles.',
       },
     });
   }

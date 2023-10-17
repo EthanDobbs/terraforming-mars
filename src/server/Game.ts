@@ -338,7 +338,7 @@ export class Game implements IGame, Logger {
           }
           //For testing purposes
           if (gameOptions.chemicalExpansion) {
-            const card = new CardFinder().getProjectCardByName(CardName.GENETIC_BREAKTHROUGH);
+            var card = new CardFinder().getProjectCardByName(CardName.STELLAR_CRUISERS);
             if (card !== undefined) {
               player.dealtProjectCards.push(card);
             } else {

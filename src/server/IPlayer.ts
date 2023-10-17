@@ -264,6 +264,7 @@ export interface IPlayer {
   getSpendableGraphene(): number;
   getSpendableKuiperAsteroids(): number;
   getSpendableSpireScienceResources(): number;
+  getSpendableAnimals(): number;
   checkPaymentAndPlayCard(selectedCard: IProjectCard, payment: Payment, cardAction?: CardAction): void;
   pay(payment: Payment): void;
   availableHeat(): number;

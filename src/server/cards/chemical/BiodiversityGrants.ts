@@ -28,7 +28,7 @@ export class BiodiversityGrants extends Card implements IProjectCard {
           }).br;
           b.production((pb) => pb.megacredits(2))
         }),
-        description: 'Raise your MC production 2 steps',
+        description: 'Raise your MC production 2 steps.',
       },
     });
   }

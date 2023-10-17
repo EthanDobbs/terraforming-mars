@@ -40,7 +40,7 @@ import { ProductionDrones } from './ProductionDrones';
 import { JovianBacteria } from './JovianBacteria';
 import { Termites } from './Termites';
 import { MartianThermophiles } from './MartianThermophiles';
-import { MimicryArchea } from './MimicryArchea';
+import { MimicryArchaea } from './MimicryArchaea';
 import { MyceliumFungi } from './MyceliumFungi';
 import { Macroplankton } from './Macroplankton';
 import { WaterSplittingMicrobes } from './WaterSplittingMicrobes';
@@ -240,6 +240,77 @@ import { AcquiredResearchFirm } from './AcquiredResearchFirm';
 import { InterstellarProbe } from './InterstallarProbe';
 import { TheoryOfEverything } from './TheoryOfEverything';
 import { GreatHarbor } from './GreatHarbor';
+import { FloaterAcquisition } from './FloaterAcquisition';
+import { NearMissRotaryAsteroid } from './NearMissRotaryAsteroid';
+import { DwarfPlanetCollision } from './DwarfPlanetCollision';
+import { ConvoyToVenus } from './ConvoyToVenus';
+import { HugeWaterShipments } from './HugeWaterShipments';
+import { ImportedNeutralGasses } from './ImportedNeutralGasses';
+import { NitrogenFromVenus } from './NitrogenFromVenus';
+import { AtmosphereLiftingDetonations } from './AtmosphereLiftingDetonations';
+import { VenusMiningExpedition } from './VenusMiningExpedition';
+import { UltralightFloaters } from './UltralightFloaters';
+import { DanuMontesRover } from './DanuMontesRover';
+import { CollaborationProject } from './CollaborationProject';
+import { ConsistentBombardment } from './ConsistentBombardment';
+import { PanSolarMining } from './PanSolarMining';
+import { HighAltitudeStations } from './HighAltitudeStations';
+import { FloatingResearchBase } from './FloatingResearchBase';
+import { FloaterDocks } from './FloaterDocks';
+import { MesosphereShades } from './MesosphereShades';
+import { LowLevelScrappers } from './LowLevelScrappers';
+import { CarbonSolidification } from './CarbonSolidifcation';
+import { LocalMagneticShielding } from './LocalMagneticShielding';
+import { SkyCommunications } from './SkyCommunications';
+import { FloatingBiodomes } from './FloatingBiodomes';
+import { EndemicVenusianArchaea } from './EndemicVenusianArchaea';
+import { AirborneMicrobes } from './AirborneMicrobes';
+import { PHNeutralizers } from './PHNeutralizers';
+import { CarbonFixingMicrobes } from './CarbonFixingMicrobes';
+//import { DesignedFlyers } from './DesignedFlyers';
+import { VenusSurfaceDwellers } from './VenusSurfaceDwellers';
+import { VenusianInvertebrates } from './VenusianInvertebrates';
+import { BioengineeringStudies } from './BioengineeringStudies';
+import { VenusBiolab } from './VenusBiolab';
+import { LocalDecompression } from './LocalDecompression';
+import { UndergroundVenusBase } from './UndergroundVenusBase';
+import { VenusSolarWaystation } from './VenusSolarWaystation';
+import { TowersOfFreyja } from './TowersOfFreyja';
+import { DryIceRings } from './DryIceRings';
+import { TheBehemoth } from './TheBehemoth';
+import { VenusMiningIndustries } from './VenusMiningIndustries';
+import { OvdaCity } from './OvdaCity';
+import { CapitalOfVenus } from './CapitalOfVenus';
+import { HydrogenInjection } from './HydrogenInjection';
+import { SwarmShaders } from './SwarmShaders';
+import { VortexEngine } from './VortexEngine';
+import { PhotonicMetamaterials } from './PhontoicMetamaterials';
+import { NeutralizerDrones } from './NeutralizerDrones';
+import { CondenstationCatalysts } from './CondenstationCatalysts';
+import { BasaltMining } from './BasaltMining';
+import { VenusianFungi } from './VenusianFungi';
+import { SpinInducingMassDrivers } from './SpinInducingMassDrivers';
+import { LakeOfAphrodite } from './LakeOfAphrodite';
+import { SuperCarbonCollectors } from './SuperCarbonCollectors';
+import { SulphurProcessing } from './SulphurProcessing';
+import { StellarCruisers } from './StellarCruisers';
+import { DistributionCenter } from './DistirbutionCenter';
+import { WorldGovernmentOffices } from './WorldGovernmentOffices';
+import { VenusTourism } from './VenusTourism';
+import { SurfaceHabs } from './SurfaceHabs';
+import { ThemisBiodomes } from './ThemisBiodomes';
+import { AtenGroupMining } from './AtenGroupMining';
+import { RhizobiomeResearch } from './RhizobiomeResearch';
+import { FloatingPowerStation } from './FloatingPowerStation';
+import { DueteriumFusion } from './DeuteriumFusion';
+import { VenusPowerPlant } from './VenusPowerPlant';
+import { TerrestrialAlliance } from './TerrestrialAlliance';
+import { EclipseStation } from './EclipseStation';
+import { VenusPlantation } from './VenusPlantation';
+import { WorkerDrones } from './WorkerDrones';
+import { FloatingArchitechture } from './FloatingArchitechture';
+import { BiomechanicalFoliage } from './BiomechanicalFoliage';
+import { VenusGeologicalSurvey } from './VenusGeologicalSurvey';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -290,7 +361,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.JOVIAN_BACTERIA]: {Factory: JovianBacteria},
     [CardName.TERMITES]: {Factory: Termites},
     [CardName.MARTIAN_THERMOPHILES]: {Factory: MartianThermophiles},
-    [CardName.MIMICRY_ARCHEA]: {Factory: MimicryArchea},
+    [CardName.MIMICRY_ARCHAEA]: {Factory: MimicryArchaea},
     [CardName.MYCELIUM_FUNGI]: {Factory: MyceliumFungi},
     [CardName.MACROPLANKTON]: {Factory: Macroplankton},
     [CardName.WATER_SPLITTING_MICROBES]: {Factory: WaterSplittingMicrobes},
@@ -491,6 +562,79 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.INTERSTELLAR_PROBE]: {Factory: InterstellarProbe},
     [CardName.THEORY_OF_EVERYTHING]: {Factory: TheoryOfEverything},
     [CardName.GREAT_HARBOR]: {Factory: GreatHarbor},
+
+    [CardName.FLOATER_ACQUISITION]: {Factory: FloaterAcquisition, compatibility: 'venus'},
+    [CardName.NEAR_MISS_ROTARY_ASTEROID]: {Factory: NearMissRotaryAsteroid, compatibility: 'venus'},
+    [CardName.DWARF_PLANET_COLLISION]: {Factory: DwarfPlanetCollision, compatibility: 'venus'},
+    [CardName.CONVOY_TO_VENUS]: {Factory: ConvoyToVenus, compatibility: 'venus'},
+    [CardName.HUGE_WATER_SHIPMENTS]: {Factory: HugeWaterShipments, compatibility: 'venus'},
+    [CardName.IMPORTED_NEUTRAL_GASSES]: {Factory: ImportedNeutralGasses, compatibility: 'venus'},
+    [CardName.NITROGEN_FROM_VENUS]: {Factory: NitrogenFromVenus, compatibility: 'venus'},
+    [CardName.ATMOSPHERE_LIFTING_DETONATIONS]: {Factory: AtmosphereLiftingDetonations, compatibility: 'venus'},
+    [CardName.VENUS_MINING_EXPEDITION]: {Factory: VenusMiningExpedition, compatibility: 'venus'},
+    [CardName.ULTRALIGHT_FLOATERS]: {Factory: UltralightFloaters, compatibility: 'venus'},
+    [CardName.DANU_MONTES_ROVER]: {Factory: DanuMontesRover, compatibility: 'venus'},
+    [CardName.COLLABORATION_PROJECT]: {Factory: CollaborationProject, compatibility: 'venus'},
+    [CardName.CONSISTENT_BOMBARDMENT]: {Factory: ConsistentBombardment, compatibility: 'venus'},
+    [CardName.PAN_SOLAR_MINING]: {Factory: PanSolarMining, compatibility: 'venus'},
+    [CardName.HIGH_ALTITUDE_STATIONS]: {Factory: HighAltitudeStations, compatibility: 'venus'},
+    [CardName.FLOATING_RESEARCH_BASE]: {Factory: FloatingResearchBase, compatibility: 'venus'},
+    [CardName.FLOATER_DOCKS]: {Factory: FloaterDocks, compatibility: 'venus'},
+    [CardName.MESOSPHERE_SHADES]: {Factory: MesosphereShades, compatibility: 'venus'},
+    [CardName.LOW_LEVEL_SCRAPPERS]: {Factory: LowLevelScrappers, compatibility: 'venus'},
+    [CardName.CARBON_SOLIDIFICATION]: {Factory: CarbonSolidification, compatibility: 'venus'},
+    [CardName.LOCAL_MAGNETIC_SHIELDING]: {Factory: LocalMagneticShielding, compatibility: 'venus'},
+    [CardName.SKY_COMMUNICATIONS]: {Factory: SkyCommunications, compatibility: 'venus'},
+    [CardName.FLOATING_BIODOMES]: {Factory: FloatingBiodomes, compatibility: 'venus'},
+    [CardName.ENDEMIC_VENUSIAN_ARCHAEA]: {Factory: EndemicVenusianArchaea, compatibility: 'venus'},
+    [CardName.AIRBORNE_MICROBES]: {Factory: AirborneMicrobes, compatibility: 'venus'},
+    [CardName.PH_NEUTRALIZERS]: {Factory: PHNeutralizers, compatibility: 'venus'},
+    [CardName.CARBON_FIXING_MICROBES]: {Factory: CarbonFixingMicrobes, compatibility: 'venus'},
+    //[CardName.DESIGNED_FLYERS]: {Factory: DesignedFlyers, compatibility: 'venus'},
+    [CardName.VENUS_SURFACE_DWELLERS]: {Factory: VenusSurfaceDwellers, compatibility: 'venus'},
+    [CardName.VENUSIAN_INVERTEBRATES]: {Factory: VenusianInvertebrates, compatibility: 'venus'},
+    [CardName.BIOENGINEERING_STUDIES]: {Factory: BioengineeringStudies, compatibility: 'venus'},
+    [CardName.VENUS_BIOLAB]: {Factory: VenusBiolab, compatibility: 'venus'},
+    [CardName.LOCAL_DECOMPRESSION]: {Factory: LocalDecompression, compatibility: 'venus'},
+    [CardName.UNDERGROUND_VENUS_BASE]: {Factory: UndergroundVenusBase, compatibility: 'venus'},
+    [CardName.TOWERS_OF_FREYJA]: {Factory: TowersOfFreyja, compatibility: 'venus'},
+    [CardName.VENUS_SOLAR_WAYSTATION]: {Factory: VenusSolarWaystation, compatibility: 'venus'},
+    [CardName.DRY_ICE_RINGS]: {Factory: DryIceRings, compatibility: 'venus'},
+    [CardName.THE_BEHEMOTH]: {Factory: TheBehemoth, compatibility: 'venus'},
+    [CardName.VENUS_MINING_INDUSTIRES]: {Factory: VenusMiningIndustries, compatibility: 'venus'},
+    [CardName.OVDA_CITY]: {Factory: OvdaCity, compatibility: 'venus'},
+    [CardName.CAPITAL_OF_VENUS]: {Factory: CapitalOfVenus, compatibility: 'venus'},
+    [CardName.HYDROGEN_INJECTION]: {Factory: HydrogenInjection, compatibility: 'venus'},
+    [CardName.SWARM_SHADERS]: {Factory: SwarmShaders, compatibility: 'venus'},
+    [CardName.VORTEX_ENGINE]: {Factory: VortexEngine, compatibility: 'venus'},
+    [CardName.PHOTONIC_METAMATERIALS]: {Factory: PhotonicMetamaterials, compatibility: 'venus'},
+    [CardName.NEUTRALIZER_DRONES]: {Factory: NeutralizerDrones, compatibility: 'venus'},
+    [CardName.CONDENSATION_CATALYSTS]: {Factory: CondenstationCatalysts, compatibility: 'venus'},
+    [CardName.BASALT_MINING]: {Factory: BasaltMining, compatibility: 'venus'},
+    [CardName.VENUSIAN_FUNGI]: {Factory: VenusianFungi, compatibility: 'venus'},
+    [CardName.SPIN_INDUCING_MASS_DRIVERS]: {Factory: SpinInducingMassDrivers, compatibility: 'venus'},
+    [CardName.LAKE_OF_APHRODITE]: {Factory: LakeOfAphrodite, compatibility: 'venus'},
+    [CardName.SUPER_CARBON_COLLECTORS]: {Factory: SuperCarbonCollectors, compatibility: 'venus'},
+    [CardName.SULPHUR_PROCESSING]: {Factory: SulphurProcessing, compatibility: 'venus'},
+    [CardName.STELLAR_CRUISERS]: {Factory: StellarCruisers, compatibility: 'venus'},
+    [CardName.DISTRIBUTION_CENTER]: {Factory: DistributionCenter, compatibility: 'venus'},
+    [CardName.WORLD_GOVERNMENT_OFFICES]: {Factory: WorldGovernmentOffices, compatibility: 'venus'},
+    [CardName.VENUS_TOURISM]: {Factory: VenusTourism, compatibility: 'venus'},
+    [CardName.SURFACE_HABS]: {Factory: SurfaceHabs, compatibility: 'venus'},
+    [CardName.THEMIS_BIODOMES]: {Factory: ThemisBiodomes, compatibility: 'venus'},
+    [CardName.ATEN_GROUP_MINING]: {Factory: AtenGroupMining, compatibility: 'venus'},
+    [CardName.RHIZOBIOME_RESEARCH]: {Factory: RhizobiomeResearch, compatibility: 'venus'},
+    [CardName.FLOATING_POWER_STATION]: {Factory: FloatingPowerStation, compatibility: 'venus'},
+    [CardName.DUETERIUM_FUSION]: {Factory: DueteriumFusion, compatibility: 'venus'},
+    [CardName.VENUS_POWER_PLANT]: {Factory: VenusPowerPlant, compatibility: 'venus'},
+    [CardName.TERRESTRIAL_ALLIANCE]: {Factory: TerrestrialAlliance, compatibility: 'venus'},
+    [CardName.ECLIPSE_STATION]: {Factory: EclipseStation, compatibility: 'venus'},
+    [CardName.VENUS_PLANTATION]: {Factory: VenusPlantation, compatibility: 'venus'},
+    [CardName.WORKER_DRONES]: {Factory: WorkerDrones, compatibility: 'venus'},
+    [CardName.FLOATING_ARCHITECHTURE]: {Factory: FloatingArchitechture, compatibility: 'venus'},
+    [CardName.BIOMECHANICAL_FOLIAGE]: {Factory: BiomechanicalFoliage, compatibility: 'venus'},
+    [CardName.VENUS_GEOLOGICAL_SURVEY]: {Factory: VenusGeologicalSurvey, compatibility: 'venus'},
   },
 });
+
 

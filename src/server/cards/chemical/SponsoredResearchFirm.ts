@@ -15,7 +15,7 @@ export class SponsoredResearchFirm extends Card implements IProjectCard {
       cost: 15,
 
       behavior: {
-        production: {megacredits: 2},
+        production: {megacredits: 1},
       },
 
       requirements: {tag: Tag.EARTH, count: 2},

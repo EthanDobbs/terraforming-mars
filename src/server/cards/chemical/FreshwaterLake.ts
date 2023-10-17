@@ -28,7 +28,7 @@ export class FreshwaterLake extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.oceans(1).asterix().nbsp.animals(2).asterix();
         }),
-        description: 'Place an ocean tile ON LAND, AND NEXT TO NO OTHER OCEAN. Add 2 animals to ANOTHER card.',
+        description: 'Requires 0°C or higher. Place an ocean tile ON LAND, AND NEXT TO NO OTHER OCEAN. Add 2 animals to ANOTHER card.',
       },
     });
   }

@@ -41,8 +41,10 @@ export type SelectProjectCardToPlayModel = BaseInputModel & {
   seeds: number;
   graphene: number;
   kuiperAsteroids: number;
+  bioengineeringStudiesAnimals: number;
   heavyAerospaceTechSteel: boolean;
   ecologicalContractPlants: boolean;
+  undergroundVenusBaseSteel: boolean;
 }
 
 export type SelectCardModel = BaseInputModel & {

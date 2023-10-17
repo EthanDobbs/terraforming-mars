@@ -50,5 +50,6 @@ export class FreightShuttles extends Card implements IProjectCard {
         cardOwner.id !== activePlayer.id ? Priority.OPPONENT_TRIGGER : undefined,
       );
     }
+    return undefined;
   }
 }

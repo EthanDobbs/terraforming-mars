@@ -29,7 +29,7 @@ export class UpperMantleBoring extends Card implements IProjectCard {
           });
           b.titanium(3);
         }),
-        description: 'Requires that you have 4 science tags. Lower your energy production 1 step, raise your ttianium produciton 2 steps, and gain 2 titanium.',
+        description: 'Requires that you have 4 science tags. Lower your energy production 1 step, raise your titanium produciton 2 steps, and gain 3 titanium.',
       },
     });
   }

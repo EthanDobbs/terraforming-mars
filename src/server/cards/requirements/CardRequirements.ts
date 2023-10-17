@@ -28,6 +28,7 @@ import {VenusRequirement} from './VenusRequirement';
 import {CardRequirementDescriptor} from '../../../common/cards/CardRequirementDescriptor';
 import {CorruptionRequirement} from './CorruptionRequirement';
 import { SumTagsCardRequirement } from './SumTagsCardRequirement';
+import { UniqueTagsCardRequirement } from './UniqueTagsCardRequirement';
 
 export class CardRequirements {
   constructor(public requirements: Array<CardRequirement>) {}
@@ -120,6 +121,8 @@ export class CardRequirements {
       return new CorruptionRequirement({...descriptor, count: descriptor.corruption});
     } else if (descriptor.sumTags !== undefined) {
       return new SumTagsCardRequirement(descriptor.sumTags, descriptor);
+    } else if (descriptor.uniqueTags !== undefined) {
+      return new UniqueTagsCardRequirement(descriptor);
     } else {
       throw new Error('Unknown requirement: ' + JSON.stringify(descriptor));
     }

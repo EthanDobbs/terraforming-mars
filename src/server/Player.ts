@@ -60,7 +60,7 @@ import {Merger} from './cards/promo/Merger';
 import {getBehaviorExecutor} from './behavior/BehaviorExecutor';
 import {CeoExtension} from './CeoExtension';
 import {ICeoCard, isCeoCard} from './cards/ceos/ICeoCard';
-import {newMessage} from './logs/MessageBuilder';
+import {message} from './logs/MessageBuilder';
 import {calculateVictoryPoints} from './game/calculateVictoryPoints';
 import {IVictoryPointsBreakdown} from '..//common/game/IVictoryPointsBreakdown';
 import {YesAnd} from './cards/requirements/CardRequirement';
@@ -355,7 +355,6 @@ export class Player implements IPlayer {
 
     const modifier = amount > 0 ? 'increased' : 'decreased';
     const absAmount = Math.abs(amount);
-    // TODO(kberg): remove the ${2} for increased and decreased, I bet it's not used.
     let message = '${0}\'s ${1} ' + unitType + ' ${2} by ${3}';
 
     if (from !== undefined) {
@@ -480,10 +479,10 @@ export class Player implements IPlayer {
     return count;
   }
 
-  public getRequirementsBonus(parameter: GlobalParameter): number {
+  public getGlobalParameterRequirementBonus(parameter: GlobalParameter): number {
     let requirementsBonus = 0;
-    for (const playedCard of this.tableau) {
-      if (playedCard.getRequirementBonus !== undefined) requirementsBonus += playedCard.getRequirementBonus(this, parameter);
+    for (const card of this.tableau) {
+      requirementsBonus += card.getGlobalParameterRequirementBonus(this, parameter);
     }
 
     // PoliticalAgendas Scientists P2 hook
@@ -563,12 +562,9 @@ export class Player implements IPlayer {
     return sum(this.getCardsWithResources(resource).map((card) => card.resourceCount));
   }
 
-  public deferInputCb(result: PlayerInput | undefined): void {
-    this.defer(result, Priority.DEFAULT);
-  }
-
   public runInput(input: InputResponse, pi: PlayerInput): void {
-    this.deferInputCb(pi.process(input, this));
+    const result = pi.process(input, this);
+    this.defer(result, Priority.DEFAULT);
   }
 
   public getAvailableBlueActionCount(): number {
@@ -716,15 +712,7 @@ export class Player implements IPlayer {
     }
   }
 
-  /**
-   * Ask the player to draft from a set of cards.
-   *
-   * @param initialDraft when true, this is part of the first generation draft.
-   * @param playerName  The player _this_ player passes remaining cards to.
-   * @param passedCards The cards received from the draw, or from the prior player. If empty, it's the first
-   *   step in the draft, and cards have to be dealt.
-   */
-  public askPlayerToDraft(initialDraft: boolean, playerName: string, passedCards?: Array<IProjectCard>): void {
+  public askPlayerToDraft(initialDraft: boolean, passTo: IPlayer, passedCards?: Array<IProjectCard>): void {
     let cardsToDraw = 4;
     let cardsToKeep = 1;
 
@@ -752,7 +740,7 @@ export class Player implements IPlayer {
       'Select two cards to keep and pass the rest to ${0}';
     this.setWaitingFor(
       new SelectCard(
-        newMessage(messageTitle, (b) => b.rawString(playerName)), // TODO(kberg): replace with player?`
+        message(messageTitle, (b) => b.player(passTo)),
         'Keep',
         cards,
         {min: cardsToKeep, max: cardsToKeep, played: false})
@@ -1310,7 +1298,7 @@ export class Player implements IPlayer {
             return undefined;
           }));
       action.options.push(
-        new SelectOption('Don\'t place a greenery', 'Confirm').andThen(() => {
+        new SelectOption('Don\'t place a greenery').andThen(() => {
           this.game.playerIsDoneWithGame(this);
           return undefined;
         }),
@@ -1633,10 +1621,10 @@ export class Player implements IPlayer {
 
       this.pendingInitialActions.forEach((corp) => {
         const option = new SelectOption(
-          newMessage('Take first action of ${0} corporation', (b) => b.card(corp)),
+          message('Take first action of ${0} corporation', (b) => b.card(corp)),
           corp.initialActionText)
           .andThen(() => {
-            this.runInitialAction(corp);
+            this.deferInitialAction(corp);
             this.pendingInitialActions.splice(this.pendingInitialActions.indexOf(corp), 1);
             return undefined;
           });
@@ -1650,8 +1638,7 @@ export class Player implements IPlayer {
       this.setWaitingFor(orOptions, () => {
         this.actionsTakenThisRound++;
         this.actionsTakenThisGame++;
-        // TODO(kberg): implement this?
-        // this.timer.rebateTime(constants.BONUS_SECONDS_PER_ACTION);
+        this.timer.rebate(constants.BONUS_SECONDS_PER_ACTION * 1000);
         this.takeAction();
       });
       return;
@@ -1664,7 +1651,7 @@ export class Player implements IPlayer {
   }
 
   // TODO(kberg): perhaps move to Card
-  public runInitialAction(corp: ICorporationCard) {
+  public deferInitialAction(corp: ICorporationCard) {
     this.game.defer(new SimpleDeferredAction(this, () => {
       if (corp.initialAction) {
         return corp.initialAction(this);
@@ -1757,7 +1744,7 @@ export class Player implements IPlayer {
     const fundingCost = this.awardFundingCost();
     if (this.canAfford(fundingCost) && !this.game.allAwardsFunded()) {
       const remainingAwards = new OrOptions();
-      remainingAwards.title = newMessage('Fund an award (${0} M€)', (b) => b.number(fundingCost)),
+      remainingAwards.title = message('Fund an award (${0} M€)', (b) => b.number(fundingCost)),
       remainingAwards.buttonLabel = 'Confirm';
       remainingAwards.options = this.game.awards
         .filter((award: IAward) => this.game.hasBeenFunded(award) === false)
@@ -2040,7 +2027,6 @@ export class Player implements IPlayer {
     return player;
   }
 
-  /* Shorthand for deferring things */
   public defer(input: PlayerInput | undefined | void, priority: Priority = Priority.DEFAULT): void {
     if (input === undefined) {
       return;

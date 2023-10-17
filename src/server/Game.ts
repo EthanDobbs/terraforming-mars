@@ -17,7 +17,7 @@ import {IMilestone} from './milestones/IMilestone';
 import {IProjectCard} from './cards/IProjectCard';
 import {Space} from './boards/Space';
 import {Tile} from './Tile';
-import {LogBuilder} from './logs/LogBuilder';
+import {LogMessageBuilder} from './logs/LogMessageBuilder';
 import {LogHelper} from './LogHelper';
 import {LogMessage} from '../common/logs/LogMessage';
 import {ALL_MILESTONES} from './milestones/Milestones';
@@ -649,14 +649,14 @@ export class Game implements IGame, Logger {
     this.players.forEach((player) => {
       player.needsToDraft = true;
       if (this.draftRound === 1 && !preludeDraft) {
-        player.askPlayerToDraft(initialDraft, this.giveDraftCardsTo(player).name);
+        player.askPlayerToDraft(initialDraft, this.giveDraftCardsTo(player));
       } else if (this.draftRound === 1 && preludeDraft) {
-        player.askPlayerToDraft(initialDraft, this.giveDraftCardsTo(player).name, player.dealtPreludeCards);
+        player.askPlayerToDraft(initialDraft, this.giveDraftCardsTo(player), player.dealtPreludeCards);
       } else {
         const draftCardsFrom = this.getDraftCardsFrom(player).id;
         const cards = this.unDraftedCards.get(draftCardsFrom);
         this.unDraftedCards.delete(draftCardsFrom);
-        player.askPlayerToDraft(initialDraft, this.giveDraftCardsTo(player).name, cards);
+        player.askPlayerToDraft(initialDraft, this.giveDraftCardsTo(player), cards);
       }
     });
   }
@@ -764,12 +764,9 @@ export class Game implements IGame, Logger {
 
     // turmoil.endGeneration might have added actions.
     if (this.deferredActions.length > 0) {
-      this.deferredActions.runAll(() => this.goToDraftOrResearch());
+      this.deferredActions.runAll(() => this.startGeneration());
     } else {
-      // TODO(kberg): Move this to the start of goToDraftOrResearch
-      this.phase = Phase.INTERGENERATION;
-      // TODO(kberg): Rename to startNewGeneration
-      this.goToDraftOrResearch();
+      this.startGeneration();
     }
   }
 
@@ -798,7 +795,8 @@ export class Game implements IGame, Logger {
     });
   }
 
-  private goToDraftOrResearch() {
+  private startGeneration() {
+    this.phase = Phase.INTERGENERATION;
     this.updatePlayerVPForTheGeneration();
     this.updateGlobalsForTheGeneration();
     this.generation++;
@@ -1087,7 +1085,8 @@ export class Game implements IGame, Logger {
       TurmoilHandler.onGlobalParameterIncrease(player, GlobalParameter.OXYGEN, steps);
       player.increaseTerraformRating(steps);
     }
-    if (this.oxygenLevel < 8 && this.oxygenLevel + steps >= 8) {
+    if (this.oxygenLevel < constants.OXYGEN_LEVEL_FOR_TEMPERATURE_BONUS &&
+      this.oxygenLevel + steps >= constants.OXYGEN_LEVEL_FOR_TEMPERATURE_BONUS) {
       this.increaseTemperature(player, 1);
     }
 
@@ -1117,19 +1116,21 @@ export class Game implements IGame, Logger {
     const steps = Math.min(increments, (constants.MAX_VENUS_SCALE - this.venusScaleLevel) / 2);
 
     if (this.phase !== Phase.SOLAR) {
-      if (this.venusScaleLevel < 8 && this.venusScaleLevel + steps * 2 >= 8) {
+      if (this.venusScaleLevel < constants.VENUS_LEVEL_FOR_CARD_BONUS &&
+        this.venusScaleLevel + steps * 2 >= constants.VENUS_LEVEL_FOR_CARD_BONUS) {
         player.drawCard();
       }
-      if (this.venusScaleLevel < 16 && this.venusScaleLevel + steps * 2 >= 16) {
+      if (this.venusScaleLevel < constants.VENUS_LEVEL_FOR_TR_BONUS &&
+        this.venusScaleLevel + steps * 2 >= constants.VENUS_LEVEL_FOR_TR_BONUS) {
         player.increaseTerraformRating();
       }
       if (this.gameOptions.altVenusBoard) {
         const newValue = this.venusScaleLevel + steps * 2;
-        const minimalBaseline = Math.max(this.venusScaleLevel, 16);
-        const maximumBaseline = Math.min(newValue, 30);
+        const minimalBaseline = Math.max(this.venusScaleLevel, constants.ALT_VENUS_MINIMUM_BONUS);
+        const maximumBaseline = Math.min(newValue, constants.MAX_VENUS_SCALE);
         const standardResourcesGranted = Math.max((maximumBaseline - minimalBaseline) / 2, 0);
 
-        const grantWildResource = this.venusScaleLevel + (steps * 2) >= 30;
+        const grantWildResource = this.venusScaleLevel + (steps * 2) >= constants.MAX_VENUS_SCALE;
         // The second half of this expression removes any increases earler than 16-to-18.
         if (grantWildResource || standardResourcesGranted > 0) {
           this.defer(new GrantVenusAltTrackBonusDeferred(player, standardResourcesGranted, grantWildResource));
@@ -1169,10 +1170,12 @@ export class Game implements IGame, Logger {
 
     if (this.phase !== Phase.SOLAR) {
       // BONUS FOR HEAT PRODUCTION AT -20 and -24
-      if (this.temperature < -24 && this.temperature + steps * 2 >= -24) {
+      if (this.temperature < constants.TEMPERATURE_BONUS_FOR_HEAT_1 &&
+        this.temperature + steps * 2 >= constants.TEMPERATURE_BONUS_FOR_HEAT_1) {
         player.production.add(Resource.HEAT, 1, {log: true});
       }
-      if (this.temperature < -20 && this.temperature + steps * 2 >= -20) {
+      if (this.temperature < constants.TEMPERATURE_BONUS_FOR_HEAT_2 &&
+        this.temperature + steps * 2 >= constants.TEMPERATURE_BONUS_FOR_HEAT_2) {
         player.production.add(Resource.HEAT, 1, {log: true});
       }
 
@@ -1182,7 +1185,7 @@ export class Game implements IGame, Logger {
     }
 
     // BONUS FOR OCEAN TILE AT 0
-    if (this.temperature < 0 && this.temperature + steps * 2 >= 0) {
+    if (this.temperature < constants.TEMPERATURE_FOR_OCEAN_BONUS && this.temperature + steps * 2 >= constants.TEMPERATURE_FOR_OCEAN_BONUS) {
       this.defer(new PlaceOceanTile(player, {title: 'Select space for ocean from temperature increase'}));
     }
 
@@ -1495,8 +1498,8 @@ export class Game implements IGame, Logger {
     return player.cardsInHand.filter((card) => card.type === cardType);
   }
 
-  public log(message: string, f?: (builder: LogBuilder) => void, options?: {reservedFor?: IPlayer}) {
-    const builder = new LogBuilder(message);
+  public log(message: string, f?: (builder: LogMessageBuilder) => void, options?: {reservedFor?: IPlayer}) {
+    const builder = new LogMessageBuilder(message);
     f?.(builder);
     const logMessage = builder.build();
     logMessage.playerId = options?.reservedFor?.id;
@@ -1534,12 +1537,21 @@ export class Game implements IGame, Logger {
   public getSpaceByOffset(direction: -1 | 1, toPlace: TileType, cardCount: 1 | 2 = 1) {
     const cost = this.discardForCost(cardCount, toPlace);
 
-    const distance = Math.max(cost-1, 0); // Some cards cost zero.
+    const distance = Math.max(cost - 1, 0); // Some cards cost zero.
     const space = this.board.getNthAvailableLandSpace(distance, direction, undefined /* player */,
       (space) => {
-        const adjacentSpaces = this.board.getAdjacentSpaces(space);
-        return adjacentSpaces.every((sp) => sp.tile?.tileType !== TileType.CITY) && // no cities nearby
-            adjacentSpaces.some((sp) => this.board.canPlaceTile(sp)); // can place forest nearby
+        // TODO(kberg): this toPlace check is a short-term hack.
+        //
+        // If the tile is a city, then follow these extra placement rules for initial solo player placement.
+        // Otherwise it's a hazard tile, and the city rules don't matter. Ideally this should just split into separate functions,
+        // which would be nice, since it makes Game smaller.
+        if (toPlace === TileType.CITY) {
+          const adjacentSpaces = this.board.getAdjacentSpaces(space);
+          return adjacentSpaces.every((sp) => sp.tile?.tileType !== TileType.CITY) && // no cities nearby
+              adjacentSpaces.some((sp) => this.board.canPlaceTile(sp)); // can place forest nearby
+        } else {
+          return true;
+        }
       });
     if (space === undefined) {
       throw new Error('Couldn\'t find space when card cost is ' + cost);

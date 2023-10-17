@@ -18,6 +18,7 @@ import {TRSource} from '../../common/cards/TRSource';
 import {CardRequirementDescriptor} from '../../common/cards/CardRequirementDescriptor';
 import {OneOrArray} from '../../common/utils/types';
 import {JSONValue} from '../../common/Types';
+import {IStandardProjectCard} from './IStandardProjectCard';
 
 /*
  * Represents a card which has an action that itself allows a player
@@ -59,16 +60,18 @@ export interface ICard {
   /**
    * The +/- bonus applied to global parameter requirements, e.g. Adaptation Technology.
    *
-   * `parameter` describes which global parameter is being tested. As of now it only applies
-   * to Morningstar Inc.
+   * `parameter` describes which global parameter is being tested.
+   *
+   * NB: Instances of `Card` allow using a JSON object to describe the global parameter bonus,
+   * see `globalParameterRequirementBonus` for more information.
    */
-  getRequirementBonus?(player: IPlayer, parameter: GlobalParameter): number;
+  getGlobalParameterRequirementBonus(player: IPlayer, parameter: GlobalParameter): number;
   victoryPoints?: number | 'special' | IVictoryPoints,
   getVictoryPoints(player: IPlayer): number;
   /** Called when cards are played. However, if this is a corp, it'll be called when opponents play cards, too. */
   onCardPlayed?(player: IPlayer, card: IProjectCard): PlayerInput | undefined | void;
   onCardPlayedFromAnyPlayer?(thisCardOwner: IPlayer, playedCardOwner: IPlayer, card: IProjectCard): PlayerInput | undefined;
-  onStandardProject?(player: IPlayer, project: ICard): void;
+  onStandardProject?(player: IPlayer, project: IStandardProjectCard): void;
   onTilePlaced?(cardOwner: IPlayer, activePlayer: IPlayer, space: Space, boardType: BoardType): void;
   onDiscard?(player: IPlayer): void;
   /**

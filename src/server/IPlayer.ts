@@ -212,7 +212,7 @@ export interface IPlayer {
    * For the given global parameter, return a sum of all requirements bonuses this
    * player has thanks to played cards, Turmoil policies, etcetera.
    */
-  getRequirementsBonus(parameter: GlobalParameter): number;
+  getGlobalParameterRequirementBonus(parameter: GlobalParameter): number;
   /**
    * Remove resources from this player's played card
    */
@@ -240,7 +240,6 @@ export interface IPlayer {
    * Count all the resources of a given type in the tableau.
    */
   getResourceCount(resource: CardResource): number;
-  deferInputCb(result: PlayerInput | undefined): void;
   runInput(input: InputResponse, pi: PlayerInput): void;
   getAvailableBlueActionCount(): number;
   getPlayableActionCards(): Array<ICard & IActionCard>;
@@ -249,7 +248,16 @@ export interface IPlayer {
   finishProductionPhase(): void;
   worldGovernmentTerraforming(): void;
   dealForDraft(quantity: number, cards: Array<IProjectCard>): void;
-  askPlayerToDraft(initialDraft: boolean, playerName: string, passedCards?: Array<IProjectCard>): void;
+
+  /**
+   * Ask the player to draft from a set of cards.
+   *
+   * @param initialDraft when true, this is part of the first generation draft.
+   * @param passTo  The player _this_ player passes remaining cards to.
+   * @param passedCards The cards received from the draw, or from the prior player. If empty, it's the first
+   *   step in the draft, and this function will deal cards.
+   */
+  askPlayerToDraft(initialDraft: boolean, passTo: IPlayer, passedCards?: Array<IProjectCard>): void;
   runResearchPhase(draftVariant: boolean): void;
   getCardCost(card: IProjectCard): number;
 
@@ -295,13 +303,15 @@ export interface IPlayer {
   canAfford(options: number | CanAffordOptions): boolean;
   getStandardProjectOption(): SelectCard<IStandardProjectCard>;
   takeAction(saveBeforeTakingAction?: boolean): void;
-  runInitialAction(corp: ICorporationCard): void;
+  /** Add `corp`'s initial action to the deferred action queue, if it has one. */
+  deferInitialAction(corp: ICorporationCard): void;
   getActions(): OrOptions;
   process(input: InputResponse): void;
   getWaitingFor(): PlayerInput | undefined;
   setWaitingFor(input: PlayerInput, cb?: () => void): void;
   setWaitingForSafely(input: PlayerInput, cb?: () => void): void;
   serialize(): SerializedPlayer;
+  /** Shorthand for deferring evaluating a PlayerInput */
   defer(input: PlayerInput | undefined, priority?: Priority): void;
 }
 

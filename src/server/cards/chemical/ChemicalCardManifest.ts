@@ -311,6 +311,7 @@ import { WorkerDrones } from './WorkerDrones';
 import { FloatingArchitechture } from './FloatingArchitechture';
 import { BiomechanicalFoliage } from './BiomechanicalFoliage';
 import { VenusGeologicalSurvey } from './VenusGeologicalSurvey';
+import { IshtarComplex } from './IshtarComplex';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -620,6 +621,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.DISTRIBUTION_CENTER]: {Factory: DistributionCenter, compatibility: 'venus'},
     [CardName.WORLD_GOVERNMENT_OFFICES]: {Factory: WorldGovernmentOffices, compatibility: 'venus'},
     [CardName.VENUS_TOURISM]: {Factory: VenusTourism, compatibility: 'venus'},
+    [CardName.ISHTAR_COMPLEX]: {Factory: IshtarComplex, compatibility: 'venus'},
     [CardName.SURFACE_HABS]: {Factory: SurfaceHabs, compatibility: 'venus'},
     [CardName.THEMIS_BIODOMES]: {Factory: ThemisBiodomes, compatibility: 'venus'},
     [CardName.ATEN_GROUP_MINING]: {Factory: AtenGroupMining, compatibility: 'venus'},

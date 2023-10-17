@@ -15,6 +15,11 @@ export class ConstructionCenter extends Card implements IProjectCard {
       cost: 26,
       cardDiscount: {tag: Tag.BUILDING, amount: 2},
 
+      behavior: {
+        production: {energy: -1, megacredits: 3},
+        city: {},
+      },
+
       metadata: {
         cardNumber: 'x199',
         renderData: CardRenderer.builder((b) => {

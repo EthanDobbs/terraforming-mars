@@ -1288,6 +1288,7 @@ export enum CardName {
     DISTRIBUTION_CENTER = 'Distribution Center',
     WORLD_GOVERNMENT_OFFICES = 'World Government Offices',
     VENUS_TOURISM = 'Venus Tourism',
+    ISHTAR_COMPLEX = 'Ishtar Complex',
     SURFACE_HABS = 'Surface Habs',
     THEMIS_BIODOMES = 'Themis Biodomes',
     ATEN_GROUP_MINING = 'Aten Group Mining',

@@ -11,7 +11,7 @@ export class IshtarComplex extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.AUTOMATED,
-      name: CardName.VENUS_TOURISM,
+      name: CardName.ISHTAR_COMPLEX,
       tags: [Tag.VENUS],
       cost: 5,
       requirements: {venus: 8},

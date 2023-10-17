@@ -9,7 +9,7 @@ import { Tag } from '../../../common/cards/Tag';
 import { IPlayer } from '../../IPlayer';
 import { OrOptions } from '../../inputs/OrOptions';
 import { SelectOption } from '../../inputs/SelectOption';
-import { newMessage } from '../../logs/MessageBuilder';
+import { message } from '../../logs/MessageBuilder';
 
 export class FailedSpaceMission extends Card implements IProjectCard {
   constructor() {
@@ -34,7 +34,7 @@ export class FailedSpaceMission extends Card implements IProjectCard {
     const availablePlayerTargets = player.game.getPlayers().filter((p) => p.id !== player.id);
     const availableActions = new OrOptions();
     availablePlayerTargets.forEach((target) => {
-        const optionTitle = newMessage('Remove resources from ${0}', (b) => b.player(target))
+        const optionTitle = message('Remove resources from ${0}', (b) => b.player(target))
         availableActions.options.push(new SelectOption(optionTitle).andThen(() => {
           target.stock.deduct(Resource.MEGACREDITS, 2, {log: true, from: player});
           if (!target.alloysAreProtected()) target.stock.deduct(Resource.TITANIUM, 2, {log: true, from: player});

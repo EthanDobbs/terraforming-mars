@@ -68,6 +68,7 @@ export class GlobalEventDealer {
       'pathfinders': gameOptions.pathfindersExpansion,
       'ceo': gameOptions.ceoExtension,
       'starwars': gameOptions.starWarsExpansion,
+      'chemical': gameOptions.chemicalExpansion,
     };
 
     for (const manifest of ALL_MODULE_MANIFESTS) {

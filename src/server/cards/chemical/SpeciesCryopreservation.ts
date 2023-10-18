@@ -2,7 +2,7 @@ import {IProjectCard} from '../IProjectCard';
 import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
-import { Tag } from '../../../common/cards/Tag';
+import {Tag} from '../../../common/cards/Tag';
 
 export class SpeciesCryopreservation extends Card implements IProjectCard {
   constructor() {

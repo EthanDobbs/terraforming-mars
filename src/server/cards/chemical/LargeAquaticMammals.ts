@@ -7,9 +7,9 @@ import {Resource} from '../../../common/Resource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {all} from '../Options';
-import { Size } from '../../../common/cards/render/Size';
-import { IPlayer } from '../../IPlayer';
-import { ICard } from '../ICard';
+import {Size} from '../../../common/cards/render/Size';
+import {IPlayer} from '../../IPlayer';
+import {ICard} from '../ICard';
 
 export class LargeAquaticMammals extends ActionCard implements IProjectCard {
   constructor() {

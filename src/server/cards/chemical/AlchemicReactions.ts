@@ -4,8 +4,8 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardType} from '../../../common/cards/CardType';
 import {Tag} from '../../../common/cards/Tag';
 import {CardRenderer} from '../render/CardRenderer';
-import { IPlayer } from '../../IPlayer';
-import { Resource } from '../../../common/Resource';
+import {IPlayer} from '../../IPlayer';
+import {Resource} from '../../../common/Resource';
 
 export class AlchemicReactions extends Card implements IProjectCard {
   constructor() {

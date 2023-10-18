@@ -22,7 +22,7 @@ import {IPreludeCard} from './cards/prelude/IPreludeCard';
 import {ICeoCard} from './cards/ceos/ICeoCard';
 import {PRELUDE2_CARD_MANIFEST} from './cards/prelude2/Prelude2CardManifest';
 import {STAR_WARS_CARD_MANIFEST} from './cards/starwars/StarwarsCardManifest';
-import { CHEMICAL_CARD_MANIFEST } from './cards/chemical/ChemicalCardManifest';
+import {CHEMICAL_CARD_MANIFEST} from './cards/chemical/ChemicalCardManifest';
 
 /**
  * Returns the cards available to a game based on its `GameOptions`.

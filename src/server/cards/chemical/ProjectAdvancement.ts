@@ -3,12 +3,12 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { CanAffordOptions, IPlayer } from '../../IPlayer';
-import { OrOptions } from '../../inputs/OrOptions';
-import { Resource } from '../../../common/Resource';
-import { PlayerInput } from '../../PlayerInput';
-import { SelectOption } from '../../inputs/SelectOption';
-import { Tag } from '../../../common/cards/Tag';
+import {CanAffordOptions, IPlayer} from '../../IPlayer';
+import {OrOptions} from '../../inputs/OrOptions';
+import {Resource} from '../../../common/Resource';
+import {PlayerInput} from '../../PlayerInput';
+import {SelectOption} from '../../inputs/SelectOption';
+import {Tag} from '../../../common/cards/Tag';
 
 export class ProjectAdvancement extends Card implements IProjectCard {
   constructor() {

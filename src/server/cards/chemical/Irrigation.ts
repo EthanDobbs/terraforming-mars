@@ -3,12 +3,12 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { Tag } from '../../../common/cards/Tag';
-import { SelectSpace } from '../../inputs/SelectSpace';
-import { IPlayer } from '../../IPlayer';
-import { CanAffordOptions } from '../../IPlayer';
-import { Board } from '../../boards/Board';
-import { Space } from '../../boards/Space';
+import {Tag} from '../../../common/cards/Tag';
+import {SelectSpace} from '../../inputs/SelectSpace';
+import {IPlayer} from '../../IPlayer';
+import {CanAffordOptions} from '../../IPlayer';
+import {Board} from '../../boards/Board';
+import {Space} from '../../boards/Space';
 
 export class Irrigation extends Card implements IProjectCard {
   constructor() {

@@ -3,16 +3,16 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { Tag } from '../../../common/cards/Tag';
-import { CardResource } from '../../../common/CardResource';
-import { max, all } from '../Options';
-import { IPlayer } from '../../IPlayer';
-import { Resource } from '../../../common/Resource';
-import { OrOptions } from '../../inputs/OrOptions';
-import { SelectPlayer } from '../../inputs/SelectPlayer';
-import { SelectOption } from '../../inputs/SelectOption';
-import { RemoveResourcesFromCard } from '../../deferredActions/RemoveResourcesFromCard';
-import { SelectCard } from '../../inputs/SelectCard';
+import {Tag} from '../../../common/cards/Tag';
+import {CardResource} from '../../../common/CardResource';
+import {max, all} from '../Options';
+import {IPlayer} from '../../IPlayer';
+import {Resource} from '../../../common/Resource';
+import {OrOptions} from '../../inputs/OrOptions';
+import {SelectPlayer} from '../../inputs/SelectPlayer';
+import {SelectOption} from '../../inputs/SelectOption';
+import {RemoveResourcesFromCard} from '../../deferredActions/RemoveResourcesFromCard';
+import {SelectCard} from '../../inputs/SelectCard';
 
 export class DwarfPlanetCollision extends Card implements IProjectCard {
   constructor() {

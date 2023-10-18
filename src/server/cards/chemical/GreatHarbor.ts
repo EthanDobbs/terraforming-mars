@@ -3,17 +3,17 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { Tag } from '../../../common/cards/Tag';
-import { TileType } from '../../../common/TileType';
-import { AdjacencyBonus } from '../../ares/AdjacencyBonus';
-import { ICardMetadata } from '../../../common/cards/ICardMetadata';
-import { Size } from '../../../common/cards/render/Size';
-import { IPlayer } from '../../IPlayer';
-import { CanAffordOptions } from '../../IPlayer';
-import { Board } from '../../boards/Board';
-import { Space } from '../../boards/Space';
-import { SelectSpace } from '../../inputs/SelectSpace';
-import { Resource } from '../../../common/Resource';
+import {Tag} from '../../../common/cards/Tag';
+import {TileType} from '../../../common/TileType';
+import {AdjacencyBonus} from '../../ares/AdjacencyBonus';
+import {ICardMetadata} from '../../../common/cards/ICardMetadata';
+import {Size} from '../../../common/cards/render/Size';
+import {IPlayer} from '../../IPlayer';
+import {CanAffordOptions} from '../../IPlayer';
+import {Board} from '../../boards/Board';
+import {Space} from '../../boards/Space';
+import {SelectSpace} from '../../inputs/SelectSpace';
+import {Resource} from '../../../common/Resource';
 
 export class GreatHarbor extends Card implements IProjectCard {
   constructor(

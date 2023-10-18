@@ -7,8 +7,8 @@ import {IPlayer} from '../../IPlayer';
 import {CardName} from '../../../common/cards/CardName';
 import {Resource} from '../../../common/Resource';
 import {CardRenderer} from '../render/CardRenderer';
-import { SpaceType } from '../../../common/boards/SpaceType';
-import { Size } from '../../../common/cards/render/Size';
+import {SpaceType} from '../../../common/boards/SpaceType';
+import {Size} from '../../../common/cards/render/Size';
 
 export class CO2Vents extends Card implements IProjectCard {
   constructor() {

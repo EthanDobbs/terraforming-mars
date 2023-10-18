@@ -5,7 +5,7 @@ import {IProjectCard} from '../IProjectCard';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Size} from '../../../common/cards/render/Size';
-import { Tag } from '../../../common/cards/Tag';
+import {Tag} from '../../../common/cards/Tag';
 
 export class CollaborationProject extends Card implements IProjectCard {
   constructor() {

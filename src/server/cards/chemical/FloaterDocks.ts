@@ -5,10 +5,10 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { played } from '../Options';
-import { IPlayer } from '../../IPlayer';
-import { SimpleDeferredAction } from '../../deferredActions/DeferredAction';
-import { SelectCard } from '../../inputs/SelectCard';
+import {played} from '../Options';
+import {IPlayer} from '../../IPlayer';
+import {SimpleDeferredAction} from '../../deferredActions/DeferredAction';
+import {SelectCard} from '../../inputs/SelectCard';
 
 export class FloaterDocks extends Card implements IProjectCard {
   constructor() {

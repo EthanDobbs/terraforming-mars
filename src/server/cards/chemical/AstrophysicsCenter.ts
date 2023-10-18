@@ -6,7 +6,7 @@ import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {played} from '../Options';
-import { IPlayer } from '../../IPlayer';
+import {IPlayer} from '../../IPlayer';
 
 export class AstrophysicsCenter extends Card implements IProjectCard {
   constructor() {

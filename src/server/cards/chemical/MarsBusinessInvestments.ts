@@ -3,7 +3,7 @@ import {ActionCard} from '../ActionCard';
 import {CardName} from '../../../common/cards/CardName';
 import {CardType} from '../../../common/cards/CardType';
 import {CardRenderer} from '../render/CardRenderer';
-import { all } from '../Options';
+import {all} from '../Options';
 
 export class MarsBuinessInvestments extends ActionCard implements IProjectCard {
   constructor() {

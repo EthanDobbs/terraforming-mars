@@ -7,12 +7,12 @@ import {Resource} from '../../../common/Resource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {all} from '../Options';
-import { IPlayer, CanAffordOptions } from '../../IPlayer';
-import { MessageBuilder } from '../../logs/MessageBuilder';
-import { SelectOption } from '../../inputs/SelectOption';
-import { OrOptions } from '../../inputs/OrOptions';
-import { Size } from '../../../common/cards/render/Size';
-import { RemoveResourcesFromCard } from '../../deferredActions/RemoveResourcesFromCard';
+import {IPlayer, CanAffordOptions} from '../../IPlayer';
+import {MessageBuilder} from '../../logs/MessageBuilder';
+import {SelectOption} from '../../inputs/SelectOption';
+import {OrOptions} from '../../inputs/OrOptions';
+import {Size} from '../../../common/cards/render/Size';
+import {RemoveResourcesFromCard} from '../../deferredActions/RemoveResourcesFromCard';
 
 export class SubterranianCreatures extends ActionCard implements IProjectCard {
   constructor() {

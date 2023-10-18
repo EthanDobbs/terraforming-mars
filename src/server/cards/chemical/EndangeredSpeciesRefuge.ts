@@ -5,7 +5,7 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { Size } from '../../../common/cards/render/Size';
+import {Size} from '../../../common/cards/render/Size';
 
 export class EndangeredSpeciesRefuge extends ActionCard implements IProjectCard {
   constructor() {

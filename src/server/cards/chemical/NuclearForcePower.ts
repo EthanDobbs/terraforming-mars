@@ -4,7 +4,7 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { digit } from '../Options';
+import {digit} from '../Options';
 
 export class NuclearForcePower extends Card implements IProjectCard {
   constructor() {

@@ -4,7 +4,7 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardType} from '../../../common/cards/CardType';
 import {Tag} from '../../../common/cards/Tag';
 import {CardRenderer} from '../render/CardRenderer';
-import { CardResource } from '../../../common/CardResource';
+import {CardResource} from '../../../common/CardResource';
 
 export class MicrobeCultivationFacility extends ActionCard implements IProjectCard {
   constructor() {

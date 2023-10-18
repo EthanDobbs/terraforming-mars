@@ -4,11 +4,11 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { IPlayer } from '../../IPlayer';
-import { PlayerInput } from '../../PlayerInput';
-import { SelectOption } from '../../inputs/SelectOption';
-import { ALL_RESOURCES } from '../../../common/Resource';
-import { OrOptions } from '../../inputs/OrOptions';
+import {IPlayer} from '../../IPlayer';
+import {PlayerInput} from '../../PlayerInput';
+import {SelectOption} from '../../inputs/SelectOption';
+import {ALL_RESOURCES} from '../../../common/Resource';
+import {OrOptions} from '../../inputs/OrOptions';
 
 export class MultifunctionalDome extends Card implements IProjectCard {
   constructor() {

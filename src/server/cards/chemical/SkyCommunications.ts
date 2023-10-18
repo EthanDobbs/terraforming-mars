@@ -5,12 +5,12 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { all } from '../Options';
-import { IPlayer } from '../../IPlayer';
-import { Space } from '../../boards/Space';
-import { Board } from '../../boards/Board';
-import { Resource } from '../../../common/Resource';
-import { Size } from '../../../common/cards/render/Size';
+import {all} from '../Options';
+import {IPlayer} from '../../IPlayer';
+import {Space} from '../../boards/Space';
+import {Board} from '../../boards/Board';
+import {Resource} from '../../../common/Resource';
+import {Size} from '../../../common/cards/render/Size';
 
 export class SkyCommunications extends Card implements IProjectCard {
   constructor() {

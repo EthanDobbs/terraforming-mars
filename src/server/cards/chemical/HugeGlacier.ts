@@ -3,7 +3,7 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { max } from '../Options';
+import {max} from '../Options';
 
 export class HugeGlacier extends Card implements IProjectCard {
   constructor() {

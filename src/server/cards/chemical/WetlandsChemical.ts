@@ -4,10 +4,10 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {AdjacencyBonus} from '../../ares/AdjacencyBonus';
-import { Tag } from '../../../common/cards/Tag';
-import { CardResource } from '../../../common/CardResource';
-import { TileType } from '../../../common/TileType';
-import { ICardMetadata } from '../../../common/cards/ICardMetadata';
+import {Tag} from '../../../common/cards/Tag';
+import {CardResource} from '../../../common/CardResource';
+import {TileType} from '../../../common/TileType';
+import {ICardMetadata} from '../../../common/cards/ICardMetadata';
 
 export class WetlandsChemical extends Card implements IProjectCard {
   constructor(

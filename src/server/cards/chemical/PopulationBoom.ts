@@ -2,7 +2,7 @@ import {IProjectCard} from '../IProjectCard';
 import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
-import { all } from '../Options';
+import {all} from '../Options';
 export class PopulationBoom extends Card implements IProjectCard {
   constructor() {
     super({

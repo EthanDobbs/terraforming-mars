@@ -6,9 +6,9 @@ import {Resource} from '../../../common/Resource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {all} from '../Options';
-import { IPlayer } from '../../IPlayer';
-import { GlobalParameter } from '../../../common/GlobalParameter';
-import { Card } from '../Card';
+import {IPlayer} from '../../IPlayer';
+import {GlobalParameter} from '../../../common/GlobalParameter';
+import {Card} from '../Card';
 
 export class Cephalopods extends Card implements IProjectCard {
   constructor() {

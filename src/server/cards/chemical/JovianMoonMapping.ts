@@ -3,7 +3,7 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {Card} from '../Card';
 import {CardRenderer} from '../render/CardRenderer';
-import { Tag } from '../../../common/cards/Tag';
+import {Tag} from '../../../common/cards/Tag';
 
 export class JovianMoonMapping extends Card implements IProjectCard {
   constructor() {

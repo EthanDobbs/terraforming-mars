@@ -5,10 +5,10 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { IPlayer } from '../../IPlayer';
-import { SelectOption } from '../../inputs/SelectOption';
-import { OrOptions } from '../../inputs/OrOptions';
-import { Resource } from '../../../common/Resource';
+import {IPlayer} from '../../IPlayer';
+import {SelectOption} from '../../inputs/SelectOption';
+import {OrOptions} from '../../inputs/OrOptions';
+import {Resource} from '../../../common/Resource';
 
 export class Aquaponics extends Card implements IProjectCard {
   constructor() {

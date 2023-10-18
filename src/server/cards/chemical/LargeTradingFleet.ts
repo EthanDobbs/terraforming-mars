@@ -6,7 +6,7 @@ import {Card} from '../Card';
 import {CardRenderer} from '../render/CardRenderer';
 import {SelectColony} from '../../inputs/SelectColony';
 import {IColony} from '../../colonies/IColony';
-import { Tag } from '../../../common/cards/Tag';
+import {Tag} from '../../../common/cards/Tag';
 
 export class LargeTradingFleet extends Card implements IProjectCard {
   constructor() {

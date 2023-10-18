@@ -3,12 +3,12 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { IPlayer } from '../../IPlayer';
-import { CanAffordOptions } from '../../IPlayer';
-import { Board } from '../../boards/Board';
-import { Space } from '../../boards/Space';
-import { SelectSpace } from '../../inputs/SelectSpace';
-import { CardResource } from '../../../common/CardResource';
+import {IPlayer} from '../../IPlayer';
+import {CanAffordOptions} from '../../IPlayer';
+import {Board} from '../../boards/Board';
+import {Space} from '../../boards/Space';
+import {SelectSpace} from '../../inputs/SelectSpace';
+import {CardResource} from '../../../common/CardResource';
 
 export class FreshwaterLake extends Card implements IProjectCard {
   constructor() {

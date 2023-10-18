@@ -7,8 +7,8 @@ import {IPlayer} from '../../IPlayer';
 import {CardName} from '../../../common/cards/CardName';
 import {Resource} from '../../../common/Resource';
 import {CardRenderer} from '../render/CardRenderer';
-import { all } from '../Options';
-import { Size } from '../../../common/cards/render/Size';
+import {all} from '../Options';
+import {Size} from '../../../common/cards/render/Size';
 
 export class PublicLand extends Card implements IProjectCard {
   constructor() {

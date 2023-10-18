@@ -4,10 +4,10 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { IPlayer } from '../../IPlayer';
-import { Space } from '../../boards/Space';
-import { SpaceBonus } from '../../../common/boards/SpaceBonus';
-import { PlaceCityTile } from '../../deferredActions/PlaceCityTile';
+import {IPlayer} from '../../IPlayer';
+import {Space} from '../../boards/Space';
+import {SpaceBonus} from '../../../common/boards/SpaceBonus';
+import {PlaceCityTile} from '../../deferredActions/PlaceCityTile';
 
 export class MiningCommunity extends Card implements IProjectCard {
   constructor() {

@@ -6,8 +6,8 @@ import {Card} from '../Card';
 import {CardRenderer} from '../render/CardRenderer';
 import {SelectColony} from '../../inputs/SelectColony';
 import {IColony} from '../../colonies/IColony';
-import { Tag } from '../../../common/cards/Tag';
-import { CardResource } from '../../../common/CardResource';
+import {Tag} from '../../../common/cards/Tag';
+import {CardResource} from '../../../common/CardResource';
 
 export class OuterSolarMission extends Card implements IProjectCard {
   constructor() {

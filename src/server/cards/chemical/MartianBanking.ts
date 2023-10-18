@@ -4,9 +4,9 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { all } from '../Options';
-import { IPlayer } from '../../IPlayer';
-import { Resource } from '../../../common/Resource';
+import {all} from '../Options';
+import {IPlayer} from '../../IPlayer';
+import {Resource} from '../../../common/Resource';
 
 export class MartianBanking extends Card implements IProjectCard {
   constructor() {

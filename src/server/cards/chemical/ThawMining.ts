@@ -4,7 +4,7 @@ import {ActionCard} from '../ActionCard';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { Size } from '../../../common/cards/render/Size';
+import {Size} from '../../../common/cards/render/Size';
 
 export class ThawMining extends ActionCard implements IProjectCard {
   constructor() {

@@ -6,8 +6,8 @@ import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {all} from '../Options';
-import { IPlayer, CanAffordOptions } from '../../IPlayer';
-import { RemoveResourcesFromCard } from '../../deferredActions/RemoveResourcesFromCard';
+import {IPlayer, CanAffordOptions} from '../../IPlayer';
+import {RemoveResourcesFromCard} from '../../deferredActions/RemoveResourcesFromCard';
 
 export class AntarcticKrill extends ActionCard implements IProjectCard {
   constructor() {

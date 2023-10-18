@@ -3,7 +3,7 @@ import {Tag} from '../../../common/cards/Tag';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { Card } from '../Card';
+import {Card} from '../Card';
 
 export class NeuralEnhancers extends Card implements IProjectCard {
   constructor() {

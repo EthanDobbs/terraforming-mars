@@ -7,7 +7,7 @@ import {CardResource} from '../../../common/CardResource';
 import {RemoveResourcesFromCard} from '../../deferredActions/RemoveResourcesFromCard';
 import {CardRenderer} from '../render/CardRenderer';
 import {all} from '../Options';
-import { AddResourcesToCard } from '../../deferredActions/AddResourcesToCard';
+import {AddResourcesToCard} from '../../deferredActions/AddResourcesToCard';
 
 export class FloaterAcquisition extends Card implements IProjectCard {
   constructor() {

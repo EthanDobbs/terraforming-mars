@@ -6,7 +6,7 @@ import {IPlayer} from '../../IPlayer';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {played, all} from '../Options';
-import { Resource } from '../../../common/Resource';
+import {Resource} from '../../../common/Resource';
 
 export class JovianSuppliers extends Card implements IProjectCard {
   constructor() {

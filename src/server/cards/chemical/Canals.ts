@@ -3,8 +3,8 @@ import {Card} from '../Card';
 import {CardName} from '../../../common/cards/CardName';
 import {CardType} from '../../../common/cards/CardType';
 import {CardRenderer} from '../render/CardRenderer';
-import { Size } from '../../../common/cards/render/Size';
-import { IPlayer } from '../../IPlayer';
+import {Size} from '../../../common/cards/render/Size';
+import {IPlayer} from '../../IPlayer';
 
 export class Canals extends Card implements IProjectCard {
   constructor() {

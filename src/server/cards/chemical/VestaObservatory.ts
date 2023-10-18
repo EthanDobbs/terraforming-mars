@@ -6,9 +6,9 @@ import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {played} from '../Options';
-import { IPlayer } from '../../IPlayer';
-import { SelectAmount } from '../../inputs/SelectAmount';
-import { Resource } from '../../../common/Resource';
+import {IPlayer} from '../../IPlayer';
+import {SelectAmount} from '../../inputs/SelectAmount';
+import {Resource} from '../../../common/Resource';
 
 export class VestaObservatory extends Card implements IProjectCard {
   constructor() {

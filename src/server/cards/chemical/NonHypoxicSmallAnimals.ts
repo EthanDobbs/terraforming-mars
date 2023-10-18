@@ -7,10 +7,10 @@ import {Resource} from '../../../common/Resource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {all} from '../Options';
-import { IPlayer, CanAffordOptions } from '../../IPlayer';
-import { MessageBuilder } from '../../logs/MessageBuilder';
-import { SelectOption } from '../../inputs/SelectOption';
-import { OrOptions } from '../../inputs/OrOptions';
+import {IPlayer, CanAffordOptions} from '../../IPlayer';
+import {MessageBuilder} from '../../logs/MessageBuilder';
+import {SelectOption} from '../../inputs/SelectOption';
+import {OrOptions} from '../../inputs/OrOptions';
 
 export class NonHypoxicSmallAnimals extends ActionCard implements IProjectCard {
   constructor() {

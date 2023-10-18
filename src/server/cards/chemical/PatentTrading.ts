@@ -3,11 +3,11 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { IPlayer } from '../../IPlayer';
-import { DiscardCards } from '../../deferredActions/DiscardCards';
-import { DrawCards } from '../../deferredActions/DrawCards';
-import { Tag } from '../../../common/cards/Tag';
-import { played } from '../Options';
+import {IPlayer} from '../../IPlayer';
+import {DiscardCards} from '../../deferredActions/DiscardCards';
+import {DrawCards} from '../../deferredActions/DrawCards';
+import {Tag} from '../../../common/cards/Tag';
+import {played} from '../Options';
 
 export class PatentTrading extends Card implements IProjectCard {
   constructor() {

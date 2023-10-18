@@ -4,8 +4,8 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { all } from '../Options';
-import { Size } from '../../../common/cards/render/Size';
+import {all} from '../Options';
+import {Size} from '../../../common/cards/render/Size';
 
 export class GrandStadium extends Card implements IProjectCard {
   constructor() {

@@ -3,7 +3,7 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {Card} from '../Card';
 import {CardRenderer} from '../render/CardRenderer';
-import { IPlayer } from '../../IPlayer';
+import {IPlayer} from '../../IPlayer';
 
 export class ProductivityQuota extends Card implements IProjectCard {
   constructor() {

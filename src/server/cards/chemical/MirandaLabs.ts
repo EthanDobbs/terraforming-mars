@@ -3,12 +3,12 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { CardResource } from '../../../common/CardResource';
-import { Tag } from '../../../common/cards/Tag';
-import { Size } from '../../../common/cards/render/Size';
-import { IPlayer } from '../../IPlayer';
-import { ICard } from '../ICard';
-import { SelectCard } from '../../inputs/SelectCard';
+import {CardResource} from '../../../common/CardResource';
+import {Tag} from '../../../common/cards/Tag';
+import {Size} from '../../../common/cards/render/Size';
+import {IPlayer} from '../../IPlayer';
+import {ICard} from '../ICard';
+import {SelectCard} from '../../inputs/SelectCard';
 
 export class MirandaLabs extends Card implements IProjectCard {
   constructor() {

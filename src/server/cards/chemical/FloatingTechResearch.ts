@@ -3,7 +3,7 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {Card} from '../Card';
 import {CardRenderer} from '../render/CardRenderer';
-import { CardResource } from '../../../common/CardResource';
+import {CardResource} from '../../../common/CardResource';
 
 export class FloatingTechResearch extends Card implements IProjectCard {
   constructor() {

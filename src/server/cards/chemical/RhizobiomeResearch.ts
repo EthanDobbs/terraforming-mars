@@ -4,8 +4,8 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { played } from '../Options';
-import { CardResource } from '../../../common/CardResource';
+import {played} from '../Options';
+import {CardResource} from '../../../common/CardResource';
 
 export class RhizobiomeResearch extends Card implements IProjectCard {
   constructor() {

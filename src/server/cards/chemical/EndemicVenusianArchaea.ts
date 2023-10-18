@@ -6,7 +6,7 @@ import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Card} from '../Card';
-import { GlobalParameter } from '../../../common/GlobalParameter';
+import {GlobalParameter} from '../../../common/GlobalParameter';
 
 export class EndemicVenusianArchaea extends Card implements IProjectCard {
   constructor() {

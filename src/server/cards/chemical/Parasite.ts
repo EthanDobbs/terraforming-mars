@@ -10,7 +10,7 @@ import {CardResource} from '../../../common/CardResource';
 import {RemoveResourcesFromCard} from '../../deferredActions/RemoveResourcesFromCard';
 import {CardRenderer} from '../render/CardRenderer';
 import {all, digit} from '../Options';
-import { Size } from '../../../common/cards/render/Size';
+import {Size} from '../../../common/cards/render/Size';
 
 export class Parasite extends Card implements IProjectCard {
   constructor() {

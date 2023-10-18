@@ -6,7 +6,7 @@ import {IPlayer} from '../../IPlayer';
 import {CardName} from '../../../common/cards/CardName';
 import {CardResource} from '../../../common/CardResource';
 import {CardRenderer} from '../render/CardRenderer';
-import { played, all } from '../Options';
+import {played, all} from '../Options';
 
 export class ViralAmeboid extends Card implements IProjectCard {
   constructor() {

@@ -3,8 +3,8 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { all, digit } from '../Options';
-import { Resource } from '../../../common/Resource';
+import {all, digit} from '../Options';
+import {Resource} from '../../../common/Resource';
 
 export class Monsoons extends Card implements IProjectCard {
   constructor() {

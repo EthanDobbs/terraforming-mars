@@ -3,12 +3,12 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { digit } from '../Options';
-import { IPlayer } from '../../IPlayer';
-import { OrOptions } from '../../inputs/OrOptions';
-import { ALL_RESOURCES, Resource } from '../../../common/Resource';
-import { PlayerInput } from '../../PlayerInput';
-import { SelectOption } from '../../inputs/SelectOption';
+import {digit} from '../Options';
+import {IPlayer} from '../../IPlayer';
+import {OrOptions} from '../../inputs/OrOptions';
+import {ALL_RESOURCES, Resource} from '../../../common/Resource';
+import {PlayerInput} from '../../PlayerInput';
+import {SelectOption} from '../../inputs/SelectOption';
 
 export class AssetLiquidation extends Card implements IProjectCard {
   constructor() {

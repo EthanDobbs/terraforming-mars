@@ -4,8 +4,8 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { IPlayer } from '../../IPlayer';
-import { played, digit } from '../Options';
+import {IPlayer} from '../../IPlayer';
+import {played, digit} from '../Options';
 
 export class BiomechanicalFoliage extends Card implements IProjectCard {
   constructor() {

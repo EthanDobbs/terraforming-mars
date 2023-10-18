@@ -7,7 +7,7 @@ import {Resource} from '../../../common/Resource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {all, played} from '../Options';
-import { IPlayer } from '../../IPlayer';
+import {IPlayer} from '../../IPlayer';
 
 export class AncientArthopods extends Card implements IProjectCard {
   constructor() {

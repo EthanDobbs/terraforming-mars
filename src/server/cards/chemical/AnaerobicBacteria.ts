@@ -5,7 +5,7 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Size} from '../../../common/cards/render/Size';
-import { digit } from '../Options';
+import {digit} from '../Options';
 
 export class AnaerobicBacteria extends Card implements IProjectCard {
   constructor() {

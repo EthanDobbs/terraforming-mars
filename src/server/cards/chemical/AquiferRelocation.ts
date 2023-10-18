@@ -4,9 +4,9 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {all} from '../Options';
-import { CanAffordOptions, IPlayer } from '../../IPlayer';
-import { SelectSpace } from '../../inputs/SelectSpace';
-import { TileType } from '../../../common/TileType';
+import {CanAffordOptions, IPlayer} from '../../IPlayer';
+import {SelectSpace} from '../../inputs/SelectSpace';
+import {TileType} from '../../../common/TileType';
 
 export class AquiferRelocation extends Card implements IProjectCard {
   constructor() {

@@ -3,8 +3,8 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { Tag } from '../../../common/cards/Tag';
-import { CardResource } from '../../../common/CardResource';
+import {Tag} from '../../../common/cards/Tag';
+import {CardResource} from '../../../common/CardResource';
 
 export class VenusianFungi extends Card implements IProjectCard {
   constructor() {

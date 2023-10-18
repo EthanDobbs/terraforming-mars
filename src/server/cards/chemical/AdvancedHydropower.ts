@@ -4,12 +4,12 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { Size } from '../../../common/cards/render/Size';
-import { IPlayer } from '../../IPlayer';
-import { PlayerInput } from '../../PlayerInput';
-import { PlaceOceanTile } from '../../deferredActions/PlaceOceanTile';
-import { Resource } from '../../../common/Resource';
-import { TileType } from '../../../common/TileType';
+import {Size} from '../../../common/cards/render/Size';
+import {IPlayer} from '../../IPlayer';
+import {PlayerInput} from '../../PlayerInput';
+import {PlaceOceanTile} from '../../deferredActions/PlaceOceanTile';
+import {Resource} from '../../../common/Resource';
+import {TileType} from '../../../common/TileType';
 
 export class AdvancedHydropower extends Card implements IProjectCard {
   constructor() {

@@ -7,9 +7,9 @@ import {IPlayer} from '../../IPlayer';
 import {CardName} from '../../../common/cards/CardName';
 import {Resource} from '../../../common/Resource';
 import {CardRenderer} from '../render/CardRenderer';
-import { Board } from '../../boards/Board';
-import { CardResource } from '../../../common/CardResource';
-import { Size } from '../../../common/cards/render/Size';
+import {Board} from '../../boards/Board';
+import {CardResource} from '../../../common/CardResource';
+import {Size} from '../../../common/cards/render/Size';
 
 export class TemperateRainforest extends Card implements IProjectCard {
   constructor() {

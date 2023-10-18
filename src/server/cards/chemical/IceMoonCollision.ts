@@ -3,8 +3,8 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {Card} from '../Card';
 import {CardRenderer} from '../render/CardRenderer';
-import { Tag } from '../../../common/cards/Tag';
-import { digit, all } from '../Options';
+import {Tag} from '../../../common/cards/Tag';
+import {digit, all} from '../Options';
 
 export class IceMoonCollision extends Card implements IProjectCard {
   constructor() {

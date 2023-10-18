@@ -44,7 +44,7 @@ import {RequirementType} from '@/common/cards/RequirementType';
 import {range} from '@/common/utils/utils';
 import CardParty from '@/client/components/card/CardParty.vue';
 import {PartyName} from '@/common/turmoil/PartyName';
-import { Tag } from '@/common/cards/Tag';
+import {Tag} from '@/common/cards/Tag';
 
 export default Vue.extend({
   name: 'CardRequirementComponent',

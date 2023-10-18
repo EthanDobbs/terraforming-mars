@@ -3,8 +3,8 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
-import { played } from '../Options';
-//import { SpaceName } from '../../SpaceName';
+import {played} from '../Options';
+//import {SpaceName} from '../../SpaceName';
 
 export class TowersOfFreyja extends Card {
   constructor() {

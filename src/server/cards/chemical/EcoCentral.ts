@@ -5,9 +5,9 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {digit} from '../Options';
-import { IPlayer } from '../../IPlayer';
-import { ICard } from '../ICard';
-import { Resource } from '../../../common/Resource';
+import {IPlayer} from '../../IPlayer';
+import {ICard} from '../ICard';
+import {Resource} from '../../../common/Resource';
 
 export class EcoCentral extends Card implements IProjectCard {
   constructor() {

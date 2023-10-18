@@ -4,7 +4,7 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { ActionCard } from '../ActionCard';
+import {ActionCard} from '../ActionCard';
 
 export class AirborneMicrobes extends ActionCard implements IProjectCard {
   constructor() {

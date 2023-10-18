@@ -1303,5 +1303,18 @@ export enum CardName {
     FLOATING_ARCHITECHTURE = 'Floating Architechture',
     BIOMECHANICAL_FOLIAGE = 'Biomechanical Foliage',
     VENUS_GEOLOGICAL_SURVEY = 'Venus Geological Survey',
+
+    COORDINATED_RAID_CHEMICAL = 'Coordinated Raid:chemcical',
+    SPONSORED_FLIGHT = 'Sponsored Flight',
+    LARGE_TRADING_FLEET = 'Large Trading Fleet',
+    OUTER_SOLAR_MISSION = 'Outer Solar Mission',
+    COMMISSIONED_FLEET = 'Commissioned Fleet',
+    MARKET_SIPHON = 'Market Siphon',
+    PLANETARY_TRADE = 'Planetary Trade',
+    FLOATING_TECH_RESEARCH = 'Floating Tech Research',
+    DEEP_JUPITER_PROBE = 'Deep Jupiter Probe',
+    JOVIAN_MOON_MAPPING = 'Jovian Moon Mapping',
+    ICE_MOON_COLLISION = 'Ice Moon Collision',
+    PRODUCTIVITY_QUOTA = 'Productivity Quota',
 }
 

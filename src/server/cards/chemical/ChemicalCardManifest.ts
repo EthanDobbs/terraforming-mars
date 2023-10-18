@@ -312,6 +312,18 @@ import { FloatingArchitechture } from './FloatingArchitechture';
 import { BiomechanicalFoliage } from './BiomechanicalFoliage';
 import { VenusGeologicalSurvey } from './VenusGeologicalSurvey';
 import { IshtarComplex } from './IshtarComplex';
+import { CoordinatedRaidChemical } from './CoordinatedRaidChemcial';
+import { SponsoredFlight } from './SponsoredFlight';
+import { LargeTradingFleet } from './LargeTradingFleet';
+import { OuterSolarMission } from './OuterSolarMission';
+import { CommissionedFleet } from './CommissionedFleet';
+import { MarketSiphon } from './MarketSiphon';
+import { PlanetaryTrade } from './PlanetaryTrade';
+import { FloatingTechResearch } from './FloatingTechResearch';
+import { DeepJupiterProbe } from './DeepJupiterProbe';
+import { JovianMoonMapping } from './JovianMoonMapping';
+import { IceMoonCollision } from './IceMoonCollision';
+import { ProductivityQuota } from './ProductivityQuota';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -636,6 +648,20 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.FLOATING_ARCHITECHTURE]: {Factory: FloatingArchitechture, compatibility: 'venus'},
     [CardName.BIOMECHANICAL_FOLIAGE]: {Factory: BiomechanicalFoliage, compatibility: 'venus'},
     [CardName.VENUS_GEOLOGICAL_SURVEY]: {Factory: VenusGeologicalSurvey, compatibility: 'venus'},
+
+    [CardName.COORDINATED_RAID_CHEMICAL]: {Factory: CoordinatedRaidChemical, compatibility: 'colonies'},
+    [CardName.SPONSORED_FLIGHT]: {Factory: SponsoredFlight, compatibility: 'colonies'},
+    [CardName.LARGE_TRADING_FLEET]: {Factory: LargeTradingFleet, compatibility: 'colonies'},
+    [CardName.OUTER_SOLAR_MISSION]: {Factory: OuterSolarMission, compatibility: 'colonies'},
+    [CardName.COMMISSIONED_FLEET]: {Factory: CommissionedFleet, compatibility: 'colonies'},
+    [CardName.MARKET_SIPHON]: {Factory: MarketSiphon, compatibility: 'colonies'},
+    [CardName.PLANETARY_TRADE]: {Factory: PlanetaryTrade, compatibility: 'colonies'},
+    [CardName.FLOATING_TECH_RESEARCH]: {Factory: FloatingTechResearch, compatibility: 'colonies'},
+    [CardName.DEEP_JUPITER_PROBE]: {Factory: DeepJupiterProbe, compatibility: 'colonies'},
+    [CardName.JOVIAN_MOON_MAPPING]: {Factory: JovianMoonMapping, compatibility: 'colonies'},
+    [CardName.ICE_MOON_COLLISION]: {Factory: IceMoonCollision, compatibility: 'colonies'},
+    [CardName.PRODUCTIVITY_QUOTA]: {Factory: ProductivityQuota, compatibility: 'colonies'},
+
   },
 });
 

@@ -11,7 +11,7 @@ export class DanuMontesRover extends Card implements IProjectCard {
       type: CardType.EVENT,
       name: CardName.DANU_MONTES_ROVER,
       tags: [Tag.SCIENCE, Tag.VENUS],
-      cost: 4,
+      cost: 2,
       requirements: {venus: 6, max},
       victoryPoints: 1,
 

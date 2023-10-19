@@ -1316,5 +1316,11 @@ export enum CardName {
     JOVIAN_MOON_MAPPING = 'Jovian Moon Mapping',
     ICE_MOON_COLLISION = 'Ice Moon Collision',
     PRODUCTIVITY_QUOTA = 'Productivity Quota',
+    CERES_LAUNCHPAD = 'Ceres Launchpad',
+    ASTEROID_BELT_COLONY = 'Asteroid Belt Colony',
+    SPACE_TETHERS = 'Space Tethers',
+    FLOATING_COLONY = 'Floating Colony',
+    GAS_GIANT_HABS = 'Gas Giant Habs',
+    TITAN_RESEARCH_OUTPOST = 'Titan Research Outpost',
+    JOVIAN_CONSTRUCTION_YARD = 'Jovian Construction Yard',
 }
-

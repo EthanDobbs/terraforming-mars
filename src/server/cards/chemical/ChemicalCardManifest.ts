@@ -324,6 +324,13 @@ import {DeepJupiterProbe} from './DeepJupiterProbe';
 import {JovianMoonMapping} from './JovianMoonMapping';
 import {IceMoonCollision} from './IceMoonCollision';
 import {ProductivityQuota} from './ProductivityQuota';
+import { CeresLaunchpad } from './CeresLaunchpad';
+import { AsteroidBeltColony } from './AsteroidBeltColony';
+import { SpaceTethers } from './SpaceTethers';
+import { FloatingColony } from './FloatingColony';
+import { GasGiantHabs } from './GasGiantHabs';
+import { TitanReseachOutpost } from './TitanResearchOutpost';
+import { JovianConstructionYard } from './JovianConstructionYard';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -661,7 +668,13 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.JOVIAN_MOON_MAPPING]: {Factory: JovianMoonMapping, compatibility: 'colonies'},
     [CardName.ICE_MOON_COLLISION]: {Factory: IceMoonCollision, compatibility: 'colonies'},
     [CardName.PRODUCTIVITY_QUOTA]: {Factory: ProductivityQuota, compatibility: 'colonies'},
-
+    [CardName.CERES_LAUNCHPAD]: {Factory: CeresLaunchpad, compatibility: 'colonies'},
+    [CardName.ASTEROID_BELT_COLONY]: {Factory: AsteroidBeltColony, compatibility: 'colonies'},
+    [CardName.SPACE_TETHERS]: {Factory: SpaceTethers, compatibility: 'colonies'},
+    [CardName.FLOATING_COLONY]: {Factory: FloatingColony, compatibility: 'colonies'},
+    [CardName.GAS_GIANT_HABS]: {Factory: GasGiantHabs, compatibility: 'colonies'},
+    [CardName.TITAN_RESEARCH_OUTPOST]: {Factory: TitanReseachOutpost, compatibility: 'colonies'},
+    [CardName.JOVIAN_CONSTRUCTION_YARD]: {Factory: JovianConstructionYard, compatibility: 'colonies'},
   },
 });
 

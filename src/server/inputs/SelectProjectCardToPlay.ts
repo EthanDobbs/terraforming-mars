@@ -50,7 +50,7 @@ export class SelectProjectCardToPlay extends BasePlayerInput<IProjectCard> {
       type: 'projectCard',
       cards: cardsToModel(player, this.cards, {showCalculatedCost: true, extras: this.extras}),
       microbes: player.getSpendableMicrobes(),
-      floaters: player.getSpendableFloaters(),
+      floaters: player.getSpendableDrigibilesFloaters(),
       paymentOptions: {
         heat: player.canUseHeatAsMegaCredits,
         lunaTradeFederationTitanium: player.canUseTitaniumAsMegacredits,
@@ -62,8 +62,10 @@ export class SelectProjectCardToPlay extends BasePlayerInput<IProjectCard> {
       kuiperAsteroids: player.getSpendableKuiperAsteroids(),
       heavyAerospaceTechSteel: player.cardIsInEffect(CardName.HEAVY_AEROSPACE_TECH),
       ecologicalContractPlants: player.cardIsInEffect(CardName.ECOLOGICAL_CONTRACT),
-      bioengineeringStudiesAnimals: player.getSpendableAnimals(),
+      bioengineeringStudiesAnimals: player.getSpendableBioengineeringStudiesAnimals(),
       undergroundVenusBaseSteel: player.cardIsInEffect(CardName.UNDERGROUND_VENUS_BASE),
+      asteroidBeltColonyAsteroids: player.getSpendableAsteroidBeltColonyAsteroids(),
+      jovianConstructionYardFloaters: player.getSpendableJovianConstructionYardFloaters(),
     };
   }
 

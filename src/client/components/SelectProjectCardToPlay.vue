@@ -70,13 +70,15 @@ export default Vue.extend({
       microbes: 0,
       lunaArchivesScience: 0,
       seeds: 0,
-      floaters: 0,
+      drigibilesFloaters: 0,
       auroraiData: 0,
       graphene: 0,
       warning: undefined,
       available: Units.of({}),
       kuiperAsteroids: 0,
-      bioengineeringStudiesAnimals: 0
+      bioengineeringStudiesAnimals: 0,
+      asteroidBeltColonyAsteroids: 0,
+      jovianConstructionYardFloaters: 0,
     };
   },
   components: {
@@ -153,7 +155,7 @@ export default Vue.extend({
         return toSaveUnits;
       };
 
-      for (const unit of ['seeds', 'microbes', 'floaters', 'lunaArchivesScience', 'graphene', 'bioengineeringStudiesAnimals'] as const) {
+      for (const unit of ['seeds', 'microbes', 'drigibilesFloaters', 'lunaArchivesScience', 'graphene', 'bioengineeringStudiesAnimals'] as const) {
         if (megacreditBalance > 0 && this.canUse(unit)) {
           this.$data[unit] = deductUnits(this.getAvailableUnits(unit), this.getResourceRate(unit));
         }
@@ -190,13 +192,15 @@ export default Vue.extend({
         for (const key of [
           'steel',
           'plants',
-          'floaters',
+          'drigibilesFloaters',
           'microbes',
           'seeds',
           'graphene',
           'lunaArchivesScience',
           'megaCredits',
-          'bioengineeringStudiesAnimals'] as const) {
+          'bioengineeringStudiesAnimals',
+          'asteroidBeltColonyAsteroids',
+          'jovianConstructionYardFloaters'] as const) {
           this[key] -= saveOverspendingUnits(this[key], this.getResourceRate(key));
         }
       }
@@ -223,7 +227,7 @@ export default Vue.extend({
         (this.playerinput.ecologicalContractPlants && this.tags.includes(Tag.PLANT));
       case 'microbes':
         return this.tags.includes(Tag.PLANT);
-      case 'floaters':
+      case 'drigibilesFloaters':
         return this.tags.includes(Tag.VENUS);
       case 'lunaArchivesScience':
         return this.tags.includes(Tag.MOON);
@@ -235,6 +239,10 @@ export default Vue.extend({
             this.tags.includes(Tag.CITY);
       case 'bioengineeringStudiesAnimals':
         return this.tags.includes(Tag.ANIMAL);
+      case 'asteroidBeltColonyAsteroids':
+        return this.tags.includes(Tag.SPACE);
+      case 'jovianConstructionYardFloaters':
+        return this.tags.includes(Tag.JOVIAN);
       default:
         throw new Error('Unknown unit ' + unit);
       }
@@ -408,12 +416,12 @@ export default Vue.extend({
       <AppButton type="max" @click="setMaxValue('microbes')" title="MAX" />
     </div>
 
-    <div class="payments_type input-group" v-if="canUse('floaters')">
-      <i class="resource_icon resource_icon--floater payments_type_icon" :title="$t('Pay with Floaters')"></i>
-      <AppButton type="minus" @click="reduceValue('floaters', 1)" />
-      <input class="form-input form-inline payments_input" v-model.number="floaters" />
-      <AppButton type="plus" @click="addValue('floaters', 1)" />
-      <AppButton type="max" @click="setMaxValue('floaters')" title="MAX" />
+    <div class="payments_type input-group" v-if="canUse('drigibilesFloaters')">
+      <i class="resource_icon resource_icon--floater payments_type_icon" :title="$t('Pay with Floaters from Drigibiles')"></i>
+      <AppButton type="minus" @click="reduceValue('drigibilesFloaters', 1)" />
+      <input class="form-input form-inline payments_input" v-model.number="drigibilesFloaters" />
+      <AppButton type="plus" @click="addValue('drigibilesFloaters', 1)" />
+      <AppButton type="max" @click="setMaxValue('drigibilesFloaters')" title="MAX" />
     </div>
 
     <div class="payments_type input-group" v-if="canUse('lunaArchivesScience')">
@@ -448,6 +456,21 @@ export default Vue.extend({
       <AppButton type="max" @click="setMaxValue('bioengineeringStudiesAnimals')" title="MAX" />
     </div>
 
+    <div class="payments_type input-group" v-if="canUse('asteroidBeltColonyAsteroids')">
+      <i class="resource_icon resource_icon--asteroid payments_type_icon" :title="$t('Pay with Asteroids')"></i>
+      <AppButton type="minus" @click="reduceValue('asteroidBeltColonyAsteroids', 1)" />
+      <input class="form-input form-inline payments_input" v-model.number="asteroidBeltColonyAsteroids" />
+      <AppButton type="plus" @click="addValue('asteroidBeltColonyAsteroids', 1)" />
+      <AppButton type="max" @click="setMaxValue('asteroidBeltColonyAsteroids')" title="MAX" />
+    </div>
+
+    <div class="payments_type input-group" v-if="canUse('jovianConstructionYardFloaters')">
+      <i class="resource_icon resource_icon--floater payments_type_icon" :title="$t('Pay with Floaters from Jovian Construction Yard')"></i>
+      <AppButton type="minus" @click="reduceValue('jovianConstructionYardFloaters', 1)" />
+      <input class="form-input form-inline payments_input" v-model.number="jovianConstructionYardFloaters" />
+      <AppButton type="plus" @click="addValue('jovianConstructionYardFloaters', 1)" />
+      <AppButton type="max" @click="setMaxValue('jovianConstructionYardFloaters')" title="MAX" />
+    </div>
 
     <div class="payments_type input-group">
       <i class="resource_icon resource_icon--megacredits payments_type_icon" :title="$t('Pay with Megacredits')"></i>

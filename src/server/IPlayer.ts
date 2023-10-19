@@ -265,14 +265,16 @@ export interface IPlayer {
   resourcesOnCard(name: CardName): number;
   spendableMegacredits(): number;
   getSpendableMicrobes(): number;
-  getSpendableFloaters(): number;
+  getSpendableDrigibilesFloaters(): number;
   getSpendableLunaArchiveScienceResources(): number;
   getSpendableSeedResources(): number;
   getSpendableData(): number;
   getSpendableGraphene(): number;
   getSpendableKuiperAsteroids(): number;
   getSpendableSpireScienceResources(): number;
-  getSpendableAnimals(): number;
+  getSpendableBioengineeringStudiesAnimals(): number;
+  getSpendableAsteroidBeltColonyAsteroids(): number;
+  getSpendableJovianConstructionYardFloaters(): number;
   checkPaymentAndPlayCard(selectedCard: IProjectCard, payment: Payment, cardAction?: CardAction): void;
   pay(payment: Payment): void;
   availableHeat(): number;

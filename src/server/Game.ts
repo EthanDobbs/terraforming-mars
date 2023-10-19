@@ -338,19 +338,7 @@ export class Game implements IGame, Logger {
           }
           //For testing purposes
           if (gameOptions.chemicalExpansion) {
-            var card = new CardFinder().getProjectCardByName(CardName.PRODUCTIVITY_QUOTA);
-            if (card !== undefined) {
-              player.dealtProjectCards.push(card);
-            } else {
-             throw new Error('I did not expect this.');
-            }
-            card = new CardFinder().getProjectCardByName(CardName.LARGE_TRADING_FLEET);
-            if (card !== undefined) {
-              player.dealtProjectCards.push(card);
-            } else {
-             throw new Error('I did not expect this.');
-            }
-            card = new CardFinder().getProjectCardByName(CardName.COMMISSIONED_FLEET);
+            var card = new CardFinder().getProjectCardByName(CardName.JOVIAN_CONSTRUCTION_YARD);
             if (card !== undefined) {
               player.dealtProjectCards.push(card);
             } else {

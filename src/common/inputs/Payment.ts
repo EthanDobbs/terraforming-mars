@@ -13,7 +13,7 @@ export const PAYMENT_UNITS = [
   // Psychrophiles corporation can spend its floaters for cards with plant tags.
   'microbes',
   // Dirigibles corporation can spend its floaters for cards with Venus tags.
-  'floaters',
+  'drigibilesFloaters',
   // Luna Archives corporation can spend its science resources for cards with Moon tags.
   'lunaArchivesScience',
   // Spire corporation can spend its science resources on standrad projects.
@@ -31,6 +31,10 @@ export const PAYMENT_UNITS = [
   'plants',
   // Bioengineering Studies lets players pay for animal cards with animals.
   'bioengineeringStudiesAnimals',
+  // Asteroid Belt Colony lets players pay for space cards with asteroids.
+  'asteroidBeltColonyAsteroids',
+  // Jovian Construction Yard floaters lets players pay for Jovian cards with floaters.
+  'jovianConstructionYardFloaters',
 ] as const;
 /** Types of resources spent to pay for anything. */
 export type PaymentUnit = typeof PAYMENT_UNITS[number];
@@ -61,7 +65,7 @@ export const DEFAULT_PAYMENT_VALUES: Record<PaymentUnit, number> = {
   heat: 1,
   plants: 3,
   microbes: MICROBES_VALUE,
-  floaters: FLOATERS_VALUE,
+  drigibilesFloaters: FLOATERS_VALUE,
   lunaArchivesScience: 1,
   spireScience: 2,
   seeds: SEED_VALUE,
@@ -69,6 +73,8 @@ export const DEFAULT_PAYMENT_VALUES: Record<PaymentUnit, number> = {
   graphene: GRAPHENE_VALUE,
   kuiperAsteroids: 1,
   bioengineeringStudiesAnimals: 3,
+  asteroidBeltColonyAsteroids: 5,
+  jovianConstructionYardFloaters: 3,
 } as const;
 
 export namespace Payment {
@@ -79,7 +85,7 @@ export namespace Payment {
     titanium: 0,
     plants: 0,
     microbes: 0,
-    floaters: 0,
+    drigibilesFloaters: 0,
     lunaArchivesScience: 0,
     spireScience: 0,
     seeds: 0,
@@ -87,12 +93,14 @@ export namespace Payment {
     graphene: 0,
     kuiperAsteroids: 0,
     bioengineeringStudiesAnimals: 0,
+    asteroidBeltColonyAsteroids: 0,
+    jovianConstructionYardFloaters: 0,
   } as const;
 
   export function of(payment: Partial<Payment>) : Payment {
     return {
       auroraiData: payment.auroraiData ?? 0,
-      floaters: payment.floaters ?? 0,
+      drigibilesFloaters: payment.drigibilesFloaters ?? 0,
       heat: payment.heat ?? 0,
       lunaArchivesScience: payment.lunaArchivesScience ?? 0,
       spireScience: payment.spireScience ?? 0,
@@ -105,6 +113,8 @@ export namespace Payment {
       kuiperAsteroids: payment.kuiperAsteroids ?? 0,
       plants: payment.plants ?? 0,
       bioengineeringStudiesAnimals: payment.bioengineeringStudiesAnimals ?? 0,
+      asteroidBeltColonyAsteroids: payment.asteroidBeltColonyAsteroids ?? 0,
+      jovianConstructionYardFloaters: payment.jovianConstructionYardFloaters ?? 0,
     };
   }
 }
@@ -126,7 +136,7 @@ export type PaymentOptions = {
   titanium: boolean,
   plants: boolean;
   microbes: boolean,
-  floaters: boolean,
+  drigibilesFloaters: boolean,
   lunaTradeFederationTitanium: boolean,
   lunaArchivesScience: boolean,
   spireScience: boolean,
@@ -135,4 +145,6 @@ export type PaymentOptions = {
   graphene: boolean,
   kuiperAsteroids: boolean,
   bioengineeringStudiesAnimals: boolean,
+  asteroidBeltColonyAsteroids: boolean,
+  jovianConstructionYardFloaters: boolean,
 }

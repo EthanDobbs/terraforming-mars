@@ -829,7 +829,7 @@ export class Player implements IPlayer {
       titanium: this.lastCardPlayed === CardName.LAST_RESORT_INGENUITY || card.tags.includes(Tag.SPACE),
       lunaTradeFederationTitanium: this.canUseTitaniumAsMegacredits,
       seeds: card.tags.includes(Tag.PLANT) || card.name === CardName.GREENERY_STANDARD_PROJECT,
-      floaters: card.tags.includes(Tag.VENUS),
+      drigibilesFloaters: card.tags.includes(Tag.VENUS),
       microbes: card.tags.includes(Tag.PLANT),
       lunaArchivesScience: card.tags.includes(Tag.MOON),
       // TODO(kberg): add this.isCorporation(CardName.SPIRE)
@@ -839,6 +839,8 @@ export class Player implements IPlayer {
       graphene: card.tags.includes(Tag.CITY) || card.tags.includes(Tag.SPACE),
       kuiperAsteroids: card.name === CardName.AQUIFER_STANDARD_PROJECT || card.name === CardName.ASTEROID_STANDARD_PROJECT,
       bioengineeringStudiesAnimals: bioengineeringStudies,
+      asteroidBeltColonyAsteroids: card.tags.includes(Tag.SPACE),
+      jovianConstructionYardFloaters: card.tags.includes(Tag.JOVIAN),
     };
   }
 
@@ -851,8 +853,8 @@ export class Player implements IPlayer {
       throw new Error('You do not have that many resources to spend');
     }
 
-    if (payment.floaters > 0) {
-      if (selectedCard.name === CardName.STRATOSPHERIC_BIRDS && payment.floaters === this.getSpendableFloaters()) {
+    if (payment.drigibilesFloaters > 0) {
+      if (selectedCard.name === CardName.STRATOSPHERIC_BIRDS && payment.drigibilesFloaters === this.getSpendableDrigibilesFloaters()) {
         const cardsWithFloater = this.getCardsWithResources(CardResource.FLOATER);
         if (cardsWithFloater.length === 1) {
           throw new Error('Cannot spend all floaters to play Stratospheric Birds');
@@ -878,7 +880,7 @@ export class Player implements IPlayer {
     return this.resourcesOnCard(CardName.PSYCHROPHILES);
   }
 
-  public getSpendableFloaters(): number {
+  public getSpendableDrigibilesFloaters(): number {
     return this.resourcesOnCard(CardName.DIRIGIBLES);
   }
 
@@ -905,8 +907,14 @@ export class Player implements IPlayer {
   public getSpendableSpireScienceResources(): number {
     return this.getCorporation(CardName.SPIRE)?.resourceCount ?? 0;
   }
-  public getSpendableAnimals(): number {
+  public getSpendableBioengineeringStudiesAnimals(): number {
     return this.resourcesOnCard(CardName.BIOENGINEERING_STUDIES);
+  }
+  public getSpendableAsteroidBeltColonyAsteroids(): number {
+    return this.resourcesOnCard(CardName.ASTEROID_BELT_COLONY);
+  }
+  public getSpendableJovianConstructionYardFloaters(): number {
+    return this.resourcesOnCard(CardName.JOVIAN_CONSTRUCTION_YARD);
   }
 
   public pay(payment: Payment) {
@@ -935,7 +943,7 @@ export class Player implements IPlayer {
     };
 
     removeResourcesOnCard(CardName.PSYCHROPHILES, payment.microbes);
-    removeResourcesOnCard(CardName.DIRIGIBLES, payment.floaters);
+    removeResourcesOnCard(CardName.DIRIGIBLES, payment.drigibilesFloaters);
     removeResourcesOnCard(CardName.LUNA_ARCHIVES, payment.lunaArchivesScience);
     removeResourcesOnCard(CardName.SPIRE, payment.spireScience);
     removeResourcesOnCard(CardName.CARBON_NANOSYSTEMS, payment.graphene);
@@ -943,6 +951,8 @@ export class Player implements IPlayer {
     removeResourcesOnCard(CardName.AURORAI, payment.auroraiData);
     removeResourcesOnCard(CardName.KUIPER_COOPERATIVE, payment.kuiperAsteroids);
     removeResourcesOnCard(CardName.BIOENGINEERING_STUDIES, payment.bioengineeringStudiesAnimals);
+    removeResourcesOnCard(CardName.ASTEROID_BELT_COLONY, payment.asteroidBeltColonyAsteroids);
+    removeResourcesOnCard(CardName.JOVIAN_CONSTRUCTION_YARD, payment.jovianConstructionYardFloaters);
 
     if (payment.megaCredits > 0 || payment.steel > 0 || payment.titanium > 0) {
       PathfindersExpansion.addToSolBank(this);
@@ -1380,7 +1390,7 @@ export class Player implements IPlayer {
       titanium: this.titanium - reserveUnits.titanium,
       plants: this.plants - reserveUnits.plants,
       heat: this.availableHeat() - reserveUnits.heat,
-      floaters: this.getSpendableFloaters(),
+      drigibilesFloaters: this.getSpendableDrigibilesFloaters(),
       microbes: this.getSpendableMicrobes(),
       lunaArchivesScience: this.getSpendableLunaArchiveScienceResources(),
       spireScience: this.getSpendableSpireScienceResources(),
@@ -1388,7 +1398,9 @@ export class Player implements IPlayer {
       auroraiData: this.getSpendableData(),
       graphene: this.getSpendableGraphene(),
       kuiperAsteroids: this.getSpendableKuiperAsteroids(),
-      bioengineeringStudiesAnimals: this.getSpendableAnimals(),
+      bioengineeringStudiesAnimals: this.getSpendableBioengineeringStudiesAnimals(),
+      asteroidBeltColonyAsteroids: this.getSpendableAsteroidBeltColonyAsteroids(),
+      jovianConstructionYardFloaters: this.getSpendableJovianConstructionYardFloaters(),
     };
   }
 
@@ -1423,7 +1435,7 @@ export class Player implements IPlayer {
       heat: this.canUseHeatAsMegaCredits,
       plants: options?.plants ?? false,
       microbes: options?.microbes ?? false,
-      floaters: options?.floaters ?? false,
+      drigibilesFloaters: options?.drigibilesFloaters ?? false,
       lunaArchivesScience: options?.lunaArchivesScience ?? false,
       spireScience: options?.spireScience ?? false,
       seeds: options?.seeds ?? false,
@@ -1431,6 +1443,8 @@ export class Player implements IPlayer {
       graphene: options?.graphene ?? false,
       kuiperAsteroids: options?.kuiperAsteroids ?? false,
       bioengineeringStudiesAnimals: options?.bioengineeringStudiesAnimals ?? false,
+      asteroidBeltColonyAsteroids: options?.asteroidBeltColonyAsteroids ?? false,
+      jovianConstructionYardFloaters: options?.jovianConstructionYardFloaters ?? false,
     };
 
     // HOOK: Luna Trade Federation

@@ -110,7 +110,7 @@ export interface ICard {
    * @param space the space that was just excavated.
    */
   onExcavation?(player: IPlayer, space: Space): void;
-
+  
   cost?: number; /** Used with IProjectCard and PreludeCard. */
   type: CardType;
   requirements: Array<CardRequirementDescriptor>;

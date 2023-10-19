@@ -18,7 +18,7 @@ export type SelectPaymentDataModel = {
     titanium: number;
     plants: number; // Plants are not actually used in this compnent. It's just to satisfy the mixin.
     microbes: number; // Microbes are not actually used in this component. It's just to satisfy the mixin.
-    floaters: number; // Floaters are not actually used in this component. It's just to satisfy the mixin.
+    drigibilesFloaters: number; // Floaters are not actually used in this component. It's just to satisfy the mixin.
     warning: string | undefined;
     lunaArchivesScience?: number; // Luna Archives Science isn't used in this component, but it simplifies testing.
     spireScience?: number;
@@ -27,6 +27,8 @@ export type SelectPaymentDataModel = {
     graphene?: number; // Graphene isn't used in this component, but it simplifies testing.
     kuiperAsteroids: number;
     bioengineeringStudiesAnimals?: number;
+    asteroidBeltColonyAsteroids?: number;
+    jovianConstructionYardFloaters?: number;
 }
 
 export type SelectProjectCardToPlayDataModel = SelectPaymentDataModel & {
@@ -178,7 +180,7 @@ export const PaymentWidgetMixin = {
         amount = thisPlayer[unit];
         break;
 
-      case 'floaters':
+      case 'drigibilesFloaters':
       case 'microbes':
       case 'lunaArchivesScience':
       case 'spireScience':
@@ -187,6 +189,8 @@ export const PaymentWidgetMixin = {
       case 'graphene':
       case 'kuiperAsteroids':
       case 'bioengineeringStudiesAnimals':
+      case 'asteroidBeltColonyAsteroids':
+      case 'jovianConstructionYardFloaters':
         // TODO(kberg): remove 'as any'. You can do it.
         amount = (model.playerinput as any)[unit];
         break;
@@ -206,7 +210,7 @@ export const PaymentWidgetMixin = {
       // then amount, below would be -1, so the Math.max makes sure it's zero.
 
       // BTW, this could be managed by some derivative of reserveUnits that took extended resources into account.
-      if (unit === 'floaters' && this.asModel().$data.card?.name === CardName.STRATOSPHERIC_BIRDS) {
+      if (unit === 'drigibilesFloaters' && this.asModel().$data.card?.name === CardName.STRATOSPHERIC_BIRDS) {
         // Find a card other than Dirigibles with floaters.
         // If there is none, then Dirigibles can't use every one.
         if (!thisPlayer.tableau.some((card) => {

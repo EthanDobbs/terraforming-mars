@@ -331,6 +331,18 @@ import { FloatingColony } from './FloatingColony';
 import { GasGiantHabs } from './GasGiantHabs';
 import { TitanReseachOutpost } from './TitanResearchOutpost';
 import { JovianConstructionYard } from './JovianConstructionYard';
+import { WaterFromTitan } from './WaterFromTitan';
+import { MethaneExports } from './MethaneExports';
+import { GalileanMiningNetwork } from './GalileanMiningNetwork';
+import { TitanFuelStation } from './TitanFuelStation';
+import { JupiterFloatingCity } from './JupiterFloatingCity';
+import { FloaterFacility } from './FloaterFacility';
+import { FloatingTechInvestments } from './FloatingTechInvestments';
+import { Primates } from './Primates';
+import { ColonySuppliers } from './ColonySuppliers';
+import { TradeDealLeverage } from './TradeDealLeverage';
+import { RemoteTestZone } from './RemoteTestZone';
+import { WaypointColony } from './WaypointColony';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -675,6 +687,18 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.GAS_GIANT_HABS]: {Factory: GasGiantHabs, compatibility: 'colonies'},
     [CardName.TITAN_RESEARCH_OUTPOST]: {Factory: TitanReseachOutpost, compatibility: 'colonies'},
     [CardName.JOVIAN_CONSTRUCTION_YARD]: {Factory: JovianConstructionYard, compatibility: 'colonies'},
+    [CardName.WATER_FROM_TITAN]: {Factory: WaterFromTitan, compatibility: 'colonies'},
+    [CardName.METHANE_EXPORTS]: {Factory: MethaneExports, compatibility: 'colonies'},
+    [CardName.GALILEAN_MINING_NETWORK]: {Factory: GalileanMiningNetwork, compatibility: 'colonies'},
+    [CardName.TITAN_FUEL_STATION]: {Factory: TitanFuelStation, compatibility: 'colonies'},
+    [CardName.JUPITER_FLOATING_CITY]: {Factory: JupiterFloatingCity, compatibility: 'colonies'},
+    [CardName.FLOATER_FACILITY]: {Factory: FloaterFacility, compatibility: 'colonies'},
+    [CardName.FLOATING_TECH_INVESTMENTS]: {Factory: FloatingTechInvestments, compatibility: 'colonies'},
+    [CardName.PRIMATES]: {Factory: Primates, compatibility: 'colonies'},
+    [CardName.COLONY_SUPPLIERS]: {Factory: ColonySuppliers, compatibility: 'colonies'},
+    [CardName.TRADE_DEAL_LEVERAGE]: {Factory: TradeDealLeverage, compatibility: 'colonies'},
+    [CardName.REMOTE_TEST_ZONE]: {Factory: RemoteTestZone, compatibility: 'colonies'},
+    [CardName.WAYPOINT_COLONY]: {Factory: WaypointColony, compatibility: 'colonies'},
   },
 });
 

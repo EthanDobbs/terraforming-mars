@@ -338,7 +338,7 @@ export class Game implements IGame, Logger {
           }
           //For testing purposes
           if (gameOptions.chemicalExpansion) {
-            var card = new CardFinder().getProjectCardByName(CardName.JOVIAN_CONSTRUCTION_YARD);
+            var card = new CardFinder().getProjectCardByName(CardName.COLONY_SUPPLIERS);
             if (card !== undefined) {
               player.dealtProjectCards.push(card);
             } else {

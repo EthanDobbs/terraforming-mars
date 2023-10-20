@@ -19,6 +19,7 @@ import {CardRequirementDescriptor} from '../../common/cards/CardRequirementDescr
 import {OneOrArray} from '../../common/utils/types';
 import {JSONValue} from '../../common/Types';
 import {IStandardProjectCard} from './IStandardProjectCard';
+import {IColony} from '../colonies/IColony';
 
 /*
  * Represents a card which has an action that itself allows a player
@@ -110,6 +111,8 @@ export interface ICard {
    * @param space the space that was just excavated.
    */
   onExcavation?(player: IPlayer, space: Space): void;
+
+  onTrade?(player: IPlayer, colony: IColony): void;
   
   cost?: number; /** Used with IProjectCard and PreludeCard. */
   type: CardType;

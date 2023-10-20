@@ -191,7 +191,11 @@ export class TradeWithMegacredits implements IColonyTrader {
   private tradeCost;
 
   constructor(private player: IPlayer) {
-    this.tradeCost = MC_TRADE_COST- player.colonies.tradeDiscount;
+
+    // Fuel Subsidies hook
+    const fuelSubsidies = player.cardIsInEffect(CardName.FUEL_SUBSIDIES) ? 5 : 0;
+
+    this.tradeCost = MC_TRADE_COST- player.colonies.tradeDiscount - fuelSubsidies;
     const adhai = player.getCorporation(CardName.ADHAI_HIGH_ORBIT_CONSTRUCTIONS);
     if (adhai !== undefined) {
       const adhaiDiscount = Math.floor(adhai.resourceCount / 2);

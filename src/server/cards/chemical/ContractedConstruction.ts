@@ -26,7 +26,7 @@ export class ContractedConstruction extends Card implements IProjectCard {
             pb.plus().megacredits(5);
           });
         }),
-        description: 'Require that you have 5 building tags. Lower your steel production 1 step and raise your MC produciton 5 steps.',
+        description: 'Require that you have 5 building tags. Lower your steel production 1 step and raise your MC production 5 steps.',
       },
     });
   }

@@ -11,7 +11,7 @@ export class LuxuryResort extends Card implements IProjectCard {
       type: CardType.AUTOMATED,
       name: CardName.LUXURY_RESORT,
       tags: [Tag.BUILDING],
-      cost: 10,
+      cost: 9,
       victoryPoints: 1,
       requirements: {temperature: 0},
 
@@ -27,7 +27,7 @@ export class LuxuryResort extends Card implements IProjectCard {
             pb.plus().megacredits(4);
           }).nbsp;
         }),
-        description: 'Requires 0°C or higher. Lower your energy production 1 step and raise your MC produciton 4 steps.',
+        description: 'Requires 0°C or higher. Lower your energy production 1 step and raise your MC production 4 steps.',
       },
     });
   }

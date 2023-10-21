@@ -32,7 +32,7 @@ export class CeresLaunchpad extends Card implements IActionCard {
           b.action('Spend 1 asteroid to trade, first increasing the colony track one step.', (eb) => {
             eb.asteroids(1).startAction.trade().colon().text('+ 1');
           }).br;
-          b.tradeFleet;
+          b.tradeFleet();
         }),
         description: 'Gain a trade fleet.',
       },

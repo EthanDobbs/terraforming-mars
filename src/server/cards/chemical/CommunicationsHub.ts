@@ -28,7 +28,7 @@ export class CommunicationsHub extends Card implements IProjectCard {
           }).nbsp;
           b.city();
         }),
-        description: 'Lower your energy production 1 step and raise your MC produciton 1 step for each Earth tag you have. Place a city tile.',
+        description: 'Lower your energy production 1 step and raise your MC production 1 step for each Earth tag you have. Place a city tile.',
       },
     });
   }

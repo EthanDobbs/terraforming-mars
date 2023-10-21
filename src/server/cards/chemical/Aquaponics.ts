@@ -30,8 +30,8 @@ export class Aquaponics extends Card implements IProjectCard {
           }).br;
           b.or().br;
           b.action('Gain 1MC for each animal here.', (eb) => {
-            eb.empty().startAction.animals(1).slash().megacredits(1);
-          }).br;
+            eb.empty().startAction.megacredits(1).slash().animals(1);
+          })
         }),
         description: 'Requires that you have a plant tag, an animal tag, and a microbe tag'
       },

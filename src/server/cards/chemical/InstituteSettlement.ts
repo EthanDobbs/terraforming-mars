@@ -30,7 +30,7 @@ export class InstituteSettlement extends Card implements IProjectCard {
           })
           b.city();
         }),
-        description: 'Requires -18°C or lower. Lower your energy production 1 step and raise your plant produciton 1 step. Place a city tile.',
+        description: 'Requires -18°C or lower. Lower your energy production 1 step and raise your plant production 1 step. Place a city tile.',
       },
     });
   }

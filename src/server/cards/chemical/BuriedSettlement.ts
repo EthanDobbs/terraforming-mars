@@ -29,7 +29,7 @@ export class BuriedSettlement extends Card implements IProjectCard {
           })
           b.city();
         }),
-        description: 'Requires 5% oxygen or lower. Lower your energy production 1 step and raise your MC produciton 2 steps. Place a city tile.',
+        description: 'Requires 5% oxygen or lower. Lower your energy production 1 step and raise your MC production 2 steps. Place a city tile.',
       },
     });
   }

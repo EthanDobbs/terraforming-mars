@@ -15,13 +15,19 @@ export class FloatingTechInvestments extends Card implements IProjectCard {
       name: CardName.FLOATING_TECH_INVESTMENTS,
       cost: 3,
 
+      behavior: {
+        production: {megacredits: -1},
+      },
+
       metadata: {
         cardNumber: 'x338',
         renderData: CardRenderer.builder((b) => {
           b.effect('When you gain a floater to ANY CARD, also gain 1 M€.', (eb) => {
             eb.floaters(1).asterix().startEffect.megacredits(1);
           }).br;
+          b.production((pb) => pb.minus().megacredits(1))
         }),
+        description: 'Lower your MC production 1 step.'
       },
     });
   }

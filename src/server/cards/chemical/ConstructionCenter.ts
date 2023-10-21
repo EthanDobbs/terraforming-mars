@@ -32,7 +32,7 @@ export class ConstructionCenter extends Card implements IProjectCard {
           })
           b.city();
         }),
-        description: 'Lower your energy production 1 step and raise your MC produciton 3 steps. Place a city tile.',
+        description: 'Lower your energy production 1 step and raise your MC production 3 steps. Place a city tile.',
       },
     });
   }

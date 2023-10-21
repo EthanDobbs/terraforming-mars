@@ -32,7 +32,7 @@ export class MultifunctionalDome extends Card implements IProjectCard {
           })
           b.city();
         }),
-        description: 'Lower your energy production 1 step, raise your MC produciton 1 step, and raise ANY production 1 step. Place a city tile.',
+        description: 'Lower your energy production 1 step, raise your MC production 1 step, and raise ANY production 1 step. Place a city tile.',
       },
     });
   }

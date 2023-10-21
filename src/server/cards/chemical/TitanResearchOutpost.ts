@@ -32,7 +32,7 @@ export class TitanReseachOutpost extends ActionCard implements IActionCard {
           b.action('Add 1 floater to any Jovian card', (eb) => {
             eb.empty().startAction.floaters(1, {secondaryTag: Tag.JOVIAN});
           }).br;
-          b.vpText('1 VP for every 3rd Floater on this card.');
+          b.vpText('1 VP for every 3rd Floater on this card.').br;
           b.cards(2);
         }),
         description: 'Requires 3 science tags. Draw 2 cards.',

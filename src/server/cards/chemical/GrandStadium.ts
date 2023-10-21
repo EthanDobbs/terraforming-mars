@@ -30,7 +30,7 @@ export class GrandStadium extends Card implements IProjectCard {
           }).nbsp;
           b.megacredits(1).slash().city({all, size: Size.SMALL});
         }),
-        description: 'Lower your energy production 1 step, raise your MC produciton 2 steps, and gain 1MC for every city tile in play.',
+        description: 'Lower your energy production 1 step, raise your MC production 2 steps, and gain 1MC for every city tile in play.',
       },
     });
   }

@@ -27,7 +27,7 @@ export class ChemicalPlant extends Card implements IProjectCard {
           });
           b.cards(1);
         }),
-        description: 'Lower your energy production 1 step, raise your MC produciton 3 steps, and draw a card.',
+        description: 'Lower your energy production 1 step, raise your MC production 3 steps, and draw a card.',
       },
     });
   }

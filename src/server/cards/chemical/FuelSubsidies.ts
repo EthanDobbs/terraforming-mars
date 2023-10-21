@@ -9,7 +9,7 @@ export class FuelSubsidies extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.ACTIVE,
-      name: CardName.COLONY_SUPPLIERS,
+      name: CardName.FUEL_SUBSIDIES,
       tags: [Tag.EARTH],
       cost: 3,
       requirements: {tag: Tag.EARTH, count: 2},

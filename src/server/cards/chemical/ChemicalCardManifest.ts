@@ -340,9 +340,50 @@ import { FloaterFacility } from './FloaterFacility';
 import { FloatingTechInvestments } from './FloatingTechInvestments';
 import { Primates } from './Primates';
 import { ColonySuppliers } from './ColonySuppliers';
+import { FuelSubsidies } from './FuelSubsidies';
 import { TradeDealLeverage } from './TradeDealLeverage';
 import { RemoteTestZone } from './RemoteTestZone';
 import { WaypointColony } from './WaypointColony';
+import { PrivateColony } from './PrivateColony';
+import { RemoteMiningBase } from './RemoteMiningBase';
+import { ResearchMissions } from './ResearchMissions';
+import { VenusTradeStation } from './VenusTradeStation';
+import { RimPopulationCenter } from './RimPopulationCenter';
+import { BusinessColony } from './BusinessColony';
+import { SelfSufficientColony } from './SelfSufficientColony';
+import { IndustrialColony } from './IndustrialColony';
+import { DomeFarmingColony } from './DomeFarmingColony';
+import { EnergyBeamColony } from './EnergyBeamColony';
+import { KuiperBeltColony } from './KuiperBeltColony';
+import { ThermalReservior } from './ThermalReservior';
+import { SlumCity } from './SlumCity';
+import { LunarPort } from './LunarPort';
+import { MuseumOfLuna } from './MuseumOfLuna';
+import { LunarResort } from './LunarResort';
+import { LunaColonizationInvestments } from './LunaColonizationInvestments';
+import { MicrogravityLab } from './MicrogravityLab';
+import { SolarStation } from './SolarStation';
+import { OrbitalShipyard } from './OrbitalShipyard';
+import { LunarH3Mining } from './LunarH3Mining';
+import { ColonyMiningInfrastructure } from './ColonyMiningInfrastructure';
+import { HemeraBunker } from './HemeraBunker';
+import { OrbitalBiodomes } from './OrbitalBiodomes';
+import { AzaleaBushes } from './AzaleaBushes';
+import { Wildflowers } from './Wildflowers';
+import { ColonySpaceMirrors } from './ColonySpaceMirrors';
+import { LunarPowerGrid } from './LunarPowerGrid';
+import { ProtoDysonSwarm } from './ProtoDysonSwarm';
+import { HydrothermalVents } from './HydrothermalVents';
+import { EarthEmbassyChemical } from './EarthEmbassyChemical';
+import { HighOrbitResearchStation } from './HighOrbitResearchStation';
+import { TerrestrialResearchSummit } from './TerrestrialResearchSummit';
+import { AstronomicalClaim } from './AstronomicalClaim';
+import { SaturnAsteroidCollection } from './SaturnAsteroidCollection';
+import { ThisAtmosphereFloaters } from './ThinAtmosphereFloaters';
+import { ArcticEndoliths } from './ArcticEndoliths';
+import { HyperExtremophileFungi } from './HyperExtremophileFungi';
+import { BiodiversityBoom } from './BiodiversityBoom';
+import { ColonyReforms } from './ColonyReforms';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -696,10 +737,49 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.FLOATING_TECH_INVESTMENTS]: {Factory: FloatingTechInvestments, compatibility: 'colonies'},
     [CardName.PRIMATES]: {Factory: Primates, compatibility: 'colonies'},
     [CardName.COLONY_SUPPLIERS]: {Factory: ColonySuppliers, compatibility: 'colonies'},
+    [CardName.FUEL_SUBSIDIES]: {Factory: FuelSubsidies, compatibility: 'colonies'},
     [CardName.TRADE_DEAL_LEVERAGE]: {Factory: TradeDealLeverage, compatibility: 'colonies'},
     [CardName.REMOTE_TEST_ZONE]: {Factory: RemoteTestZone, compatibility: 'colonies'},
     [CardName.WAYPOINT_COLONY]: {Factory: WaypointColony, compatibility: 'colonies'},
-  },
+    [CardName.PRIVATE_COLONY]: {Factory: PrivateColony, compatibility: 'colonies'},
+    [CardName.REMOTE_MINING_BASE]: {Factory: RemoteMiningBase, compatibility: 'colonies'},
+    [CardName.RESEARCH_MISSIONS]: {Factory: ResearchMissions, compatibility: 'colonies'},
+    [CardName.VENUS_TRADE_STATION]: {Factory: VenusTradeStation, compatibility: 'colonies'},
+    [CardName.RIM_POPULATION_CENTER]: {Factory: RimPopulationCenter, compatibility: 'colonies'},
+    [CardName.BUSINESS_COLONY]: {Factory: BusinessColony, compatibility: 'colonies'},
+    [CardName.SELF_SUFFICIENT_COLONY]: {Factory: SelfSufficientColony, compatibility: 'colonies'},
+    [CardName.INDUSTRIAL_COLONY]: {Factory: IndustrialColony, compatibility: 'colonies'},
+    [CardName.DOME_FARMING_COLONY]: {Factory: DomeFarmingColony, compatibility: 'colonies'},
+    [CardName.ENERGY_BEAM_COLONY]: {Factory: EnergyBeamColony, compatibility: 'colonies'},
+    [CardName.KUIPER_BELT_COLONY]: {Factory: KuiperBeltColony, compatibility: 'colonies'},
+    [CardName.THERMAL_RESERVIOR]: {Factory: ThermalReservior, compatibility: 'colonies'},
+    [CardName.SLUM_CITY]: {Factory: SlumCity, compatibility: 'colonies'},
+    [CardName.LUNAR_PORT]: {Factory: LunarPort, compatibility: 'colonies'},
+    [CardName.MUSEUM_OF_LUNA]: {Factory: MuseumOfLuna, compatibility: 'colonies'},
+    [CardName.LUNAR_RESORT]: {Factory: LunarResort, compatibility: 'colonies'},
+    [CardName.LUNA_COLONIZATION_INVESTMENTS]: {Factory: LunaColonizationInvestments, compatibility: 'colonies'},
+    [CardName.MICROGRAVITY_LAB]: {Factory: MicrogravityLab, compatibility: 'colonies'},
+    [CardName.SOLAR_STATION]: {Factory: SolarStation, compatibility: 'colonies'},
+    [CardName.ORBITAL_SHIPYARD]: {Factory: OrbitalShipyard, compatibility: 'colonies'},
+    [CardName.LUNAR_H3_MINING]: {Factory: LunarH3Mining, compatibility: 'colonies'},
+    [CardName.COLONY_MINING_INFRASTRUCTURE]: {Factory: ColonyMiningInfrastructure, compatibility: 'colonies'},
+    [CardName.HEMERA_BUNKER]: {Factory: HemeraBunker, compatibility: 'colonies'},
+    [CardName.ORBITAL_BIODOMES]: {Factory: OrbitalBiodomes, compatibility: 'colonies'},
+    [CardName.AZALEA_BUSHES]: {Factory: AzaleaBushes, compatibility: 'colonies'},
+    [CardName.WILDFLOWERS]: {Factory: Wildflowers, compatibility: 'colonies'},
+    [CardName.COLONY_SPACE_MIRRORS]: {Factory: ColonySpaceMirrors, compatibility: 'colonies'},
+    [CardName.LUNAR_POWER_GRID]: {Factory: LunarPowerGrid, compatibility: 'colonies'},
+    [CardName.PROTO_DYSON_SWARM]: {Factory: ProtoDysonSwarm, compatibility: 'colonies'},
+    [CardName.HYDROTHERMAL_VENTS]: {Factory: HydrothermalVents, compatibility: 'colonies'},
+    [CardName.EARTH_EMBASSY_CHEMICAL]: {Factory: EarthEmbassyChemical, compatibility: 'colonies'},
+    [CardName.HIGH_ORBIT_RESEARCH_STATION]: {Factory: HighOrbitResearchStation, compatibility: 'colonies'},
+    [CardName.TERRESTRIAL_RESEARCH_SUMMIT]: {Factory: TerrestrialResearchSummit, compatibility: 'colonies'},
+    [CardName.ASTRONOMICAL_CLAIM]: {Factory: AstronomicalClaim, compatibility: 'colonies'},
+    [CardName.SATURN_ASTEROID_COLLECTION]: {Factory: SaturnAsteroidCollection, compatibility: 'colonies'},
+    [CardName.THIN_ATMOSPHERE_FLOATERS]: {Factory: ThisAtmosphereFloaters, compatibility: 'colonies'},
+    [CardName.ARCTIC_ENDOLITHS]: {Factory: ArcticEndoliths, compatibility: 'colonies'},
+    [CardName.HYPER_EXTREMOPHILE_FUNGI]: {Factory: HyperExtremophileFungi, compatibility: 'colonies'},
+    [CardName.BIODIVERSITY_BOOM]: {Factory: BiodiversityBoom, compatibility: 'colonies'},
+    [CardName.COLONY_REFORMS]: {Factory: ColonyReforms, compatibility: 'colonies'},
+  }
 });
-
-

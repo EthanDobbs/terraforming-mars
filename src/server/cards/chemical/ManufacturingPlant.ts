@@ -25,7 +25,7 @@ export class ManufacturingPlant extends Card implements IProjectCard {
             pb.plus().megacredits(4);
           });
         }),
-        description: 'Lower your steel production 1 step and raise your MC produciton 4 steps.',
+        description: 'Lower your steel production 1 step and raise your MC production 4 steps.',
       },
     });
   }

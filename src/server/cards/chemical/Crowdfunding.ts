@@ -23,7 +23,7 @@ export class Crowdfunding extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(1).slash().earth(2, {played}));
         }),
-        description: 'Raise your MC produciton 1 step for every 2 Earth tags you have.',
+        description: 'Raise your MC production 1 step for every 2 Earth tags you have.',
       },
     });
   }

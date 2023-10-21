@@ -27,7 +27,7 @@ export class DeepBurrowSettlement extends Card implements IProjectCard {
           })
           b.city();
         }),
-        description: 'Lower your energy production 1 step, raise your steel produciton 1 step, and raise your heat production 2 steps. Place a city tile.',
+        description: 'Lower your energy production 1 step, raise your steel production 1 step, and raise your heat production 2 steps. Place a city tile.',
       },
     });
   }

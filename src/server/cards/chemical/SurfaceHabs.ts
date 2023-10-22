@@ -13,6 +13,7 @@ export class SurfaceHabs extends Card implements IProjectCard {
       tags: [Tag.VENUS],
       cost: 10,
       requirements: {venus: 12},
+      victoryPoints: 1,
 
       behavior: {
         production: {megacredits: 3},

@@ -17,10 +17,7 @@ export class PublicLand extends Card implements IProjectCard {
       name: CardName.PUBLIC_LAND,
       tags: [Tag.BUILDING],
       cost: 18,
-
-      behavior: {
-        production: {heat: 1}
-      },
+      victoryPoints: 1,
 
       metadata: {
         cardNumber: 'x074',

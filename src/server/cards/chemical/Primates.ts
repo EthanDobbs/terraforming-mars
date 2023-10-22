@@ -14,7 +14,7 @@ export class Primates extends ActionCard implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.PRIMATES,
       tags: [Tag.ANIMAL],
-      cost: 12,
+      cost: 9,
 
       behavior: {
         decreaseAnyProduction: {type: Resource.PLANTS, count: 1},

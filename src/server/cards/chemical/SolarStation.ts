@@ -11,8 +11,9 @@ export class SolarStation extends Card implements IProjectCard {
       type: CardType.AUTOMATED,
       name: CardName.SOLAR_STATION,
       tags: [Tag.SPACE],
-      cost: 11,
+      cost: 12,
       requirements: {tag: Tag.SCIENCE, count: 4},
+      victoryPoints: 2,
 
       behavior: {
         production: {megacredits: 2},

@@ -26,7 +26,7 @@ export class MarketSiphon extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(1).nbsp.megacredits(-1, {all}))
         }),
-        description: 'Requires 1 Earth tag. Increase your MC production 1 step and lower any players MC production 1 step.',
+        description: 'Requires 1 Earth tag. Increase your MC production 1 step and lower any player MC production 1 step.',
       },
     });
   }

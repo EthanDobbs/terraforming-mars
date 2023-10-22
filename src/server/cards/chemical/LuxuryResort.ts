@@ -10,7 +10,7 @@ export class LuxuryResort extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.LUXURY_RESORT,
-      tags: [Tag.BUILDING],
+      tags: [Tag.EARTH, Tag.BUILDING],
       cost: 9,
       victoryPoints: 1,
       requirements: {temperature: 0},

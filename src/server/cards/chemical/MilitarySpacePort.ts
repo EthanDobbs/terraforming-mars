@@ -18,7 +18,7 @@ export class MilitarySpacePort extends Card implements IProjectCard {
         city: {},
         production: {energy: -1, megacredits: 3},
         drawCard: 1,
-        stock: {titanium: 1},
+        stock: {titanium: 2},
       },
 
       metadata: {

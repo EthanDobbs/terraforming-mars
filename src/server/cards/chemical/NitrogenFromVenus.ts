@@ -17,7 +17,7 @@ export class NitrogenFromVenus extends Card implements IProjectCard {
 
       behavior: {
         tr: 1,
-        addResourcesToAnyCard: [{type: CardResource.MICROBE, count: 2, autoSelect: true}, {type: CardResource.FLOATER, count: 1, autoSelect: true}]
+        addResourcesToAnyCard: [{type: CardResource.MICROBE, count: 2, autoSelect: true}, {type: CardResource.FLOATER, count: 2, autoSelect: true}]
       },
 
       metadata: {

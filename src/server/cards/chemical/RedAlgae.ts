@@ -10,7 +10,7 @@ export class RedAlgae extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.RED_ALGAE,
-      cost: 10,
+      cost: 11,
       tags: [Tag.PLANT],
       requirements: {oceans: 4},
 

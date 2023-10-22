@@ -12,7 +12,7 @@ export class CarbonSolidification extends ActionCard implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.CARBON_SOLIDIFICATION,
       tags: [Tag.VENUS],
-      cost: 9,
+      cost: 13,
       resourceType: CardResource.FLOATER,
 
       action: {
@@ -24,8 +24,8 @@ export class CarbonSolidification extends ActionCard implements IProjectCard {
             global: {venus: 1},
           },
           {
-            title: 'Spend 2 energy to add 2 floaters to this card',
-            spend: {energy: 2},
+            title: 'Spend 2 MC to add 2 floaters to this card',
+            spend: {megacredits: 2},
             addResources: 2,
           }],
         },
@@ -34,8 +34,8 @@ export class CarbonSolidification extends ActionCard implements IProjectCard {
       metadata: {
         cardNumber: 'x260',
         renderData: CardRenderer.builder((b) => {
-          b.action('Spend 2 energy to add 2 floaters to this card.', (eb) => {
-            eb.energy(2).startAction.floaters(2);
+          b.action('Spend 2 MC to add 2 floaters to this card.', (eb) => {
+            eb.megacredits(2).startAction.floaters(2);
           }).br;
           b.or().br;
           b.action('Remove 2 floaters from this card to raise Venus 1 step.', (eb) => {

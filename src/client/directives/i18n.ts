@@ -42,8 +42,6 @@ export function translateMessage(message: Message): string {
     case LogMessageDataType.STRING:
     case LogMessageDataType.PARTY:
       return translateText(datum.value);
-    case LogMessageDataType.TILE_TYPE:
-      return translateText(TileType.toString(Number(datum.value) as TileType));
     default:
       return translateText(datum.value);
     }

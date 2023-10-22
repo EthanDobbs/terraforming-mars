@@ -854,8 +854,8 @@ export class Player implements IPlayer {
       throw new Error('You do not have that many resources to spend');
     }
 
-    if (payment.floaters > 0) {
-      if (selectedCard.name === CardName.STRATOSPHERIC_BIRDS && payment.floaters === this.getSpendable('dirigiblesFloaters')) {
+    if (payment.dirigiblesFloaters > 0) {
+      if (selectedCard.name === CardName.STRATOSPHERIC_BIRDS && payment.dirigiblesFloaters === this.getSpendable('dirigiblesFloaters')) {
         const cardsWithFloater = this.getCardsWithResources(CardResource.FLOATER);
         if (cardsWithFloater.length === 1) {
           throw new Error('Cannot spend all floaters to play Stratospheric Birds');
@@ -1354,7 +1354,7 @@ export class Player implements IPlayer {
       titanium: this.titanium - reserveUnits.titanium,
       plants: this.plants - reserveUnits.plants,
       heat: this.availableHeat() - reserveUnits.heat,
-      floaters: this.getSpendable('dirigiblesFloaters'),
+      dirigiblesFloaters: this.getSpendable('dirigiblesFloaters'),
       microbes: this.getSpendable('microbes'),
       lunaArchivesScience: this.getSpendable('lunaArchivesScience'),
       spireScience: this.getSpendable('spireScience'),
@@ -1364,7 +1364,7 @@ export class Player implements IPlayer {
       kuiperAsteroids: this.getSpendable('kuiperAsteroids'),
       bioengineeringStudiesAnimals: this.getSpendable('bioengineeringStudiesAnimals'),
       asteroidBeltColonyAsteroids: this.getSpendable('asteroidBeltColonyAsteroids'),
-      jovianConstructionYardFloaters: this.getSpendable('JovianConstructionYardFloaters'),
+      jovianConstructionYardFloaters: this.getSpendable('jovianConstructionYardFloaters'),
     };
   }
 

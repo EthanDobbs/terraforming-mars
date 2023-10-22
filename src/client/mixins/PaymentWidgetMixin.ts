@@ -205,7 +205,7 @@ export const PaymentWidgetMixin = {
       // then amount, below would be -1, so the Math.max makes sure it's zero.
 
       // BTW, this could be managed by some derivative of reserveUnits that took extended resources into account.
-      if (unit === 'dirigiblesFloaters' && this.asModel().$data.card?.name === CardName.STRATOSPHERIC_BIRDS) {
+      if (unit === 'dirigiblesFloaters' && this.asModel().card?.name === CardName.STRATOSPHERIC_BIRDS) {
         // Find a card other than Dirigibles with floaters.
         // If there is none, then Dirigibles can't use every one.
         if (!thisPlayer.tableau.some((card) => {
@@ -237,11 +237,14 @@ export const PaymentWidgetMixin = {
         kuiperAsteroids: 'Asteroids',
         spireScience: 'Science',
         megaCredits: 'M€',
-        floaters: 'Floaters',
+        dirigiblesFloaters: 'Floaters',
         graphene: 'Graphene',
         lunaArchivesScience: 'Science',
         microbes: 'Microbes',
         plants: 'Plants',
+        bioengineeringStudiesAnimals: 'Animals',
+        asteroidBeltColonyAsteroids: 'Asteroids',
+        jovianConstructionYardFloaters: 'Floaters',
       };
     },
   },

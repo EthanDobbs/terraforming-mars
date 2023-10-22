@@ -23,7 +23,7 @@ export const SPENDABLE_CARD_RESOURCES = [
   // Psychrophiles corporation can spend its floaters for cards with plant tags.
   'microbes',
   // Dirigibles corporation can spend its floaters for cards with Venus tags.
-  'floaters',
+  'dirigiblesFloaters',
   // Luna Archives corporation can spend its science resources for cards with Moon tags.
   'lunaArchivesScience',
   // Spire corporation can spend its science resources on standrad projects.
@@ -37,6 +37,9 @@ export const SPENDABLE_CARD_RESOURCES = [
   'graphene',
   // Asteroids is a Kuiper Cooperative resource that pays for aquifer and asteroid standard projects.
   'kuiperAsteroids',
+  'bioengineeringStudiesAnimals',
+  'asteroidBeltColonyAsteroids',
+  'jovianConstructionYardFloaters',
 ] as const;
 
 export const SPENDABLE_RESOURCES = [...SPENDABLE_STANDARD_RESOURCES, ...SPENDABLE_CARD_RESOURCES] as const;
@@ -50,11 +53,14 @@ export type SpendableResource = SpendableStandardResource | SpendableCardResourc
 
 export const CARD_FOR_SPENDABLE_RESOURCE: Record<SpendableCardResource, CardName> = {
   microbes: CardName.PSYCHROPHILES,
-  floaters: CardName.DIRIGIBLES,
+  dirigiblesFloaters: CardName.DIRIGIBLES,
   lunaArchivesScience: CardName.LUNA_ARCHIVES,
   spireScience: CardName.SPIRE,
   seeds: CardName.SOYLENT_SEEDLING_SYSTEMS,
   auroraiData: CardName.AURORAI,
   graphene: CardName.CARBON_NANOSYSTEMS,
   kuiperAsteroids: CardName.KUIPER_COOPERATIVE,
+  bioengineeringStudiesAnimals: CardName.BIOENGINEERING_STUDIES,
+  asteroidBeltColonyAsteroids: CardName.ASTEROID_BELT_COLONY,
+  jovianConstructionYardFloaters: CardName.JOVIAN_CONSTRUCTION_YARD,
 } as const;

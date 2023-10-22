@@ -49,11 +49,14 @@ export default Vue.extend({
         'heat',
         'plants',
         'microbes',
-        'floaters',
+        'dirigiblesFloaters',
         'lunaArchivesScience',
         'seeds',
         'graphene',
         'megaCredits',
+        'bioengineeringStudiesAnimals',
+        'asteroidBeltColonyAsteroids',
+        'jovianConstructionYardFloaters',
       ];
     },
   },
@@ -199,12 +202,12 @@ export default Vue.extend({
           'microbes',
           'seeds',
           'graphene',
-          'lunaArchivesScience',
-          'megaCredits',
           'bioengineeringStudiesAnimals',
           'asteroidBeltColonyAsteroids',
-          'jovianConstructionYardFloaters'] as const) {
-          this[key] -= saveOverspendingUnits(this[key], this.getResourceRate(key));
+          'jovianConstructionYardFloaters',
+          'lunaArchivesScience',
+          'megaCredits',] as const) {
+          this.payment[key] -= saveOverspendingUnits(this.payment[key], this.getResourceRate(key));
         }
       }
     },

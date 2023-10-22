@@ -1,4 +1,5 @@
 import {DATA_VALUE, FLOATERS_VALUE, MICROBES_VALUE, GRAPHENE_VALUE, SEED_VALUE} from '../constants';
+
 import {SpendableResource, SPENDABLE_RESOURCES} from './Spendable';
 
 /**
@@ -97,19 +98,9 @@ type WaysToPay = Exclude<SpendableResource, 'megaCredits'> | 'lunaTradeFederatio
  * That's why PaymentOptions includes two references to titanium. One describes paying for space cards
  * (good ol' titanium) and one describes a special behavior for the Luna Archives corporation that lets you
  * spend titanium in a new way.
+ *
+ * megaCredits is removed because it's always assumed and I think it's possibly special-cased the codebase.
+ * Could be smart to remove it, /shrug
  */
-export type PaymentOptions = {
-  heat: boolean,
-  steel: boolean,
-  titanium: boolean,
-  plants: boolean;
-  microbes: boolean,
-  floaters: boolean,
-  lunaTradeFederationTitanium: boolean,
-  lunaArchivesScience: boolean,
-  spireScience: boolean,
-  seeds: boolean,
-  auroraiData: boolean,
-  graphene: boolean,
-  kuiperAsteroids: boolean,
-}
+
+export type PaymentOptions = {[k in WaysToPay]: boolean};

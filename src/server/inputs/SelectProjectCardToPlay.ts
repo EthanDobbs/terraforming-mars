@@ -50,7 +50,7 @@ export class SelectProjectCardToPlay extends BasePlayerInput<IProjectCard> {
       type: 'projectCard',
       cards: cardsToModel(player, this.cards, {showCalculatedCost: true, extras: this.extras}),
       microbes: player.getSpendableMicrobes(),
-      floaters: player.getSpendableDrigibilesFloaters(),
+      floaters: player.getSpendabledirigiblesFloaters(),
       paymentOptions: {
         heat: player.canUseHeatAsMegaCredits,
         lunaTradeFederationTitanium: player.canUseTitaniumAsMegacredits,

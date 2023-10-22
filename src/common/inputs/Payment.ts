@@ -13,7 +13,7 @@ export const PAYMENT_UNITS = [
   // Psychrophiles corporation can spend its floaters for cards with plant tags.
   'microbes',
   // Dirigibles corporation can spend its floaters for cards with Venus tags.
-  'drigibilesFloaters',
+  'dirigiblesFloaters',
   // Luna Archives corporation can spend its science resources for cards with Moon tags.
   'lunaArchivesScience',
   // Spire corporation can spend its science resources on standrad projects.
@@ -65,7 +65,7 @@ export const DEFAULT_PAYMENT_VALUES: Record<PaymentUnit, number> = {
   heat: 1,
   plants: 3,
   microbes: MICROBES_VALUE,
-  drigibilesFloaters: FLOATERS_VALUE,
+  dirigiblesFloaters: FLOATERS_VALUE,
   lunaArchivesScience: 1,
   spireScience: 2,
   seeds: SEED_VALUE,
@@ -85,7 +85,7 @@ export namespace Payment {
     titanium: 0,
     plants: 0,
     microbes: 0,
-    drigibilesFloaters: 0,
+    dirigiblesFloaters: 0,
     lunaArchivesScience: 0,
     spireScience: 0,
     seeds: 0,
@@ -100,7 +100,7 @@ export namespace Payment {
   export function of(payment: Partial<Payment>) : Payment {
     return {
       auroraiData: payment.auroraiData ?? 0,
-      drigibilesFloaters: payment.drigibilesFloaters ?? 0,
+      dirigiblesFloaters: payment.dirigiblesFloaters ?? 0,
       heat: payment.heat ?? 0,
       lunaArchivesScience: payment.lunaArchivesScience ?? 0,
       spireScience: payment.spireScience ?? 0,
@@ -136,7 +136,7 @@ export type PaymentOptions = {
   titanium: boolean,
   plants: boolean;
   microbes: boolean,
-  drigibilesFloaters: boolean,
+  dirigiblesFloaters: boolean,
   lunaTradeFederationTitanium: boolean,
   lunaArchivesScience: boolean,
   spireScience: boolean,

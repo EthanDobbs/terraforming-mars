@@ -31,10 +31,8 @@ export class ScientificLogs extends Card implements IProjectCard {
       },
     });
   }
-
-
   public onCardPlayed(player: IPlayer, card: IProjectCard) {
-    if (card.type = CardType.EVENT) {
+    if (card.type === CardType.EVENT) {
       player.game.defer(new SimpleDeferredAction(
         player,
         () => {

@@ -44,7 +44,7 @@ export default Vue.extend({
       titanium: 0,
       plants: 0,
       microbes: 0,
-      drigibilesFloaters: 0,
+      dirigiblesFloaters: 0,
       seeds: 0,
       auroraiData: 0,
       kuiperAsteroids: 0,

@@ -829,7 +829,7 @@ export class Player implements IPlayer {
       titanium: this.lastCardPlayed === CardName.LAST_RESORT_INGENUITY || card.tags.includes(Tag.SPACE),
       lunaTradeFederationTitanium: this.canUseTitaniumAsMegacredits,
       seeds: card.tags.includes(Tag.PLANT) || card.name === CardName.GREENERY_STANDARD_PROJECT,
-      drigibilesFloaters: card.tags.includes(Tag.VENUS),
+      dirigiblesFloaters: card.tags.includes(Tag.VENUS),
       microbes: card.tags.includes(Tag.PLANT),
       lunaArchivesScience: card.tags.includes(Tag.MOON),
       // TODO(kberg): add this.isCorporation(CardName.SPIRE)
@@ -853,8 +853,8 @@ export class Player implements IPlayer {
       throw new Error('You do not have that many resources to spend');
     }
 
-    if (payment.drigibilesFloaters > 0) {
-      if (selectedCard.name === CardName.STRATOSPHERIC_BIRDS && payment.drigibilesFloaters === this.getSpendableDrigibilesFloaters()) {
+    if (payment.dirigiblesFloaters > 0) {
+      if (selectedCard.name === CardName.STRATOSPHERIC_BIRDS && payment.dirigiblesFloaters === this.getSpendabledirigiblesFloaters()) {
         const cardsWithFloater = this.getCardsWithResources(CardResource.FLOATER);
         if (cardsWithFloater.length === 1) {
           throw new Error('Cannot spend all floaters to play Stratospheric Birds');
@@ -880,7 +880,7 @@ export class Player implements IPlayer {
     return this.resourcesOnCard(CardName.PSYCHROPHILES);
   }
 
-  public getSpendableDrigibilesFloaters(): number {
+  public getSpendabledirigiblesFloaters(): number {
     return this.resourcesOnCard(CardName.DIRIGIBLES);
   }
 
@@ -943,7 +943,7 @@ export class Player implements IPlayer {
     };
 
     removeResourcesOnCard(CardName.PSYCHROPHILES, payment.microbes);
-    removeResourcesOnCard(CardName.DIRIGIBLES, payment.drigibilesFloaters);
+    removeResourcesOnCard(CardName.DIRIGIBLES, payment.dirigiblesFloaters);
     removeResourcesOnCard(CardName.LUNA_ARCHIVES, payment.lunaArchivesScience);
     removeResourcesOnCard(CardName.SPIRE, payment.spireScience);
     removeResourcesOnCard(CardName.CARBON_NANOSYSTEMS, payment.graphene);
@@ -1390,7 +1390,7 @@ export class Player implements IPlayer {
       titanium: this.titanium - reserveUnits.titanium,
       plants: this.plants - reserveUnits.plants,
       heat: this.availableHeat() - reserveUnits.heat,
-      drigibilesFloaters: this.getSpendableDrigibilesFloaters(),
+      dirigiblesFloaters: this.getSpendabledirigiblesFloaters(),
       microbes: this.getSpendableMicrobes(),
       lunaArchivesScience: this.getSpendableLunaArchiveScienceResources(),
       spireScience: this.getSpendableSpireScienceResources(),
@@ -1435,7 +1435,7 @@ export class Player implements IPlayer {
       heat: this.canUseHeatAsMegaCredits,
       plants: options?.plants ?? false,
       microbes: options?.microbes ?? false,
-      drigibilesFloaters: options?.drigibilesFloaters ?? false,
+      dirigiblesFloaters: options?.dirigiblesFloaters ?? false,
       lunaArchivesScience: options?.lunaArchivesScience ?? false,
       spireScience: options?.spireScience ?? false,
       seeds: options?.seeds ?? false,

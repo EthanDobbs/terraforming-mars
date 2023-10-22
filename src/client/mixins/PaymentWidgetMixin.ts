@@ -18,7 +18,7 @@ export type SelectPaymentDataModel = {
     titanium: number;
     plants: number; // Plants are not actually used in this compnent. It's just to satisfy the mixin.
     microbes: number; // Microbes are not actually used in this component. It's just to satisfy the mixin.
-    drigibilesFloaters: number; // Floaters are not actually used in this component. It's just to satisfy the mixin.
+    dirigiblesFloaters: number; // Floaters are not actually used in this component. It's just to satisfy the mixin.
     warning: string | undefined;
     lunaArchivesScience?: number; // Luna Archives Science isn't used in this component, but it simplifies testing.
     spireScience?: number;
@@ -180,7 +180,7 @@ export const PaymentWidgetMixin = {
         amount = thisPlayer[unit];
         break;
 
-      case 'drigibilesFloaters':
+      case 'dirigiblesFloaters':
       case 'microbes':
       case 'lunaArchivesScience':
       case 'spireScience':
@@ -210,7 +210,7 @@ export const PaymentWidgetMixin = {
       // then amount, below would be -1, so the Math.max makes sure it's zero.
 
       // BTW, this could be managed by some derivative of reserveUnits that took extended resources into account.
-      if (unit === 'drigibilesFloaters' && this.asModel().$data.card?.name === CardName.STRATOSPHERIC_BIRDS) {
+      if (unit === 'dirigiblesFloaters' && this.asModel().$data.card?.name === CardName.STRATOSPHERIC_BIRDS) {
         // Find a card other than Dirigibles with floaters.
         // If there is none, then Dirigibles can't use every one.
         if (!thisPlayer.tableau.some((card) => {

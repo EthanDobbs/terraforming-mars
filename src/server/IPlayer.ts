@@ -265,7 +265,7 @@ export interface IPlayer {
   resourcesOnCard(name: CardName): number;
   spendableMegacredits(): number;
   getSpendableMicrobes(): number;
-  getSpendableDrigibilesFloaters(): number;
+  getSpendabledirigiblesFloaters(): number;
   getSpendableLunaArchiveScienceResources(): number;
   getSpendableSeedResources(): number;
   getSpendableData(): number;

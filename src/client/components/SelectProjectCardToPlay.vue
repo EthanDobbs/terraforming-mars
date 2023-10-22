@@ -70,7 +70,7 @@ export default Vue.extend({
       microbes: 0,
       lunaArchivesScience: 0,
       seeds: 0,
-      drigibilesFloaters: 0,
+      dirigiblesFloaters: 0,
       auroraiData: 0,
       graphene: 0,
       warning: undefined,
@@ -155,7 +155,7 @@ export default Vue.extend({
         return toSaveUnits;
       };
 
-      for (const unit of ['seeds', 'microbes', 'drigibilesFloaters', 'lunaArchivesScience', 'graphene', 'bioengineeringStudiesAnimals'] as const) {
+      for (const unit of ['seeds', 'microbes', 'dirigiblesFloaters', 'lunaArchivesScience', 'graphene', 'bioengineeringStudiesAnimals'] as const) {
         if (megacreditBalance > 0 && this.canUse(unit)) {
           this.$data[unit] = deductUnits(this.getAvailableUnits(unit), this.getResourceRate(unit));
         }
@@ -192,7 +192,7 @@ export default Vue.extend({
         for (const key of [
           'steel',
           'plants',
-          'drigibilesFloaters',
+          'dirigiblesFloaters',
           'microbes',
           'seeds',
           'graphene',
@@ -227,7 +227,7 @@ export default Vue.extend({
         (this.playerinput.ecologicalContractPlants && this.tags.includes(Tag.PLANT));
       case 'microbes':
         return this.tags.includes(Tag.PLANT);
-      case 'drigibilesFloaters':
+      case 'dirigiblesFloaters':
         return this.tags.includes(Tag.VENUS);
       case 'lunaArchivesScience':
         return this.tags.includes(Tag.MOON);
@@ -416,12 +416,12 @@ export default Vue.extend({
       <AppButton type="max" @click="setMaxValue('microbes')" title="MAX" />
     </div>
 
-    <div class="payments_type input-group" v-if="canUse('drigibilesFloaters')">
-      <i class="resource_icon resource_icon--floater payments_type_icon" :title="$t('Pay with Floaters from Drigibiles')"></i>
-      <AppButton type="minus" @click="reduceValue('drigibilesFloaters', 1)" />
-      <input class="form-input form-inline payments_input" v-model.number="drigibilesFloaters" />
-      <AppButton type="plus" @click="addValue('drigibilesFloaters', 1)" />
-      <AppButton type="max" @click="setMaxValue('drigibilesFloaters')" title="MAX" />
+    <div class="payments_type input-group" v-if="canUse('dirigiblesFloaters')">
+      <i class="resource_icon resource_icon--floater payments_type_icon" :title="$t('Pay with Floaters from dirigibles')"></i>
+      <AppButton type="minus" @click="reduceValue('dirigiblesFloaters', 1)" />
+      <input class="form-input form-inline payments_input" v-model.number="dirigiblesFloaters" />
+      <AppButton type="plus" @click="addValue('dirigiblesFloaters', 1)" />
+      <AppButton type="max" @click="setMaxValue('dirigiblesFloaters')" title="MAX" />
     </div>
 
     <div class="payments_type input-group" v-if="canUse('lunaArchivesScience')">

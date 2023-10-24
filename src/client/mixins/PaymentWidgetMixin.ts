@@ -26,7 +26,7 @@ export type SelectProjectCardToPlayDataModel = SelectPaymentDataModel & {
   card: CardModel;
   reserveUnits: Units;
   tags: Array<Tag>;
-  available: Omit<Units, 'megacredits' | 'energy'>;
+  available: Omit<Units, 'megacredits'>;
 }
 
 type PaymentWidgetModel = SelectPaymentDataModel & Partial<SelectProjectCardToPlayDataModel> & {
@@ -167,6 +167,7 @@ export const PaymentWidgetMixin = {
       case 'steel':
       case 'titanium':
       case 'plants':
+      case 'energy':
         if (model.hasOwnProperty('available')) {
           amount = model.available?.[unit] ?? -1;
           break;
@@ -232,6 +233,7 @@ export const PaymentWidgetMixin = {
         steel: 'Steel',
         titanium: 'Titanium',
         heat: 'Heat',
+        energy: 'Energy',
         seeds: 'Seeds',
         auroraiData: 'Data',
         kuiperAsteroids: 'Asteroids',

@@ -61,7 +61,8 @@ export enum TileType {
     MASSIVE_SOLAR_FARM, // 45
     GHG_FACTORY_DISTRICT, // 46
     MILITARY_BASE, //47
-    GREAT_HARBOR, //49
+    GREAT_HARBOR, //48
+    PRIMAL_NATIONAL_PARK, //49
 }
 
 export const tileTypeToString: Record<TileType, string> = {
@@ -115,6 +116,7 @@ export const tileTypeToString: Record<TileType, string> = {
   [TileType.GHG_FACTORY_DISTRICT]: CardName.GHG_FACTORY_DISTRICT,
   [TileType.MILITARY_BASE]: CardName.MILITARY_BASE,
   [TileType.GREAT_HARBOR]: CardName.GREAT_HARBOR,
+  [TileType.PRIMAL_NATIONAL_PARK]: CardName.PRIMAL_NATIONAL_PARK,
 };
 
 export const HAZARD_TILES = new Set([TileType.DUST_STORM_MILD, TileType.DUST_STORM_SEVERE, TileType.EROSION_MILD, TileType.EROSION_SEVERE]);

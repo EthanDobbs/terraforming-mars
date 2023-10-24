@@ -4,26 +4,28 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Tag} from '../../../common/cards/Tag';
+import {played} from '../Options';
 
-export class DeuteriumFusion extends Card implements IProjectCard {
+export class EnergyLab extends Card implements IProjectCard {
   constructor() {
     super({
-      type: CardType.AUTOMATED,
-      name: CardName.DEUTERIUM_FUSION,
+      type: CardType.ACTIVE,
+      name: CardName.ENERGY_LAB,
       tags: [Tag.SCIENCE, Tag.POWER],
-      cost: 9,
-      requirements: [{tag: Tag.VENUS}, {tag: Tag.EARTH}, {tag: Tag.JOVIAN}],
+      cost: 6,
 
       behavior: {
-        production: {energy: 2},
+        stock: {energy: 3},
       },
 
       metadata: {
-        cardNumber: 'x304',
+        cardNumber: 'x399',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.energy(2));
+          b.effect('When playing a power tag, energy may be used as 2 M€ each.',
+            (eb) => eb.energy(1, {played}).startEffect.energy(1).equals().megacredits(2)).br;
+          b.energy(3);
         }),
-        description: 'Requires that you have an Earth tag, a Venus tag, and a Jovian tag. Raise your energy production 2 steps.',
+        description: 'Gain 3 energy',
       },
     });
   }

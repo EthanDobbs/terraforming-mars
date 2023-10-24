@@ -27,6 +27,7 @@ export const DEFAULT_PAYMENT_VALUES: Record<SpendableResource, number> = {
   titanium: 3,
   heat: 1,
   plants: 3,
+  energy: 2,
 
   microbes: MICROBES_VALUE,
   dirigiblesFloaters: FLOATERS_VALUE,
@@ -48,6 +49,7 @@ export namespace Payment {
     steel: 0,
     titanium: 0,
     plants: 0,
+    energy: 0,
     microbes: 0,
     dirigiblesFloaters: 0,
     lunaArchivesScience: 0,
@@ -73,6 +75,7 @@ export namespace Payment {
       seeds: payment.seeds ?? 0,
       steel: payment.steel ?? 0,
       titanium: payment.titanium ?? 0,
+      energy: payment.energy ?? 0,
       graphene: payment.graphene ?? 0,
       kuiperAsteroids: payment.kuiperAsteroids ?? 0,
       plants: payment.plants ?? 0,

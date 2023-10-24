@@ -450,6 +450,14 @@ export class Player implements IPlayer {
       monsInsurance.payDebt(monsInsuranceOwner, this);
     }
   }
+  public legalFirmEffect(attackingPlayer: IPlayer) {
+    if (this.cardIsInEffect(CardName.LEGAL_FIRM)){
+      const retribution = Math.min(attackingPlayer.stock.megacredits, 3)
+      attackingPlayer.stock.deduct(Resource.MEGACREDITS, retribution, {log: true});
+      this.stock.megacredits += 1;
+      // The reason this isn't using the 'stealing' or 'from' option for resource deduction is to circumvent a possible infinite loop if 2 players both have this effect
+    }
+  }
 
   public resolveInsuranceInSoloGame() {
     const monsInsurance = <MonsInsurance> this.getCorporation(CardName.MONS_INSURANCE);
@@ -823,11 +831,13 @@ export class Player implements IPlayer {
     const martianLumberCorp = card.tags.includes(Tag.BUILDING) && this.cardIsInEffect(CardName.MARTIAN_LUMBER_CORP);
     const bioengineeringStudies = card.tags.includes(Tag.ANIMAL) && this.cardIsInEffect(CardName.BIOENGINEERING_STUDIES);
     const undergroundVenusBase = card.tags.includes(Tag.VENUS) && this.cardIsInEffect(CardName.UNDERGROUND_VENUS_BASE);
+    const energyLab = card.tags.includes(Tag.POWER) && this.cardIsInEffect(CardName.ENERGY_LAB);
     return {
       heat: this.canUseHeatAsMegaCredits,
       steel: this.lastCardPlayed === CardName.LAST_RESORT_INGENUITY || card.tags.includes(Tag.BUILDING) || heavyAerospaceTech || undergroundVenusBase,
       plants: martianLumberCorp || ecologicalContract,
       titanium: this.lastCardPlayed === CardName.LAST_RESORT_INGENUITY || card.tags.includes(Tag.SPACE),
+      energy: energyLab,
       lunaTradeFederationTitanium: this.canUseTitaniumAsMegacredits,
       seeds: card.tags.includes(Tag.PLANT) || card.name === CardName.GREENERY_STANDARD_PROJECT,
       dirigiblesFloaters: card.tags.includes(Tag.VENUS),
@@ -887,6 +897,7 @@ export class Player implements IPlayer {
       steel: payment.steel,
       titanium: payment.titanium,
       plants: payment.plants,
+      energy: payment.energy,
     });
 
     this.stock.deductUnits(standardUnits);
@@ -1354,6 +1365,7 @@ export class Player implements IPlayer {
       titanium: this.titanium - reserveUnits.titanium,
       plants: this.plants - reserveUnits.plants,
       heat: this.availableHeat() - reserveUnits.heat,
+      energy: this.energy - reserveUnits.energy,
       dirigiblesFloaters: this.getSpendable('dirigiblesFloaters'),
       microbes: this.getSpendable('microbes'),
       lunaArchivesScience: this.getSpendable('lunaArchivesScience'),
@@ -1398,6 +1410,7 @@ export class Player implements IPlayer {
       titanium: options?.titanium ?? false,
       heat: this.canUseHeatAsMegaCredits,
       plants: options?.plants ?? false,
+      energy: options?.energy ?? false,
       microbes: options?.microbes ?? false,
       dirigiblesFloaters: options?.dirigiblesFloaters ?? false,
       lunaArchivesScience: options?.lunaArchivesScience ?? false,

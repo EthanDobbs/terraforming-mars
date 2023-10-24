@@ -21,6 +21,7 @@ const RESOURCE_TO_ITEM_TYPE: Record<CardResource, CardRenderItemType | undefined
   [CardResource.HYDROELECTRIC_RESOURCE]: CardRenderItemType.HYDROELECTRIC_RESOURCE,
   [CardResource.CLONE_TROOPER]: CardRenderItemType.CLONE_TROOPER,
   [CardResource.BUILDING_RESOURCE]: CardRenderItemType.BUILDING_RESOURCE,
+  [CardResource.DIPLOMACY]: CardRenderItemType.DIPLOMACY,
   [CardResource.DISEASE]: undefined,
   [CardResource.SYNDICATE_FLEET]: undefined,
   [CardResource.SEED]: undefined,

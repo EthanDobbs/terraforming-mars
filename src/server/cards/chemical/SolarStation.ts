@@ -13,6 +13,7 @@ export class SolarStation extends Card implements IProjectCard {
       tags: [Tag.SPACE],
       cost: 11,
       requirements: {tag: Tag.SCIENCE, count: 4},
+      victoryPoints: 2,
 
       behavior: {
         production: {megacredits: 2},

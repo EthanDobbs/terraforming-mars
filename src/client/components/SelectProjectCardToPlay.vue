@@ -48,6 +48,7 @@ export default Vue.extend({
         'titanium',
         'heat',
         'plants',
+        'energy',
         'microbes',
         'dirigiblesFloaters',
         'lunaArchivesScience',
@@ -188,6 +189,10 @@ export default Vue.extend({
       if (megacreditBalance > 0 && this.canUse('plants')) {
         this.payment.plants = deductUnits(this.available.plants, this.getResourceRate('plants'));
       }
+      this.available.energy = Math.max(this.thisPlayer.energy - this.reserveUnits.energy, 0);
+      if (megacreditBalance > 0 && this.canUse('energy')) {
+        this.payment.plants = deductUnits(this.available.plants, this.getResourceRate('energy'));
+      }
 
       // If we are overspending
       if (megacreditBalance < 0) {
@@ -198,6 +203,7 @@ export default Vue.extend({
         for (const key of [
           'steel',
           'plants',
+          'energy',
           'dirigiblesFloaters',
           'microbes',
           'seeds',
@@ -232,6 +238,8 @@ export default Vue.extend({
       case 'plants':
         return this.tags.includes(Tag.BUILDING) && this.playerinput.paymentOptions.plants === true ||
         (this.playerinput.ecologicalContractPlants && this.tags.includes(Tag.PLANT));
+      case 'energy':
+        return this.tags.includes(Tag.POWER) && this.playerinput.paymentOptions.energy === true;
       case 'microbes':
         return this.tags.includes(Tag.PLANT);
       case 'dirigiblesFloaters':

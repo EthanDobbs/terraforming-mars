@@ -157,6 +157,9 @@ const TILE_CLASSES: Record<TileType, Classes> = {
   [TileType.GREAT_HARBOR]: {
     tile: 'card-tile-great-harbor',
   },
+  [TileType.PRIMAL_NATIONAL_PARK]: {
+    tile: 'card-tile-primal-national-park',
+  }
 };
 
 export default Vue.extend({

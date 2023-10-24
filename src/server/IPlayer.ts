@@ -200,6 +200,11 @@ export interface IPlayer {
    */
   resolveInsuranceInSoloGame(): void;
   /**
+   * When the card Legal Firm is in play, anyone who removes resources or production from
+   * the card owner has 3MC stolen from them
+   */
+  legalFirmEffect(attackingPlayer: IPlayer): void;
+  /**
    * Returns the number of colonies this player has on all the colony types.
    *
    * If Colonies is not in this game, this returns 0.

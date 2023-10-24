@@ -17,7 +17,7 @@ export class CommercialImports extends Card implements IProjectCard {
       victoryPoints: 1,
 
       behavior: {
-        production: {megacredits: {cities: {where: 'everywhere'}}},
+        production: {megacredits: {cities: {where: 'everywhere'}, all: true}},
       },
 
       metadata: {

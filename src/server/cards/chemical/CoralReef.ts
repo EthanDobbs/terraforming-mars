@@ -14,6 +14,7 @@ export class CoralReef extends Card implements IProjectCard {
       cost: 25,
       tags: [Tag.PLANT],
       requirements: {temperature: 6},
+      victoryPoints: 2,
 
       behavior: {
         ocean: {},

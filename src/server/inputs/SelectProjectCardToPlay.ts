@@ -63,6 +63,7 @@ export class SelectProjectCardToPlay extends BasePlayerInput<IProjectCard> {
       heavyAerospaceTechSteel: player.cardIsInEffect(CardName.HEAVY_AEROSPACE_TECH),
       ecologicalContractPlants: player.cardIsInEffect(CardName.ECOLOGICAL_CONTRACT),
       undergroundVenusBaseSteel: player.cardIsInEffect(CardName.UNDERGROUND_VENUS_BASE),
+      EnergyLabEnergy: player.cardIsInEffect(CardName.ENERGY_LAB),
       bioengineeringStudiesAnimals: player.getSpendable('bioengineeringStudiesAnimals'),
       asteroidBeltColonyAsteroids: player.getSpendable('asteroidBeltColonyAsteroids'),
       jovianConstructionYardFloaters: player.getSpendable('jovianConstructionYardFloaters'),

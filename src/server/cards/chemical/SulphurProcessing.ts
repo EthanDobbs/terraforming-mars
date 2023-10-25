@@ -10,7 +10,7 @@ export class SulphurProcessing extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.AUTOMATED,
-      name: CardName.SULPHUR_PROCESSING,
+      name: CardName.SULPHUR_PROCESSING, //Sulphur of Sulfur?
       tags: [Tag.BUILDING],
       cost: 10,
 

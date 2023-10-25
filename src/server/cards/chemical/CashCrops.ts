@@ -10,7 +10,7 @@ export class CashCrops extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.CASH_CROPS,
-      cost: 7,
+      cost: 9,
       tags: [Tag.PLANT],
       requirements: {temperature: -4},
 

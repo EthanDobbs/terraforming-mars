@@ -27,7 +27,7 @@ export class EnergyBeamColony extends Card implements IProjectCard {
             pb.plus().heat(2).br;
           }).colonies(1);
         }),
-        description: 'Lower your MC production 1 step, raise your energy production 2 steps, raise your heat production 2 steps, and place a colony.',
+        description: 'Lower your MC production 2 steps, raise your energy production 2 steps, raise your heat production 2 steps, and place a colony.',
       },
     });
   }

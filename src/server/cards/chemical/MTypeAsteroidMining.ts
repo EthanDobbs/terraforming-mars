@@ -20,6 +20,7 @@ export class MTypeAsteroidMining extends Card implements IActionCard {
       tags: [Tag.SPACE],
       cost: 26,
       resourceType: CardResource.ASTEROID,
+      victoryPoints: 2,
 
       metadata: {
         cardNumber: 'x035',

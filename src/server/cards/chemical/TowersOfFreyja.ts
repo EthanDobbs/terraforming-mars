@@ -11,8 +11,8 @@ export class TowersOfFreyja extends Card {
     super({
       name: CardName.TOWERS_OF_FREYJA,
       type: CardType.ACTIVE,
-      tags: [Tag.VENUS],
-      cost: 18,
+      tags: [Tag.CITY, Tag.VENUS],
+      cost: 16,
       requirements: {venus: 10},
       victoryPoints: 3,
 
@@ -29,7 +29,7 @@ export class TowersOfFreyja extends Card {
           }).br;
           b.city().asterix();
         }),
-        description: 'Requires 10% Venus or higher. Place a city tile ON THE RESERVED AREA'
+        description: 'Requires 10% Venus or higher. Place a city tile ON THE RESERVED AREA.'
       },
     });
   }

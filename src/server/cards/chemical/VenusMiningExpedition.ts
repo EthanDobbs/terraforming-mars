@@ -12,7 +12,7 @@ export class VenusMiningExpedition extends Card implements IProjectCard {
       type: CardType.EVENT,
       name: CardName.VENUS_MINING_EXPEDITION,
       tags: [Tag.VENUS],
-      cost: 8,
+      cost: 9,
       requirements: {venus: 8},
 
       behavior: {

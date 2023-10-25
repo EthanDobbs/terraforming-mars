@@ -3,6 +3,7 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {IPlayer} from '../../IPlayer';
 import {OrOptions} from '../../inputs/OrOptions';
+import {Tag} from '../../../common/cards/Tag';
 import {PlayerInput} from '../../PlayerInput';
 import {CardName} from '../../../common/cards/CardName';
 import {SelectOption} from '../../inputs/SelectOption';
@@ -17,6 +18,7 @@ export class Parasite extends Card implements IProjectCard {
     super({
       type: CardType.EVENT,
       name: CardName.PARASITE,
+      tags: [Tag.MICROBE],
       cost: 1,
       behavior: {
         addResourcesToAnyCard: {type: CardResource.MICROBE, count: 1},

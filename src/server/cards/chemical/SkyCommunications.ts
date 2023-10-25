@@ -25,7 +25,7 @@ export class SkyCommunications extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x262',
         renderData: CardRenderer.builder((b) => {
-          b.effect('whenever a city tile is played, add a floater here.', (eb) => {
+          b.effect('Whenever a city tile is played, add a floater here.', (eb) => {
             eb.city({all}).startEffect.floaters(1);
           }).br;
           b.action('Gain 1MC for each floater you have here (max 4).', (eb) => {

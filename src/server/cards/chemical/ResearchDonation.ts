@@ -24,7 +24,7 @@ export class ResearchDonation extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.cards(1).nbsp.megacredits(2).slash().science(1, {played});
         }),
-        description: 'Draw a card and gain 2MC for each science tag you have.',
+        description: 'Draw a card, and gain 2MC for each science tag you have.',
       },
     });
   }

@@ -3,6 +3,7 @@ import {Card} from '../Card';
 import {CardName} from '../../../common/cards/CardName';
 import {CardType} from '../../../common/cards/CardType';
 import {CardRenderer} from '../render/CardRenderer';
+import {Tag} from '../../../common/cards/Tag';
 import {Size} from '../../../common/cards/render/Size';
 import {IPlayer} from '../../IPlayer';
 import {Tag} from '../../../common/cards/Tag';
@@ -12,6 +13,7 @@ export class Canals extends Card implements IProjectCard {
     super({
       type: CardType.ACTIVE,
       name: CardName.CANALS,
+      tags: [Tag.BUILDING],
       cost: 11,
       tags: [Tag.BUILDING],
 

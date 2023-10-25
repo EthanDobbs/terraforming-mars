@@ -22,7 +22,7 @@ export class FloaterFacility extends ActionCard implements IProjectCard {
             addResourcesToAnyCard: {type: CardResource.FLOATER, count: 1,},
           },
           {
-            title: 'gain 2MC',
+            title: 'Gain 2MC',
             stock: {megacredits: 2},
           }],
         },

@@ -11,7 +11,7 @@ export class Kugelblitz extends Card implements IProjectCard {
     super({
       type: CardType.ACTIVE,
       name: CardName.KUGELBLITZ,
-      tags: [Tag.POWER],
+      tags: [Tag.SCIENCE, Tag.POWER],
       cost: 18,
       requirements: {tag: Tag.SCIENCE, count: 7},
       victoryPoints: 2,

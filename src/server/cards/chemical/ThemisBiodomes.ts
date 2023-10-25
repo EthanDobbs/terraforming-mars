@@ -31,7 +31,7 @@ export class ThemisBiodomes extends Card implements IProjectCard {
           b.production((pb) => pb.minus().energy(1).nbsp.plus().megacredits(2));
         }),
         description: {
-          text: 'Requires Venus 16% or higher. Add 2 microbes or 2 animals to a Venus card. Lower your energy production 1 step and raise your MC production 1 step.',
+          text: 'Requires Venus 16% or higher. Add 2 microbes or 2 animals to a Venus card. Lower your energy production 1 step and raise your MC production 2 steps.',
           align: 'left',
         },
       },

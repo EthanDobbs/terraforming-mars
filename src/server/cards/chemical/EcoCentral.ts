@@ -5,9 +5,6 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {digit} from '../Options';
-import {IPlayer} from '../../IPlayer';
-import {ICard} from '../ICard';
-import {Resource} from '../../../common/Resource';
 
 export class EcoCentral extends Card implements IProjectCard {
   constructor() {
@@ -27,8 +24,8 @@ export class EcoCentral extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x082',
         renderData: CardRenderer.builder((b) => {
-          b.effect('When you use the greenery standard project, gain 3MC.', (eb) => {
-            eb.greenery().asterix().startEffect.megacredits(3)
+          b.effect('When you use the greenery standard project, you pay 3MC less for it.', (eb) => {
+            eb.greenery().asterix().startEffect.megacredits(-3)
           }).br;
           b.production((pb) => {
             pb.minus().energy(1).br;
@@ -39,10 +36,5 @@ export class EcoCentral extends Card implements IProjectCard {
         description: 'Requires -12°C or higher. Lower your energy production 1 step, raise your MC production 3 steps, place a city tile, and gain 4 plants.'
       },
     });
-  }
-  public onStandardProject(player: IPlayer, projectType: ICard) {
-    if (projectType.name === CardName.GREENERY_STANDARD_PROJECT) {
-      player.stock.add(Resource.MEGACREDITS, 3, {log: true});
-    }
   }
 }

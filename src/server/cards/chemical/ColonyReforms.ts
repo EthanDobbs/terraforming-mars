@@ -19,7 +19,7 @@ export class ColonyReforms extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.colonyTile().asterix().nbsp.colon().text('+ 1');
         }),
-        description: 'Increase the colony tracks of a colony tile that you have a colony on 1 step.',
+        description: 'Increase the colony track of a colony tile that you have a colony on 1 step.',
       },
     });
   }

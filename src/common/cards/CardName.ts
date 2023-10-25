@@ -1384,7 +1384,7 @@ export enum CardName {
     INAUGERATION_CEREMONY = 'Inaugeration Ceremony',
     POLITICAL_DONATIONS = 'Political Donations',
     DESIGNED_ORGANISMS_CHEMICAL = 'Designed Organisms:chemical',
-    TELLURIAN_ECOSYSTEMS = 'Tellurian Ecosystmems',
+    TELLURIAN_ECOSYSTEMS = 'Tellurian Ecosystems',
     PRESERVATIONISM = 'Preservationism',
     INTERPLANETARY_DIPLOMACY = 'Interplanetry Diplomacy',
     WORLD_GOVERNMENT_DIPLOMATS = 'World Government Diplomats',

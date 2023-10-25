@@ -23,7 +23,7 @@ export class BiodiversityBoom extends Card implements IProjectCard {
           b.animals(1).asterix().nbsp.or().nbsp;
           b.animals(3, {played, digit}).colon().nbsp.animals(3, {digit}).asterix();
         }),
-        description: 'Add an animal to ANOTHER card or add 3 animals to another card of you have 3 animal tags.',
+        description: 'Add an animal to ANOTHER card or add 3 animals to ANOTHER card if you have 3 animal tags.',
       },
     });
   }

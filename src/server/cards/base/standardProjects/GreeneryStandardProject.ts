@@ -20,6 +20,13 @@ export class GreeneryStandardProject extends StandardProjectCard {
       },
     });
   }
+  protected override discount(player: IPlayer): number {
+    let discount = 0;
+    if (player.cardIsInEffect(CardName.ECO_CENTRAL)) {
+      discount += 3;
+    }
+    return discount;
+  }
 
   public override canPayWith(player: IPlayer) {
     if (player.isCorporation(CardName.SOYLENT_SEEDLING_SYSTEMS)) {

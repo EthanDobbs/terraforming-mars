@@ -4,26 +4,24 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 
-export class Kickbacks extends Card implements IProjectCard {
+export class ReducedSnowCoverage extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.AUTOMATED,
-      name: CardName.KICKBACKS,
+      name: CardName.REDUCED_SNOW_COVERAGE,
       cost: 1,
-      requirements: {chairman: {}},
-      victoryPoints: -1,
+      requirements: {oceans: 2},
 
       behavior: {
-        stock: {megacredits: 3},
-        production: {megacredits: 2},
+        production: {heat: 1},
       },
 
       metadata: {
-        cardNumber: 'x403',
+        cardNumber: 'x415',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.megacredits(2)).megacredits(3);
+          b.production((pb) => pb.heat(1));
         }),
-        description: 'Requires you are chairman. Raise your MC production 2 steps and gain 3MC.',
+        description: 'Requires 2 or more oceans. Raise your heat production 1 step.',
       },
     });
   }

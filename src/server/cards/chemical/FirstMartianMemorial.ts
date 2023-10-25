@@ -3,28 +3,29 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
+import {Tag} from '../../../common/cards/Tag';
 
-export class Kickbacks extends Card implements IProjectCard {
+export class FirstMaritanMemorial extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.AUTOMATED,
-      name: CardName.KICKBACKS,
-      cost: 1,
+      name: CardName.FIRST_MARTIAN_MEMORIAL,
+      cost: 5,
+      tags: [Tag.BUILDING],
       requirements: {chairman: {}},
-      victoryPoints: -1,
+      victoryPoints: 1,
 
       behavior: {
-        stock: {megacredits: 3},
-        production: {megacredits: 2},
+        drawCard: 1,
       },
 
       metadata: {
-        cardNumber: 'x403',
+        cardNumber: 'x418',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.megacredits(2)).megacredits(3);
+          b.cards(1);
         }),
-        description: 'Requires you are chairman. Raise your MC production 2 steps and gain 3MC.',
-      },
-    });
+        description: 'Requires that you are chairman. Draw a card.'
+      }
+    })
   }
 }

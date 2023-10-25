@@ -34,6 +34,7 @@
       :temperature="game.temperature"
       :aresExtension="game.gameOptions.aresExtension"
       :pathfindersExpansion="game.gameOptions.pathfindersExpansion"
+      :chemicalExpansion="game.gameOptions.chemicalExpansion"
       :altVenusBoard="game.gameOptions.altVenusBoard"
       :aresData="game.aresData"
       :tileView="tileView"

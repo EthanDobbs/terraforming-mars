@@ -39,6 +39,7 @@
           :temperature="game.temperature"
           :aresExtension="game.gameOptions.aresExtension"
           :pathfindersExpansion="game.gameOptions.pathfindersExpansion"
+          :chemicalExpansion="game.gameOptions.chemicalExpansion"
           :altVenusBoard="game.gameOptions.altVenusBoard"
           :aresData="game.aresData"
           :tileView="tileView"
@@ -226,9 +227,10 @@
             :spaces="game.spaces"
             :venusNextExtension="game.gameOptions.venusNextExtension"
             :venusScaleLevel="game.venusScaleLevel"
-            :boardName ="game.gameOptions.boardName"
+            :boardName="game.gameOptions.boardName"
             :aresExtension="game.gameOptions.aresExtension"
             :pathfindersExpansion="game.gameOptions.pathfindersExpansion"
+            :chemicalExpansion="game.gameOptions.chemicalExpansion"
             :aresData="game.aresData"
             :altVenusBoard="game.gameOptions.altVenusBoard">
           </board>

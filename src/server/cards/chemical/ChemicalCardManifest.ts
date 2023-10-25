@@ -407,7 +407,19 @@ import { RemoteAreaSuppliers } from './RemoteAreaSuppliers';
 import { MedicalInstitute } from './MedicalInstitute';
 import { MicrobialSupport } from './MicrobialSupport';
 import { VenusSocietySupport } from './VenusSocietySupport';
-
+//import { PrimalNationalPark } from './PrimalNationalPark';
+import { CorporateCitadel } from './CorporateCitadel';
+import { PreservationistSettlement } from './PreservationistSettlement';
+import { AuthoritarianState } from './AuthoritarianState';
+import { IndustryDevelopment } from './IndustryDevelopment';
+import { AcquiredBioengineeringFirm } from './AcquiredBioengineeringFirm';
+import { IonizingRadiationBeam } from './IonizingRadiationBeam';
+import { ReducedSnowCoverage } from './ReducedSnowCoverage';
+import { SocialWelfare } from './SocialWelfare';
+import { ExoplanetLanding } from './ExoplanetLanding';
+import { FirstMaritanMemorial } from './FirstMartianMemorial';
+import { TerraformingUnion } from './TerraformingUnion';
+import { AcquiredConsultingFirm } from './AcquiredConsultingFirm';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -829,5 +841,18 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.MEDICAL_INSTITUTE]: {Factory: MedicalInstitute, compatibility: 'turmoil'},
     [CardName.MICROBIAL_SUPPORT]: {Factory: MicrobialSupport, compatibility: 'turmoil'},
     [CardName.VENUS_SOCIETY_SUPPORT]: {Factory: VenusSocietySupport, compatibility: 'turmoil'},
+    //[CardName.PRIMAL_NATIONAL_PARK]: {Factory: PrimalNationalPark, compatability: 'turmoil'},
+    [CardName.CORPORATE_CITADEL]: {Factory: CorporateCitadel, compatibility: 'turmoil'},
+    [CardName.PRESERVATIONIST_SETTLEMENT]: {Factory: PreservationistSettlement, compatibility: 'turmoil'},
+    [CardName.AUTHORITARIAN_STATE]: {Factory: AuthoritarianState, compatibility: 'turmoil'},
+    [CardName.INDUSTRY_DEVELOPMENT]: {Factory: IndustryDevelopment, compatibility: 'turmoil'},
+    [CardName.ACQUIRED_BIOENGINEERING_FIRM]: {Factory: AcquiredBioengineeringFirm, compatibility: 'turmoil'},
+    [CardName.IONIZING_RADIATION_BEAM]: {Factory: IonizingRadiationBeam, compatibility: 'turmoil'},
+    [CardName.REDUCED_SNOW_COVERAGE]: {Factory: ReducedSnowCoverage, compatibility: 'turmoil'},
+    [CardName.SOCIAL_WELFARE]: {Factory: SocialWelfare, compatibility: 'turmoil'},
+    [CardName.EXOPLANET_LANDING]: {Factory: ExoplanetLanding, compatibility: 'turmoil'},
+    [CardName.FIRST_MARTIAN_MEMORIAL]: {Factory: FirstMaritanMemorial, compatibility: 'turmoil'},
+    [CardName.TERRAFORMING_UNION]: {Factory: TerraformingUnion, compatibility: 'turmoil'},
+    [CardName.ACQUIRED_CONSULTING_FIRM]: {Factory: AcquiredConsultingFirm, compatibility: 'turmoil'},
   }
 });

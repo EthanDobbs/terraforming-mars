@@ -5,27 +5,28 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Tag} from '../../../common/cards/Tag';
 import {PartyName} from '../../../common/turmoil/PartyName';
-import {played} from '../Options';
 
-export class VenusSocietySupport extends Card implements IProjectCard {
+export class IndustryDevelopment extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.AUTOMATED,
-      name: CardName.VENUS_SOCIETY_SUPPORT,
+      name: CardName.INDUSTRY_DEVELOPMENT,
       cost: 8,
-      tags: [Tag.VENUS],
-      requirements: {party: PartyName.UNITY},
+      tags: [Tag.BUILDING],
+      requirements: {party: PartyName.MARS},
 
       behavior: {
-        production: {megacredits: {tag: Tag.VENUS}},
+        production: {steel: 1, energy: 1},
       },
 
       metadata: {
-        cardNumber: 'x407',
+        cardNumber: 'x412',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.megacredits(1).slash().venus(1, {played}));
+          b.production((pb) => {
+            pb.steel(1).energy(1);
+          });
         }),
-        description: 'Requires that Unity are in power or that you have 2 delegates there. Raise your MC production 1 step for each Venus tag you have, including this.',
+        description: 'Requires that Mars First are in power or that you have 2 delegates there. Raise your steel production 1 step and your energy production 1 step.',
       },
     });
   }

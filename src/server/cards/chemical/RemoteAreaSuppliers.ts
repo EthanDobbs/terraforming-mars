@@ -9,11 +9,12 @@ import {IPlayer} from '../../IPlayer';
 import {PlayerInput} from '../../PlayerInput';
 import {SpaceType} from '../../../common/boards/SpaceType';
 import {Resource} from '../../../common/Resource';
+import {all} from '../Options';
 
 export class RemoteAreaSuppliers extends Card implements IProjectCard {
   constructor() {
     super({
-      type: CardType.ACTIVE,
+      type: CardType.AUTOMATED,
       name: CardName.REMOTE_AREA_SUPPLIERS,
       cost: 11,
       tags: [Tag.BUILDING],
@@ -22,7 +23,7 @@ export class RemoteAreaSuppliers extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x404',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.megacredits(1).slash().emptyTile('normal', {size: Size.SMALL}).asterix());
+          b.production((pb) => pb.megacredits(1).slash().emptyTile('normal', {size: Size.SMALL, all}).asterix());
         }),
         description: 'Raise your MC production 1 step for each tile ON MARS, AND NEXT TO NO OTHER TILE.',
       },

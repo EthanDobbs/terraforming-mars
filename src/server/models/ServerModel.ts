@@ -365,6 +365,7 @@ export class Server {
       boardName: options.boardName,
       bannedCards: options.bannedCards,
       ceoExtension: options.ceoExtension,
+      chemicalExpansion: options.chemicalExpansion,
       coloniesExtension: options.coloniesExtension,
       communityCardsOption: options.communityCardsOption,
       corporateEra: options.corporateEra,

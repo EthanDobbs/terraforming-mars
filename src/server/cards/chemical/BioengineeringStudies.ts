@@ -20,8 +20,8 @@ export class BioengineeringStudies extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x271',
         renderData: CardRenderer.builder((b) => {
-          b.effect('For every science tag you play, add an animal resource to this card.', (eb) => {
-            eb.science(1, {played}).startEffect.animals(1);
+          b.effect('For every Venus tag you play, add an animal resource to this card.', (eb) => {
+            eb.venus(1, {played}).startEffect.animals(1);
           }).br;
           b.effect('Animals on this card may be used as 3MC when paying for cards with animal tags.', (eb) => {
             eb.animals(1, {played}).startEffect.animals(1).equals().megacredits(3);

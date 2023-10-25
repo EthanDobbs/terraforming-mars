@@ -454,7 +454,7 @@ export class Player implements IPlayer {
     if (this.cardIsInEffect(CardName.LEGAL_FIRM)){
       const retribution = Math.min(attackingPlayer.stock.megacredits, 3)
       attackingPlayer.stock.deduct(Resource.MEGACREDITS, retribution, {log: true});
-      this.stock.megacredits += 1;
+      this.stock.megacredits += retribution;
       // The reason this isn't using the 'stealing' or 'from' option for resource deduction is to circumvent a possible infinite loop if 2 players both have this effect
     }
   }

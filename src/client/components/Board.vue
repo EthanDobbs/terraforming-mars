@@ -22,6 +22,12 @@
               <board-space :space="getSpaceById('77')" text="Lunar Embassy" :tileView="tileView"></board-space>
               <board-space :space="getSpaceById('78')" text="Venera Base" :tileView="tileView"></board-space>
             </template>
+            <template v-if="chemicalExpansion === true">
+              <board-space :space="getSpaceById('80')" text="Towers of Freyja" :tileView="tileView"></board-space>
+              <board-space :space="getSpaceById('81')" text="Ovda City" :tileView="tileView"></board-space>
+              <board-space :space="getSpaceById('82')" text="Capital of Venus" :tileView="tileView"></board-space>
+              <board-space :space="getSpaceById('83')" text="Jupiter Floating City" :tileView="tileView"></board-space>
+            </template>
         </div>
 
         <div class="global-numbers">
@@ -354,6 +360,9 @@ export default Vue.extend({
     tileView: {
       type: String as () => TileView,
       default: 'show',
+    },
+    chemicalExpansion: {
+      type: Boolean,
     },
   },
   components: {

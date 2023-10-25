@@ -10,7 +10,7 @@ import {played} from '../Options';
 export class MicrobialSupport extends Card implements IProjectCard {
   constructor() {
     super({
-      type: CardType.ACTIVE,
+      type: CardType.AUTOMATED,
       name: CardName.MICROBIAL_SUPPORT,
       cost: 8,
       tags: [Tag.MICROBE],

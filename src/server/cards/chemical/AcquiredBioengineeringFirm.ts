@@ -5,27 +5,29 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Tag} from '../../../common/cards/Tag';
 import {PartyName} from '../../../common/turmoil/PartyName';
-import {played} from '../Options';
 
-export class VenusSocietySupport extends Card implements IProjectCard {
+export class AcquiredBioengineeringFirm extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.AUTOMATED,
-      name: CardName.VENUS_SOCIETY_SUPPORT,
+      name: CardName.ACQUIRED_BIOENGINEERING_FIRM,
       cost: 8,
-      tags: [Tag.VENUS],
-      requirements: {party: PartyName.UNITY},
+      tags: [Tag.PLANT, Tag.EARTH],
+      requirements: {party: PartyName.GREENS},
 
       behavior: {
-        production: {megacredits: {tag: Tag.VENUS}},
+        production: {plants: 1},
+        stock: {plants: 2},
       },
 
       metadata: {
-        cardNumber: 'x407',
+        cardNumber: 'x413',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.megacredits(1).slash().venus(1, {played}));
+          b.production((pb) => {
+            pb.plants(1);
+          }).plants(2);
         }),
-        description: 'Requires that Unity are in power or that you have 2 delegates there. Raise your MC production 1 step for each Venus tag you have, including this.',
+        description: 'Requires that Greens are in power or that you have 2 delegates there. Raise your plant production 1 step and gain 2 plants.',
       },
     });
   }

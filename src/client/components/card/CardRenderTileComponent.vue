@@ -135,6 +135,7 @@ const TILE_CLASSES: Record<TileType, Classes> = {
   [TileType.RED_CITY]: {}, // This isn't shown on a card
   [TileType.MARTIAN_NATURE_WONDERS]: {}, // This isn't shown on a card
   [TileType.MARS_NOMADS]: {}, // This isn't shown on a card
+  [TileType.REY_SKYWALKER]: {}, // This isn't shown on a card
   [TileType.OVERGROWTH]: {
     tile: 'card-tile-overgrowth',
   },
@@ -156,6 +157,9 @@ const TILE_CLASSES: Record<TileType, Classes> = {
   [TileType.GREAT_HARBOR]: {
     tile: 'card-tile-great-harbor',
   },
+  [TileType.PRIMAL_NATIONAL_PARK]: {
+    tile: 'card-tile-primal-national-park',
+  }
 };
 
 export default Vue.extend({

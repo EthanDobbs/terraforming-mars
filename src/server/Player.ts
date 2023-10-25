@@ -8,7 +8,8 @@ import {Color} from '../common/Color';
 import {ICorporationCard} from './cards/corporation/ICorporationCard';
 import {IGame} from './IGame';
 import {Game} from './Game';
-import {Payment, PaymentUnit, PAYMENT_UNITS, PaymentOptions, DEFAULT_PAYMENT_VALUES} from '../common/inputs/Payment';
+import {Payment, PaymentOptions, DEFAULT_PAYMENT_VALUES} from '../common/inputs/Payment';
+import {SpendableResource, SPENDABLE_RESOURCES, SpendableCardResource, CARD_FOR_SPENDABLE_RESOURCE} from '../common/inputs/Spendable';
 import {IAward} from './awards/IAward';
 import {ICard, isIActionCard, IActionCard, DynamicTRSource} from './cards/ICard';
 import {TRSource} from '../common/cards/TRSource';
@@ -449,6 +450,14 @@ export class Player implements IPlayer {
       monsInsurance.payDebt(monsInsuranceOwner, this);
     }
   }
+  public legalFirmEffect(attackingPlayer: IPlayer) {
+    if (this.cardIsInEffect(CardName.LEGAL_FIRM)){
+      const retribution = Math.min(attackingPlayer.stock.megacredits, 3)
+      attackingPlayer.stock.deduct(Resource.MEGACREDITS, retribution, {log: true});
+      this.stock.megacredits += retribution;
+      // The reason this isn't using the 'stealing' or 'from' option for resource deduction is to circumvent a possible infinite loop if 2 players both have this effect
+    }
+  }
 
   public resolveInsuranceInSoloGame() {
     const monsInsurance = <MonsInsurance> this.getCorporation(CardName.MONS_INSURANCE);
@@ -822,14 +831,16 @@ export class Player implements IPlayer {
     const martianLumberCorp = card.tags.includes(Tag.BUILDING) && this.cardIsInEffect(CardName.MARTIAN_LUMBER_CORP);
     const bioengineeringStudies = card.tags.includes(Tag.ANIMAL) && this.cardIsInEffect(CardName.BIOENGINEERING_STUDIES);
     const undergroundVenusBase = card.tags.includes(Tag.VENUS) && this.cardIsInEffect(CardName.UNDERGROUND_VENUS_BASE);
+    const energyLab = card.tags.includes(Tag.POWER) && this.cardIsInEffect(CardName.ENERGY_LAB);
     return {
       heat: this.canUseHeatAsMegaCredits,
       steel: this.lastCardPlayed === CardName.LAST_RESORT_INGENUITY || card.tags.includes(Tag.BUILDING) || heavyAerospaceTech || undergroundVenusBase,
       plants: martianLumberCorp || ecologicalContract,
       titanium: this.lastCardPlayed === CardName.LAST_RESORT_INGENUITY || card.tags.includes(Tag.SPACE),
+      energy: energyLab,
       lunaTradeFederationTitanium: this.canUseTitaniumAsMegacredits,
       seeds: card.tags.includes(Tag.PLANT) || card.name === CardName.GREENERY_STANDARD_PROJECT,
-      drigibilesFloaters: card.tags.includes(Tag.VENUS),
+      dirigiblesFloaters: card.tags.includes(Tag.VENUS),
       microbes: card.tags.includes(Tag.PLANT),
       lunaArchivesScience: card.tags.includes(Tag.MOON),
       // TODO(kberg): add this.isCorporation(CardName.SPIRE)
@@ -853,8 +864,8 @@ export class Player implements IPlayer {
       throw new Error('You do not have that many resources to spend');
     }
 
-    if (payment.drigibilesFloaters > 0) {
-      if (selectedCard.name === CardName.STRATOSPHERIC_BIRDS && payment.drigibilesFloaters === this.getSpendableDrigibilesFloaters()) {
+    if (payment.dirigiblesFloaters > 0) {
+      if (selectedCard.name === CardName.STRATOSPHERIC_BIRDS && payment.dirigiblesFloaters === this.getSpendable('dirigiblesFloaters')) {
         const cardsWithFloater = this.getCardsWithResources(CardResource.FLOATER);
         if (cardsWithFloater.length === 1) {
           throw new Error('Cannot spend all floaters to play Stratospheric Birds');
@@ -876,45 +887,8 @@ export class Player implements IPlayer {
     return card?.resourceCount ?? 0;
   }
 
-  public getSpendableMicrobes(): number {
-    return this.resourcesOnCard(CardName.PSYCHROPHILES);
-  }
-
-  public getSpendableDrigibilesFloaters(): number {
-    return this.resourcesOnCard(CardName.DIRIGIBLES);
-  }
-
-  public getSpendableLunaArchiveScienceResources(): number {
-    return this.resourcesOnCard(CardName.LUNA_ARCHIVES);
-  }
-
-  public getSpendableSeedResources(): number {
-    return this.getCorporation(CardName.SOYLENT_SEEDLING_SYSTEMS)?.resourceCount ?? 0;
-  }
-
-  public getSpendableData(): number {
-    return this.getCorporation(CardName.AURORAI)?.resourceCount ?? 0;
-  }
-
-  public getSpendableGraphene(): number {
-    return this.resourcesOnCard(CardName.CARBON_NANOSYSTEMS);
-  }
-
-  public getSpendableKuiperAsteroids(): number {
-    return this.resourcesOnCard(CardName.KUIPER_COOPERATIVE);
-  }
-
-  public getSpendableSpireScienceResources(): number {
-    return this.getCorporation(CardName.SPIRE)?.resourceCount ?? 0;
-  }
-  public getSpendableBioengineeringStudiesAnimals(): number {
-    return this.resourcesOnCard(CardName.BIOENGINEERING_STUDIES);
-  }
-  public getSpendableAsteroidBeltColonyAsteroids(): number {
-    return this.resourcesOnCard(CardName.ASTEROID_BELT_COLONY);
-  }
-  public getSpendableJovianConstructionYardFloaters(): number {
-    return this.resourcesOnCard(CardName.JOVIAN_CONSTRUCTION_YARD);
+  public getSpendable(SpendableResource: SpendableCardResource): number {
+    return this.resourcesOnCard(CARD_FOR_SPENDABLE_RESOURCE[SpendableResource]);
   }
 
   public pay(payment: Payment) {
@@ -923,6 +897,7 @@ export class Player implements IPlayer {
       steel: payment.steel,
       titanium: payment.titanium,
       plants: payment.plants,
+      energy: payment.energy,
     });
 
     this.stock.deductUnits(standardUnits);
@@ -943,7 +918,7 @@ export class Player implements IPlayer {
     };
 
     removeResourcesOnCard(CardName.PSYCHROPHILES, payment.microbes);
-    removeResourcesOnCard(CardName.DIRIGIBLES, payment.drigibilesFloaters);
+    removeResourcesOnCard(CardName.DIRIGIBLES, payment.dirigiblesFloaters);
     removeResourcesOnCard(CardName.LUNA_ARCHIVES, payment.lunaArchivesScience);
     removeResourcesOnCard(CardName.SPIRE, payment.spireScience);
     removeResourcesOnCard(CardName.CARBON_NANOSYSTEMS, payment.graphene);
@@ -1390,24 +1365,25 @@ export class Player implements IPlayer {
       titanium: this.titanium - reserveUnits.titanium,
       plants: this.plants - reserveUnits.plants,
       heat: this.availableHeat() - reserveUnits.heat,
-      drigibilesFloaters: this.getSpendableDrigibilesFloaters(),
-      microbes: this.getSpendableMicrobes(),
-      lunaArchivesScience: this.getSpendableLunaArchiveScienceResources(),
-      spireScience: this.getSpendableSpireScienceResources(),
-      seeds: this.getSpendableSeedResources(),
-      auroraiData: this.getSpendableData(),
-      graphene: this.getSpendableGraphene(),
-      kuiperAsteroids: this.getSpendableKuiperAsteroids(),
-      bioengineeringStudiesAnimals: this.getSpendableBioengineeringStudiesAnimals(),
-      asteroidBeltColonyAsteroids: this.getSpendableAsteroidBeltColonyAsteroids(),
-      jovianConstructionYardFloaters: this.getSpendableJovianConstructionYardFloaters(),
+      energy: this.energy - reserveUnits.energy,
+      dirigiblesFloaters: this.getSpendable('dirigiblesFloaters'),
+      microbes: this.getSpendable('microbes'),
+      lunaArchivesScience: this.getSpendable('lunaArchivesScience'),
+      spireScience: this.getSpendable('spireScience'),
+      seeds: this.getSpendable('seeds'),
+      auroraiData: this.getSpendable('auroraiData'),
+      graphene: this.getSpendable('graphene'),
+      kuiperAsteroids: this.getSpendable('kuiperAsteroids'),
+      bioengineeringStudiesAnimals: this.getSpendable('bioengineeringStudiesAnimals'),
+      asteroidBeltColonyAsteroids: this.getSpendable('asteroidBeltColonyAsteroids'),
+      jovianConstructionYardFloaters: this.getSpendable('jovianConstructionYardFloaters'),
     };
   }
 
   public canSpend(payment: Payment, reserveUnits?: Units): boolean {
     const maxPayable = this.maxSpendable(reserveUnits);
 
-    return PAYMENT_UNITS.every((key) =>
+    return SPENDABLE_RESOURCES.every((key) =>
       0 <= payment[key] && payment[key] <= maxPayable[key]);
   }
 
@@ -1428,14 +1404,15 @@ export class Player implements IPlayer {
       titanium: this.getTitaniumValue(),
     };
 
-    const usable: {[key in PaymentUnit]: boolean} = {
+    const usable: {[key in SpendableResource]: boolean} = {
       megaCredits: true,
       steel: options?.steel ?? false,
       titanium: options?.titanium ?? false,
       heat: this.canUseHeatAsMegaCredits,
       plants: options?.plants ?? false,
+      energy: options?.energy ?? false,
       microbes: options?.microbes ?? false,
-      drigibilesFloaters: options?.drigibilesFloaters ?? false,
+      dirigiblesFloaters: options?.dirigiblesFloaters ?? false,
       lunaArchivesScience: options?.lunaArchivesScience ?? false,
       spireScience: options?.spireScience ?? false,
       seeds: options?.seeds ?? false,
@@ -1454,7 +1431,7 @@ export class Player implements IPlayer {
     }
 
     let totalToPay = 0;
-    for (const key of PAYMENT_UNITS) {
+    for (const key of SPENDABLE_RESOURCES) {
       if (usable[key]) totalToPay += payment[key] * multiplier[key];
     }
 

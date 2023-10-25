@@ -40,27 +40,19 @@ export class InstantiatedSolarFlare extends Card implements IProjectCard {
     if (player.game.isSoloMode()) {
       return undefined;
     }
-
     const orOptionsAnimals = new RemoveResourcesFromCard(player, CardResource.ANIMAL, 1, false, false).execute() as OrOptions;
-    const removeAnimals = orOptionsAnimals !== undefined ?
-      orOptionsAnimals.options[0] :
-      undefined;
-
-    // If no other player has resources to remove
-    // assume player will remove nothing from themselves
-    if (removeAnimals === undefined) {
-      player.game.log('There was nobody to remove animals from.');
-      return undefined;
-    }
 
     const orOptions = new OrOptions();
-    if (removeAnimals !== undefined) {
-      orOptions.options.push(removeAnimals);
+    if (orOptionsAnimals !== undefined) {
+      orOptions.options.push(orOptionsAnimals);
+    } else {
+      player.game.log('There was nobody to remove animals from.');
+      return undefined;
     }
     orOptions.options.push(new SelectOption('Skip removal', 'Confirm').andThen(() => {
       return undefined;
     }));
 
-    return orOptions;
+    return orOptionsAnimals;
   }
 }

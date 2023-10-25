@@ -12,7 +12,7 @@ import {MarsBoard} from './MarsBoard';
 
 export class TerraCimmeriaBoard extends MarsBoard {
   public static newInstance(gameOptions: GameOptions, rng: Random): TerraCimmeriaBoard {
-    const builder = new BoardBuilder(gameOptions.venusNextExtension, gameOptions.pathfindersExpansion);
+    const builder = new BoardBuilder(gameOptions.venusNextExtension, gameOptions.pathfindersExpansion, gameOptions.chemicalExpansion);
 
     const PLANT = SpaceBonus.PLANT;
     const STEEL = SpaceBonus.STEEL;

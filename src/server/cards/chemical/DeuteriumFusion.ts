@@ -5,11 +5,11 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Tag} from '../../../common/cards/Tag';
 
-export class DueteriumFusion extends Card implements IProjectCard {
+export class DeuteriumFusion extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.AUTOMATED,
-      name: CardName.DUETERIUM_FUSION,
+      name: CardName.DEUTERIUM_FUSION,
       tags: [Tag.SCIENCE, Tag.POWER],
       cost: 9,
       requirements: [{tag: Tag.VENUS}, {tag: Tag.EARTH}, {tag: Tag.JOVIAN}],

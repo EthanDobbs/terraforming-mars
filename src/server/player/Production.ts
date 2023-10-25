@@ -63,9 +63,10 @@ export class Production {
       LawSuit.resourceHook(this.player, resource, delta, from);
     }
 
-    // Mons Insurance hook
+    // Mons Insurance & Legal Firm hook
     if (options?.from !== undefined && delta < 0 && (typeof(from) === 'object' && from.id !== this.player.id)) {
       this.player.resolveInsurance();
+      this.player.legalFirmEffect(from);
     }
 
     // Manutech hook

@@ -302,7 +302,7 @@ import {ThemisBiodomes} from './ThemisBiodomes';
 import {AtenGroupMining} from './AtenGroupMining';
 import {RhizobiomeResearch} from './RhizobiomeResearch';
 import {FloatingPowerStation} from './FloatingPowerStation';
-import {DueteriumFusion} from './DeuteriumFusion';
+import {DeuteriumFusion} from './DeuteriumFusion';
 import {VenusPowerPlant} from './VenusPowerPlant';
 import {TerrestrialAlliance} from './TerrestrialAlliance';
 import {EclipseStation} from './EclipseStation';
@@ -384,6 +384,42 @@ import { ArcticEndoliths } from './ArcticEndoliths';
 import { HyperExtremophileFungi } from './HyperExtremophileFungi';
 import { BiodiversityBoom } from './BiodiversityBoom';
 import { ColonyReforms } from './ColonyReforms';
+import { DirectedSabotageImpact } from './DirectedSabotageImpact';
+import { FusionBombing } from './FusionBombing';
+import { DemocraticReform } from './DemocraticReform';
+import { MediaManipulation } from './MediaManipulation';
+import { InaugerationCeremony } from './InaugerationCeremony';
+import { PoliticalDonations } from './PoliticalDonations';
+//import { DesignedOrganismsChemical } from './DesignedOrganismsChemical';
+import { TellurianEcosystems } from './TellurianEcosystems';
+//import { Preservationism } from './Preservationism';
+import { InterplanetaryDiplomacy } from './InterplanetaryDiplomacy';
+import { WorldGovernmentDiplomats } from './WorldGovernmentDiplomats';
+import { HybridVessels } from './HybridVessels';
+import { ShortTermBonuses } from './ShortTermBonuses';
+import { MartianResearchNetwork } from './MartianResearchNetwork';
+import { EnergyLab } from './EnergyLab';
+//import { StimulusPrograms } from './StimulusPrograms',
+import { CommitteeCoalition } from './CommitteeCoalition';
+import { LegalFirm } from './LegalFirm';
+import { Kickbacks } from './Kickbacks';
+import { RemoteAreaSuppliers } from './RemoteAreaSuppliers';
+import { MedicalInstitute } from './MedicalInstitute';
+import { MicrobialSupport } from './MicrobialSupport';
+import { VenusSocietySupport } from './VenusSocietySupport';
+//import { PrimalNationalPark } from './PrimalNationalPark';
+import { CorporateCitadel } from './CorporateCitadel';
+import { PreservationistSettlement } from './PreservationistSettlement';
+import { AuthoritarianState } from './AuthoritarianState';
+import { IndustryDevelopment } from './IndustryDevelopment';
+import { AcquiredBioengineeringFirm } from './AcquiredBioengineeringFirm';
+import { IonizingRadiationBeam } from './IonizingRadiationBeam';
+import { ReducedSnowCoverage } from './ReducedSnowCoverage';
+import { SocialWelfare } from './SocialWelfare';
+import { ExoplanetLanding } from './ExoplanetLanding';
+import { FirstMaritanMemorial } from './FirstMartianMemorial';
+import { TerraformingUnion } from './TerraformingUnion';
+import { AcquiredConsultingFirm } from './AcquiredConsultingFirm';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -699,7 +735,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.ATEN_GROUP_MINING]: {Factory: AtenGroupMining, compatibility: 'venus'},
     [CardName.RHIZOBIOME_RESEARCH]: {Factory: RhizobiomeResearch, compatibility: 'venus'},
     [CardName.FLOATING_POWER_STATION]: {Factory: FloatingPowerStation, compatibility: 'venus'},
-    [CardName.DUETERIUM_FUSION]: {Factory: DueteriumFusion, compatibility: 'venus'},
+    [CardName.DEUTERIUM_FUSION]: {Factory: DeuteriumFusion, compatibility: 'venus'},
     [CardName.VENUS_POWER_PLANT]: {Factory: VenusPowerPlant, compatibility: 'venus'},
     [CardName.TERRESTRIAL_ALLIANCE]: {Factory: TerrestrialAlliance, compatibility: 'venus'},
     [CardName.ECLIPSE_STATION]: {Factory: EclipseStation, compatibility: 'venus'},
@@ -781,5 +817,42 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.HYPER_EXTREMOPHILE_FUNGI]: {Factory: HyperExtremophileFungi, compatibility: 'colonies'},
     [CardName.BIODIVERSITY_BOOM]: {Factory: BiodiversityBoom, compatibility: 'colonies'},
     [CardName.COLONY_REFORMS]: {Factory: ColonyReforms, compatibility: 'colonies'},
+
+    [CardName.DIRECTED_SABOTAGE_IMPACT]: {Factory: DirectedSabotageImpact, compatibility: 'turmoil'},
+    [CardName.FUSION_BOMBING]: {Factory: FusionBombing, compatibility: 'turmoil'},
+    [CardName.DEMOCRATIC_REFORM]: {Factory: DemocraticReform, compatibility: 'turmoil'},
+    [CardName.MEDIA_MANIPULATION]: {Factory: MediaManipulation, compatibility: 'turmoil'},
+    [CardName.INAUGERATION_CEREMONY]: {Factory: InaugerationCeremony, compatibility: 'turmoil'},
+    [CardName.POLITICAL_DONATIONS]: {Factory: PoliticalDonations, compatibility: 'turmoil'},
+    //[CardName.DESIGNED_ORGANISMS_CHEMICAL]: {Factory: DesignedOrganismsChemical, compatibility: 'turmoil'},
+    [CardName.TELLURIAN_ECOSYSTEMS]: {Factory: TellurianEcosystems, compatibility: 'turmoil'},
+    //[CardName.PRESERVATIONISM]: {Factory: Preservationism, compatibility: 'turmoil'},
+    [CardName.INTERPLANETARY_DIPLOMACY]: {Factory: InterplanetaryDiplomacy, compatibility: 'turmoil'},
+    [CardName.WORLD_GOVERNMENT_DIPLOMATS]: {Factory: WorldGovernmentDiplomats, compatibility: 'turmoil'},
+    [CardName.HYBRID_VESSELS]: {Factory: HybridVessels, compatibility: 'turmoil'},
+    [CardName.SHORT_TERM_BONUSES]: {Factory: ShortTermBonuses, compatibility: 'turmoil'},
+    [CardName.MARTIAN_RESEARCH_NETWORK]: {Factory: MartianResearchNetwork, compatibility: 'turmoil'},
+    [CardName.ENERGY_LAB]: {Factory: EnergyLab, compatibility: 'turmoil'},
+    //[CardName.STIMULUS_PROGRAMS]: {Factory: StimulusPrograms, compatibility: 'turmoil'},
+    [CardName.COMMITTEE_COALITION]: {Factory: CommitteeCoalition, compatibility: 'turmoil'},
+    [CardName.LEGAL_FIRM]: {Factory: LegalFirm, compatibility: 'turmoil'},
+    [CardName.KICKBACKS]: {Factory: Kickbacks, compatibility: 'turmoil'},
+    [CardName.REMOTE_AREA_SUPPLIERS]: {Factory: RemoteAreaSuppliers, compatibility: 'turmoil'},
+    [CardName.MEDICAL_INSTITUTE]: {Factory: MedicalInstitute, compatibility: 'turmoil'},
+    [CardName.MICROBIAL_SUPPORT]: {Factory: MicrobialSupport, compatibility: 'turmoil'},
+    [CardName.VENUS_SOCIETY_SUPPORT]: {Factory: VenusSocietySupport, compatibility: 'turmoil'},
+    //[CardName.PRIMAL_NATIONAL_PARK]: {Factory: PrimalNationalPark, compatability: 'turmoil'},
+    [CardName.CORPORATE_CITADEL]: {Factory: CorporateCitadel, compatibility: 'turmoil'},
+    [CardName.PRESERVATIONIST_SETTLEMENT]: {Factory: PreservationistSettlement, compatibility: 'turmoil'},
+    [CardName.AUTHORITARIAN_STATE]: {Factory: AuthoritarianState, compatibility: 'turmoil'},
+    [CardName.INDUSTRY_DEVELOPMENT]: {Factory: IndustryDevelopment, compatibility: 'turmoil'},
+    [CardName.ACQUIRED_BIOENGINEERING_FIRM]: {Factory: AcquiredBioengineeringFirm, compatibility: 'turmoil'},
+    [CardName.IONIZING_RADIATION_BEAM]: {Factory: IonizingRadiationBeam, compatibility: 'turmoil'},
+    [CardName.REDUCED_SNOW_COVERAGE]: {Factory: ReducedSnowCoverage, compatibility: 'turmoil'},
+    [CardName.SOCIAL_WELFARE]: {Factory: SocialWelfare, compatibility: 'turmoil'},
+    [CardName.EXOPLANET_LANDING]: {Factory: ExoplanetLanding, compatibility: 'turmoil'},
+    [CardName.FIRST_MARTIAN_MEMORIAL]: {Factory: FirstMaritanMemorial, compatibility: 'turmoil'},
+    [CardName.TERRAFORMING_UNION]: {Factory: TerraformingUnion, compatibility: 'turmoil'},
+    [CardName.ACQUIRED_CONSULTING_FIRM]: {Factory: AcquiredConsultingFirm, compatibility: 'turmoil'},
   }
 });

@@ -4,6 +4,7 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Tag} from '../../../common/cards/Tag';
+import {SpaceName} from '../../SpaceName';
 
 export class OvdaCity extends Card implements IProjectCard {
   constructor() {
@@ -17,7 +18,7 @@ export class OvdaCity extends Card implements IProjectCard {
 
       behavior: {
         production: {megacredits: 3, energy: -1},
-        //off-world city
+        city: {space: SpaceName.OVDA_CITY},
       },
 
       metadata: {

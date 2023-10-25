@@ -5,6 +5,7 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardResource} from '../../../common/CardResource';
 import {CardRenderer} from '../render/CardRenderer';
 import {ActionCard} from '../ActionCard';
+import {SpaceName} from '../../SpaceName';
 
 export class JupiterFloatingCity extends ActionCard implements IProjectCard {
   constructor() {
@@ -18,7 +19,7 @@ export class JupiterFloatingCity extends ActionCard implements IProjectCard {
 
       behavior:{
         production: {energy: -1},
-        // off world city
+        city: {space: SpaceName.JUPITER_FLOATING_CITY},
       },
       
       action:{

@@ -4,7 +4,7 @@ import {CardRenderer} from '../render/CardRenderer';
 import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {played} from '../Options';
-//import {SpaceName} from '../../SpaceName';
+import {SpaceName} from '../../SpaceName';
 
 export class TowersOfFreyja extends Card {
   constructor() {
@@ -16,9 +16,9 @@ export class TowersOfFreyja extends Card {
       requirements: {venus: 10},
       victoryPoints: 3,
 
-      /*behavior: {
+      behavior: {
         city: {space: SpaceName.TOWERS_OF_FREYJA},
-      },*/
+      },
 
       cardDiscount: {tag: Tag.VENUS, amount: 2},
       metadata: {

@@ -313,6 +313,9 @@ abstract class Builder<T> {
   public buildingResource(amount: number = 1) {
     return this._appendToRow(new CardRenderItem(CardRenderItemType.BUILDING_RESOURCE, amount));
   }
+  public diplomacy(amount: number = 1) {
+    return this._appendToRow(new CardRenderItem(CardRenderItemType.DIPLOMACY, amount));
+  }
 
   public selfReplicatingRobots() {
     return this._appendToRow(new CardRenderItem(CardRenderItemType.SELF_REPLICATING));
@@ -462,10 +465,10 @@ abstract class Builder<T> {
   //   return this._appendToRow(item);
   // }
 
-  // public excavate(count: number = 1, options?: ItemOptions) {
-  //   const item = new CardRenderItem(CardRenderItemType.EXCAVATE, count, options);
-  //   return this._appendToRow(item);
-  // }
+  public excavate(count: number = 1, options?: ItemOptions) {
+    const item = new CardRenderItem(CardRenderItemType.EXCAVATE, count, options);
+    return this._appendToRow(item);
+  }
 
   public corruption(count: number = 1, options?: ItemOptions) {
     const item = new CardRenderItem(CardRenderItemType.CORRUPTION, count, options);

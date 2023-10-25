@@ -23,13 +23,13 @@ export class LongTermEvolutionStudy extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Add an animal to this card',
-            addResources: 1,
-          },
-          {
             title: 'Spend 1 animal to draw a card',
             spend: {resourcesHere: 1},
             drawCard: 1,
+          },
+          {
+            title: 'Add an animal to this card',
+            addResources: 1,
           }],
         },
       },

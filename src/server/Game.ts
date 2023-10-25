@@ -338,7 +338,7 @@ export class Game implements IGame, Logger {
           }
           //For testing purposes
           if (gameOptions.chemicalExpansion) {
-            var card = new CardFinder().getProjectCardByName(CardName.PRIVATE_COLONY);
+            var card = new CardFinder().getProjectCardByName(CardName.ACQUIRED_CONSULTING_FIRM);
             if (card !== undefined) {
               player.dealtProjectCards.push(card);
             } else {
@@ -1312,9 +1312,12 @@ export class Game implements IGame, Logger {
 
   public simpleAddTile(player: IPlayer, space: Space, tile: Tile) {
     space.tile = tile;
-    space.player = player;
-    if (tile.tileType === TileType.OCEAN || tile.tileType === TileType.MARTIAN_NATURE_WONDERS) {
+    if (tile.tileType === TileType.OCEAN ||
+      tile.tileType === TileType.MARTIAN_NATURE_WONDERS ||
+      tile.tileType === TileType.REY_SKYWALKER) {
       space.player = undefined;
+    } else {
+      space.player = player;
     }
     LogHelper.logTilePlacement(player, space, tile.tileType);
   }

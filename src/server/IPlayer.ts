@@ -3,6 +3,7 @@ import {CardName} from '../common/cards/CardName';
 import {ICorporationCard} from './cards/corporation/ICorporationCard';
 import {IGame, isIGame} from './IGame';
 import {Payment, PaymentOptions} from '../common/inputs/Payment';
+import {SpendableCardResource} from '../common/inputs/Spendable';
 import {ICard, IActionCard, DynamicTRSource} from './cards/ICard';
 import {TRSource} from '../common/cards/TRSource';
 import {IProjectCard} from './cards/IProjectCard';
@@ -199,6 +200,11 @@ export interface IPlayer {
    */
   resolveInsuranceInSoloGame(): void;
   /**
+   * When the card Legal Firm is in play, anyone who removes resources or production from
+   * the card owner has 3MC stolen from them
+   */
+  legalFirmEffect(attackingPlayer: IPlayer): void;
+  /**
    * Returns the number of colonies this player has on all the colony types.
    *
    * If Colonies is not in this game, this returns 0.
@@ -264,17 +270,8 @@ export interface IPlayer {
   /** The number of resources on this card for this player, or 0 if the player does not have this card. */
   resourcesOnCard(name: CardName): number;
   spendableMegacredits(): number;
-  getSpendableMicrobes(): number;
-  getSpendableDrigibilesFloaters(): number;
-  getSpendableLunaArchiveScienceResources(): number;
-  getSpendableSeedResources(): number;
-  getSpendableData(): number;
-  getSpendableGraphene(): number;
-  getSpendableKuiperAsteroids(): number;
-  getSpendableSpireScienceResources(): number;
-  getSpendableBioengineeringStudiesAnimals(): number;
-  getSpendableAsteroidBeltColonyAsteroids(): number;
-  getSpendableJovianConstructionYardFloaters(): number;
+  /** Return then amount of spendable units of a given card resource */
+  getSpendable(resource: SpendableCardResource): number;
   checkPaymentAndPlayCard(selectedCard: IProjectCard, payment: Payment, cardAction?: CardAction): void;
   pay(payment: Payment): void;
   availableHeat(): number;

@@ -166,6 +166,7 @@
                   :venusScaleLevel="game.venusScaleLevel"
                   :aresExtension="game.gameOptions.aresExtension"
                   :pathfindersExpansion="game.gameOptions.pathfindersExpansion"
+                  :chemicalExpansion="game.gameOptions.chemicalExpansion"
                   :altVenusBoard="game.gameOptions.altVenusBoard"
                   :boardName ="game.gameOptions.boardName"
                   :oceans_count="game.oceans"

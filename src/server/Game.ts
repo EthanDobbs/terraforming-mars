@@ -338,7 +338,7 @@ export class Game implements IGame, Logger {
           }
           //For testing purposes
           if (gameOptions.chemicalExpansion) {
-            var card = new CardFinder().getProjectCardByName(CardName.ACQUIRED_CONSULTING_FIRM);
+            var card = new CardFinder().getProjectCardByName(CardName.MEDIA_CONGLOMARATE);
             if (card !== undefined) {
               player.dealtProjectCards.push(card);
             } else {

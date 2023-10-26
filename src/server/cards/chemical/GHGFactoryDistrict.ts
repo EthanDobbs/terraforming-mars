@@ -23,7 +23,7 @@ export class GHGFactoryDistrict extends Card implements IProjectCard {
         });
         b.nbsp.tile(TileType.GHG_FACTORY_DISTRICT, false);
       }),
-      description: 'Lower your energy production 2 steps, raise your heat production 7 steps, and place this tile.'
+      description: 'Decrease your energy production 2 steps, increase your heat production 7 steps, and place this tile.'
     },
   ) {
     super({

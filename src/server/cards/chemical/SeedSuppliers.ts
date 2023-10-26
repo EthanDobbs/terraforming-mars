@@ -24,7 +24,7 @@ export class SeedSuppliers extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.plants(1)).nbsp.plants(4, {digit});
         }),
-        description: 'Raise your plant production 1 step and gain 4 plants.',
+        description: 'Increase your plant production 1 step and gain 4 plants.',
       },
     });
   }

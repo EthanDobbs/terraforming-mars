@@ -26,7 +26,7 @@ export class UndergroundVenusBase extends Card {
             (eb) => eb.venus(1, {played}).startEffect.steel(1).equals().megacredits(2)).br;
           b.production((pb) => pb.steel(1))
         }),
-        description: 'Requires 6% Venus or higher. Raise your steel production 1 step.'
+        description: 'Requires 6% Venus or higher. Increase your steel production 1 step.'
       },
     });
   }

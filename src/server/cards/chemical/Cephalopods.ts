@@ -36,7 +36,7 @@ export class Cephalopods extends Card implements IProjectCard {
           b.vpText('1 VP for every animal on this card.');
         }),
         description: {
-          text: 'Requires 5 oceans or more. Decrease any plant production 1 step.',
+          text: 'Requires 5 ocean tiles. Decrease any plant production 1 step.',
           align: 'left',
         },
       },

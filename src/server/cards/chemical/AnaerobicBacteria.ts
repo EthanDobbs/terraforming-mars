@@ -33,7 +33,7 @@ export class AnaerobicBacteria extends Card implements IProjectCard {
       },
 
       metadata: {
-        description: 'Requires 4% oxygen or lower. Increase your energy production 2 steps or your heat production 3 steps.',
+        description: 'Oxygen must be 4% or lower. Increase your energy production 2 steps or your heat production 3 steps.',
         cardNumber: 'x155',
         renderData: CardRenderer.builder((b) => b.production((pb) => pb.energy(2).nbsp.or(Size.SMALL).nbsp.heat(3, {digit}))),
       },

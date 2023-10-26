@@ -24,7 +24,7 @@ export class Bamboo extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.plants(2)).plants(2);
         }),
-        description: 'Requires -16°C or higher. Raise your plant production 2 steps and gain 2 plants.',
+        description: 'Requires -16°C or warmer. Increase your plant production 2 steps and gain 2 plants.',
       },
     });
   }

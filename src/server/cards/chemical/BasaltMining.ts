@@ -28,7 +28,7 @@ export class BasaltMining extends Card implements IProjectCard {
           }).br;
           b.venus(2).br;
         }),
-        description: 'Requires Venus 8% or higher. Lower your energy production 1 step, raise your steel production 1 step, and your MC production 2 steps. Raise Venus 2 steps.',
+        description: 'Requires Venus 8% or higher. Decrease your energy production 1 step. Increase your steel production 1 step and your M€ production 2 steps. Raise Venus 2 steps.',
       },
     });
   }

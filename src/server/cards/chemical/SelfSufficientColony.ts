@@ -27,7 +27,7 @@ export class SelfSufficientColony extends Card implements IProjectCard {
             pb.plus().megacredits(2);
           }).colonies(1);
         }),
-        description: 'Lower your energy production 1 step, raise your MC production 2 steps, and place a colony.',
+        description: 'Decrease your energy production 1 step, increase your M€ production 2 steps, and place a colony.',
       },
     });
   }

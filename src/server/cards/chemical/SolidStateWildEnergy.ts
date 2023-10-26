@@ -24,7 +24,7 @@ export class SolidStateWildEnergy extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(1));
         }),
-        description: 'Requires 5% oxygen or higher. Raise your energy production 1 step.',
+        description: 'Requires 5% oxygen. Increase your energy production 1 step.',
       },
     });
   }

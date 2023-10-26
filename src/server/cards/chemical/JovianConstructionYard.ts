@@ -31,12 +31,12 @@ export class JovianConstructionYard extends ActionCard implements IActionCard {
           b.action('Add 1 floater to any Jovian card', (eb) => {
             eb.empty().startAction.floaters(1, {secondaryTag: Tag.JOVIAN});
           }).br;
-          b.effect('Floaters on this card mey be used as 3MC when paying for cards with Jovian tags', (eb) => {
+          b.effect('Floaters on this card mey be used as 3 M€ when paying for cards with Jovian tags', (eb) => {
             eb.jovian({played}).startEffect.floaters(1).equals().megacredits(3);
           }).br;
           b.production((pb) => pb.titanium(1));
         }),
-        description: 'Raise your titanium production 1 step.',
+        description: 'Increase your titanium production 1 step.',
       },
     });
   }

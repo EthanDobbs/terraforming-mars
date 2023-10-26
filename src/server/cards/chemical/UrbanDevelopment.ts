@@ -28,7 +28,7 @@ export class UrbanDevelopment extends Card implements IProjectCard {
             pb.plus().megacredits(1).slash().city({size: Size.SMALL, all});
           });
         }),
-        description: 'Lower your energy production 1 step and raise your MC production 1 step for every city tile.',
+        description: 'Decrease your energy production 1 step and increase your M€ production 1 step for every city tile.',
       },
     });
   }

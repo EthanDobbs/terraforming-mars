@@ -31,7 +31,7 @@ export class AlloyFactory extends ActionCard implements IProjectCard {
           }).br;
           b.energy(4, {digit});
         }),
-        description: 'Gain 4 energy resources.',
+        description: 'Gain 4 energy.',
       },
     });
   }

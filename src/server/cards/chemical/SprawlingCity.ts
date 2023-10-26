@@ -28,7 +28,7 @@ export class SprawlingCity extends ActionCard implements IProjectCard {
       metadata: {
         cardNumber: 'x083',
         renderData: CardRenderer.builder((b) => {
-          b.action('Spend 1 energy production to raise your MC production 1 step and add a building resource to this card.', (eb) => {
+          b.action('Decrease your energy production 1 step to increase your M€ production 1 step and add a building resource to this card.', (eb) => {
             eb.production((pb) => pb.energy(1)).startAction.production((pb) => pb.megacredits(1)).buildingResource(1);
           }).br;
           b.city().br;

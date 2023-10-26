@@ -25,7 +25,7 @@ export class MicrobialSupport extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(1).slash().microbes(1, {played}));
         }),
-        description: 'Requires that Greens are in power or that you have 2 delegates there. Raise your MC production 1 step for each microbe tag you have, including this.',
+        description: 'Requires that Greens are in power or that you have 2 delegates there. Increase your M€ production 1 step for each microbe tag you have, including this.',
       },
     });
   }

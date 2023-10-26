@@ -23,7 +23,7 @@ export class ConstructionCenter extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x199',
         renderData: CardRenderer.builder((b) => {
-          b.effect('When you play a buiding tag, you pay 2MC less for it.', (eb) => {
+          b.effect('When you play a buiding tag, you pay 2 M€ less for it.', (eb) => {
             eb.building(1, {played}).startEffect.megacredits(-2);
           }).br;
           b.production((pb) => {
@@ -32,7 +32,7 @@ export class ConstructionCenter extends Card implements IProjectCard {
           })
           b.city();
         }),
-        description: 'Lower your energy production 1 step and raise your MC production 3 steps. Place a city tile.',
+        description: 'Decrease your energy production 1 step and increase your M€ production 3 steps. Place a city tile.',
       },
     });
   }

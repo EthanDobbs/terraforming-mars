@@ -23,7 +23,7 @@ export class DeuteriumFusion extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(2));
         }),
-        description: 'Requires that you have an Earth tag, a Venus tag, and a Jovian tag. Raise your energy production 2 steps.',
+        description: 'Requires an Earth tag, a Venus tag, and a Jovian tag. Increase your energy production 2 steps.',
       },
     });
   }

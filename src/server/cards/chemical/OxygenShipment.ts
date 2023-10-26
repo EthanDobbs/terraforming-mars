@@ -35,10 +35,6 @@ export class OxygenShipment extends Card implements IProjectCard {
       },
     });
   }
-
-  public override bespokeCanPlay(player: IPlayer): boolean {
-    return player.getResourceCards(CardResource.ANIMAL).length !== 0 || player.getResourceCards(CardResource.MICROBE).length !== 0;
-  }
   public override bespokePlay(player: IPlayer): undefined | PlayerInput {
     const availableMicrobeCards = player.getResourceCards(CardResource.MICROBE);
     const availableAnimalCards = player.getResourceCards(CardResource.ANIMAL);
@@ -71,6 +67,9 @@ export class OxygenShipment extends Card implements IProjectCard {
         player.addResourceTo(card, {qty: 2, log: true});
         return undefined;
       }));
+    }
+    if(availableActions.length === 0){
+      return undefined
     }
 
     return new OrOptions(...availableActions);

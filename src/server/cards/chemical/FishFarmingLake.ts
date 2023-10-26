@@ -36,7 +36,7 @@ export class FishFarmingLake extends ActionCard implements IProjectCard {
           b.vpText('1 VP for each animal on this card.');
         }),
         description: {
-          text: 'Requires 4°C or higher. Place an ocean tile.',
+          text: 'Requires 4°C or warmer. Place an ocean tile.',
           align: 'left',
         },
       },

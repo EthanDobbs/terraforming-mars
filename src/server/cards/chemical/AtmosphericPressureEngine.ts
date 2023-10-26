@@ -24,7 +24,7 @@ export class AtmosphericPressureEngine extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(2));
         }),
-        description: 'Requires 9% oxygen or higher. Raise your energy production 2 steps.',
+        description: 'Requires 9% oxygen. Increase your energy production 2 steps.',
       },
     });
   }

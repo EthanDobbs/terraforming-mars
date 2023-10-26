@@ -25,7 +25,7 @@ export class LunarPort extends Card implements IProjectCard {
           b.production((pb) => pb.megacredits(3))
           b.tradeFleet();
         }),
-        description: 'Raise your MC production 3 steps and gain a trade fleet.',
+        description: 'Increase your M€ production 3 steps and gain a trade fleet.',
       },
     });
   }

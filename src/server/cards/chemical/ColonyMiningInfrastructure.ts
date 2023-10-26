@@ -21,7 +21,7 @@ export class ColonyMiningInfrastructure extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.titanium(1));
         }),
-        description: 'Requires you own 2 colonies. Raise your titanium production 1 step.',
+        description: 'Requires you own 2 colonies. Increase your titanium production 1 step.',
       },
     });
   }

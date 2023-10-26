@@ -25,7 +25,7 @@ export class VolcanicFoundry extends Card implements IProjectCard {
             pb.plus().steel(1).titanium(1);
           });
         }),
-        description: 'Lower your heat production 2 steps, raise your steel production 1 step, and your titanium production 1 step.',
+        description: 'Decrease your heat production 2 steps. Increase your steel production 1 step and your titanium production 1 step.',
       },
     });
   }

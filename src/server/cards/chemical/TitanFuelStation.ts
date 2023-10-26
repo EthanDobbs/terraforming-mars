@@ -32,7 +32,7 @@ export class TitanFuelStation extends Card implements IProjectCard {
           b.space({played}).colon().floaters(1).br;
           b.or().br;
           b.minus().floaters(1).plus().titanium(2).br;
-          b.description('When you play a space tag, including this, either add a floater to this card, or remove a floater from this card to gain 2 titanium.').br;
+          b.description('When you play a space tag, including this, either add a floater to this card, or remove 1 floater from this card to gain 2 titanium.').br;
           b.tradeFleet();
         }),
         description: 'Gain a trade fleet',

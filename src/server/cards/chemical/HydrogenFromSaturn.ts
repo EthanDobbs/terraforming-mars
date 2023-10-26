@@ -27,7 +27,7 @@ export class HydrogenFromSaturn extends Card implements IProjectCard {
           b.oceans(1).nbsp.nbsp;
           b.microbes(1).asterix().slash().jovian({played});
         }),
-        description: 'Place an Ocean tile. Add 1 microbe to ANY card for each Jovian tag you have.',
+        description: 'Place an ocean tile. Add 1 microbe to ANY card for each Jovian tag you have.',
       },
     });
   }

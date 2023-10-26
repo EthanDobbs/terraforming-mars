@@ -21,7 +21,7 @@ export class SteelExports extends ActionCard implements IProjectCard {
       metadata: {
         cardNumber: 'x203',
         renderData: CardRenderer.builder((b) => {
-          b.action('Spend 3 steel to gain 10MC.', (eb) => {
+          b.action('Spend 3 steel to gain 10 M€.', (eb) => {
             eb.steel(3).startAction.megacredits(10);
           }).br;
         }),

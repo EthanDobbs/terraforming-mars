@@ -23,7 +23,7 @@ export class NeutralizerDrones extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.venus(1).br;
         }),
-        description: 'Requires that you have 3 floaters. Raise Venus 1 step.',
+        description: 'Requires 3 floaters. Raise Venus 1 step.',
       },
     });
   }

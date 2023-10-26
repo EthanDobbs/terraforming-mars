@@ -25,7 +25,7 @@ export class AdaptedFruitFarming extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(2).br.plants(3)).plants(1);
         }),
-        description: 'Requires +4°C or higher. Raise your MC production 2 steps, your plant production 3 steps, and gain 1 plant.',
+        description: 'Requires +4°C or higher. Increase your M€ production 2 steps and your plant production 3 steps. Gain 1 plant.',
       },
     });
   }

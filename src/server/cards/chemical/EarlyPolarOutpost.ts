@@ -24,7 +24,7 @@ export class EarlyPolarOutpost extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.heat(3);
         }),
-        description: 'Requires -16°C or lower. Gain 3 heat.',
+        description: 'Requires -16°C or colder. Gain 3 heat.',
       },
     });
   }

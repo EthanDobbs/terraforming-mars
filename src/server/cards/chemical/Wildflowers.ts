@@ -25,7 +25,7 @@ export class Wildflowers extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.plants(1)).plants(3);
         }),
-        description: 'Requires -4°C or higher. Raise your plant production 1 step and gain 3 plants.',
+        description: 'Requires -4°C or warmer. Increase your plant production 1 step and gain 3 plants.',
       },
     });
   }

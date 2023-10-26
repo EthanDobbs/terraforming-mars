@@ -27,12 +27,12 @@ export class WirelessEnergyTransfer extends ActionCard implements IProjectCard {
       metadata: {
         cardNumber: 'x194',
         renderData: CardRenderer.builder((b) => {
-          b.action('Spend 3MC to raise your energy production 1 step.', (eb) => {
+          b.action('Spend 3 M€ to increase your energy production 1 step.', (eb) => {
             eb.megacredits(3).startAction.production((pb) => pb.energy(1));
           }).br;
           b.production((pb) => pb.megacredits(1).slash().energy(1, {played}));
         }),
-        description: 'Requires that you have 3 science tags. Raise your MC production 1 step for each power tag you have.',
+        description: 'Requires 3 science tags. Increase your M€ production 1 step for each power tag you have.',
       },
     });
   }

@@ -22,7 +22,7 @@ export class FloaterFacility extends ActionCard implements IProjectCard {
             addResourcesToAnyCard: {type: CardResource.FLOATER, count: 1,},
           },
           {
-            title: 'gain 2MC',
+            title: 'gain 2 M€',
             stock: {megacredits: 2},
           }],
         },
@@ -31,7 +31,7 @@ export class FloaterFacility extends ActionCard implements IProjectCard {
       metadata: {
         cardNumber: 'x337',
         renderData: CardRenderer.builder((b) => {
-          b.action('Add 1 floater to ANY card or gain 2MC.', (eb) => {
+          b.action('Add 1 floater to ANY card or gain 2 M€.', (eb) => {
             eb.empty().startAction.floaters(1).asterix().nbsp.or().nbsp.megacredits(2);
           }).br;
         }),

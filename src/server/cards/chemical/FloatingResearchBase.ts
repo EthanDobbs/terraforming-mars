@@ -34,7 +34,7 @@ export class FloatingResearchBase extends ActionCard implements IProjectCard {
           b.vpText('1 VP per 3 floaters on this card.').br;
           b.cards(2);
         }),
-        description: 'Requires that you have 2 science tags. Draw 2 cards.',
+        description: 'Requires 2 science tags. Draw 2 cards.',
       },
     });
   }

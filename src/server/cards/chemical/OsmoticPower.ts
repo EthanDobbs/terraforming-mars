@@ -23,7 +23,7 @@ export class OsmoticPower extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(1));
         }),
-        description: 'Requires 3 or more oceans. Raise your energy production 1 step.',
+        description: 'Requires 3 ocean tiles. Increase your energy production 1 step.',
       },
     });
   }

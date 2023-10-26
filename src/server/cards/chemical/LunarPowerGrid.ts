@@ -23,7 +23,7 @@ export class LunarPowerGrid extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(1).slash().earth(2, {played}));
         }),
-        description: 'Raise your energy production 1 step for every 2 Earth tags you have, including this.',
+        description: 'Increase your energy production 1 step for every 2 Earth tags you have, including this.',
       },
     });
   }

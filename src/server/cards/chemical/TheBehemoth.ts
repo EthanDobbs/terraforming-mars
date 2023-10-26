@@ -27,7 +27,7 @@ export class TheBehemoth extends Card implements IProjectCard {
           b.production((pb) => pb.megacredits(2)).floaters(3, {secondaryTag: Tag.VENUS}).br;
           b.vpText('1 VP for every 2 Venus tags you have.').br;
         }),
-        description: 'Requires that you have 4 science tags. Raise your MC production 2 steps and add 3 floaters to any Venus card.',
+        description: 'Requires 4 science tags. Increase your M€ production 2 steps and add 3 floaters to any Venus card.',
       },
     });
   }

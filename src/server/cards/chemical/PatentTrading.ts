@@ -32,7 +32,7 @@ export class PatentTrading extends Card implements IProjectCard {
   public override bespokePlay(player: IPlayer) {
     // TODO(kberg): Use DiscardCards.andThen().
     player.game.defer(new DiscardCards(player)).andThen(() => 
-      player.game.defer(DrawCards.keepAll(player, Math.floor(player.tags.count(Tag.EARTH) / 2)))
+      player.game.defer(DrawCards.keepAll(player, Math.floor((player.tags.count(Tag.EARTH) + 1)/ 2)))
     );
     return undefined;
   }

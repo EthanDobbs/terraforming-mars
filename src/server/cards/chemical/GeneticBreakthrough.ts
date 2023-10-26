@@ -29,7 +29,7 @@ export class GeneticBreakthrough extends Card implements IProjectCard {
           b.animals(1).asterix().nbsp;
           b.microbes(2).asterix();
         }),
-        description: 'Requires that you have 6 total plant tags, animal tags, and microbe tags. Add 1 animal to ANOTHER card and 2 microbes to ANOTHER card.',
+        description: 'Requires 6 total plant tags, animal tags, and microbe tags. Add 1 animal to ANOTHER card and 2 microbes to ANOTHER card.',
       },
     });
   }

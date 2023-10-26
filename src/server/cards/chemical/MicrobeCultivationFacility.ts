@@ -31,7 +31,7 @@ export class MicrobeCultivationFacility extends ActionCard implements IProjectCa
           }).br;
           b.production((pb) => pb.plants(1))
         }),
-        description: 'Requires that you have 2 microbe tags. Raise your plant production 1 step.',
+        description: 'Requires 2 microbe tags. Increase your plant production 1 step.',
       },
     });
   }

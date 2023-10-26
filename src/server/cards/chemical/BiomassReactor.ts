@@ -30,7 +30,7 @@ export class BiomassReactor extends ActionCard implements IProjectCard {
           }).br;
           b.energy(2);
         }),
-        description: 'Gain 2 energy resources.',
+        description: 'Gain 2 energy.',
       },
     });
   }

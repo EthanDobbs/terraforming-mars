@@ -24,7 +24,7 @@ export class Barley extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(1).plants(1)).plants(2);
         }),
-        description: 'Requires -8°C or higher. Raise your MC production 1 step, your plant production 1 step, and gain 2 plants.',
+        description: 'Requires -8°C or warmer. Increase your M€ production 1 step and your plant production 1 step. Gain 2 plants.',
       },
     });
   }

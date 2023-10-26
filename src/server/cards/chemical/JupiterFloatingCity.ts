@@ -35,7 +35,7 @@ export class JupiterFloatingCity extends ActionCard implements IProjectCard {
           b.vpText('1 VP per Jovian tag you have').br;
           b.production((pb) => pb.minus().energy(1)).nbsp.city().asterix();
         }),
-        description: 'Requires 4 science tags. Lower your energy production 1 step. Place a city tile ON THE RESERVED AREA.'
+        description: 'Requires 4 science tags. Decrease your energy production 1 step. Place a city tile ON THE RESERVED AREA.'
       },
     });
   }

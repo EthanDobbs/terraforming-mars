@@ -24,7 +24,7 @@ export class MolecularScienceLab extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(1).slash().microbes(1, {played}));
         }),
-        description: 'Raise your MC production 1 step for each microbe tag you have.',
+        description: 'Increase your M€ production 1 step for each microbe tag you have.',
       },
     });
   }

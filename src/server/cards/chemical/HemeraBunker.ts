@@ -25,7 +25,7 @@ export class HemeraBunker extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.titanium(1)).cards(2);
         }),
-        description: 'Requires 3 science tags. Raise your titanium production 1 step and draw 2 cards.',
+        description: 'Requires 3 science tags. Increase your titanium production 1 step and draw 2 cards.',
       },
     });
   }

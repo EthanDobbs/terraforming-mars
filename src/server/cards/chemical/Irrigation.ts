@@ -28,7 +28,7 @@ export class Irrigation extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.plants(1)).nbsp.greenery().asterix();
         }),
-        description: 'Requires 6 or more oceans. Raise your plant production 1 step. Place a greenery tile ADJACENT TO AN OCEAN',
+        description: 'Requires 6 ocean tiles. Increase your plant production 1 step. Place a greenery tile ADJACENT TO AN OCEAN',
       },
     });
   }

@@ -22,7 +22,7 @@ export class WaypointColony extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x344',
         renderData: CardRenderer.builder((b) => {
-          b.effect('Space tags cost you 2MC less.', (eb) => {
+          b.effect('When you play a space card, you pay 2 M€ less for it.', (eb) => {
             eb.space({played}).startEffect.megacredits(-2);
           }).br;
           b.colonies(1);

@@ -28,9 +28,9 @@ export class AntiOxidationBacteria extends Card implements IProjectCard {
         cardNumber: 'x045',
         renderData: CardRenderer.builder((b) => {
           b.building(1, {played}).colon().microbes(1).or(Size.SMALL).minus().microbes(1).plus().production((pb) => pb.megacredits(1)).br;
-          b.description('When you play a building tag, either add a microbe to this card or remove a microbe from this card to raise your MC production 1 step.').br;
+          b.description('When you play a building tag, either add a microbe to this card or remove a microbe from this card to increase your M€ production 1 step.').br;
         }),
-        description: 'Requires 2% oxygen or higher.'
+        description: 'Requires 2% oxygen.'
       },
     });
   }
@@ -48,7 +48,7 @@ export class AntiOxidationBacteria extends Card implements IProjectCard {
       return undefined;
     });
 
-    const spendResource = new SelectOption('Remove 1 microbe from Anti-Oxidation Bacteria and increase MC production 1 step', 'Remove microbe').andThen( () => {
+    const spendResource = new SelectOption('Remove 1 microbe from Anti-Oxidation Bacteria and increase M€ production 1 step', 'Remove microbe').andThen( () => {
       player.removeResourceFrom(this, 1);
       player.production.add(Resource.MEGACREDITS, 1);
       return undefined;

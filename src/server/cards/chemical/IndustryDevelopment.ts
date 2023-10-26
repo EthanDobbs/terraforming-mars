@@ -26,7 +26,7 @@ export class IndustryDevelopment extends Card implements IProjectCard {
             pb.steel(1).energy(1);
           });
         }),
-        description: 'Requires that Mars First are in power or that you have 2 delegates there. Raise your steel production 1 step and your energy production 1 step.',
+        description: 'Requires that Mars First are in power or that you have 2 delegates there. Increase your steel production 1 step and your energy production 1 step.',
       },
     });
   }

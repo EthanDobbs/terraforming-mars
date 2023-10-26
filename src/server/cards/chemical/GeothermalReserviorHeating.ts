@@ -23,7 +23,7 @@ export class GeothermalReserviorHeating extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.oceans(1).production((pb) => pb.megacredits(2));
         }),
-        description: 'Place an ocean tile and raise your MC production 2 steps.',
+        description: 'Place an ocean tile and increase your M€ production 2 steps.',
       },
     });
   }

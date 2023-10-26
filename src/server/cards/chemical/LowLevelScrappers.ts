@@ -20,7 +20,7 @@ export class LowLevelScrappers extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 2 floaters to raise Venus 1 step',
+            title: 'Spend 2 floaters to raise Venus 1 step',
             spend: {resourcesHere: 2},
             global: {venus: 1},
           },
@@ -43,7 +43,7 @@ export class LowLevelScrappers extends ActionCard implements IProjectCard {
             eb.floaters(2).startAction.venus(1);
           }).br;
         }),
-        description: 'Requires Venus 10% or higher',
+        description: 'Requires Venus 10%.',
       },
     });
   }

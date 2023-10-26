@@ -29,11 +29,11 @@ export class Aquaponics extends Card implements IProjectCard {
             eb.empty().startAction.animals(1);
           }).br;
           b.or().br;
-          b.action('Gain 1MC for each animal here.', (eb) => {
+          b.action('Gain 1 M€ for each animal here.', (eb) => {
             eb.empty().startAction.megacredits(1).slash().animals(1);
           })
         }),
-        description: 'Requires that you have a plant tag, an animal tag, and a microbe tag'
+        description: 'Requires a plant tag, an animal tag, and a microbe tag'
       },
     });
   }
@@ -45,7 +45,7 @@ export class Aquaponics extends Card implements IProjectCard {
     const opts: Array<SelectOption> = [];
 
     if (this.resourceCount > 0) {
-      opts.push(new SelectOption('Gain 1MC for each animal here', 'Gain MC').andThen( () => {
+      opts.push(new SelectOption('Gain 1 M€ for each animal here', 'Gain M€').andThen( () => {
         player.stock.add(Resource.MEGACREDITS, this.resourceCount, {log: true});
         return undefined;
       }));

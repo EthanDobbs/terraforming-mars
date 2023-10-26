@@ -25,7 +25,7 @@ export class HabitatDomes extends ActionCard implements IProjectCard {
       metadata: {
         cardNumber: 'x061',
         renderData: CardRenderer.builder((b) => {
-          b.action('spend 2MC to add 1 animal to ANY card.', (eb) => {
+          b.action('spend 2 M€ to add 1 animal to ANY card.', (eb) => {
             eb.megacredits(2).startAction.animals(1).asterix();
           }).br;
           b.vpText('1 VP for every 2 animals on this card.');

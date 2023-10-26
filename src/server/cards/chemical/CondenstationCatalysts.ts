@@ -23,7 +23,7 @@ export class CondenstationCatalysts extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.venus(1).br;
         }),
-        description: 'Requires Venus 4% or higher. Raise Venus 1 step.',
+        description: 'Requires Venus 4%. Raise Venus 1 step.',
       },
     });
   }

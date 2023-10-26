@@ -25,7 +25,7 @@ export class ExplosiveMining extends Card implements IProjectCard {
             pb.heat(2);
           });
         }),
-        description: 'Raise your steel production 1 step and your heat production 2 steps.',
+        description: 'Increase your steel production 1 step and your heat production 2 steps.',
       },
     });
   }

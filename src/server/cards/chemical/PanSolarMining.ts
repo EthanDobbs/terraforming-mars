@@ -25,7 +25,7 @@ export class PanSolarMining extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 1 asteroid to raise your titanium production 1 step.',
+            title: 'Spend 1 asteroid to raise your titanium production 1 step.',
             spend: {resourcesHere: 1},
             production: {titanium: 1},
           },
@@ -48,7 +48,7 @@ export class PanSolarMining extends ActionCard implements IProjectCard {
           }).br;
           b.asteroids(1);
         }),
-        description: 'Requires that you have an Earth tag, a Venus tag, and a Jovian tag. Add an asteroid to this card.'
+        description: 'Requires an Earth tag, a Venus tag, and a Jovian tag. Add an asteroid to this card.'
       },
     });
   }

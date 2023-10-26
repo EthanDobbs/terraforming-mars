@@ -24,7 +24,7 @@ export class InaugerationCeremony extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.megacredits(1).slash().city({all, size: Size.SMALL}).city({all, size: Size.SMALL});
         }),
-        description: 'Requires you are chairman. Gain 1MC for every 2 cities in play.',
+        description: 'Requires you are chairman. Gain 1 M€ for every 2 cities in play.',
       },
     });
   }

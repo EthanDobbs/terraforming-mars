@@ -23,7 +23,7 @@ export class VenusPowerPlant extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(2));
         }),
-        description: 'Requires Venus 10% or higher. Raise your energy production 2 steps.',
+        description: 'Requires Venus 10%. Increase your energy production 2 steps.',
       },
     });
   }

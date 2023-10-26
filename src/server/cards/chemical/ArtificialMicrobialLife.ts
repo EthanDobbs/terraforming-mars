@@ -26,7 +26,7 @@ export class ArtificialMicrobialLife extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.microbes(4, {digit}).asterix();
         }),
-        description: 'Requires that you have 3 microbe tags. Add 4 microbes to ANOTHER card.',
+        description: 'Requires 3 microbe tags. Add 4 microbes to ANOTHER card.',
       },
     });
   }

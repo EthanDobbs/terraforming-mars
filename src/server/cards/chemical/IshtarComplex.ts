@@ -29,7 +29,7 @@ export class IshtarComplex extends Card implements IProjectCard {
           });
           b.wild(1, {secondaryTag: Tag.VENUS}).slash().venus(1, {played}).asterix();
         }),
-        description: 'Requires Venus 8% or higher. Lower your energy production 1 step and raise your M€ production 2 steps. Add a resource to every Venus card that can contain resources.',
+        description: 'Requires Venus 8%. Decrease your energy production 1 step and raise your M€ production 2 steps. Add a resource to every Venus card that can contain resources.',
       },
     });
   }

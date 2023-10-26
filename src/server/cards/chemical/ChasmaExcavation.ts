@@ -25,7 +25,7 @@ export class ChasmaExcavation extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.steel(1)).nbsp.steel(2);
         }),
-        description: 'Requires 3 oceans or fewer. Raise your steel production 1 step and gain 2 steel resources.',
+        description: 'Requires 3 or less ocean tiles. Increase your steel production 1 step and gain 2 steel resources.',
       },
     });
   }

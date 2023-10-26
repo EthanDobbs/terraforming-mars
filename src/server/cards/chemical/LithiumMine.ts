@@ -23,7 +23,7 @@ export class LithiumMine extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.steel(1).energy(1)).nbsp.oxygen(1);
         }),
-        description: 'Raise your steel production 1 step and your energy production 1 step. Raise the oxygen 1 step.',
+        description: 'Increase your steel production 1 step and your energy production 1 step. Raise the oxygen 1 step.',
       },
     });
   }

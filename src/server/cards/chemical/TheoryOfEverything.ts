@@ -24,7 +24,7 @@ export class TheoryOfEverything extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.cards(3);
         }),
-        description: 'Requires that you have 7 science tags. Playing this card counts as playing 2 science cards. Draw 3 cards.',
+        description: 'Requires 7 science tags. Playing this card counts as playing 2 science cards. Draw 3 cards.',
       },
     });
   }

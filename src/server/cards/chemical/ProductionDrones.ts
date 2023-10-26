@@ -24,7 +24,7 @@ export class ProductionDrones extends Card implements IActionCard {
             eb.empty().startAction.floaters(1);
           }).br;
           b.or().br;
-          b.action('Remove a floater from this card to increase (one of) your LOWEST PRODUCTION 1 step.', (eb) => {
+          b.action('Remove 1 floater from this card to increase (one of) your LOWEST PRODUCTION 1 step.', (eb) => {
             eb.floaters(1).startAction.production((pb) => pb.wild(1)).asterix();
           }).br;
         }),

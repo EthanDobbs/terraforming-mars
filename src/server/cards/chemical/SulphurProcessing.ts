@@ -24,7 +24,7 @@ export class SulphurProcessing extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(2)).nbsp.megacredits(1).slash().venus(1, {played, all}).br;
         }),
-        description: 'Raise your MC production 2 steps and gain 1MC for every Venus tag in play.',
+        description: 'Increase your M€ production 2 steps and gain 1 M€ for every Venus tag in play.',
       },
     });
   }

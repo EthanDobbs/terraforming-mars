@@ -24,7 +24,7 @@ export class ColonySpaceMirrors extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(1).slash().colonies(1, {all, size: Size.SMALL}));
         }),
-        description: 'Raise your energy production 1 step for each colony in play.',
+        description: 'Increase your energy production 1 step for each colony in play.',
       },
     });
   }

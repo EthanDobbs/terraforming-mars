@@ -34,7 +34,7 @@ export class Macroplankton extends ActionCard implements IProjectCard {
           b.vpText('1 VP per 4 Microbes on this card.').br;
           b.plants(2);
         }),
-        description: 'Requires -14°C or higher. Gain 2 plants.'
+        description: 'Requires -14°C or warmer. Gain 2 plants.'
       },
     });
   }

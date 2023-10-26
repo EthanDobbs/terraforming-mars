@@ -25,7 +25,7 @@ export class LaserFactory extends Card implements IProjectCard {
             pb.plus().titanium(1).heat(2);
           });
         }),
-        description: 'Lower your energy production 1 step, raise your titanium production 1 step, and raise your heat production 2 steps.',
+        description: 'Decrease your energy production 1 step. Increase your titanium production 1 step and your heat production 2 steps.',
       },
     });
   }

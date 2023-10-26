@@ -28,7 +28,7 @@ export class VenusMiningIndustries extends Card implements IProjectCard {
           }).br;
           b.vpText('1 VP for every 2 Venus tags you have.').br;
         }),
-        description: 'Requires Venus 8% or higher. Raise your steel production 1 step and your titanium production 2 steps.',
+        description: 'Requires Venus 8%. Increase your steel production 1 step and your titanium production 2 steps.',
       },
     });
   }

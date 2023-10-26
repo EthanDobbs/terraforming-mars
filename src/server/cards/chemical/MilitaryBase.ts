@@ -18,7 +18,7 @@ export class MilitaryBase extends Card implements IProjectCard {
       renderData: CardRenderer.builder((b) => {
         b.production((pb) => pb.megacredits(2)).nbsp.cards(1).nbsp.tile(TileType.MILITARY_BASE, false);
       }),
-      description: 'Raise your MC production 2 steps, draw a card, and place this tile.'
+      description: 'Increase your M€ production 2 steps, draw a card, and place this tile.'
     },
   ) {
     super({

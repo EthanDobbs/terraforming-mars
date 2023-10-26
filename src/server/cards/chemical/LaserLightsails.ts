@@ -26,18 +26,18 @@ export class LaserLightsails extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x189',
         renderData: CardRenderer.builder((b) => {
-          b.effect('When you play a space tag, including this, you may choose to lose 1 energy to gain 3MC.', (eb) => {
+          b.effect('When you play a space tag, including this, you may choose to lose 1 energy to gain 3 M€.', (eb) => {
             eb.space({played}).startEffect.minus().energy(1).nbsp.plus().megacredits(3);
           }).br;
           b.production((pb) => pb.megacredits(1));
         }),
-        description: 'Raise your MC production 1 step.'
+        description: 'Increase your M€ production 1 step.'
       },
     });
   }
   public onCardPlayed(player: IPlayer, card: IProjectCard) {
     if (card.tags.includes(Tag.SPACE) && player.stock.energy > 0) {
-      const useEffect = new SelectOption('Lose 1 energy resource to gain 3MC from Laser Lightsails', 'Lose energy').andThen( () => {
+      const useEffect = new SelectOption('Lose 1 energy resource to gain 3 M€ from Laser Lightsails', 'Lose energy').andThen( () => {
         player.stock.add(Resource.MEGACREDITS, 3);
         player.stock.deduct(Resource.ENERGY, 1);
         return undefined;

@@ -24,7 +24,7 @@ export class UltralightFloaters extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.floaters(2, {secondaryTag: Tag.VENUS});
         }),
-        description: 'Requires Venus 6% or higher. Add 2 floaters to any Venus card.',
+        description: 'Requires Venus 6%. Add 2 floaters to any Venus card.',
       },
     });
   }

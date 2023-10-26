@@ -23,7 +23,7 @@ export class ExtremePowerEfficiency extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(1).slash().building(2, {played}));
         }),
-        description: 'Raise your energy production 1 step for every 2 building tags you have.',
+        description: 'Increase your energy production 1 step for every 2 building tags you have.',
       },
     });
   }

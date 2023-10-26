@@ -19,12 +19,12 @@ export class ConsistentBombardment extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 1 asteroid to raise the temperature.',
+            title: 'Spend 1 asteroid to raise the temperature.',
             spend: {resourcesHere: 1},
             global: {temperature: 1},
           },
           {
-            title: 'Remove 1 asteroid to raise the Venus.',
+            title: 'Spend 1 asteroid to raise Venus.',
             spend: {resourcesHere: 1},
             global: {venus: 1},
           },

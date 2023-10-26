@@ -23,12 +23,12 @@ export class BiodiversityGrants extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x200',
         renderData: CardRenderer.builder((b) => {
-          b.effect('When you play an animal tag, raise your MC production 1 step.', (eb) => {
+          b.effect('When you play an animal tag, increase your M€ production 1 step.', (eb) => {
             eb.animals(1, {played}).startEffect.production((pb) => pb.megacredits(1));
           }).br;
           b.production((pb) => pb.megacredits(2))
         }),
-        description: 'Raise your MC production 2 steps.',
+        description: 'Increase your M€ production 2 steps.',
       },
     });
   }

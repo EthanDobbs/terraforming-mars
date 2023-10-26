@@ -31,7 +31,7 @@ export class OvdaCity extends Card implements IProjectCard {
           b.city().asterix().br;
           b.vpText('1 VP for every 2 Venus tags you have.').br;
         }),
-        description: 'Requires Venus 18% or higher. Lower your energy production 1 step and raise your MC production 3 steps. Place a city tile ON THE RESERVED AREA.',
+        description: 'Requires Venus 18%. Decrease your energy production 1 step and increase your M€ production 3 steps. Place a city tile ON THE RESERVED AREA.',
       },
     });
   }

@@ -20,7 +20,7 @@ export class PHNeutralizers extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 2 microbes to raise your TR 1 step',
+            title: 'Spend 2 microbes to raise your TR 1 step',
             spend: {resourcesHere: 2},
             tr: 1,
           },
@@ -42,7 +42,7 @@ export class PHNeutralizers extends ActionCard implements IProjectCard {
             eb.microbes(2).startAction.tr(1);
           }).br;
         }),
-        description: 'Requires Venus 6% or higher.',
+        description: 'Requires Venus 6%.',
       },
     });
   }

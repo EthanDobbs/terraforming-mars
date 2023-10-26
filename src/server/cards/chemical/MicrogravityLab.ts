@@ -28,7 +28,7 @@ export class MicrogravityLab extends Card implements IProjectCard {
           });
           b.megacredits(5).slash().colonies(1);
         }),
-        description: 'Requires 4 science tags. Lower your energy production 1 step, raise your MC production 2 steps, and gain 5MC for each colony you own.',
+        description: 'Requires 4 science tags. Decrease your energy production 1 step, increase your M€ production 2 steps, and gain 5 M€ for each colony you own.',
       },
     });
   }

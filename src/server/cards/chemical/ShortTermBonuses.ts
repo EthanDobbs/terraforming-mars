@@ -18,7 +18,7 @@ export class ShortTermBonuses extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x397',
         renderData: CardRenderer.builder((b) => {
-          b.effect('For every step you raise your TR, gain 2MC.', (eb) => {
+          b.effect('For every step you raise your TR, gain 2 M€.', (eb) => {
             eb.tr(1).startEffect.megacredits(2);
           }).br;
         }),

@@ -30,7 +30,7 @@ export class MyceliumFungi extends Card implements IProjectCard {
           }).br;
           b.vpText('1 VP per 3 Microbes on this card.').br;
         }),
-        description: 'Requires 4% oxygen or higher.'
+        description: 'Requires 4% oxygen.'
       },
     });
   }

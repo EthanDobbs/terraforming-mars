@@ -26,7 +26,7 @@ export class CarbonateAsteroid extends Card implements IProjectCard {
           b.production((pb) => pb.heat(3, {digit})).nbsp;
           b.minus().plants(3, {all, digit});
         }),
-        description: 'Raise the temperature 1 step and raise your heat production 3 steps. Remove up to 3 plants from any player.',
+        description: 'Raise the temperature 1 step and increase your heat production 3 steps. Remove up to 3 plants from any player.',
       },
     });
   }

@@ -23,7 +23,7 @@ export class CondensedGasConvoy extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.oxygen(1).production((pb) => pb.heat(2));
         }),
-        description: 'Raise the oxygen 1 step and your heat production 2 steps.',
+        description: 'Raise the oxygen 1 step and increase your heat production 2 steps.',
       },
     });
   }

@@ -22,12 +22,12 @@ export class Canals extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x202',
         renderData: CardRenderer.builder((b) => {
-          b.effect('Ocean tiles grant you adjacency bonus of +1MC.', (eb) => {
+          b.effect('Ocean tiles grant you adjacency bonus of +1 M€.', (eb) => {
             eb.emptyTile('normal', {size: Size.SMALL}).oceans(1, {size: Size.SMALL}).startEffect.nbsp.plus().megacredits(1);
           }).br;
           b.production((pb) => pb.megacredits(2));
         }),
-        description: 'Raise your MC production 2 steps.',
+        description: 'Increase your M€ production 2 steps.',
       },
     });
   }

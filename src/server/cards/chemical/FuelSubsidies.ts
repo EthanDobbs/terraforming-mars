@@ -21,7 +21,7 @@ export class FuelSubsidies extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x341',
         renderData: CardRenderer.builder((b) => {
-          b.effect('When you trade, you pay 5MC less.', (eb) => {
+          b.effect('When you trade, you pay 5 M€ less.', (eb) => {
             eb.trade().startEffect.megacredits(-5);
           }).br;
           b.energy(2);

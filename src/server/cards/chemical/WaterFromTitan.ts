@@ -20,7 +20,7 @@ export class WaterFromTitan extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 2 floaters to place an ocean',
+            title: 'Remove 2 floaters to place an ocean tile',
             spend: {resourcesHere: 2},
             ocean: {},
           },
@@ -39,7 +39,7 @@ export class WaterFromTitan extends ActionCard implements IProjectCard {
             eb.titanium(1).startAction.floaters(2);
           }).br;
           b.or().br;
-          b.action('Spend 2 floaters here to place an ocean tile.', (eb) => {
+          b.action('Remove 2 floaters from this card to place an ocean tile.', (eb) => {
             eb.floaters(2).startAction.oceans(1);
           });
         }),

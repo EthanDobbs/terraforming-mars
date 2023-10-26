@@ -27,7 +27,7 @@ export class AcquiredBioengineeringFirm extends Card implements IProjectCard {
             pb.plants(1);
           }).plants(2);
         }),
-        description: 'Requires that Greens are in power or that you have 2 delegates there. Raise your plant production 1 step and gain 2 plants.',
+        description: 'Requires that Greens are in power or that you have 2 delegates there. Increase your plant production 1 step and gain 2 plants.',
       },
     });
   }

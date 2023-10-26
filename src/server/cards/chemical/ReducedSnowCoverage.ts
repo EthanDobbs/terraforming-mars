@@ -21,7 +21,7 @@ export class ReducedSnowCoverage extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.heat(1));
         }),
-        description: 'Requires 2 or more oceans. Raise your heat production 1 step.',
+        description: 'Requires 2 ocean tiles. Increase your heat production 1 step.',
       },
     });
   }

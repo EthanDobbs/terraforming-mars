@@ -24,7 +24,7 @@ export class EclipseStation extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.megacredits(2).slash().space({played});
         }),
-        description: 'Gain 2MC for each space tag you have, including this.',
+        description: 'Gain 2 M€ for each space tag you have, including this.',
       },
     });
   }

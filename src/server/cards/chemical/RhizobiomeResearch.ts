@@ -25,7 +25,7 @@ export class RhizobiomeResearch extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.plants(1).slash().microbes(2, {played})).microbes(2).asterix();
         }),
-        description: 'Raise your plant production 1 step for every 2 microbe tags you have, including this. Add 2 microbes to another card.',
+        description: 'Increase your plant production 1 step for every 2 microbe tags you have, including this. Add 2 microbes to another card.',
       },
     });
   }

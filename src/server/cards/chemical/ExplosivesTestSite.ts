@@ -28,7 +28,7 @@ export class ExplosivesTestSite extends Card implements IProjectCard {
           });
           b.temperature(2)
         }),
-        description: 'Lower your energy production 1 step and raise your MC production 2 steps. Raise the temperature 2 steps.',
+        description: 'Decrease your energy production 1 step and increase your M€ production 2 steps. Raise the temperature 2 steps.',
       },
     });
   }

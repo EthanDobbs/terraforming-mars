@@ -26,7 +26,7 @@ export class GiantCarbonateAsteroid extends Card implements IProjectCard {
           b.production((pb) => pb.heat(4, {digit})).nbsp;
           b.minus().plants(6, {all, digit});
         }),
-        description: 'Raise the temperature 2 steps and raise your heat production 4 steps. Remove up to 6 plants from any player.',
+        description: 'Raise the temperature 2 steps and increase your heat production 4 steps. Remove up to 6 plants from any player.',
       },
     });
   }

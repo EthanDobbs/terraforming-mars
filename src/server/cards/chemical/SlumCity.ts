@@ -28,7 +28,7 @@ export class SlumCity extends Card implements IProjectCard {
           })
           b.city();
         }),
-        description: 'Lower your energy production 1 step and raise your MC production 2 steps. Place a city tile.',
+        description: 'Decrease your energy production 1 step and increase your M€ production 2 steps. Place a city tile.',
       },
     });
   }

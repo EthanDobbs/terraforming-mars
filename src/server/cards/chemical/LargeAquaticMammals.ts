@@ -41,7 +41,7 @@ export class LargeAquaticMammals extends ActionCard implements IProjectCard {
           b.vpText('2 VP for each animal on this card.');
         }),
         description: {
-          text: 'Requires +6°C or higher. Decrease any plant production 2 steps.',
+          text: 'Requires +6°C or warmer. Decrease any plant production 2 steps.',
           align: 'left',
         },
       },

@@ -29,7 +29,7 @@ export class WorldGovernmentOffices extends Card implements IProjectCard {
           }).nbsp;
           b.city();
         }),
-        description: 'Requires that you have an Earth tag, a Venus tag, and a Jovian tag. Lower your energy production 1 step and raise your M€ production 4 steps. Place a city tile.',
+        description: 'Requires an Earth tag, a Venus tag, and a Jovian tag. Decrease your energy production 1 step and increase your M€ production 4 steps. Place a city tile.',
       },
     });
   }

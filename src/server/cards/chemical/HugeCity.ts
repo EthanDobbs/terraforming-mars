@@ -31,7 +31,7 @@ export class HugeCity extends Card implements IProjectCard {
           })
           b.city().city().asterix();
         }),
-        description: 'Requires that you own 2 cities. Lower your energy production 2 steps and raise your MC production 6 steps. Place 2 adjacent city tiles.' 
+        description: 'Requires that you own 2 cities. Decrease your energy production 2 steps and increase your M€ production 6 steps. Place 2 adjacent city tiles.' 
       },
     });
   }

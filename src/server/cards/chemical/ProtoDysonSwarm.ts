@@ -24,7 +24,7 @@ export class ProtoDysonSwarm extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(6, {digit}));
         }),
-        description: 'Raise your energy production 6 steps.',
+        description: 'Increase your energy production 6 steps.',
       },
     });
   }

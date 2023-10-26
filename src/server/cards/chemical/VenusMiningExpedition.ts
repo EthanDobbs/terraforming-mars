@@ -24,7 +24,7 @@ export class VenusMiningExpedition extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.steel(5, {digit}).nbsp.titanium(2, {digit});
         }),
-        description: 'Requires Venus 8% or higher. Gain 5 steel and 2 titanium.',
+        description: 'Requires Venus 8%. Gain 5 steel and 2 titanium.',
       },
     });
   }

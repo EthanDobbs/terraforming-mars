@@ -25,7 +25,7 @@ export class MountaintopRemoval extends Card implements IProjectCard {
             pb.plus().steel(2);
           });
         }),
-        description: 'Lower your MC production 1 step and raise your steel production 2 steps.',
+        description: 'Decrease your M€ production 1 step and increase your steel production 2 steps.',
       },
     });
   }

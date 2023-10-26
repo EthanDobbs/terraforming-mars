@@ -24,7 +24,7 @@ export class EcologicalContract extends Card {
             (eb) => eb.plants(1, {played}).startEffect.plants(1).equals().megacredits(3)).br;
           b.production((pb) => pb.plants(1)).br;
         }),
-        description: 'Raise your plant production 1 step.',
+        description: 'Increase your plant production 1 step.',
       },
     });
   }

@@ -19,7 +19,7 @@ export class AssetLiquidation extends Card implements IProjectCard {
 
       metadata: {
         cardNumber: 'x174',
-        description: 'Lower any production 1 step to gain 5 of the SAME TYPE of resource.',
+        description: 'Decrease any production 1 step to gain 5 of the SAME TYPE of resource.',
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.minus().wild(1)).nbsp.plus().wild(5, {digit}).asterix();
         }),

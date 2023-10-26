@@ -14,7 +14,7 @@ export class PopulationBoom extends Card implements IProjectCard {
 
       metadata: {
         cardNumber: 'x179',
-        description: 'Requires that there are 6 cities in play.',
+        description: 'Requires 6 city tiles in play.',
       },
     });
   }

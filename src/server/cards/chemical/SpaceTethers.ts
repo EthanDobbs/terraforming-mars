@@ -20,7 +20,7 @@ export class SpaceTethers extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 1 floater to gain 4MC',
+            title: 'Spend 1 floater to gain 4 M€',
             spend: {resourcesHere: 1},
             stock: {megacredits: 4},
           },
@@ -38,7 +38,7 @@ export class SpaceTethers extends ActionCard implements IProjectCard {
             eb.empty().startAction.floaters(1).asterix();
           }).br;
           b.or().br;
-          b.action('Remove 1 floater from this card to gain 4MC.', (eb) => {
+          b.action('Remove 1 floater from this card to gain 4 M€.', (eb) => {
             eb.floaters(1).startAction.megacredits(4);
           }).br;
         }),

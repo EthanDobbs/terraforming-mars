@@ -26,7 +26,7 @@ export class ConvoyFromTitan extends Card implements IProjectCard {
           b.production((pb) => pb.heat(2));
           b.cards(1);
         }),
-        description: 'Place an ocean tile, raise your heat production 2 steps, and draw a card.',
+        description: 'Place an ocean tile, increase your heat production 2 steps, and draw a card.',
       },
     });
   }

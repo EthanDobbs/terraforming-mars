@@ -27,7 +27,7 @@ export class CommercialImports extends Card implements IProjectCard {
             pb.megacredits(1).slash().city({size: Size.SMALL, all});
           });
         }),
-        description: 'Raise your MC production 1 step for every city tile.',
+        description: 'Increase your M€ production 1 step for every city tile.',
       },
     });
   }

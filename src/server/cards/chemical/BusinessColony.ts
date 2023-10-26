@@ -23,7 +23,7 @@ export class BusinessColony extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.colonies(1).production((pb) => pb.megacredits(1).slash().colonies(1, {size: Size.SMALL}));
         }),
-        description: 'Place a colony, then raise your MC production 1 step for each colony you own.',
+        description: 'Place a colony, then increase your MC production 1 step for each colony you own.',
       },
     });
   }

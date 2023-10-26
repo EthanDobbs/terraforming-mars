@@ -28,7 +28,7 @@ export class SponsoredResearchFirm extends Card implements IProjectCard {
           }).br;
           b.production((pb) => pb.megacredits(1)).br;
         }),
-        description: 'Requires that you have 2 Earth tags. Raise your MC production 1 step.',
+        description: 'Requires 2 Earth tags. Increase your M€ production 1 step.',
       },
     });
   }

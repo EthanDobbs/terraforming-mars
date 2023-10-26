@@ -24,7 +24,7 @@ export class GalileanMiningNetwork extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 2 floaters to raise your titanium production 1 step',
+            title: 'Remove 2 floaters to increase your titanium production 1 step',
             spend: {resourcesHere: 2},
             production: {titanium: 1},
           },
@@ -42,7 +42,7 @@ export class GalileanMiningNetwork extends ActionCard implements IProjectCard {
             eb.empty().startAction.floaters(1, {secondaryTag: Tag.JOVIAN});
           }).br;
           b.or().br;
-          b.action('Spend 1 floater here to raise your heat production 1 step.', (eb) => {
+          b.action('Spend 1 floater here to increase your titanium production 1 step.', (eb) => {
             eb.floaters(2).startAction.production((pb) => pb.titanium(1));
           }).br;
           b.titanium(2);

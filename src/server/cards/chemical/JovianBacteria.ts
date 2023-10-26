@@ -34,7 +34,7 @@ export class JovianBacteria extends ActionCard implements IProjectCard {
           b.vpText('1 VP per 2 Microbes on this card.').br;
           b.tr(1);
         }),
-        description: 'Requires that you have a Jovian tag. Raise your TR one step.'
+        description: 'Requires 1 Jovian tag. Raise your TR one step.'
       },
     });
   }

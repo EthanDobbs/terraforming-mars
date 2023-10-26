@@ -33,7 +33,7 @@ export class FloaterDocks extends Card implements IProjectCard {
           b.vpText('1 VP per 3 floaters on this card.').br;
           b.production((pb) => pb.megacredits(2));
         }),
-        description: 'Raise your MC production 2 steps.',
+        description: 'Increase your M€ production 2 steps.',
       },
     });
   }

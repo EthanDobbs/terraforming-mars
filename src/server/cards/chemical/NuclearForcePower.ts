@@ -25,7 +25,7 @@ export class NuclearForcePower extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(4, {digit}));
         }),
-        description: 'Requires that you have 5 science tags. Raise your energy production 4 steps.',
+        description: 'Requires 5 science tags. Increase your energy production 4 steps.',
       },
     });
   }

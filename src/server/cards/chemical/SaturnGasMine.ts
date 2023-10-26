@@ -23,7 +23,7 @@ export class SaturnGasMine extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(2).energy(1));
         }),
-        description: 'Raise your MC production 2 steps and your energy production 1 step.',
+        description: 'Increase your M€ production 2 steps and your energy production 1 step.',
       },
     });
   }

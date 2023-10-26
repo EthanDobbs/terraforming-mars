@@ -23,7 +23,7 @@ export class TechnologyExhibition extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.minus().energy(2).nbsp.cards(2);
         }),
-        description: 'Lose 2 energy resources and draw 2 cards.',
+        description: 'Lose 2 energy and draw 2 cards.',
       },
     });
   }

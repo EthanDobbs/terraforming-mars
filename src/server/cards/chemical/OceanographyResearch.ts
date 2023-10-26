@@ -3,7 +3,6 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import {IPlayer} from '../../IPlayer';
 import {GlobalParameter} from '../../../common/GlobalParameter';
 import {Tag} from '../../../common/cards/Tag';
 
@@ -14,6 +13,7 @@ export class OceanographyResearch extends Card implements IProjectCard {
       name: CardName.OCEANOGRAPHY_RESEARCH,
       cost: 8,
       tags: [Tag.SCIENCE],
+      globalParameterRequirementBonus: {parameter: GlobalParameter.OCEANS, steps: 2},
 
       behavior: {
         drawCard: 1
@@ -30,8 +30,5 @@ export class OceanographyResearch extends Card implements IProjectCard {
         description: 'Draw a card.'
       },
     });
-  }
-  public getRequirementBonus(_player: IPlayer, parameter: GlobalParameter): number {
-    return parameter === GlobalParameter.OCEANS ? 2 : 0;
   }
 }

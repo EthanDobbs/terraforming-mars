@@ -23,7 +23,7 @@ export class AlchemicReactions extends Card implements IProjectCard {
             eb.text('X').energy(1).asterix().startAction.text('X').titanium(1);
           }).br;
         }),
-        description: 'Requires that you have 5 science tags.',
+        description: 'Requires 5 science tags.',
       },
     });
   }

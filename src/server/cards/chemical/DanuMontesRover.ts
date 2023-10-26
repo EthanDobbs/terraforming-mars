@@ -17,7 +17,7 @@ export class DanuMontesRover extends Card implements IProjectCard {
 
       metadata: {
         cardNumber: 'x251',
-        description: 'Requires Venus 6% or lower.',
+        description: 'Venus must be 6% or lower.',
       },
     });
   }

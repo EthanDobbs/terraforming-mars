@@ -38,7 +38,7 @@ export class Poultry extends ActionCard implements IProjectCard {
           b.vpText('1 VP for each animal on this card.');
         }),
         description: {
-          text: 'Requires 12% oxygen or higher. Decrease your plant production 1 step and increase your M€ production 2 steps',
+          text: 'Requires 12% oxygen. Decrease your plant production 1 step and increase your M€ production 2 steps',
           align: 'left',
         },
       },

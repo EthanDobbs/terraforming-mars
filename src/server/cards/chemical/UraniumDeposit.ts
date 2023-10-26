@@ -23,7 +23,7 @@ export class UraniumDeposit extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(1)).steel(2);
         }),
-        description: 'Raise your energy production 1 step and gain 2 steel.',
+        description: 'Increase your energy production 1 step and gain 2 steel.',
       },
     });
   }

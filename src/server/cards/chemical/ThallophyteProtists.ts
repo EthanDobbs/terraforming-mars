@@ -24,7 +24,7 @@ export class ThallophyteProtists extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 2 microbes to raise your plant production 1 step',
+            title: 'Spend 2 microbes to raise your plant production 1 step',
             spend: {resourcesHere: 2},
             production: {plants: 1},
           },
@@ -47,7 +47,7 @@ export class ThallophyteProtists extends ActionCard implements IProjectCard {
           }).br;
           b.microbes(2);
         }),
-        description: 'Requires -24°C or higher. Add 2 microbes to this card.'
+        description: 'Requires -24°C or warmer. Add 2 microbes to this card.'
       },
     });
   }

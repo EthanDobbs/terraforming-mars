@@ -28,7 +28,7 @@ export class DistributionCenter extends Card implements IProjectCard {
           }).nbsp;
           b.city();
         }),
-        description: 'Requires that you have 9 unique tags in play. Lower your energy production 2 steps and raise your M€ production 5 steps. Place a city tile.',
+        description: 'Requires that you have 9 unique tags in play. Decrease your energy production 2 steps and increase your M€ production 5 steps. Place a city tile.',
       },
     });
   }

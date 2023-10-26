@@ -23,7 +23,7 @@ export class SiliconFactory extends ActionCard implements IProjectCard {
       metadata: {
         cardNumber: 'x065',
         renderData: CardRenderer.builder((b) => {
-          b.action('Spend 4 energy to raise the oxygen 1 step and gain 2MC', (eb) => {
+          b.action('Spend 4 energy to raise the oxygen 1 step and gain 2 M€', (eb) => {
             eb.energy(4, {digit}).startAction.oxygen(1).megacredits(2);
           }).br;
         }),

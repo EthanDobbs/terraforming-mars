@@ -27,7 +27,7 @@ export class MartianBanking extends Card implements IProjectCard {
             pb.megacredits(4).nbsp.megacredits(1, {all});
           });
         }),
-        description: 'Increase M€ production 4 steps. ALL OPPONENTS increase their MC production 1 step',
+        description: 'Increase M€ production 4 steps. ALL OPPONENTS increase their M€ production 1 step',
       },
     });
   }

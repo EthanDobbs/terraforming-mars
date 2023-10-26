@@ -25,7 +25,7 @@ export class AtmosphereLiftingDetonations extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.venus(1).nbsp.minus().energy(2);
         }),
-        description: 'Requires Venus 10% or lower. Raise Venus 1 step. Lose 2 energy resources.',
+        description: 'Venus must be 10% or lower. Raise Venus 1 step. Lose 2 energy.',
       },
     });
   }

@@ -24,7 +24,7 @@ export class RuralHousing extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.megacredits(1).slash().greenery({withO2: false});
         }),
-        description: 'Requires 12% oxygen or higher. Gain 1MC for each greenery tile you own.',
+        description: 'Requires 12% oxygen. Gain 1 M€ for each greenery tile you own.',
       },
     });
   }

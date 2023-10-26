@@ -27,7 +27,7 @@ export class LuxuryResort extends Card implements IProjectCard {
             pb.plus().megacredits(4);
           }).nbsp;
         }),
-        description: 'Requires 0°C or higher. Lower your energy production 1 step and raise your MC production 4 steps.',
+        description: 'Requires 0°C or warmer. Decrease your energy production 1 step and increase your M€ production 4 steps.',
       },
     });
   }

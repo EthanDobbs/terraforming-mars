@@ -38,7 +38,7 @@ export class FreightShuttles extends Card implements IProjectCard {
             pb.plus().megacredits(5);
           });
         }),
-        description: 'Requires 5% oxygen or higher. Lower your energy production 2 steps and raise your MC production 5 steps.'
+        description: 'Requires 5% oxygen. Decrease your energy production 2 steps and increase your M€ production 5 steps.'
       },
     });
   }

@@ -23,7 +23,7 @@ export class AcquiredConsultingFirm extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.megacredits(1).slash().delegates(1, {all});
         }),
-        description: 'Gain 1MC for each active delegate.'
+        description: 'Gain 1 M€ for each active delegate.'
       }
     })
   }

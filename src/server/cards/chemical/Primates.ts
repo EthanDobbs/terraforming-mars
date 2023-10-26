@@ -38,7 +38,7 @@ export class Primates extends ActionCard implements IProjectCard {
           b.vpText('1 VP for each animal on this card.');
         }),
         description: {
-          text: 'Requires 11% oxygen or higher. Decrease any plant production 1 step.',
+          text: 'Requires 11% oxygen. Decrease any plant production 1 step.',
           align: 'left',
         },
       },

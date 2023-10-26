@@ -3,7 +3,6 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import {IPlayer} from '../../IPlayer';
 import {GlobalParameter} from '../../../common/GlobalParameter';
 import {Tag} from '../../../common/cards/Tag';
 
@@ -14,6 +13,7 @@ export class LocalDecompression extends Card implements IProjectCard {
       name: CardName.LOCAL_DECOMPRESSION,
       tags: [Tag.VENUS],
       cost: 13,
+      globalParameterRequirementBonus: {parameter: GlobalParameter.VENUS, steps: 2},
 
       behavior: {
         global: {venus: 1},
@@ -30,8 +30,5 @@ export class LocalDecompression extends Card implements IProjectCard {
         description: 'Raise Venus 1 step.'
       },
     });
-  }
-  public getRequirementBonus(_player: IPlayer, parameter: GlobalParameter): number {
-    return parameter === GlobalParameter.VENUS ? 2 : 0;
   }
 }

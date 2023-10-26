@@ -33,7 +33,7 @@ export class FloatingBiodomes extends Card implements IActionCard {
             eb.text('X').floaters(1).startAction.text('X').plants(1);
           });
         }),
-        description: 'Requires that you have 2 science tags.',
+        description: 'Requires 2 science tags.',
       },
     });
   }

@@ -21,9 +21,9 @@ export class VortexEngine extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x284',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.megacredits(-1)).nbsp.venus(2).br;
+          b.production((pb) => pb.megacredits(-1)).venus(2).br;
         }),
-        description: 'Lower your MC production 1 step and raise Venus 2 steps.',
+        description: 'Decrease your M€ production 1 step and raise Venus 2 steps.',
       },
     });
   }

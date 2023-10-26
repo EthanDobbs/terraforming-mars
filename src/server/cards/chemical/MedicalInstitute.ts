@@ -25,7 +25,7 @@ export class MedicalInstitute extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(3));
         }),
-        description: 'Requires that Scientists are in power or that you have 2 delegates there. Raise your MC production 3 steps.',
+        description: 'Requires that Scientists are in power or that you have 2 delegates there. Increase your M€ production 3 steps.',
       },
     });
   }

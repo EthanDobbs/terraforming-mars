@@ -25,7 +25,7 @@ export class EnergyMohole extends Card implements IProjectCard {
             pb.heat(2);
           });
         }),
-        description: 'Raise your energy production 1 step and your heat production 2 steps.',
+        description: 'Increase your energy production 1 step and your heat production 2 steps.',
       },
     });
   }

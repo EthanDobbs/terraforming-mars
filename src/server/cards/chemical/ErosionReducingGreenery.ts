@@ -25,7 +25,7 @@ export class ErosionReducingGreenery extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.plants(1)).nbsp.plants(1).nbsp.tr(1);
         }),
-        description: 'Requires -16°C or higher. Raise your plant production 1 step, gain 1 plant, and raise your TR 1 step.',
+        description: 'Requires -16°C or warmer. Increase your plant production 1 step, gain 1 plant, and raise your TR 1 step.',
       },
     });
   }

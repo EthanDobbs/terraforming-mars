@@ -20,7 +20,7 @@ export class JovianSuppliers extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x204',
         renderData: CardRenderer.builder((b) => {
-          b.effect('Whenever any player plays a Jovian tag, gain 2MC', (eb) => {
+          b.effect('Whenever any player plays a Jovian tag, gain 2 M€.', (eb) => {
             eb.jovian({played, all}).startEffect.megacredits(2);
           });
         }),

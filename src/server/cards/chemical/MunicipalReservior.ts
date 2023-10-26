@@ -26,7 +26,7 @@ export class MunicipalReservior extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.oceans(1).asterix().nbsp.production((pb) => pb.megacredits(1));
         }),
-        description: 'Place an ocean tile NEXT TO 3 OTHER TILES, THIS TILE MAY BE PLACED ON AN AREA NOT RESERVED FOR AN OCEAN. Raise your MC production 1 step. ',
+        description: 'Place an ocean tile NEXT TO 3 OTHER TILES, THIS TILE MAY BE PLACED ON AN AREA NOT RESERVED FOR AN OCEAN. Increase your M€ production 1 step. ',
       },
     });
   }

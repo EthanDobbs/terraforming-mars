@@ -29,7 +29,7 @@ export class AdvancedHydropower extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.oceans(1).production((pb) => pb.energy(1).slash().oceans(2, {size: Size.SMALL}));
         }),
-        description: 'Place an ocean tile, then raise your energy production 1 step for every 2 ocean tiles in play.',
+        description: 'Place an ocean tile, then increase your energy production 1 step for every 2 ocean tiles in play.',
       },
     });
   }

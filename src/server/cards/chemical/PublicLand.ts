@@ -25,7 +25,7 @@ export class PublicLand extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x074',
         renderData: CardRenderer.builder((b) => {
-          b.effect('Whenever a tile is placed, gain 1MC.', (eb) => {
+          b.effect('Whenever a tile is placed, gain 1 M€.', (eb) => {
             eb.emptyTile('normal', {size: Size.SMALL, all}).startEffect.megacredits(1);
           });
         }),

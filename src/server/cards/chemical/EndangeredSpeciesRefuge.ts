@@ -32,7 +32,7 @@ export class EndangeredSpeciesRefuge extends ActionCard implements IProjectCard 
       metadata: {
         cardNumber: 'x054',
         renderData: CardRenderer.builder((b) => {
-          b.action('Spend 4MC to add 1 animal to this card.', (eb) => {
+          b.action('Spend 4 M€ to add 1 animal to this card.', (eb) => {
             eb.megacredits(4).startAction.animals(1);
           }).br;
           b.text('Animals may not be removed from this card', Size.SMALL, true).br;
@@ -40,7 +40,7 @@ export class EndangeredSpeciesRefuge extends ActionCard implements IProjectCard 
           b.tr(1).animals(2);
         }),
         description: {
-          text: 'Requires that you have 2 animal tags. Raise your TR 1 step and add 2 animals to this card.',
+          text: 'Requires 2 animal tags. Raise your TR 1 step and add 2 animals to this card.',
           align: 'left',
         },
       },

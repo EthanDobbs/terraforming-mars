@@ -25,7 +25,7 @@ export class PhotonicMetamaterials extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.venus(1).floaters(2, {secondaryTag: Tag.VENUS}).br;
         }),
-        description: 'Raise Venus 1 step and add 2 floaters to any Venus card.',
+        description: 'Requires 2 science tags. Raise Venus 1 step and add 2 floaters to any Venus card.',
       },
     });
   }

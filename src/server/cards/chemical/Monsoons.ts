@@ -28,7 +28,7 @@ export class Monsoons extends Card implements IProjectCard {
             pb.plus().plants(4, {digit});
           });
         }),
-        description: 'Requires 8 or more oceans. Lower any player\'s heat production 2 steps and raise your plant production 4 steps.',
+        description: 'Requires 8 ocean tiles. Decrease any player\'s heat production 2 steps and increase your plant production 4 steps.',
       },
     });
   }

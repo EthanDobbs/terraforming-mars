@@ -25,7 +25,7 @@ export class SuccessfulCommerce extends Card implements IProjectCard {
             pb.megacredits(3);
           });
         }),
-        description: 'Requires 2 Earth tags. Increase M€ production 3 steps.',
+        description: 'Requires 2 Earth tags. Increase your M€ production 3 steps.',
       },
     });
   }

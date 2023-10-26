@@ -24,7 +24,7 @@ export class HydrualicMining extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.titanium(1)).nbsp.steel(2);
         }),
-        description: 'Requires 3 or more oceans. Raise your titanium production 1 step and gain 2 steel.',
+        description: 'Requires 3 ocean tiles. Increase your titanium production 1 step and gain 2 steel.',
       },
     });
   }

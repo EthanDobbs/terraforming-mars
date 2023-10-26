@@ -23,7 +23,7 @@ export class TunnelBoring extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.steel(2));
         }),
-        description: 'Raise your steel production 2 steps.',
+        description: 'Increase your steel production 2 steps.',
       },
     });
   }

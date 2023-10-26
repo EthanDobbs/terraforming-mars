@@ -23,7 +23,7 @@ export class AdaptedHardwood extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(3).br.plants(3));
         }),
-        description: 'Requires -10°C or higher. Raise your MC production 3 steps and your plant production 3 steps.',
+        description: 'Requires -10°C or higher. Increase your M€ production 3 steps and your plant production 3 steps.',
       },
     });
   }

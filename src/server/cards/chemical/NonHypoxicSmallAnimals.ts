@@ -38,7 +38,7 @@ export class NonHypoxicSmallAnimals extends ActionCard implements IProjectCard {
           b.vpText('1 VP for every 2 animals on this card.');
         }),
         description: {
-          text: 'Requires 3% oxygen or higher and that you remove 2 plants from any player.',
+          text: 'Requires 3% oxygen. Remove 2 plants from any player.',
           align: 'left',
         },
       },

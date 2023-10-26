@@ -27,7 +27,7 @@ export class FloatingTechInvestments extends Card implements IProjectCard {
           }).br;
           b.production((pb) => pb.minus().megacredits(1))
         }),
-        description: 'Lower your MC production 1 step.'
+        description: 'Decrease your M€ production 1 step.'
       },
     });
   }

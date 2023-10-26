@@ -23,7 +23,7 @@ export class Overclock extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.energy(8, {digit})
         }),
-        description: 'Requires that you have 2 power tags. Gain 8 energy.',
+        description: 'Requires 2 power tags. Gain 8 energy.',
       },
     });
   }

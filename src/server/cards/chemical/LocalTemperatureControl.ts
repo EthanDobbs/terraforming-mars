@@ -3,7 +3,6 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import {IPlayer} from '../../IPlayer';
 import {GlobalParameter} from '../../../common/GlobalParameter';
 
 export class LocalTemperatureControl extends Card implements IProjectCard {
@@ -12,6 +11,7 @@ export class LocalTemperatureControl extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.LOCAL_TEMPERATURE_CONTROL,
       cost: 12,
+      globalParameterRequirementBonus: {parameter: GlobalParameter.TEMPERATURE, steps: 4},
 
       behavior: {
         production: {heat: 2}
@@ -25,11 +25,8 @@ export class LocalTemperatureControl extends Card implements IProjectCard {
           }).br;
           b.production((pb) => pb.heat(2))
         }),
-        description: 'Raise your heat production 2 steps.'
+        description: 'Increase your heat production 2 steps.'
       },
     });
-  }
-  public getRequirementBonus(_player: IPlayer, parameter: GlobalParameter): number {
-    return parameter === GlobalParameter.TEMPERATURE ? 4 : 0;
   }
 }

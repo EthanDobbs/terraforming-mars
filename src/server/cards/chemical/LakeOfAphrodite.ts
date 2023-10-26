@@ -24,7 +24,7 @@ export class LakeOfAphrodite extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.venus(1).br;
         }),
-        description: 'Requires Venus 20% or higher. Raise Venus 1 step.',
+        description: 'Requires Venus 20%. Raise Venus 1 step.',
       },
     });
   }

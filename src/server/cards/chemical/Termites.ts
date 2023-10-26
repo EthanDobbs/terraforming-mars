@@ -34,7 +34,7 @@ export class Termites extends ActionCard implements IProjectCard {
           b.vpText('1 VP per 2 Microbes on this card.').br;
           b.production((pb) => pb.heat(1));
         }),
-        description: 'Requires 4% oxygen or higher. Raise your heat production 1 step.'
+        description: 'Requires 4% oxygen. Increase your heat production 1 step.'
       },
     });
   }

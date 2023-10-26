@@ -24,7 +24,7 @@ export class BotanicalLab extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.plants(1));
         }),
-        description: 'Requires that you have 2 sciecne tags. Raise your plant production 1 step.',
+        description: 'Requires 2 science tags. Increase your plant production 1 step.',
       },
     });
   }

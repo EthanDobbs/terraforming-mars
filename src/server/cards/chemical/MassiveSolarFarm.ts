@@ -18,7 +18,7 @@ export class MassiveSolarFarm extends Card implements IProjectCard {
       renderData: CardRenderer.builder((b) => {
         b.production((pb) => pb.energy(3)).nbsp.tile(TileType.MASSIVE_SOLAR_FARM, false);
       }),
-      description: 'Raise your energy production 3 steps and place this tile.'
+      description: 'Increase your energy production 3 steps and place this tile.'
     },
   ) {
     super({

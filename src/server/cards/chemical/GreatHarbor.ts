@@ -25,7 +25,7 @@ export class GreatHarbor extends Card implements IProjectCard {
       renderData: CardRenderer.builder((b) => {
         b.tile(TileType.GREAT_HARBOR, false).asterix().nbsp.megacredits(1).slash().emptyTile('normal', {size: Size.SMALL}).oceans(1, {size: Size.SMALL});
       }),
-      description: 'Requires +2°C or higher. Place this tile NEXT TO AN OCEAN, then gain 1MC for each tile you own adjacent to an ocean, including this.'
+      description: 'Requires +2°C or warmer. Place this tile NEXT TO AN OCEAN, then gain 1 M€ for each tile you own adjacent to an ocean, including this.'
     },
   ) {
     super({

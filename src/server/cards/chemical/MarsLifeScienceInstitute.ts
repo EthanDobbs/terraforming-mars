@@ -24,7 +24,7 @@ export class MarsLifeScienceInstitute extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.cards(1);
         }),
-        description: 'Requires that you have a plant tag, an animal tag, and a microbe tag. Draw a card.',
+        description: 'Requires a plant tag, an animal tag, and a microbe tag. Draw a card.',
       },
     });
   }

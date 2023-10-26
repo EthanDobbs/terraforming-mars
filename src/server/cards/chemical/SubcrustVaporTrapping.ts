@@ -22,7 +22,7 @@ export class SubcrustVaporTrapping extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.oceans(1);
         }),
-        description: 'Requires that you have 2 science tags. Place an ocean tile.',
+        description: 'Requires 2 science tags. Place an ocean tile.',
       },
     });
   }

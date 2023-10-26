@@ -24,7 +24,7 @@ export class ColdFusionPower extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(3));
         }),
-        description: 'Requires that you have 4 science tags. Raise your energy production 3 steps.',
+        description: 'Requires 4 science tags. Increase your energy production 3 steps.',
       },
     });
   }

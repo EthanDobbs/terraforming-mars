@@ -22,7 +22,7 @@ export class OrbitalBiodomes extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.plants(2));
         }),
-        description: 'Raise your plant production 2 steps.',
+        description: 'Increase your plant production 2 steps.',
       },
     });
   }

@@ -30,7 +30,7 @@ export class MiningCommunity extends Card implements IProjectCard {
           })
           b.city().asterix();
         }),
-        description: 'Lower your energy production 2 steps, raise your MC production 3 steps, and raise your steel production 1 step. Place a city tile ON A STEEL PLACEMENT BONUS, regardless of adjacent city tiles.',
+        description: 'Decrease your energy production 2 steps. Increase your M€ production 3 steps and your steel production 1 step. Place a city tile ON A STEEL PLACEMENT BONUS, regardless of adjacent city tiles.',
       },
     });
   }

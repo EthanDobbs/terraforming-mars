@@ -28,7 +28,7 @@ export class CorporateCitadel extends Card implements IProjectCard {
             pb.plus().megacredits(4);
           });
         }),
-        description: 'Requires that Unity are in power or that you have 2 delegates there. Lower your energy production 1 step and raise your MC production 4 steps.',
+        description: 'Requires that Unity are in power or that you have 2 delegates there. Decrease your energy production 1 step and increase your M€ production 4 steps.',
       },
     });
   }

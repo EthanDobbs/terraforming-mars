@@ -24,7 +24,7 @@ export class AsteroidMiningExpedition extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.steel(2, {digit}).nbsp.titanium(4, {digit}).nbsp.minus().energy(2, {digit});
         }),
-        description: 'Gain 2 steel and 4 titanium. Lose 2 energy resources.',
+        description: 'Gain 2 steel and 4 titanium. Lose 2 energy.',
       },
     });
   }

@@ -29,7 +29,7 @@ export class VenusSolarWaystation extends Card {
           }).br;
           b.production((pb) => pb.titanium(1))
         }),
-        description: 'Requires that you have 2 Venus tags. Raise your titanium production 1 step.'
+        description: 'Requires that you have 2 Venus tags. Increase your titanium production 1 step.'
       },
     });
   }

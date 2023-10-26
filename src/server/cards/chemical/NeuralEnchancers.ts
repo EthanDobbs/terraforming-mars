@@ -23,7 +23,7 @@ export class NeuralEnhancers extends Card implements IProjectCard {
             eb.empty().startEffect.megacredits(-1);
           });
         }),
-        description: 'Requires that you have 3 science tags.',
+        description: 'Requires 3 science tags.',
       },
     });
   }

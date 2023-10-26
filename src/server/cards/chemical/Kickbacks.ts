@@ -23,7 +23,7 @@ export class Kickbacks extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(2)).megacredits(3);
         }),
-        description: 'Requires you are chairman. Raise your MC production 2 steps and gain 3MC.',
+        description: 'Requires you are chairman. Increase your M€ production 2 steps and gain 3 M€.',
       },
     });
   }

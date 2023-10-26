@@ -23,7 +23,7 @@ export class IndustrialColony extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(1).steel(1)).colonies(1);
         }),
-        description: 'Raise your energy production 1 step, your steel production 1 step, and place a colony.',
+        description: 'Increase your energy production 1 step and your steel production 1 step. Place a colony.',
       },
     });
   }

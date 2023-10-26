@@ -27,7 +27,7 @@ export class InsulatedCity extends Card implements IProjectCard {
           })
           b.city();
         }),
-        description: 'Lower your heat production 2 steps and raise your MC production 4 steps. Place a city tile.',
+        description: 'Decrease your heat production 2 steps and increase your M€ production 4 steps. Place a city tile.',
       },
     });
   }

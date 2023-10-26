@@ -19,7 +19,7 @@ export class ArchivalStudies extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.megacredits(2).slash().event({played});
         }),
-        description: 'Gain 2MC for each event you\'ve played, including this',
+        description: 'Gain 2 M€ for each event you\'ve played, including this',
       },
     });
   }

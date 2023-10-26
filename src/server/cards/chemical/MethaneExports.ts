@@ -24,7 +24,7 @@ export class MethaneExports extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 1 floater to raise your heat production 1 step',
+            title: 'Spend 1 floater to increase your heat production 1 step',
             spend: {resourcesHere: 1},
             production: {heat: 1},
           },
@@ -42,7 +42,7 @@ export class MethaneExports extends ActionCard implements IProjectCard {
             eb.empty().startAction.floaters(1);
           }).br;
           b.or().br;
-          b.action('Spend 1 floater here to raise your heat production 1 step.', (eb) => {
+          b.action('Remove 1 floater from this card to increase your heat production 1 step.', (eb) => {
             eb.floaters(1).startAction.production((pb) => pb.heat(1));
           }).br;
           b.floaters(2, {secondaryTag: Tag.JOVIAN});

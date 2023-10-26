@@ -19,7 +19,7 @@ export class MesosphereShades extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 2 floaters to raise Venus 1 step',
+            title: 'Spend 2 floaters to raise Venus 1 step',
             spend: {resourcesHere: 2},
             global: {venus: 1},
           },

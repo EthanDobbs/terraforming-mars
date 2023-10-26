@@ -30,7 +30,7 @@ export class PreservationistSettlement extends Card implements IProjectCard {
           });
           b.city().asterix();
         }),
-        description: 'Requires that Reds are in power or that you have 2 delegates there. Lower your energy production 1 step, raise your MC production 3 steps, and place a city tile NEXT TO NO OTHER TILE.',
+        description: 'Requires that Reds are in power or that you have 2 delegates there. Decrease your energy production 1 step, increase your M€ production 3 steps, and place a city tile NEXT TO NO OTHER TILE.',
       },
     });
   }

@@ -24,7 +24,7 @@ export class ConcreteFactory extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.steel(1)).nbsp.steel(4, {digit});
         }),
-        description: 'Raise your steel production 1 step and gain 4 steel.',
+        description: 'Increase your steel production 1 step and gain 4 steel.',
       },
     });
   }

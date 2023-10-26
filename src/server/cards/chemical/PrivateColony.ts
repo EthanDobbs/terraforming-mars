@@ -20,7 +20,7 @@ export class PrivateColony extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x345',
         renderData: CardRenderer.builder((b) => {
-          b.action('Move one of your trade fleets from the Trade Fleets Tile to this card to raise your MC prodcution 1 step or gain 4MC. Fleets on this card may no longer trade, and return to the Trade Fleets Tile during the Solar Phase.', (eb) => {
+          b.action('Move one of your trade fleets from the Trade Fleets Tile to this card to raise your M€ prodcution 1 step or gain 4 M€. Fleets on this card may no longer trade, and return to the Trade Fleets Tile during the Solar Phase.', (eb) => {
             eb.tradeFleet().asterix().startAction.production((pb) => pb.megacredits(1)).nbsp.or().nbsp.megacredits(4);
           }).br;
         }),
@@ -33,11 +33,11 @@ export class PrivateColony extends Card implements IProjectCard {
   public action(player: IPlayer) {
     player.colonies.tradesThisGeneration++;
     const opts: Array<SelectOption> = [];
-    opts.push(new SelectOption('Gain 4MC', 'Gain MC').andThen( () => {
+    opts.push(new SelectOption('Gain 4 M€', 'Gain M€').andThen( () => {
       player.stock.add(Resource.MEGACREDITS, 4, {log: true});
       return undefined;
     }));
-    opts.push(new SelectOption('Raise your MC production 1 step', 'Raise MC production').andThen( () => {
+    opts.push(new SelectOption('Raise your M€ production 1 step', 'Raise M€ production').andThen( () => {
       player.production.add(Resource.MEGACREDITS, 1, {log: true});
       return undefined;
     }));

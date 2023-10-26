@@ -25,7 +25,7 @@ export class FuelCellProduction extends Card implements IProjectCard {
             pb.plus().energy(2)
           });
         }),
-        description: 'Lower your MC production 2 steps and raise your energy production 2 steps.',
+        description: 'Decrease your M€ production 2 steps and increase your energy production 2 steps.',
       },
     });
   }

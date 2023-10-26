@@ -22,7 +22,7 @@ export class AtmosphericProcessing extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(1).energy(1));
         }),
-        description: 'Raise your MC production 1 step and your energy production 1 step.',
+        description: 'Increase your M€ production 1 step and your energy production 1 step.',
       },
     });
   }

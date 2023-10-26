@@ -28,7 +28,7 @@ export class WorldGovernmentDiplomats extends Card implements IProjectCard {
         cardNumber: 'x395',
         description: 'Raise your TR 1 step.',
         renderData: CardRenderer.builder((b) => {
-          b.effect('When you play an Earth tag, including this, either add a diplomacy resource to this card or remove a diplomacy resource to place a delegate.', (eb) => {
+          b.effect('When you play an Earth tag, including this, either add a diplomacy resource to this card or remove a diplomacy resource from this card to place a delegate.', (eb) => {
             eb.earth(1, {played}).startEffect.diplomacy(1).or(Size.SMALL).minus().diplomacy(1).plus().delegates(1);
           }).br;
           b.tr(1);

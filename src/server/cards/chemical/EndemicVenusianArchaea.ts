@@ -27,7 +27,7 @@ export class EndemicVenusianArchaea extends Card implements IProjectCard {
           }).br;
           b.vpText('1 VP per 2 microbes on this card.').br;
         }),
-        description: 'Requires that you have 2 science tags.',
+        description: 'Requires 2 science tags.',
       },
     });
   }

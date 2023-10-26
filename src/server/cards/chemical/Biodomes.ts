@@ -21,7 +21,7 @@ export class Biodomes extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x076',
         renderData: CardRenderer.builder((b) => {
-          b.action('Spend 8 M€ to raise your plant production 1 step. STEEL MAY BE USED as if you were playing a building card.', (eb) => 
+          b.action('Spend 8 M€ to increase your plant production 1 step. STEEL MAY BE USED as if you were playing a building card.', (eb) => 
             eb.megacredits(8).openBrackets.steel(1).closeBrackets.startAction.production((pb) => pb.plants(1))
           );
         }),

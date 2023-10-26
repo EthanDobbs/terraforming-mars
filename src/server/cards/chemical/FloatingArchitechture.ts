@@ -26,7 +26,7 @@ export class FloatingArchitechture extends Card implements IProjectCard {
           b.floaters(2).asterix().br;
           b.vpText('1 VP for every 3rd City in play.');
         }),
-        description: 'Requires that you have 5 floaters. Add 2 floaters to ANOTHER card.',
+        description: 'Requires 5 floaters. Add 2 floaters to ANOTHER card.',
       },
     });
   }

@@ -41,12 +41,12 @@ export class LongTermEvolutionStudy extends ActionCard implements IProjectCard {
             eb.empty().startAction.animals(1);
           }).br;
           b.or().br;
-          b.action('Spend 1 animal here to draw a card.', (eb) => {
+          b.action('Remove 1 animal from this card to draw a card.', (eb) => {
             eb.animals(1).startAction.cards(1);
           }).br;
           b.production((pb) => pb.megacredits(-1));
         }),
-        description: 'Lower your MC production 1 step.'
+        description: 'Decrease your M€ production 1 step.'
       },
     });
   }

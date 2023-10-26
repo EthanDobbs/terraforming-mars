@@ -20,7 +20,7 @@ export class LatticeConstructionMicrobes extends ActionCard implements IProjectC
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 1 microbe to gain 1 steel and 1 titanium',
+            title: 'Spend 1 microbe to gain 1 steel and 1 titanium',
             spend: {resourcesHere: 1},
             stock: {steel: 1, titanium: 1},
           },
@@ -42,7 +42,7 @@ export class LatticeConstructionMicrobes extends ActionCard implements IProjectC
             eb.microbes(1).startAction.steel(1).titanium(1);
           }).br;
         }),
-        description: 'Requires that you have a microbe tag.'
+        description: 'Requires 1 microbe tag.'
       },
     });
   }

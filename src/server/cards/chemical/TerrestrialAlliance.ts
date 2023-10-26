@@ -22,7 +22,7 @@ export class TerrestrialAlliance extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.tr(1);
         }),
-        description: 'Requires that you have an Earth tag and a Venus tag. Raise your TR 1 step.',
+        description: 'Requires an Earth tag and a Venus tag. Raise your TR 1 step.',
       },
     });
   }

@@ -27,7 +27,7 @@ export class RegolithAeration extends Card implements IProjectCard {
           });
           b.tr(1);
         }),
-        description: 'Lower your energy production 2 steps, raise your plant production 2 steps and raise your TR 1 step.',
+        description: 'Decrease your energy production 2 steps, increase your plant production 2 steps, and raise your TR 1 step.',
       },
     });
   }

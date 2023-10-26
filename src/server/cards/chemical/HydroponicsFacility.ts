@@ -23,7 +23,7 @@ export class HydroponicsFacility extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(1).plants(1));
         }),
-        description: 'Requires 3 or more oceans. Raise your MC production 1 step and your plant production 1 step.',
+        description: 'Requires 3 ocean tiles. Increase your M€ production 1 step and your plant production 1 step.',
       },
     });
   }

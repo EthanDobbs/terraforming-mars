@@ -29,7 +29,7 @@ export class LumberMill extends Card implements IProjectCard {
             pb.plus().megacredits(2);
           });
         }),
-        description: 'Requires any 3 greenery tiles. Lower any player\'s plant production 1 step and raise your MC production 2 steps.',
+        description: 'Requires any 3 greenery tiles. Decrease any player\'s plant production 1 step and increase your M€ production 2 steps.',
       },
     });
   }

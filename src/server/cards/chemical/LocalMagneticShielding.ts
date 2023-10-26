@@ -23,12 +23,12 @@ export class LocalMagneticShielding extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 2 floaters to raise your TR 1 step',
+            title: 'Spend 2 floaters to raise your TR 1 step',
             spend: {resourcesHere: 2},
             tr: 1,
           },
           {
-            title: 'Spend 2MC to add 1 floater to ANY card',
+            title: 'Spend 2 M€ to add 1 floater to ANY card',
             spend: {megacredits: 2},
             addResourcesToAnyCard: {type: CardResource.FLOATER, count: 1},
           }],
@@ -38,7 +38,7 @@ export class LocalMagneticShielding extends ActionCard implements IProjectCard {
       metadata: {
         cardNumber: 'x261',
         renderData: CardRenderer.builder((b) => {
-          b.action('Spend 2MC to add 1 floater to ANY card.', (eb) => {
+          b.action('Spend 2 M€ to add 1 floater to ANY card.', (eb) => {
             eb.megacredits(2).startAction.floaters(1).asterix();
           }).br;
           b.or().br;

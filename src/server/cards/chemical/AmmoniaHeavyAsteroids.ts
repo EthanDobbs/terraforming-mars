@@ -19,7 +19,7 @@ export class AmmoniaHeavyAsteroids extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 1 asteroid to increase your heat production 2 steps.',
+            title: 'Spend 1 asteroid to increase your heat production 2 steps.',
             spend: {resourcesHere: 1},
             production: {heat: 2},
           },

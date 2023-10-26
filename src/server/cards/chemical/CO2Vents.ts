@@ -30,7 +30,7 @@ export class CO2Vents extends Card implements IProjectCard {
           }).br;
           b.production((pb) => pb.heat(1));
         }),
-        description: 'Raise your heat production 1 step.'
+        description: 'Increase your heat production 1 step.'
       },
     });
   }

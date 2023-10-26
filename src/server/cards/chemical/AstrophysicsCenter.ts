@@ -28,7 +28,7 @@ export class AstrophysicsCenter extends Card implements IProjectCard {
           }).br;
           b.vpText('1 VP for every asteroid on this card.');
         }),
-        description: 'Requires that you have 7 space tags',
+        description: 'Requires 7 space tags',
       },
     });
   }

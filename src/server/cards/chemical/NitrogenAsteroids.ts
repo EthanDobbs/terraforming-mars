@@ -28,7 +28,7 @@ export class NitrogenAsteroids extends Card implements IActionCard {
           b.action('Spend 6 M€ to add an asteroid resource to this card [TITANIUM MAY BE USED].', (eb) => {
             eb.megacredits(6).openBrackets.titanium(1).closeBrackets.startAction.asteroids(1).asterix();
           }).br;
-          b.action('Spend 1 resource from this card to increase your TR 1 step.', (eb) => {
+          b.action('Remove 1 asteroid from this card to increase your TR 1 step.', (eb) => {
             eb.or().asteroids(1).startAction.tr(1);
           });
         }),

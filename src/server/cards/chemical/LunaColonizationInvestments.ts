@@ -24,7 +24,7 @@ export class LunaColonizationInvestments extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(2));
         }),
-        description: 'Requires 2 Earth tags. Raise your MC production 2 steps.',
+        description: 'Requires 2 Earth tags. Increase your M€ production 2 steps.',
       },
     });
   }

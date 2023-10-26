@@ -27,7 +27,7 @@ export class SaltMine extends Card implements IProjectCard {
           }).nbsp;
           b.oxygen(1);
         }),
-        description: 'Lower your energy production 1 step, raise your MC production 3 steps, and raise the oxygen 1 step.',
+        description: 'Lower your energy production 1 step, increase your M€ production 3 steps, and raise the oxygen 1 step.',
       },
     });
   }

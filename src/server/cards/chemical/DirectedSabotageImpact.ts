@@ -32,7 +32,7 @@ export class DirectedSabotageImpact extends Card implements IProjectCard {
           b.oceans(1).br;
           b.minus().megacredits(8, {all}).plants(3, {all});
         }),
-        description: 'Raise the temperature 1 step and place an ocean tile. Remove up to 8MC and up to 3 plants from any player.',
+        description: 'Raise the temperature 1 step and place an ocean tile. Remove up to 8 M€ and up to 3 plants from any player.',
       },
     });
   }

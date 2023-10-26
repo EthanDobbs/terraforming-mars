@@ -25,7 +25,7 @@ export class FloatingPowerStation extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(1)).floaters(2, {secondaryTag: Tag.VENUS}).br;
         }),
-        description: 'Raise your energy production 1 step and add 2 floaters to any Venus card.',
+        description: 'Increase your energy production 1 step and add 2 floaters to any Venus card.',
       },
     });
   }

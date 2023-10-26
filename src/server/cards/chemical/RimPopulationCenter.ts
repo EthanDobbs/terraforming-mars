@@ -23,7 +23,7 @@ export class RimPopulationCenter extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.minus().energy(1)).colonies(1);
         }),
-        description: 'Lower your energy production 1 step and place a colony.',
+        description: 'Decrease your energy production 1 step and place a colony.',
       },
     });
   }

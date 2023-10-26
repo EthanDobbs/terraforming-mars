@@ -27,7 +27,7 @@ export class ViralAmeboid extends Card implements IProjectCard {
           }).br;
           b.vpText('1 VP per 3 Microbes on this card.').br;
         }),
-        description: 'Requires -20°C or higher.'
+        description: 'Requires -20°C or warmer.'
       },
     });
   }

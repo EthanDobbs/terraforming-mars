@@ -25,7 +25,7 @@ export class PrintManufacturing extends Card implements IProjectCard {
             pb.plus().megacredits(2).steel(1);
           });
         }),
-        description: 'Lower your energy production 1 step, raise your MC production 2 steps, and your steel production 1 step.',
+        description: 'Decrease your energy production 1 step. Increase your M€ production 2 steps and your steel production 1 step.',
       },
     });
   }

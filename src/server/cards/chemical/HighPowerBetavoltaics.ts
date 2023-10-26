@@ -24,7 +24,7 @@ export class HighPowerBetavoltaics extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(1));
         }),
-        description: 'Requires that you have 2 sciecne tags. Raise your energy production 1 step.',
+        description: 'Requires 2 sciecne tags. Increase your energy production 1 step.',
       },
     });
   }

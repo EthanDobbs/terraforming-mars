@@ -24,7 +24,7 @@ export class DeepPolarExtraction extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.steel(1).heat(1)).nbsp.oceans(1);
         }),
-        description: 'Requires -10°C or higher. Raise your steel production 1 step and your heat production 1 step. Place an ocean tile.',
+        description: 'Requires -10°C or warmer. Increase your steel production 1 step and your heat production 1 step. Place an ocean tile.',
       },
     });
   }

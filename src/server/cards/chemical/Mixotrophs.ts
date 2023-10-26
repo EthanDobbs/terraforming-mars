@@ -23,7 +23,7 @@ export class Mixotrophs extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.plants(1));
         }),
-        description: 'Requires that you have a microbe tag. Raise your plant production 1 step.',
+        description: 'Requires 1 microbe tag. Increase your plant production 1 step.',
       },
     });
   }

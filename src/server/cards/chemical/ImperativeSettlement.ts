@@ -20,12 +20,12 @@ export class ImperativeSettlement extends Card implements IProjectCard {
     metadata: ICardMetadata = {
       cardNumber: 'x081',
       renderData: CardRenderer.builder((b) => {
-        b.effect('Whenever any tile is placed adjacent to this city, raise your MC production 2 steps.', (eb) => {
+        b.effect('Whenever any tile is placed adjacent to this city, increase your M€ production 2 steps.', (eb) => {
           eb.emptyTile('normal', {all}).tile(TileType.IMPERATIVE_SETTLEMENT, false).startEffect.production((pb) => pb.megacredits(2));
         }).br;
         b.production((pb) => pb.minus().energy(1)).nbsp.tile(TileType.IMPERATIVE_SETTLEMENT, false)
       }),
-      description: 'Lower your energy productuion 1 step and place this tile.'
+      description: 'Decrease your energy productuion 1 step and place this city tile.'
     },
   ) {
     super({

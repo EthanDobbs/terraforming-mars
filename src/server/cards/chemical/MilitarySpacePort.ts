@@ -30,7 +30,7 @@ export class MilitarySpacePort extends Card implements IProjectCard {
           }).br;
           b.city().cards(1).titanium(2);
         }),
-        description: 'Lower your energy production 1 step, raise your MC production 3 steps, place a city tile, draw a card, and gain 2 titanium.',
+        description: 'Decrease your energy production 1 step, increase your M€ production 3 steps, place a city tile, draw a card, and gain 2 titanium.',
       },
     });
   }

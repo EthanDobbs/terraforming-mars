@@ -34,7 +34,7 @@ export class AntarcticKrill extends ActionCard implements IProjectCard {
           b.minus().microbes(2, {all}).br;
           b.vpText('1 VP for every 2 animals on this card.');
         }),
-        description: 'Requires -12°C or higher and that you remove 2 microbes from any player.',
+        description: 'Requires -12°C or warmer. Remove 2 microbes from any player.',
       },
     });
   }

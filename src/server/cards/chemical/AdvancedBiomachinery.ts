@@ -43,7 +43,7 @@ export class AdvancedBiomachinery extends ActionCard implements IProjectCard {
             eb.microbes(1).startAction.cards(1);
           }).br;
         }),
-        description: 'Requires that you have 2 microbe tags.'
+        description: 'Requires 2 microbe tags.'
       },
     });
   }

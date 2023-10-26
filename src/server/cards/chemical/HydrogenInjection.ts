@@ -23,7 +23,7 @@ export class HydrogenInjection extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.titanium(1)).nbsp.venus(1).br;
         }),
-        description: 'Raise your titanium production 1 step and raise Venus 1 step.',
+        description: 'Increase your titanium production 1 step and raise Venus 1 step.',
       },
     });
   }

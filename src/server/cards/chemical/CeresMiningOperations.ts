@@ -20,7 +20,7 @@ export class CeresMiningOperations extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 1 asteroids to increase your steel production 1 step.',
+            title: 'Spend 1 asteroids to increase your steel production 1 step.',
             spend: {resourcesHere: 1},
             production: {steel: 1},
           },

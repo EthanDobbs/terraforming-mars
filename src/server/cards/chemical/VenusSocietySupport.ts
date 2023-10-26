@@ -25,7 +25,7 @@ export class VenusSocietySupport extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(1).slash().venus(1, {played}));
         }),
-        description: 'Requires that Unity are in power or that you have 2 delegates there. Raise your MC production 1 step for each Venus tag you have, including this.',
+        description: 'Requires that Unity are in power or that you have 2 delegates there. Increase your M€ production 1 step for each Venus tag you have, including this.',
       },
     });
   }

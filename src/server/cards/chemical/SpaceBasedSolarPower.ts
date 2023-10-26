@@ -23,7 +23,7 @@ export class SpaceBasedSolarPower extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(2));
         }),
-        description: 'Raise your energy production 2 steps.',
+        description: 'Increase your energy production 2 steps.',
       },
     });
   }

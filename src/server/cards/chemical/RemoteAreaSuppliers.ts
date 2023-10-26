@@ -25,7 +25,7 @@ export class RemoteAreaSuppliers extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(1).slash().emptyTile('normal', {size: Size.SMALL, all}).asterix());
         }),
-        description: 'Raise your MC production 1 step for each tile ON MARS, AND NEXT TO NO OTHER TILE.',
+        description: 'Increase your M€ production 1 step for each tile ON MARS, AND NEXT TO NO OTHER TILE.',
       },
     });
   }

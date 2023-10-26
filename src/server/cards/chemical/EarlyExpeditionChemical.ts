@@ -22,7 +22,7 @@ export class EarlyExpeditionChemical extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.plants(2);
         }),
-        description: 'Requires 3% oxygen or lower. Gain 2 plants.',
+        description: 'Oxygen must be 3% or lower. Gain 2 plants.',
       },
     });
   }

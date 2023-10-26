@@ -24,7 +24,7 @@ export class HeavyRespirators extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.greenery({withO2: false}).asterix();
         }),
-        description: 'Requires 7% oxygen or higher. Place a greenery tile BUT DO NOT RAISE THE OXYGEN.',
+        description: 'Requires 7% oxygen. Place a greenery tile BUT DO NOT RAISE THE OXYGEN.',
       },
     });
   }

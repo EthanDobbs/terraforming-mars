@@ -26,7 +26,7 @@ export class VenusTourism extends Card implements IProjectCard {
             pb.megacredits(1).slash().venus(1, {played});
           });
         }),
-        description: 'Requires Venus 8% or higher. Increase your M€ production 1 step for each Venus tag you have.',
+        description: 'Requires Venus 8%. Increase your M€ production 1 step for each Venus tag you have.',
       },
     });
   }

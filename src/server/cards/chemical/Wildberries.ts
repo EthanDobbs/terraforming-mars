@@ -26,7 +26,7 @@ export class Wildberries extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.plants(1)).plants(2).animals(1).asterix();
         }),
-        description: 'Requires -12°C or higher. Raise your plant production 1 step, gain 2 plants, and add an animal to ANOTHER card.',
+        description: 'Requires -12°C or warmer. Increase your plant production 1 step, gain 2 plants, and add an animal to ANOTHER card.',
       },
     });
   }

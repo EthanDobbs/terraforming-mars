@@ -31,7 +31,7 @@ export class SurfaceHabs extends Card implements IProjectCard {
           b.production((pb) => pb.megacredits(3)).nbsp;
           b.wild(1, {secondaryTag: Tag.VENUS});
         }),
-        description: 'Requires Venus 12% or higher. Raise your M€ production 3 steps. Add a resource to a Venus card.',
+        description: 'Requires Venus 12%. Increase your M€ production 3 steps. Add any resource to a Venus card.',
       },
     });
   }

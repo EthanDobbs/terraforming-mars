@@ -24,7 +24,7 @@ export class OzoneFactories extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.heat(1)).tr(2);
         }),
-        description: 'Requires 6% oxygen or higher. Raise your heat production 1 step and raise your TR 2 steps.',
+        description: 'Requires 6% oxygen. Increase your heat production 1 step and raise your TR 2 steps.',
       },
     });
   }

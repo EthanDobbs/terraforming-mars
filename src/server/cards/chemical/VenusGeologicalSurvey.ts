@@ -24,7 +24,7 @@ export class VenusGeologicalSurvey extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.cards(2);
         }),
-        description: 'Requires that you have a Venus tag. Draw 2 cards',
+        description: 'Requires 1 Venus tag. Draw 2 cards',
       },
     });
   }

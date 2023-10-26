@@ -32,7 +32,7 @@ export class DwarfPlanetCollision extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.venus(3).br.minus().megacredits(8, {all, secondaryTag: Tag.VENUS}).floaters(2, {all, secondaryTag: Tag.VENUS});
         }),
-        description: 'Requires Venus 6% or lower. Raise Venus 3 steps, Remove up to 8MC from any player with a Venus tag, and remove up to 2 floaters from any Venus card.',
+        description: 'Requires Venus 6% or lower. Raise Venus 3 steps, Remove up to 8 M€ from any player with a Venus tag, and remove up to 2 floaters from any Venus card.',
       },
     });
   }

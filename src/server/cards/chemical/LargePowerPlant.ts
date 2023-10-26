@@ -23,7 +23,7 @@ export class LargePowerPlant extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(2)).energy(2);
         }),
-        description: 'Raise your energy production 2 steps and gain 2 energy resources.',
+        description: 'Increase your energy production 2 steps and gain 2 energy.',
       },
     });
   }

@@ -21,7 +21,7 @@ export class FailedSpaceMission extends Card implements IProjectCard {
 
       metadata: {
         cardNumber: 'x171',
-        description: 'Remove up to 2MC and 2 titanium from any player.',
+        description: 'Remove up to 2 M€ and 2 titanium from any player.',
         renderData: CardRenderer.builder((b) => {
           b.minus().megacredits(2, {all}).titanium(2, {all});
         }),

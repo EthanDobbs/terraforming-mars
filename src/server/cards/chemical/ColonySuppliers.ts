@@ -21,7 +21,7 @@ export class ColonySuppliers extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x340',
         renderData: CardRenderer.builder((b) => {
-          b.effect('When you trade, gain 1MC for each colony on the tile you trade with.', (eb) => {
+          b.effect('When you trade, gain 1 M€ for each colony on the tile you trade with.', (eb) => {
             eb.trade().startEffect.megacredits(1).slash().colonies(1).asterix();
           }).br;
           b.tradeFleet();

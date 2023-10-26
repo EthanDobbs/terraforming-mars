@@ -25,7 +25,7 @@ export class CyanobacteriaChemical extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.plants(1)).microbes(1).asterix();
         }),
-        description: 'Requires 2 or more oceans. Raise your plant production 1 step and add 1 microbe to ANOTHER card.',
+        description: 'Requires 2 ocean tiles. Raise your plant production 1 step and add 1 microbe to ANOTHER card.',
       },
     });
   }

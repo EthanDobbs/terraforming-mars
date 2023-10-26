@@ -24,7 +24,7 @@ export class AtenGroupMining extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.titanium(2));
         }),
-        description: 'Requires that you have an Earth tag and a Venus tag. Raise your titanium production 2 steps.',
+        description: 'Requires that you have an Earth tag and a Venus tag. Increase your titanium production 2 steps.',
       },
     });
   }

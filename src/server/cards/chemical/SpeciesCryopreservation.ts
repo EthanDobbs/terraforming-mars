@@ -16,7 +16,7 @@ export class SpeciesCryopreservation extends Card implements IProjectCard {
 
       metadata: {
         cardNumber: 'x166',
-        description: 'Requires that you have 2 animal tags.',
+        description: 'Requires 2 animal tags.',
       },
     });
   }

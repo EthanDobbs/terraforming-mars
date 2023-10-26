@@ -29,12 +29,12 @@ export class FloatingColony extends Card implements IActionCard {
             eb.empty().startAction.floaters(1).asterix();
           }).br;
           b.or().br;
-          b.action('Spend any number of floaters here to gain triple amount of MC.', (eb) => {
+          b.action('Spend any number of floaters here to gain triple amount of M€.', (eb) => {
             eb.text('X').floaters(1).startAction.megacredits(3, {multiplier});
           }).br;
           b.colonies(1);
         }),
-        description: 'Requires that you have 3 floaters. Place a colony.'
+        description: 'Requires 3 floaters. Place a colony.'
       },
     });
   }
@@ -48,7 +48,7 @@ export class FloatingColony extends Card implements IActionCard {
       player.addResourceTo(this, {log: true});
       return undefined;
     });
-    const spendResource = new SelectAmount('Remove any number of floaters to gain 3MC per floater removed', 'Remove floaters', 1, this.resourceCount, true)
+    const spendResource = new SelectAmount('Remove any number of floaters to gain 3 M€ per floater removed', 'Remove floaters', 1, this.resourceCount, true)
       .andThen((amount) => this.spendResource(player, amount));
 
     opts.push(addResource);

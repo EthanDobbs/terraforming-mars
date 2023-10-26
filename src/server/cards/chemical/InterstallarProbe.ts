@@ -24,7 +24,7 @@ export class InterstellarProbe extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.cards(2);
         }),
-        description: 'Requires that you have 3 science tags. Draw 2 cards.',
+        description: 'Requires 3 science tags. Draw 2 cards.',
       },
     });
   }

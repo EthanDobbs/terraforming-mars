@@ -25,7 +25,7 @@ export class RemoteTestZone extends ActionCard implements IProjectCard {
       metadata: {
         cardNumber: 'x343',
         renderData: CardRenderer.builder((b) => {
-          b.action('Spend 3MC to draw a card.', (eb) => {
+          b.action('Spend 3 M€ to draw a card.', (eb) => {
             eb.megacredits(3).startAction.cards(1);
           }).br;
           b.colonies(1);

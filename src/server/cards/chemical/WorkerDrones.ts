@@ -27,7 +27,7 @@ export class WorkerDrones extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.wild(2, {secondaryTag: Tag.VENUS});
         }),
-        description: 'Add 2 resources to a Venus card.',
+        description: 'Add any 2 resources to a Venus card.',
       },
     });
   }

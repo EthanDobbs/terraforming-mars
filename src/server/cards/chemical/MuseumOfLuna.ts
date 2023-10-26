@@ -25,7 +25,7 @@ export class MuseumOfLuna extends Card implements IProjectCard {
           b.production((pb) => pb.megacredits(1))
           b.cards(1);
         }),
-        description: 'Raise your MC production 1 step and draw a card.',
+        description: 'Increase your M€ production 1 step and draw a card.',
       },
     });
   }

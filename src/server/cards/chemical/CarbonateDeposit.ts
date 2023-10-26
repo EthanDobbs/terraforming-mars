@@ -28,7 +28,7 @@ export class CarbonateDeposit extends Card implements IProjectCard {
           }).nbsp;
           b.heat(4, {digit})
         }),
-        description: 'Lower your energy production 1 step, raise your heat production 2 steps, and gain 4 heat.',
+        description: 'Decrease your energy production 1 step, increase your heat production 2 steps, and gain 4 heat.',
       },
     });
   }

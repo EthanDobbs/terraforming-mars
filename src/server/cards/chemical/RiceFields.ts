@@ -24,7 +24,7 @@ export class RiceFields extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(2).plants(1)).nbsp.greenery();
         }),
-        description: 'Requires +4°C or higher. Raise your MC production 2 steps, your plant production 1 step, and place a greenery tile.',
+        description: 'Requires +4°C or higher. increase your M€ production 2 steps, your plant production 1 step, and place a greenery tile.',
       },
     });
   }

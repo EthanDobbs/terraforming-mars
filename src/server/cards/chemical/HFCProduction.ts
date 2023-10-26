@@ -27,7 +27,7 @@ export class HFCProduction extends Card implements IProjectCard {
             pb.plus().heat(5, {digit});
           });
         }),
-        description: 'Lower your energy production 1 step and raise your heat production 5 steps.',
+        description: 'Decrease your energy production 1 step and increase your heat production 5 steps.',
       },
     });
   }

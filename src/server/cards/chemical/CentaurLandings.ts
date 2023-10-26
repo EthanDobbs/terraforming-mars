@@ -31,7 +31,7 @@ export class CentaurLandings extends ActionCard implements IProjectCard {
           }).br;
           b.vpText('1 VP for every asteroid on this card.');
         }),
-        description: 'Requires that you have 2 Jovian tags',
+        description: 'Requires 2 Jovian tags',
       },
     });
   }

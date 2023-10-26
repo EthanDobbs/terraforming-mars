@@ -24,7 +24,7 @@ export class EcoCentral extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x082',
         renderData: CardRenderer.builder((b) => {
-          b.effect('When you use the greenery standard project, you pay 3MC less for it.', (eb) => {
+          b.effect('When you use the greenery standard project, you pay 3 M€ less for it.', (eb) => {
             eb.greenery().asterix().startEffect.megacredits(-3)
           }).br;
           b.production((pb) => {
@@ -33,7 +33,7 @@ export class EcoCentral extends Card implements IProjectCard {
           });
           b.city().plants(4, {digit})
         }),
-        description: 'Requires -12°C or higher. Lower your energy production 1 step, raise your MC production 3 steps, place a city tile, and gain 4 plants.'
+        description: 'Requires -12°C or warmer. Decrease your energy production 1 step, increase your M€ production 3 steps, place a city tile, and gain 4 plants.'
       },
     });
   }

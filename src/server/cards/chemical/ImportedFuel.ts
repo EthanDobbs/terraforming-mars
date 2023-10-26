@@ -24,7 +24,7 @@ export class ImportedFuel extends Card implements IProjectCard {
           b.production((pb) => pb.energy(1).heat(1));
           b.nbsp.heat(2);
         }),
-        description: 'Raise your energy production 1 step, your heat production 1 step, and gain 2 heat resources.',
+        description: 'Increase your energy production 1 step and your heat production 1 step. Gain 2 heat resources.',
       },
     });
   }

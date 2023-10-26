@@ -26,7 +26,7 @@ export class SolarStation extends Card implements IProjectCard {
           b.production((pb) => pb.megacredits(2));
           b.cards(1)
         }),
-        description: 'Requires 4 science tags. Raise your MC production 2 steps and draw a card.',
+        description: 'Requires 4 science tags. Increase your M€ production 2 steps and draw a card.',
       },
     });
   }

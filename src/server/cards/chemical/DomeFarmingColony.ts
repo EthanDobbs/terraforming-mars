@@ -23,7 +23,7 @@ export class DomeFarmingColony extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.plants(1)).colonies(1);
         }),
-        description: 'Raise your plant production 1 step and place a colony.',
+        description: 'Increase your plant production 1 step and place a colony.',
       },
     });
   }

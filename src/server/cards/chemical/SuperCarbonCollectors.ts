@@ -25,7 +25,7 @@ export class SuperCarbonCollectors extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.plants(2)).venus(2).br;
         }),
-        description: 'Requires Venus 20% or higher. Raise your plant production 2 steps and raise Venus 2 steps.',
+        description: 'Requires Venus 20%. Increase your plant production 2 steps and raise Venus 2 steps.',
       },
     });
   }

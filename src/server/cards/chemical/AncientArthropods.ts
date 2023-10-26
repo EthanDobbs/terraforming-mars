@@ -35,7 +35,7 @@ export class AncientArthopods extends Card implements IProjectCard {
           b.vpText('1 VP for every 2 animals on this card.');
         }),
         description: {
-          text: 'Requires 4 oceans or more. Decrease any plant production 1 step.',
+          text: 'Requires 4 ocean tiles. Decrease any plant production 1 step.',
           align: 'left',
         },
       },

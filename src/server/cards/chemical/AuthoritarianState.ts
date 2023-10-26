@@ -34,7 +34,7 @@ export class AuthoritarianState extends Card implements IProjectCard {
           b.city().asterix().br;
           b.text('Steal').nbsp.megacredits(3, {all}).slash().emptyTile('normal', {size: Size.SMALL, all}).asterix();
         }),
-        description: 'Lower your energy production 1 step and raise your MC production 3 steps. Place a city tile, then, for each adjacent tile, steal 3MC from the owner of that tile.',
+        description: 'Decrease your energy production 1 step and increase your M€ production 3 steps. Place a city tile, then, for each adjacent tile, steal 3 M€ from the owner of that tile.',
       },
     });
   }

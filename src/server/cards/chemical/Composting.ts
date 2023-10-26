@@ -25,7 +25,7 @@ export class Composting extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.plants(1)).microbes(2).asterix();
         }),
-        description: 'Requires that you have a plant tag, an animal tag, and a microbe tag. Raise your plant production 1 step and add 2 microbes to ANOTHER card.',
+        description: 'Requires a plant tag, an animal tag, and a microbe tag. Increase your plant production 1 step and add 2 microbes to ANOTHER card.',
       },
     });
   }

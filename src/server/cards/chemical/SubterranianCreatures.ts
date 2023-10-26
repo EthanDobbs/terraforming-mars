@@ -39,7 +39,7 @@ export class SubterranianCreatures extends ActionCard implements IProjectCard {
           b.minus().plants(2, {all}).nbsp.or(Size.SMALL).nbsp.minus().microbes(2, {all}).br;
           b.vpText('1 VP for every 2 animals on this card.');
         }),
-        description: 'Requires 4% oxygen or higher and that you either remove 2 plants or 2 microbes from any player.',
+        description: 'Requires 4% oxygen. Either remove 2 plants or 2 microbes from any player.',
       },
     });
   }

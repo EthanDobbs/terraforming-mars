@@ -24,7 +24,7 @@ export class NaturalGasExtraction extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.heat(4, {digit}));
         }),
-        description: 'Requires -20°C or higher. Raise your heat production 4 steps.',
+        description: 'Requires -20°C or warmer. Increase your heat production 4 steps.',
       },
     });
   }

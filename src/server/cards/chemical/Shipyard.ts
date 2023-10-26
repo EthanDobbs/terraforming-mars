@@ -23,7 +23,7 @@ export class Shipyard extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.titanium(1)).nbsp.titanium(2);
         }),
-        description: 'Raise your titanium production 1 step and gain 2 titanium.',
+        description: 'Increase your titanium production 1 step and gain 2 titanium.',
       },
     });
   }

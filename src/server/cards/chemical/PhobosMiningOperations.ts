@@ -23,7 +23,7 @@ export class PhobosMiningOperations extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.titanium(1));
         }),
-        description: 'Raise your titanium production 1 step.',
+        description: 'Increase your titanium production 1 step.',
       },
     });
   }

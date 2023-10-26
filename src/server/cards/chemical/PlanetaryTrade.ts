@@ -20,13 +20,13 @@ export class PlanetaryTrade extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.megacredits(2).slash().diverseTag();
         }),
-        description: 'Gain 2MC for each unique tag you have (not including the tags on this card).',
+        description: 'Gain 2 M€ for each unique tag you have (not including the tags on this card).',
       },
     });
   }
   public override bespokePlay(player: IPlayer) {
     const distinctTagCount = player.tags.distinctCount('default');
-    player.stock.add(Resource.MEGACREDITS, distinctTagCount, {log: true});
+    player.stock.add(Resource.MEGACREDITS, distinctTagCount * 2, {log: true});
     return undefined;
   }
 }

@@ -34,7 +34,7 @@ export class AirborneMicrobes extends ActionCard implements IProjectCard {
           b.vpText('1 VP per 3 microbes on this card.').br;
           b.microbes(2, {secondaryTag: Tag.VENUS});
         }),
-        description: 'Requires Venus 4% or higher. Add 2 microbes to any Venus card.',
+        description: 'Requires Venus 4%. Add 2 microbes to any Venus card.',
       },
     });
   }

@@ -28,10 +28,10 @@ export class AsteroidBeltColony extends ActionCard implements IProjectCard {
       metadata: {
         cardNumber: 'x326',
         renderData: CardRenderer.builder((b) => {
-          b.action('Spend 2MC to add an asteroid to ANY card.', (eb) => {
+          b.action('Spend 2 M€ to add an asteroid to ANY card.', (eb) => {
             eb.megacredits(2).startAction.asteroids(1).asterix();
           }).br;
-          b.effect('Asteroids on this card may be used as 5MC when paying for cards with space tags.', (eb) => {
+          b.effect('Asteroids on this card may be used as 5 M€ when paying for cards with space tags.', (eb) => {
             eb.space({played}).startEffect.asteroids(1).equals().megacredits(5);
           }).br;
           b.colonies(1);

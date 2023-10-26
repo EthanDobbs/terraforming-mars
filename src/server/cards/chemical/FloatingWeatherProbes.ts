@@ -19,7 +19,7 @@ export class FloatingWeatherProbes extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 2 floaters to increase the oxygen 1 step',
+            title: 'Spend 2 floaters to increase the oxygen 1 step',
             spend: {resourcesHere: 2},
             global: {oxygen: 1},
           },

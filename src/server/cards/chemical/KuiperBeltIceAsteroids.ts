@@ -20,7 +20,7 @@ export class KuiperBeltIceAsteroids extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 2 asteroids to place an ocean tile',
+            title: 'Spend 2 asteroids to place an ocean tile',
             spend: {resourcesHere: 2},
             ocean: {},
           },

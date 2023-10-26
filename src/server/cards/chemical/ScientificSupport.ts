@@ -25,7 +25,7 @@ export class ScientificSupport extends Card implements IProjectCard {
             pb.megacredits(2);
           });
         }),
-        description: 'Requires 2 science tags. Increase M€ production 2 steps.',
+        description: 'Requires 2 science tags. Increase your M€ production 2 steps.',
       },
     });
   }

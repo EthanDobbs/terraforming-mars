@@ -23,7 +23,7 @@ export class LunarResort extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(1).slash().earth(1, {played}));
         }),
-        description: 'Raise your MC production 1 step for each Earth tag you have, including this.',
+        description: 'Increase your M€ production 1 step for each Earth tag you have, including this.',
       },
     });
   }

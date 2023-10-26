@@ -25,7 +25,7 @@ export class EnrichmentPlant extends Card implements IProjectCard {
             pb.plus().energy(2)
           });
         }),
-        description: 'Lower your MC production 1 step and raise your energy production 2 steps.',
+        description: 'Decrease your M€ production 1 step and increase your energy production 2 steps.',
       },
     });
   }

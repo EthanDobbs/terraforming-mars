@@ -22,7 +22,7 @@ export class PoliticalDonations extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.megacredits(3).slash().partyLeaders(1);
         }),
-        description: 'Gain 3MC for each party leader you have.',
+        description: 'Gain 3 M€ for each party leader you have.',
       },
     });
   }

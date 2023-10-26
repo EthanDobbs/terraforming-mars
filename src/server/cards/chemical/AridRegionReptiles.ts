@@ -29,14 +29,14 @@ export class AridRegionReptiles extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x058',
         renderData: CardRenderer.builder((b) => {
-          b.effect('For every step you raise the temperature, add an animal to this card', (eb) => {
+          b.effect('When you raise the temperature, add an animal to this card', (eb) => {
             eb.temperature(1).startEffect.animals(1);
           }).br;
           b.production((pb) => pb.minus().plants(1, {all})).br;
           b.vpText('1 VP for every 2 animals on this card.');
         }),
         description: {
-          text: 'Requires 5% oxygen or higher. Decrease any plant production 1 step.',
+          text: 'Requires 5% oxygen. Decrease any plant production 1 step.',
           align: 'left',
         },
       },

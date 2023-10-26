@@ -26,7 +26,7 @@ export class SpinInducingMassDrivers extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.minus().energy(3, {digit})).nbsp.venus(1).br;
         }),
-        description: 'Requires Venus 18% or higher. Lower your energy production 3 steps. Raise Venus 1 step.',
+        description: 'Requires Venus 18%. Decrease your energy production 3 steps. Raise Venus 1 step.',
       },
     });
   }

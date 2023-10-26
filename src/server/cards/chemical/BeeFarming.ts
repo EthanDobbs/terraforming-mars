@@ -28,7 +28,7 @@ export class BeeFarming extends Card implements IProjectCard {
             pb.plants(1).slash().plants(1, {played});
           })
         }),
-        description: 'Requires 9% oxygen or higher. Raise your MC production 1 step and your plant production 1 step for each plant tag you have.',
+        description: 'Requires 9% oxygen. Increase your M€ production 1 step and your plant production 1 step for each plant tag you have.',
       },
     });
   }

@@ -23,7 +23,7 @@ export class CentralPowerPlant extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(2));
         }),
-        description: 'Requires that you have 2 power tags. Raise your energy production 2 steps.',
+        description: 'Requires 2 power tags. Increase your energy production 2 steps.',
       },
     });
   }

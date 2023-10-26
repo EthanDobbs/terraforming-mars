@@ -26,7 +26,7 @@ export class TitanTradeHub extends Card implements IProjectCard {
           }).br;
           b.vpText('1 VP per Jovian tag you have.');
         }),
-        description: 'Increase M€ production 3 steps.',
+        description: 'Increase your M€ production 3 steps.',
       },
     });
   }

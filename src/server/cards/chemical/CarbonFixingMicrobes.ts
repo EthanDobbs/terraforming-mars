@@ -20,12 +20,12 @@ export class CarbonFixingMicrobes extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Remove 2 microbes to raise Venus 1 step',
+            title: 'Spend 2 microbes to raise Venus 1 step',
             spend: {resourcesHere: 2},
             global: {venus: 1},
           },
           {
-            title: 'Spend 1MC to add 1 microbe to this card',
+            title: 'Spend 1 M€ to add 1 microbe to this card',
             spend: {megacredits: 1},
             addResources: 1,
           }],
@@ -35,15 +35,15 @@ export class CarbonFixingMicrobes extends ActionCard implements IProjectCard {
       metadata: {
         cardNumber: 'x267',
         renderData: CardRenderer.builder((b) => {
-          b.action('Spend 1MC to add 1 microbe to this card.', (eb) => {
+          b.action('Spend 1 M€ to add 1 microbe to this card.', (eb) => {
             eb.megacredits(1).startAction.microbes(1);
           }).br;
           b.or().br;
-          b.action('Remove 2 microbes from this card to raise Venus 1 step.', (eb) => {
+          b.action('Remove 2 microbes From this card to raise Venus 1 step.', (eb) => {
             eb.microbes(2).startAction.venus(1);
           }).br;
         }),
-        description: 'Requires Venus 10% or higher.',
+        description: 'Requires Venus 10%.',
       },
     });
   }

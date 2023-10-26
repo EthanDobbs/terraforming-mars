@@ -21,11 +21,11 @@ export class GeneticEngineeringLab extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x072',
         renderData: CardRenderer.builder((b) => {
-          b.effect('Your plant tags, animal tags, and microbe tags cost 3MC less.', (eb) => {
+          b.effect('Your plant tags, animal tags, and microbe tags cost 3 M€ less.', (eb) => {
             eb.plants(1, {played}).slash().microbes(1, {played}).slash().animals(1, {played}).startEffect.megacredits(-3);
           });
         }),
-        description: 'Requires that you have 2 science tags.'
+        description: 'Requires 2 science tags.'
       },
     });
   }

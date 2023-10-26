@@ -18,7 +18,7 @@ export class VenusTradeStation extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x348',
         renderData: CardRenderer.builder((b) => {
-          b.action('Move one of your trade fleets from the Trade Fleets Tile to this card to raise your energy production 1 step. Fleets on this card may no longer trade, and return to the Trade Fleets Tile during the Solar Phase.', (eb) => {
+          b.action('Move one of your trade fleets from the Trade Fleets Tile to this card to increase your energy production 1 step. Fleets on this card may no longer trade, and return to the Trade Fleets Tile during the Solar Phase.', (eb) => {
             eb.tradeFleet().asterix().startAction.production((pb) => pb.energy(1));
           }).br;
         }),

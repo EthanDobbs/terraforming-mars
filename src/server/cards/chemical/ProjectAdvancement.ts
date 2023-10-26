@@ -20,7 +20,7 @@ export class ProjectAdvancement extends Card implements IProjectCard {
 
       metadata: {
         cardNumber: 'x205',
-        description: 'Raise any production that YOU\'VE ALREADY RAISED THIS GENERATION.',
+        description: 'Increase any production that YOU\'VE ALREADY RAISED THIS GENERATION.',
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.wild(1)).asterix();
         }),

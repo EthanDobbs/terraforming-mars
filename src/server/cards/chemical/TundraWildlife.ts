@@ -38,7 +38,7 @@ export class TundraWildlife extends ActionCard implements IProjectCard {
           b.vpText('1 VP for each animal on this card.');
         }),
         description: {
-          text: 'Requires 9% oxygen or higher. Decrease any plant production 1 step.',
+          text: 'Requires 9% oxygen. Decrease any plant production 1 step.',
           align: 'left',
         },
       },

@@ -11,6 +11,7 @@ import {CardRenderer} from '../render/CardRenderer';
 import {Card} from '../Card';
 import {SelectColony} from '../../inputs/SelectColony';
 import {IColony} from '../../colonies/IColony';
+import {ColoniesHandler} from '../../colonies/ColoniesHandler';
 
 export class CeresLaunchpad extends Card implements IActionCard {
   constructor() {
@@ -48,8 +49,8 @@ export class CeresLaunchpad extends Card implements IActionCard {
       player.addResourceTo(this, {log: true});
       return undefined;
     });
-    const activeColonies = player.game.colonies.filter((colony) => colony.isActive);
-    const spendResource = new SelectColony('Select colony tile for trade', 'trade', activeColonies)
+    const tradeableColonies = ColoniesHandler.tradeableColonies(player.game);
+    const spendResource = new SelectColony('Select colony tile for trade', 'trade', tradeableColonies)
     .andThen((colony: IColony) => {
       colony.trade(player, {}, 1);
       return undefined;

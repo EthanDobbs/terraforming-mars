@@ -7,6 +7,7 @@ import {CardRenderer} from '../render/CardRenderer';
 import {SelectColony} from '../../inputs/SelectColony';
 import {IColony} from '../../colonies/IColony';
 import {Tag} from '../../../common/cards/Tag';
+import {ColoniesHandler} from '../../colonies/ColoniesHandler';
 
 export class CommissionedFleet extends Card implements IProjectCard {
   constructor() {
@@ -31,8 +32,8 @@ export class CommissionedFleet extends Card implements IProjectCard {
   }
 
   public override bespokePlay(player: IPlayer) {
-    const activeColonies = player.game.colonies.filter((colony) => colony.isActive);
-    return new SelectColony('Select colony tile for trade', 'trade', activeColonies)
+    const tradeableColonies = ColoniesHandler.tradeableColonies(player.game);
+    return new SelectColony('Select colony tile for trade', 'trade', tradeableColonies)
       .andThen((colony: IColony) => {
         colony.trade(player);
         return undefined;

@@ -37,7 +37,7 @@ export class CapitalOfVenus extends Card implements IProjectCard {
           b.city().asterix().br.wild(2, {secondaryTag: Tag.VENUS}).br;
           b.vpText('1 VP for every 2 Venus tags you have.').br;
         }),
-        description: 'Requires Venus 22%. Decrease your energy production 2 steps and increase your MC production 5 steps. Place a city tile ON THE RESERVED AREA. Add any 2 resources to any Venus card.',
+        description: 'Requires Venus 22%. Decrease your energy production 2 steps and increase your M€ production 5 steps. Place a city tile ON THE RESERVED AREA. Add any 2 resources to any Venus card.',
       },
     });
   }

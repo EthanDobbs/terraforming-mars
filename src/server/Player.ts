@@ -451,9 +451,10 @@ export class Player implements IPlayer {
     }
   }
   public legalFirmEffect(attackingPlayer: IPlayer) {
-    if (this.cardIsInEffect(CardName.LEGAL_FIRM)){
+    if (this.cardIsInEffect(CardName.LEGAL_FIRM) || this.cardIsInEffect(CardName.LEGAL_EXPERTS)){
       const retribution = Math.min(attackingPlayer.stock.megacredits, 3)
-      attackingPlayer.stock.deduct(Resource.MEGACREDITS, retribution, {log: true});
+      attackingPlayer.stock.deduct(Resource.MEGACREDITS, retribution, {log: false});
+      this.game.log('${0} payed a retribution of ${1} M€ to ${2}', (b) => b.player(attackingPlayer).number(retribution).player(this));
       this.stock.megacredits += retribution;
       // The reason this isn't using the 'stealing' or 'from' option for resource deduction is to circumvent a possible infinite loop if 2 players both have this effect
     }

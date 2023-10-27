@@ -324,111 +324,159 @@ import {DeepJupiterProbe} from './DeepJupiterProbe';
 import {JovianMoonMapping} from './JovianMoonMapping';
 import {IceMoonCollision} from './IceMoonCollision';
 import {ProductivityQuota} from './ProductivityQuota';
-import { CeresLaunchpad } from './CeresLaunchpad';
-import { AsteroidBeltColony } from './AsteroidBeltColony';
-import { SpaceTethers } from './SpaceTethers';
-import { FloatingColony } from './FloatingColony';
-import { GasGiantHabs } from './GasGiantHabs';
-import { TitanReseachOutpost } from './TitanResearchOutpost';
-import { JovianConstructionYard } from './JovianConstructionYard';
-import { WaterFromTitan } from './WaterFromTitan';
-import { MethaneExports } from './MethaneExports';
-import { GalileanMiningNetwork } from './GalileanMiningNetwork';
-import { TitanFuelStation } from './TitanFuelStation';
-import { JupiterFloatingCity } from './JupiterFloatingCity';
-import { FloaterFacility } from './FloaterFacility';
-import { FloatingTechInvestments } from './FloatingTechInvestments';
-import { Primates } from './Primates';
-import { ColonySuppliers } from './ColonySuppliers';
-import { FuelSubsidies } from './FuelSubsidies';
-import { TradeDealLeverage } from './TradeDealLeverage';
-import { RemoteTestZone } from './RemoteTestZone';
-import { WaypointColony } from './WaypointColony';
-import { PrivateColony } from './PrivateColony';
-import { RemoteMiningBase } from './RemoteMiningBase';
-import { ResearchMissions } from './ResearchMissions';
-import { VenusTradeStation } from './VenusTradeStation';
-import { RimPopulationCenter } from './RimPopulationCenter';
-import { BusinessColony } from './BusinessColony';
-import { SelfSufficientColony } from './SelfSufficientColony';
-import { IndustrialColony } from './IndustrialColony';
-import { DomeFarmingColony } from './DomeFarmingColony';
-import { EnergyBeamColony } from './EnergyBeamColony';
-import { KuiperBeltColony } from './KuiperBeltColony';
-import { ThermalReservior } from './ThermalReservior';
-import { SlumCity } from './SlumCity';
-import { LunarPort } from './LunarPort';
-import { MuseumOfLuna } from './MuseumOfLuna';
-import { LunarResort } from './LunarResort';
-import { LunaColonizationInvestments } from './LunaColonizationInvestments';
-import { MicrogravityLab } from './MicrogravityLab';
-import { SolarStation } from './SolarStation';
-import { OrbitalShipyard } from './OrbitalShipyard';
-import { LunarH3Mining } from './LunarH3Mining';
-import { ColonyMiningInfrastructure } from './ColonyMiningInfrastructure';
-import { HemeraBunker } from './HemeraBunker';
-import { OrbitalBiodomes } from './OrbitalBiodomes';
-import { AzaleaBushes } from './AzaleaBushes';
-import { Wildflowers } from './Wildflowers';
-import { ColonySpaceMirrors } from './ColonySpaceMirrors';
-import { LunarPowerGrid } from './LunarPowerGrid';
-import { ProtoDysonSwarm } from './ProtoDysonSwarm';
-import { HydrothermalVents } from './HydrothermalVents';
-import { EarthEmbassyChemical } from './EarthEmbassyChemical';
-import { HighOrbitResearchStation } from './HighOrbitResearchStation';
-import { TerrestrialResearchSummit } from './TerrestrialResearchSummit';
-import { AstronomicalClaim } from './AstronomicalClaim';
-import { SaturnAsteroidCollection } from './SaturnAsteroidCollection';
-import { ThisAtmosphereFloaters } from './ThinAtmosphereFloaters';
-import { ArcticEndoliths } from './ArcticEndoliths';
-import { HyperExtremophileFungi } from './HyperExtremophileFungi';
-import { BiodiversityBoom } from './BiodiversityBoom';
-import { ColonyReforms } from './ColonyReforms';
-import { DirectedSabotageImpact } from './DirectedSabotageImpact';
-import { FusionBombing } from './FusionBombing';
-import { DemocraticReform } from './DemocraticReform';
-import { MediaManipulation } from './MediaManipulation';
-import { InaugerationCeremony } from './InaugerationCeremony';
-import { PoliticalDonations } from './PoliticalDonations';
-//import { DesignedOrganismsChemical } from './DesignedOrganismsChemical';
-import { TellurianEcosystems } from './TellurianEcosystems';
-//import { Preservationism } from './Preservationism';
-import { InterplanetaryDiplomacy } from './InterplanetaryDiplomacy';
-import { WorldGovernmentDiplomats } from './WorldGovernmentDiplomats';
-import { HybridVessels } from './HybridVessels';
-import { ShortTermBonuses } from './ShortTermBonuses';
-import { MartianResearchNetwork } from './MartianResearchNetwork';
-import { EnergyLab } from './EnergyLab';
-//import { StimulusPrograms } from './StimulusPrograms',
-import { CommitteeCoalition } from './CommitteeCoalition';
-import { LegalFirm } from './LegalFirm';
-import { Kickbacks } from './Kickbacks';
-import { RemoteAreaSuppliers } from './RemoteAreaSuppliers';
-import { MedicalInstitute } from './MedicalInstitute';
-import { MicrobialSupport } from './MicrobialSupport';
-import { VenusSocietySupport } from './VenusSocietySupport';
-//import { PrimalNationalPark } from './PrimalNationalPark';
-import { CorporateCitadel } from './CorporateCitadel';
-import { PreservationistSettlement } from './PreservationistSettlement';
-import { AuthoritarianState } from './AuthoritarianState';
-import { IndustryDevelopment } from './IndustryDevelopment';
-import { AcquiredBioengineeringFirm } from './AcquiredBioengineeringFirm';
-import { IonizingRadiationBeam } from './IonizingRadiationBeam';
-import { ReducedSnowCoverage } from './ReducedSnowCoverage';
-import { SocialWelfare } from './SocialWelfare';
-import { ExoplanetLanding } from './ExoplanetLanding';
-import { FirstMaritanMemorial } from './FirstMartianMemorial';
-import { TerraformingUnion } from './TerraformingUnion';
-import { AcquiredConsultingFirm } from './AcquiredConsultingFirm';
+import {CeresLaunchpad} from './CeresLaunchpad';
+import {AsteroidBeltColony} from './AsteroidBeltColony';
+import {SpaceTethers} from './SpaceTethers';
+import {FloatingColony} from './FloatingColony';
+import {GasGiantHabs} from './GasGiantHabs';
+import {TitanReseachOutpost} from './TitanResearchOutpost';
+import {JovianConstructionYard} from './JovianConstructionYard';
+import {WaterFromTitan} from './WaterFromTitan';
+import {MethaneExports} from './MethaneExports';
+import {GalileanMiningNetwork} from './GalileanMiningNetwork';
+import {TitanFuelStation} from './TitanFuelStation';
+import {JupiterFloatingCity} from './JupiterFloatingCity';
+import {FloaterFacility} from './FloaterFacility';
+import {FloatingTechInvestments} from './FloatingTechInvestments';
+import {Primates} from './Primates';
+import {ColonySuppliers} from './ColonySuppliers';
+import {FuelSubsidies} from './FuelSubsidies';
+import {TradeDealLeverage} from './TradeDealLeverage';
+import {RemoteTestZone} from './RemoteTestZone';
+import {WaypointColony} from './WaypointColony';
+import {PrivateColony} from './PrivateColony';
+import {RemoteMiningBase} from './RemoteMiningBase';
+import {ResearchMissions} from './ResearchMissions';
+import {VenusTradeStation} from './VenusTradeStation';
+import {RimPopulationCenter} from './RimPopulationCenter';
+import {BusinessColony} from './BusinessColony';
+import {SelfSufficientColony} from './SelfSufficientColony';
+import {IndustrialColony} from './IndustrialColony';
+import {DomeFarmingColony} from './DomeFarmingColony';
+import {EnergyBeamColony} from './EnergyBeamColony';
+import {KuiperBeltColony} from './KuiperBeltColony';
+import {ThermalReservior} from './ThermalReservior';
+import {SlumCity} from './SlumCity';
+import {LunarPort} from './LunarPort';
+import {MuseumOfLuna} from './MuseumOfLuna';
+import {LunarResort} from './LunarResort';
+import {LunaColonizationInvestments} from './LunaColonizationInvestments';
+import {MicrogravityLab} from './MicrogravityLab';
+import {SolarStation} from './SolarStation';
+import {OrbitalShipyard} from './OrbitalShipyard';
+import {LunarH3Mining} from './LunarH3Mining';
+import {ColonyMiningInfrastructure} from './ColonyMiningInfrastructure';
+import {HemeraBunker} from './HemeraBunker';
+import {OrbitalBiodomes} from './OrbitalBiodomes';
+import {AzaleaBushes} from './AzaleaBushes';
+import {Wildflowers} from './Wildflowers';
+import {ColonySpaceMirrors} from './ColonySpaceMirrors';
+import {LunarPowerGrid} from './LunarPowerGrid';
+import {ProtoDysonSwarm} from './ProtoDysonSwarm';
+import {HydrothermalVents} from './HydrothermalVents';
+import {EarthEmbassyChemical} from './EarthEmbassyChemical';
+import {HighOrbitResearchStation} from './HighOrbitResearchStation';
+import {TerrestrialResearchSummit} from './TerrestrialResearchSummit';
+import {AstronomicalClaim} from './AstronomicalClaim';
+import {SaturnAsteroidCollection} from './SaturnAsteroidCollection';
+import {ThisAtmosphereFloaters} from './ThinAtmosphereFloaters';
+import {ArcticEndoliths} from './ArcticEndoliths';
+import {HyperExtremophileFungi} from './HyperExtremophileFungi';
+import {BiodiversityBoom} from './BiodiversityBoom';
+import {ColonyReforms} from './ColonyReforms';
+import {DirectedSabotageImpact} from './DirectedSabotageImpact';
+import {FusionBombing} from './FusionBombing';
+import {DemocraticReform} from './DemocraticReform';
+import {MediaManipulation} from './MediaManipulation';
+import {InaugerationCeremony} from './InaugerationCeremony';
+import {PoliticalDonations} from './PoliticalDonations';
+//import {DesignedOrganismsChemical} from './DesignedOrganismsChemical';
+import {TellurianEcosystems} from './TellurianEcosystems';
+//import {Preservationism} from './Preservationism';
+import {InterplanetaryDiplomacy} from './InterplanetaryDiplomacy';
+import {WorldGovernmentDiplomats} from './WorldGovernmentDiplomats';
+import {HybridVessels} from './HybridVessels';
+import {ShortTermBonuses} from './ShortTermBonuses';
+import {MartianResearchNetwork} from './MartianResearchNetwork';
+import {EnergyLab} from './EnergyLab';
+//import {StimulusPrograms} from './StimulusPrograms',
+import {CommitteeCoalition} from './CommitteeCoalition';
+import {LegalFirm} from './LegalFirm';
+import {Kickbacks} from './Kickbacks';
+import {RemoteAreaSuppliers} from './RemoteAreaSuppliers';
+import {MedicalInstitute} from './MedicalInstitute';
+import {MicrobialSupport} from './MicrobialSupport';
+import {VenusSocietySupport} from './VenusSocietySupport';
+//import {PrimalNationalPark} from './PrimalNationalPark';
+import {CorporateCitadel} from './CorporateCitadel';
+import {PreservationistSettlement} from './PreservationistSettlement';
+import {AuthoritarianState} from './AuthoritarianState';
+import {IndustryDevelopment} from './IndustryDevelopment';
+import {AcquiredBioengineeringFirm} from './AcquiredBioengineeringFirm';
+import {IonizingRadiationBeam} from './IonizingRadiationBeam';
+import {ReducedSnowCoverage} from './ReducedSnowCoverage';
+import {SocialWelfare} from './SocialWelfare';
+import {ExoplanetLanding} from './ExoplanetLanding';
+import {FirstMaritanMemorial} from './FirstMartianMemorial';
+import {TerraformingUnion} from './TerraformingUnion';
+import {AcquiredConsultingFirm} from './AcquiredConsultingFirm';
+import { SpecialDesignChemical } from './SpecialDesignChemical';
+import { AerobrakedAmmoniaAsteroidChemical } from './AerobrakedAmmoniaAsteroidChemical';
+import { SmallAsteroidChemical } from './SmallAsteroidChemical';
+import { GHGProducingBacteriaChemical } from './GHGProducingBacteriaChemical';
+import { AdaptationTechnologyChemical } from './AdaptationTechnologyChemical';
+import { UndergroundDetonationsChemical } from './UndergroundDetonationsChemical';
+import { SpaceMirrorsChemical } from './SpaceMirrorsChemical';
+import { EarthCatapultChemical } from './EarthCatapultChemical';
+import { MarsUniversityChemical } from './MarsUniversityChemical';
+import { OlympusConferenceChemical } from './OlympusConferenceChemical';
+import { IndustrialCenterChemical } from './IndustrialCenterChemical';
+import { ForcedPrecipitationChemical } from './ForcedPrecipitationChemical';
+import { JetStreamMicroscrappersChemical } from './JetStreamMicroscrappersChemical';
+import { ExtractorBalloonsChemical } from './ExtractorBalloonsChemical';
+import { ThermophilesChemical } from './ThermophilesChemical';
+import { VenusWaystationChemical } from './VenusWaystationChemical';
+import { SubZeroSaltFishChemical } from './SubZeroSaltFishChemical';
+import { MartianZooChemical } from './MartianZooChemical';
+import { TradingColonyChemical } from './TradingColonyChemical';
+import { SpinoffDepartmentChemical } from './SpinoffDepartmentChemical';
+import { DirectedImpactorsChemical } from './DirectedImpactorsChemical';
+import { AsteroidHollowingChemical } from './AsteroidHollowingChemical';
+import { OrbitalCleanupChemical } from './OrbitalCleanupChemical';
+import { CuttingEdgeTechnologyChemical } from './CuttingEdgeTechnologyChemical';
+import { MeatIndustryChemical } from './MeatIndustryChemical';
+import { CarbonNanosystemsChemical } from './CarbonNanosystemsChemical';
+import { SolarLogisticsChemical } from './SolarLogisticsChemical';
+import { MartianLumberCorpChemical } from './MartianLumberCorpChemical';
+import { UndergroundCityChemical } from './UndergroundCityChemical';
+import { CloudSeedingChemical } from './CloudSeedingChemical';
+import { BiomassCombustorsChemical } from './BiomassCombustorsChemical';
+import { WormsChemical } from './WormsChemical';
+import { AsteroidMiningConsortiumChemical } from './AsteroidMiningConsortiumChemical';
+import { TollStationChemical } from './TollStationChemical';
+import { ResearchChemical } from './ResearchChemical';
+import { HackersChemical } from './HackersChemical';
+import { CorporateStrongholdChemical } from './CorporateStrongholdChemical';
+import { VenusSoilsChemical } from './VenusSoilsChemical';
+import { ResearchColonyChemical } from './ResearchColonyChemical';
+import { SpacePortColonyChemical } from './SpacePortColonyChemical';
+import { SnowAlgaeChemical } from './SnowAlgaeChemical';
+import { BactoviralResearchChemical } from './BactoviralResearchChemical';
+
+//import {LegalExperts} from './LegalExperts';
+//import { MaterialLoan } from './MaterialLoan';
+//import { ResearchLoan } from './ResearchLoan';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
   corporationCards: {
 
   },
-  preludeCards: {
-    
-  },
+  /*preludeCards: {
+    [CardName.LEGAL_EXPERTS]: {Factory: LegalExperts},
+    [CardName.MATERIAL_LOAN]: {Factory: MaterialLoan},
+    [CardName.RESEARCH_LOAN]: {Factory: ResearchLoan},
+  },*/
   projectCards: {
     [CardName.OVERGROWTH]: {Factory: Overgrowth},
     [CardName.WILDFIRES]: {Factory: Wildfires},
@@ -599,78 +647,78 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.EARLY_POLAR_OUTPOST]: {Factory: EarlyPolarOutpost},
     [CardName.RURAL_HOUSING]: {Factory: RuralHousing},
 
-    [CardName.PARASITE]: {Factory: Parasite},
-    [CardName.POWER_FAILURE]: {Factory: PowerFailure},
-    [CardName.FAILED_SPACE_MISSION]: {Factory: FailedSpaceMission},
-    [CardName.AQUIFER_RELOCATION]: {Factory: AquiferRelocation},
-    [CardName.PUBLIC_RECORDS]: {Factory: PublicRecords},
-    [CardName.ASSET_LIQUIDATION]: {Factory: AssetLiquidation},
-    [CardName.SMALL_SUPPLY_DROP]: {Factory: SmallSupplyDrop},
-    [CardName.PATENT_TRADING]: {Factory: PatentTrading},
-    [CardName.TECHNOLOGY_EXHIBITION]: {Factory: TechnologyExhibition},
-    [CardName.RESEARCH_DONATION]: {Factory: ResearchDonation},
-    [CardName.POPULATION_BOOM]: {Factory: PopulationBoom},
-    [CardName.GENETIC_BREAKTHROUGH]: {Factory: GeneticBreakthrough},
-    [CardName.ASTROPHYSICS_CENTER]: {Factory: AstrophysicsCenter},
-    [CardName.CENTAUR_LANDINGS]: {Factory: CentaurLandings},
-    [CardName.VESTA_OBSERVATORY]: {Factory: VestaObservatory},
-    [CardName.ENCELADUS_OUTPOST]: {Factory: EnceladusOutpost},
-    [CardName.MEASUREMENT_DRONES]: {Factory: MeasurementDrones},
-    [CardName.ADVANCED_BIOMACHINERY]: {Factory: AdvancedBiomachinery},
-    [CardName.VIRAL_AMEBOID]: {Factory: ViralAmeboid},
-    [CardName.LONG_TERM_EVOLUTION_STUDY]: {Factory: LongTermEvolutionStudy},
-    [CardName.LASER_LIGHTSAILS]: {Factory: LaserLightsails},
-    [CardName.ALLOY_FACTORY]: {Factory: AlloyFactory},
-    [CardName.UNDERGROUND_TEST_SITE]: {Factory: UndergroundTestSite},
-    [CardName.SCIENTIFIC_MEGAOPOLIS]: {Factory: ScientificMegaopolis},
-    [CardName.ALCHEMIC_REACTIONS]: {Factory: AlchemicReactions},
-    [CardName.WIRELESS_ENERGY_TRANSFER]: {Factory: WirelessEnergyTransfer},
-    [CardName.KUGELBLITZ]: {Factory: Kugelblitz},
-    [CardName.SCIENTIFIC_LOGS]: {Factory: ScientificLogs},
-    [CardName.SPONSORED_RESEARCH_FIRM]: {Factory: SponsoredResearchFirm},
-    [CardName.NEURAL_ENCHANCERS]: {Factory: NeuralEnhancers},
-    [CardName.CONSTRUCTION_CENTER]: {Factory: ConstructionCenter},
-    [CardName.BIODIVERSITY_GRANTS]: {Factory: BiodiversityGrants},
-    [CardName.MARS_BUSINESS_INVESTMENTS]: {Factory: MarsBuinessInvestments},
-    [CardName.CANALS]: {Factory: Canals},
-    [CardName.STEEL_EXPORTS]: {Factory: SteelExports},
-    [CardName.JOVIAN_SUPPLIERS]: {Factory: JovianSuppliers},
-    [CardName.PROJECT_ADVANCEMENT]: {Factory: ProjectAdvancement},
-    [CardName.SUCCESSFUL_COMMERCE]: {Factory: SuccessfulCommerce},
-    [CardName.SCIENTIFIC_SUPPORT]: {Factory: ScientificSupport},
-    [CardName.GALILEAN_GOVERNOR]: {Factory: GalileanGovernor},
-    [CardName.MEDIA_CONGLOMARATE]: {Factory: MediaConglomerate},
-    [CardName.MARTIAN_BANKING]: {Factory: MartianBanking},
-    [CardName.MILITARY_BASE]: {Factory: MilitaryBase},
-    [CardName.MILITARY_SPACE_PORT]: {Factory: MilitarySpacePort},
-    [CardName.CHEMICAL_PLANT]: {Factory: ChemicalPlant},
-    [CardName.SALT_MINE]: {Factory: SaltMine},
-    [CardName.GRAND_STADIUM]: {Factory: GrandStadium},
-    [CardName.LUXURY_RESORT]: {Factory: LuxuryResort},
-    [CardName.MANUFACTURING_PLANT]: {Factory: ManufacturingPlant},
-    [CardName.CONTRACTED_CONSTRUCTION]: {Factory: ContractedConstruction},
-    [CardName.MOLECULAR_SCIENCE_LAB]: {Factory: MolecularScienceLab},
-    [CardName.CROWDFUNDING]: {Factory: Crowdfunding},
-    [CardName.COMMUNICATIONS_HUB]: {Factory: CommunicationsHub},
-    [CardName.TITAN_TRADE_HUB]: {Factory: TitanTradeHub},
-    [CardName.CONCRETE_FACTORY]: {Factory: ConcreteFactory},
-    [CardName.MOUNTAINTOP_REMOVAL]: {Factory: MountaintopRemoval},
-    [CardName.EXPLOSIVE_MINING]: {Factory: ExplosiveMining},
-    [CardName.PRINT_MANUFACTURING]: {Factory: PrintManufacturing},
-    [CardName.VOLCANIC_FOUNDRY]: {Factory: VolcanicFoundry},
-    [CardName.SHIPYARD]: {Factory: Shipyard},
-    [CardName.HYDRUALIC_MINING]: {Factory: HydrualicMining},
-    [CardName.UPPER_MANTLE_BORING]: {Factory: UpperMantleBoring},
-    [CardName.SEED_SUPPLIERS]: {Factory: SeedSuppliers},
-    [CardName.CASH_CROPS]: {Factory: CashCrops},
-    [CardName.EXTREME_POWER_EFFICIENCY]: {Factory: ExtremePowerEfficiency},
-    [CardName.COLD_FUSION_POWER]: {Factory: ColdFusionPower},
-    [CardName.NUCLEAR_FORCE_POWER]: {Factory: NuclearForcePower},
-    [CardName.ARTIFICIAL_MICROBIAL_LIFE]: {Factory: ArtificialMicrobialLife},
-    [CardName.ACQUIRED_RESEARCH_FIRM]: {Factory: AcquiredResearchFirm},
-    [CardName.INTERSTELLAR_PROBE]: {Factory: InterstellarProbe},
-    [CardName.THEORY_OF_EVERYTHING]: {Factory: TheoryOfEverything},
-    [CardName.GREAT_HARBOR]: {Factory: GreatHarbor},
+    [CardName.PARASITE]: {Factory: Parasite, compatibility: 'corpera'},
+    [CardName.POWER_FAILURE]: {Factory: PowerFailure, compatibility: 'corpera'},
+    [CardName.FAILED_SPACE_MISSION]: {Factory: FailedSpaceMission, compatibility: 'corpera'},
+    [CardName.AQUIFER_RELOCATION]: {Factory: AquiferRelocation, compatibility: 'corpera'},
+    [CardName.PUBLIC_RECORDS]: {Factory: PublicRecords, compatibility: 'corpera'},
+    [CardName.ASSET_LIQUIDATION]: {Factory: AssetLiquidation, compatibility: 'corpera'},
+    [CardName.SMALL_SUPPLY_DROP]: {Factory: SmallSupplyDrop, compatibility: 'corpera'},
+    [CardName.PATENT_TRADING]: {Factory: PatentTrading, compatibility: 'corpera'},
+    [CardName.TECHNOLOGY_EXHIBITION]: {Factory: TechnologyExhibition, compatibility: 'corpera'},
+    [CardName.RESEARCH_DONATION]: {Factory: ResearchDonation, compatibility: 'corpera'},
+    [CardName.POPULATION_BOOM]: {Factory: PopulationBoom, compatibility: 'corpera'},
+    [CardName.GENETIC_BREAKTHROUGH]: {Factory: GeneticBreakthrough, compatibility: 'corpera'},
+    [CardName.ASTROPHYSICS_CENTER]: {Factory: AstrophysicsCenter, compatibility: 'corpera'},
+    [CardName.CENTAUR_LANDINGS]: {Factory: CentaurLandings, compatibility: 'corpera'},
+    [CardName.VESTA_OBSERVATORY]: {Factory: VestaObservatory, compatibility: 'corpera'},
+    [CardName.ENCELADUS_OUTPOST]: {Factory: EnceladusOutpost, compatibility: 'corpera'},
+    [CardName.MEASUREMENT_DRONES]: {Factory: MeasurementDrones, compatibility: 'corpera'},
+    [CardName.ADVANCED_BIOMACHINERY]: {Factory: AdvancedBiomachinery, compatibility: 'corpera'},
+    [CardName.VIRAL_AMEBOID]: {Factory: ViralAmeboid, compatibility: 'corpera'},
+    [CardName.LONG_TERM_EVOLUTION_STUDY]: {Factory: LongTermEvolutionStudy, compatibility: 'corpera'},
+    [CardName.LASER_LIGHTSAILS]: {Factory: LaserLightsails, compatibility: 'corpera'},
+    [CardName.ALLOY_FACTORY]: {Factory: AlloyFactory, compatibility: 'corpera'},
+    [CardName.UNDERGROUND_TEST_SITE]: {Factory: UndergroundTestSite, compatibility: 'corpera'},
+    [CardName.SCIENTIFIC_MEGAOPOLIS]: {Factory: ScientificMegaopolis, compatibility: 'corpera'},
+    [CardName.ALCHEMIC_REACTIONS]: {Factory: AlchemicReactions, compatibility: 'corpera'},
+    [CardName.WIRELESS_ENERGY_TRANSFER]: {Factory: WirelessEnergyTransfer, compatibility: 'corpera'},
+    [CardName.KUGELBLITZ]: {Factory: Kugelblitz, compatibility: 'corpera'},
+    [CardName.SCIENTIFIC_LOGS]: {Factory: ScientificLogs, compatibility: 'corpera'},
+    [CardName.SPONSORED_RESEARCH_FIRM]: {Factory: SponsoredResearchFirm, compatibility: 'corpera'},
+    [CardName.NEURAL_ENCHANCERS]: {Factory: NeuralEnhancers, compatibility: 'corpera'},
+    [CardName.CONSTRUCTION_CENTER]: {Factory: ConstructionCenter, compatibility: 'corpera'},
+    [CardName.BIODIVERSITY_GRANTS]: {Factory: BiodiversityGrants, compatibility: 'corpera'},
+    [CardName.MARS_BUSINESS_INVESTMENTS]: {Factory: MarsBuinessInvestments, compatibility: 'corpera'},
+    [CardName.CANALS]: {Factory: Canals, compatibility: 'corpera'},
+    [CardName.STEEL_EXPORTS]: {Factory: SteelExports, compatibility: 'corpera'},
+    [CardName.JOVIAN_SUPPLIERS]: {Factory: JovianSuppliers, compatibility: 'corpera'},
+    [CardName.PROJECT_ADVANCEMENT]: {Factory: ProjectAdvancement, compatibility: 'corpera'},
+    [CardName.SUCCESSFUL_COMMERCE]: {Factory: SuccessfulCommerce, compatibility: 'corpera'},
+    [CardName.SCIENTIFIC_SUPPORT]: {Factory: ScientificSupport, compatibility: 'corpera'},
+    [CardName.GALILEAN_GOVERNOR]: {Factory: GalileanGovernor, compatibility: 'corpera'},
+    [CardName.MEDIA_CONGLOMARATE]: {Factory: MediaConglomerate, compatibility: 'corpera'},
+    [CardName.MARTIAN_BANKING]: {Factory: MartianBanking, compatibility: 'corpera'},
+    [CardName.MILITARY_BASE]: {Factory: MilitaryBase, compatibility: 'corpera'},
+    [CardName.MILITARY_SPACE_PORT]: {Factory: MilitarySpacePort, compatibility: 'corpera'},
+    [CardName.CHEMICAL_PLANT]: {Factory: ChemicalPlant, compatibility: 'corpera'},
+    [CardName.SALT_MINE]: {Factory: SaltMine, compatibility: 'corpera'},
+    [CardName.GRAND_STADIUM]: {Factory: GrandStadium, compatibility: 'corpera'},
+    [CardName.LUXURY_RESORT]: {Factory: LuxuryResort, compatibility: 'corpera'},
+    [CardName.MANUFACTURING_PLANT]: {Factory: ManufacturingPlant, compatibility: 'corpera'},
+    [CardName.CONTRACTED_CONSTRUCTION]: {Factory: ContractedConstruction, compatibility: 'corpera'},
+    [CardName.MOLECULAR_SCIENCE_LAB]: {Factory: MolecularScienceLab, compatibility: 'corpera'},
+    [CardName.CROWDFUNDING]: {Factory: Crowdfunding, compatibility: 'corpera'},
+    [CardName.COMMUNICATIONS_HUB]: {Factory: CommunicationsHub, compatibility: 'corpera'},
+    [CardName.TITAN_TRADE_HUB]: {Factory: TitanTradeHub, compatibility: 'corpera'},
+    [CardName.CONCRETE_FACTORY]: {Factory: ConcreteFactory, compatibility: 'corpera'},
+    [CardName.MOUNTAINTOP_REMOVAL]: {Factory: MountaintopRemoval, compatibility: 'corpera'},
+    [CardName.EXPLOSIVE_MINING]: {Factory: ExplosiveMining, compatibility: 'corpera'},
+    [CardName.PRINT_MANUFACTURING]: {Factory: PrintManufacturing, compatibility: 'corpera'},
+    [CardName.VOLCANIC_FOUNDRY]: {Factory: VolcanicFoundry, compatibility: 'corpera'},
+    [CardName.SHIPYARD]: {Factory: Shipyard, compatibility: 'corpera'},
+    [CardName.HYDRUALIC_MINING]: {Factory: HydrualicMining, compatibility: 'corpera'},
+    [CardName.UPPER_MANTLE_BORING]: {Factory: UpperMantleBoring, compatibility: 'corpera'},
+    [CardName.SEED_SUPPLIERS]: {Factory: SeedSuppliers, compatibility: 'corpera'},
+    [CardName.CASH_CROPS]: {Factory: CashCrops, compatibility: 'corpera'},
+    [CardName.EXTREME_POWER_EFFICIENCY]: {Factory: ExtremePowerEfficiency, compatibility: 'corpera'},
+    [CardName.COLD_FUSION_POWER]: {Factory: ColdFusionPower, compatibility: 'corpera'},
+    [CardName.NUCLEAR_FORCE_POWER]: {Factory: NuclearForcePower, compatibility: 'corpera'},
+    [CardName.ARTIFICIAL_MICROBIAL_LIFE]: {Factory: ArtificialMicrobialLife, compatibility: 'corpera'},
+    [CardName.ACQUIRED_RESEARCH_FIRM]: {Factory: AcquiredResearchFirm, compatibility: 'corpera'},
+    [CardName.INTERSTELLAR_PROBE]: {Factory: InterstellarProbe, compatibility: 'corpera'},
+    [CardName.THEORY_OF_EVERYTHING]: {Factory: TheoryOfEverything, compatibility: 'corpera'},
+    [CardName.GREAT_HARBOR]: {Factory: GreatHarbor, compatibility: 'corpera'},
 
     [CardName.FLOATER_ACQUISITION]: {Factory: FloaterAcquisition, compatibility: 'venus'},
     [CardName.NEAR_MISS_ROTARY_ASTEROID]: {Factory: NearMissRotaryAsteroid, compatibility: 'venus'},
@@ -854,5 +902,92 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.FIRST_MARTIAN_MEMORIAL]: {Factory: FirstMaritanMemorial, compatibility: 'turmoil'},
     [CardName.TERRAFORMING_UNION]: {Factory: TerraformingUnion, compatibility: 'turmoil'},
     [CardName.ACQUIRED_CONSULTING_FIRM]: {Factory: AcquiredConsultingFirm, compatibility: 'turmoil'},
-  }
+
+    [CardName.SPECIAL_DESIGN_CHEMICAL]: {Factory: SpecialDesignChemical},
+    [CardName.AEROBRAKED_AMMONIA_ASTEROID_CHEMICAL]: {Factory: AerobrakedAmmoniaAsteroidChemical},
+    [CardName.SMALL_ASTEROID_CHEMICAL]: {Factory: SmallAsteroidChemical, compatibility: 'promo'},
+    [CardName.GHG_PRODUCING_BACTERIA_CHEMICAL]: {Factory: GHGProducingBacteriaChemical},
+    [CardName.ADAPTATION_TECHNOLOGY_CHEMICAL]: {Factory: AdaptationTechnologyChemical},
+    [CardName.UNDERGROUND_DETONATIONS_CHEMICAL]: {Factory: UndergroundDetonationsChemical},
+    [CardName.SPACE_MIRRORS_CHEMICAL]: {Factory: SpaceMirrorsChemical},
+    [CardName.EARTH_CATAPULT_CHEMICAL]: {Factory: EarthCatapultChemical, compatibility: 'corpera'},
+    [CardName.MARS_UNIVERSITY_CHEMICAL]: {Factory: MarsUniversityChemical, compatibility: 'corpera'},
+    [CardName.OLYMPUS_CONFERENCE_CHEMICAL]: {Factory: OlympusConferenceChemical, compatibility: 'corpera'},
+    [CardName.INDUSTRIAL_CENTER_CHEMICAL]: {Factory: IndustrialCenterChemical, compatibility: 'corpera'},
+    [CardName.FORCED_PRECIPITATION_CHEMICAL]: {Factory: ForcedPrecipitationChemical, compatibility: 'venus'},
+    [CardName.JET_STREAM_MICROSCRAPPERS_CHEMICAL]: {Factory: JetStreamMicroscrappersChemical, compatibility: 'venus'},
+    [CardName.EXTRACTOR_BALLOONS_CHEMICAL]: {Factory: ExtractorBalloonsChemical, compatibility: 'venus'},
+    [CardName.THERMOPHILES_CHEMICAL]: {Factory: ThermophilesChemical, compatibility: 'venus'},
+    [CardName.VENUS_WAYSTATION_CHEMICAL]: {Factory: VenusWaystationChemical, compatibility: 'venus'},
+    [CardName.SUBZERO_SALT_FISH_CHEMICAL]: {Factory: SubZeroSaltFishChemical, compatibility: 'colonies'},
+    [CardName.MARTIAN_ZOO_CHEMICAL]: {Factory: MartianZooChemical, compatibility: 'colonies'},
+    [CardName.TRADING_COLONY_CHEMICAL]: {Factory: TradingColonyChemical, compatibility: 'colonies'},
+    [CardName.SPINOFF_DEPARTMENT_CHEMICAL]: {Factory: SpinoffDepartmentChemical, compatibility: 'colonies'},
+    [CardName.DIRECTED_IMPACTORS_CHEMICAL]: {Factory: DirectedImpactorsChemical, compatibility: 'promo'},
+    [CardName.ASTEROID_HOLLOWING_CHEMICAL]: {Factory: AsteroidHollowingChemical, compatibility: 'promo'},
+    [CardName.ORBITAL_CLEANUP_CHEMICAL]: {Factory: OrbitalCleanupChemical, compatibility: 'promo'},
+    [CardName.CUTTING_EDGE_TECHNOLOGY_CHEMICAL]: {Factory: CuttingEdgeTechnologyChemical, compatibility: 'promo'},
+    [CardName.MEAT_INDUSTRY_CHEMICAL]: {Factory: MeatIndustryChemical, compatibility: 'promo'},
+    [CardName.CARBON_NANOSYSTEMS_CHEMICAL]: {Factory: CarbonNanosystemsChemical, compatibility: 'promo'},
+    [CardName.SOLAR_LOGISTICS_CHEMICAL]: {Factory: SolarLogisticsChemical, compatibility: 'promo'},
+    [CardName.MARTIAN_LUMBER_CORP_CHEMICAL]: {Factory: MartianLumberCorpChemical, compatibility: 'promo'},
+    [CardName.UNDERGROUND_CITY_CHEMICAL]: {Factory: UndergroundCityChemical},
+    [CardName.CLOUD_SEEDING_CHEMICAL]: {Factory: CloudSeedingChemical},
+    [CardName.BIOMASS_COMBUSTORS_CHEMICAL]: {Factory: BiomassCombustorsChemical},
+    [CardName.WORMS_CHEMICAL]: {Factory: WormsChemical},
+    [CardName.ASTEROID_MINING_CONSORTIUM_CHEMICAL]: {Factory: AsteroidMiningConsortiumChemical, compatibility: 'corpera'},
+    [CardName.TOLL_STATION_CHEMICAL]: {Factory: TollStationChemical, compatibility: 'corpera'},
+    [CardName.RESEARCH_CHEMICAL]: {Factory: ResearchChemical, compatibility: 'corpera'},
+    [CardName.HACKERS_CHEMICAL]: {Factory: HackersChemical, compatibility: 'corpera'},
+    [CardName.CORPORATE_STRONGHOLD_CHEMICAL]: {Factory: CorporateStrongholdChemical, compatibility: 'corpera'},
+    [CardName.VENUS_SOILS_CHEMICAL]: {Factory: VenusSoilsChemical, compatibility: 'venus'},
+    [CardName.RESEARCH_COLONY_CHEMICAL]: {Factory: ResearchColonyChemical, compatibility: 'colonies'},
+    [CardName.SPACE_PORT_COLONY_CHEMICAL]: {Factory: SpacePortColonyChemical, compatibility: 'colonies'},
+    [CardName.SNOW_ALGAE_CHEMICAL]: {Factory: SnowAlgaeChemical, compatibility: 'promo'},
+    [CardName.BACTOVIRAL_RESEARCH_CHEMICAL]: {Factory: BactoviralResearchChemical, compatibility: 'promo'},
+  },
+  cardsToRemove: [
+    CardName.SPECIAL_DESIGN,
+    CardName.AEROBRAKED_AMMONIA_ASTEROID,
+    CardName.SMALL_ASTEROID,
+    CardName.GHG_PRODUCING_BACTERIA,
+    CardName.ADAPTATION_TECHNOLOGY,
+    CardName.UNDERGROUND_DETONATIONS,
+    CardName.SPACE_MIRRORS,
+    CardName.EARTH_CATAPULT,
+    CardName.MARS_UNIVERSITY,
+    CardName.OLYMPUS_CONFERENCE,
+    CardName.INDUSTRIAL_CENTER,
+    CardName.FORCED_PRECIPITATION,
+    CardName.JET_STREAM_MICROSCRAPPERS,
+    CardName.EXTRACTOR_BALLOONS,
+    CardName.THERMOPHILES,
+    CardName.VENUS_WAYSTATION,
+    CardName.SUBZERO_SALT_FISH,
+    CardName.MARTIAN_ZOO,
+    CardName.TRADING_COLONY,
+    CardName.SPINOFF_DEPARTMENT,
+    CardName.DIRECTED_IMPACTORS,
+    CardName.ASTEROID_HOLLOWING,
+    CardName.ORBITAL_CLEANUP,
+    CardName.CUTTING_EDGE_TECHNOLOGY,
+    CardName.MEAT_INDUSTRY,
+    CardName.CARBON_NANOSYSTEMS,
+    CardName.SOLAR_LOGISTICS,
+    CardName.MARTIAN_LUMBER_CORP,
+    CardName.UNDERGROUND_CITY,
+    CardName.CLOUD_SEEDING,
+    CardName.BIOMASS_COMBUSTORS,
+    CardName.WORMS,
+    CardName.ASTEROID_MINING_CONSORTIUM,
+    CardName.TOLL_STATION,
+    CardName.RESEARCH,
+    CardName.HACKERS,
+    CardName.CORPORATE_STRONGHOLD,
+    CardName.VENUS_SOILS,
+    CardName.RESEARCH_COLONY,
+    CardName.SPACE_PORT_COLONY,
+    CardName.SNOW_ALGAE,
+    CardName.BACTOVIRAL_RESEARCH,
+  ],
 });

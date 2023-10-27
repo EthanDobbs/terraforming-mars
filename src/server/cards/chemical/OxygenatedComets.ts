@@ -63,7 +63,7 @@ export class OxygenatedComets extends Card implements IActionCard {
   }
 
   private addResource(player: IPlayer, asteroidCards: ICard[]) {
-     player.game.defer(new SelectPaymentDeferred(player, 6, {canUseTitanium: true, title: TITLES.payForCardAction(this.name)}));
+    player.game.defer(new SelectPaymentDeferred(player, 6, {canUseTitanium: true, title: TITLES.payForCardAction(this.name)}));
 
     if (asteroidCards.length === 1) {
       player.addResourceTo(this, {log: true});

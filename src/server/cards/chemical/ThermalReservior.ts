@@ -7,8 +7,8 @@ import {Resource} from '../../../common/Resource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Tag} from '../../../common/cards/Tag';
-import { AddResourcesToCard } from '../../deferredActions/AddResourcesToCard';
-import { CardResource } from '../../../common/CardResource';
+import {AddResourcesToCard} from '../../deferredActions/AddResourcesToCard';
+import {CardResource} from '../../../common/CardResource';
 
 export class ThermalReservior extends Card implements IProjectCard {
   constructor() {

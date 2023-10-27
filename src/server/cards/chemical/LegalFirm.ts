@@ -18,7 +18,7 @@ export class LegalFirm extends Card implements IProjectCard {
         cardNumber: 'x402',
         renderData: CardRenderer.builder((b) => {
           b.effect('When ANOTHER PLAYER removes your resources or lowers your production, steal 3 M€ from THAT PLAYER.',
-            (eb) => eb.minus().wild(1).slash().production((pb) => pb.wild(1)).startEffect.text('Steal').megacredits(3, {all}).asterix())
+            (eb) => eb.minus().wild(1).slash().production((pb) => pb.wild(1)).startEffect.text('Steal ').megacredits(3, {all}).asterix())
         }),
       },
     });

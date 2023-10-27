@@ -1,29 +1,29 @@
 import {IProjectCard} from '../IProjectCard';
-import {Card} from '../Card';
+import {Tag} from '../../../common/cards/Tag';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import {Tag} from '../../../common/cards/Tag';
+import {Card} from '../Card';
 
-export class RimPopulationCenter extends Card implements IProjectCard {
+export class ResearchColonyChemical extends Card implements IProjectCard {
   constructor() {
     super({
+      cost: 22,
+      tags: [Tag.SPACE, Tag.SCIENCE],
+      name: CardName.RESEARCH_COLONY_CHEMICAL,
       type: CardType.AUTOMATED,
-      name: CardName.RIM_POPULATION_CENTER,
-      tags: [Tag.SPACE],
-      cost: 7,
 
       behavior: {
-        production: {energy: -1},
+        drawCard: 2,
         colonies: {buildColony: {}},
       },
 
       metadata: {
-        cardNumber: 'x349',
+        cardNumber: 'xR39',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.minus().energy(1)).colonies(1);
+          b.colonies(1).nbsp.cards(2);
         }),
-        description: 'Decrease your energy production 1 step and place a colony.',
+        description: 'Place a colony. Draw 2 cards.',
       },
     });
   }

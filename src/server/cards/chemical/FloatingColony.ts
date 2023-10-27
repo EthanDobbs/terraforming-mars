@@ -11,6 +11,7 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Card} from '../Card';
 import {multiplier} from '../Options';
+import {SelectCard} from '../../inputs/SelectCard';
 
 export class FloatingColony extends Card implements IActionCard {
   constructor() {
@@ -21,6 +22,10 @@ export class FloatingColony extends Card implements IActionCard {
       cost: 20,
       requirements: {floaters: 3},
       resourceType: CardResource.FLOATER,
+
+      behavior: {
+        colonies: {buildColony: {}},
+      },
 
       metadata: {
         cardNumber: 'x328',
@@ -43,10 +48,22 @@ export class FloatingColony extends Card implements IActionCard {
   }
   public action(player: IPlayer) {
     const opts: Array<PlayerInput> = [];
-
-    const addResource = new SelectOption('Add 1 floater to this card', 'Add floater').andThen( () => {
-      player.addResourceTo(this, {log: true});
-      return undefined;
+    const resourceCards = player.getResourceCards(this.resourceType);
+    const addResource = new SelectOption('Add 1 floater to any card', 'Add floater').andThen( () => {
+      if (resourceCards.length === 1) {
+        player.addResourceTo(resourceCards[0], 1);
+        return undefined;
+      }
+      return new SelectCard(
+        'Select card to add 1 floater',
+        'Add floater',
+        resourceCards)
+        .andThen(
+          ([card]) => {
+            player.addResourceTo(card, 1);
+            return undefined;
+          },
+        );
     });
     const spendResource = new SelectAmount('Remove any number of floaters to gain 3 M€ per floater removed', 'Remove floaters', 1, this.resourceCount, true)
       .andThen((amount) => this.spendResource(player, amount));

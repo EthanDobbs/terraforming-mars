@@ -55,6 +55,7 @@ export class SelectProjectCardToPlay extends BasePlayerInput<IProjectCard> {
         heat: player.canUseHeatAsMegaCredits,
         lunaTradeFederationTitanium: player.canUseTitaniumAsMegacredits,
         plants: player.canUsePlantsAsMegacredits,
+        energy: player.cardIsInEffect(CardName.ENERGY_LAB),
       },
       lunaArchivesScience: player.getSpendable('lunaArchivesScience'),
       seeds: player.getSpendable('seeds'),

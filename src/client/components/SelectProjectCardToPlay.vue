@@ -239,7 +239,7 @@ export default Vue.extend({
         return this.tags.includes(Tag.BUILDING) && this.playerinput.paymentOptions.plants === true ||
         (this.playerinput.ecologicalContractPlants && this.tags.includes(Tag.PLANT));
       case 'energy':
-        return this.tags.includes(Tag.POWER) && this.playerinput.paymentOptions.energy === true;
+        return this.tags.includes(Tag.POWER) && this.playerinput.EnergyLabEnergy === true;
       case 'microbes':
         return this.tags.includes(Tag.PLANT);
       case 'dirigiblesFloaters':

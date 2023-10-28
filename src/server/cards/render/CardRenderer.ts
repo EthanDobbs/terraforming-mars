@@ -321,8 +321,8 @@ abstract class Builder<T> {
     return this._appendToRow(new CardRenderItem(CardRenderItemType.SELF_REPLICATING));
   }
 
-  public prelude() {
-    return this._appendToRow(new CardRenderItem(CardRenderItemType.PRELUDE));
+  public prelude(options?: ItemOptions) {
+    return this._appendToRow(new CardRenderItem(CardRenderItemType.PRELUDE, -1, options));
   }
 
   public award() {

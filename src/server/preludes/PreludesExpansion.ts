@@ -4,6 +4,7 @@ import {CardAction, IPlayer} from '../IPlayer';
 import {IPreludeCard} from '../cards/prelude/IPreludeCard';
 import {SelectCard} from '../inputs/SelectCard';
 import {SimpleDeferredAction} from '../deferredActions/DeferredAction';
+import {ICorporationCard} from '../cards/corporation/ICorporationCard';
 
 export class PreludesExpansion {
   public static fizzle(player: IPlayer, card: IPreludeCard): void {
@@ -36,6 +37,9 @@ export class PreludesExpansion {
           PreludesExpansion.fizzle(player, card);
           return undefined;
         } else {
+          if (card.initialAction) {
+            player.pendingInitialActions.push(card as ICorporationCard);
+          }
           return player.playCard(card, undefined, cardAction);
         }
       });

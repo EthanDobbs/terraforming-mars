@@ -36,7 +36,7 @@ export class SponsoredResearchFirm extends Card implements IProjectCard {
     lastGenerationIncreasedTR: -1,
   }
   onIncreaseTerraformRating(player: IPlayer, cardOwner: IPlayer): void {
-    if (player === cardOwner) {
+    if (player.id === cardOwner.id) {
       this.data.lastGenerationIncreasedTR = player.game.generation;
     }
   }

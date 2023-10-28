@@ -4,8 +4,13 @@ import {PreludeCard} from '../prelude/PreludeCard';
 import {IPlayer} from '../../IPlayer';
 import {SelectSpace} from '../../inputs/SelectSpace';
 import {LogHelper} from '../../LogHelper';
+import {IProjectCard} from '../IProjectCard';
+import {BoardType} from '../../boards/BoardType';
+import {Space} from '../../boards/Space';
+import {Resource} from '../../../common/Resource';
+import {Size} from '../../../common/cards/render/Size';
 
-export class EarlyLandClaim extends PreludeCard {
+export class EarlyLandClaim extends PreludeCard implements IProjectCard{
   constructor() {
     super({
       name: CardName.EARLY_LAND_CLAIM,
@@ -17,6 +22,9 @@ export class EarlyLandClaim extends PreludeCard {
       metadata: {
         cardNumber: 'xP04',
         renderData: CardRenderer.builder((b) => {
+          b.effect('When you place a tile, gain 2 M€.', (b) => {
+            b.emptyTile('normal', {size: Size.SMALL}).startEffect.megacredits(2);
+          }).br;
           b.text('3').community().nbsp.steel(2).plants(2);
         }),
         description: 'Place 3 of your player markers on unreserved areas, only you may place tiles there. Gain 2 steel and 2 plants.',
@@ -40,5 +48,10 @@ export class EarlyLandClaim extends PreludeCard {
           });
         });
       });
+  }
+  onTilePlaced(cardOwner: IPlayer, activePlayer: IPlayer, _space: Space, _boardType: BoardType): void {
+    if (activePlayer.id === cardOwner.id) {
+      cardOwner.stock.add(Resource.MEGACREDITS, 2, {log: true});
+    }
   }
 }

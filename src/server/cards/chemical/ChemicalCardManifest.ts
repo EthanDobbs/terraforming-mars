@@ -462,21 +462,80 @@ import { ResearchColonyChemical } from './ResearchColonyChemical';
 import { SpacePortColonyChemical } from './SpacePortColonyChemical';
 import { SnowAlgaeChemical } from './SnowAlgaeChemical';
 import { BactoviralResearchChemical } from './BactoviralResearchChemical';
-
-//import {LegalExperts} from './LegalExperts';
-//import { MaterialLoan } from './MaterialLoan';
-//import { ResearchLoan } from './ResearchLoan';
+import {LegalExperts} from './LegalExperts';
+import { MaterialLoan } from './MaterialLoan';
+import { ResearchLoan } from './ResearchLoan';
+import { EarlyLandClaim } from './EarlyLandClaim';
+import { TerraformingSponors } from './TerraformingSponsors';
+import { EntertainmentIndustry } from './EntertainmentIndustry';
+import { CoerciveDealings } from './CoerciveDealings';
+import { NoctisSettlement } from './NoctisSettlement';
+import { AquaponicsFacility } from './AquaponicsFacility';
+import { WildlifeSponsors } from './WildlfieSponsors';
+import { BlueprintAI } from './BlueprintAI';
+import { RareMineralReserve } from './RareMineralReserve';
+import { HeavyMetalComet } from './HeavyMetalComet';
+import { Bioplastics } from './Bioplastics';
+import { NuclearFuelMining } from './NuclearFuelMining';
+import { AsteroidBeltOperations } from './AsteroidBeltOperations';
+import { LunarMiningIndustries } from './LunarMiningIndustries';
+import { LaserMining } from './LaserMining';
+import { InfrastructureSupport } from './InfrastructureSupport';
+import { GlacialAlgae } from './GlacialAlgae';
+import { AmmoniaAsteroid } from './AmmoniaAsteroid';
+import { AdaptedVascularGreenery } from './AdaptedVascularGreenery';
+import { ProtistLifeforms } from './ProtistLifeforms';
+import { EcologicalReserve } from './EcologicalReserve';
+import { PowerCore } from './PowerCore';
+import { EnergyBeam } from './EnergyBeam';
+import { ThermalPlant } from './ThermalPlant';
+import { AdvancedHeatingTech } from './AdvancedHeatingTech';
+import { NanotechLab } from './NanotechLab';
+import { AdvancedBiosphere } from './AdvancedBiosphere';
+import { ResearchBase } from './ResearchBase';
+import { FurtherDevelopment } from './FurtherDevelopment';
+import { CorporateEspionage } from './CorporateEspionage';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
   corporationCards: {
 
   },
-  /*preludeCards: {
+  preludeCards: {
     [CardName.LEGAL_EXPERTS]: {Factory: LegalExperts},
     [CardName.MATERIAL_LOAN]: {Factory: MaterialLoan},
     [CardName.RESEARCH_LOAN]: {Factory: ResearchLoan},
-  },*/
+    [CardName.EARLY_LAND_CLAIM]: {Factory: EarlyLandClaim},
+    [CardName.TERRAFORMING_SPONSORS]: {Factory: TerraformingSponors},
+    [CardName.ENTERTAINMENT_INDUSTRY]: {Factory: EntertainmentIndustry},
+    [CardName.COERCIVE_DEALINGS]: {Factory: CoerciveDealings},
+    [CardName.NOCTIS_SETTLEMENT]: {Factory: NoctisSettlement},
+    [CardName.AQUAPONICS_FACILITY]: {Factory: AquaponicsFacility},
+    [CardName.WILDLIFE_SPONSORS]: {Factory: WildlifeSponsors},
+    [CardName.BLUEPRINT_AI]: {Factory: BlueprintAI},
+    [CardName.RARE_MINERAL_RESERVE]: {Factory: RareMineralReserve},
+    [CardName.HEAVY_METAL_COMET]: {Factory: HeavyMetalComet},
+    [CardName.BIOPLASTICS]: {Factory: Bioplastics},
+    [CardName.INFRASTRUCTURE_SUPPORT]: {Factory: InfrastructureSupport},
+    [CardName.NUCLEAR_FUEL_MINING]: {Factory: NuclearFuelMining},
+    [CardName.ASTEROID_BELT_OPERATIONS]: {Factory: AsteroidBeltOperations},
+    [CardName.LUNAR_MINING_INDUSTRIES]: {Factory: LunarMiningIndustries},
+    [CardName.LASER_MINING]: {Factory: LaserMining},
+    [CardName.GLACIAL_ALGAE]: {Factory: GlacialAlgae},
+    [CardName.AMMONIA_ASTEROID]: {Factory: AmmoniaAsteroid},
+    [CardName.ADAPTED_VASCULAR_GREENERY]: {Factory: AdaptedVascularGreenery},
+    [CardName.PROTIST_LIFEFORMS]: {Factory: ProtistLifeforms},
+    [CardName.ECOLOGICAL_RESERVE]: {Factory: EcologicalReserve},
+    [CardName.POWER_CORE]: {Factory: PowerCore},
+    [CardName.ENERGY_BEAM]: {Factory: EnergyBeam},
+    [CardName.THERMAL_PLANT]: {Factory: ThermalPlant},
+    [CardName.ADVANCED_HEATING_TECH]: {Factory: AdvancedHeatingTech},
+    [CardName.NANOTECH_LAB]: {Factory: NanotechLab},
+    [CardName.ADVANCED_BIOSPHERE]: {Factory: AdvancedBiosphere},
+    [CardName.RESEARCH_BASE]: {Factory: ResearchBase},
+    [CardName.FURTHER_DEVELOPMENT]: {Factory: FurtherDevelopment},
+    [CardName.CORPORATE_ESPIONAGE]: {Factory: CorporateEspionage},
+  },
   projectCards: {
     [CardName.OVERGROWTH]: {Factory: Overgrowth},
     [CardName.WILDFIRES]: {Factory: Wildfires},

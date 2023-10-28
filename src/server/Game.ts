@@ -337,19 +337,28 @@ export class Game implements IGame, Logger {
             player.dealtProjectCards.push(projectDeck.draw(game));
           }
           //For testing purposes
-          if (gameOptions.chemicalExpansion) {
-            var card = new CardFinder().getProjectCardByName(CardName.FLOATING_COLONY);
+          /*if (gameOptions.chemicalExpansion) {
+            var card = new CardFinder().getProjectCardByName(CardName.MARTIAN_THERMOPHILES);
             if (card !== undefined) {
               player.dealtProjectCards.push(card);
             } else {
              throw new Error('I did not expect this.');
             }
-          }
+          }*/
         }
         if (gameOptions.preludeExtension) {
           for (let i = 0; i < constants.PRELUDE_CARDS_DEALT_PER_PLAYER; i++) {
             const prelude = preludeDeck.draw(game);
             player.dealtPreludeCards.push(prelude);
+          }
+          //For testing purposes
+          if (gameOptions.chemicalExpansion) {
+            var card = new CardFinder().getProjectCardByName(CardName.CORPORATE_ESPIONAGE);
+            if (card !== undefined) {
+              player.dealtPreludeCards.push(card);
+            } else {
+             throw new Error('I did not expect this.');
+            }
           }
         }
         if (gameOptions.ceoExtension) {

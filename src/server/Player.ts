@@ -314,6 +314,9 @@ export class Player implements IPlayer {
         player.playedCards.filter((card: IProjectCard) => card.type === CardType.CEO).forEach((ceo) => {
           ceo.onIncreaseTerraformRating?.(this, player, steps);
         });
+        player.playedCards.filter((card: IProjectCard) => card.type === CardType.ACTIVE).forEach((card) => {
+          card.onIncreaseTerraformRating?.(this, player, steps);
+        });
       });
     };
 
@@ -1426,7 +1429,7 @@ export class Player implements IPlayer {
     };
 
     // HOOK: Luna Trade Federation
-    if (usable.titanium === false && payment.titanium > 0 && this.isCorporation(CardName.LUNA_TRADE_FEDERATION)) {
+    if (usable.titanium === false && payment.titanium > 0 && (this.isCorporation(CardName.LUNA_TRADE_FEDERATION) || this.cardIsInEffect(CardName.LASER_MINING))) {
       usable.titanium = true;
       multiplier.titanium -= 1;
     }
@@ -1613,7 +1616,7 @@ export class Player implements IPlayer {
 
       this.pendingInitialActions.forEach((corp) => {
         const option = new SelectOption(
-          message('Take first action of ${0} corporation', (b) => b.card(corp)),
+          message('Take first action of ${0}', (b) => b.card(corp)),
           corp.initialActionText)
           .andThen(() => {
             this.deferInitialAction(corp);

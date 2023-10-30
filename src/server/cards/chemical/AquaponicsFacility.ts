@@ -16,6 +16,7 @@ export class AquaponicsFacility extends PreludeCard implements IProjectCard{
         production: {megacredits: 2},
         ocean: {},
       },
+      startingMegacredits: 3,
 
       cardDiscount: {tag: Tag.ANIMAL, amount: 3},
       metadata: {

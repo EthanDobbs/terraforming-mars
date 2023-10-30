@@ -191,7 +191,7 @@ export default Vue.extend({
       }
       this.available.energy = Math.max(this.thisPlayer.energy - this.reserveUnits.energy, 0);
       if (megacreditBalance > 0 && this.canUse('energy')) {
-        this.payment.plants = deductUnits(this.available.plants, this.getResourceRate('energy'));
+        this.payment.energy = deductUnits(this.available.energy, this.getResourceRate('energy'));
       }
 
       // If we are overspending

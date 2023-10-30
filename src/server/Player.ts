@@ -832,7 +832,7 @@ export class Player implements IPlayer {
   private paymentOptionsForCard(card: IProjectCard): PaymentOptions {
     const heavyAerospaceTech = card.tags.includes(Tag.SPACE) && this.cardIsInEffect(CardName.HEAVY_AEROSPACE_TECH);
     const ecologicalContract = card.tags.includes(Tag.PLANT) && this.cardIsInEffect(CardName.ECOLOGICAL_CONTRACT);
-    const martianLumberCorp = card.tags.includes(Tag.BUILDING) && this.cardIsInEffect(CardName.MARTIAN_LUMBER_CORP);
+    const martianLumberCorp = card.tags.includes(Tag.BUILDING) && (this.cardIsInEffect(CardName.MARTIAN_LUMBER_CORP) || this.cardIsInEffect(CardName.MARTIAN_LUMBER_CORP_CHEMICAL));
     const bioengineeringStudies = card.tags.includes(Tag.ANIMAL) && this.cardIsInEffect(CardName.BIOENGINEERING_STUDIES);
     const undergroundVenusBase = card.tags.includes(Tag.VENUS) && this.cardIsInEffect(CardName.UNDERGROUND_VENUS_BASE);
     const energyLab = card.tags.includes(Tag.POWER) && this.cardIsInEffect(CardName.ENERGY_LAB);

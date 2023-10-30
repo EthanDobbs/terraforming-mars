@@ -31,7 +31,9 @@ export class ColonySuppliers extends Card implements IProjectCard {
     });
   }
 
-  public onTrade(player: IPlayer, colony: IColony) {
-    player.stock.add(Resource.MEGACREDITS, colony.colonies.length, {log: true});
+  public onTrade(cardOwner: IPlayer, activePlayer: IPlayer, colony: IColony) {
+    if (cardOwner.id === activePlayer.id) {
+      cardOwner.stock.add(Resource.MEGACREDITS, colony.colonies.length, {log: true});
+    }
   }
 }

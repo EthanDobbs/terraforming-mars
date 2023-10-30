@@ -36,7 +36,7 @@ export type SelectProjectCardToPlayModel = BaseInputModel & {
   cards: Array<CardModel>;
   paymentOptions: Partial<PaymentOptions>,
   microbes: number;
-  floaters: number;
+  dirigiblesFloaters: number;
   lunaArchivesScience: number;
   seeds: number;
   graphene: number;

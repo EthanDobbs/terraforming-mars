@@ -19,6 +19,7 @@ export class EntertainmentIndustry extends PreludeCard implements IProjectCard{
         stock: {megacredits: 3},
         production: {megacredits: 2},
       },
+      startingMegacredits: 3,
 
       metadata: {
         cardNumber: 'xP06',

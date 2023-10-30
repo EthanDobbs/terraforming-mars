@@ -26,7 +26,10 @@ export class AirScrappingStandardProjectVariant extends AirScrappingStandardProj
 
   protected override discount(player: IPlayer): number {
     const tagCount = player.tags.count(Tag.VENUS);
-    const discount = Math.min(tagCount, 5);
+    let discount = Math.min(tagCount, 5);
+    if (player.cardIsInEffect(CardName.AIR_SCRAPPING_OPERATIONS)) {
+      discount += 3;
+    }
     return discount + super.discount(player);
   }
 }

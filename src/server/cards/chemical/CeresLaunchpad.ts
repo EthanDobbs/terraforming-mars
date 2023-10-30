@@ -23,6 +23,10 @@ export class CeresLaunchpad extends Card implements IActionCard {
       resourceType: CardResource.ASTEROID,
       victoryPoints: 2,
 
+      behavior: {
+        colonies: {addTradeFleet: 1},
+      },
+
       metadata: {
         cardNumber: 'x335',
         renderData: CardRenderer.builder((b) => {
@@ -52,6 +56,7 @@ export class CeresLaunchpad extends Card implements IActionCard {
     const tradeableColonies = ColoniesHandler.tradeableColonies(player.game);
     const spendResource = new SelectColony('Select colony tile for trade', 'trade', tradeableColonies)
     .andThen((colony: IColony) => {
+      this.resourceCount -= 1;
       colony.trade(player, {}, 1);
       return undefined;
     });

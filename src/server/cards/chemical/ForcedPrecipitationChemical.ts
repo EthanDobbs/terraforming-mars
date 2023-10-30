@@ -35,7 +35,7 @@ export class ForcedPrecipitationChemical extends ActionCard implements IActionCa
         cardNumber: 'xR12',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 2 M€ to add 1 floater to ANY card.', (eb) => {
-            eb.megacredits(2).startAction.floaters(1);
+            eb.megacredits(2).startAction.floaters(1).asterix();
           }).br;
           b.or().br;
           b.action('Spend 2 floaters here to increase Venus 1 step.', (eb) => {

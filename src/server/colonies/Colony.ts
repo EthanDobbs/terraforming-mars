@@ -89,7 +89,11 @@ export abstract class Colony implements IColony {
       this.trackPosition = this.colonies.length;
     }
 
-    // TODO(kberg): Time for an onNewColony hook.
+    for (const p of player.game.getPlayers()){
+      for (const playedCard of p.tableau) {
+        playedCard.onColonyBuilt?.(p, player, this);
+      }
+    }
 
     // Poseidon hook
     const poseidon = player.game.getPlayers().find((player) => player.isCorporation(CardName.POSEIDON));
@@ -125,8 +129,11 @@ export abstract class Colony implements IColony {
     const maxTrackPosition = Math.min(this.trackPosition + tradeOffset, MAX_COLONY_TRACK_POSITION);
     const steps = maxTrackPosition - this.trackPosition;
 
-    for (const playedCard of player.tableau) {
-      playedCard.onTrade?.(player, this);
+
+    for (const p of player.game.getPlayers()){
+      for (const playedCard of p.tableau) {
+        playedCard.onTrade?.(p, player, this);
+      }
     }
 
     if (steps === 0 ||

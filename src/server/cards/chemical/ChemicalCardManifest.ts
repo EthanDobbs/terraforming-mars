@@ -495,6 +495,28 @@ import { AdvancedBiosphere } from './AdvancedBiosphere';
 import { ResearchBase } from './ResearchBase';
 import { FurtherDevelopment } from './FurtherDevelopment';
 import { CorporateEspionage } from './CorporateEspionage';
+import { VenusFirstChemical } from './VenusFirstChemical';
+import { AirScrappingOperations } from './AirScrappingOperations';
+import { HydrogenBombardmentChemical } from './HydrogenBombardmentChemical';
+import { EarlyVenusBiosphere } from './EarlyVenusBiosphere';
+import { VenusSupplier } from './VenusSupplier';
+import { VenusGHGExports } from './VenusGHGExports';
+import { InnerSolarMission } from './InnerSolarMission';
+import { SisterPlanetResearch } from './SisterPlanetResearch';
+import { FloatingCity } from './FloatingCity';
+import { EarlyColony } from './EarlyColony';
+import { IsolatedEcologyResearch } from './IsolatedEcologyResearch';
+import { JovianProjectBase } from './JovianProjectBase';
+import { InterplanetaryTradingPort } from './InterplanetaryTradingPort';
+import { GasMine } from './GasMine';
+import { TradingNetwork } from './TradingNetwork';
+import { TitanSettlement } from './TitanSettlement';
+import { TradeInfrastructure } from './TradeInfrastructure';
+import { PhobosSpacePort } from './PhobosSpacePort';
+import { CommitteeRepresentative } from './CommitteeRepresentative';
+import { ByElectionChemical } from './ByElectionChemical';
+
+
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -535,6 +557,26 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.RESEARCH_BASE]: {Factory: ResearchBase},
     [CardName.FURTHER_DEVELOPMENT]: {Factory: FurtherDevelopment},
     [CardName.CORPORATE_ESPIONAGE]: {Factory: CorporateEspionage},
+    [CardName.VENUS_FIRST_CHEMICAL]: {Factory: VenusFirstChemical, compatibility: 'venus'},
+    [CardName.AIR_SCRAPPING_OPERATIONS]: {Factory: AirScrappingOperations, compatibility: 'venus'},
+    [CardName.HYDROGEN_BOMBARDMENT_CHEMICAL]: {Factory: HydrogenBombardmentChemical, compatibility: 'venus'},
+    [CardName.EARLY_VENUS_BIOSPHERE]: {Factory: EarlyVenusBiosphere, compatibility: 'venus'},
+    [CardName.VENUS_SUPPLIER]: {Factory: VenusSupplier, compatibility: 'venus'},
+    [CardName.VENUS_GHG_EXPORTS]: {Factory: VenusGHGExports, compatibility: 'venus'},
+    [CardName.INNER_SOLAR_MISSION]: {Factory: InnerSolarMission, compatibility: 'venus'},
+    [CardName.SISTER_PLANET_RESEARCH]: {Factory: SisterPlanetResearch, compatibility: 'venus'},
+    [CardName.FLOATING_CITY]: {Factory: FloatingCity, compatibility: 'venus'},
+    [CardName.EARLY_COLONY]: {Factory: EarlyColony, compatibility: 'colonies'},
+    [CardName.ISOLATED_ECOLOGY_RESEARCH]: {Factory: IsolatedEcologyResearch, compatibility: 'colonies'},
+    [CardName.JOVIAN_PROJECT_BASE]: {Factory: JovianProjectBase, compatibility: 'colonies'},
+    [CardName.INTERPLANETARY_TRADING_PORT]: {Factory: InterplanetaryTradingPort, compatibility: 'colonies'},
+    [CardName.GAS_MINE]: {Factory: GasMine, compatibility: 'colonies'},
+    [CardName.TRADING_NETWORK]: {Factory: TradingNetwork, compatibility: 'colonies'},
+    [CardName.TITAN_SETTLEMENT]: {Factory: TitanSettlement, compatibility: 'colonies'},
+    [CardName.TRADE_INFRASTRUCTURE]: {Factory: TradeInfrastructure, compatibility: 'colonies'},
+    [CardName.PHOBOS_SPACE_PORT]: {Factory: PhobosSpacePort, compatibility: 'colonies'},
+    [CardName.COMMITTEE_REPRESENTATIVE]: {Factory: CommitteeRepresentative, compatibility: 'turmoil'},
+    [CardName.BY_ELECTION_CHEMICAL]: {Factory: ByElectionChemical, compatibility: 'turmoil'},
   },
   projectCards: {
     [CardName.OVERGROWTH]: {Factory: Overgrowth},

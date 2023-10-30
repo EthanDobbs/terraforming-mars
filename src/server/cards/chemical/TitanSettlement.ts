@@ -4,23 +4,25 @@ import {PreludeCard} from '../prelude/PreludeCard';
 import {IProjectCard} from '../IProjectCard';
 import {IPlayer} from '../../IPlayer';
 import {PlayerInput} from '../../PlayerInput';
+import {Tag} from '../../../common/cards/Tag';
 import {AltSecondaryTag} from '../../../common/cards/render/AltSecondaryTag';
 
-export class AdvancedHeatingTech extends PreludeCard implements IProjectCard{
+export class TitanSettlement extends PreludeCard implements IProjectCard{
   constructor() {
     super({
-      name: CardName.ADVANCED_HEATING_TECH,
+      name: CardName.TITAN_SETTLEMENT,
+      tags: [Tag.JOVIAN],
 
       behavior: {
-        production: {heat: 3},
+        production: {titanium: 1},
       },
 
       metadata: {
-        cardNumber: 'xP28',
+        cardNumber: 'xP49',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.heat(3)).nbsp.cards(2, {secondaryTag: AltSecondaryTag.HEAT});
+          b.production((pb) => pb.titanium(1)).cards(2, {secondaryTag: AltSecondaryTag.FLOATER});
         }),
-        description: 'Increase your heat production 3 steps and draw 2 cards with heat icons.'
+        description: 'Increase your M€ production 2 steps. Put an additional colony tile of your choice in play.'
       },
     });
   }
@@ -28,7 +30,7 @@ export class AdvancedHeatingTech extends PreludeCard implements IProjectCard{
     const found: Array<CardName> = [];
     player.game.projectDeck.drawPile.forEach((card) => {
       const string = card.metadata.renderData !== undefined ? JSON.stringify(card.metadata.renderData) : '';
-      if (string.includes('heat')) {
+      if (string.includes('floaters') || card.requirements?.some((req) => req.floaters !== undefined)) {
         found.push(card.name);
       }
       return undefined;

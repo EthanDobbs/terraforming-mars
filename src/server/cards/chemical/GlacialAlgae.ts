@@ -10,6 +10,7 @@ import {Resource} from '../../../common/Resource';
 import {Priority} from '../../deferredActions/DeferredAction';
 import {GainResources} from '../../deferredActions/GainResources';
 import {Tag} from '../../../common/cards/Tag';
+import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
 
 export class GlacialAlgae extends PreludeCard implements IProjectCard{
   constructor() {
@@ -19,8 +20,8 @@ export class GlacialAlgae extends PreludeCard implements IProjectCard{
 
       behavior: {
         ocean: {},
-        stock: {megacredits: -5},
       },
+      startingMegacredits: -5,
 
       metadata: {
         cardNumber: 'xP20',
@@ -46,5 +47,12 @@ export class GlacialAlgae extends PreludeCard implements IProjectCard{
         cardOwner.id !== activePlayer.id ? Priority.OPPONENT_TRIGGER : undefined,
       );
     }
+  }
+  public override bespokeCanPlay(player: IPlayer) {
+    return player.canAfford(3);
+  }
+  public override bespokePlay(player: IPlayer) {
+    player.game.defer(new SelectPaymentDeferred(player, 3));
+    return undefined;
   }
 }

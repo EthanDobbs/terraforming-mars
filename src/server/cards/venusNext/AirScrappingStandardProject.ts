@@ -25,7 +25,13 @@ export class AirScrappingStandardProject extends StandardProjectCard {
     if (player.game.getVenusScaleLevel() >= constants.MAX_VENUS_SCALE) return false;
     return super.canAct(player);
   }
-
+  protected override discount(player: IPlayer): number {
+    let discount = 0;
+    if (player.cardIsInEffect(CardName.AIR_SCRAPPING_OPERATIONS)) {
+      discount += 3;
+    }
+    return discount;
+  }
   actionEssence(player: IPlayer): void {
     player.game.increaseVenusScaleLevel(player, 1);
   }

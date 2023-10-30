@@ -17,6 +17,7 @@ export class MaterialLoan extends PreludeCard {
       behavior: {
         stock: {megacredits: 19},
       },
+      startingMegacredits: 19,
 
       metadata: {
         cardNumber: 'xP02',

@@ -29,7 +29,7 @@ export class WildlifeSponsors extends PreludeCard implements IProjectCard{
   public override bespokePlay(player: IPlayer): PlayerInput | undefined {
     const found: Array<CardName> = [];
     player.game.projectDeck.drawPile.forEach((card) => {
-      const string = JSON.stringify(card.metadata.renderData);
+      const string = card.metadata.renderData !== undefined ? JSON.stringify(card.metadata.renderData) : '';
       if (string.includes('animals') || card.tags.includes(Tag.ANIMAL)) {
         found.push(card.name);
       }

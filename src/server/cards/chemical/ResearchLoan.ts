@@ -14,6 +14,7 @@ export class ResearchLoan extends PreludeCard {
         production: {megacredits: -1},
         drawCard: {count: 1, tag: Tag.SCIENCE}
       },
+      startingMegacredits: 15,
 
       metadata: {
         cardNumber: 'xP03',

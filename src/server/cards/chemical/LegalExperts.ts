@@ -13,6 +13,7 @@ export class LegalExperts extends PreludeCard {
       behavior: {
         stock: {megacredits: 14},
       },
+      startingMegacredits: 14,
 
       metadata: {
         cardNumber: 'xP01',

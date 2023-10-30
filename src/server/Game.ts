@@ -337,14 +337,14 @@ export class Game implements IGame, Logger {
             player.dealtProjectCards.push(projectDeck.draw(game));
           }
           //For testing purposes
-          /*if (gameOptions.chemicalExpansion) {
-            var card = new CardFinder().getProjectCardByName(CardName.MARTIAN_THERMOPHILES);
+          if (gameOptions.chemicalExpansion) {
+            var card = new CardFinder().getProjectCardByName(CardName.MARTIAN_LUMBER_CORP_CHEMICAL);
             if (card !== undefined) {
               player.dealtProjectCards.push(card);
             } else {
              throw new Error('I did not expect this.');
             }
-          }*/
+          }
         }
         if (gameOptions.preludeExtension) {
           for (let i = 0; i < constants.PRELUDE_CARDS_DEALT_PER_PLAYER; i++) {
@@ -353,7 +353,7 @@ export class Game implements IGame, Logger {
           }
           //For testing purposes
           if (gameOptions.chemicalExpansion) {
-            var card = new CardFinder().getProjectCardByName(CardName.CORPORATE_ESPIONAGE);
+            var card = new CardFinder().getProjectCardByName(CardName.BY_ELECTION_CHEMICAL);
             if (card !== undefined) {
               player.dealtPreludeCards.push(card);
             } else {
@@ -1153,6 +1153,10 @@ export class Game implements IGame, Logger {
     const aphrodite = this.players.find((player) => player.isCorporation(CardName.APHRODITE));
     if (aphrodite !== undefined) {
       aphrodite.megaCredits += steps * 2;
+    }
+    const venusGHGExports = this.players.find((player) => player.cardIsInEffect(CardName.VENUS_GHG_EXPORTS));
+    if (venusGHGExports !== undefined) {
+      venusGHGExports.megaCredits += steps * 2;
     }
 
     this.venusScaleLevel += steps * 2;

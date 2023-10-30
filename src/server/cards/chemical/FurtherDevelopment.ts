@@ -6,6 +6,7 @@ import {Tag} from '../../../common/cards/Tag';
 import {IPreludeCard} from '../prelude/IPreludeCard';
 import {IPlayer} from '../../IPlayer';
 import {PreludesExpansion} from '../../preludes/PreludesExpansion';
+import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
 
 export class FurtherDevelopment extends PreludeCard implements IProjectCard{
   constructor() {
@@ -16,6 +17,7 @@ export class FurtherDevelopment extends PreludeCard implements IProjectCard{
       behavior: {
         stock: {megacredits: -3},
       },
+      startingMegacredits: -3,
 
       metadata: {
         cardNumber: 'xP32',
@@ -26,7 +28,12 @@ export class FurtherDevelopment extends PreludeCard implements IProjectCard{
       },
     });
   }
+  public override bespokeCanPlay(player: IPlayer) {
+    if (player.isCorporation(CardName.MANUTECH)) return true;
+    return player.canAfford(3);
+  }
   public override bespokePlay(player: IPlayer) {
+    player.game.defer(new SelectPaymentDeferred(player, 3));
     const cards: Array<IPreludeCard> = [
       player.game.preludeDeck.draw(player.game),
       player.game.preludeDeck.draw(player.game),

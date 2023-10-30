@@ -16,6 +16,7 @@ export class CoerciveDealings extends PreludeCard implements IProjectCard{
         stock: {megacredits: 10},
         production: {megacredits: 2},
       },
+      startingMegacredits: 10,
 
       metadata: {
         cardNumber: 'xP07',

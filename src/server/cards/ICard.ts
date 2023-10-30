@@ -112,7 +112,8 @@ export interface ICard {
    */
   onExcavation?(player: IPlayer, space: Space): void;
 
-  onTrade?(player: IPlayer, colony: IColony): void;
+  onTrade?(cardOwner: IPlayer, activePlayer: IPlayer, colony: IColony): void;
+  onColonyBuilt?(cardOwner: IPlayer, activePlayer: IPlayer, colony: IColony): void;
   
   cost?: number; /** Used with IProjectCard and PreludeCard. */
   type: CardType;

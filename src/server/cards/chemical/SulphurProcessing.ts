@@ -16,7 +16,7 @@ export class SulphurProcessing extends Card implements IProjectCard {
 
       behavior: {
         production: {megacredits: 2},
-        stock: {megacredits: {tag: Tag.JOVIAN, all: true}},
+        stock: {megacredits: {tag: Tag.VENUS, all: true}},
       },
 
       metadata: {

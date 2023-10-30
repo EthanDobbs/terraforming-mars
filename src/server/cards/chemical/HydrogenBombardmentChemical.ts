@@ -4,24 +4,24 @@ import {PreludeCard} from '../prelude/PreludeCard';
 import {IProjectCard} from '../IProjectCard';
 import {Tag} from '../../../common/cards/Tag';
 
-export class ThermalPlant extends PreludeCard implements IProjectCard{
+export class HydrogenBombardmentChemical extends PreludeCard implements IProjectCard{
   constructor() {
     super({
-      name: CardName.THERMAL_PLANT,
-      tags: [Tag.POWER, Tag.BUILDING],
+      name: CardName.HYDROGEN_BOMBARDMENT_CHEMICAL,
+      tags: [Tag.JOVIAN],
 
       behavior: {
-        production: {energy: 1, heat: 2},
+        global: {venus: 1},
+        production: {titanium: 1},
         stock: {megacredits: 5},
       },
-      startingMegacredits: 5,
 
       metadata: {
-        cardNumber: 'xP27',
+        cardNumber: 'xP36',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.energy(1).heat(2)).megacredits(5);
+          b.venus(1).production((pb) => pb.titanium(1)).megacredits(5);
         }),
-        description: 'Increase your energy production 1 step and your heat production 2 steps. Gain 5 M€'
+        description: 'Raise Venus 1 step, increase your titanium production 1 step, and gain 5 M€.'
       },
     });
   }

@@ -35,7 +35,7 @@ export class GHGProducingBacteriaChemical extends ActionCard {
       },
 
       metadata: {
-        description: 'Requires 4% oxygen.',
+        description: 'Requires 3% oxygen.',
         cardNumber: 'xR04',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 microbe to this card.', (eb) => {

@@ -29,12 +29,14 @@ export class TradeDealLeverage extends Card implements IProjectCard {
     });
   }
 
-  public onTrade(player: IPlayer, _colony: IColony) {
-    player.game.defer(new SimpleDeferredAction(player, () => {
-      return new SelectResource('Select resource to gain', Units.keys, (type) => {
-        player.stock.add(Units.ResourceMap[type], 1, {log: true});
-        return undefined;
-      })
-    }));
+  public onTrade(cardOwner: IPlayer, activePlayer: IPlayer, _colony: IColony) {
+    if (cardOwner.id === activePlayer.id) {
+      cardOwner.game.defer(new SimpleDeferredAction(cardOwner, () => {
+        return new SelectResource('Select resource to gain', Units.keys, (type) => {
+          cardOwner.stock.add(Units.ResourceMap[type], 1, {log: true});
+          return undefined;
+        })
+      }));
+    }
   }
 }

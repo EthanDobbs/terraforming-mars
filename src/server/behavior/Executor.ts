@@ -30,7 +30,7 @@ import {SelectResources} from '../inputs/SelectResources';
 import {TITLES} from '../inputs/titles';
 import {UnderworldExpansion} from '../underworld/UnderworldExpansion';
 import {message} from '../logs/MessageBuilder';
-import {ExcavateSpacesDeferred} from '../underworld/ExcavateSpacesDeferred';
+import {ExcavateSpacesDeferred} from '../underworld/ExcavateSpacesDeferred'
 
 export class Executor implements BehaviorExecutor {
   public canExecute(behavior: Behavior, player: IPlayer, card: ICard, canAffordOptions?: CanAffordOptions) {
@@ -410,7 +410,11 @@ export class Executor implements BehaviorExecutor {
 
       if (behavior.turmoil.sendDelegates) {
         const sendDelegates = behavior.turmoil.sendDelegates;
-        if (sendDelegates.manyParties) {
+        if (sendDelegates.party !== undefined) {
+          for (let i = 0; i < sendDelegates.count; i++) {
+            turmoil.sendDelegateToParty(player.id, sendDelegates.party, player.game);
+          }
+        } else if (sendDelegates.manyParties) {
           for (let i = 0; i < sendDelegates.count; i++) {
             player.game.defer(new SendDelegateToArea(player, 'Select where to send delegate'));
           }

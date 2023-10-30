@@ -18,7 +18,7 @@ export class Zan extends CeoCard {
           b.br.br;
           b.redsInactive().asterix();
           b.br.br;
-          b.opgArrow().text('ALL', Size.SMALL).delegates(1).colon().reds().megacredits(1);
+          b.opgArrow().text('ALL', Size.SMALL).delegates(1).colon().zanReds().megacredits(1);
         }),
         description: 'You are immune to Reds\' ruling policy. Once per game, place all of your available delegates in Reds. Gain 1 M€ for each delegate placed this way.',
       },

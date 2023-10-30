@@ -1,16 +1,32 @@
 @import "./variables.less";
 .card-corporation-expansion {
+    flex-direction: column;
+    display: flex;
     position: absolute;
-    top: 75px;
-    right: 33px;
+    top: 42px;
+    right: 4px;
 }
 
 .card-container {
+    .project-icon-expansion-container {
+        flex-direction: column-reverse;
+        display: flex;
+        bottom: 5px;
+        left: 5px;
+        position: absolute;
+    }
+    .resource-card-icon-expansion-container {
+        flex-direction: column-reverse;
+        display: flex;
+        bottom: 38px;
+        left: 5px;
+        position: absolute;
+    }
     .project-icon:after,
     .preludeCard-icon:after {
-        bottom: 8px;
-        left: 8px;
-        margin: 0px;
+        position: relative;
+        margin: 3px;
+        display: block;
     }
     .card-content-wrapper {
         position: relative;

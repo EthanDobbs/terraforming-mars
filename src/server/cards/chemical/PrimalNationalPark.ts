@@ -7,6 +7,7 @@ import {Tag} from '../../../common/cards/Tag';
 import {TileType} from '../../../common/TileType';
 import {AdjacencyBonus} from '../../ares/AdjacencyBonus';
 import {ICardMetadata} from '../../../common/cards/ICardMetadata';
+import { IPlayer, CanAffordOptions } from '@/server/IPlayer';
 
 export class PrimalNationalPark extends Card implements IProjectCard {
   constructor(
@@ -39,5 +40,11 @@ export class PrimalNationalPark extends Card implements IProjectCard {
       },
       metadata,
     });
+  }
+  /*private getTRPenalty(player: IPlayer): number {
+    return Math.floor((player.getTerraformRating() - 15) / 5)
+  }*/
+  public override bespokeCanPlay(player: IPlayer, _canAffordOptions?: CanAffordOptions | undefined): boolean {
+    return player.canAfford({cost: 8});
   }
 }

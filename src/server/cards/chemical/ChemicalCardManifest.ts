@@ -515,8 +515,16 @@ import { TradeInfrastructure } from './TradeInfrastructure';
 import { PhobosSpacePort } from './PhobosSpacePort';
 import { CommitteeRepresentative } from './CommitteeRepresentative';
 import { ByElectionChemical } from './ByElectionChemical';
-
-
+import { ExecutiveOrderChemical } from './ExecutiveOrderChemical';
+//import {ContractedIntelligenceAgency} from './ContractedIntelligenceAgency';
+import { PartyInsiders } from './PartyInsiders';
+import { PoliticalUprisingChemical } from './PoliticalUprisingChemical';
+import { MartianRepublic } from './MartianRepublic';
+import { IntellectualistMovement } from './IntellectualistMovement';
+import { CorporateAlliance } from './CorporateAlliance';
+import { GreenMarsInitiative } from './GreenMarsInitiative';
+import { PreservationistCampaign } from './PreservationistCampaign';
+import { HeatFirstInitiative } from './HeatFirstInitiative';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -577,6 +585,16 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.PHOBOS_SPACE_PORT]: {Factory: PhobosSpacePort, compatibility: 'colonies'},
     [CardName.COMMITTEE_REPRESENTATIVE]: {Factory: CommitteeRepresentative, compatibility: 'turmoil'},
     [CardName.BY_ELECTION_CHEMICAL]: {Factory: ByElectionChemical, compatibility: 'turmoil'},
+    [CardName.EXECUTIVE_ORDER_CHEMICAL]: {Factory: ExecutiveOrderChemical, compatibility: 'turmoil'},
+    //[CardName.CONTRACTED_INTELLIGENCE_AGENCY]: {Factory: ContractedIntelligenceAgency, compatibiliy: 'turmoil'},
+    [CardName.PARTY_INSIDERS]: {Factory: PartyInsiders, compatibility: 'turmoil'},
+    [CardName.POLITICAL_UPRISING_CHEMICAL]: {Factory: PoliticalUprisingChemical, compatibility: 'turmoil'},
+    [CardName.MARTIAN_REPUBLIC]: {Factory: MartianRepublic, compatibility: 'turmoil'},
+    [CardName.INTELLECTUALIST_MOVEMENT]: {Factory: IntellectualistMovement, compatibility: 'turmoil'},
+    [CardName.CORPORATE_ALLIANCE]: {Factory: CorporateAlliance, compatibility: 'turmoil'},
+    [CardName.GREEN_MARS_INITIATIVE]: {Factory: GreenMarsInitiative, compatibility: 'turmoil'},
+    [CardName.PRESERVATIONIST_CAMPAIGN]: {Factory: PreservationistCampaign, compatibility: 'turmoil'},
+    [CardName.HEAT_FIRST_INITIATIVE]: {Factory: HeatFirstInitiative, compatibility: 'turmoil'},
   },
   projectCards: {
     [CardName.OVERGROWTH]: {Factory: Overgrowth},

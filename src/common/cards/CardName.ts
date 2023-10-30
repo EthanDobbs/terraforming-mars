@@ -1510,4 +1510,15 @@ export enum CardName {
     PHOBOS_SPACE_PORT = 'Phobos Space Port',
     COMMITTEE_REPRESENTATIVE = 'Committee Representative',
     BY_ELECTION_CHEMICAL = 'By-Election:chemical',
+    EXECUTIVE_ORDER_CHEMICAL = 'Executive Order:chemical',
+    CONTRACTED_INTELLIGENCE_AGENCY = 'Contracted Intelligence Agency',
+    PARTY_INSIDERS = 'Party Insiders',
+    POLITICAL_UPRISING_CHEMICAL = 'Political Uprising:chemical',
+    MARTIAN_REPUBLIC = 'Martian Republic',
+    INTELLECTUALIST_MOVEMENT = 'Intellectualist Movement',
+    CORPORATE_ALLIANCE = 'Corporate Alliance',
+    GREEN_MARS_INITIATIVE = 'Green Mars Initiative',
+    PRESERVATIONIST_CAMPAIGN = 'Preservationist Campaign',
+    HEAT_FIRST_INITIATIVE = 'Heat First Initiative',
+
 }

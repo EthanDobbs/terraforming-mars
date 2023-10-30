@@ -353,7 +353,7 @@ export class Game implements IGame, Logger {
           }
           //For testing purposes
           if (gameOptions.chemicalExpansion) {
-            var card = new CardFinder().getProjectCardByName(CardName.BY_ELECTION_CHEMICAL);
+            var card = new CardFinder().getProjectCardByName(CardName.HEAT_FIRST_INITIATIVE);
             if (card !== undefined) {
               player.dealtPreludeCards.push(card);
             } else {

@@ -691,8 +691,8 @@ abstract class Builder<T> {
     return this._appendToRow(new CardRenderItem(CardRenderItemType.ARROW_OPG));
   }
   // Reds icons used by Zan
-  public reds(): this {
-    return this._appendToRow(new CardRenderItem(CardRenderItemType.REDS));
+  public zanReds(): this {
+    return this._appendToRow(new CardRenderItem(CardRenderItemType.ZAN_REDS));
   }
   public redsInactive(): this {
     return this._appendToRow(new CardRenderItem(CardRenderItemType.REDS_DEACTIVATED));
@@ -704,6 +704,25 @@ abstract class Builder<T> {
   public adjacencyBonus(): this {
     this._appendToRow(new CardRenderItem(CardRenderItemType.ADJACENCY_BONUS));
     return this;
+  }
+
+  public marsFirst(): this {
+    return this._appendToRow(new CardRenderItem(CardRenderItemType.MARS_FIRST));
+  }
+  public scientists(): this {
+    return this._appendToRow(new CardRenderItem(CardRenderItemType.SCIENTISTS));
+  }
+  public unity(): this {
+    return this._appendToRow(new CardRenderItem(CardRenderItemType.UNITY));
+  }
+  public greens(): this {
+    return this._appendToRow(new CardRenderItem(CardRenderItemType.GREENS));
+  }
+  public reds(): this {
+    return this._appendToRow(new CardRenderItem(CardRenderItemType.REDS));
+  }
+  public kelvinists(): this {
+    return this._appendToRow(new CardRenderItem(CardRenderItemType.KELVINISTS));
   }
 }
 

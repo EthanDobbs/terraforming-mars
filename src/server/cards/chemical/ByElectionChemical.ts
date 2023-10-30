@@ -3,7 +3,9 @@ import {CardRenderer} from '../render/CardRenderer';
 import {PreludeCard} from '../prelude/PreludeCard';
 import {IProjectCard} from '../IProjectCard';
 import {IPlayer} from '../../IPlayer';
+import {IParty} from '../../turmoil/parties/IParty';
 import {Turmoil} from '../../turmoil/Turmoil';
+import {ChooseRulingPartyDeferred} from '../../turmoil/ChooseRulingPartyDeferred';
 
 export class ByElectionChemical extends PreludeCard implements IProjectCard{
   constructor() {
@@ -28,14 +30,15 @@ export class ByElectionChemical extends PreludeCard implements IProjectCard{
     });
   }
   public override bespokePlay(player: IPlayer) {
-    const turmoil = Turmoil.getTurmoil(player.game);
-    Turmoil.ifTurmoil((player.game), (turmoil) => {
-      turmoil.chooseRulingParty(player);
+    const game = player.game
+    Turmoil.ifTurmoil((game), (turmoil) => {
+      game.defer(new ChooseRulingPartyDeferred(player, turmoil)).andThen((party: IParty) => {
+        turmoil.delegateReserve.remove(player.id);
+        turmoil.setNewChairman(player.id, game, false);
+        turmoil.sendDelegateToParty(player.id, party.name, game);
+        turmoil.sendDelegateToParty(player.id, party.name, game);
+       });
     });
-    turmoil.delegateReserve.remove(player.id);
-    turmoil.setNewChairman(player.id, player.game, false);
-    turmoil.sendDelegateToParty(player.id, turmoil.rulingParty.name, player.game);
-    turmoil.sendDelegateToParty(player.id, turmoil.rulingParty.name, player.game);
     return undefined;
   }
 }

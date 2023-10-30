@@ -83,7 +83,7 @@ export enum CardRenderItemType {
 
   // CEO Extension:
   ARROW_OPG = 'arrow-opg',
-  REDS = 'reds',
+  ZAN_REDS = 'reds',
   REDS_DEACTIVATED = 'reds-deactivated',
   HAZARD_TILE = 'hazard-tile',
   ADJACENCY_BONUS = 'adjacency-bonus',
@@ -106,4 +106,11 @@ export enum CardRenderItemType {
   SCOOP = 'scoop',
   JOURNALISM = 'journalism',
   ACTIVIST = 'activist',
+
+  MARS_FIRST = 'party-mars-first',
+  SCIENTISTS = 'party-scientists',
+  UNITY = 'party-unity',
+  GREENS = 'party-greens',
+  REDS = 'party-reds',
+  KELVINISTS = 'party-kelvinists',
 }

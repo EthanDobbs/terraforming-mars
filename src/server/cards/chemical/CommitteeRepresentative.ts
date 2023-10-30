@@ -22,7 +22,7 @@ export class CommitteeRepresentative extends PreludeCard implements IProjectCard
       metadata: {
         cardNumber: 'xP52',
         renderData: CardRenderer.builder((b) => {
-          b.tr(2).delegates(1).award();
+          b.tr(2).delegates(1).br.award();
         }),
         description: 'Raise your TR 2 steps, place a delegate, and fund an award for free.'
       },

@@ -9,7 +9,7 @@
           <CardTitle :title="card.name" :type="getCardType()"/>
           <CardContent v-if="getCardMetadata() !== undefined" :metadata="getCardMetadata()" :requirements="getCardRequirements()" :isCorporation="isCorporationCard()" :padBottom="hasResourceType" />
       </div>
-      <CardExpansion :expansion="getCardExpansion()" :isCorporation="isCorporationCard()"/>
+      <CardExpansion :expansion="getCardExpansion()" :isCorporation="isCorporationCard()" :isResourceCard="isResourceCard()" :compatibility="getCardCompatibility()"/>
       <CardResourceCounter v-if="hasResourceType" :amount="getResourceAmount()" :type="resourceType" />
       <CardExtraContent :card="card" />
       <slot/>
@@ -37,6 +37,7 @@ import {CardResource} from '@/common/CardResource';
 import {getCardOrThrow} from '@/client/cards/ClientCardManifest';
 import {CardName} from '@/common/cards/CardName';
 import {CardRequirementDescriptor} from '@/common/cards/CardRequirementDescriptor';
+import {GameModule} from '@/common/cards/GameModule';
 
 const CARDS_WITH_EXTERNAL_DOCUMENTATION = [
   CardName.BOTANICAL_EXPERIENCE,
@@ -83,6 +84,16 @@ export default Vue.extend({
   methods: {
     getCardExpansion(): string {
       return this.cardInstance.module;
+    },
+    getCardCompatibility(): Array<GameModule> {
+      return this.cardInstance.compatibility;
+    },
+    isResourceCard(): boolean {
+      if (this.cardInstance.resourceType !== undefined) {
+        return true;
+      } else {
+        return false;
+      }
     },
     getTags(): Array<string> {
       const type = this.getCardType();

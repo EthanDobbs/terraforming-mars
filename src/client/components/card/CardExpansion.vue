@@ -1,7 +1,13 @@
 <template>
-  <div :class="classes"></div>
+  <div :class="templateClasses()">
+    <div :class="iconClasses(expansion)"></div>
+    <template v-for="x in compatibility"> 
+      <template v-if="x !== expansion">
+        <div :class="iconClasses(x)"></div>
+      </template>
+    </template>
+  </div>
 </template>
-
 <script lang="ts">
 
 import Vue from 'vue';
@@ -22,7 +28,7 @@ const MODULE_TO_CSS: Omit<Record<GameModule, string>, 'base'> = {
   ceo: 'ceo-icon',
   starwars: 'starwars-icon',
   underworld: 'underworld-icon',
-  'chemical': 'chemical-icon',
+  chemical: 'chemical-icon',
 };
 
 export default Vue.extend({
@@ -36,19 +42,36 @@ export default Vue.extend({
       type: Boolean,
       required: true,
     },
+    isResourceCard: {
+      type: Boolean,
+      required: true,
+    },
+    compatibility: {
+      type: Array<GameModule>,
+      required: false, 
+    },
   },
-  computed: {
-    classes(): string {
-      const classes = ['card-expansion', 'project-icon'];
-      if (this.expansion !== 'base') {
-        classes.push(MODULE_TO_CSS[this.expansion]);
+  methods: {
+    iconClasses(ex: GameModule): string {
+      const classes = ['card-expansion, project-icon'];
+      if (ex !== 'base') {
+        classes.push(MODULE_TO_CSS[ex]);
       }
-      if (this.isCorporation) {
-        classes.push('card-corporation-expansion');
-      }
-
       return classes.join(' ');
     },
+    templateClasses(): string {
+      const classes = [];
+      if (this.isCorporation) {
+        classes.push('card-corporation-expansion');
+      } else {
+        if (this.isResourceCard){
+          classes.push('resource-card-icon-expansion-container');
+        } else {
+          classes.push('project-icon-expansion-container');
+        }
+      }
+      return classes.join(' ');
+    }
   },
 });
 

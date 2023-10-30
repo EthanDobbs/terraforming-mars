@@ -433,6 +433,14 @@ export class Turmoil {
         influence+= bonus;
       }
     }
+
+    player.tableau.forEach((card) => {
+      const bonus = card.getInfluenceBonus?.(player);
+      if (bonus !== undefined) {
+        influence += bonus;
+      }
+    });
+
     // Committee coalition hook
     if (player.cardIsInEffect(CardName.COMMITTEE_COALITION)){
       let nonDominantPartyLeader = false;

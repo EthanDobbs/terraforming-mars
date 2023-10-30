@@ -155,6 +155,10 @@ export default Vue.extend({
         return ['card-tile-lunar-road--S', 'tile--req'];
       case RequirementType.UNIQUE_TAGS:
         return ['card-resource-tag--S', 'card-resource-diverse']
+      case RequirementType.EXCAVATION:
+        return ['card-excavation-req'];
+      case RequirementType.CORRUPTION:
+        return ['card-resource', 'card-resource-corruption'];
       case RequirementType.PRODUCTION:
       case RequirementType.REMOVED_PLANTS:
       case RequirementType.SUM_TAGS:

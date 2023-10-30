@@ -55,15 +55,18 @@ export enum TileType {
     MARS_NOMADS, // 40
     REY_SKYWALKER, // 41
     
-    OVERGROWTH, // 42
-    IMPERATIVE_SETTLEMENT, // 43
-    WETLANDS_CHEMICAL, // 44
-    MASSIVE_SOLAR_FARM, // 45
-    GHG_FACTORY_DISTRICT, // 46
-    MILITARY_BASE, //47
-    GREAT_HARBOR, //48
-    PRIMAL_NATIONAL_PARK, //49
-}
+    // Underworld
+    MAN_MADE_VOLCANO, // 42
+
+    OVERGROWTH, // 43
+    IMPERATIVE_SETTLEMENT, // 44
+    WETLANDS_CHEMICAL, // 45
+    MASSIVE_SOLAR_FARM, // 46
+    GHG_FACTORY_DISTRICT, // 47
+    MILITARY_BASE, //48
+    GREAT_HARBOR, //49
+    PRIMAL_NATIONAL_PARK, //50
+  }
 
 export const tileTypeToString: Record<TileType, string> = {
   [TileType.GREENERY]: 'greenery',
@@ -109,6 +112,7 @@ export const tileTypeToString: Record<TileType, string> = {
   [TileType.CRASHLANDING]: CardName.CRASHLANDING,
   [TileType.MARS_NOMADS]: CardName.MARS_NOMADS,
   [TileType.REY_SKYWALKER]: CardName.REY_SKYWALKER,
+  [TileType.MAN_MADE_VOLCANO]: CardName.MAN_MADE_VOLCANO,
   [TileType.OVERGROWTH]: CardName.OVERGROWTH,
   [TileType.IMPERATIVE_SETTLEMENT]: CardName.IMPERATIVE_SETTLEMENT,
   [TileType.WETLANDS_CHEMICAL]: CardName.WETLANDS_CHEMICAL,
@@ -117,7 +121,7 @@ export const tileTypeToString: Record<TileType, string> = {
   [TileType.MILITARY_BASE]: CardName.MILITARY_BASE,
   [TileType.GREAT_HARBOR]: CardName.GREAT_HARBOR,
   [TileType.PRIMAL_NATIONAL_PARK]: CardName.PRIMAL_NATIONAL_PARK,
-};
+} as const;
 
 export const HAZARD_TILES = new Set([TileType.DUST_STORM_MILD, TileType.DUST_STORM_SEVERE, TileType.EROSION_MILD, TileType.EROSION_SEVERE]);
 export const OCEAN_UPGRADE_TILES = new Set([TileType.OCEAN_CITY, TileType.OCEAN_FARM, TileType.OCEAN_SANCTUARY]);

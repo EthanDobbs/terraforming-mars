@@ -197,6 +197,7 @@ const moduleAbbreviations: Record<GameModule, string> = {
   pathfinders: 'P',
   ceo: 'l', // ceo abbreviation is 'l' for leader, since both 'C' are already taken
   starwars: 'w',
+  underworld: 'u',
   chemical: 'x',
 };
 
@@ -316,6 +317,7 @@ export default (Vue as WithRefs<Refs>).extend({
         ceo: true,
         starwars: true,
         chemical: true,
+        underworld: true,
       },
       types: {
         event: true,
@@ -494,25 +496,6 @@ export default (Vue as WithRefs<Refs>).extend({
       case 'colonies': return 'expansion-icon-colony';
       case 'moon': return 'expansion-icon-themoon';
       default: return `expansion-icon-${expansion}`;
-      }
-    },
-    expansionName(expansion: GameModule): string {
-      switch (expansion) {
-      case 'base': return 'Base';
-      case 'corpera': return 'Corporate Era';
-      case 'prelude': return 'Prelude';
-      case 'prelude2': return 'Prelude 2';
-      case 'venus': return 'Venus Next';
-      case 'colonies': return 'Colonies';
-      case 'turmoil': return 'Turmoil';
-      case 'promo': return 'Promos';
-      case 'ares': return 'Ares';
-      case 'community': return 'Community';
-      case 'moon': return 'The Moon';
-      case 'pathfinders': return 'Pathfinders';
-      case 'ceo': return 'CEOs';
-      case 'starwars': return 'Star Wars';
-      case 'chemical': return 'Chemical';
       }
     },
     filterByTags(card: ClientCard): boolean {

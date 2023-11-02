@@ -11,7 +11,7 @@ export class ScientificSupport extends Card implements IProjectCard {
       type: CardType.AUTOMATED,
       name: CardName.SCIENTIFIC_SUPPORT,
       tags: [Tag.EARTH],
-      cost: 2,
+      cost: 3,
 
       behavior: {
         production: {megacredits: 2},

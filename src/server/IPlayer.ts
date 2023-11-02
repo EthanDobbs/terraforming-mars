@@ -136,6 +136,8 @@ export interface IPlayer {
   victoryPointsByGeneration: Array<number>;
   totalDelegatesPlaced: number;
 
+  optionalEnergyConversion: boolean;
+
   underworldData: UnderworldPlayerData;
 
   tearDown(): void;

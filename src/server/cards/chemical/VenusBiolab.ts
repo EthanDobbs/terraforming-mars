@@ -12,8 +12,9 @@ export class VenusBiolab extends ActionCard implements IProjectCard {
       name: CardName.VENUS_BIOLAB,
       type: CardType.ACTIVE,
       tags: [Tag.MICROBE, Tag.ANIMAL, Tag.VENUS],
-      cost: 8,
+      cost: 10,
       requirements: {venus: 10},
+      victoryPoints: 1,
 
       action: {
         or: {

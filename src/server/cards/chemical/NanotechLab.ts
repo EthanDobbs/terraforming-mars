@@ -3,7 +3,7 @@ import {CardRenderer} from '../render/CardRenderer';
 import {Tag} from '../../../common/cards/Tag';
 import {ActivePreludeCard} from '../prelude2/ActivePreludeCard';
 import {IProjectCard} from '../IProjectCard';
-import { CardResource } from '../../../common/CardResource';
+import {CardResource} from '../../../common/CardResource';
 
 export class NanotechLab extends ActivePreludeCard implements IProjectCard{
   constructor() {
@@ -31,7 +31,9 @@ export class NanotechLab extends ActivePreludeCard implements IProjectCard{
           b.action('Add 2 microbes to ANY card or gain 1 plant.', (eb) => {
             eb.empty().startAction.microbes(2).asterix().slash().plants(1);
           }).br;
+          b.cards(2, {secondaryTag: Tag.MICROBE})
         }),
+        description: 'Draw 2 cards with microbe tags.'
       },
     });
   }

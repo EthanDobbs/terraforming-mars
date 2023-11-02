@@ -9,7 +9,7 @@ import {Card} from '../Card';
 export class SpinoffDepartmentChemical extends Card implements IProjectCard {
   constructor() {
     super({
-      cost: 13,
+      cost: 12,
       tags: [Tag.BUILDING],
       name: CardName.SPINOFF_DEPARTMENT_CHEMICAL,
       type: CardType.ACTIVE,

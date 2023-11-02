@@ -16,7 +16,7 @@ export class FloaterDocks extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.FLOATER_DOCKS,
       tags: [Tag.VENUS, Tag.JOVIAN],
-      cost: 18,
+      cost: 17,
       victoryPoints: {resourcesHere: {}, per: 3},
       resourceType: CardResource.FLOATER,
 

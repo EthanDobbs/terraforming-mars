@@ -12,7 +12,7 @@ export class SponsoredResearchFirm extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.SPONSORED_RESEARCH_FIRM,
       tags: [Tag.SCIENCE, Tag.BUILDING],
-      cost: 15,
+      cost: 14,
 
       behavior: {
         production: {megacredits: 1},

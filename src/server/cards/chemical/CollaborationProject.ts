@@ -13,7 +13,7 @@ export class CollaborationProject extends Card implements IProjectCard {
       type: CardType.EVENT,
       name: CardName.COLLABORATION_PROJECT,
       tags: [Tag.EARTH],
-      cost: 6,
+      cost: 5,
       requirements: [{tag: Tag.VENUS}, {tag: Tag.EARTH}, {tag: Tag.JOVIAN}],
 
       metadata: {

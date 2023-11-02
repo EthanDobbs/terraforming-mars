@@ -12,7 +12,7 @@ export class PhotonicMetamaterials extends Card implements IProjectCard {
       type: CardType.AUTOMATED,
       name: CardName.PHOTONIC_METAMATERIALS,
       tags: [Tag.SCIENCE, Tag.VENUS],
-      cost: 13,
+      cost: 11,
       requirements: {tag: Tag.SCIENCE, count: 2},
 
       behavior: {

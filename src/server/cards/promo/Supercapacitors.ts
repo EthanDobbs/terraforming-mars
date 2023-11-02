@@ -3,8 +3,6 @@ import {Tag} from '../../../common/cards/Tag';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import {IPlayer} from '../../IPlayer';
-import {SelectAmount} from '../../inputs/SelectAmount';
 import {Card} from '../Card';
 
 export class Supercapacitors extends Card implements IProjectCard {
@@ -17,6 +15,7 @@ export class Supercapacitors extends Card implements IProjectCard {
 
       behavior: {
         production: {megacredits: 1},
+        optionalEnergyConversion: true,
       },
 
       metadata: {
@@ -29,22 +28,5 @@ export class Supercapacitors extends Card implements IProjectCard {
         description: 'Increase M€ production 1 step.',
       },
     });
-  }
-
-  public static onProduction(player: IPlayer) {
-    if (player.energy === 0) {
-      player.finishProductionPhase();
-      return;
-    }
-    player.defer(
-      new SelectAmount('Select amount of energy to convert to heat', 'OK', 0, player.energy, true)
-        .andThen((amount) => {
-          player.energy -= amount;
-          player.heat += amount;
-          player.game.log('${0} converted ${1} units of energy to heat', (b) => b.player(player).number(amount));
-          player.finishProductionPhase();
-          return undefined;
-        },
-    ));
   }
 }

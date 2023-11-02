@@ -57,6 +57,7 @@ type SharedProperties = {
   tilesBuilt?: Array<TileType>,
   tr?: TRSource | DynamicTRSource,
   victoryPoints?: number | 'special' | IVictoryPoints,
+  optionalEnergyConversion?: boolean,
 }
 
 /* Internal representation of card properties. */

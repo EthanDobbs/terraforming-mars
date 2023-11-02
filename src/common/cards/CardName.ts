@@ -1026,7 +1026,7 @@ export enum CardName {
     M_TYPE_ASTEROID_MINING = 'M-Type Asteroid Mining',
     FLOATING_WEATHER_PROBES = 'Floating Weather Probes',
     PRODUCTION_DRONES = 'Production Drones',
-    JOVIAN_BACTERIA = 'Jovian Bacteria',
+    EUROPAN_BACTERIA = 'Jovian Bacteria',
     TERMITES = 'Termites',
     MARTIAN_THERMOPHILES = 'Martian Thermophiles',
     MIMICRY_ARCHAEA = 'Mimicry Archea',

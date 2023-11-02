@@ -5,7 +5,7 @@ import {IProjectCard} from '../IProjectCard';
 import {IPlayer} from '../../IPlayer';
 import {Resource} from '../../../common/Resource';
 import {Tag} from '../../../common/cards/Tag';
-import { IColony } from '@/server/colonies/IColony';
+import {IColony} from '@/server/colonies/IColony';
 
 export class EarlyColony extends PreludeCard implements IProjectCard{
   constructor() {

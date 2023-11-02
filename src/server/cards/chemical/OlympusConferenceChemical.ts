@@ -17,7 +17,7 @@ export class OlympusConferenceChemical extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.OLYMPUS_CONFERENCE_CHEMICAL,
       tags: [Tag.SCIENCE, Tag.EARTH, Tag.BUILDING],
-      cost: 13,
+      cost: 12,
       resourceType: CardResource.SCIENCE,
       victoryPoints: 1,
 

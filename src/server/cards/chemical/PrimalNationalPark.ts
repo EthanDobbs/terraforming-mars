@@ -7,7 +7,7 @@ import {Tag} from '../../../common/cards/Tag';
 import {TileType} from '../../../common/TileType';
 import {AdjacencyBonus} from '../../ares/AdjacencyBonus';
 import {ICardMetadata} from '../../../common/cards/ICardMetadata';
-import { IPlayer, CanAffordOptions } from '@/server/IPlayer';
+import {IPlayer, CanAffordOptions} from '@/server/IPlayer';
 
 export class PrimalNationalPark extends Card implements IProjectCard {
   constructor(

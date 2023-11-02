@@ -338,7 +338,7 @@ export class Game implements IGame, Logger {
           }
           //For testing purposes
           if (gameOptions.chemicalExpansion) {
-            var card = new CardFinder().getProjectCardByName(CardName.MARTIAN_LUMBER_CORP_CHEMICAL);
+            var card = new CardFinder().getProjectCardByName(CardName.SUPERCAPACITORS);
             if (card !== undefined) {
               player.dealtProjectCards.push(card);
             } else {
@@ -353,7 +353,7 @@ export class Game implements IGame, Logger {
           }
           //For testing purposes
           if (gameOptions.chemicalExpansion) {
-            var card = new CardFinder().getProjectCardByName(CardName.HEAT_FIRST_INITIATIVE);
+            var card = new CardFinder().getProjectCardByName(CardName.POWER_CORE);
             if (card !== undefined) {
               player.dealtPreludeCards.push(card);
             } else {

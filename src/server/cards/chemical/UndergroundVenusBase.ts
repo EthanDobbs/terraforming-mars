@@ -11,7 +11,7 @@ export class UndergroundVenusBase extends Card {
       name: CardName.UNDERGROUND_VENUS_BASE,
       type: CardType.ACTIVE,
       tags: [Tag.VENUS],
-      cost: 14,
+      cost: 13,
       requirements: {venus: 6},
       victoryPoints: 2,
 

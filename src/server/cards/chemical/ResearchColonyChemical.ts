@@ -8,7 +8,7 @@ import {Card} from '../Card';
 export class ResearchColonyChemical extends Card implements IProjectCard {
   constructor() {
     super({
-      cost: 22,
+      cost: 20,
       tags: [Tag.SPACE, Tag.SCIENCE],
       name: CardName.RESEARCH_COLONY_CHEMICAL,
       type: CardType.AUTOMATED,

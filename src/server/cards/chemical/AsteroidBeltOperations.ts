@@ -3,7 +3,7 @@ import {CardRenderer} from '../render/CardRenderer';
 import {Tag} from '../../../common/cards/Tag';
 import {ActivePreludeCard} from '../prelude2/ActivePreludeCard';
 import {IProjectCard} from '../IProjectCard';
-import { CardResource } from '../../../common/CardResource';
+import {CardResource} from '../../../common/CardResource';
 
 export class AsteroidBeltOperations extends ActivePreludeCard implements IProjectCard{
   constructor() {

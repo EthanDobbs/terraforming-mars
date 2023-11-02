@@ -11,7 +11,7 @@ export class ResearchChemical extends Card implements IProjectCard {
       type: CardType.AUTOMATED,
       name: CardName.RESEARCH_CHEMICAL,
       tags: [Tag.SCIENCE, Tag.SCIENCE],
-      cost: 16,
+      cost: 14,
       victoryPoints: 1,
 
       behavior: {

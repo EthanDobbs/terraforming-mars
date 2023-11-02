@@ -11,7 +11,7 @@ export class UpperMantleBoring extends Card implements IProjectCard {
       type: CardType.AUTOMATED,
       name: CardName.UPPER_MANTLE_BORING,
       tags: [Tag.BUILDING],
-      cost: 16,
+      cost: 15,
       requirements: {tag: Tag.SCIENCE, count: 4},
       victoryPoints: 1,
 

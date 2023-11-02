@@ -10,7 +10,7 @@ export class SpaceBasedSolarPower extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.SPACE_BASED_SOLAR_POWER,
-      cost: 17,
+      cost: 18,
       tags: [Tag.POWER, Tag.SPACE],
       victoryPoints: 1,
 

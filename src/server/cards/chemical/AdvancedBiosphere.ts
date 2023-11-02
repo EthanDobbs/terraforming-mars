@@ -5,7 +5,7 @@ import {IActionCard} from '../ICard';
 import {IPlayer} from '../../IPlayer';
 import {CardResource} from '../../../common/CardResource';
 import {Tag} from '../../../common/cards/Tag';
-import { SelectCard } from '../../inputs/SelectCard';
+import {SelectCard} from '../../inputs/SelectCard';
 import {IProjectCard} from '../IProjectCard';
 
 export class AdvancedBiosphere extends PreludeCard implements IActionCard{

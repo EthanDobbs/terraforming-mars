@@ -49,7 +49,7 @@ export class FloatingColony extends Card implements IActionCard {
   public action(player: IPlayer) {
     const opts: Array<PlayerInput> = [];
     const resourceCards = player.getResourceCards(this.resourceType);
-    const addResource = new SelectOption('Add 1 floater to any card', 'Add floater').andThen( () => {
+    const addResource = new SelectOption('Add 1 floater to this card', 'Add floater').andThen( () => {
       if (resourceCards.length === 1) {
         player.addResourceTo(resourceCards[0], 1);
         return undefined;

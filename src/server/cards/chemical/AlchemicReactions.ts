@@ -13,7 +13,7 @@ export class AlchemicReactions extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.ALCHEMIC_REACTIONS,
       tags: [Tag.SCIENCE],
-      cost: 13,
+      cost: 11,
       requirements: {tag: Tag.SCIENCE, count: 5},
 
       metadata: {

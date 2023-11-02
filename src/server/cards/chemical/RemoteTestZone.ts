@@ -8,7 +8,7 @@ import {ActionCard} from '../ActionCard';
 export class RemoteTestZone extends ActionCard implements IProjectCard {
   constructor() {
     super({
-      cost: 18,
+      cost: 15,
       tags: [Tag.SPACE],
       name: CardName.REMOTE_TEST_ZONE,
       type: CardType.ACTIVE,

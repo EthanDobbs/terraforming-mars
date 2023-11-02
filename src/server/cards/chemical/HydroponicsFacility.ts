@@ -10,7 +10,7 @@ export class HydroponicsFacility extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.HYDROPONICS_FACILITY,
-      cost: 10,
+      cost: 9,
       tags: [Tag.PLANT, Tag.BUILDING],
       requirements: {oceans: 3},
 

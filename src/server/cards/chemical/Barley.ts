@@ -10,7 +10,7 @@ export class Barley extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.BARLEY,
-      cost: 8,
+      cost: 7,
       tags: [Tag.PLANT],
       requirements: {temperature: -8},
 

@@ -15,7 +15,7 @@ export class TellurianEcosystems extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.TELLURIAN_ECOSYSTEMS,
       tags: [Tag.EARTH, Tag.ANIMAL],
-      cost: 12,
+      cost: 10,
 
       resourceType: CardResource.ANIMAL,
       victoryPoints: {resourcesHere: {}, per: 2},

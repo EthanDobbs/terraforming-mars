@@ -17,14 +17,15 @@ export class ColdFusionPower extends Card implements IProjectCard {
 
       behavior: {
         production: {energy: 3},
+        drawCard: 1,
       },
 
       metadata: {
         cardNumber: 'x234',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.energy(3));
+          b.production((pb) => pb.energy(3)).cards(1);
         }),
-        description: 'Requires 4 science tags. Increase your energy production 3 steps.',
+        description: 'Requires 4 science tags. Increase your energy production 3 steps and draw a card.',
       },
     });
   }

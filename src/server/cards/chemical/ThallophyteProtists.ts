@@ -12,7 +12,7 @@ export class ThallophyteProtists extends ActionCard implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.THALLOPHYTE_PROTISTS,
       tags: [Tag.MICROBE],
-      cost: 14,
+      cost: 12,
       requirements: {temperature: -24},
       resourceType: CardResource.MICROBE,
 

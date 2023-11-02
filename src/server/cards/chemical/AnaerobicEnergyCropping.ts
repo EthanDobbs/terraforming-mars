@@ -10,7 +10,7 @@ export class AnaerobicEnergyCropping extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.ANAEROBIC_ENERGY_CROPPING,
-      cost: 14,
+      cost: 12,
       tags: [Tag.POWER, Tag.PLANT],
       requirements: {temperature: -10},
 

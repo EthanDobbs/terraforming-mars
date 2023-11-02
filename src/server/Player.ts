@@ -66,7 +66,6 @@ import {calculateVictoryPoints} from './game/calculateVictoryPoints';
 import {IVictoryPointsBreakdown} from '..//common/game/IVictoryPointsBreakdown';
 import {YesAnd} from './cards/requirements/CardRequirement';
 import {PlayableCard} from './cards/IProjectCard';
-import {Supercapacitors} from './cards/promo/Supercapacitors';
 import {CanAffordOptions, CardAction, IPlayer, ResourceSource, isIPlayer} from './IPlayer';
 import {IPreludeCard} from './cards/prelude/IPreludeCard';
 import {inplaceRemove, sum} from '../common/utils/utils';
@@ -74,6 +73,7 @@ import {PreludesExpansion} from './preludes/PreludesExpansion';
 import {ChooseCards} from './deferredActions/ChooseCards';
 import {UnderworldPlayerData} from './underworld/UnderworldData';
 import {UnderworldExpansion} from './underworld/UnderworldExpansion';
+import {SelectAmount} from './inputs/SelectAmount';
 
 const THROW_WAITING_FOR = Boolean(process.env.THROW_WAITING_FOR);
 
@@ -209,6 +209,8 @@ export class Player implements IPlayer {
   public actionsTakenThisGame: number = 0;
   public victoryPointsByGeneration: Array<number> = [];
   public totalDelegatesPlaced: number = 0;
+
+  public optionalEnergyConversion: boolean = false;
 
   constructor(
     public name: string,
@@ -611,8 +613,18 @@ export class Player implements IPlayer {
     this.turmoilPolicyActionUsed = false;
     this.politicalAgendasActionUsedCount = 0;
 
-    if (this.cardIsInEffect(CardName.SUPERCAPACITORS)) {
-      Supercapacitors.onProduction(this);
+    if (this.optionalEnergyConversion) {
+      if (this.energy === 0) {
+        this.finishProductionPhase();
+        return;
+      }
+      this.defer(new SelectAmount('Select amount of energy to convert to heat', 'OK', 0, this.energy, true).andThen((amount) => {
+        this.energy -= amount;
+        this.heat += amount;
+        this.game.log('${0} converted ${1} units of energy to heat', (b) => b.player(this).number(amount));
+        this.finishProductionPhase();
+        return undefined;
+      }));
     } else {
       this.heat += this.energy;
       this.energy = 0;

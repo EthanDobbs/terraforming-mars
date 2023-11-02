@@ -42,7 +42,7 @@ export class TitanFuelStation extends Card implements IProjectCard {
 
 
   public onCardPlayed(player: IPlayer, card: IProjectCard) {
-    const spaceTags = player.tags.cardTagCount(card, Tag.SCIENCE);
+    const spaceTags = player.tags.cardTagCount(card, Tag.SPACE);
     for (let i = 0; i < spaceTags; i++) {
       player.game.defer(new SimpleDeferredAction(
         player,

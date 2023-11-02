@@ -12,8 +12,8 @@ export class NearMissRotaryAsteroid extends Card implements IProjectCard {
       type: CardType.EVENT,
       name: CardName.NEAR_MISS_ROTARY_ASTEROID,
       tags: [Tag.SPACE],
-      cost: 20,
-      victoryPoints: 2,
+      cost: 14,
+      victoryPoints: 1,
 
       behavior: {
         global: {venus: 1},

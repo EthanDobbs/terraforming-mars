@@ -11,7 +11,7 @@ export class AdvancedGeneticAdaption extends Card implements IProjectCard {
     super({
       type: CardType.ACTIVE,
       name: CardName.ADVANCED_GENETIC_ADAPTION,
-      cost: 13,
+      cost: 12,
       tags: [Tag.SCIENCE],
       globalParameterRequirementBonus: {parameter: GlobalParameter.OXYGEN, steps: 3},
 

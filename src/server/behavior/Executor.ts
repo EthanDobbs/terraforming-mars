@@ -424,6 +424,10 @@ export class Executor implements BehaviorExecutor {
       }
     }
 
+    if (behavior.optionalEnergyConversion) {
+      player.optionalEnergyConversion = true;
+    }
+
     if (behavior.moon !== undefined) {
       const moon = behavior.moon;
       if (moon.habitatTile !== undefined) {
@@ -511,6 +515,9 @@ export class Executor implements BehaviorExecutor {
       if (colonies.tradeOffset !== undefined) {
         player.colonies.tradeOffset -= colonies.tradeOffset;
       }
+    }
+    if (!player.tableau.some((card) => card.behavior?.optionalEnergyConversion === true)) {
+      player.optionalEnergyConversion = false;
     }
   }
 

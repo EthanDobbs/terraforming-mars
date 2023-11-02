@@ -10,7 +10,7 @@ export class HemeraBunker extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.HEMERA_BUNKER,
-      cost: 21,
+      cost: 18,
       tags: [Tag.SCIENCE, Tag.SPACE],
       requirements: {tag: Tag.SCIENCE, count: 3},
       victoryPoints: 2,

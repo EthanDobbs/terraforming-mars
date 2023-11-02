@@ -12,7 +12,7 @@ export class FloatingResearchBase extends ActionCard implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.FLOATING_RESEARCH_BASE,
       tags: [Tag.SCIENCE, Tag.VENUS],
-      cost: 14,
+      cost: 12,
       victoryPoints: {resourcesHere: {}, per: 3},
       requirements: {tag: Tag.SCIENCE, count: 2},
       resourceType: CardResource.FLOATER,

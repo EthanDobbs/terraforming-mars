@@ -10,7 +10,7 @@ export class Conifers extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.CONIFERS,
-      cost: 15,
+      cost: 14,
       tags: [Tag.PLANT],
       requirements: {temperature: -8},
       victoryPoints: 1,

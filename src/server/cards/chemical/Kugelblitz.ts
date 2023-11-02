@@ -17,7 +17,7 @@ export class Kugelblitz extends Card implements IProjectCard {
       victoryPoints: 2,
 
       behavior: {
-        production: {energy: 4}
+        production: {energy: 6}
       },
 
       cardDiscount: {tag: Tag.SPACE, amount: 2},
@@ -27,9 +27,9 @@ export class Kugelblitz extends Card implements IProjectCard {
           b.effect('When you play a space card, you pay 2 M€ less for it.', (eb) => {
             eb.space({played}).startEffect.megacredits(-2);
           }).br;
-          b.production((pb) => pb.energy(4, {digit}));
+          b.production((pb) => pb.energy(6, {digit}));
         }),
-        description: 'Requires 7 science tags. Increase your energy production 4 steps.',
+        description: 'Requires 7 science tags. Increase your energy production 6 steps.',
       },
     });
   }

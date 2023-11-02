@@ -11,8 +11,7 @@ export class HugeWaterShipments extends Card implements IProjectCard {
       type: CardType.EVENT,
       name: CardName.HUGE_WATER_SHIPMENTS,
       tags: [Tag.EARTH, Tag.SPACE],
-      cost: 40,
-      victoryPoints: 1,
+      cost: 36,
 
       behavior: {
         global: {venus: 2},

@@ -15,7 +15,7 @@ export class VenusPlantation extends Card implements IProjectCard {
       name: CardName.VENUS_PLANTATION,
       type: CardType.AUTOMATED,
       tags: [Tag.PLANT, Tag.VENUS],
-      cost: 15,
+      cost: 14,
 
       requirements: {venus: 24},
       victoryPoints: 3,

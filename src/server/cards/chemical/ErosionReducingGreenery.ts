@@ -10,7 +10,7 @@ export class ErosionReducingGreenery extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.EROSION_REDUCING_GREENERY,
-      cost: 13,
+      cost: 12,
       tags: [Tag.PLANT],
       requirements: {temperature: -16},
 

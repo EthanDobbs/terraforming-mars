@@ -11,7 +11,7 @@ export class CondensedGasConvoy extends Card implements IProjectCard {
       type: CardType.EVENT,
       name: CardName.CONDENSED_GAS_CONVOY,
       tags: [Tag.EARTH, Tag.SPACE],
-      cost: 18,
+      cost: 17,
 
       behavior: {
         production: {heat: 2},

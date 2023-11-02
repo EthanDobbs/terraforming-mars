@@ -11,7 +11,7 @@ export class EarthCatapultChemical extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.EARTH_CATAPULT_CHEMICAL,
       tags: [Tag.EARTH],
-      cost: 27,
+      cost: 23,
       requirements: {tag: Tag.EARTH, count: 2},
       victoryPoints: 2,
 

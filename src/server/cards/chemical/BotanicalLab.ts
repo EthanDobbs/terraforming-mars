@@ -10,7 +10,7 @@ export class BotanicalLab extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.BOTANICAL_LAB,
-      cost: 10,
+      cost: 8,
       tags: [Tag.PLANT, Tag.BUILDING],
       requirements: {tag: Tag.SCIENCE, count: 2},
       victoryPoints: 1,

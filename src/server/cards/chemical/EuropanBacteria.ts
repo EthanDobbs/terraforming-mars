@@ -6,11 +6,11 @@ import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 
-export class JovianBacteria extends ActionCard implements IProjectCard {
+export class EuropanBacteria extends ActionCard implements IProjectCard {
   constructor() {
     super({
       type: CardType.ACTIVE,
-      name: CardName.JOVIAN_BACTERIA,
+      name: CardName.EUROPAN_BACTERIA,
       tags: [Tag.JOVIAN, Tag.MICROBE],
       cost: 19,
       requirements: {tag: Tag.JOVIAN, count: 1},

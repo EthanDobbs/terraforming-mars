@@ -15,7 +15,7 @@ export class AncientArthopods extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.ANCIENT_ARTHROPODS,
       tags: [Tag.SCIENCE, Tag.ANIMAL],
-      cost: 14,
+      cost: 12,
 
       behavior: {
         decreaseAnyProduction: {type: Resource.PLANTS, count: 1},

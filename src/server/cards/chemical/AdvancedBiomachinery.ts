@@ -21,13 +21,13 @@ export class AdvancedBiomachinery extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Add a microbe to ANY card',
-            addResourcesToAnyCard: {type: CardResource.MICROBE, count: 1}
-          },
-          {
             title: 'Spend 1 microbe to draw a card',
             spend: {resourcesHere: 1},
             drawCard: 1,
+          },
+          {
+            title: 'Add a microbe to ANY card',
+            addResourcesToAnyCard: {type: CardResource.MICROBE, count: 1}
           }],
         },
       },

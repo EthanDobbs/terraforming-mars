@@ -337,14 +337,14 @@ export class Game implements IGame, Logger {
             player.dealtProjectCards.push(projectDeck.draw(game));
           }
           //For testing purposes
-          if (gameOptions.chemicalExpansion) {
+          /*if (gameOptions.chemicalExpansion) {
             var card = new CardFinder().getProjectCardByName(CardName.SUPERCAPACITORS);
             if (card !== undefined) {
               player.dealtProjectCards.push(card);
             } else {
              throw new Error('I did not expect this.');
             }
-          }
+          }*/
         }
         if (gameOptions.preludeExtension) {
           for (let i = 0; i < constants.PRELUDE_CARDS_DEALT_PER_PLAYER; i++) {
@@ -352,14 +352,14 @@ export class Game implements IGame, Logger {
             player.dealtPreludeCards.push(prelude);
           }
           //For testing purposes
-          if (gameOptions.chemicalExpansion) {
-            var card = new CardFinder().getProjectCardByName(CardName.POWER_CORE);
+          /*if (gameOptions.chemicalExpansion) {
+            var card = new CardFinder().getProjectCardByName(CardName.VENUS_GHG_EXPORTS);
             if (card !== undefined) {
               player.dealtPreludeCards.push(card);
             } else {
              throw new Error('I did not expect this.');
             }
-          }
+          }*/
         }
         if (gameOptions.ceoExtension) {
           for (let i = 0; i < gameOptions.startingCeos; i++) {
@@ -1156,7 +1156,7 @@ export class Game implements IGame, Logger {
     }
     const venusGHGExports = this.players.find((player) => player.cardIsInEffect(CardName.VENUS_GHG_EXPORTS));
     if (venusGHGExports !== undefined) {
-      venusGHGExports.megaCredits += steps * 2;
+      venusGHGExports.stock.add(Resource.HEAT, steps * 2, {log: true});
     }
 
     this.venusScaleLevel += steps * 2;

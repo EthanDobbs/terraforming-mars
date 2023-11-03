@@ -16,6 +16,8 @@ export class VenusGHGExports extends PreludeCard implements IProjectCard{
       behavior: {
         global: {venus: 1},
         production: {heat: 3},
+        // player.cardIsInEffect() doesn't want to trigger until the turn after the card is played
+        stock: {heat: 2},
       },
       startingMegacredits: -3,
 

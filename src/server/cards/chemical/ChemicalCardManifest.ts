@@ -525,6 +525,19 @@ import {CorporateAlliance} from './CorporateAlliance';
 import {GreenMarsInitiative} from './GreenMarsInitiative';
 import {PreservationistCampaign} from './PreservationistCampaign';
 import {HeatFirstInitiative} from './HeatFirstInitiative';
+import { SelfSufficientSettlementChemical } from './SelfSufficientSettlementChemical';
+import { MoholeExcavationChemical } from './MoholeExcavationChemical';
+import { GalileanMiningChemical } from './GalileanMiningChemical';
+import { OrbitalConstructionYardChemical } from './OrbitalConstructionYardChemical';
+import { NitrogenShipmentChemical } from './NitrogenShipmentChemical';
+import { BiosphereSupportChemical } from './BiosphereSupportChemical';
+import { EarlySettlementChemical } from './EarlySettlementChemical';
+import { BiofuelsChemical } from './BiofuelsChemical';
+import { DomeFarmingChemical } from './DomeFarmingChemical';
+import { SocietySupportChemical } from './SocietySupportChemical';
+import { MoholeChemical } from './MoholeChemical';
+import { PolarIndustriesChemical } from './PolarIndustriesChemical';
+import { HugeAsteroidChemical } from './HugeAsteroidChemical';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -595,6 +608,20 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.GREEN_MARS_INITIATIVE]: {Factory: GreenMarsInitiative, compatibility: 'turmoil'},
     [CardName.PRESERVATIONIST_CAMPAIGN]: {Factory: PreservationistCampaign, compatibility: 'turmoil'},
     [CardName.HEAT_FIRST_INITIATIVE]: {Factory: HeatFirstInitiative, compatibility: 'turmoil'},
+
+    [CardName.SELF_SUFFICIENT_SETTLEMENT_CHEMICAL]: {Factory: SelfSufficientSettlementChemical},
+    [CardName.MOHOLE_EXCAVATION_CHEMICAL]: {Factory: MoholeExcavationChemical},
+    [CardName.GALILEAN_MINING_CHEMICAL]: {Factory: GalileanMiningChemical},
+    [CardName.ORBITAL_CONSTRUCTION_YARD_CHEMICAL]: {Factory: OrbitalConstructionYardChemical},
+    [CardName.NITROGEN_SHIPMENT_CHEMICAL]: {Factory: NitrogenShipmentChemical},
+    [CardName.BIOSPHERE_SUPPORT_CHEMICAL]: {Factory: BiosphereSupportChemical},
+    [CardName.EARLY_SETTLEMENT_CHEMICAL]: {Factory: EarlySettlementChemical},
+    [CardName.DOME_FARMING_CHEMICAL]: {Factory: DomeFarmingChemical},
+    [CardName.BIOFUELS_CHEMICAL]: {Factory: BiofuelsChemical},
+    [CardName.SOCIETY_SUPPORT_CHEMICAL]: {Factory: SocietySupportChemical},
+    [CardName.MOHOLE_CHEMICAL]: {Factory: MoholeChemical},
+    [CardName.POLAR_INDUSTRIES_CHEMICAL]: {Factory: PolarIndustriesChemical},
+    [CardName.HUGE_ASTEROID_CHEMICAL]: {Factory: HugeAsteroidChemical},
   },
   projectCards: {
     [CardName.OVERGROWTH]: {Factory: Overgrowth},
@@ -1108,5 +1135,18 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     CardName.SPACE_PORT_COLONY,
     CardName.SNOW_ALGAE,
     CardName.BACTOVIRAL_RESEARCH,
+    CardName.SELF_SUFFICIENT_SETTLEMENT,
+    CardName.MOHOLE_EXCAVATION,
+    CardName.GALILEAN_MINING,
+    CardName.ORBITAL_CONSTRUCTION_YARD,
+    CardName.NITROGEN_SHIPMENT,
+    CardName.BIOSPHERE_SUPPORT,
+    CardName.EARLY_SETTLEMENT,
+    CardName.DOME_FARMING,
+    CardName.BIOFUELS,
+    CardName.SOCIETY_SUPPORT,
+    CardName.MOHOLE,
+    CardName.POLAR_INDUSTRIES,
+    CardName.HUGE_ASTEROID,
   ],
 });

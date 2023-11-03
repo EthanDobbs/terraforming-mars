@@ -1521,4 +1521,17 @@ export enum CardName {
     PRESERVATIONIST_CAMPAIGN = 'Preservationist Campaign',
     HEAT_FIRST_INITIATIVE = 'Heat First Initiative',
 
+    SELF_SUFFICIENT_SETTLEMENT_CHEMICAL = 'Self Sufficient Settlement:chemical',
+    MOHOLE_EXCAVATION_CHEMICAL = 'Mohole Excavation:chemical',
+    GALILEAN_MINING_CHEMICAL = 'Galilean Mining:chemical',
+    ORBITAL_CONSTRUCTION_YARD_CHEMICAL = 'Orbital Construction Yard:chemical',
+    NITROGEN_SHIPMENT_CHEMICAL = 'Nitrogen Shipment:chemical',
+    BIOSPHERE_SUPPORT_CHEMICAL = 'Biosphere Support:chemical',
+    EARLY_SETTLEMENT_CHEMICAL = 'Early Settlement:chemical',
+    DOME_FARMING_CHEMICAL = 'Dome Farming:chemical',
+    BIOFUELS_CHEMICAL = 'Biofuels:chemical',
+    SOCIETY_SUPPORT_CHEMICAL = 'Society Support:chemical',
+    MOHOLE_CHEMICAL = 'Mohole:chemical',
+    POLAR_INDUSTRIES_CHEMICAL = 'Polar Industries:chemical',
+    HUGE_ASTEROID_CHEMICAL = 'Huge Asteroid:chemical',
 }

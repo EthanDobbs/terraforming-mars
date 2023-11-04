@@ -9,7 +9,6 @@ import {IPlayer} from '../../IPlayer';
 import {PlayerInput} from '../../PlayerInput';
 import {PlaceOceanTile} from '../../deferredActions/PlaceOceanTile';
 import {Resource} from '../../../common/Resource';
-import {TileType} from '../../../common/TileType';
 
 export class AdvancedHydropower extends Card implements IProjectCard {
   constructor() {
@@ -18,11 +17,6 @@ export class AdvancedHydropower extends Card implements IProjectCard {
       name: CardName.ADVANCED_HYDROPOWER,
       tags: [Tag.POWER, Tag.BUILDING],
       cost: 18,
-
-      behavior: {
-        ocean: {},
-        production: {energy: {oceans: {}, per: 2}},
-      },
 
       metadata: {
         cardNumber: 'x148',
@@ -34,10 +28,10 @@ export class AdvancedHydropower extends Card implements IProjectCard {
     });
   }
   public override bespokePlay(player: IPlayer): PlayerInput | undefined {
-      player.game.defer(new PlaceOceanTile(player)).andThen(() => {
-        player.production.add(Resource.ENERGY, player.game.board.spaces.filter((space) => space.tile?.tileType === TileType.OCEAN).length);
-        return undefined;
-      })
+      player.game.defer(new PlaceOceanTile(player).andThen(() => {
+        const energyProduction = Math.floor(player.game.board.getOceanSpaces().length / 2);
+        player.production.add(Resource.ENERGY, energyProduction, {log: true});
+      }));
       return undefined;
   }
 }

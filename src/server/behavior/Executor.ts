@@ -441,7 +441,7 @@ export class Executor implements BehaviorExecutor {
         const sendDelegates = behavior.turmoil.sendDelegates;
         if (sendDelegates.party !== undefined) {
           for (let i = 0; i < sendDelegates.count; i++) {
-            turmoil.sendDelegateToParty(player.id, sendDelegates.party, player.game);
+            turmoil.sendDelegateToParty(player, sendDelegates.party, player.game);
           }
         } else if (sendDelegates.manyParties) {
           for (let i = 0; i < sendDelegates.count; i++) {

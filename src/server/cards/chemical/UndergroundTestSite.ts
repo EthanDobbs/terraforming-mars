@@ -10,8 +10,8 @@ export class UndergroundTestSite extends ActionCard implements IProjectCard {
     super({
       type: CardType.ACTIVE,
       name: CardName.UNDERGROUND_TEST_SITE,
-      tags: [Tag.BUILDING],
-      cost: 10,
+      tags: [Tag. SCIENCE, Tag.BUILDING],
+      cost: 12,
 
       behavior: {
         drawCard: 2,

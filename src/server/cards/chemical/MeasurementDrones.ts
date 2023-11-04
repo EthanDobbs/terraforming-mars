@@ -13,8 +13,8 @@ export class MeasurementDrones extends ActionCard implements IProjectCard {
     super({
       type: CardType.ACTIVE,
       name: CardName.MEASUREMENT_DRONES,
-      tags: [Tag.JOVIAN],
-      cost: 15,
+      tags: [Tag.SCIENCE, Tag.JOVIAN],
+      cost: 16,
       victoryPoints: 1,
       resourceType: CardResource.FLOATER,
 

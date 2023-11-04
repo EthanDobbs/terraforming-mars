@@ -11,8 +11,8 @@ export class GeneticEngineeringLab extends Card implements IProjectCard {
     super({
       type: CardType.ACTIVE,
       name: CardName.GENETIC_ENGINEERING_LAB,
-      tags: [Tag.MICROBE, Tag.BUILDING],
-      cost: 11,
+      tags: [Tag.SCIENCE, Tag.BUILDING],
+      cost: 15,
       victoryPoints: 1,
 
       requirements: {tag: Tag.SCIENCE, count: 2},

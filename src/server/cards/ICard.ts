@@ -101,10 +101,11 @@ export interface ICard {
    * Optional callback when any player identifies a space.
    *
    * @param identifyingPlayer the player performing the identification action
+   *   or undefined if added by a neutral player.
    * @param cardOwner the player who owns THIS CARD.
    * @param space the space that was just identified.
    */
-  onIdentification?(identifyingPlayer: IPlayer, cardOwner: IPlayer, space: Space): void;
+  onIdentification?(identifyingPlayer: IPlayer | undefined, cardOwner: IPlayer, space: Space): void;
 
   /**
    * Optional callback when any player excavates a space.
@@ -113,6 +114,8 @@ export interface ICard {
    * @param space the space that was just excavated.
    */
   onExcavation?(player: IPlayer, space: Space): void;
+
+  onProductionPhase?(player: IPlayer): void;
 
   onTrade?(cardOwner: IPlayer, activePlayer: IPlayer, colony: IColony): void;
   onColonyBuilt?(cardOwner: IPlayer, activePlayer: IPlayer, colony: IColony): void;
@@ -136,6 +139,10 @@ export interface ICard {
    * ONLY store plain JSON data. Classes, objects, functions, will all be incorrectly serialized.
    */
   data?: JSONValue;
+
+  /** The generation the card was activated. Used for Duncan and Underworld cards. */
+  // TODO(kberg): move to json?
+  generationUsed?: number;
 }
 
 export interface IActionCard {

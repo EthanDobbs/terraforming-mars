@@ -64,5 +64,6 @@ export interface CreateGameModel {
   customCeos: Array<CardName>;
   startingCeos: number;
   starWarsExpansion: boolean,
+  underworldExpansion: boolean,
   chemicalExpansion: boolean,
 }

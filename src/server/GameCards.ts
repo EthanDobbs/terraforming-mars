@@ -22,6 +22,7 @@ import {IPreludeCard} from './cards/prelude/IPreludeCard';
 import {ICeoCard} from './cards/ceos/ICeoCard';
 import {PRELUDE2_CARD_MANIFEST} from './cards/prelude2/Prelude2CardManifest';
 import {STAR_WARS_CARD_MANIFEST} from './cards/starwars/StarwarsCardManifest';
+import {UNDERWORLD_CARD_MANIFEST} from './cards/underworld/UnderworldCardManifest';
 import {CHEMICAL_CARD_MANIFEST} from './cards/chemical/ChemicalCardManifest';
 
 /**
@@ -60,6 +61,7 @@ export class GameCards {
       [gameOptions.pathfindersExpansion, PATHFINDERS_CARD_MANIFEST],
       [gameOptions.ceoExtension, CEO_CARD_MANIFEST],
       [gameOptions.starWarsExpansion, STAR_WARS_CARD_MANIFEST],
+      [gameOptions.underworldExpansion, UNDERWORLD_CARD_MANIFEST],
       [gameOptions.chemicalExpansion, CHEMICAL_CARD_MANIFEST]
     ];
     this.moduleManifests = manifests

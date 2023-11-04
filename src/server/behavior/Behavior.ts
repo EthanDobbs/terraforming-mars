@@ -13,6 +13,7 @@ import {Countable, CountableUnits} from './Countable';
 import {PlacementType} from '../boards/PlacementType';
 import {AdjacencyBonus} from '../ares/AdjacencyBonus';
 import {Units} from '../../common/Units';
+import {NoAttributes} from './NoAttributes';
 import {PartyName} from '@/common/turmoil/PartyName';
 
 type ValueOf<Obj> = Obj[keyof Obj];
@@ -21,13 +22,21 @@ type OneOfByKey<Obj> = { [key in keyof Obj]: OneOnly<Obj, key> };
 export type OneOfType<Obj> = ValueOf<OneOfByKey<Obj>>;
 
 
-export interface Spend extends Units {
+export type Spend = Units & {
   /** units or a number of resources from the card. */
   resourcesHere: number,
+
+  /** 1 resource of a type from any card. */
+  resourceFromAnyCard: {
+    type: CardResource,
+  },
+
+  /** corruption from your personal supply. */
+  corruption: number,
 }
 
 /** A set of steps that an action can perform in any specific order. */
-export interface Behavior {
+export type Behavior = {
   /** Select one of these actions */
   or?: OrBehavior;
 
@@ -44,7 +53,7 @@ export interface Behavior {
   stock?: Partial<CountableUnits>;
 
   /** Gain n standard resources */
-  standardResource?: number;
+  standardResource?: number | {count: number, same?: boolean};
 
   /** Add resources to this card itself */
   addResources?: Countable;
@@ -151,10 +160,10 @@ export interface Behavior {
   },
 
   underworld?: {
-    // identify?: Countable,
+    identify?: Countable,
     excavate?: number | {count: Countable, ignorePlacementRestrictions?: boolean},
     corruption?: Countable,
-    // markThisGeneration?: NoAttributes,
+    markThisGeneration?: NoAttributes,
   },
 }
 

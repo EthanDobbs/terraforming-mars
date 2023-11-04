@@ -83,4 +83,5 @@ export interface NewGameConfig {
   startingCeos: number;
   starWarsExpansion: boolean;
   chemicalExpansion: boolean,
+  underworldExpansion: boolean,
 }

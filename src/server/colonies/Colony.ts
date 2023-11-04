@@ -277,7 +277,7 @@ export abstract class Colony implements IColony {
 
     case ColonyBenefit.PLACE_DELEGATES:
       Turmoil.ifTurmoil(game, (turmoil) => {
-        const availablePlayerDelegates = turmoil.getAvailableDelegateCount(player.id);
+        const availablePlayerDelegates = turmoil.getAvailableDelegateCount(player);
         const qty = Math.min(quantity, availablePlayerDelegates);
         for (let i = 0; i < qty; i++) {
           game.defer(new SendDelegateToArea(player));
@@ -287,7 +287,7 @@ export abstract class Colony implements IColony {
 
     case ColonyBenefit.GIVE_MC_PER_DELEGATE:
       Turmoil.ifTurmoil(game, (turmoil) => {
-        const partyDelegateCount = sum(turmoil.parties.map((party) => party.delegates.get(player.id)));
+        const partyDelegateCount = sum(turmoil.parties.map((party) => party.delegates.get(player)));
         player.stock.add(Resource.MEGACREDITS, partyDelegateCount, {log: true});
       });
       break;

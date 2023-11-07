@@ -338,7 +338,7 @@ export class Game implements IGame, Logger {
           }
           //For testing purposes
           /*if (gameOptions.chemicalExpansion) {
-            var card = new CardFinder().getProjectCardByName(CardName.SUPERCAPACITORS);
+            var card = new CardFinder().getProjectCardByName(CardName.ADVANCED_HYDROPOWER);
             if (card !== undefined) {
               player.dealtProjectCards.push(card);
             } else {
@@ -352,14 +352,14 @@ export class Game implements IGame, Logger {
             player.dealtPreludeCards.push(prelude);
           }
           //For testing purposes
-          /*if (gameOptions.chemicalExpansion) {
-            var card = new CardFinder().getProjectCardByName(CardName.VENUS_GHG_EXPORTS);
+          if (gameOptions.chemicalExpansion) {
+            var card = new CardFinder().getProjectCardByName(CardName.PARTY_INSIDERS);
             if (card !== undefined) {
               player.dealtPreludeCards.push(card);
             } else {
              throw new Error('I did not expect this.');
             }
-          }*/
+          }
         }
         if (gameOptions.ceoExtension) {
           for (let i = 0; i < gameOptions.startingCeos; i++) {

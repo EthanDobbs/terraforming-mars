@@ -14,6 +14,7 @@ export class JovianConstructionYard extends ActionCard implements IActionCard {
       type: CardType.ACTIVE,
       tags: [Tag.JOVIAN, Tag.SPACE],
       cost: 23,
+      victoryPoints: 1,
 
       resourceType: CardResource.FLOATER,
 

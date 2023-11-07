@@ -4,7 +4,8 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {PartyName} from '../../../common/turmoil/PartyName';
-import {IPlayer} from '../../IPlayer';
+import {all} from '../Options';
+/*import {IPlayer} from '../../IPlayer';
 import {OrOptions} from '../../inputs/OrOptions';
 import {SelectDelegate} from '../../inputs/SelectDelegate';
 import {Turmoil} from '../../turmoil/Turmoil';
@@ -13,8 +14,7 @@ import {Delegate} from '../../turmoil/Turmoil';
 import {MultiSet} from 'mnemonist';
 import {SimpleDeferredAction} from '../../deferredActions/DeferredAction';
 import {SelectParty} from '../../inputs/SelectParty';
-import {all} from '../Options';
-import {IParty} from '../../turmoil/parties/IParty';
+import {IParty} from '../../turmoil/parties/IParty';*/
 
 export class DemocraticReform extends Card implements IProjectCard {
   constructor() {
@@ -33,7 +33,7 @@ export class DemocraticReform extends Card implements IProjectCard {
       },
     });
   }
-  public override bespokeCanPlay(player: IPlayer): boolean {
+  /*public override bespokeCanPlay(player: IPlayer): boolean {
     const turmoil = Turmoil.getTurmoil(player.game);
     var nonLeaderDelegates = 0;
     for (const party of turmoil.parties) {
@@ -116,5 +116,5 @@ export class DemocraticReform extends Card implements IProjectCard {
       const options = new OrOptions(...orOptions);
       return options;
     }
-  }
+  }*/
 }

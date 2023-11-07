@@ -35,7 +35,7 @@ export class FloaterAcquisition extends Card implements IProjectCard {
     if (player.game.isSoloMode()) {
       return undefined;
     }
-    player.game.defer(new RemoveResourcesFromCard(player, CardResource.FLOATER, 2, false, true)).andThen(() => {
+    player.game.defer(new RemoveResourcesFromCard(player, CardResource.FLOATER, 2, {mandatory: true})).andThen(() => {
       player.game.defer(new AddResourcesToCard(player, CardResource.FLOATER, {count: 2}));
       return undefined;
     });

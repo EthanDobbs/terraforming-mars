@@ -22,7 +22,7 @@ export class TitanSettlement extends PreludeCard implements IProjectCard{
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.titanium(1)).cards(2, {secondaryTag: AltSecondaryTag.FLOATER});
         }),
-        description: 'Increase your M€ production 2 steps. Put an additional colony tile of your choice in play.'
+        description: 'Increase your titanium production 1 step. Draw 2 cards with floater icons.'
       },
     });
   }

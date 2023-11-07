@@ -49,7 +49,7 @@ export class AntarcticKrill extends ActionCard implements IProjectCard {
     if (player.game.isSoloMode()) {
       return undefined;
     }
-    player.game.defer(new RemoveResourcesFromCard(player, CardResource.MICROBE, 2, false, true));
+    player.game.defer(new RemoveResourcesFromCard(player, CardResource.MICROBE, 2, {mandatory: true}));
     return undefined;
   }
 }

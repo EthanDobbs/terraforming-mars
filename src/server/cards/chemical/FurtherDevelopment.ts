@@ -13,10 +13,7 @@ export class FurtherDevelopment extends PreludeCard implements IProjectCard{
     super({
       name: CardName.FURTHER_DEVELOPMENT,
       tags: [Tag.EARTH],
-
-      behavior: {
-        stock: {megacredits: -3},
-      },
+      
       startingMegacredits: -3,
 
       metadata: {

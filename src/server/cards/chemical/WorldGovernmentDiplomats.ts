@@ -54,7 +54,7 @@ export class WorldGovernmentDiplomats extends Card implements IProjectCard {
       player.removeResourceFrom(this, 1);
       const turmoil = Turmoil.getTurmoil(player.game);
       return new SelectParty('Select first party to add a delegate','add delegate', turmoil.parties.map((party) => party.name)).andThen((party) => {
-        turmoil.sendDelegateToParty(player.id, party, player.game);
+        turmoil.sendDelegateToParty(player, party, player.game);
         return undefined;
       });
     })

@@ -33,10 +33,10 @@ export class ByElectionChemical extends PreludeCard implements IProjectCard{
     const game = player.game
     Turmoil.ifTurmoil((game), (turmoil) => {
       game.defer(new ChooseRulingPartyDeferred(player, turmoil)).andThen((party: IParty) => {
-        turmoil.delegateReserve.remove(player.id);
-        turmoil.setNewChairman(player.id, game, false);
-        turmoil.sendDelegateToParty(player.id, party.name, game);
-        turmoil.sendDelegateToParty(player.id, party.name, game);
+        turmoil.delegateReserve.remove(player);
+        turmoil.setNewChairman(player, game, false);
+        turmoil.sendDelegateToParty(player, party.name, game);
+        turmoil.sendDelegateToParty(player, party.name, game);
        });
     });
     return undefined;

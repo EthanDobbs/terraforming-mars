@@ -26,14 +26,14 @@ export class MediaManipulation extends Card implements IProjectCard {
   }
   public override bespokeCanPlay(player: IPlayer): boolean {
     const turmoil = Turmoil.getTurmoil(player.game);
-    return turmoil.getAvailableDelegateCount(player.id) >= 2;
+    return turmoil.getAvailableDelegateCount(player) >= 2;
   }
   public override bespokePlay(player: IPlayer): undefined {
     const turmoil = Turmoil.getTurmoil(player.game);
     player.game.defer(new SimpleDeferredAction(player, () => new SelectParty('Select first party to add a delegate','add delegate', turmoil.parties.map((party) => party.name)).andThen((firstParty) => {
-      turmoil.sendDelegateToParty(player.id, firstParty, player.game);
+      turmoil.sendDelegateToParty(player, firstParty, player.game);
       return new SelectParty('Select second party to add a delegate','add delegate', turmoil.parties.map((party) => party.name).filter((party) => party !== firstParty)).andThen((secondParty) => {
-        turmoil.sendDelegateToParty(player.id, secondParty, player.game);
+        turmoil.sendDelegateToParty(player, secondParty, player.game);
         return undefined;
       });
     })));

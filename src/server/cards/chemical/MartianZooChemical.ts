@@ -27,7 +27,7 @@ export class MartianZooChemical extends Card implements IProjectCard {
             eb.earth(1, {played}).startEffect.animals(1);
           }).br;
           b.action('Gain 1M€ per animal here (max 5).', (eb) => {
-            eb.empty().startAction.megacredits(1).slash().animals(1).text('[max 4]', Size.SMALL);
+            eb.empty().startAction.megacredits(1).slash().animals(1).text('[max 5]', Size.SMALL);
           });
         }),
         description: {

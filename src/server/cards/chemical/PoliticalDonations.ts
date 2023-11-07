@@ -30,7 +30,7 @@ export class PoliticalDonations extends Card implements IProjectCard {
     const turmoil = Turmoil.getTurmoil(player.game);
     let partyLeaders = 0;
     turmoil.parties.forEach((party) => {
-      if (party.partyLeader === player.id) {
+      if (party.partyLeader === player) {
         partyLeaders++;
       }
     });

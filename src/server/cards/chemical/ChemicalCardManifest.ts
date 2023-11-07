@@ -53,7 +53,7 @@ import {LargeAquaticMammals} from './LargeAquaticMammals';
 import {TundraWildlife} from './TundraWildlife';
 import {Poultry} from './Poultry';
 import {FishFarmingLake} from './FishFarmingLake';
-import {Cephalopods} from './Cephalopods';
+//import {Cephalopods} from './Cephalopods';
 import {EndangeredSpeciesRefuge} from './EndangeredSpeciesRefuge';
 import {NonHypoxicSmallAnimals} from './NonHypoxicSmallAnimals';
 import {SubterranianCreatures} from './SubterranianCreatures';
@@ -196,7 +196,7 @@ import {AlchemicReactions} from './AlchemicReactions';
 import {WirelessEnergyTransfer} from './WirelessEnergyTransfer';
 import {Kugelblitz} from './Kugelblitz';
 import {ScientificLogs} from './ScientificLogs';
-import {SponsoredResearchFirm} from './SponsoredResearchFirm';
+//import {SponsoredResearchFirm} from './SponsoredResearchFirm';
 import {NeuralEnhancers} from './NeuralEnchancers';
 import {ConstructionCenter} from './ConstructionCenter';
 import {BiodiversityGrants} from './BiodiversityGrants';
@@ -204,7 +204,7 @@ import {MarsBuinessInvestments} from './MarsBusinessInvestments';
 import {Canals} from './Canals';
 import {SteelExports} from './SteelExports';
 import {JovianSuppliers} from './JovianSuppliers';
-import {ProjectAdvancement} from './ProjectAdvancement';
+//import {ProjectAdvancement} from './ProjectAdvancement';
 import {SuccessfulCommerce} from './SuccessfulCommerce';
 import {ScientificSupport} from './ScientificSupport';
 import {GalileanGovernor} from './GalileanGovernor';
@@ -386,7 +386,7 @@ import {BiodiversityBoom} from './BiodiversityBoom';
 import {ColonyReforms} from './ColonyReforms';
 import {DirectedSabotageImpact} from './DirectedSabotageImpact';
 import {FusionBombing} from './FusionBombing';
-import {DemocraticReform} from './DemocraticReform';
+//import {DemocraticReform} from './DemocraticReform';
 import {MediaManipulation} from './MediaManipulation';
 import {InaugerationCeremony} from './InaugerationCeremony';
 import {PoliticalDonations} from './PoliticalDonations';
@@ -677,7 +677,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.TUNDRA_WILDLIFE]: {Factory: TundraWildlife},
     [CardName.POULTRY]: {Factory: Poultry},
     [CardName.FISH_FARMING_LAKE]: {Factory: FishFarmingLake},
-    [CardName.CEPHALOPODS]: {Factory: Cephalopods},
+    //[CardName.CEPHALOPODS]: {Factory: Cephalopods},
     [CardName.ENDANGERED_SPECIES_REFUGE]: {Factory: EndangeredSpeciesRefuge},
     [CardName.NON_HYPOXIC_SMALL_ANIMALS]: {Factory: NonHypoxicSmallAnimals},
     [CardName.SUBTERRANEAN_CREATURES]: {Factory: SubterranianCreatures},
@@ -821,7 +821,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.WIRELESS_ENERGY_TRANSFER]: {Factory: WirelessEnergyTransfer, compatibility: 'corpera'},
     [CardName.KUGELBLITZ]: {Factory: Kugelblitz, compatibility: 'corpera'},
     [CardName.SCIENTIFIC_LOGS]: {Factory: ScientificLogs, compatibility: 'corpera'},
-    [CardName.SPONSORED_RESEARCH_FIRM]: {Factory: SponsoredResearchFirm, compatibility: 'corpera'},
+    //[CardName.SPONSORED_RESEARCH_FIRM]: {Factory: SponsoredResearchFirm, compatibility: 'corpera'},
     [CardName.NEURAL_ENCHANCERS]: {Factory: NeuralEnhancers, compatibility: 'corpera'},
     [CardName.CONSTRUCTION_CENTER]: {Factory: ConstructionCenter, compatibility: 'corpera'},
     [CardName.BIODIVERSITY_GRANTS]: {Factory: BiodiversityGrants, compatibility: 'corpera'},
@@ -829,7 +829,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.CANALS]: {Factory: Canals, compatibility: 'corpera'},
     [CardName.STEEL_EXPORTS]: {Factory: SteelExports, compatibility: 'corpera'},
     [CardName.JOVIAN_SUPPLIERS]: {Factory: JovianSuppliers, compatibility: 'corpera'},
-    [CardName.PROJECT_ADVANCEMENT]: {Factory: ProjectAdvancement, compatibility: 'corpera'},
+    //[CardName.PROJECT_ADVANCEMENT]: {Factory: ProjectAdvancement, compatibility: 'corpera'},
     [CardName.SUCCESSFUL_COMMERCE]: {Factory: SuccessfulCommerce, compatibility: 'corpera'},
     [CardName.SCIENTIFIC_SUPPORT]: {Factory: ScientificSupport, compatibility: 'corpera'},
     [CardName.GALILEAN_GOVERNOR]: {Factory: GalileanGovernor, compatibility: 'corpera'},
@@ -1014,7 +1014,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
 
     [CardName.DIRECTED_SABOTAGE_IMPACT]: {Factory: DirectedSabotageImpact, compatibility: 'turmoil'},
     [CardName.FUSION_BOMBING]: {Factory: FusionBombing, compatibility: 'turmoil'},
-    [CardName.DEMOCRATIC_REFORM]: {Factory: DemocraticReform, compatibility: 'turmoil'},
+    //[CardName.DEMOCRATIC_REFORM]: {Factory: DemocraticReform, compatibility: 'turmoil'},
     [CardName.MEDIA_MANIPULATION]: {Factory: MediaManipulation, compatibility: 'turmoil'},
     [CardName.INAUGERATION_CEREMONY]: {Factory: InaugerationCeremony, compatibility: 'turmoil'},
     [CardName.POLITICAL_DONATIONS]: {Factory: PoliticalDonations, compatibility: 'turmoil'},

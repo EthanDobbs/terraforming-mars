@@ -313,10 +313,7 @@ export class Player implements IPlayer {
         player.corporations.forEach((corp) => {
           corp.onIncreaseTerraformRating?.(this, player, steps);
         });
-        player.playedCards.filter((card: IProjectCard) => card.type === CardType.CEO).forEach((ceo) => {
-          ceo.onIncreaseTerraformRating?.(this, player, steps);
-        });
-        player.playedCards.filter((card: IProjectCard) => card.type === CardType.ACTIVE).forEach((card) => {
+        player.playedCards.forEach((card) => {
           card.onIncreaseTerraformRating?.(this, player, steps);
         });
       });

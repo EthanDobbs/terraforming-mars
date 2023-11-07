@@ -45,7 +45,7 @@ export class IonizingRadiationBeam extends Card implements IProjectCard {
     if (player.game.isSoloMode()) {
       return undefined;
     }
-    const orOptionsAnimals = new RemoveResourcesFromCard(player, CardResource.ANIMAL, 1, false, false).execute() as OrOptions;
+    const orOptionsAnimals = new RemoveResourcesFromCard(player, CardResource.ANIMAL, 1).execute() as OrOptions;
 
     const orOptions = new OrOptions();
     if (orOptionsAnimals !== undefined) {

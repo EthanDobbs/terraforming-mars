@@ -77,7 +77,7 @@ export class SubterranianCreatures extends ActionCard implements IProjectCard {
     return orOptions;
   }
   private RemoveMicrobes(player: IPlayer): RemoveResourcesFromCard {
-    return new RemoveResourcesFromCard(player, CardResource.MICROBE, 2, false, true);
+    return new RemoveResourcesFromCard(player, CardResource.MICROBE, 2, {mandatory: true});
   }
   private RemovePlants(plantCandidates: IPlayer[], player: IPlayer) {
     const removalOptions = plantCandidates.map((candidate) => {

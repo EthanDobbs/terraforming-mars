@@ -11,6 +11,10 @@ export class NanotechLab extends ActivePreludeCard implements IProjectCard{
       name: CardName.NANOTECH_LAB,
       tags: [Tag.MICROBE, Tag.BUILDING],
 
+      behavior: {
+        drawCard: {count: 2, tag: Tag.MICROBE}
+      },
+
       action: {
         or: {
           behaviors: [{

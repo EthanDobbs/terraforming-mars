@@ -1,4 +1,3 @@
-import {GameModule} from '../../../common/cards/GameModule';
 import {CardName} from '../../../common/cards/CardName';
 import {ModuleManifest} from '../ModuleManifest';
 
@@ -40,17 +39,17 @@ import {FreeTradePort} from './FreeTradePort';
 import {GanymedeTradingCompany} from './GanymedeTradingCompany';
 import {GeologicalExpertise} from './GeologicalExpertise';
 // import {GeologicalSurvey} from './GeologicalSurvey';
-// import {GeologistTeam} from './GeologistTeam';
+import {GeologistTeam} from './GeologistTeam';
 // import {GeoscanSatellite} from './GeoscanSatellite';
 // import {GeothermalNetwork} from './GeothermalNetwork';
 // import {GlobalAudit} from './GlobalAudit';
 import {GreyMarketExploitation} from './GreyMarketExploitation';
 // // import {GuerillaEcologists} from './GuerillaEcologists';
-// import {Hackers} from './Hackers';
+import {Hackers} from './Hackers';
 // import {Hadesphere} from './Hadesphere';
 // import {HectateSpeditions} from './HectateSpeditions';
 // import {HenkeiGenetics} from './HenkeiGenetics';
-// import {HiredRaiders} from './HiredRaiders';
+import {HiredRaiders} from './HiredRaiders';
 // import {HyperspaceDrivePrototype} from './HyperspaceDrivePrototype';
 // import {ImportedHeavyMachinery} from './ImportedHeavyMachinery';
 // import {InducedTremor} from './InducedTremor';
@@ -116,7 +115,7 @@ import {TunnelingOperation} from './TunnelingOperation';
 import {TunnelingSubcontractor} from './TunnelingSubcontractor';
 import {UndergroundAmusementPark} from './UndergroundAmusementPark';
 // import {UndergroundHabitat} from './UndergroundHabitat';
-// import {UndergroundRailway} from './UndergroundRailway';
+import {UndergroundRailway} from './UndergroundRailway';
 // // import {UndergroundResearchCenter} from './UndergroundResearchCenter';
 import {UndergroundSettlement} from './UndergroundSettlement';
 // import {UndergroundShelters} from './UndergroundShelters';
@@ -127,14 +126,13 @@ import {UndergroundSettlement} from './UndergroundSettlement';
 // // import {Whales} from './Whales';
 
 export const UNDERWORLD_CARD_MANIFEST = new ModuleManifest({
-  // TODO(kberg): Remove 'as GameModule' after 2023-11-30
-  module: 'underworld' as GameModule,
+  module: 'underworld',
   projectCards: {
     // // 1-9
-    // [CardName.GEOLOGIST_TEAM]: {Factory: GeologistTeam},
+    [CardName.GEOLOGIST_TEAM]: {Factory: GeologistTeam},
     // [CardName.GEOSCAN_SATELLITE]: {Factory: GeoscanSatellite},
     [CardName.TUNNEL_BORING_MACHINE]: {Factory: TunnelBoringMachine},
-    // [CardName.UNDERGROUND_RAILWAY]: {Factory: UndergroundRailway},
+    [CardName.UNDERGROUND_RAILWAY]: {Factory: UndergroundRailway},
     // // [CardName.GAIA_CITY]: {Factory: GaiaCity},
     // [CardName.DEEPNUKING]: {Factory: Deepnuking},
     [CardName.OLD_WORLD_MAFIA]: {Factory: OldWorldMafia},
@@ -232,13 +230,13 @@ export const UNDERWORLD_CARD_MANIFEST = new ModuleManifest({
     // // [CardName.THIOLAVA_VENTS]: {Factory: ThiolavaVents}, // Uncomment when tests are more manageable. See Production.ts
 
     // // Replacements
-    // [CardName.STANDARD_TECHNOLOGY]: {Factory: StandardTechnology},
-    // [CardName.HACKERS_UNDERWORLD]: {Factory: Hackers},
-    // [CardName.HIRED_RAIDERS_UNDERWORLD]: {Factory: HiredRaiders},
+    // [CardName.STANDARD_TECHNOLOGY_UNDERWORLD]: {Factory: StandardTechnology},
+    [CardName.HACKERS_UNDERWORLD]: {Factory: Hackers},
+    [CardName.HIRED_RAIDERS_UNDERWORLD]: {Factory: HiredRaiders},
   },
 
   cardsToRemove: [
-    CardName.STANDARD_TECHNOLOGY,
+    // CardName.STANDARD_TECHNOLOGY,
     CardName.HACKERS,
     CardName.HIRED_RAIDERS,
   ],

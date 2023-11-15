@@ -24,6 +24,10 @@ export class WorldGovernmentDiplomats extends Card implements IProjectCard {
 
       resourceType: CardResource.DIPLOMACY,
 
+      behavior: {
+        tr: 1,
+      },
+
       metadata: {
         cardNumber: 'x395',
         description: 'Raise your TR 1 step.',

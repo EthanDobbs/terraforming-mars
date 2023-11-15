@@ -12,7 +12,7 @@ export class MesosphereShades extends ActionCard implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.MESOSPHERE_SHADES,
       tags: [Tag.VENUS],
-      cost: 11,
+      cost: 10,
       resourceType: CardResource.FLOATER,
 
       action: {

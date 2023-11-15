@@ -1,4 +1,5 @@
 import {CardName} from '../../../common/cards/CardName';
+import {GlobalEventName} from '../../../common/turmoil/globalEvents/GlobalEventName';
 import {ModuleManifest} from '../ModuleManifest';
 import {Overgrowth} from './Overgrowth';
 import {Wildfires} from './Wildfires';
@@ -538,6 +539,38 @@ import { SocietySupportChemical } from './SocietySupportChemical';
 import { MoholeChemical } from './MoholeChemical';
 import { PolarIndustriesChemical } from './PolarIndustriesChemical';
 import { HugeAsteroidChemical } from './HugeAsteroidChemical';
+import { LandDelegation } from './LandDelegation';
+import { IntellectualistMovements } from './IntellectualistMovements';
+import { MandatoryInsurance } from './MandatoryInsurance';
+import { TradeEmbargo } from './TradeEmbargo';
+import { Insurgency } from './Insurgency';
+import { LaborRevolt } from './LaborRevolt';
+import { InterplanetaryCommunities } from './InterplanetaryCommunities';
+import { ChemicalPollution } from './ChemicalPollution';
+import { PesticideApplication } from './PesticideApplication';
+import { Cyberattacks } from './Cyberattacks';
+import { MiningIndustries } from './MiningIndustries';
+import { Famine } from './Famine';
+import { NanotechInnovation } from './NanotechInnovation';
+import { PowerSurplus } from './PowerSurplus';
+import { LandRun } from './LandRun';
+import { EradicationOfGeneticIllness } from './EradicationOfGeneticIllness';
+import { MagneticFieldFailure } from './MagneticFieldFailure';
+import { FoodSupply } from './FoodSupply';
+import { ConstitutionalReformation } from './ConstitutionalReformation';
+import { EcologyProjects } from './EcologyProjects';
+import { EcosystemDisruption } from './EcosystemDisruption';
+//import {RedUprising} from './RedUprising';
+import { WildfiresEvent } from './WildfiresEvent';
+import { EgalitarianMovements } from './EgalitarianMovements';
+import { MarsStockExchange } from './MarsStockExchange';
+import { ColonizationOfMercury } from './ColonizationOfMercury';
+import { RevisedPatentLaw } from './RevisedPatentLaw';
+import { EcologicalSupport } from './EcologicalSupport';
+//import {AbstinanceBonus} from './AbstinanceBonus';
+import { RedTourism } from './RedTourism';
+import { PreferentialLoans } from './PreferentialLoans';
+import { SevereMarsquake } from './SevereMarsquake';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -1091,6 +1124,40 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.SPACE_PORT_COLONY_CHEMICAL]: {Factory: SpacePortColonyChemical, compatibility: 'colonies'},
     [CardName.SNOW_ALGAE_CHEMICAL]: {Factory: SnowAlgaeChemical, compatibility: 'promo'},
     [CardName.BACTOVIRAL_RESEARCH_CHEMICAL]: {Factory: BactoviralResearchChemical, compatibility: 'promo'},
+  },
+  globalEvents: {
+    [GlobalEventName.LAND_DELEGATION]: {Factory: LandDelegation},
+    [GlobalEventName.INTELLECTUALIST_MOVEMENTS]: {Factory: IntellectualistMovements},
+    [GlobalEventName.MANDATORY_INSURANCE]: {Factory: MandatoryInsurance},
+    [GlobalEventName.TRADE_EMBARGO]: {Factory: TradeEmbargo},
+    [GlobalEventName.INSURGENCY]: {Factory: Insurgency},
+    [GlobalEventName.LABOR_REVOLT]: {Factory: LaborRevolt},
+    [GlobalEventName.INTERPLANETARY_COMMUNITIES]: {Factory: InterplanetaryCommunities},
+    [GlobalEventName.CHEMICAL_POLLUTION]: {Factory: ChemicalPollution},
+    [GlobalEventName.PESTICIDE_APPLICATION]: {Factory: PesticideApplication},
+    [GlobalEventName.CYBERATTACKS]: {Factory: Cyberattacks},
+    [GlobalEventName.MINING_INDUSTRIES]: {Factory: MiningIndustries},
+    [GlobalEventName.FAMINE]: {Factory: Famine},
+    [GlobalEventName.NANOTECH_INNOVATION]: {Factory: NanotechInnovation},
+    [GlobalEventName.POWER_SURPLUS]: {Factory: PowerSurplus},
+    [GlobalEventName.LAND_RUN]: {Factory: LandRun},
+    [GlobalEventName.ERADICATION_OF_GENETIC_ILLNESS]: {Factory: EradicationOfGeneticIllness},
+    [GlobalEventName.MAGNETIC_FIELD_FAILURE]: {Factory: MagneticFieldFailure},
+    [GlobalEventName.FOOD_SUPPLY]: {Factory: FoodSupply},
+    [GlobalEventName.CONSTITUTIONAL_REFORMATION]: {Factory: ConstitutionalReformation},
+    [GlobalEventName.ECOLOGY_PROJECTS]: {Factory: EcologyProjects},
+    [GlobalEventName.ECOSYSTEM_DISRUPTION]: {Factory: EcosystemDisruption},
+    //[GlobalEventName.RED_UPRISING]: {Factory: RedUprising},
+    [GlobalEventName.WILDFIRES]: {Factory: WildfiresEvent},
+    [GlobalEventName.EGALITARIAN_MOVEMENTS]: {Factory: EgalitarianMovements},
+    [GlobalEventName.MARS_STOCK_EXCHANGE]: {Factory: MarsStockExchange},
+    [GlobalEventName.COLONIZATION_OF_MERCURY]: {Factory: ColonizationOfMercury},
+    [GlobalEventName.REVISED_PATENT_LAW]: {Factory: RevisedPatentLaw},
+    [GlobalEventName.ECOLOGICAL_SUPPORT]: {Factory: EcologicalSupport},
+    //[GlobalEventName.ABSTINANCE_BONUS]: {Factory: AbstinanceBonus},
+    [GlobalEventName.RED_TOURISM]: {Factory: RedTourism},
+    [GlobalEventName.PREFERENTIAL_LOANS]: {Factory: PreferentialLoans},
+    [GlobalEventName.SEVERE_MARSQUAKE]: {Factory: SevereMarsquake},
   },
   cardsToRemove: [
     CardName.SPECIAL_DESIGN,

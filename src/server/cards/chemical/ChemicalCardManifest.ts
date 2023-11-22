@@ -446,7 +446,7 @@ import {AsteroidHollowingChemical} from './AsteroidHollowingChemical';
 import {OrbitalCleanupChemical} from './OrbitalCleanupChemical';
 import {CuttingEdgeTechnologyChemical} from './CuttingEdgeTechnologyChemical';
 import {MeatIndustryChemical} from './MeatIndustryChemical';
-import {CarbonNanosystemsChemical} from './CarbonNanosystemsChemical';
+//import {CarbonNanosystemsChemical} from './CarbonNanosystemsChemical';
 import {SolarLogisticsChemical} from './SolarLogisticsChemical';
 import {MartianLumberCorpChemical} from './MartianLumberCorpChemical';
 import {UndergroundCityChemical} from './UndergroundCityChemical';
@@ -571,6 +571,12 @@ import { EcologicalSupport } from './EcologicalSupport';
 import { RedTourism } from './RedTourism';
 import { PreferentialLoans } from './PreferentialLoans';
 import { SevereMarsquake } from './SevereMarsquake';
+import { ExtinctionEvent } from './ExtinctionEvent';
+import { SpaceTravelLimitations } from './SpaceTravelLimitations';
+import { RimShortages } from './RimShortages';
+import { MicrobialBoom } from './MicrobialBoom';
+import { TechnologicalRegression } from './TechnologicalRegression';
+import { PowerGenerationSubsidies } from './PowerGenerationSubsidies';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -1107,7 +1113,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.ORBITAL_CLEANUP_CHEMICAL]: {Factory: OrbitalCleanupChemical, compatibility: 'promo'},
     [CardName.CUTTING_EDGE_TECHNOLOGY_CHEMICAL]: {Factory: CuttingEdgeTechnologyChemical, compatibility: 'promo'},
     [CardName.MEAT_INDUSTRY_CHEMICAL]: {Factory: MeatIndustryChemical, compatibility: 'promo'},
-    [CardName.CARBON_NANOSYSTEMS_CHEMICAL]: {Factory: CarbonNanosystemsChemical, compatibility: 'promo'},
+    //[CardName.CARBON_NANOSYSTEMS_CHEMICAL]: {Factory: CarbonNanosystemsChemical, compatibility: 'promo'},
     [CardName.SOLAR_LOGISTICS_CHEMICAL]: {Factory: SolarLogisticsChemical, compatibility: 'promo'},
     [CardName.MARTIAN_LUMBER_CORP_CHEMICAL]: {Factory: MartianLumberCorpChemical, compatibility: 'promo'},
     [CardName.UNDERGROUND_CITY_CHEMICAL]: {Factory: UndergroundCityChemical},
@@ -1158,6 +1164,12 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [GlobalEventName.RED_TOURISM]: {Factory: RedTourism},
     [GlobalEventName.PREFERENTIAL_LOANS]: {Factory: PreferentialLoans},
     [GlobalEventName.SEVERE_MARSQUAKE]: {Factory: SevereMarsquake},
+    [GlobalEventName.EXTINCTION_EVENT]: {Factory: ExtinctionEvent},
+    [GlobalEventName.SPACE_TRAVEL_LIMITATIONS]: {Factory: SpaceTravelLimitations},
+    [GlobalEventName.RIM_SHORTAGES]: {Factory: RimShortages},
+    [GlobalEventName.MICROBIAL_BOOM]: {Factory: MicrobialBoom},
+    [GlobalEventName.TECHNOLOGICAL_REGRESSION]: {Factory: TechnologicalRegression},
+    [GlobalEventName.POWER_GENERATION_SUBSIDIES]: {Factory: PowerGenerationSubsidies},
   },
   cardsToRemove: [
     CardName.SPECIAL_DESIGN,
@@ -1185,7 +1197,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     CardName.ORBITAL_CLEANUP,
     CardName.CUTTING_EDGE_TECHNOLOGY,
     CardName.MEAT_INDUSTRY,
-    CardName.CARBON_NANOSYSTEMS,
+    //CardName.CARBON_NANOSYSTEMS,
     CardName.SOLAR_LOGISTICS,
     CardName.MARTIAN_LUMBER_CORP,
     CardName.UNDERGROUND_CITY,

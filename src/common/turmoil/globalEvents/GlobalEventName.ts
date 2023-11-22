@@ -79,4 +79,10 @@ export enum GlobalEventName {
     RED_TOURISM = 'Red Tourism',
     PREFERENTIAL_LOANS = 'Preferential Loans',
     SEVERE_MARSQUAKE = 'Severe Marsquake',
+    EXTINCTION_EVENT = 'Extinction Event',
+    SPACE_TRAVEL_LIMITATIONS = 'Space Travel Limitations',
+    RIM_SHORTAGES = 'Rim Shortages',
+    MICROBIAL_BOOM = 'Microbial Boom',
+    TECHNOLOGICAL_REGRESSION = 'Technological Regression',
+    POWER_GENERATION_SUBSIDIES = 'Power Generation Subsidies',
 }

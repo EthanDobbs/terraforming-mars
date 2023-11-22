@@ -22,4 +22,5 @@ export enum AltSecondaryTag {
 
   ANIMAL = 'animal-resource',
   HEAT = 'heat',
+  MICROBE = 'microbe-resource',
 }

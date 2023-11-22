@@ -5,19 +5,21 @@ import {PartyName} from '../../../common/turmoil/PartyName';
 import {IGame} from '../../IGame';
 import {Turmoil} from '../../turmoil/Turmoil';
 import {CardRenderer} from '../render/CardRenderer';
+import {Size} from '../../../common/cards/render/Size';
 import { Resource } from '../../../common/Resource';
-import { TileType } from '../../../common/TileType';
+import {played} from '../Options';
+import { Tag } from '../../../common/cards/Tag';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.minus().plants(1).slash().greenery().nbsp.heat(2).slash().influence();
+  b.megacredits(2).slash().energy(1, {played}).influence({size: Size.SMALL});
 });
 
-export class WildfiresEvent extends GlobalEvent implements IGlobalEvent {
+export class PowerGenerationSubsidies extends GlobalEvent implements IGlobalEvent {
   constructor() {
     super({
-      name: GlobalEventName.WILDFIRES,
-      description: 'Lose 1 plant for each greenery tile you own (max 5). Gain 2 heat per influence.',
-      revealedDelegate: PartyName.GREENS,
+      name: GlobalEventName.POWER_GENERATION_SUBSIDIES,
+      description: 'Gain 2 M€ for each power tag you have (max 5) and influence.',
+      revealedDelegate: PartyName.KELVINISTS,
       currentDelegate: PartyName.KELVINISTS,
       renderData: RENDER_DATA,
     });
@@ -25,9 +27,8 @@ export class WildfiresEvent extends GlobalEvent implements IGlobalEvent {
 
   public resolve(game: IGame, turmoil: Turmoil) {
     game.getPlayersInGenerationOrder().forEach((player) => {
-      const greeneryTiles = game.board.spaces.filter((space) => space.player === player && space.tile?.tileType === TileType.GREENERY).length;
-      player.stock.deduct(Resource.PLANTS, Math.min(greeneryTiles, player.plants), {log: true, from: this.name});
-      player.stock.add(Resource.HEAT, turmoil.getPlayerInfluence(player) * 2, {log: true, from: this.name});
+      const amount = Math.min(5, player.tags.count(Tag.POWER, 'raw')) + turmoil.getPlayerInfluence(player);
+      player.stock.add(Resource.MEGACREDITS, amount * 2, {log: true, from: this.name});
     });
   }
 }

@@ -17,7 +17,7 @@ import {CentralReservoir} from './CentralReservoir';
 // import {ClassActionLawsuit} from './ClassActionLawsuit';
 // import {CloudVortexOutpost} from './CloudVortexOutpost';
 import {CollusionStandardProject} from './CollusionStandardProject';
-// import {ConcessionRights} from './ConcessionRights';
+import {ConcessionRights} from './ConcessionRights';
 import {CorporateBlackmail} from './CorporateBlackmail';
 // // import {CorporateTheft} from './CorporateTheft';
 // import {CraterSurvey} from './CraterSurvey';
@@ -72,7 +72,7 @@ import {ManMadeVolcano} from './ManMadeVolcano';
 // import {MicroGeodesics} from './MicroGeodesics';
 import {Microgravimetry} from './Microgravimetry';
 import {MicroprobingTechnology} from './MicroprobingTechnology';
-// import {MiningMarketInsider} from './MiningMarketInsider';
+import {MiningMarketInsider} from './MiningMarketInsider';
 // import {Monopoly} from './Monopoly';
 // import {Nanofoundry} from './Nanofoundry';
 import {NarrativeSpin} from './NarrativeSpin';
@@ -100,7 +100,7 @@ import {SecretResearch} from './SecretResearch';
 // import {ServerSabotage} from './ServerSabotage';
 // // import {SocialEngineering} from './SocialEngineering';
 import {SoilExport} from './SoilExport';
-// import {SpacePrivateers} from './SpacePrivateers';
+import {SpacePrivateers} from './SpacePrivateers';
 import {SpaceWargames} from './SpaceWargames';
 // import {StagedProtests} from './StagedProtests';
 // import {StandardTechnology} from './StandardTechnology';
@@ -163,7 +163,7 @@ export const UNDERWORLD_CARD_MANIFEST = new ModuleManifest({
     // [CardName.DEEPMINING]: {Factory: Deepmining}, // Don't want to deal with testing the robotic workforce assocaition.
     [CardName.BEHEMOTH_EXCAVATOR]: {Factory: BehemothExcavator},
     [CardName.LOBBYING_NETWORK]: {Factory: LobbyingNetwork},
-    // [CardName.CONCESSION_RIGHTS]: {Factory: ConcessionRights},
+    [CardName.CONCESSION_RIGHTS]: {Factory: ConcessionRights},
     [CardName.ORBITAL_LASER_DRILL]: {Factory: OrbitalLaserDrill},
     [CardName.GREY_MARKET_EXPLOITATION]: {Factory: GreyMarketExploitation},
     [CardName.EXCAVATOR_LEASING]: {Factory: ExcavatorLeasing},
@@ -179,11 +179,11 @@ export const UNDERWORLD_CARD_MANIFEST = new ModuleManifest({
     [CardName.TITAN_MANUFACTURING_COLONY]: {Factory: TitanManufacturingColony}, // Special token
     [CardName.ROBOT_MOLES]: {Factory: RobotMoles},
     // // 46-54
-    // [CardName.MINING_MARKET_INSIDER]: {Factory: MiningMarketInsider},
+    [CardName.MINING_MARKET_INSIDER]: {Factory: MiningMarketInsider},
     // [CardName.SERVER_SABOTAGE]: {Factory: ServerSabotage},
     [CardName.SPACE_WARGAMES]: {Factory: SpaceWargames},
     [CardName.PRIVATE_MILITARY_CONTRACTOR]: {Factory: PrivateMilitaryContractor},
-    // [CardName.SPACE_PRIVATEERS]: {Factory: SpacePrivateers},
+    [CardName.SPACE_PRIVATEERS]: {Factory: SpacePrivateers},
     [CardName.PERSONAL_SPACECRUISER]: {Factory: PersonalSpacecruiser},
     // [CardName.HYPERSPACE_DRIVE_PROTOTYPE]: {Factory: HyperspaceDrivePrototype},
     // [CardName.STAR_VEGAS]: {Factory: StarVegas},

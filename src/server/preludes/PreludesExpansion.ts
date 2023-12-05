@@ -38,7 +38,7 @@ export class PreludesExpansion {
           return undefined;
         } else {
           if (card.initialAction) {
-            player.pendingInitialActions.push(card as ICorporationCard);
+            player.pendingInitialActions.push(card as any as ICorporationCard);
           }
           return player.playCard(card, undefined, cardAction);
         }

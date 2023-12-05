@@ -353,7 +353,7 @@ export class Game implements IGame, Logger {
           }
           //For testing purposes
           /*if (gameOptions.chemicalExpansion) {
-            var card = new CardFinder().getProjectCardByName(CardName.PARTY_INSIDERS);
+            var card = new CardFinder().getProjectCardByName(CardName.CORPORATE_ESPIONAGE);
             if (card !== undefined) {
               player.dealtPreludeCards.push(card);
             } else {

@@ -15,6 +15,7 @@ import {CardDiscount} from '../../../common/cards/Types';
 export interface StaticPreludeProperties {
     behavior?: Partial<Behavior>,
     globalParameterRequirementBonus?: GlobalParameterRequirementBonus;
+    action?: Behavior;
     cardDiscount?: OneOrArray<CardDiscount>;
     metadata: ICardMetadata;
     name: CardName;

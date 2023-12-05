@@ -480,10 +480,10 @@ abstract class Builder<T> {
     return this._appendToRow(item);
   }
 
-  // public undergroundResources(count: number = 1, options?: ItemOptions) {
-  //   const item = new CardRenderItem(CardRenderItemType.UNDERGROUND_RESOURCES, count, options);
-  //   return this._appendToRow(item);
-  // }
+  public undergroundResources(count: number = 1, options?: ItemOptions) {
+    const item = new CardRenderItem(CardRenderItemType.UNDERGROUND_RESOURCES, count, options);
+    return this._appendToRow(item);
+  }
 
   public corruptionShield() {
     const item = new CardRenderItem(CardRenderItemType.CORRUPTION_SHIELD);
@@ -510,10 +510,10 @@ abstract class Builder<T> {
   //   return this._appendToRow(item);
   // }
 
-  // public activist(count: number = 1, options?: ItemOptions) {
-  //   const item = new CardRenderItem(CardRenderItemType.ACTIVIST, count, options);
-  //   return this._appendToRow(item);
-  // }
+  public activist(count: number = 1, options?: ItemOptions) {
+    const item = new CardRenderItem(CardRenderItemType.ACTIVIST, count, options);
+    return this._appendToRow(item);
+  }
 
   public emptyTile(type: 'normal' | 'golden' = 'normal', options?: ItemOptions) {
     if (type === 'normal') {

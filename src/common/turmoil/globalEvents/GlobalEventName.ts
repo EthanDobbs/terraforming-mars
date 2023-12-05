@@ -47,6 +47,13 @@ export enum GlobalEventName {
     COMMUNICATION_BOOM = 'Communication Boom',
     SPACE_RACE_TO_MARS = 'Space Race to Mars',
 
+    // Underworld
+    LAGGING_REGULATION = 'Lagging Regulation',
+    FAIR_TRADE_COMPLAINT = 'Fair Trade Complaint',
+    MIGRATION_UNDERGROUND = 'Migration Underground',
+    SEISMIC_PREDICTIONS = 'Seismic Predictions',
+    MEDIA_STIR = 'Media Stir',
+
     LAND_DELEGATION = 'Land Delegation',
     INTELLECTUALIST_MOVEMENTS = 'Intellectualist Movements',
     MANDATORY_INSURANCE = 'Mandatory Insurance',

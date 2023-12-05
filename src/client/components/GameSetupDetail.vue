@@ -4,6 +4,7 @@
             <li><div class="setup-item" v-i18n>Expansion:</div>
               <div v-if="gameOptions.venusNextExtension" class="create-game-expansion-icon expansion-icon-venus"></div>
               <div v-if="gameOptions.preludeExtension" class="create-game-expansion-icon expansion-icon-prelude"></div>
+              <div v-if="gameOptions.prelude2Expansion" class="create-game-expansion-icon expansion-icon-prelude2"></div>
               <div v-if="gameOptions.coloniesExtension" class="create-game-expansion-icon expansion-icon-colony"></div>
               <div v-if="gameOptions.turmoilExtension" class="create-game-expansion-icon expansion-icon-turmoil"></div>
               <div v-if="gameOptions.promoCardsOption" class="create-game-expansion-icon expansion-icon-promo"></div>
@@ -13,6 +14,8 @@
               <div v-if="gameOptions.communityCardsOption" class="create-game-expansion-icon expansion-icon-community"></div>
               <div v-if="isPoliticalAgendasOn" class="create-game-expansion-icon expansion-icon-agendas"></div>
               <div v-if="gameOptions.ceoExtension" class="create-game-expansion-icon expansion-icon-ceo"></div>
+              <div v-if="gameOptions.ceoExtension" class="create-game-expansion-icon expansion-icon-ceo"></div>
+              <div v-if="gameOptions.underworldExpansion" class="create-game-expansion-icon expansion-icon-underworld"></div>
               <div v-if="gameOptions.chemicalExpansion" class="create-game-expansion-icon expansion-icon-chemical"></div>
             </li>
 
@@ -26,8 +29,8 @@
               <div v-if="gameOptions.solarPhaseOption" class="game-config generic" v-i18n>On</div>
               <div v-else class="game-config generic" v-i18n>Off</div>
             </li>
-            <li v-if="gameOptions.requiresVenusTrackCompletion">Require terraforming Venus to end the game</li>
-            <li v-if="gameOptions.requiresMoonTrackCompletion">Require terraforming The Moon to end the game</li>
+            <li v-if="gameOptions.requiresVenusTrackCompletion" v-i18n>Require terraforming Venus to end the game</li>
+            <li v-if="gameOptions.requiresMoonTrackCompletion" v-i18n>Require terraforming The Moon to end the game</li>
 
             <li v-if="playerNumber > 1">
               <div class="setup-item" v-i18n>Milestones and Awards:</div>
@@ -35,8 +38,8 @@
               <div v-if="gameOptions.randomMA === RandomMAOptionType.NONE" class="game-config generic" v-i18n>Board-defined</div>
               <div v-if="gameOptions.randomMA === RandomMAOptionType.LIMITED" class="game-config generic" v-i18n>Randomized with limited synergy</div>
               <div v-if="gameOptions.randomMA === RandomMAOptionType.UNLIMITED" class="game-config generic" v-i18n>Full randomized</div>
-              <div v-if="gameOptions.venusNextExtension && gameOptions.includeVenusMA" class="game-config generic" v-18n>Venus Milestone/Award</div>
-              <div v-if="gameOptions.randomMA !== RandomMAOptionType.NONE && gameOptions.includeFanMA" class="game-config generic" v-18n>Include fan Milestones/Awards</div>
+              <div v-if="gameOptions.venusNextExtension && gameOptions.includeVenusMA" class="game-config generic" v-i18n>Venus Milestone/Award</div>
+              <div v-if="gameOptions.randomMA !== RandomMAOptionType.NONE && gameOptions.includeFanMA" class="game-config generic" v-i18n>Include fan Milestones/Awards</div>
             </li>
 
             <li v-if="playerNumber > 1">
@@ -108,6 +111,7 @@ export default Vue.extend({
     },
   },
   computed: {
+
     isPoliticalAgendasOn(): boolean {
       return (this.gameOptions.politicalAgendasExtension !== AgendaStyle.STANDARD);
     },

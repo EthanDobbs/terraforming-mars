@@ -6,28 +6,29 @@ import {IGame} from '../../IGame';
 import {Turmoil} from '../../turmoil/Turmoil';
 import {CardRenderer} from '../render/CardRenderer';
 import { Resource } from '../../../common/Resource';
-import { played } from '../Options';
-import { Tag } from '../../../common/cards/Tag';
+import { Size } from '../../../common/cards/render/Size';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.megacredits(-2).slash().earth(1, {played}).plus().influence();
+  b.megacredits(-2).slash().city().plus().colonies().influence({size: Size.SMALL})
 });
 
-export class EgalitarianMovements extends GlobalEvent implements IGlobalEvent {
+export class RefugeeCrisis extends GlobalEvent implements IGlobalEvent {
   constructor() {
     super({
-      name: GlobalEventName.EGALITARIAN_MOVEMENTS,
-      description: 'Lose 2 M€ for each Earth tag (max 5) and influence.',
-      revealedDelegate: PartyName.GREENS,
-      currentDelegate: PartyName.KELVINISTS,
+      name: GlobalEventName.REFUGEE_CRISIS,
+      description: 'Lose 2 M€ for each city and colony (max 5 each), then reduced by influence.',
+      revealedDelegate: PartyName.REDS,
+      currentDelegate: PartyName.GREENS,
       renderData: RENDER_DATA,
     });
   }
 
   public resolve(game: IGame, turmoil: Turmoil) {
     game.getPlayersInGenerationOrder().forEach((player) => {
-      const amount = Math.min(player.tags.count(Tag.EARTH, 'raw'), 5) + turmoil.getPlayerInfluence(player);
-      player.stock.deduct(Resource.MEGACREDITS, Math.min(amount * 2, player.megaCredits), {log: true, from: this.name});
+      const amount = Math.max(Math.min(5, game.board.getCities(player).length + 
+        player.getColoniesCount()) +
+        turmoil.getPlayerInfluence(player), 0);
+      player.stock.deduct(Resource.MEGACREDITS, amount * 2, {log: true, from: this.name});
     });
   }
 }

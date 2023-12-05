@@ -577,6 +577,22 @@ import { RimShortages } from './RimShortages';
 import { MicrobialBoom } from './MicrobialBoom';
 import { TechnologicalRegression } from './TechnologicalRegression';
 import { PowerGenerationSubsidies } from './PowerGenerationSubsidies';
+import { TaxationOfVenus } from './TaxationOfVenus';
+import { VenusMining } from './VenusMining';
+import { DegredationOfVenus } from './DegredationOfVenus';
+import { FloaterTechnologyEvent } from './FloaterTechnologyEvent';
+import { VenusianEcosystems } from './VenusianEcosystems';
+import { SocietiesOfVenus } from './SocietiesOfVenus';
+import { AnticorrosiveMaterials } from './AnticorrosiveMaterials';
+import { LowlandFlooding } from './LowlandFlooding';
+import { CommunityServicesEvent } from './CommunityServicesEvent';
+import { PowerFailureEvent } from './PowerFailureEvent';
+import { InterstallarColonization } from './InterstallarColonization';
+import { ColonyProductivity } from './ColonyProductivity';
+import { CommandEconomy } from './CommandEconomy';
+import { JovianWar } from './JovianWar';
+import { RefugeeCrisis } from './RefugeeCrisis';
+import { EconomicDepression } from './EconomicDepression';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -1170,6 +1186,22 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [GlobalEventName.MICROBIAL_BOOM]: {Factory: MicrobialBoom},
     [GlobalEventName.TECHNOLOGICAL_REGRESSION]: {Factory: TechnologicalRegression},
     [GlobalEventName.POWER_GENERATION_SUBSIDIES]: {Factory: PowerGenerationSubsidies},
+    [GlobalEventName.TAXATION_OF_VENUS]: {Factory: TaxationOfVenus, compatibility: 'venus'},
+    [GlobalEventName.VENUS_MINING]: {Factory: VenusMining, compatibility: 'venus'},
+    [GlobalEventName.DEGREDATION_OF_VENUS]: {Factory: DegredationOfVenus, compatibility: 'venus'},
+    [GlobalEventName.FLOATER_TECHNOLOGY]: {Factory: FloaterTechnologyEvent, compatibility: 'venus'},
+    [GlobalEventName.VENUSIAN_ECOSYSTEMS]: {Factory: VenusianEcosystems, compatibility: 'venus'},
+    [GlobalEventName.SOCIETIES_OF_VENUS]: {Factory: SocietiesOfVenus, compatibility: 'venus'},
+    [GlobalEventName.ANTICORROSIVE_MATERIALS]: {Factory: AnticorrosiveMaterials, compatibility: 'venus'},
+    [GlobalEventName.LOWLAND_FLOODING]: {Factory: LowlandFlooding, compatibility: 'venus'},
+    [GlobalEventName.COMMUNITY_SERVICES]: {Factory: CommunityServicesEvent, compatibility: 'colonies'},
+    [GlobalEventName.POWER_FAILURE]: {Factory: PowerFailureEvent, compatibility: 'colonies'},
+    [GlobalEventName.INTERSTELLAR_COLONIZATION]: {Factory: InterstallarColonization, compatibility: 'colonies'},
+    [GlobalEventName.COLONY_PRODUCTIVITY]: {Factory: ColonyProductivity, compatibility: 'colonies'},
+    [GlobalEventName.COMMAND_ECONOMY]: {Factory: CommandEconomy, compatibility: 'colonies'},
+    [GlobalEventName.JOVIAN_WAR]: {Factory: JovianWar, compatibility: 'colonies'},
+    [GlobalEventName.REFUGEE_CRISIS]: {Factory: RefugeeCrisis, compatibility: 'colonies'},
+    [GlobalEventName.ECONOMIC_DEPRESSION]: {Factory: EconomicDepression, compatibility: 'colonies'},
   },
   cardsToRemove: [
     CardName.SPECIAL_DESIGN,

@@ -352,14 +352,14 @@ export class Game implements IGame, Logger {
             player.dealtPreludeCards.push(prelude);
           }
           //For testing purposes
-          if (gameOptions.chemicalExpansion) {
+          /*if (gameOptions.chemicalExpansion) {
             var card = new CardFinder().getProjectCardByName(CardName.PARTY_INSIDERS);
             if (card !== undefined) {
               player.dealtPreludeCards.push(card);
             } else {
              throw new Error('I did not expect this.');
             }
-          }
+          }*/
         }
         if (gameOptions.ceoExtension) {
           for (let i = 0; i < gameOptions.startingCeos; i++) {
@@ -1145,6 +1145,7 @@ export class Game implements IGame, Logger {
           this.defer(new GrantVenusAltTrackBonusDeferred(player, standardResourcesGranted, grantWildResource));
         }
       }
+      player.playedCards.forEach((card) => card.onGlobalParameterIncrease?.(player, GlobalParameter.VENUS, steps));
       TurmoilHandler.onGlobalParameterIncrease(player, GlobalParameter.VENUS, steps);
       player.increaseTerraformRating(steps);
     }

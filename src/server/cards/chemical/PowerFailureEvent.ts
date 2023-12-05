@@ -5,29 +5,28 @@ import {PartyName} from '../../../common/turmoil/PartyName';
 import {IGame} from '../../IGame';
 import {Turmoil} from '../../turmoil/Turmoil';
 import {CardRenderer} from '../render/CardRenderer';
-import { Resource } from '../../../common/Resource';
-import { played } from '../Options';
-import { Tag } from '../../../common/cards/Tag';
+import {Resource} from '../../../common/Resource';
+
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.megacredits(-2).slash().earth(1, {played}).plus().influence();
+  b.text('lose all').energy(1).br.megacredits(-5).nbsp.energy(1).slash().influence();
 });
 
-export class EgalitarianMovements extends GlobalEvent implements IGlobalEvent {
+export class PowerFailureEvent extends GlobalEvent implements IGlobalEvent {
   constructor() {
     super({
-      name: GlobalEventName.EGALITARIAN_MOVEMENTS,
-      description: 'Lose 2 M€ for each Earth tag (max 5) and influence.',
-      revealedDelegate: PartyName.GREENS,
+      name: GlobalEventName.POWER_FAILURE,
+      description: 'Lose all energy and 5 M€. Then, gain 1 energy for each influence.',
+      revealedDelegate: PartyName.MARS,
       currentDelegate: PartyName.KELVINISTS,
       renderData: RENDER_DATA,
     });
   }
-
   public resolve(game: IGame, turmoil: Turmoil) {
     game.getPlayersInGenerationOrder().forEach((player) => {
-      const amount = Math.min(player.tags.count(Tag.EARTH, 'raw'), 5) + turmoil.getPlayerInfluence(player);
-      player.stock.deduct(Resource.MEGACREDITS, Math.min(amount * 2, player.megaCredits), {log: true, from: this.name});
+      player.stock.deduct(Resource.ENERGY, player.stock.energy, {log: true, from: this.name});
+      player.stock.deduct(Resource.MEGACREDITS, 5, {log: true, from: this.name});
+      player.stock.add(Resource.ENERGY, turmoil.getPlayerInfluence(player), {log: true, from: this.name});
     });
   }
 }

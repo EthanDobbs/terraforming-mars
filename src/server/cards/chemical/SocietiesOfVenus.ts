@@ -5,29 +5,29 @@ import {PartyName} from '../../../common/turmoil/PartyName';
 import {IGame} from '../../IGame';
 import {Turmoil} from '../../turmoil/Turmoil';
 import {CardRenderer} from '../render/CardRenderer';
-import { Resource } from '../../../common/Resource';
-import { played } from '../Options';
+import {Resource} from '../../../common/Resource';
 import { Tag } from '../../../common/cards/Tag';
+import { played } from '../Options';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.megacredits(-2).slash().earth(1, {played}).plus().influence();
+  b.production((pb) => pb.megacredits(1)).slash().venus(1, {played}).nbsp.heat(2).slash().influence();
 });
 
-export class EgalitarianMovements extends GlobalEvent implements IGlobalEvent {
+export class SocietiesOfVenus extends GlobalEvent implements IGlobalEvent {
   constructor() {
     super({
-      name: GlobalEventName.EGALITARIAN_MOVEMENTS,
-      description: 'Lose 2 M€ for each Earth tag (max 5) and influence.',
+      name: GlobalEventName.SOCIETIES_OF_VENUS,
+      description: 'Increase your M€ production 1 step for every Venus tag you have (max 5). Gain 2 heat per influence.',
       revealedDelegate: PartyName.GREENS,
       currentDelegate: PartyName.KELVINISTS,
       renderData: RENDER_DATA,
     });
   }
-
   public resolve(game: IGame, turmoil: Turmoil) {
     game.getPlayersInGenerationOrder().forEach((player) => {
-      const amount = Math.min(player.tags.count(Tag.EARTH, 'raw'), 5) + turmoil.getPlayerInfluence(player);
-      player.stock.deduct(Resource.MEGACREDITS, Math.min(amount * 2, player.megaCredits), {log: true, from: this.name});
+      const amount = Math.min(player.tags.count(Tag.VENUS, 'raw'), 5);
+      player.production.add(Resource.MEGACREDITS, amount, {log: true, from: this.name});
+      player.stock.add(Resource.HEAT, turmoil.getPlayerInfluence(player), {log: true, from: this.name});
     });
   }
 }

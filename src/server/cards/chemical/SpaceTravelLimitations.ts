@@ -26,7 +26,6 @@ export class SpaceTravelLimitations extends GlobalEvent implements IGlobalEvent 
   }
 
   public resolve(game: IGame, turmoil: Turmoil) {
-    game.increaseOxygenLevel(game.getPlayersInGenerationOrder()[0], -1);
     game.getPlayersInGenerationOrder().forEach((player) => {
       player.stock.deduct(Resource.TITANIUM, 3, {log: true, from: this.name});
       const amount = Math.max(Math.min(5, player.tags.count(Tag.SPACE, 'raw')) - turmoil.getPlayerInfluence(player), 0);

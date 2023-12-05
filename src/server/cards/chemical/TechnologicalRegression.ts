@@ -26,7 +26,6 @@ export class TechnologicalRegression extends GlobalEvent implements IGlobalEvent
   }
 
   public resolve(game: IGame, turmoil: Turmoil) {
-    game.increaseOxygenLevel(game.getPlayersInGenerationOrder()[0], -1);
     game.getPlayersInGenerationOrder().forEach((player) => {
       const amount = Math.max(Math.min(5, player.tags.count(Tag.SPACE, 'raw')) + 
         Math.min(5, player.tags.count(Tag.POWER, 'raw')) +

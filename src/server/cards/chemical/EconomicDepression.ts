@@ -5,31 +5,30 @@ import {PartyName} from '../../../common/turmoil/PartyName';
 import {IGame} from '../../IGame';
 import {Turmoil} from '../../turmoil/Turmoil';
 import {CardRenderer} from '../render/CardRenderer';
-import {Size} from '../../../common/cards/render/Size';
 import { Resource } from '../../../common/Resource';
 import { Tag } from '../../../common/cards/Tag';
 import { played } from '../Options';
+import { Size } from '../../../common/cards/render/Size';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.oxygen(1).nbsp.steel(1).slash().building(2, {played}).influence({size: Size.SMALL});
+  b.minus().tr(2).nbsp.megacredits(-4).slash().earth(1, {played}).influence({size: Size.SMALL})
 });
 
-export class MiningIndustries extends GlobalEvent implements IGlobalEvent {
+export class EconomicDepression extends GlobalEvent implements IGlobalEvent {
   constructor() {
     super({
-      name: GlobalEventName.MINING_INDUSTRIES,
-      description: 'Raise the oxygen 1 step. Gain 1 steel for every 2 building tags you have (no limit), influence counts as building tags.',
-      revealedDelegate: PartyName.UNITY,
-      currentDelegate: PartyName.MARS,
+      name: GlobalEventName.ECONOMIC_DEPRESSION,
+      description: 'Lower your TR 2 steps. Lose 4 M€ for each Earth tag (max 5), then reduced by influence.',
+      revealedDelegate: PartyName.REDS,
+      currentDelegate: PartyName.KELVINISTS,
       renderData: RENDER_DATA,
     });
   }
 
   public resolve(game: IGame, turmoil: Turmoil) {
-    game.increaseOxygenLevel(game.getPlayersInGenerationOrder()[0], 1);
     game.getPlayersInGenerationOrder().forEach((player) => {
-      const amount = Math.floor((player.tags.count(Tag.BUILDING, 'raw') + turmoil.getPlayerInfluence(player)) / 2);
-      player.stock.add(Resource.MEGACREDITS, amount, {log: true, from: this.name});
+      const amount = Math.max(Math.min(5, player.tags.count(Tag.EARTH, 'raw')) - turmoil.getPlayerInfluence(player), 0);
+      player.stock.deduct(Resource.MEGACREDITS, amount * 4, {log: true, from: this.name});
     });
   }
 }

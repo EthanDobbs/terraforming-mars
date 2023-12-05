@@ -26,7 +26,6 @@ export class RimShortages extends GlobalEvent implements IGlobalEvent {
   }
 
   public resolve(game: IGame, turmoil: Turmoil) {
-    game.increaseOxygenLevel(game.getPlayersInGenerationOrder()[0], -1);
     game.getPlayersInGenerationOrder().forEach((player) => {
       const amount = Math.max(Math.min(5, player.tags.count(Tag.JOVIAN, 'raw')) - turmoil.getPlayerInfluence(player), 0);
       player.stock.deduct(Resource.MEGACREDITS, amount * 4, {log: true, from: this.name});

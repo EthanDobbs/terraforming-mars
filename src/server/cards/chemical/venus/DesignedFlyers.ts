@@ -24,7 +24,7 @@ export class DesignedFlyers extends Card implements IProjectCard {
         cardNumber: 'x268',
         renderData: CardRenderer.builder((b) => {
           b.action('Add an animal to this card ONLY IF you\'ve raised Venus this generation (or if the parameter is maxed).', (eb) => {
-            eb.plus().temperature(1).asterix().nbsp.colon().nbsp.startAction.animals(1);
+            eb.plus().venus(1).asterix().nbsp.colon().nbsp.startAction.animals(1);
           }).br;
           b.vpText('1 VP for every animal on this card.');
         }),

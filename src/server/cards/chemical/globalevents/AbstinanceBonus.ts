@@ -5,37 +5,36 @@ import {PartyName} from '../../../../common/turmoil/PartyName';
 import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
+import { Resource } from '../../../../common/Resource';
 import { SelectResourcesDeferred } from '../../../deferredActions/SelectResourcesDeferred';
-import { SimpleDeferredAction } from '../../../deferredActions/DeferredAction';
+import { Size } from '../../../../common/cards/render/Size';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.text('GAIN ALL YOUR COLONY BONUSES').br.wild(1).slash().influence();
+  b.tr(1, {size: Size.SMALL, cancelled: true}).colon().megacredits(5).nbsp.wild(1).slash().influence();
 });
 
-export class ColonyProductivity extends GlobalEvent implements IGlobalEvent {
+export class AbstinanceBonus extends GlobalEvent implements IGlobalEvent {
   constructor() {
     super({
-      name: GlobalEventName.COLONY_PRODUCTIVITY,
-      description: 'Gain 1 standard ressource per influence.',
-      revealedDelegate: PartyName.UNITY,
-      currentDelegate: PartyName.UNITY,
+      name: GlobalEventName.ABSTINANCE_BONUS,
+      description: 'Gain 5 M€ if you did not raised your TR this generation. Gain 1 standard resource per influence.',
+      revealedDelegate: PartyName.REDS,
+      currentDelegate: PartyName.REDS,
       renderData: RENDER_DATA,
     });
   }
 
   public resolve(game: IGame, turmoil: Turmoil) {
     game.getPlayersInGenerationOrder().forEach((player) => {
-      player.game.colonies.forEach((colony) => {
-        colony.colonies.filter((owner) => owner === player.id).forEach((owner) => {
-          player.game.defer(new SimpleDeferredAction(player, () => colony.giveColonyBonus(player.game.getPlayerById(owner))));
-        });
-      });
+      if (!player.generationData.hasRaisedTR) {
+        player.stock.add(Resource.MEGACREDITS, 5, {from: this.name, log: true});
+      }
       const count = turmoil.getPlayerInfluence(player);
       if (count > 0) {
         game.defer(new SelectResourcesDeferred(
           player,
           count,
-          'Colony Productivity Global Event - Gain ' + count + ' resource(s) for influence',
+          'Degredation of Venus Global Event - Gain ' + count + ' resource(s) for influence',
         ));
       }
     });

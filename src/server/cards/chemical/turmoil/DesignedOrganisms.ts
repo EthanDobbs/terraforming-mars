@@ -10,13 +10,13 @@ import {IPlayer} from '../../../IPlayer';
 import {GlobalParameter} from '../../../../common/GlobalParameter';
 import {Card} from '../../Card';
 
-export class Cephalopods extends Card implements IProjectCard {
+export class DesignedOrganisms extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.ACTIVE,
-      name: CardName.CEPHALOPODS,
-      tags: [Tag.ANIMAL],
-      cost: 11,
+      name: CardName.DESIGNED_ORGANISMS_CHEMICAL,
+      tags: [Tag.SCIENCE, Tag.ANIMAL],
+      cost: 10,
 
       behavior: {
         decreaseAnyProduction: {type: Resource.PLANTS, count: 1},
@@ -24,26 +24,26 @@ export class Cephalopods extends Card implements IProjectCard {
 
       resourceType: CardResource.ANIMAL,
       victoryPoints: {resourcesHere: 1},
-      requirements: {oceans: 5},
+      requirements: {tag: Tag.SCIENCE, count: 4},
 
       metadata: {
-        cardNumber: 'x054',
+        cardNumber: 'x268',
         renderData: CardRenderer.builder((b) => {
-          b.action('Add an animal to this card ONLY IF you\'ve raised the temperature this generation (or if the parameter is maxed).', (eb) => {
+          b.action('Add an animal to this card ONLY IF you\'ve raised the oxygen this generation (or if the parameter is maxed).', (eb) => {
             eb.plus().temperature(1).asterix().nbsp.colon().nbsp.startAction.animals(1);
           }).br;
           b.production((pb) => pb.minus().plants(1, {all})).br;
           b.vpText('1 VP for every animal on this card.');
         }),
         description: {
-          text: 'Requires 5 ocean tiles. Decrease any plant production 1 step.',
+          text: 'Requires 4 science tags. Decease any plant production 1 step.',
           align: 'left',
         },
       },
     });
   }
   public canAct(player: IPlayer): boolean {
-    return player.generationData.hasRaisedGlobalParameter[GlobalParameter.TEMPERATURE] || player.game.getTemperature() === 8;
+    return player.generationData.hasRaisedGlobalParameter[GlobalParameter.OXYGEN] || player.game.getOxygenLevel() === 30;
   }
   public action(player: IPlayer) {
     player.addResourceTo(this, 1);

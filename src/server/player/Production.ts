@@ -54,6 +54,10 @@ export class Production {
     const delta = (amount >= 0) ? amount : Math.max(amount, -(this.units[resource] - adj));
     this.units[resource] += delta;
 
+    if (delta > 0) {
+      this.player.generationData.hasRaisedProduction[resource] = true;
+    }
+
     if (options?.log === true) {
       this.player.logUnitDelta(resource, amount, 'production', options.from, options.stealing);
     }

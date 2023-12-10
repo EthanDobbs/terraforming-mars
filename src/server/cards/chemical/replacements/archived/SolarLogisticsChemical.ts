@@ -1,11 +1,11 @@
-import {Card} from '../../Card';
-import {CardType} from '../../../../common/cards/CardType';
-import {IPlayer} from '../../../IPlayer';
-import {CardName} from '../../../../common/cards/CardName';
-import {CardRenderer} from '../../render/CardRenderer';
-import {Tag} from '../../../../common/cards/Tag';
-import {all, played} from '../../Options';
-import {IProjectCard} from '../../IProjectCard';
+import {Card} from '../../../Card';
+import {CardType} from '../../../../../common/cards/CardType';
+import {IPlayer} from '../../../../IPlayer';
+import {CardName} from '../../../../../common/cards/CardName';
+import {CardRenderer} from '../../../render/CardRenderer';
+import {Tag} from '../../../../../common/cards/Tag';
+import {all, played} from '../../../Options';
+import {IProjectCard} from '../../../IProjectCard';
 
 export class SolarLogisticsChemical extends Card implements IProjectCard {
   constructor() {

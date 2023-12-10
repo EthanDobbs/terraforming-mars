@@ -32,16 +32,8 @@ export class SponsoredResearchFirm extends Card implements IProjectCard {
       },
     });
   }
-  public data = {
-    lastGenerationIncreasedTR: -1,
-  }
-  onIncreaseTerraformRating(player: IPlayer, cardOwner: IPlayer): void {
-    if (player.id === cardOwner.id) {
-      this.data.lastGenerationIncreasedTR = player.game.generation;
-    }
-  }
   public canAct(player: IPlayer): boolean {
-    return this.data.lastGenerationIncreasedTR === player.game.generation;
+    return player.generationData.hasRaisedTR;
   }
   public action(player: IPlayer) {
     player.drawCard(1);

@@ -31,7 +31,7 @@ export class InterplanetaryTradingPort extends PreludeCard implements IProjectCa
     });
   }
   public canAct(player: IPlayer): boolean {
-    return player.stock.titanium >= 2 || player.colonies.getFleetSize() > player.colonies.tradesThisGeneration;
+    return player.stock.titanium >= 2 && player.colonies.getFleetSize() > player.colonies.tradesThisGeneration;
   }
   public action(player: IPlayer) {
     player.stock.titanium -= 2;

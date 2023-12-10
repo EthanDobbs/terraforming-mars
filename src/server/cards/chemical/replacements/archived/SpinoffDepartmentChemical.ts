@@ -1,10 +1,10 @@
-import {IProjectCard} from '../../IProjectCard';
-import {Tag} from '../../../../common/cards/Tag';
-import {CardType} from '../../../../common/cards/CardType';
-import {IPlayer} from '../../../IPlayer';
-import {CardName} from '../../../../common/cards/CardName';
-import {CardRenderer} from '../../render/CardRenderer';
-import {Card} from '../../Card';
+import {IProjectCard} from '../../../IProjectCard';
+import {Tag} from '../../../../../common/cards/Tag';
+import {CardType} from '../../../../../common/cards/CardType';
+import {IPlayer} from '../../../../IPlayer';
+import {CardName} from '../../../../../common/cards/CardName';
+import {CardRenderer} from '../../../render/CardRenderer';
+import {Card} from '../../../Card';
 
 export class SpinoffDepartmentChemical extends Card implements IProjectCard {
   constructor() {

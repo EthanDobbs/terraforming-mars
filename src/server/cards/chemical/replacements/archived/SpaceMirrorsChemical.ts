@@ -1,13 +1,13 @@
-import {IProjectCard} from '../../IProjectCard';
-import {Tag} from '../../../../common/cards/Tag';
-import {Card} from '../../Card';
-import {CardType} from '../../../../common/cards/CardType';
-import {CardName} from '../../../../common/cards/CardName';
-import {CardRenderer} from '../../render/CardRenderer';
-import {IPlayer} from '../../../IPlayer';
-import {SelectPaymentDeferred} from '../../../deferredActions/SelectPaymentDeferred';
-import {Resource} from '../../../../common/Resource';
-import {TITLES} from '../../../inputs/titles';
+import {IProjectCard} from '../../../IProjectCard';
+import {Tag} from '../../../../../common/cards/Tag';
+import {Card} from '../../../Card';
+import {CardType} from '../../../../../common/cards/CardType';
+import {CardName} from '../../../../../common/cards/CardName';
+import {CardRenderer} from '../../../render/CardRenderer';
+import {IPlayer} from '../../../../IPlayer';
+import {SelectPaymentDeferred} from '../../../../deferredActions/SelectPaymentDeferred';
+import {Resource} from '../../../../../common/Resource';
+import {TITLES} from '../../../../inputs/titles';
 
 export class SpaceMirrorsChemical extends Card implements IProjectCard {
   constructor() {

@@ -73,6 +73,7 @@ import {MarsBoard} from './boards/MarsBoard';
 import {UnderworldData} from './underworld/UnderworldData';
 import {UnderworldExpansion} from './underworld/UnderworldExpansion';
 import {SpaceType} from '../common/boards/SpaceType';
+import { GenerationData } from './player/GenerationData';
 
 export class Game implements IGame, Logger {
   public readonly id: GameId;
@@ -338,7 +339,7 @@ export class Game implements IGame, Logger {
           }
           //For testing purposes
           /*if (gameOptions.chemicalExpansion) {
-            var card = new CardFinder().getProjectCardByName(CardName.ADVANCED_HYDROPOWER);
+            var card = new CardFinder().getProjectCardByName(CardName.SPONSORED_RESEARCH_FIRM);
             if (card !== undefined) {
               player.dealtProjectCards.push(card);
             } else {
@@ -806,6 +807,10 @@ export class Game implements IGame, Logger {
 
   private startGeneration() {
     this.phase = Phase.INTERGENERATION;
+
+    // Reset Generation data
+    this.players.forEach((player) => player.generationData = new GenerationData());
+
     this.updatePlayerVPForTheGeneration();
     this.updateGlobalsForTheGeneration();
     this.generation++;
@@ -1093,6 +1098,7 @@ export class Game implements IGame, Logger {
     if (this.phase !== Phase.SOLAR) {
       TurmoilHandler.onGlobalParameterIncrease(player, GlobalParameter.OXYGEN, steps);
       player.increaseTerraformRating(steps);
+      player.generationData.hasRaisedGlobalParameter[GlobalParameter.OXYGEN] = true;
     }
     if (this.oxygenLevel < constants.OXYGEN_LEVEL_FOR_TEMPERATURE_BONUS &&
       this.oxygenLevel + steps >= constants.OXYGEN_LEVEL_FOR_TEMPERATURE_BONUS) {
@@ -1148,6 +1154,7 @@ export class Game implements IGame, Logger {
       player.playedCards.forEach((card) => card.onGlobalParameterIncrease?.(player, GlobalParameter.VENUS, steps));
       TurmoilHandler.onGlobalParameterIncrease(player, GlobalParameter.VENUS, steps);
       player.increaseTerraformRating(steps);
+      player.generationData.hasRaisedGlobalParameter[GlobalParameter.VENUS] = true;
     }
 
     // Check for Aphrodite corporation
@@ -1196,6 +1203,7 @@ export class Game implements IGame, Logger {
       player.playedCards.forEach((card) => card.onGlobalParameterIncrease?.(player, GlobalParameter.TEMPERATURE, steps));
       TurmoilHandler.onGlobalParameterIncrease(player, GlobalParameter.TEMPERATURE, steps);
       player.increaseTerraformRating(steps);
+      player.generationData.hasRaisedGlobalParameter[GlobalParameter.TEMPERATURE] = true;
     }
 
     // BONUS FOR OCEAN TILE AT 0

@@ -13,7 +13,7 @@ export class CuttingEdgeTechnologyChemical extends Card implements IProjectCard 
       type: CardType.ACTIVE,
       name: CardName.CUTTING_EDGE_TECHNOLOGY_CHEMICAL,
       tags: [Tag.SCIENCE],
-      cost: 17,
+      cost: 16,
       victoryPoints: 1,
 
       metadata: {

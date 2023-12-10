@@ -54,7 +54,7 @@ import {LargeAquaticMammals} from './base/LargeAquaticMammals';
 import {TundraWildlife} from './base/TundraWildlife';
 import {Poultry} from './base/Poultry';
 import {FishFarmingLake} from './base/FishFarmingLake';
-//import {Cephalopods} from './Cephalopods';
+import {Cephalopods} from './base/Cephalopods';
 import {EndangeredSpeciesRefuge} from './base/EndangeredSpeciesRefuge';
 import {NonHypoxicSmallAnimals} from './base/NonHypoxicSmallAnimals';
 import {SubterranianCreatures} from './base/SubterranianCreatures';
@@ -197,7 +197,7 @@ import {AlchemicReactions} from './corpera/AlchemicReactions';
 import {WirelessEnergyTransfer} from './corpera/WirelessEnergyTransfer';
 import {Kugelblitz} from './corpera/Kugelblitz';
 import {ScientificLogs} from './corpera/ScientificLogs';
-//import {SponsoredResearchFirm} from './SponsoredResearchFirm';
+import {SponsoredResearchFirm} from './corpera/SponsoredResearchFirm';
 import {NeuralEnhancers} from './corpera/NeuralEnchancers';
 import {ConstructionCenter} from './corpera/ConstructionCenter';
 import {BiodiversityGrants} from './corpera/BiodiversityGrants';
@@ -205,7 +205,7 @@ import {MarsBuinessInvestments} from './corpera/MarsBusinessInvestments';
 import {Canals} from './corpera/Canals';
 import {SteelExports} from './corpera/SteelExports';
 import {JovianSuppliers} from './corpera/JovianSuppliers';
-//import {ProjectAdvancement} from './ProjectAdvancement';
+import {ProjectAdvancement} from './corpera/ProjectAdvancement';
 import {SuccessfulCommerce} from './corpera/SuccessfulCommerce';
 import {ScientificSupport} from './corpera/ScientificSupport';
 import {GalileanGovernor} from './corpera/GalileanGovernor';
@@ -268,7 +268,7 @@ import {EndemicVenusianArchaea} from './venus/EndemicVenusianArchaea';
 import {AirborneMicrobes} from './venus/AirborneMicrobes';
 import {PHNeutralizers} from './venus/PHNeutralizers';
 import {CarbonFixingMicrobes} from './venus/CarbonFixingMicrobes';
-//import {DesignedFlyers} from './DesignedFlyers';
+import {DesignedFlyers} from './venus/DesignedFlyers';
 import {VenusSurfaceDwellers} from './venus/VenusSurfaceDwellers';
 import {VenusianInvertebrates} from './venus/VenusianInvertebrates';
 import {BioengineeringStudies} from './venus/BioengineeringStudies';
@@ -391,9 +391,9 @@ import {FusionBombing} from './turmoil/FusionBombing';
 import {MediaManipulation} from './turmoil/MediaManipulation';
 import {InaugerationCeremony} from './turmoil/InaugerationCeremony';
 import {PoliticalDonations} from './turmoil/PoliticalDonations';
-//import {DesignedOrganismsChemical} from './DesignedOrganismsChemical';
+import {DesignedOrganisms} from './turmoil/DesignedOrganisms';
 import {TellurianEcosystems} from './turmoil/TellurianEcosystems';
-//import {Preservationism} from './Preservationism';
+import {Preservationism} from './turmoil/Preservationism';
 import {InterplanetaryDiplomacy} from './turmoil/InterplanetaryDiplomacy';
 import {WorldGovernmentDiplomats} from './turmoil/WorldGovernmentDiplomats';
 import {HybridVessels} from './turmoil/HybridVessels';
@@ -421,47 +421,47 @@ import {ExoplanetLanding} from './turmoil/ExoplanetLanding';
 import {FirstMaritanMemorial} from './turmoil/FirstMartianMemorial';
 import {TerraformingUnion} from './turmoil/TerraformingUnion';
 import {AcquiredConsultingFirm} from './turmoil/AcquiredConsultingFirm';
-import {SpecialDesignChemical} from './replacements/SpecialDesignChemical';
+//import {SpecialDesignChemical} from './replacements/archived/SpecialDesignChemical';
 import {AerobrakedAmmoniaAsteroidChemical} from './replacements/AerobrakedAmmoniaAsteroidChemical';
-import {SmallAsteroidChemical} from './replacements/SmallAsteroidChemical';
-import {GHGProducingBacteriaChemical} from './replacements/GHGProducingBacteriaChemical';
-import {AdaptationTechnologyChemical} from './replacements/AdaptationTechnologyChemical';
+//import {SmallAsteroidChemical} from './replacements/archived/SmallAsteroidChemical';
+//import {GHGProducingBacteriaChemical} from './replacements/archived/GHGProducingBacteriaChemical';
+//import {AdaptationTechnologyChemical} from './replacements/archived/AdaptationTechnologyChemical';
 import {UndergroundDetonationsChemical} from './replacements/UndergroundDetonationsChemical';
-import {SpaceMirrorsChemical} from './replacements/SpaceMirrorsChemical';
+//import {SpaceMirrorsChemical} from './replacements/archived/SpaceMirrorsChemical';
 import {EarthCatapultChemical} from './replacements/EarthCatapultChemical';
 import {MarsUniversityChemical} from './replacements/MarsUniversityChemical';
-import {OlympusConferenceChemical} from './replacements/OlympusConferenceChemical';
+//import {OlympusConferenceChemical} from './replacements/archived/OlympusConferenceChemical';
 import {IndustrialCenterChemical} from './replacements/IndustrialCenterChemical';
 import {ForcedPrecipitationChemical} from './replacements/ForcedPrecipitationChemical';
 import {JetStreamMicroscrappersChemical} from './replacements/JetStreamMicroscrappersChemical';
 import {ExtractorBalloonsChemical} from './replacements/ExtractorBalloonsChemical';
 import {ThermophilesChemical} from './replacements/ThermophilesChemical';
 import {VenusWaystationChemical} from './replacements/VenusWaystationChemical';
-import {SubZeroSaltFishChemical} from './replacements/SubZeroSaltFishChemical';
+//import {SubZeroSaltFishChemical} from './replacements/archived/SubZeroSaltFishChemical';
 import {MartianZooChemical} from './replacements/MartianZooChemical';
 import {TradingColonyChemical} from './replacements/TradingColonyChemical';
-import {SpinoffDepartmentChemical} from './replacements/SpinoffDepartmentChemical';
-import {DirectedImpactorsChemical} from './replacements/DirectedImpactorsChemical';
+//import {SpinoffDepartmentChemical} from './replacements/archived/SpinoffDepartmentChemical';
+//import {DirectedImpactorsChemical} from './replacements/archived/DirectedImpactorsChemical';
 import {AsteroidHollowingChemical} from './replacements/AsteroidHollowingChemical';
 import {OrbitalCleanupChemical} from './replacements/OrbitalCleanupChemical';
 import {CuttingEdgeTechnologyChemical} from './replacements/CuttingEdgeTechnologyChemical';
 import {MeatIndustryChemical} from './replacements/MeatIndustryChemical';
 //import {CarbonNanosystemsChemical} from './CarbonNanosystemsChemical';
-import {SolarLogisticsChemical} from './replacements/SolarLogisticsChemical';
-import {MartianLumberCorpChemical} from './replacements/MartianLumberCorpChemical';
-import {UndergroundCityChemical} from './replacements/UndergroundCityChemical';
-import {CloudSeedingChemical} from './replacements/CloudSeedingChemical';
+//import {SolarLogisticsChemical} from './replacements/archived/SolarLogisticsChemical';
+//import {MartianLumberCorpChemical} from './replacements/archived/MartianLumberCorpChemical';
+//import {UndergroundCityChemical} from './replacements/archived/UndergroundCityChemical';
+//import {CloudSeedingChemical} from './replacements/archived/CloudSeedingChemical';
 import {BiomassCombustorsChemical} from './replacements/BiomassCombustorsChemical';
 import {WormsChemical} from './replacements/WormsChemical';
 import {AsteroidMiningConsortiumChemical} from './replacements/AsteroidMiningConsortiumChemical';
 import {TollStationChemical} from './replacements/TollStationChemical';
-import {ResearchChemical} from './replacements/ResearchChemical';
-import {HackersChemical} from './replacements/HackersChemical';
-import {CorporateStrongholdChemical} from './replacements/CorporateStrongholdChemical';
+//import {ResearchChemical} from './replacements/archived/ResearchChemical';
+//import {HackersChemical} from './replacements/archived/HackersChemical';
+//import {CorporateStrongholdChemical} from './replacements/archived/CorporateStrongholdChemical';
 import {VenusSoilsChemical} from './replacements/VenusSoilsChemical';
 import {ResearchColonyChemical} from './replacements/ResearchColonyChemical';
 import {SpacePortColonyChemical} from './replacements/SpacePortColonyChemical';
-import {SnowAlgaeChemical} from './replacements/SnowAlgaeChemical';
+//import {SnowAlgaeChemical} from './replacements/archived/SnowAlgaeChemical';
 import {BactoviralResearchChemical} from './replacements/BactoviralResearchChemical';
 import {LegalExperts} from './preludes/LegalExperts';
 import {MaterialLoan} from './preludes/MaterialLoan';
@@ -560,14 +560,14 @@ import { FoodSupply } from './globalevents/FoodSupply';
 import { ConstitutionalReformation } from './globalevents/ConstitutionalReformation';
 import { EcologyProjects } from './globalevents/EcologyProjects';
 import { EcosystemDisruption } from './globalevents/EcosystemDisruption';
-//import {RedUprising} from './RedUprising';
+import {RedUprising} from './globalevents/RedUprising';
 import { WildfiresEvent } from './globalevents/WildfiresEvent';
 import { EgalitarianMovements } from './globalevents/EgalitarianMovements';
 import { MarsStockExchange } from './globalevents/MarsStockExchange';
 import { ColonizationOfMercury } from './globalevents/ColonizationOfMercury';
 import { RevisedPatentLaw } from './globalevents/RevisedPatentLaw';
 import { EcologicalSupport } from './globalevents/EcologicalSupport';
-//import {AbstinanceBonus} from './AbstinanceBonus';
+import {AbstinanceBonus} from './globalevents/AbstinanceBonus';
 import { RedTourism } from './globalevents/RedTourism';
 import { PreferentialLoans } from './globalevents/PreferentialLoans';
 import { SevereMarsquake } from './globalevents/SevereMarsquake';
@@ -732,7 +732,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.TUNDRA_WILDLIFE]: {Factory: TundraWildlife},
     [CardName.POULTRY]: {Factory: Poultry},
     [CardName.FISH_FARMING_LAKE]: {Factory: FishFarmingLake},
-    //[CardName.CEPHALOPODS]: {Factory: Cephalopods},
+    [CardName.CEPHALOPODS]: {Factory: Cephalopods},
     [CardName.ENDANGERED_SPECIES_REFUGE]: {Factory: EndangeredSpeciesRefuge},
     [CardName.NON_HYPOXIC_SMALL_ANIMALS]: {Factory: NonHypoxicSmallAnimals},
     [CardName.SUBTERRANEAN_CREATURES]: {Factory: SubterranianCreatures},
@@ -876,7 +876,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.WIRELESS_ENERGY_TRANSFER]: {Factory: WirelessEnergyTransfer, compatibility: 'corpera'},
     [CardName.KUGELBLITZ]: {Factory: Kugelblitz, compatibility: 'corpera'},
     [CardName.SCIENTIFIC_LOGS]: {Factory: ScientificLogs, compatibility: 'corpera'},
-    //[CardName.SPONSORED_RESEARCH_FIRM]: {Factory: SponsoredResearchFirm, compatibility: 'corpera'},
+    [CardName.SPONSORED_RESEARCH_FIRM]: {Factory: SponsoredResearchFirm, compatibility: 'corpera'},
     [CardName.NEURAL_ENCHANCERS]: {Factory: NeuralEnhancers, compatibility: 'corpera'},
     [CardName.CONSTRUCTION_CENTER]: {Factory: ConstructionCenter, compatibility: 'corpera'},
     [CardName.BIODIVERSITY_GRANTS]: {Factory: BiodiversityGrants, compatibility: 'corpera'},
@@ -884,7 +884,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.CANALS]: {Factory: Canals, compatibility: 'corpera'},
     [CardName.STEEL_EXPORTS]: {Factory: SteelExports, compatibility: 'corpera'},
     [CardName.JOVIAN_SUPPLIERS]: {Factory: JovianSuppliers, compatibility: 'corpera'},
-    //[CardName.PROJECT_ADVANCEMENT]: {Factory: ProjectAdvancement, compatibility: 'corpera'},
+    [CardName.PROJECT_ADVANCEMENT]: {Factory: ProjectAdvancement, compatibility: 'corpera'},
     [CardName.SUCCESSFUL_COMMERCE]: {Factory: SuccessfulCommerce, compatibility: 'corpera'},
     [CardName.SCIENTIFIC_SUPPORT]: {Factory: ScientificSupport, compatibility: 'corpera'},
     [CardName.GALILEAN_GOVERNOR]: {Factory: GalileanGovernor, compatibility: 'corpera'},
@@ -948,7 +948,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.AIRBORNE_MICROBES]: {Factory: AirborneMicrobes, compatibility: 'venus'},
     [CardName.PH_NEUTRALIZERS]: {Factory: PHNeutralizers, compatibility: 'venus'},
     [CardName.CARBON_FIXING_MICROBES]: {Factory: CarbonFixingMicrobes, compatibility: 'venus'},
-    //[CardName.DESIGNED_FLYERS]: {Factory: DesignedFlyers, compatibility: 'venus'},
+    [CardName.DESIGNED_FLYERS]: {Factory: DesignedFlyers, compatibility: 'venus'},
     [CardName.VENUS_SURFACE_DWELLERS]: {Factory: VenusSurfaceDwellers, compatibility: 'venus'},
     [CardName.VENUSIAN_INVERTEBRATES]: {Factory: VenusianInvertebrates, compatibility: 'venus'},
     [CardName.BIOENGINEERING_STUDIES]: {Factory: BioengineeringStudies, compatibility: 'venus'},
@@ -1073,9 +1073,9 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.MEDIA_MANIPULATION]: {Factory: MediaManipulation, compatibility: 'turmoil'},
     [CardName.INAUGERATION_CEREMONY]: {Factory: InaugerationCeremony, compatibility: 'turmoil'},
     [CardName.POLITICAL_DONATIONS]: {Factory: PoliticalDonations, compatibility: 'turmoil'},
-    //[CardName.DESIGNED_ORGANISMS_CHEMICAL]: {Factory: DesignedOrganismsChemical, compatibility: 'turmoil'},
+    [CardName.DESIGNED_ORGANISMS_CHEMICAL]: {Factory: DesignedOrganisms, compatibility: 'turmoil'},
     [CardName.TELLURIAN_ECOSYSTEMS]: {Factory: TellurianEcosystems, compatibility: 'turmoil'},
-    //[CardName.PRESERVATIONISM]: {Factory: Preservationism, compatibility: 'turmoil'},
+    [CardName.PRESERVATIONISM]: {Factory: Preservationism, compatibility: 'turmoil'},
     [CardName.INTERPLANETARY_DIPLOMACY]: {Factory: InterplanetaryDiplomacy, compatibility: 'turmoil'},
     [CardName.WORLD_GOVERNMENT_DIPLOMATS]: {Factory: WorldGovernmentDiplomats, compatibility: 'turmoil'},
     [CardName.HYBRID_VESSELS]: {Factory: HybridVessels, compatibility: 'turmoil'},
@@ -1104,47 +1104,47 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.TERRAFORMING_UNION]: {Factory: TerraformingUnion, compatibility: 'turmoil'},
     [CardName.ACQUIRED_CONSULTING_FIRM]: {Factory: AcquiredConsultingFirm, compatibility: 'turmoil'},
 
-    [CardName.SPECIAL_DESIGN_CHEMICAL]: {Factory: SpecialDesignChemical},
+    //[CardName.SPECIAL_DESIGN_CHEMICAL]: {Factory: SpecialDesignChemical},
     [CardName.AEROBRAKED_AMMONIA_ASTEROID_CHEMICAL]: {Factory: AerobrakedAmmoniaAsteroidChemical},
-    [CardName.SMALL_ASTEROID_CHEMICAL]: {Factory: SmallAsteroidChemical, compatibility: 'promo'},
-    [CardName.GHG_PRODUCING_BACTERIA_CHEMICAL]: {Factory: GHGProducingBacteriaChemical},
-    [CardName.ADAPTATION_TECHNOLOGY_CHEMICAL]: {Factory: AdaptationTechnologyChemical},
+    //[CardName.SMALL_ASTEROID_CHEMICAL]: {Factory: SmallAsteroidChemical, compatibility: 'promo'},
+    //[CardName.GHG_PRODUCING_BACTERIA_CHEMICAL]: {Factory: GHGProducingBacteriaChemical},
+    //[CardName.ADAPTATION_TECHNOLOGY_CHEMICAL]: {Factory: AdaptationTechnologyChemical},
     [CardName.UNDERGROUND_DETONATIONS_CHEMICAL]: {Factory: UndergroundDetonationsChemical},
-    [CardName.SPACE_MIRRORS_CHEMICAL]: {Factory: SpaceMirrorsChemical},
+    //[CardName.SPACE_MIRRORS_CHEMICAL]: {Factory: SpaceMirrorsChemical},
     [CardName.EARTH_CATAPULT_CHEMICAL]: {Factory: EarthCatapultChemical, compatibility: 'corpera'},
     [CardName.MARS_UNIVERSITY_CHEMICAL]: {Factory: MarsUniversityChemical, compatibility: 'corpera'},
-    [CardName.OLYMPUS_CONFERENCE_CHEMICAL]: {Factory: OlympusConferenceChemical, compatibility: 'corpera'},
+    //[CardName.OLYMPUS_CONFERENCE_CHEMICAL]: {Factory: OlympusConferenceChemical, compatibility: 'corpera'},
     [CardName.INDUSTRIAL_CENTER_CHEMICAL]: {Factory: IndustrialCenterChemical, compatibility: 'corpera'},
     [CardName.FORCED_PRECIPITATION_CHEMICAL]: {Factory: ForcedPrecipitationChemical, compatibility: 'venus'},
     [CardName.JET_STREAM_MICROSCRAPPERS_CHEMICAL]: {Factory: JetStreamMicroscrappersChemical, compatibility: 'venus'},
     [CardName.EXTRACTOR_BALLOONS_CHEMICAL]: {Factory: ExtractorBalloonsChemical, compatibility: 'venus'},
     [CardName.THERMOPHILES_CHEMICAL]: {Factory: ThermophilesChemical, compatibility: 'venus'},
     [CardName.VENUS_WAYSTATION_CHEMICAL]: {Factory: VenusWaystationChemical, compatibility: 'venus'},
-    [CardName.SUBZERO_SALT_FISH_CHEMICAL]: {Factory: SubZeroSaltFishChemical, compatibility: 'colonies'},
+    //[CardName.SUBZERO_SALT_FISH_CHEMICAL]: {Factory: SubZeroSaltFishChemical, compatibility: 'colonies'},
     [CardName.MARTIAN_ZOO_CHEMICAL]: {Factory: MartianZooChemical, compatibility: 'colonies'},
     [CardName.TRADING_COLONY_CHEMICAL]: {Factory: TradingColonyChemical, compatibility: 'colonies'},
-    [CardName.SPINOFF_DEPARTMENT_CHEMICAL]: {Factory: SpinoffDepartmentChemical, compatibility: 'colonies'},
-    [CardName.DIRECTED_IMPACTORS_CHEMICAL]: {Factory: DirectedImpactorsChemical, compatibility: 'promo'},
+    //[CardName.SPINOFF_DEPARTMENT_CHEMICAL]: {Factory: SpinoffDepartmentChemical, compatibility: 'colonies'},
+    //[CardName.DIRECTED_IMPACTORS_CHEMICAL]: {Factory: DirectedImpactorsChemical, compatibility: 'promo'},
     [CardName.ASTEROID_HOLLOWING_CHEMICAL]: {Factory: AsteroidHollowingChemical, compatibility: 'promo'},
     [CardName.ORBITAL_CLEANUP_CHEMICAL]: {Factory: OrbitalCleanupChemical, compatibility: 'promo'},
     [CardName.CUTTING_EDGE_TECHNOLOGY_CHEMICAL]: {Factory: CuttingEdgeTechnologyChemical, compatibility: 'promo'},
     [CardName.MEAT_INDUSTRY_CHEMICAL]: {Factory: MeatIndustryChemical, compatibility: 'promo'},
     //[CardName.CARBON_NANOSYSTEMS_CHEMICAL]: {Factory: CarbonNanosystemsChemical, compatibility: 'promo'},
-    [CardName.SOLAR_LOGISTICS_CHEMICAL]: {Factory: SolarLogisticsChemical, compatibility: 'promo'},
-    [CardName.MARTIAN_LUMBER_CORP_CHEMICAL]: {Factory: MartianLumberCorpChemical, compatibility: 'promo'},
-    [CardName.UNDERGROUND_CITY_CHEMICAL]: {Factory: UndergroundCityChemical},
-    [CardName.CLOUD_SEEDING_CHEMICAL]: {Factory: CloudSeedingChemical},
+    //[CardName.SOLAR_LOGISTICS_CHEMICAL]: {Factory: SolarLogisticsChemical, compatibility: 'promo'},
+    //[CardName.MARTIAN_LUMBER_CORP_CHEMICAL]: {Factory: MartianLumberCorpChemical, compatibility: 'promo'},
+    //[CardName.UNDERGROUND_CITY_CHEMICAL]: {Factory: UndergroundCityChemical},
+    //[CardName.CLOUD_SEEDING_CHEMICAL]: {Factory: CloudSeedingChemical},
     [CardName.BIOMASS_COMBUSTORS_CHEMICAL]: {Factory: BiomassCombustorsChemical},
     [CardName.WORMS_CHEMICAL]: {Factory: WormsChemical},
     [CardName.ASTEROID_MINING_CONSORTIUM_CHEMICAL]: {Factory: AsteroidMiningConsortiumChemical, compatibility: 'corpera'},
     [CardName.TOLL_STATION_CHEMICAL]: {Factory: TollStationChemical, compatibility: 'corpera'},
-    [CardName.RESEARCH_CHEMICAL]: {Factory: ResearchChemical, compatibility: 'corpera'},
-    [CardName.HACKERS_CHEMICAL]: {Factory: HackersChemical, compatibility: 'corpera'},
-    [CardName.CORPORATE_STRONGHOLD_CHEMICAL]: {Factory: CorporateStrongholdChemical, compatibility: 'corpera'},
+    //[CardName.RESEARCH_CHEMICAL]: {Factory: ResearchChemical, compatibility: 'corpera'},
+    //[CardName.HACKERS_CHEMICAL]: {Factory: HackersChemical, compatibility: 'corpera'},
+    //[CardName.CORPORATE_STRONGHOLD_CHEMICAL]: {Factory: CorporateStrongholdChemical, compatibility: 'corpera'},
     [CardName.VENUS_SOILS_CHEMICAL]: {Factory: VenusSoilsChemical, compatibility: 'venus'},
     [CardName.RESEARCH_COLONY_CHEMICAL]: {Factory: ResearchColonyChemical, compatibility: 'colonies'},
     [CardName.SPACE_PORT_COLONY_CHEMICAL]: {Factory: SpacePortColonyChemical, compatibility: 'colonies'},
-    [CardName.SNOW_ALGAE_CHEMICAL]: {Factory: SnowAlgaeChemical, compatibility: 'promo'},
+    //[CardName.SNOW_ALGAE_CHEMICAL]: {Factory: SnowAlgaeChemical, compatibility: 'promo'},
     [CardName.BACTOVIRAL_RESEARCH_CHEMICAL]: {Factory: BactoviralResearchChemical, compatibility: 'promo'},
   },
   globalEvents: {
@@ -1169,14 +1169,14 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [GlobalEventName.CONSTITUTIONAL_REFORMATION]: {Factory: ConstitutionalReformation},
     [GlobalEventName.ECOLOGY_PROJECTS]: {Factory: EcologyProjects},
     [GlobalEventName.ECOSYSTEM_DISRUPTION]: {Factory: EcosystemDisruption},
-    //[GlobalEventName.RED_UPRISING]: {Factory: RedUprising},
+    [GlobalEventName.RED_UPRISING]: {Factory: RedUprising},
     [GlobalEventName.WILDFIRES]: {Factory: WildfiresEvent},
     [GlobalEventName.EGALITARIAN_MOVEMENTS]: {Factory: EgalitarianMovements},
     [GlobalEventName.MARS_STOCK_EXCHANGE]: {Factory: MarsStockExchange},
     [GlobalEventName.COLONIZATION_OF_MERCURY]: {Factory: ColonizationOfMercury},
     [GlobalEventName.REVISED_PATENT_LAW]: {Factory: RevisedPatentLaw},
     [GlobalEventName.ECOLOGICAL_SUPPORT]: {Factory: EcologicalSupport},
-    //[GlobalEventName.ABSTINANCE_BONUS]: {Factory: AbstinanceBonus},
+    [GlobalEventName.ABSTINANCE_BONUS]: {Factory: AbstinanceBonus},
     [GlobalEventName.RED_TOURISM]: {Factory: RedTourism},
     [GlobalEventName.PREFERENTIAL_LOANS]: {Factory: PreferentialLoans},
     [GlobalEventName.SEVERE_MARSQUAKE]: {Factory: SevereMarsquake},
@@ -1204,47 +1204,47 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [GlobalEventName.ECONOMIC_DEPRESSION]: {Factory: EconomicDepression, compatibility: 'colonies'},
   },
   cardsToRemove: [
-    CardName.SPECIAL_DESIGN,
+    //CardName.SPECIAL_DESIGN,
     CardName.AEROBRAKED_AMMONIA_ASTEROID,
-    CardName.SMALL_ASTEROID,
-    CardName.GHG_PRODUCING_BACTERIA,
-    CardName.ADAPTATION_TECHNOLOGY,
+    //CardName.SMALL_ASTEROID,
+    //CardName.GHG_PRODUCING_BACTERIA,
+    //CardName.ADAPTATION_TECHNOLOGY,
     CardName.UNDERGROUND_DETONATIONS,
-    CardName.SPACE_MIRRORS,
+    //CardName.SPACE_MIRRORS,
     CardName.EARTH_CATAPULT,
     CardName.MARS_UNIVERSITY,
-    CardName.OLYMPUS_CONFERENCE,
+    //CardName.OLYMPUS_CONFERENCE,
     CardName.INDUSTRIAL_CENTER,
     CardName.FORCED_PRECIPITATION,
     CardName.JET_STREAM_MICROSCRAPPERS,
     CardName.EXTRACTOR_BALLOONS,
     CardName.THERMOPHILES,
     CardName.VENUS_WAYSTATION,
-    CardName.SUBZERO_SALT_FISH,
+    //CardName.SUBZERO_SALT_FISH,
     CardName.MARTIAN_ZOO,
     CardName.TRADING_COLONY,
-    CardName.SPINOFF_DEPARTMENT,
+    //CardName.SPINOFF_DEPARTMENT,
     CardName.DIRECTED_IMPACTORS,
-    CardName.ASTEROID_HOLLOWING,
+    //CardName.ASTEROID_HOLLOWING,
     CardName.ORBITAL_CLEANUP,
     CardName.CUTTING_EDGE_TECHNOLOGY,
     CardName.MEAT_INDUSTRY,
     //CardName.CARBON_NANOSYSTEMS,
-    CardName.SOLAR_LOGISTICS,
-    CardName.MARTIAN_LUMBER_CORP,
-    CardName.UNDERGROUND_CITY,
-    CardName.CLOUD_SEEDING,
+    //CardName.SOLAR_LOGISTICS,
+    //CardName.MARTIAN_LUMBER_CORP,
+    //CardName.UNDERGROUND_CITY,
+    //CardName.CLOUD_SEEDING,
     CardName.BIOMASS_COMBUSTORS,
     CardName.WORMS,
     CardName.ASTEROID_MINING_CONSORTIUM,
     CardName.TOLL_STATION,
-    CardName.RESEARCH,
-    CardName.HACKERS,
-    CardName.CORPORATE_STRONGHOLD,
+    //CardName.RESEARCH,
+    //CardName.HACKERS,
+    //CardName.CORPORATE_STRONGHOLD,
     CardName.VENUS_SOILS,
     CardName.RESEARCH_COLONY,
     CardName.SPACE_PORT_COLONY,
-    CardName.SNOW_ALGAE,
+    //CardName.SNOW_ALGAE,
     CardName.BACTOVIRAL_RESEARCH,
     CardName.SELF_SUFFICIENT_SETTLEMENT,
     CardName.MOHOLE_EXCAVATION,

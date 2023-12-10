@@ -1,19 +1,19 @@
-import {IProjectCard} from '../../IProjectCard';
-import {IActionCard, ICard} from '../../ICard';
-import {Card} from '../../Card';
-import {CardName} from '../../../../common/cards/CardName';
-import {CardType} from '../../../../common/cards/CardType';
-import {CardResource} from '../../../../common/CardResource';
-import {Tag} from '../../../../common/cards/Tag';
-import {IPlayer} from '../../../IPlayer';
-import {SelectCard} from '../../../inputs/SelectCard';
-import {SelectOption} from '../../../inputs/SelectOption';
-import {OrOptions} from '../../../inputs/OrOptions';
-import {MAX_TEMPERATURE} from '../../../../common/constants';
-import {LogHelper} from '../../../LogHelper';
-import {SelectPaymentDeferred} from '../../../deferredActions/SelectPaymentDeferred';
-import {CardRenderer} from '../../render/CardRenderer';
-import {TITLES} from '../../../inputs/titles';
+import {IProjectCard} from '../../../IProjectCard';
+import {IActionCard, ICard} from '../../../ICard';
+import {Card} from '../../../Card';
+import {CardName} from '../../../../../common/cards/CardName';
+import {CardType} from '../../../../../common/cards/CardType';
+import {CardResource} from '../../../../../common/CardResource';
+import {Tag} from '../../../../../common/cards/Tag';
+import {IPlayer} from '../../../../IPlayer';
+import {SelectCard} from '../../../../inputs/SelectCard';
+import {SelectOption} from '../../../../inputs/SelectOption';
+import {OrOptions} from '../../../../inputs/OrOptions';
+import {MAX_TEMPERATURE} from '../../../../../common/constants';
+import {LogHelper} from '../../../../LogHelper';
+import {SelectPaymentDeferred} from '../../../../deferredActions/SelectPaymentDeferred';
+import {CardRenderer} from '../../../render/CardRenderer';
+import {TITLES} from '../../../../inputs/titles';
 
 export class DirectedImpactorsChemical extends Card implements IActionCard, IProjectCard {
   constructor() {

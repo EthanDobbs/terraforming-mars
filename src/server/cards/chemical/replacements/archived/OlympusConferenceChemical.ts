@@ -1,15 +1,15 @@
-import {IProjectCard} from '../../IProjectCard';
-import {Tag} from '../../../../common/cards/Tag';
-import {Card} from '../../Card';
-import {CardType} from '../../../../common/cards/CardType';
-import {IPlayer} from '../../../IPlayer';
-import {OrOptions} from '../../../inputs/OrOptions';
-import {SelectOption} from '../../../inputs/SelectOption';
-import {CardResource} from '../../../../common/CardResource';
-import {CardName} from '../../../../common/cards/CardName';
-import {Priority, SimpleDeferredAction} from '../../../deferredActions/DeferredAction';
-import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
+import {IProjectCard} from '../../../IProjectCard';
+import {Tag} from '../../../../../common/cards/Tag';
+import {Card} from '../../../Card';
+import {CardType} from '../../../../../common/cards/CardType';
+import {IPlayer} from '../../../../IPlayer';
+import {OrOptions} from '../../../../inputs/OrOptions';
+import {SelectOption} from '../../../../inputs/SelectOption';
+import {CardResource} from '../../../../../common/CardResource';
+import {CardName} from '../../../../../common/cards/CardName';
+import {Priority, SimpleDeferredAction} from '../../../../deferredActions/DeferredAction';
+import {CardRenderer} from '../../../render/CardRenderer';
+import {played} from '../../../Options';
 
 export class OlympusConferenceChemical extends Card implements IProjectCard {
   constructor() {

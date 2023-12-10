@@ -32,6 +32,7 @@ import {Color} from '../common/Color';
 import {OrOptions} from './inputs/OrOptions';
 import {Stock} from './player/Stock';
 import {UnderworldPlayerData} from './underworld/UnderworldData';
+import { GenerationData } from './player/GenerationData';
 
 export type ResourceSource = IPlayer | GlobalEventName | ICard;
 
@@ -136,7 +137,10 @@ export interface IPlayer {
   victoryPointsByGeneration: Array<number>;
   totalDelegatesPlaced: number;
 
+  // Supercapacitors Effect
   optionalEnergyConversion: boolean;
+
+  generationData: GenerationData;
 
   underworldData: UnderworldPlayerData;
 

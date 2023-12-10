@@ -74,6 +74,7 @@ import {UnderworldPlayerData} from './underworld/UnderworldData';
 import {UnderworldExpansion} from './underworld/UnderworldExpansion';
 import {Counter} from './behavior/Counter';
 import {SelectAmount} from './inputs/SelectAmount';
+import { GenerationData } from './player/GenerationData';
 
 const THROW_WAITING_FOR = Boolean(process.env.THROW_WAITING_FOR);
 
@@ -212,6 +213,8 @@ export class Player implements IPlayer {
 
   public optionalEnergyConversion: boolean = false;
 
+  public generationData: GenerationData;
+
   constructor(
     public name: string,
     public color: Color,
@@ -230,6 +233,7 @@ export class Player implements IPlayer {
     this.colonies = new Colonies(this);
     this.production = new Production(this);
     this.stock = new Stock(this);
+    this.generationData = new GenerationData();
   }
 
   public static initialize(
@@ -305,6 +309,7 @@ export class Player implements IPlayer {
   public increaseTerraformRating(steps: number = 1, opts: {log?: boolean} = {}) {
     const raiseRating = () => {
       this.terraformRating += steps;
+      this.generationData.hasRaisedTR = true;
 
       if (opts.log === true) {
         this.game.log('${0} gained ${1} TR', (b) => b.player(this).number(steps));

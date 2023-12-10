@@ -1,10 +1,10 @@
-import {Tag} from '../../../../common/cards/Tag';
-import {CardName} from '../../../../common/cards/CardName';
-import {CardRenderer} from '../../render/CardRenderer';
-import {Card} from '../../Card';
-import {CardType} from '../../../../common/cards/CardType';
-import {played} from '../../Options';
-import {IPlayer} from '../../../IPlayer';
+import {Tag} from '../../../../../common/cards/Tag';
+import {CardName} from '../../../../../common/cards/CardName';
+import {CardRenderer} from '../../../render/CardRenderer';
+import {Card} from '../../../Card';
+import {CardType} from '../../../../../common/cards/CardType';
+import {played} from '../../../Options';
+import {IPlayer} from '../../../../IPlayer';
 
 export class MartianLumberCorpChemical extends Card {
   constructor() {

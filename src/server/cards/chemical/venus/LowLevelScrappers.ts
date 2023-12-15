@@ -12,7 +12,7 @@ export class LowLevelScrappers extends ActionCard implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.LOW_LEVEL_SCRAPPERS,
       tags: [Tag.VENUS],
-      cost: 5,
+      cost: 4,
       resourceType: CardResource.FLOATER,
       requirements: {venus: 10},
 

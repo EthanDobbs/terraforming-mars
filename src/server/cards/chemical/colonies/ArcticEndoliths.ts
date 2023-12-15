@@ -12,7 +12,7 @@ export class ArcticEndoliths extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.ARCTIC_ENDOLITHS,
-      cost: 8,
+      cost: 7,
       tags: [Tag.MICROBE],
       requirements: {temperature: -16, max},
       victoryPoints: 1,

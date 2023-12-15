@@ -12,19 +12,20 @@ export class UltralightFloaters extends Card implements IProjectCard {
       type: CardType.EVENT,
       name: CardName.ULTRALIGHT_FLOATERS,
       tags: [Tag.VENUS],
-      cost: 1,
+      cost: 3,
       requirements: {venus: 6},
 
       behavior: {
+        production: {megacredits: 1},
         addResourcesToAnyCard: {type: CardResource.FLOATER, tag: Tag.VENUS, count: 2, autoSelect: true}
       },
 
       metadata: {
         cardNumber: 'x250',
         renderData: CardRenderer.builder((b) => {
-          b.floaters(2, {secondaryTag: Tag.VENUS});
+          b.production((pb) => pb.megacredits(1)).floaters(2, {secondaryTag: Tag.VENUS});
         }),
-        description: 'Requires Venus 6%. Add 2 floaters to any Venus card.',
+        description: 'Requires Venus 6%. Increase your M€ production 1 step and add 2 floaters to any Venus card.',
       },
     });
   }

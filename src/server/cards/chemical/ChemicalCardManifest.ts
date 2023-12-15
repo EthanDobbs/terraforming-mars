@@ -193,7 +193,7 @@ import {LaserLightsails} from './corpera/LaserLightsails';
 import {AlloyFactory} from './corpera/AlloyFactory';
 import {UndergroundTestSite} from './corpera/UndergroundTestSite';
 import {ScientificMegaopolis} from './corpera/ScientificMegaopolis';
-import {AlchemicReactions} from './corpera/AlchemicReactions';
+import {AlchemicReactions} from './colonies/AlchemicReactions';
 import {WirelessEnergyTransfer} from './corpera/WirelessEnergyTransfer';
 import {Kugelblitz} from './corpera/Kugelblitz';
 import {ScientificLogs} from './corpera/ScientificLogs';
@@ -342,7 +342,7 @@ import {FloatingTechInvestments} from './colonies/FloatingTechInvestments';
 import {Primates} from './base/Primates';
 import {ColonySuppliers} from './colonies/ColonySuppliers';
 import {FuelSubsidies} from './colonies/FuelSubsidies';
-import {TradeDealLeverage} from './colonies/TradeDealLeverage';
+import {UNMISponsorship} from './colonies/UNMISponsorship';
 import {RemoteTestZone} from './colonies/RemoteTestZone';
 import {WaypointColony} from './colonies/WaypointColony';
 import {PrivateColony} from './colonies/PrivateColony';
@@ -363,7 +363,7 @@ import {MuseumOfLuna} from './colonies/MuseumOfLuna';
 import {LunarResort} from './colonies/LunarResort';
 import {LunaColonizationInvestments} from './colonies/LunaColonizationInvestments';
 import {MicrogravityLab} from './colonies/MicrogravityLab';
-import {SolarStation} from './colonies/SolarStation';
+import {SolarStation} from './corpera/SolarStation';
 import {OrbitalShipyard} from './colonies/OrbitalShipyard';
 import {LunarH3Mining} from './colonies/LunarH3Mining';
 import {ColonyMiningInfrastructure} from './colonies/ColonyMiningInfrastructure';
@@ -874,7 +874,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.SCIENTIFIC_MEGAOPOLIS]: {Factory: ScientificMegaopolis, compatibility: 'corpera'},
     [CardName.ALCHEMIC_REACTIONS]: {Factory: AlchemicReactions, compatibility: 'corpera'},
     [CardName.WIRELESS_ENERGY_TRANSFER]: {Factory: WirelessEnergyTransfer, compatibility: 'corpera'},
-    [CardName.KUGELBLITZ]: {Factory: Kugelblitz, compatibility: 'corpera'},
+    [CardName.SOLAR_STATION]: {Factory: SolarStation, compatibility: 'corpera'},
     [CardName.SCIENTIFIC_LOGS]: {Factory: ScientificLogs, compatibility: 'corpera'},
     [CardName.SPONSORED_RESEARCH_FIRM]: {Factory: SponsoredResearchFirm, compatibility: 'corpera'},
     [CardName.NEURAL_ENCHANCERS]: {Factory: NeuralEnhancers, compatibility: 'corpera'},
@@ -1023,7 +1023,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.PRIMATES]: {Factory: Primates, compatibility: 'colonies'},
     [CardName.COLONY_SUPPLIERS]: {Factory: ColonySuppliers, compatibility: 'colonies'},
     [CardName.FUEL_SUBSIDIES]: {Factory: FuelSubsidies, compatibility: 'colonies'},
-    [CardName.TRADE_DEAL_LEVERAGE]: {Factory: TradeDealLeverage, compatibility: 'colonies'},
+    [CardName.KUGELBLITZ]: {Factory: Kugelblitz, compatibility: 'colonies'},
     [CardName.REMOTE_TEST_ZONE]: {Factory: RemoteTestZone, compatibility: 'colonies'},
     [CardName.WAYPOINT_COLONY]: {Factory: WaypointColony, compatibility: 'colonies'},
     [CardName.PRIVATE_COLONY]: {Factory: PrivateColony, compatibility: 'colonies'},
@@ -1044,7 +1044,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.LUNAR_RESORT]: {Factory: LunarResort, compatibility: 'colonies'},
     [CardName.LUNA_COLONIZATION_INVESTMENTS]: {Factory: LunaColonizationInvestments, compatibility: 'colonies'},
     [CardName.MICROGRAVITY_LAB]: {Factory: MicrogravityLab, compatibility: 'colonies'},
-    [CardName.SOLAR_STATION]: {Factory: SolarStation, compatibility: 'colonies'},
+    [CardName.UNMI_SPONSORSHIP]: {Factory: UNMISponsorship, compatibility: 'colonies'},
     [CardName.ORBITAL_SHIPYARD]: {Factory: OrbitalShipyard, compatibility: 'colonies'},
     [CardName.LUNAR_H3_MINING]: {Factory: LunarH3Mining, compatibility: 'colonies'},
     [CardName.COLONY_MINING_INFRASTRUCTURE]: {Factory: ColonyMiningInfrastructure, compatibility: 'colonies'},

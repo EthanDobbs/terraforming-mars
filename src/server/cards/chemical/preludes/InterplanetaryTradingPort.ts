@@ -21,8 +21,8 @@ export class InterplanetaryTradingPort extends PreludeCard implements IProjectCa
       metadata: {
         cardNumber: 'xP46',
         renderData: CardRenderer.builder((b) => {
-          b.action('Spend 2 titanium to trade.', (eb) => {
-            eb.titanium(2).startAction.trade();
+          b.action('Spend 5 M€ to trade.', (eb) => {
+            eb.megacredits(5).startAction.trade();
           }).br;
           b.colonies(1).tradeFleet();
         }),
@@ -31,10 +31,10 @@ export class InterplanetaryTradingPort extends PreludeCard implements IProjectCa
     });
   }
   public canAct(player: IPlayer): boolean {
-    return player.stock.titanium >= 2 && player.colonies.getFleetSize() > player.colonies.tradesThisGeneration;
+    return player.stock.megacredits >= 5 && player.colonies.getFleetSize() > player.colonies.tradesThisGeneration;
   }
   public action(player: IPlayer) {
-    player.stock.titanium -= 2;
+    player.stock.megacredits -= 5;
     const tradeableColonies = ColoniesHandler.tradeableColonies(player.game);
     return new SelectColony('Select colony tile for trade', 'trade', tradeableColonies)
       .andThen((colony: IColony) => {

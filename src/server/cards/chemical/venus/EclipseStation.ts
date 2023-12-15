@@ -11,7 +11,7 @@ export class EclipseStation extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.ECLIPSE_STATION,
-      cost: 16,
+      cost: 17,
       tags: [Tag.SPACE],
       victoryPoints: 1,
 

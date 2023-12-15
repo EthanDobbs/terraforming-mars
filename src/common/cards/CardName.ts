@@ -1333,7 +1333,7 @@ export enum CardName {
     PRIMATES = 'Primates',
     COLONY_SUPPLIERS = 'Colony Suppliers',
     FUEL_SUBSIDIES = 'Fuel Subsidies',
-    TRADE_DEAL_LEVERAGE = 'Trade Deal Leverage',
+    UNMI_SPONSORSHIP = 'UNMI Sponsorship',
     REMOTE_TEST_ZONE = 'Remote Test Zone',
     WAYPOINT_COLONY = 'Waypoint Colony',
     PRIVATE_COLONY = 'Private Colony',

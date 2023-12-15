@@ -7,6 +7,10 @@
           <div class="card-special card-minus"></div>
           <div class="card-resource card-resource-plant red-outline"></div>
         </template>
+        <template v-if="type === RequirementType.RAISED_TR">
+          <div class="card-special card-plus"></div>
+          <div class="card-tile card-tr card-tr--req"></div>
+        </template>
         <template v-if="type === RequirementType.SUM_TAGS">
           &nbsp;
           <template v-for="(tag, index) in tagList">
@@ -161,6 +165,7 @@ export default Vue.extend({
       case RequirementType.PRODUCTION:
       case RequirementType.REMOVED_PLANTS:
       case RequirementType.SUM_TAGS:
+      case RequirementType.RAISED_TR:
         break;
       }
       return [];
@@ -193,6 +198,7 @@ export default Vue.extend({
       case RequirementType.PARTY:
       case RequirementType.REMOVED_PLANTS:
       case RequirementType.SUM_TAGS:
+      case RequirementType.RAISED_TR:
         return false;
       }
       return this.count > 0 && this.count < 4;

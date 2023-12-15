@@ -3,6 +3,7 @@ export enum RequirementType {
     TEMPERATURE = 'C',
     OCEANS = 'Ocean',
     TR = 'TR',
+    RAISED_TR = 'Raised TR',
     RESOURCE_TYPES = 'Resource type',
     GREENERIES = 'Greenery',
     CITIES = 'City',

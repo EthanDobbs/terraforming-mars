@@ -12,7 +12,7 @@ export class LatticeConstructionMicrobes extends ActionCard implements IProjectC
       type: CardType.ACTIVE,
       name: CardName.LATTICE_CONSTRUCTION_MICROBES,
       tags: [Tag.MICROBE],
-      cost: 7,
+      cost: 6,
       requirements: {tag: Tag.MICROBE, count: 1},
       resourceType: CardResource.MICROBE,
 

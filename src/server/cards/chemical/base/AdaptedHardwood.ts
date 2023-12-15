@@ -10,7 +10,7 @@ export class AdaptedHardwood extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.ADAPTED_HARDWOOD,
-      cost: 22,
+      cost: 20,
       tags: [Tag.PLANT],
       requirements: {temperature: -10},
 

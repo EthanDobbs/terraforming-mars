@@ -11,8 +11,9 @@ export class MicrogravityLab extends Card implements IProjectCard {
       type: CardType.AUTOMATED,
       name: CardName.MICROGRAVITY_LAB,
       tags: [Tag.SCIENCE, Tag.BUILDING],
-      cost: 8,
+      cost: 10,
       requirements: {tag: Tag.SCIENCE, count: 4},
+      victoryPoints: 1,
 
       behavior: {
         production: {megacredits: 2, energy: -1},

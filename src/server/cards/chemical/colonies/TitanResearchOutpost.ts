@@ -12,13 +12,14 @@ export class TitanReseachOutpost extends ActionCard implements IActionCard {
       name: CardName.TITAN_RESEARCH_OUTPOST,
       type: CardType.ACTIVE,
       tags: [Tag.SCIENCE, Tag.JOVIAN],
-      cost: 13,
+      cost: 14,
 
       resourceType: CardResource.FLOATER,
       victoryPoints: {resourcesHere: {}, per: 3},
 
       behavior: {
         drawCard: 2,
+        addResourcesToAnyCard: {type: CardResource.FLOATER, count: 2}
       },
 
       action: {
@@ -33,9 +34,9 @@ export class TitanReseachOutpost extends ActionCard implements IActionCard {
             eb.empty().startAction.floaters(1, {secondaryTag: Tag.JOVIAN});
           }).br;
           b.vpText('1 VP for every 3rd Floater on this card.').br;
-          b.cards(2);
+          b.cards(2).floaters(2).asterix();
         }),
-        description: 'Requires 3 science tags. Draw 2 cards.',
+        description: 'Requires 3 science tags. Draw 2 cards and add 2 floaters to ANY card.',
       },
     });
   }

@@ -12,7 +12,7 @@ export class SpaceTethers extends ActionCard implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.SPACE_TETHERS,
       tags: [Tag.SPACE],
-      cost: 11,
+      cost: 12,
       resourceType: CardResource.FLOATER,
       victoryPoints: 1,
 
@@ -22,7 +22,7 @@ export class SpaceTethers extends ActionCard implements IProjectCard {
           behaviors: [{
             title: 'Spend 1 floater to gain 4 M€',
             spend: {resourcesHere: 1},
-            stock: {megacredits: 4},
+            stock: {megacredits: 5},
           },
           {
             title: 'Add 1 floater to ANY card',
@@ -38,8 +38,8 @@ export class SpaceTethers extends ActionCard implements IProjectCard {
             eb.empty().startAction.floaters(1).asterix();
           }).br;
           b.or().br;
-          b.action('Remove 1 floater from this card to gain 4 M€.', (eb) => {
-            eb.floaters(1).startAction.megacredits(4);
+          b.action('Remove 1 floater from this card to gain 5 M€.', (eb) => {
+            eb.floaters(1).startAction.megacredits(5);
           }).br;
         }),
       },

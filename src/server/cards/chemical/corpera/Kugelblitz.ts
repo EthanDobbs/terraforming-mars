@@ -13,7 +13,7 @@ export class Kugelblitz extends Card implements IProjectCard {
       name: CardName.KUGELBLITZ,
       tags: [Tag.POWER],
       cost: 18,
-      requirements: {tag: Tag.SCIENCE, count: 7},
+      requirements: {tag: Tag.SCIENCE, count: 6},
       victoryPoints: 2,
 
       behavior: {
@@ -29,7 +29,7 @@ export class Kugelblitz extends Card implements IProjectCard {
           }).br;
           b.production((pb) => pb.energy(6, {digit}));
         }),
-        description: 'Requires 7 science tags. Increase your energy production 6 steps.',
+        description: 'Requires 6 science tags. Increase your energy production 6 steps.',
       },
     });
   }

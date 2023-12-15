@@ -39,6 +39,7 @@ export type CardRequirementDescriptor = {
   plantsRemoved?: boolean,
   resourceTypes?: number,
   tr?: number,
+  raisedTR?: {},
 
   // Venus
   venus?: number,
@@ -125,6 +126,8 @@ export function requirementType(descriptor: CardRequirementDescriptor): Requirem
     return RequirementType.UNIQUE_TAGS;
   } else if (descriptor.corruption !== undefined) {
     return RequirementType.CORRUPTION;
+  } else if (descriptor.raisedTR !== undefined) {
+    return RequirementType.RAISED_TR;
   } else {
     throw new Error('Unknown requirement: ' + JSON.stringify(descriptor));
   }

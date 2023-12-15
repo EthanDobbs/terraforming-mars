@@ -15,7 +15,7 @@ export class AntarcticKrill extends ActionCard implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.ANTARCTIC_KRILL,
       tags: [Tag.ANIMAL],
-      cost: 7,
+      cost: 5,
 
       action: {
         addResources: 1,

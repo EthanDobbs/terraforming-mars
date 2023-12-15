@@ -16,7 +16,7 @@ export class SuperCarbonCollectors extends Card implements IProjectCard {
       victoryPoints: 1,
 
       behavior: {
-        production: {plants: 1},
+        production: {plants: 2},
         global: {venus: 2},
       },
 

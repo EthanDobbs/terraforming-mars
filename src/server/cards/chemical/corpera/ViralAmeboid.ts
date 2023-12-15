@@ -14,7 +14,7 @@ export class ViralAmeboid extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.VIRAL_AMEBOID,
       tags: [Tag.SCIENCE, Tag.MICROBE],
-      cost: 6,
+      cost: 5,
       requirements: {temperature: -20},
       resourceType: CardResource.MICROBE,
       victoryPoints: {resourcesHere: {}, per: 3},

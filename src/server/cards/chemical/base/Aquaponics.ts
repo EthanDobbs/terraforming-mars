@@ -16,7 +16,7 @@ export class Aquaponics extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.AQUAPONICS,
       tags: [Tag.ANIMAL, Tag.BUILDING],
-      cost: 9,
+      cost: 8,
 
       requirements: [{tag: Tag.PLANT}, {tag: Tag.ANIMAL}, {tag: Tag.MICROBE}],
       resourceType: CardResource.ANIMAL,

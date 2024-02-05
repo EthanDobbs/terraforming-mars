@@ -959,7 +959,6 @@ export class Player implements IPlayer {
     ColoniesHandler.onCardPlayed(this.game, selectedCard);
 
     if (selectedCard.type !== CardType.PROXY) {
-      this.lastCardPlayed = selectedCard.name;
       this.game.log('${0} played ${1}', (b) => b.player(this).card(selectedCard));
     }
 
@@ -1011,6 +1010,10 @@ export class Player implements IPlayer {
     // See DeclareCloneTag for why.
     if (!selectedCard.tags.includes(Tag.CLONE) && cardAction !== 'action-only') {
       this.onCardPlayed(selectedCard);
+    }
+
+    if (selectedCard.type !== CardType.PROXY) {
+      this.lastCardPlayed = selectedCard.name;
     }
 
     return undefined;

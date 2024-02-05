@@ -16,7 +16,7 @@ export class AridRegionReptiles extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.ARID_REGION_REPTILES,
       tags: [Tag.ANIMAL],
-      cost: 6,
+      cost: 5,
 
       behavior: {
         decreaseAnyProduction: {type: Resource.PLANTS, count: 1},

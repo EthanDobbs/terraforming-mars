@@ -12,7 +12,7 @@ export class EuropanBacteria extends ActionCard implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.EUROPAN_BACTERIA,
       tags: [Tag.JOVIAN, Tag.MICROBE],
-      cost: 19,
+      cost: 18,
       requirements: {tag: Tag.JOVIAN, count: 1},
       resourceType: CardResource.MICROBE,
       victoryPoints: {resourcesHere: {}, per: 2},

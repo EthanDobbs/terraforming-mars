@@ -86,7 +86,7 @@ export class FloatingColony extends Card implements IActionCard {
     const mcGained = 3 * amount;
     player.megaCredits += mcGained;
 
-    player.game.log('${0} removed ${1} asteroids from ${2} to gain ${3} steel', (b) =>
+    player.game.log('${0} removed ${1} asteroids from ${2} to gain ${3} M€', (b) =>
       b.player(player).number(amount).card(this).number(mcGained));
 
     return undefined;

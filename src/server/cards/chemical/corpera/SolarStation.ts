@@ -15,6 +15,11 @@ export class SolarStation extends ActionCard implements IProjectCard {
       requirements: {tag: Tag.SCIENCE, count: 4},
       victoryPoints: 2,
 
+      behavior: {
+        production: {heat: 1},
+        stock: {heat: 3},
+      },
+
       action: {
         drawCard: 1,
       },
@@ -24,9 +29,10 @@ export class SolarStation extends ActionCard implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.action('Draw a card.', (eb) => {
             eb.empty().startAction.cards(1);
-          });
+          }).br;
+          b.production((pb) => pb.heat(1)).heat(3)
         }),
-        description: 'Requires 4 science tags.',
+        description: 'Requires 4 science tags. Increase your heat production 1 step and gain 3 heat.',
       },
     });
   }

@@ -16,7 +16,7 @@ export class MimicryArchaea extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.MIMICRY_ARCHAEA,
       tags: [Tag.SCIENCE, Tag.MICROBE],
-      cost: 15,
+      cost: 13,
       resourceType: CardResource.MICROBE,
       victoryPoints: {resourcesHere: {}, per: 3},
 

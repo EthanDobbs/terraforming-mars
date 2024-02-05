@@ -4,9 +4,12 @@ import {CardType} from '../../../../common/cards/CardType';
 import {CardResource} from '../../../../common/CardResource';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {ActionCard} from '../../ActionCard';
+import { Card } from '../../Card';
+import { IPlayer } from '../../../IPlayer';
+import { ICard } from '../../ICard';
+import { SelectCard } from '../../../inputs/SelectCard';
 
-export class VenusSurfaceDwellers extends ActionCard implements IProjectCard {
+export class VenusSurfaceDwellers extends Card implements IProjectCard {
   constructor() {
     super({
       name: CardName.VENUS_SURFACE_DWELLERS,
@@ -17,21 +20,33 @@ export class VenusSurfaceDwellers extends ActionCard implements IProjectCard {
       requirements: {venus: 24},
       victoryPoints: {resourcesHere: {}, each: 2},
 
-      action: {
-        addResources: 1,
-      },
-
       metadata: {
         cardNumber: 'x269',
         renderData: CardRenderer.builder((b) => {
-          b.action('Add an animal to this card.', (eb) => {
-            eb.empty().startAction.animals(1);
+          b.action('Spend any resource from another one of your Venus cards to add an animal to this card.', (eb) => {
+            eb.wild(1, {secondaryTag: Tag.VENUS}).startAction.animals(1);
           }).br;
           b.vpText('2 VP per animal on this card.').br;
-          b.tr(1);
         }),
         description: 'Requires 24% Venus or higher.',
       },
     });
+  }
+  public GetOtherVenusResourceCards(player: IPlayer): Array<ICard> {
+    return player.getResourceCards().filter((card) => card.tags.includes(Tag.VENUS) && card !== this && card.resourceCount > 0);
+  }
+  public canAct(player: IPlayer): boolean {
+    return this.GetOtherVenusResourceCards(player).length > 0;
+  }
+  public action(player: IPlayer): SelectCard<ICard> | undefined {
+    return new SelectCard(
+      'Select card to remove a resource from',
+      'Remove resource',
+      this.GetOtherVenusResourceCards(player))
+      .andThen(([card]) => {
+        player.removeResourceFrom(card, 1, {log: true});
+        player.addResourceTo(this, {qty: 1, log: true});
+        return undefined;
+      });
   }
 }

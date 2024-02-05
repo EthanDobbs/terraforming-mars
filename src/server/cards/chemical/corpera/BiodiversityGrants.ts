@@ -14,7 +14,7 @@ export class BiodiversityGrants extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.BIODIVERSITY_GRANTS,
       tags: [Tag.EARTH],
-      cost: 9,
+      cost: 8,
 
       behavior: {
         production: {megacredits: 2},

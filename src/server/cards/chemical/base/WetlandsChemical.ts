@@ -12,7 +12,7 @@ import {ICardMetadata} from '../../../../common/cards/ICardMetadata';
 export class WetlandsChemical extends Card implements IProjectCard {
   constructor(
     name = CardName.WETLANDS_CHEMICAL,
-    cost = 16,
+    cost = 14,
     adjacencyBonus: AdjacencyBonus | undefined = undefined,
     metadata: ICardMetadata = {
       cardNumber: 'x125',

@@ -10,7 +10,7 @@ export class HydrothermalVents extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.HYDROTHERMAL_VENTS,
-      cost: 7,
+      cost: 6,
       requirements: {oceans: 4},
 
       behavior: {

@@ -10,8 +10,8 @@ export class ChemicalPlant extends Card implements IProjectCard {
     super({
       type: CardType.AUTOMATED,
       name: CardName.CHEMICAL_PLANT,
-      tags: [Tag.BUILDING],
-      cost: 8,
+      tags: [Tag.SCIENCE, Tag.BUILDING],
+      cost: 11,
 
       behavior: {
         production: {energy: -1, megacredits: 3},

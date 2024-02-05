@@ -37,8 +37,8 @@ export class Parasite extends Card implements IProjectCard {
       return undefined;
     }
 
-    const orOptionsAnimals = new RemoveResourcesFromCard(player, CardResource.ANIMAL, 1).execute() as OrOptions;
-    const orOptionsMicrobes = new RemoveResourcesFromCard(player, CardResource.MICROBE, 3).execute() as OrOptions;
+    const orOptionsAnimals = new RemoveResourcesFromCard(player, CardResource.ANIMAL, 1, {mandatory: false}).execute() as OrOptions;
+    const orOptionsMicrobes = new RemoveResourcesFromCard(player, CardResource.MICROBE, 3, {mandatory: false}).execute() as OrOptions;
     const removeAnimals = orOptionsAnimals !== undefined ?
       orOptionsAnimals.options[0] :
       undefined;

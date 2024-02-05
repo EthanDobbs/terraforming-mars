@@ -16,7 +16,7 @@ export class DesignedOrganisms extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.DESIGNED_ORGANISMS_CHEMICAL,
       tags: [Tag.SCIENCE, Tag.ANIMAL],
-      cost: 10,
+      cost: 11,
 
       behavior: {
         decreaseAnyProduction: {type: Resource.PLANTS, count: 1},
@@ -29,8 +29,8 @@ export class DesignedOrganisms extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x268',
         renderData: CardRenderer.builder((b) => {
-          b.action('Add an animal to this card ONLY IF you\'ve raised the oxygen this generation (or if the parameter is maxed).', (eb) => {
-            eb.plus().oxygen(1).asterix().nbsp.colon().nbsp.startAction.animals(1);
+          b.action('Draw a card and add an animal to this card ONLY IF you\'ve raised the oxygen this generation (or if the parameter is maxed).', (eb) => {
+            eb.plus().oxygen(1).asterix().nbsp.colon().nbsp.startAction.cards(1).animals(1);
           }).br;
           b.production((pb) => pb.minus().plants(1, {all})).br;
           b.vpText('1 VP for every animal on this card.');

@@ -14,7 +14,11 @@ export class DesignedFlyers extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.DESIGNED_FLYERS,
       tags: [Tag.SCIENCE, Tag.ANIMAL, Tag.VENUS],
-      cost: 9,
+      cost: 14,
+
+      behavior:{
+        addResources: 1
+      },
 
       resourceType: CardResource.ANIMAL,
       victoryPoints: {resourcesHere: 1},
@@ -23,15 +27,13 @@ export class DesignedFlyers extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x268',
         renderData: CardRenderer.builder((b) => {
-          b.action('Add an animal to this card ONLY IF you\'ve raised Venus this generation (or if the parameter is maxed).', (eb) => {
-            eb.plus().venus(1).asterix().nbsp.colon().nbsp.startAction.animals(1);
+          b.action('Draw a card and add an animal to this card ONLY IF you\'ve raised Venus this generation (or if the parameter is maxed).', (eb) => {
+            eb.plus().venus(1).asterix().nbsp.colon().nbsp.startAction.cards(1).animals(1);
           }).br;
-          b.vpText('1 VP for every animal on this card.');
+          b.vpText('1 VP for every animal on this card.').br;
+          b.animals(1);
         }),
-        description: {
-          text: 'Requires 5 science tags.',
-          align: 'left',
-        },
+        description: 'Requires 5 science tags. Add an animal to this card.',
       },
     });
   }
@@ -40,5 +42,6 @@ export class DesignedFlyers extends Card implements IProjectCard {
   }
   public action(player: IPlayer) {
     player.addResourceTo(this, 1);
+    player.drawCard();
   }
 }

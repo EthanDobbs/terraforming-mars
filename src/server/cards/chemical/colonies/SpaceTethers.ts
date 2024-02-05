@@ -20,7 +20,7 @@ export class SpaceTethers extends ActionCard implements IProjectCard {
         or: {
           autoSelect: true,
           behaviors: [{
-            title: 'Spend 1 floater to gain 4 M€',
+            title: 'Spend 1 floater to gain 5 M€',
             spend: {resourcesHere: 1},
             stock: {megacredits: 5},
           },

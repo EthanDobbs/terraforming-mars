@@ -12,7 +12,7 @@ export class VenusianFungi extends Card implements IProjectCard {
       type: CardType.AUTOMATED,
       name: CardName.VENUSIAN_FUNGI,
       tags: [Tag.MICROBE, Tag.VENUS],
-      cost: 16,
+      cost: 14,
       requirements: {venus: 10},
       victoryPoints: 1,
 

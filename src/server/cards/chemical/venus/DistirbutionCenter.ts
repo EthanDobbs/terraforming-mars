@@ -15,7 +15,7 @@ export class DistributionCenter extends Card implements IProjectCard {
       requirements: {uniqueTags: {}, count: 9},
 
       behavior: {
-        production: {megacredits: 5, energy: 2},
+        production: {megacredits: 5, energy: -2},
         city: {},
       },
 

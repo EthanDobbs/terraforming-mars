@@ -1,7 +1,6 @@
 import {CardType} from '../../common/cards/CardType';
 import {IProjectCard} from './IProjectCard';
 import {Space} from '../boards/Space';
-import {Message} from '../../common/logs/Message';
 import {PlayerInput} from '../PlayerInput';
 import {IPlayer} from '../IPlayer';
 import {Tag} from '../../common/cards/Tag';
@@ -19,6 +18,7 @@ import {CardRequirementDescriptor} from '../../common/cards/CardRequirementDescr
 import {OneOrArray} from '../../common/utils/types';
 import {JSONValue} from '../../common/Types';
 import {IStandardProjectCard} from './IStandardProjectCard';
+import {Warning} from '../../common/cards/Warning';
 import {IColony} from '../colonies/IColony';
 
 /*
@@ -72,7 +72,7 @@ export interface ICard {
   /** Returns any dynamic influence value */
   getInfluenceBonus?: (player: IPlayer) => number;
   /** Called when cards are played. However, if this is a corp, it'll be called when opponents play cards, too. */
-  onCardPlayed?(player: IPlayer, card: IProjectCard): PlayerInput | undefined | void;
+  onCardPlayed?(player: IPlayer, card: ICard): PlayerInput | undefined | void;
   onCardPlayedFromAnyPlayer?(thisCardOwner: IPlayer, playedCardOwner: IPlayer, card: IProjectCard): PlayerInput | undefined;
   onStandardProject?(player: IPlayer, project: IStandardProjectCard): void;
   onTilePlaced?(cardOwner: IPlayer, activePlayer: IPlayer, space: Space, boardType: BoardType): void;
@@ -124,7 +124,12 @@ export interface ICard {
   type: CardType;
   requirements: Array<CardRequirementDescriptor>;
   metadata: ICardMetadata;
-  warning?: string | Message;
+
+  /**
+   * Per-instance state-specific warnings about this card's action.
+   */
+  warnings: Set<Warning>;
+
   behavior?: Behavior,
   produce?(player: IPlayer): void;
   tr?: TRSource | DynamicTRSource;

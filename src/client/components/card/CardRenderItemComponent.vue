@@ -346,6 +346,9 @@ export default Vue.extend({
       case CardRenderItemType.ACTIVIST:
         classes.push(this.cardResource, 'card-resource-activist');
         break;
+      case CardRenderItemType.SUPPLY_CHAIN:
+        classes.push(this.cardResource, 'card-resource-supply-chain');
+        break;
       case CardRenderItemType.NEUTRAL_DELEGATE:
         classes.push('card-neutral-delegate');
         break;
@@ -354,6 +357,10 @@ export default Vue.extend({
         break;
       case CardRenderItemType.CORRUPTION_SHIELD:
         classes.push('card-corruption-shield');
+        break;
+      case CardRenderItemType.GEOSCAN_ICON:
+        classes.push('card-geoscan-icon');
+        break;
       }
 
       if (this.item.secondaryTag === AltSecondaryTag.NO_PLANETARY_TAG) {
@@ -437,7 +444,7 @@ export default Vue.extend({
       if (isICardRenderItem(this.item) && this.item.amountInside) {
         if (this.item.questionMark === true) {
           result += '?';
-        } else if (this.item.amount !== 0) {
+        } else {
           result += this.item.amount.toString();
         }
 
@@ -508,11 +515,13 @@ export default Vue.extend({
         return '<div class="board-cube--bronze"></div>';
       }
       // TODO(chosta): abstract once another case of cancel (X) on top of an item is needed
-      if (this.item.type === CardRenderItemType.TR && this.item.cancelled === true) {
-        result = '<div class="card-x">x</div>';
-      }
-      if (this.item.type === CardRenderItemType.WILD && this.item.cancelled === true) {
-        result = '<div class="card-x">✕</div>';
+      if (this.item.cancelled === true) {
+        switch (this.item.type) {
+        case CardRenderItemType.TR:
+        case CardRenderItemType.WILD:
+        case CardRenderItemType.UNDERGROUND_RESOURCES:
+          result = '<div class="card-x">x</div>';
+        }
       }
 
       return result;

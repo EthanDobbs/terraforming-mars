@@ -495,23 +495,33 @@ abstract class Builder<T> {
     return this._appendToRow(item);
   }
 
-  // public ware(count: number = 1, options?: ItemOptions) {
-  //   const item = new CardRenderItem(CardRenderItemType.WARE, count, options);
-  //   return this._appendToRow(item);
-  // }
+  public ware(count: number = 1, options?: ItemOptions) {
+    const item = new CardRenderItem(CardRenderItemType.WARE, count, options);
+    return this._appendToRow(item);
+  }
 
   // public scoop(count: number = 1, options?: ItemOptions) {
   //   const item = new CardRenderItem(CardRenderItemType.SCOOP, count, options);
   //   return this._appendToRow(item);
   // }
 
-  // public journalism(count: number = 1, options?: ItemOptions) {
-  //   const item = new CardRenderItem(CardRenderItemType.JOURNALISM, count, options);
-  //   return this._appendToRow(item);
-  // }
+  public journalism(count: number = 1, options?: ItemOptions) {
+    const item = new CardRenderItem(CardRenderItemType.JOURNALISM, count, options);
+    return this._appendToRow(item);
+  }
+
+  public supplyChain(options?: ItemOptions | undefined): this {
+    this._appendToRow(new CardRenderItem(CardRenderItemType.SUPPLY_CHAIN, 1, options));
+    return this;
+  }
 
   public activist(count: number = 1, options?: ItemOptions) {
     const item = new CardRenderItem(CardRenderItemType.ACTIVIST, count, options);
+    return this._appendToRow(item);
+  }
+
+  public geoscan() {
+    const item = new CardRenderItem(CardRenderItemType.GEOSCAN_ICON, 1, {});
     return this._appendToRow(item);
   }
 

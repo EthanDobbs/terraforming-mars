@@ -26,6 +26,7 @@ import {CardRequirementDescriptor} from '../../common/cards/CardRequirementDescr
 import {asArray} from '../../common/utils/utils';
 import {YesAnd} from './requirements/CardRequirement';
 import {GlobalParameter} from '../../common/GlobalParameter';
+import {Warning} from '../../common/cards/Warning';
 
 /**
  * Cards that do not need a cost attribute.
@@ -98,6 +99,8 @@ const cardProperties = new Map<CardName, InternalProperties>();
  */
 export abstract class Card {
   protected readonly properties: InternalProperties;
+  public resourceCount = 0;
+  public warnings = new Set<Warning>();
 
   private internalize(external: StaticCardProperties): InternalProperties {
     const name = external.name;
@@ -141,7 +144,7 @@ export abstract class Card {
     }
     this.properties = internal;
   }
-  public resourceCount = 0;
+
   public get adjacencyBonus() {
     return this.properties.adjacencyBonus;
   }

@@ -32,10 +32,10 @@ export class FurtherDevelopment extends PreludeCard implements IProjectCard{
   public override bespokePlay(player: IPlayer) {
     player.game.defer(new SelectPaymentDeferred(player, 3));
     const cards: Array<IPreludeCard> = [
-      player.game.preludeDeck.draw(player.game),
-      player.game.preludeDeck.draw(player.game),
-      player.game.preludeDeck.draw(player.game),
-      player.game.preludeDeck.draw(player.game),
+      player.game.preludeDeck.drawLegacy(player.game),
+      player.game.preludeDeck.drawLegacy(player.game),
+      player.game.preludeDeck.drawLegacy(player.game),
+      player.game.preludeDeck.drawLegacy(player.game),
     ];
     return PreludesExpansion.playPrelude(player, cards);
   }

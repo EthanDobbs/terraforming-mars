@@ -25,8 +25,8 @@ export class CorporateEspionage extends PreludeCard implements IPreludeCard{
     const game = player.game;
     if (player.game.isSoloMode()){
     const cards = [
-      game.preludeDeck.draw(game),
-      game.preludeDeck.draw(game),
+      game.preludeDeck.drawLegacy(player.game),
+      game.preludeDeck.drawLegacy(player.game),
     ];
     return PreludesExpansion.playPrelude(player, cards);
     }

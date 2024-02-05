@@ -33,7 +33,7 @@ export class UnitedNationsMarsInitiative extends CorporationCard implements IAct
   }
 
   public canAct(player: IPlayer): boolean {
-    return player.hasIncreasedTerraformRatingThisGeneration && player.canAfford({cost: ACTION_COST, tr: {tr: 1}});
+    return player.generationData.hasRaisedTR && player.canAfford({cost: ACTION_COST, tr: {tr: 1}});
   }
 
   public action(player: IPlayer) {

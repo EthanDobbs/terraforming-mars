@@ -32,6 +32,7 @@ import {Donation} from '../src/server/cards/prelude/Donation';
 import {Loan} from '../src/server/cards/prelude/Loan';
 import {IPreludeCard} from '../src/server/cards/prelude/IPreludeCard';
 import {OrOptions} from '../src/server/inputs/OrOptions';
+import { GenerationData } from '@/server/player/GenerationData';
 
 describe('Player', function() {
   it('should initialize with right defaults', function() {
@@ -206,7 +207,7 @@ describe('Player', function() {
       pickedCorporationCard: CardName.THARSIS_REPUBLIC,
       terraformRating: 20,
       corporations: [],
-      hasIncreasedTerraformRatingThisGeneration: false,
+      generationData: new GenerationData(),
       megaCredits: 1,
       megaCreditProduction: 2,
       steel: 3,

@@ -4,6 +4,7 @@ import {Color} from '../common/Color';
 import {SerializedCard} from './SerializedCard';
 import {SerializedTimer} from '../common/SerializedTimer';
 import {UnderworldPlayerData} from './underworld/UnderworldData';
+import { GenerationData } from './player/GenerationData';
 
 interface DeprecatedFields {
 }
@@ -33,8 +34,6 @@ export interface SerializedPlayer extends DeprecatedFields{
     energyProduction: number;
     fleetSize: number;
     handicap: number;
-    // TODO(kberg): remove ? by 2024-01-30
-    hasIncreasedTerraformRatingThisGeneration?: boolean;
     hasTurmoilScienceTagBonus: boolean;
     heat: number;
     heatProduction: number;
@@ -70,4 +69,5 @@ export interface SerializedPlayer extends DeprecatedFields{
     turmoilPolicyActionUsed: boolean;
     underworldData: UnderworldPlayerData;
     victoryPointsByGeneration: Array<number>;
+    generationData: GenerationData;
 }

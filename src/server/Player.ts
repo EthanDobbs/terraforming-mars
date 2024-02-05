@@ -96,7 +96,6 @@ export class Player implements IPlayer {
 
   // Terraforming Rating
   private terraformRating: number = 20;
-  public hasIncreasedTerraformRatingThisGeneration: boolean = false;
 
   public get megaCredits(): number {
     return this.stock.megacredits;
@@ -1876,7 +1875,6 @@ export class Player implements IPlayer {
       pickedCorporationCard: this.pickedCorporationCard?.name,
       // Terraforming Rating
       terraformRating: this.terraformRating,
-      hasIncreasedTerraformRatingThisGeneration: this.hasIncreasedTerraformRatingThisGeneration,
       // Resources
       megaCredits: this.megaCredits,
       megaCreditProduction: this.production.megacredits,
@@ -1947,6 +1945,7 @@ export class Player implements IPlayer {
       victoryPointsByGeneration: this.victoryPointsByGeneration,
       totalDelegatesPlaced: this.totalDelegatesPlaced,
       underworldData: this.underworldData,
+      generationData: this.generationData,
     };
 
     if (this.lastCardPlayed !== undefined) {
@@ -1972,8 +1971,6 @@ export class Player implements IPlayer {
     player.colonies.victoryPoints = d.colonyVictoryPoints;
     player.victoryPointsByGeneration = d.victoryPointsByGeneration;
     player.energy = d.energy;
-    // TODO(kberg): remove ?? false by 2023-01-30
-    player.hasIncreasedTerraformRatingThisGeneration = d.hasIncreasedTerraformRatingThisGeneration ?? false;
     player.hasTurmoilScienceTagBonus = d.hasTurmoilScienceTagBonus;
     player.heat = d.heat;
     player.megaCredits = d.megaCredits;
@@ -2047,7 +2044,7 @@ export class Player implements IPlayer {
     if (d.underworldData !== undefined) {
       player.underworldData = d.underworldData;
     }
-
+    player.generationData = d.generationData;
     return player;
   }
 

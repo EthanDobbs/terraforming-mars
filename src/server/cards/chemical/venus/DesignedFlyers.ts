@@ -7,6 +7,7 @@ import {CardRenderer} from '../../render/CardRenderer';
 import {IPlayer} from '../../../IPlayer';
 import {GlobalParameter} from '../../../../common/GlobalParameter';
 import {Card} from '../../Card';
+import {MAX_VENUS_SCALE} from '../../../../common/constants';
 
 export class DesignedFlyers extends Card implements IProjectCard {
   constructor() {
@@ -38,7 +39,7 @@ export class DesignedFlyers extends Card implements IProjectCard {
     });
   }
   public canAct(player: IPlayer): boolean {
-    return player.generationData.hasRaisedGlobalParameter[GlobalParameter.VENUS] || player.game.getVenusScaleLevel() === 30;
+    return player.generationData.hasRaisedGlobalParameter[GlobalParameter.VENUS] || player.game.getVenusScaleLevel() === MAX_VENUS_SCALE;
   }
   public action(player: IPlayer) {
     player.addResourceTo(this, 1);

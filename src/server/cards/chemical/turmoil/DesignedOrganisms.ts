@@ -9,6 +9,7 @@ import {all} from '../../Options';
 import {IPlayer} from '../../../IPlayer';
 import {GlobalParameter} from '../../../../common/GlobalParameter';
 import {Card} from '../../Card';
+import {MAX_OXYGEN_LEVEL} from '../../../../common/constants';
 
 export class DesignedOrganisms extends Card implements IProjectCard {
   constructor() {
@@ -43,9 +44,10 @@ export class DesignedOrganisms extends Card implements IProjectCard {
     });
   }
   public canAct(player: IPlayer): boolean {
-    return player.generationData.hasRaisedGlobalParameter[GlobalParameter.OXYGEN] || player.game.getOxygenLevel() === 30;
+    return player.generationData.hasRaisedGlobalParameter[GlobalParameter.OXYGEN] || player.game.getOxygenLevel() === MAX_OXYGEN_LEVEL;
   }
   public action(player: IPlayer) {
     player.addResourceTo(this, 1);
+    player.drawCard(1);
   }
 }

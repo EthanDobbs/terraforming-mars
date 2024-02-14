@@ -34,7 +34,7 @@ export class AbstinanceBonus extends GlobalEvent implements IGlobalEvent {
         game.defer(new SelectResourcesDeferred(
           player,
           count,
-          'Degredation of Venus Global Event - Gain ' + count + ' resource(s) for influence',
+          'Abstinance Bonus Global Event - Gain ' + count + ' resource(s) for influence',
         ));
       }
     });

@@ -9,6 +9,7 @@ import {all} from '../../Options';
 import {IPlayer} from '../../../IPlayer';
 import {GlobalParameter} from '../../../../common/GlobalParameter';
 import {Card} from '../../Card';
+import {MAX_TEMPERATURE} from '../../../../common/constants';
 
 export class Cephalopods extends Card implements IProjectCard {
   constructor() {
@@ -43,7 +44,7 @@ export class Cephalopods extends Card implements IProjectCard {
     });
   }
   public canAct(player: IPlayer): boolean {
-    return player.generationData.hasRaisedGlobalParameter[GlobalParameter.TEMPERATURE] || player.game.getTemperature() === 8;
+    return player.generationData.hasRaisedGlobalParameter[GlobalParameter.TEMPERATURE] || player.game.getTemperature() === MAX_TEMPERATURE;
   }
   public action(player: IPlayer) {
     player.addResourceTo(this, 1);

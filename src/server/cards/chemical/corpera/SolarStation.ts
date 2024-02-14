@@ -8,7 +8,7 @@ import { IProjectCard } from '../../IProjectCard';
 export class SolarStation extends ActionCard implements IProjectCard {
   constructor() {
     super({
-      type: CardType.AUTOMATED,
+      type: CardType.ACTIVE,
       name: CardName.SOLAR_STATION,
       tags: [Tag.SCIENCE, Tag.SPACE],
       cost: 16,

@@ -1,9 +1,9 @@
-import {IProjectCard} from '../../IProjectCard';
-import {Card} from '../../Card';
-import {CardName} from '../../../../common/cards/CardName';
-import {CardType} from '../../../../common/cards/CardType';
-import {CardRenderer} from '../../render/CardRenderer';
-import {Tag} from '../../../../common/cards/Tag';
+import {IProjectCard} from '../IProjectCard';
+import {Card} from '../Card';
+import {CardName} from '../../../common/cards/CardName';
+import {CardType} from '../../../common/cards/CardType';
+import {CardRenderer} from '../render/CardRenderer';
+import {Tag} from '../../../common/cards/Tag';
 
 export class UNMISponsorship extends Card implements IProjectCard {
   constructor() {

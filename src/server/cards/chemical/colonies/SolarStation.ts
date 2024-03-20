@@ -10,10 +10,10 @@ export class SolarStation extends ActionCard implements IProjectCard {
     super({
       type: CardType.ACTIVE,
       name: CardName.SOLAR_STATION,
-      tags: [Tag.SCIENCE, Tag.SPACE],
-      cost: 16,
+      tags: [Tag.SPACE],
+      cost: 14,
       requirements: {tag: Tag.SCIENCE, count: 4},
-      victoryPoints: 2,
+      victoryPoints: 1,
 
       behavior: {
         production: {heat: 1},

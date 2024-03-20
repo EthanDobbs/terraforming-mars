@@ -42,6 +42,7 @@ export const SPENDABLE_CARD_RESOURCES = [
   'bioengineeringStudiesAnimals',
   'asteroidBeltColonyAsteroids',
   'jovianConstructionYardFloaters',
+  'aerialMassDriversFloaters',
 ] as const;
 
 export const SPENDABLE_RESOURCES = [...SPENDABLE_STANDARD_RESOURCES, ...SPENDABLE_CARD_RESOURCES] as const;
@@ -65,4 +66,5 @@ export const CARD_FOR_SPENDABLE_RESOURCE: Record<SpendableCardResource, CardName
   bioengineeringStudiesAnimals: CardName.BIOENGINEERING_STUDIES,
   asteroidBeltColonyAsteroids: CardName.ASTEROID_BELT_COLONY,
   jovianConstructionYardFloaters: CardName.JOVIAN_CONSTRUCTION_YARD,
+  aerialMassDriversFloaters: CardName.AERIAL_MASS_DRIVERS,
 } as const;

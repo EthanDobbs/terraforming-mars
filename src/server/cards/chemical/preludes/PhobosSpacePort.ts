@@ -12,7 +12,7 @@ export class PhobosSpacePort extends PreludeCard implements IProjectCard{
       tags: [Tag.SPACE],
 
       behavior: {
-        stock: {titanium: 3},
+        production: {titanium: 1},
         colonies: {addTradeFleet: 1},
       },
 
@@ -23,9 +23,9 @@ export class PhobosSpacePort extends PreludeCard implements IProjectCard{
           b.effect('When you play a space card, you pay 2 M€ less for it.', (eb) => {
             eb.space({played}).startEffect.megacredits(-2);
           }).br;
-          b.tradeFleet().titanium(3);
+          b.production((pb) => pb.titanium(1)).nbsp.tradeFleet();
         }),
-        description: 'Gain a trade fleet and 3 titanium.'
+        description: 'Increase your titanium production 1 step and gain a trade fleet.'
       },
     });
   }

@@ -18,7 +18,7 @@ export class SkyCommunications extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.SKY_COMMUNICATIONS,
       tags: [Tag.VENUS],
-      cost: 12,
+      cost: 11,
       resourceType: CardResource.FLOATER,
       victoryPoints: 1,
 

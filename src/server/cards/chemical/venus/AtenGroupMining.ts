@@ -11,7 +11,7 @@ export class AtenGroupMining extends Card implements IProjectCard {
       type: CardType.AUTOMATED,
       name: CardName.ATEN_GROUP_MINING,
       tags: [Tag.EARTH, Tag.SPACE],
-      cost: 26,
+      cost: 25,
       requirements: [{tag: Tag.VENUS}, {tag: Tag.EARTH}],
       victoryPoints: 2,
 

@@ -16,7 +16,7 @@ export class WorldGovernmentOffices extends Card implements IProjectCard {
       victoryPoints: 1,
 
       behavior: {
-        production: {megacredits: 4, energy: 1},
+        production: {megacredits: 4, energy: -1},
         city: {},
       },
 

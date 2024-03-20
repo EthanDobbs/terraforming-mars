@@ -336,14 +336,14 @@ export class Game implements IGame, Logger {
             player.dealtProjectCards.push(projectDeck.drawLegacy(game));
           }
           //For testing purposes
-          /*if (gameOptions.chemicalExpansion) {
-            var card = new CardFinder().getProjectCardByName(CardName.SPONSORED_RESEARCH_FIRM);
+          if (gameOptions.chemicalExpansion) {
+            var card = new CardFinder().getProjectCardByName(CardName.AERIAL_MASS_DRIVERS);
             if (card !== undefined) {
               player.dealtProjectCards.push(card);
             } else {
              throw new Error('I did not expect this.');
             }
-          }*/
+          }
         }
         if (gameOptions.preludeExtension) {
           for (let i = 0; i < constants.PRELUDE_CARDS_DEALT_PER_PLAYER; i++) {
@@ -1089,9 +1089,9 @@ export class Game implements IGame, Logger {
       this.oxygenLevel = Math.max(constants.MIN_OXYGEN_LEVEL, this.oxygenLevel + increments);
       return undefined;
     }
-
     // Literal typing makes |increments| a const
     const steps = Math.min(increments, constants.MAX_OXYGEN_LEVEL - this.oxygenLevel);
+    player.playedCards.forEach((card) => card.onGlobalParameterIncrease?.(player, GlobalParameter.OXYGEN, steps));
 
     if (this.phase !== Phase.SOLAR) {
       TurmoilHandler.onGlobalParameterIncrease(player, GlobalParameter.OXYGEN, steps);

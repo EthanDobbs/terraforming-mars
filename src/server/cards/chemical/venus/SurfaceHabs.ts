@@ -11,18 +11,13 @@ export class SurfaceHabs extends Card implements IProjectCard {
       type: CardType.AUTOMATED,
       name: CardName.SURFACE_HABS,
       tags: [Tag.VENUS],
-      cost: 10,
+      cost: 12,
       requirements: {venus: 12},
-      victoryPoints: 1,
+      victoryPoints: 2,
 
       behavior: {
-        production: {megacredits: 3},
-        addResourcesToAnyCard: {
-          tag: Tag.VENUS,
-          count: 1,
-          autoSelect: true,
-          mustHaveCard: false,
-        },
+        production: {megacredits: 1},
+        drawCard: {count: 2, tag: Tag.VENUS},
       },
 
       metadata: {
@@ -31,7 +26,7 @@ export class SurfaceHabs extends Card implements IProjectCard {
           b.production((pb) => pb.megacredits(3)).nbsp;
           b.wild(1, {secondaryTag: Tag.VENUS});
         }),
-        description: 'Requires Venus 12%. Increase your M€ production 3 steps. Add any resource to a Venus card.',
+        description: 'Requires Venus 12%. Increase your M€ production 1 step and draw 2 cards with Venus tags.',
       },
     });
   }

@@ -18,7 +18,8 @@ export class InstantiatedSolarFlare extends Card implements IProjectCard {
       type: CardType.EVENT,
       name: CardName.INSTANTIATED_SOLAR_FLARE,
       tags: [Tag.SPACE],
-      cost: 22,
+      cost: 20,
+      requirements: {tag: Tag.SCIENCE, count: 2},
       behavior: {
         global: {temperature: 3},
         removeAnyPlants: 4,

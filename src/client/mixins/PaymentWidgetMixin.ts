@@ -188,6 +188,7 @@ export const PaymentWidgetMixin = {
       case 'bioengineeringStudiesAnimals':
       case 'asteroidBeltColonyAsteroids':
       case 'jovianConstructionYardFloaters':
+      case 'aerialMassDriversFloaters':
         // TODO(kberg): remove 'as any'. You can do it.
         amount = (model.playerinput as any)[unit];
         break;
@@ -247,6 +248,7 @@ export const PaymentWidgetMixin = {
         bioengineeringStudiesAnimals: 'Animals',
         asteroidBeltColonyAsteroids: 'Asteroids',
         jovianConstructionYardFloaters: 'Floaters',
+        aerialMassDriversFloaters: 'Floaters',
       };
     },
   },

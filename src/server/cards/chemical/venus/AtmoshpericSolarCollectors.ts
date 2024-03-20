@@ -1,29 +1,29 @@
 import {IProjectCard} from '../../IProjectCard';
-import {Tag} from '../../../../common/cards/Tag';
 import {Card} from '../../Card';
 import {CardType} from '../../../../common/cards/CardType';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
+import {Tag} from '../../../../common/cards/Tag';
 
-export class OrbitalShipyard extends Card implements IProjectCard {
+export class AtmosphericSolarCollectors extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.AUTOMATED,
-      name: CardName.ORBITAL_SHIPYARD,
-      tags: [Tag.EARTH, Tag.SPACE],
+      name: CardName.ATMOSPHERIC_SOLAR_COLLECTORS,
+      tags: [Tag.POWER, Tag.VENUS],
       cost: 14,
-      victoryPoints: 1,
 
       behavior: {
-        production: {titanium: 1},
+        global: {venus: 1},
+        production: {energy: 1},
       },
 
       metadata: {
-        cardNumber: 'x364',
+        cardNumber: 'x282',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.titanium(1));
+          b.production((pb) => pb.energy(1)).nbsp.venus(1).br;
         }),
-        description: 'Increase your titanium production 1 step.',
+        description: 'Increase your energy production 1 step and raise Venus 1 step.',
       },
     });
   }

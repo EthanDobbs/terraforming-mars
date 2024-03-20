@@ -22,7 +22,7 @@ export class IndustrialCenterChemical extends Card implements IProjectCard {
       cardNumber: 'xR11',
       renderData: CardRenderer.builder((b) => {
         b.action('Spend 6 M€ to increase your steel production 1 step [STEEL MAY BE USED].', (eb) => {
-          eb.megacredits(7).openBrackets.steel(1).closeBrackets.startAction.production((pb) => pb.steel(1));
+          eb.megacredits(6).openBrackets.steel(1).closeBrackets.startAction.production((pb) => pb.steel(1));
         }).br;
         b.tile(TileType.INDUSTRIAL_CENTER, true, false).asterix();
       }),

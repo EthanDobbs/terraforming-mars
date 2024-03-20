@@ -6,12 +6,9 @@ import {Resource} from '../../../../common/Resource';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
 import {all} from '../../Options';
-import {IPlayer} from '../../../IPlayer';
-import {GlobalParameter} from '../../../../common/GlobalParameter';
-import {Card} from '../../Card';
-import {MAX_TEMPERATURE} from '../../../../common/constants';
+import {ActionCard} from '../../ActionCard';
 
-export class Cephalopods extends Card implements IProjectCard {
+export class Cephalopods extends ActionCard implements IProjectCard {
   constructor() {
     super({
       type: CardType.ACTIVE,
@@ -19,34 +16,32 @@ export class Cephalopods extends Card implements IProjectCard {
       tags: [Tag.ANIMAL],
       cost: 11,
 
+      action: {
+        addResources: 1,
+      },
+
       behavior: {
         decreaseAnyProduction: {type: Resource.PLANTS, count: 1},
       },
 
       resourceType: CardResource.ANIMAL,
       victoryPoints: {resourcesHere: 1},
-      requirements: {oceans: 5},
+      requirements: {oceans: 6},
 
       metadata: {
         cardNumber: 'x054',
         renderData: CardRenderer.builder((b) => {
-          b.action('Add an animal to this card ONLY IF you\'ve raised the temperature this generation (or if the parameter is maxed).', (eb) => {
-            eb.plus().temperature(1).asterix().nbsp.colon().nbsp.startAction.animals(1);
+          b.action('Add an animal to this card.', (eb) => {
+            eb.empty().startAction.animals(1);
           }).br;
           b.production((pb) => pb.minus().plants(1, {all})).br;
           b.vpText('1 VP for every animal on this card.');
         }),
         description: {
-          text: 'Requires 5 ocean tiles. Decrease any plant production 1 step.',
+          text: 'Requires 6 ocean tiles. Decrease any plant production 1 step.',
           align: 'left',
         },
       },
     });
-  }
-  public canAct(player: IPlayer): boolean {
-    return player.generationData.hasRaisedGlobalParameter[GlobalParameter.TEMPERATURE] || player.game.getTemperature() === MAX_TEMPERATURE;
-  }
-  public action(player: IPlayer) {
-    player.addResourceTo(this, 1);
   }
 }

@@ -881,6 +881,7 @@ export class Player implements IPlayer {
       bioengineeringStudiesAnimals: bioengineeringStudies,
       asteroidBeltColonyAsteroids: card.tags.includes(Tag.SPACE),
       jovianConstructionYardFloaters: card.tags.includes(Tag.JOVIAN),
+      aerialMassDriversFloaters: card.type === CardType.STANDARD_PROJECT,
     };
   }
 
@@ -1412,6 +1413,7 @@ export class Player implements IPlayer {
       bioengineeringStudiesAnimals: this.getSpendable('bioengineeringStudiesAnimals'),
       asteroidBeltColonyAsteroids: this.getSpendable('asteroidBeltColonyAsteroids'),
       jovianConstructionYardFloaters: this.getSpendable('jovianConstructionYardFloaters'),
+      aerialMassDriversFloaters: this.getSpendable('aerialMassDriversFloaters'),
     };
   }
 
@@ -1457,6 +1459,7 @@ export class Player implements IPlayer {
       bioengineeringStudiesAnimals: options?.bioengineeringStudiesAnimals ?? false,
       asteroidBeltColonyAsteroids: options?.asteroidBeltColonyAsteroids ?? false,
       jovianConstructionYardFloaters: options?.jovianConstructionYardFloaters ?? false,
+      aerialMassDriversFloaters: options?.aerialMassDriversFloaters ?? false,
     };
 
     // HOOK: Luna Trade Federation

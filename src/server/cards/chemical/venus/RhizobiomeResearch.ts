@@ -13,7 +13,7 @@ export class RhizobiomeResearch extends Card implements IProjectCard {
       type: CardType.AUTOMATED,
       name: CardName.RHIZOBIOME_RESEARCH,
       tags: [Tag.SCIENCE, Tag.MICROBE],
-      cost: 13,
+      cost: 12,
 
       behavior: {
         production: {plants: {tag: Tag.MICROBE, per: 2}},

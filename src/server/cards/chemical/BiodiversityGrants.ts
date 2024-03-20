@@ -1,12 +1,12 @@
-import {IProjectCard} from '../../IProjectCard';
-import {Tag} from '../../../../common/cards/Tag';
-import {Card} from '../../Card';
-import {CardType} from '../../../../common/cards/CardType';
-import {CardName} from '../../../../common/cards/CardName';
-import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
-import {IPlayer} from '../../../IPlayer';
-import {Resource} from '../../../../common/Resource';
+import {IProjectCard} from '../IProjectCard';
+import {Tag} from '../../../common/cards/Tag';
+import {Card} from '../Card';
+import {CardType} from '../../../common/cards/CardType';
+import {CardName} from '../../../common/cards/CardName';
+import {CardRenderer} from '../render/CardRenderer';
+import {played} from '../Options';
+import {IPlayer} from '../../IPlayer';
+import {Resource} from '../../../common/Resource';
 
 export class BiodiversityGrants extends Card implements IProjectCard {
   constructor() {

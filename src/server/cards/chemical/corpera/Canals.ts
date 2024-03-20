@@ -12,7 +12,7 @@ export class Canals extends Card implements IProjectCard {
     super({
       type: CardType.ACTIVE,
       name: CardName.CANALS,
-      cost: 11,
+      cost: 10,
       tags: [Tag.BUILDING],
 
       behavior: {

@@ -1,10 +1,10 @@
-import {IProjectCard} from '../../IProjectCard';
-import {Tag} from '../../../../common/cards/Tag';
-import {CardType} from '../../../../common/cards/CardType';
-import {CardResource} from '../../../../common/CardResource';
-import {CardName} from '../../../../common/cards/CardName';
-import {CardRenderer} from '../../render/CardRenderer';
-import {ActionCard} from '../../ActionCard';
+import {IProjectCard} from '../IProjectCard';
+import {Tag} from '../../../common/cards/Tag';
+import {CardType} from '../../../common/cards/CardType';
+import {CardResource} from '../../../common/CardResource';
+import {CardName} from '../../../common/cards/CardName';
+import {CardRenderer} from '../render/CardRenderer';
+import {ActionCard} from '../ActionCard';
 
 export class VenusianInvertebrates extends ActionCard implements IProjectCard {
   constructor() {

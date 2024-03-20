@@ -6,11 +6,11 @@ import {CardRenderer} from '../../render/CardRenderer';
 import {all} from '../../Options';
 import {Size} from '../../../../common/cards/render/Size';
   
-export class InaugerationCeremony extends Card implements IProjectCard {
+export class InaugurationCeremony extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.EVENT,
-      name: CardName.INAUGERATION_CEREMONY,
+      name: CardName.INAUGURATION_CEREMONY,
       cost: 5,
       requirements: {chairman: {}},
       victoryPoints: 1,

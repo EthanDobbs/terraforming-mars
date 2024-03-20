@@ -1,12 +1,12 @@
-import {CardName} from '../../../../common/cards/CardName';
-import {CardRenderer} from '../../render/CardRenderer';
-import {PreludeCard} from '../../prelude/PreludeCard';
-import {IActionCard} from '../../ICard';
-import {IPlayer} from '../../../IPlayer';
-import {CardResource} from '../../../../common/CardResource';
-import {Tag} from '../../../../common/cards/Tag';
-import {SelectCard} from '../../../inputs/SelectCard';
-import {IProjectCard} from '../../IProjectCard';
+import {CardName} from '../../../common/cards/CardName';
+import {CardRenderer} from '../render/CardRenderer';
+import {PreludeCard} from '../prelude/PreludeCard';
+import {IActionCard} from '../ICard';
+import {IPlayer} from '../../IPlayer';
+import {CardResource} from '../../../common/CardResource';
+import {Tag} from '../../../common/cards/Tag';
+import {SelectCard} from '../../inputs/SelectCard';
+import {IProjectCard} from '../IProjectCard';
 
 export class AdvancedBiosphere extends PreludeCard implements IActionCard{
   constructor() {

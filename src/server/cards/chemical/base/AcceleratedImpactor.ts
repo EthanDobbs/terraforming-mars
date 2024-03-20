@@ -12,7 +12,7 @@ export class AcceleratedImpactor extends Card implements IProjectCard {
       type: CardType.EVENT,
       name: CardName.ACCELERATED_IMPACTOR,
       tags: [Tag.SPACE],
-      cost: 19,
+      cost: 18,
       behavior: {
         global: {temperature: 2},
         removeAnyPlants: 6,

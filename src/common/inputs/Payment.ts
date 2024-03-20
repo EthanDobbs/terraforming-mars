@@ -40,6 +40,7 @@ export const DEFAULT_PAYMENT_VALUES: Record<SpendableResource, number> = {
   bioengineeringStudiesAnimals: 3,
   asteroidBeltColonyAsteroids: 5,
   jovianConstructionYardFloaters: 3,
+  aerialMassDriversFloaters: 4,
 } as const;
 
 export namespace Payment {
@@ -61,6 +62,7 @@ export namespace Payment {
     bioengineeringStudiesAnimals: 0,
     asteroidBeltColonyAsteroids: 0,
     jovianConstructionYardFloaters: 0,
+    aerialMassDriversFloaters: 0,
   } as const;
 
   export function of(payment: Partial<Payment>) : Payment {
@@ -82,6 +84,7 @@ export namespace Payment {
       bioengineeringStudiesAnimals: payment.bioengineeringStudiesAnimals ?? 0,
       asteroidBeltColonyAsteroids: payment.asteroidBeltColonyAsteroids ?? 0,
       jovianConstructionYardFloaters: payment.jovianConstructionYardFloaters ?? 0,
+      aerialMassDriversFloaters: payment.aerialMassDriversFloaters ?? 0,
     };
   }
 }

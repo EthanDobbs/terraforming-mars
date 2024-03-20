@@ -12,7 +12,7 @@ export class MartianResearchNetwork extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.MARTIAN_RESEARCH_NETWORK,
       tags: [Tag.WILD],
-      cost: 13,
+      cost: 12,
       requirements: {party: PartyName.SCIENTISTS},
 
       cardDiscount: {amount: 1},

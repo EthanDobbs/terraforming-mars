@@ -12,7 +12,7 @@ export class PHNeutralizers extends ActionCard implements IProjectCard {
       name: CardName.PH_NEUTRALIZERS,
       type: CardType.ACTIVE,
       tags: [Tag.SCIENCE, Tag.MICROBE, Tag.VENUS],
-      cost: 9,
+      cost: 8,
       resourceType: CardResource.MICROBE,
       requirements: {venus: 6},
 

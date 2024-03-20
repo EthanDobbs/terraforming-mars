@@ -10,21 +10,26 @@ import {IPlayer} from '../../../IPlayer';
 import {ICard} from '../../ICard';
 import {SelectCard} from '../../../inputs/SelectCard';
 
-export class SaturnAsteroidCollection extends Card implements IProjectCard {
+export class CassiniEnterprises extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.AUTOMATED,
-      name: CardName.SATURN_ASTEROID_COLLECTION,
-      cost: 13,
+      name: CardName.CASSINI_ENTERPRISES,
+      cost: 20,
       tags: [Tag.JOVIAN, Tag.SPACE],
+      requirements: {tag: Tag.JOVIAN, count: 1},
       victoryPoints: 1,
+
+      behavior:{
+        production: {titanium: 1},
+      },
 
       metadata: {
         cardNumber: 'x379',
         renderData: CardRenderer.builder((b) => {
-          b.asteroids(2).asterix().nbsp.or().nbsp.floaters(3, {digit});
+          b.production((pb) => pb.titanium(1)).br.asteroids(2).asterix().nbsp.or().nbsp.floaters(3, {digit}).asterix();
         }),
-        description: 'Add 2 asteroids or 3 floaters to ANOTHER card.',
+        description: 'Requires a Jovian tag. Raise your titanium production 1 step and add 2 asteroids or 3 floaters to ANOTHER card.',
       },
     });
   }

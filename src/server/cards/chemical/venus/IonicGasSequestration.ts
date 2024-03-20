@@ -5,26 +5,25 @@ import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Tag} from '../../../../common/cards/Tag';
 
-export class HighOrbitResearchStation extends Card implements IProjectCard {
+export class IonicGasSequestration extends Card implements IProjectCard {
   constructor() {
     super({
-      type: CardType.AUTOMATED,
-      name: CardName.HIGH_ORBIT_RESEARCH_STATION,
-      cost: 12,
+      type: CardType.EVENT,
+      name: CardName.IONIC_GAS_SEQUESTRATION,
       tags: [Tag.SCIENCE, Tag.SPACE],
-      requirements: {tag: Tag.SPACE, count: 5},
-      victoryPoints: 2,
+      cost: 13,
 
       behavior: {
-        drawCard: 2,
+        global: {venus: 1},
+        stock: {titanium: 2},
       },
 
       metadata: {
-        cardNumber: 'x376',
+        cardNumber: 'x242',
         renderData: CardRenderer.builder((b) => {
-          b.cards(2);
+          b.venus(1).nbsp.titanium(2);
         }),
-        description: 'Requires 5 space tags. Draw 2 cards.',
+        description: 'Raise Venus 1 step and gain 2 titanium.',
       },
     });
   }

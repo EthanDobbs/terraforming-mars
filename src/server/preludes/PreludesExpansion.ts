@@ -2,7 +2,7 @@ import {inplaceRemove} from '../../common/utils/utils';
 import {Resource} from '../../common/Resource';
 import {CardAction, IPlayer} from '../IPlayer';
 import {IPreludeCard} from '../cards/prelude/IPreludeCard';
-import {SelectCard} from '../inputs/selectables/CardSelection';
+import {SelectCard} from '../inputs/SelectCard';
 
 export class PreludesExpansion {
   public static fizzle(player: IPlayer, card: IPreludeCard): void {

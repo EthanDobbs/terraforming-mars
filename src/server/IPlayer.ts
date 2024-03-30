@@ -28,7 +28,7 @@ import {OrOptions} from './inputs/basicInputs/OrOptions';
 import {Stock} from './player/Stock';
 import {UnderworldPlayerData} from './underworld/UnderworldData';
 import { SpendableResource } from '@/server/player/SpendableResource';
-import { SelectOne } from './inputs/basicInputs/SelectOne';
+import { SelectCard } from './inputs/SelectCard';
 
 export type ResourceSource = IPlayer | GlobalEventName | ICard;
 
@@ -297,7 +297,7 @@ export interface IPlayer {
   canAfford(options: number | CanAffordOptions): boolean;
   getRedsCostForCard(card: ICard): number;
   getRedsCostFromTRSource(tr?: TRSource | DynamicTRSource): number;
-  getStandardProjectOption(): SelectOne<IStandardProjectCard>;
+  getStandardProjectOption(): SelectCard<IStandardProjectCard>;
   takeAction(saveBeforeTakingAction?: boolean): void;
   getOpponents(): ReadonlyArray<IPlayer>;
   /** Add `corp`'s initial action to the deferred action queue, if it has one. */

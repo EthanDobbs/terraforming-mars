@@ -7,7 +7,7 @@ import {CardRenderer} from '../render/CardRenderer';
 import {PartyName} from '../../../common/turmoil/PartyName';
 import {CardRenderDynamicVictoryPoints} from '../render/CardRenderDynamicVictoryPoints';
 import {TileType} from '../../../common/TileType';
-import {SelectSpace} from '../../inputs/selectables/SpaceSelection';
+import {SelectSpace} from '../../inputs/SelectSpace';
 import {Board} from '../../boards/Board';
 import {IProjectCard} from '../IProjectCard';
 import {message} from '../../logs/MessageBuilder';

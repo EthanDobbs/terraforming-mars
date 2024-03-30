@@ -1,5 +1,5 @@
 import {IPlayer} from '../IPlayer';
-import {SelectCard} from '../inputs/selectables/CardSelection';
+import {SelectCard} from '../inputs/SelectCard';
 import {DeferredAction, Priority} from './DeferredAction';
 import {Message} from '../../common/logs/Message';
 import {message} from '../logs/MessageBuilder';

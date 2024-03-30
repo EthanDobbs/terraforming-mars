@@ -5,7 +5,7 @@ import {IActionCard} from '../ICard';
 import {CardName} from '../../../common/cards/CardName';
 import {CardResource} from '../../../common/CardResource';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
-import {SelectCard} from '../../inputs/selectables/CardSelection';
+import {SelectCard} from '../../inputs/SelectCard';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {LogHelper} from '../../LogHelper';
 import {Resource} from '../../../common/Resource';

@@ -5,7 +5,7 @@ import {CardType} from '../../../common/cards/CardType';
 import {IPlayer} from '../../IPlayer';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
-import {SelectCard} from '../../inputs/selectables/CardSelection';
+import {SelectCard} from '../../inputs/SelectCard';
 import {IProjectCard} from '../IProjectCard';
 import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';

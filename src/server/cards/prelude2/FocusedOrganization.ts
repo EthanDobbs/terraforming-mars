@@ -7,7 +7,7 @@ import {IActionCard} from '../ICard';
 import {Units} from '../../../common/Units';
 import {sum} from '../../../common/utils/utils';
 import {AndOptions} from '../../inputs/basicInputs/AndOptions';
-import {SelectCard} from '../../inputs/selectables/CardSelection';
+import {SelectCard} from '../../inputs/SelectCard';
 import {SelectResource} from '../../inputs/SelectResource';
 import {PathfindersExpansion} from '../../pathfinders/PathfindersExpansion';
 

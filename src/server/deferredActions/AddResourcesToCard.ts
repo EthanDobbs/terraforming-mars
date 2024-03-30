@@ -1,5 +1,5 @@
 import {IPlayer} from '../IPlayer';
-import {SelectCard} from '../inputs/selectables/CardSelection';
+import {SelectCard} from '../inputs/SelectCard';
 import {CardResource} from '../../common/CardResource';
 import {ICard} from '../cards/ICard';
 import {Tag} from '../../common/cards/Tag';

@@ -4,7 +4,7 @@ import {IProjectCard} from '../IProjectCard';
 import {Tag} from '../../../common/cards/Tag';
 import {CardType} from '../../../common/cards/CardType';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
-import {SelectCard} from '../../inputs/selectables/CardSelection';
+import {SelectCard} from '../../inputs/SelectCard';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
 import {PlayerInput} from '../../PlayerInput';
 import {CardResource} from '../../../common/CardResource';

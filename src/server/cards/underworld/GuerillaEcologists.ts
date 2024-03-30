@@ -7,7 +7,7 @@ import {Tag} from '../../../common/cards/Tag';
 import {digit} from '../Options';
 import {IPlayer} from '../../IPlayer';
 import {Space} from '../../boards/Space';
-import {SelectSpace} from '../../inputs/selectables/SpaceSelection';
+import {SelectSpace} from '../../inputs/SelectSpace';
 
 export class GuerillaEcologists extends Card implements IProjectCard {
   constructor() {

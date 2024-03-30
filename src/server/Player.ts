@@ -20,13 +20,11 @@ import {Phase} from '../common/Phase';
 import {PlayerInput} from './PlayerInput';
 import {Resource} from '../common/Resource';
 import {CardResource} from '../common/CardResource';
-import {SelectCard} from './inputs/selectables/CardSelection';
 import {SellPatentsStandardProject} from './cards/base/standardProjects/SellPatentsStandardProject';
 import {Priority, SimpleDeferredAction} from './deferredActions/DeferredAction';
 import {SelectPaymentDeferred} from './deferredActions/SelectPaymentDeferred';
 import {SelectProjectCardToPlay} from './inputs/SelectProjectCardToPlay';
-import {SelectOption} from './inputs/selectables/GenericSelection';
-import {SelectSpace} from './inputs/selectables/SpaceSelection';
+import {SelectOption} from './inputs/basicInputs/SelectOption';
 import {RobotCard, SelfReplicatingRobots} from './cards/promo/SelfReplicatingRobots';
 import {SerializedCard} from './SerializedCard';
 import {SerializedPlayer} from './SerializedPlayer';
@@ -62,7 +60,6 @@ import {ICeoCard, isCeoCard} from './cards/ceos/ICeoCard';
 import {message} from './logs/MessageBuilder';
 import {calculateVictoryPoints} from './game/calculateVictoryPoints';
 import {IVictoryPointsBreakdown} from '../common/game/IVictoryPointsBreakdown';
-import {PlayableCard} from './cards/IProjectCard';
 import {Supercapacitors} from './cards/promo/Supercapacitors';
 import {CanAffordOptions, CardAction, IPlayer, ResourceSource, isIPlayer} from './IPlayer';
 import {IPreludeCard} from './cards/prelude/IPreludeCard';
@@ -72,9 +69,10 @@ import {ChooseCards} from './deferredActions/ChooseCards';
 import {UnderworldPlayerData} from './underworld/UnderworldData';
 import {UnderworldExpansion} from './underworld/UnderworldExpansion';
 import {Counter} from './behavior/Counter';
-import { SpendableResource } from '@/server/player/SpendableResource';
-import { TRSource } from '@/common/cards/TRSource';
-import { SelectOneInput } from './inputs/basicInputs/SelectOne';
+import {SpendableResource} from './player/SpendableResource';
+import {TRSource} from '../common/cards/TRSource';
+import {SelectCard} from './inputs/SelectCard';
+import {SelectSpace} from './inputs/SelectSpace';
 
 const THROW_WAITING_FOR = Boolean(process.env.THROW_WAITING_FOR);
 
@@ -745,15 +743,15 @@ export class Player implements IPlayer {
         message(messageTitle, (b) => b.player(passTo)),
         'Keep',
         cards,
-        {min: cardsToKeep, max: cardsToKeep, played: false})
-        .andThen((selected) => {
-          selected.forEach((card) => {
-            this.draftedCards.push(card);
-            cards = cards.filter((c) => c !== card);
-          });
-          this.game.playerIsFinishedWithDraftingPhase(initialDraft, this, cards);
-          return undefined;
-        }),
+        cardsToKeep
+      ).andThen((selected) => {
+        selected.forEach((card) => {
+          this.draftedCards.push(card);
+          cards = cards.filter((c) => c !== card);
+        });
+        this.game.playerIsFinishedWithDraftingPhase(initialDraft, this, cards);
+        return undefined;
+      }),
     );
   }
 
@@ -965,8 +963,7 @@ export class Player implements IPlayer {
     return new SelectCard<ICard & IActionCard>(
       'Perform an action from a played card',
       'Take action',
-      this.getPlayableActionCards(),
-      {selectBlueCardAction: true})
+      this.getPlayableActionCards())
       .andThen(([card]) => {
         this.game.log('${0} used ${1} action', (b) => b.player(this).card(card));
         const action = card.action(this);
@@ -980,8 +977,7 @@ export class Player implements IPlayer {
     return new SelectCard<ICeoCard>(
       'Use CEO once per game action',
       'Take action',
-      this.getUsableOPGCeoCards(),
-      {selectBlueCardAction: true})
+      this.getUsableOPGCeoCards())
       .andThen(([card]) => {
         this.game.log('${0} used ${1} action', (b) => b.player(this).card(card));
         const action = card.action?.(this);
@@ -1353,15 +1349,16 @@ export class Player implements IPlayer {
       .sort((a, b) => a.cost - b.cost);
   }
 
-  public getStandardProjectOption(): SelectOneInput<IStandardProjectCard> {
-    const standardProjects: Array<IStandardProjectCard> = this.getStandardProjects();
+  public getStandardProjectOption(): SelectCard<IStandardProjectCard> {
+    const standardProjects = this.getStandardProjects();
 
     return new SelectCard(
       'Standard projects',
       'Confirm',
       standardProjects,
-      {enabled: standardProjects.map((card) => card.canAct(this))})
-      .andThen(([card]) => card.action(this));
+      1,
+      {enabled: new Map(standardProjects.map((card: IStandardProjectCard) => [card.name, card.canAct(this)]))}
+    ).andThen(([card]) => card.action(this));
   }
 
   private headStartIsInEffect() {

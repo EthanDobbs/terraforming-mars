@@ -3,12 +3,12 @@ import {Space} from '../../boards/Space';
 import { SelectionHandler } from './SelectionHandler';
 import { SelectionType } from '@/common/input/SelectionType';
 
-export class SelectSpace extends SelectionHandler<Space> {
+export class SpaceSelection extends SelectionHandler<Space> {
   constructor(
     title: string | Message,
-    spaces: Array<Space>,
+    spaces: ReadonlyArray<Space>,
   ) {
-    super(spaces, SelectionType.SPACE, title);
+    super(spaces as Array<Space>, SelectionType.SPACE, title);
     if (spaces.length === 0) {
       throw new Error('No available spaces');
     }

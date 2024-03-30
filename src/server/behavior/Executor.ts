@@ -23,7 +23,7 @@ import {PlaceTile} from '../deferredActions/PlaceTile';
 import {Resource} from '../../common/Resource';
 import {SelectPaymentDeferred} from '../deferredActions/SelectPaymentDeferred';
 import {OrOptions} from '../inputs/basicInputs/OrOptions';
-import {SelectOption} from '../inputs/selectables/GenericSelection';
+import {SelectOption} from '../inputs/basicInputs/SelectOption';
 import {Payment} from '../../common/inputs/Payment';
 import {SelectResources} from '../inputs/SelectResources';
 import {TITLES} from '../inputs/titles';

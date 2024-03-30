@@ -6,7 +6,7 @@ import {Card} from '../Card';
 import {ALL_TAGS, Tag} from '../../../common/cards/Tag';
 import {IPlayer} from '../../IPlayer';
 import {UnderworldExpansion} from '../../underworld/UnderworldExpansion';
-import {SelectSpace} from '../../inputs/selectables/SpaceSelection';
+import {SelectSpace} from '../../inputs/SelectSpace';
 import {Units} from '../../../common/Units';
 import {inplaceRemove} from '../../../common/utils/utils';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';

@@ -7,7 +7,7 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {IActionCard} from '../ICard';
 import {PlayerInput} from '../../PlayerInput';
-import {SelectCard} from '../../inputs/selectables/CardSelection';
+import {SelectCard} from '../../inputs/SelectCard';
 
 export class CeresTechMarket extends Card implements IActionCard {
   constructor() {

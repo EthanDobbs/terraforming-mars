@@ -8,7 +8,7 @@ import {Tag} from '../../../common/cards/Tag';
 import {IPlayer} from '../../IPlayer';
 import {Resource} from '../../../common/Resource';
 import {LogHelper} from '../../LogHelper';
-import {SelectCard} from '../../inputs/selectables/CardSelection';
+import {SelectCard} from '../../inputs/SelectCard';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
 import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';

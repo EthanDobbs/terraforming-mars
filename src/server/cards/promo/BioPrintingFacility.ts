@@ -7,7 +7,7 @@ import {CardResource} from '../../../common/CardResource';
 import {Tag} from '../../../common/cards/Tag';
 import {IPlayer} from '../../IPlayer';
 import {Resource} from '../../../common/Resource';
-import {SelectCard} from '../../inputs/selectables/CardSelection';
+import {SelectCard} from '../../inputs/SelectCard';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
 import {CardRenderer} from '../render/CardRenderer';

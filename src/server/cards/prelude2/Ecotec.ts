@@ -9,7 +9,7 @@ import {CardResource} from '../../../common/CardResource';
 import {Resource} from '../../../common/Resource';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
-import {SelectCard} from '../../inputs/selectables/CardSelection';
+import {SelectCard} from '../../inputs/SelectCard';
 
 export class Ecotec extends CorporationCard {
   constructor() {

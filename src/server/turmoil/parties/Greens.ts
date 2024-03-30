@@ -10,7 +10,7 @@ import {Space} from '../../boards/Space';
 import {IPlayer} from '../../IPlayer';
 import {IProjectCard} from '../../cards/IProjectCard';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
-import {SelectCard} from '../../inputs/selectables/CardSelection';
+import {SelectCard} from '../../inputs/SelectCard';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
 import {CardResource} from '../../../common/CardResource';
 import {Phase} from '../../../common/Phase';

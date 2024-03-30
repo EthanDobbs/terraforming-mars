@@ -1,5 +1,5 @@
 import {IPlayer} from '../IPlayer';
-import {SelectCard} from '../inputs/selectables/CardSelection';
+import {SelectCard} from '../inputs/SelectCard';
 import {OrOptions} from '../inputs/basicInputs/OrOptions';
 import {Resource} from '../../common/Resource';
 import {CardResource} from '../../common/CardResource';

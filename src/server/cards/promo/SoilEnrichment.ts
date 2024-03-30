@@ -7,7 +7,7 @@ import {CardRenderer} from '../render/CardRenderer';
 import {digit} from '../Options';
 import {IPlayer} from '../../IPlayer';
 import {CardResource} from '../../../common/CardResource';
-import {SelectCard} from '../../inputs/selectables/CardSelection';
+import {SelectCard} from '../../inputs/SelectCard';
 import {Resource} from '../../../common/Resource';
 
 export class SoilEnrichment extends Card implements IProjectCard {

@@ -6,7 +6,7 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardResource} from '../../../common/CardResource';
 import {Tag} from '../../../common/cards/Tag';
 import {IPlayer} from '../../IPlayer';
-import {SelectCard} from '../../inputs/selectables/CardSelection';
+import {SelectCard} from '../../inputs/SelectCard';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {MAX_TEMPERATURE} from '../../../common/constants';

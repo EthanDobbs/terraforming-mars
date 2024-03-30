@@ -10,7 +10,7 @@ import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred
 import {IPlayer} from '../../IPlayer';
 import {POLITICAL_AGENDAS_MAX_ACTION_USES} from '../../../common/constants';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
-import {SelectCard} from '../../inputs/selectables/CardSelection';
+import {SelectCard} from '../../inputs/SelectCard';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
 import {CardResource} from '../../../common/CardResource';
 import {sum} from '../../../common/utils/utils';

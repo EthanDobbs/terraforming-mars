@@ -6,7 +6,7 @@ import {IActionCard} from '../ICard';
 import {IPlayer} from '../../IPlayer';
 import {IGame} from '../../IGame';
 import {Space} from '../../boards/Space';
-import {SelectSpace} from '../../inputs/selectables/SpaceSelection';
+import {SelectSpace} from '../../inputs/SelectSpace';
 import {CardRenderDynamicVictoryPoints} from '../render/CardRenderDynamicVictoryPoints';
 import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';

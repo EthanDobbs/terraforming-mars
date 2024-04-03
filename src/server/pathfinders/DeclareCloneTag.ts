@@ -1,7 +1,8 @@
 import {IPlayer} from '../IPlayer';
-import {DeferredAction, Priority} from '../behaviorComponents/BehaviorComponent';
-import {OrOptions} from '../inputs/basicInputs/OrOptions';
-import {SelectOption} from '../inputs/selectables/GenericSelection';
+import {DeferredAction} from '../deferredActions/DeferredAction';
+import {Priority} from '../deferredActions/Priority';
+import {OrOptions} from '../inputs/OrOptions';
+import {SelectOption} from '../inputs/SelectOption';
 import {ICloneTagCard} from '../cards/pathfinders/ICloneTagCard';
 import {IProjectCard} from '../cards/IProjectCard';
 import {isPlanetaryTag, PLANETARY_TAGS, PlanetaryTag} from '../pathfinders/PathfindersData';

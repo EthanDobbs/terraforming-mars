@@ -1,7 +1,7 @@
 import * as constants from '../../common/constants';
 import {IProjectCard} from '../cards/IProjectCard';
 import {GlobalParameter} from '../../common/GlobalParameter';
-import {SelectOption} from '../inputs/basicInputs/SelectOption';
+import {SelectOption} from '../inputs/SelectOption';
 import {IPlayer} from '../IPlayer';
 import {PlayerInput} from '../PlayerInput';
 import {Resource} from '../../common/Resource';
@@ -87,8 +87,10 @@ export class TurmoilHandler {
   // It works, but4 a test would be helpful.
   public static computeTerraformRatingBump(player: IPlayer, tr: TRSource = {}): number {
     if (!PartyHooks.shouldApplyPolicy(player, PartyName.REDS, 'rp01')) return 0;
-    // Local copy
+
+    // Making a local copy since it's going to get mutated.
     tr = {...tr};
+
     let total = 0;
 
     if (tr.oxygen !== undefined) {

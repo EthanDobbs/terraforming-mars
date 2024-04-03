@@ -1,5 +1,6 @@
 import {Space} from '../boards/Space';
-import {DeferredAction, Priority} from '../behaviorComponents/BehaviorComponent';
+import {DeferredAction} from '../deferredActions/DeferredAction';
+import {Priority} from '../deferredActions/Priority';
 import {SelectSpace} from '../inputs/SelectSpace';
 import {IPlayer} from '../IPlayer';
 import {PlayerInput} from '../PlayerInput';

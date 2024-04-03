@@ -3,11 +3,11 @@ import {Tag} from '../../../common/cards/Tag';
 import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {IPlayer} from '../../IPlayer';
-import {OrOptions} from '../../inputs/basicInputs/OrOptions';
+import {OrOptions} from '../../inputs/OrOptions';
 import {SelectCard} from '../../inputs/SelectCard';
-import {SelectOption} from '../../inputs/selectables/GenericSelection';
+import {SelectOption} from '../../inputs/SelectOption';
 import {CardName} from '../../../common/cards/CardName';
-import {Priority} from '../../behaviorComponents/BehaviorComponent';
+import {Priority} from '../../deferredActions/Priority';
 import {CardRenderer} from '../render/CardRenderer';
 import {played} from '../Options';
 

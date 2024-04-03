@@ -1,8 +1,9 @@
-import {OrOptions} from '../inputs/basicInputs/OrOptions';
-import {SelectOption} from '../inputs/selectables/GenericSelection';
+import {OrOptions} from '../inputs/OrOptions';
+import {SelectOption} from '../inputs/SelectOption';
 import {IPlayer} from '../IPlayer';
 import {PlayerInput} from '../PlayerInput';
-import {DeferredAction, Priority} from './BehaviorComponent';
+import {DeferredAction} from './DeferredAction';
+import {Priority} from './Priority';
 import {IParty} from '../turmoil/parties/IParty';
 import {BonusId, PolicyId} from '../../common/turmoil/Types';
 import {policyDescription} from '../turmoil/Policy';

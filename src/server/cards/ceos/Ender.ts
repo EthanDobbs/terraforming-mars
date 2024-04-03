@@ -2,9 +2,9 @@ import {CardName} from '../../../common/cards/CardName';
 import {IPlayer} from '../../IPlayer';
 import {CardRenderer} from '../render/CardRenderer';
 import {CeoCard} from './CeoCard';
-import {DrawCards} from '../../behaviorComponents/DrawCards';
-import {Priority} from '../../behaviorComponents/BehaviorComponent';
-import {DiscardCards} from '../../behaviorComponents/DiscardCards';
+import {DrawCards} from '../../deferredActions/DrawCards';
+import {Priority} from '../../deferredActions/Priority';
+import {DiscardCards} from '../../deferredActions/DiscardCards';
 
 export class Ender extends CeoCard {
   constructor() {

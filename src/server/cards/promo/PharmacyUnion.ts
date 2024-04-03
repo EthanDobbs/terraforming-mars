@@ -4,10 +4,10 @@ import {CorporationCard} from '../corporation/CorporationCard';
 import {ICorporationCard} from '../corporation/ICorporationCard';
 import {CardName} from '../../../common/cards/CardName';
 import {CardResource} from '../../../common/CardResource';
-import {SelectOption} from '../../inputs/selectables/GenericSelection';
-import {OrOptions} from '../../inputs/basicInputs/OrOptions';
+import {SelectOption} from '../../inputs/SelectOption';
+import {OrOptions} from '../../inputs/OrOptions';
 import {ICard} from '../ICard';
-import {Priority} from '../../behaviorComponents/BehaviorComponent';
+import {Priority} from '../../deferredActions/Priority';
 import {CardRenderer} from '../render/CardRenderer';
 import {Size} from '../../../common/cards/render/Size';
 import {Resource} from '../../../common/Resource';
@@ -149,7 +149,7 @@ export class PharmacyUnion extends CorporationCard {
         player.megaCredits -= megaCreditsLost;
         game.log('${0} added a disease to ${1} and lost ${2} M€', (b) => b.player(player).card(this).number(megaCreditsLost));
         return undefined;
-      }, Priority.COST);
+      }, Priority.SUPERPOWER);
     }
   }
 

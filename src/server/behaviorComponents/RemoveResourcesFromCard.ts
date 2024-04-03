@@ -1,10 +1,11 @@
 import {IPlayer} from '../IPlayer';
 import {CardResource} from '../../common/CardResource';
-import {OrOptions} from '../inputs/basicInputs/OrOptions';
+import {OrOptions} from '../inputs/OrOptions';
 import {SelectCard} from '../inputs/SelectCard';
-import {SelectOption} from '../inputs/selectables/GenericSelection';
+import {SelectOption} from '../inputs/SelectOption';
 import {ICard} from '../cards/ICard';
-import {DeferredAction, Priority} from './BehaviorComponent';
+import {DeferredAction} from './DeferredAction';
+import {Priority} from './Priority';
 import {Message} from '../../common/logs/Message';
 import {UnderworldExpansion} from '../underworld/UnderworldExpansion';
 

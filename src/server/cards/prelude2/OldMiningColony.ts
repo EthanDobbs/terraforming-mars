@@ -3,8 +3,8 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {PreludeCard} from '../prelude/PreludeCard';
 import {IPlayer} from '../../IPlayer';
-import {DiscardCards} from '../../behaviorComponents/DiscardCards';
-import {Priority} from '../../behaviorComponents/BehaviorComponent';
+import {DiscardCards} from '../../deferredActions/DiscardCards';
+import {Priority} from '../../deferredActions/Priority';
 
 export class OldMiningColony extends PreludeCard {
   constructor() {

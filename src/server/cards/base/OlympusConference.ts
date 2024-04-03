@@ -3,11 +3,11 @@ import {Tag} from '../../../common/cards/Tag';
 import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {IPlayer} from '../../IPlayer';
-import {OrOptions} from '../../inputs/basicInputs/OrOptions';
-import {SelectOption} from '../../inputs/selectables/GenericSelection';
+import {OrOptions} from '../../inputs/OrOptions';
+import {SelectOption} from '../../inputs/SelectOption';
 import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';
-import {Priority} from '../../behaviorComponents/BehaviorComponent';
+import {Priority} from '../../deferredActions/Priority';
 import {CardRenderer} from '../render/CardRenderer';
 import {played} from '../Options';
 
@@ -57,7 +57,7 @@ export class OlympusConference extends Card implements IProjectCard {
         options.title = 'Select an option for Olympus Conference';
         return options;
       },
-      Priority.COST); // Unshift that deferred action
+      Priority.SUPERPOWER); // Unshift that deferred action
     }
     return undefined;
   }

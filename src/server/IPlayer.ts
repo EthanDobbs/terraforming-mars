@@ -3,12 +3,15 @@ import {CardName} from '../common/cards/CardName';
 import {ICorporationCard} from './cards/corporation/ICorporationCard';
 import {IGame, isIGame} from './IGame';
 import {Payment, PaymentOptions} from '../common/inputs/Payment';
+import {SpendableCardResource} from '../common/inputs/Spendable';
 import {ICard, IActionCard} from './cards/ICard';
+import {TRSource} from '../common/cards/TRSource';
 import {IProjectCard} from './cards/IProjectCard';
 import {PlayerInput} from './PlayerInput';
 import {Resource} from '../common/Resource';
 import {CardResource} from '../common/CardResource';
-import {Priority} from './behaviorComponents/BehaviorComponent';
+import {SelectCard} from './inputs/SelectCard';
+import {Priority} from './deferredActions/Priority';
 import {RobotCard} from './cards/promo/SelfReplicatingRobots';
 import {SerializedPlayer} from './SerializedPlayer';
 import {Timer} from '../common/Timer';
@@ -27,12 +30,25 @@ import {OrOptions} from './inputs/basicInputs/OrOptions';
 import {Stock} from './player/Stock';
 import {UnderworldPlayerData} from './underworld/UnderworldData';
 import { SpendableResource } from '@/server/player/SpendableResources/SpendableResource';
-import { SelectCard } from './inputs/SelectCard';
 import { ProxyCard } from './cards/ProxyCard';
-import { Action, CanAffordOptions } from './BasicAction/BasicAction';
-import { TRSource } from '@/common/cards/TRSource';
+import { Action } from './BasicAction/BasicAction';
 
 export type ResourceSource = IPlayer | GlobalEventName | ICard;
+
+export type CanAffordOptions = Partial<PaymentOptions> & {
+  cost: number,
+  reserveUnits?: Units,
+  tr?: TRSource,
+}
+
+/**
+ * Behavior when playing a card:
+ *   add it to the tableau
+ *   discard it from the tableau
+ *   only play the card (used for replaying a card)
+ *   or do nothing.
+ */
+export type CardAction ='add' | 'discard' | 'nothing' | 'action-only';
 
 export interface IPlayer {
   readonly id: PlayerId;

@@ -9,9 +9,9 @@ import {IPlayer} from '../../IPlayer';
 import {BoardType} from '../../boards/BoardType';
 import {Space} from '../../boards/Space';
 import {Resource} from '../../../common/Resource';
-import {OrOptions} from '../../inputs/basicInputs/OrOptions';
-import {SelectOption} from '../../inputs/selectables/GenericSelection';
-import {Priority} from '../../behaviorComponents/BehaviorComponent';
+import {OrOptions} from '../../inputs/OrOptions';
+import {SelectOption} from '../../inputs/SelectOption';
+import {Priority} from '../../deferredActions/Priority';
 import {SpaceType} from '../../../common/boards/SpaceType';
 import {Phase} from '../../../common/Phase';
 

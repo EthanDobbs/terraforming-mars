@@ -6,15 +6,16 @@ import {Tag} from '../../../common/cards/Tag';
 import {CardRenderer} from '../render/CardRenderer';
 import {Card} from '../Card';
 import {all, digit} from '../Options';
-import {OrOptions} from '../../inputs/basicInputs/OrOptions';
-import {SelectOption} from '../../inputs/selectables/GenericSelection';
+import {OrOptions} from '../../inputs/OrOptions';
+import {SelectOption} from '../../inputs/SelectOption';
 import {message} from '../../logs/MessageBuilder';
-import {AndOptions} from '../../inputs/basicInputs/AndOptions';
-import {SelectAmount} from '../../inputs/basicInputs/SelectAmount';
+import {AndOptions} from '../../inputs/AndOptions';
+import {SelectAmount} from '../../inputs/SelectAmount';
 import {Resource} from '../../../common/Resource';
 import {sum} from '../../../common/utils/utils';
 import {Message} from '../../../common/logs/Message';
-import {Priority, SimpleDeferredAction} from '../../behaviorComponents/BehaviorComponent';
+import {SimpleDeferredAction} from '../../deferredActions/DeferredAction';
+import {Priority} from '../../deferredActions/Priority';
 
 export class RoadPiracy extends Card implements IProjectCard {
   constructor() {

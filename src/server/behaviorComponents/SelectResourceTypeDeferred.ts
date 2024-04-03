@@ -1,8 +1,9 @@
 import {Resource} from '../../common/Resource';
-import {OrOptions} from '../inputs/basicInputs/OrOptions';
-import {SelectOption} from '../inputs/selectables/GenericSelection';
+import {OrOptions} from '../inputs/OrOptions';
+import {SelectOption} from '../inputs/SelectOption';
 import {IPlayer} from '../IPlayer';
-import {DeferredAction, Priority} from './BehaviorComponent';
+import {DeferredAction} from './DeferredAction';
+import {Priority} from './Priority';
 
 export class SelectResourceTypeDeferred extends DeferredAction<Resource> {
   constructor(

@@ -7,6 +7,7 @@ import {CardResource} from '../../common/CardResource';
 import {Tag} from '../../common/cards/Tag';
 import {CanAffordOptions, IPlayer} from '../IPlayer';
 import {TRSource} from '../../common/cards/TRSource';
+import {Units} from '../../common/Units';
 import {ICard} from './ICard';
 import {CardRenderDynamicVictoryPoints} from './render/CardRenderDynamicVictoryPoints';
 import {CardRenderItemType} from '../../common/cards/render/CardRenderItemType';
@@ -59,7 +60,7 @@ type SharedProperties = {
   protectedResources?: boolean;
   startingMegaCredits?: number;
   tags?: Array<Tag>;
-  /** Descirbes where the card's TR comes from. Unnecessary for some behaviors. */
+  /** Describes where the card's TR comes from. */
   tr?: TRSource,
   victoryPoints?: number | 'special' | IVictoryPoints,
   reserveUnits?: ReserveUnits,

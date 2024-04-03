@@ -1,6 +1,7 @@
 import {IPlayer} from '../IPlayer';
 import {Units} from '../../common/Units';
-import {DeferredAction, Priority} from './BehaviorComponent';
+import {DeferredAction} from './DeferredAction';
+import {Priority} from './Priority';
 
 export type Options = {
   cb?(): void;

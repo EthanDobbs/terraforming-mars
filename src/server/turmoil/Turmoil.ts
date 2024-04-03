@@ -19,7 +19,7 @@ import {IPlayer} from '../IPlayer';
 import {SendDelegateToArea} from '../behaviorComponents/SendDelegateToArea';
 import {SelectParty} from '../inputs/selectables/PartySelection';
 import {Policy, PolicyId, policyDescription} from './Policy';
-import {PlayerId} from '@/common/Types';
+import {PlayerId} from '../../common/Types';
 
 export type NeutralPlayer = 'NEUTRAL';
 export type Delegate = IPlayer | NeutralPlayer;

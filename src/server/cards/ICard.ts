@@ -134,7 +134,12 @@ export interface ICard {
 
   behavior?: Behavior,
   produce?(player: IPlayer): void;
+
+  /** Terraform Rating predicted when this card is played */
   tr?: TRSource;
+  /** Terraform Rating predicted when this card is played */
+  computeTr?(player: IPlayer): TRSource;
+
   resourceCount: number;
   resourceType?: CardResource;
   protectedResources?: boolean;

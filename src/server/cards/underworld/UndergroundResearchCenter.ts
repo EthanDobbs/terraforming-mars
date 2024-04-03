@@ -9,9 +9,9 @@ import {UnderworldExpansion} from '../../underworld/UnderworldExpansion';
 import {SelectSpace} from '../../inputs/SelectSpace';
 import {Units} from '../../../common/Units';
 import {inplaceRemove} from '../../../common/utils/utils';
-import {OrOptions} from '../../inputs/basicInputs/OrOptions';
-import {SelectOption} from '../../inputs/selectables/GenericSelection';
-import {Priority} from '../../behaviorComponents/BehaviorComponent';
+import {OrOptions} from '../../inputs/OrOptions';
+import {SelectOption} from '../../inputs/SelectOption';
+import {Priority} from '../../deferredActions/Priority';
 
 export class UndergroundResearchCenter extends Card implements IProjectCard {
   constructor() {

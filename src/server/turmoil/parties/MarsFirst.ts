@@ -10,7 +10,7 @@ import {Space} from '../../boards/Space';
 import {IPlayer} from '../../IPlayer';
 import {Policy} from '../Policy';
 import {Phase} from '../../../common/Phase';
-import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
+import {SelectPaymentDeferred} from '../../behaviorComponents/SelectPaymentDeferred';
 import {IProjectCard} from '../../cards/IProjectCard';
 import {POLITICAL_AGENDAS_MAX_ACTION_USES} from '../../../common/constants';
 import {TITLES} from '../../inputs/titles';

@@ -16,6 +16,11 @@ export interface AndOptionsResponse extends InputResponse {
   responses: Array<InputResponse>;
 }
 
+export interface SelectMultipleAmountsResponse extends InputResponse {
+  type: PlayerInputType.MULTIPLE_AMOUNTS,
+  responses: Map<string, number>;
+}
+
 export interface SelectOneResponse extends InputResponse {
   type: PlayerInputType.SELECT_ONE,
   option: string

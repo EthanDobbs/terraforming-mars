@@ -4,7 +4,7 @@ import {CardType} from '../../../common/cards/CardType';
 import {IPlayer} from '../../IPlayer';
 import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';
-import {RemoveResourcesFromCard} from '../../deferredActions/RemoveResourcesFromCard';
+import {RemoveResourcesFromCard} from '../../behaviorComponents/RemoveResourcesFromCard';
 import {CardRenderer} from '../render/CardRenderer';
 import {ActionCard} from '../ActionCard';
 

@@ -1,7 +1,7 @@
 import {IPlayer} from '../../../IPlayer';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {PlaceOceanTile} from '../../../deferredActions/PlaceOceanTile';
+import {PlaceOceanTile} from '../../../behaviorComponents/PlaceOceanTile';
 import {StandardProjectCard} from '../../StandardProjectCard';
 
 export class AquiferStandardProject extends StandardProjectCard {

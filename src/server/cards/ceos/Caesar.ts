@@ -4,8 +4,8 @@ import {PlayerInput} from '../../PlayerInput';
 import {CardRenderer} from '../render/CardRenderer';
 import {CeoCard} from './CeoCard';
 
-import {SelectProductionToLoseDeferred} from '../../deferredActions/SelectProductionToLoseDeferred';
-import {PlaceHazardTile} from '../../deferredActions/PlaceHazardTile';
+import {SelectProductionToLoseDeferred} from '../../behaviorComponents/SelectProductionToLoseDeferred';
+import {PlaceHazardTile} from '../../behaviorComponents/PlaceHazardTile';
 import {HAZARD_TILES, TileType} from '../../../common/TileType';
 import {Size} from '../../../common/cards/render/Size';
 import {all} from '../Options';

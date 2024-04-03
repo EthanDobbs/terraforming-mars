@@ -6,7 +6,7 @@ import {SelectOption} from '../../inputs/selectables/GenericSelection';
 import {ALL_RESOURCES} from '../../../common/Resource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
+import {SelectPaymentDeferred} from '../../behaviorComponents/SelectPaymentDeferred';
 import {TITLES} from '../../inputs/titles';
 
 export class RobinsonIndustries extends CorporationCard implements IActionCard {

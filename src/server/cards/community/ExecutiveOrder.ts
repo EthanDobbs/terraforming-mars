@@ -2,7 +2,7 @@ import {IPlayer} from '../../IPlayer';
 import {PreludeCard} from '../prelude/PreludeCard';
 import {IProjectCard} from '../IProjectCard';
 import {CardName} from '../../../common/cards/CardName';
-import {SendDelegateToArea} from '../../deferredActions/SendDelegateToArea';
+import {SendDelegateToArea} from '../../behaviorComponents/SendDelegateToArea';
 import {CardRenderer} from '../render/CardRenderer';
 import {Resource} from '../../../common/Resource';
 import {Turmoil} from '../../turmoil/Turmoil';

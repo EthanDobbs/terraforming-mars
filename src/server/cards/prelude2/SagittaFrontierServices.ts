@@ -6,7 +6,7 @@ import {CardType} from '../../../common/cards/CardType';
 import {IPlayer} from '../../IPlayer';
 import {ICard} from '../ICard';
 import {AltSecondaryTag} from '../../../common/cards/render/AltSecondaryTag';
-import {GainResources} from '../../deferredActions/GainResources';
+import {GainResources} from '../../behaviorComponents/GainResources';
 import {Resource} from '../../../common/Resource';
 import {Tag} from '../../../common/cards/Tag';
 

@@ -12,8 +12,8 @@ import {AresData, MilestoneCount} from '../../common/ares/AresData';
 import {AdjacencyCost} from './AdjacencyCost';
 import {MultiSet} from 'mnemonist';
 import {Phase} from '../../common/Phase';
-import {SelectPaymentDeferred} from '../deferredActions/SelectPaymentDeferred';
-import {SelectProductionToLoseDeferred} from '../deferredActions/SelectProductionToLoseDeferred';
+import {SelectPaymentDeferred} from '../behaviorComponents/SelectPaymentDeferred';
+import {SelectProductionToLoseDeferred} from '../behaviorComponents/SelectProductionToLoseDeferred';
 import {_AresHazardPlacement} from './AresHazards';
 import {CrashlandingBonus} from '../pathfinders/CrashlandingBonus';
 

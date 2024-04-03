@@ -5,7 +5,7 @@ import {AndOptions} from '../inputs/basicInputs/AndOptions';
 import {IPlayer} from '../IPlayer';
 import {ENERGY_TRADE_COST, MC_TRADE_COST, TITANIUM_TRADE_COST} from '../../common/constants';
 import {IColony} from '../colonies/IColony';
-import {SelectPaymentDeferred} from '../deferredActions/SelectPaymentDeferred';
+import {SelectPaymentDeferred} from '../behaviorComponents/SelectPaymentDeferred';
 import {Resource} from '../../common/Resource';
 import {TradeWithTitanFloatingLaunchPad} from '../cards/colonies/TitanFloatingLaunchPad';
 import {OrOptions} from '../inputs/basicInputs/OrOptions';

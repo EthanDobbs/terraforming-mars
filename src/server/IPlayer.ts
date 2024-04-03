@@ -3,17 +3,16 @@ import {CardName} from '../common/cards/CardName';
 import {ICorporationCard} from './cards/corporation/ICorporationCard';
 import {IGame, isIGame} from './IGame';
 import {Payment, PaymentOptions} from '../common/inputs/Payment';
-import {ICard, IActionCard, DynamicTRSource} from './cards/ICard';
-import {TRSource} from '../common/cards/TRSource';
+import {ICard, IActionCard} from './cards/ICard';
 import {IProjectCard} from './cards/IProjectCard';
 import {PlayerInput} from './PlayerInput';
 import {Resource} from '../common/Resource';
 import {CardResource} from '../common/CardResource';
-import {Priority} from './deferredActions/DeferredAction';
+import {Priority} from './behaviorComponents/BehaviorComponent';
 import {RobotCard} from './cards/promo/SelfReplicatingRobots';
 import {SerializedPlayer} from './SerializedPlayer';
 import {Timer} from '../common/Timer';
-import {AllOptions, DrawOptions} from './deferredActions/DrawCards';
+import {AllOptions, DrawOptions} from './behaviorComponents/DrawCards';
 import {IStandardProjectCard} from './cards/IStandardProjectCard';
 import {GlobalParameter} from '../common/GlobalParameter';
 import {GlobalEventName} from '../common/turmoil/globalEvents/GlobalEventName';
@@ -27,28 +26,13 @@ import {Color} from '../common/Color';
 import {OrOptions} from './inputs/basicInputs/OrOptions';
 import {Stock} from './player/Stock';
 import {UnderworldPlayerData} from './underworld/UnderworldData';
-import { SpendableResource } from '@/server/player/SpendableResource';
+import { SpendableResource } from '@/server/player/SpendableResources/SpendableResource';
 import { SelectCard } from './inputs/SelectCard';
+import { ProxyCard } from './cards/ProxyCard';
+import { Action, CanAffordOptions } from './BasicAction/BasicAction';
+import { TRSource } from '@/common/cards/TRSource';
 
 export type ResourceSource = IPlayer | GlobalEventName | ICard;
-
-export type CanAffordOptions = {
-  /** The card we are trying to determine if the player can afford */ 
-  card: IProjectCard
-  /** Sources of TR that might be penalized by Turmoil Reds */
-  additionalTR?: TRSource | DynamicTRSource,
-  /** Additional costs that must be payed for with MC */
-  additionalCosts?: number
-}
-
-/**
- * Behavior when playing a card:
- *   add it to the tableau
- *   discard it from the tableau
- *   only play the card (used for replaying a card)
- *   or do nothing.
- */
-export type CardAction ='add' | 'discard' | 'nothing' | 'action-only';
 
 export interface IPlayer {
   readonly id: PlayerId;
@@ -278,7 +262,8 @@ export interface IPlayer {
   availableHeat(): number;
   spendHeat(amount: number, cb?: () => (undefined | PlayerInput)) : PlayerInput | undefined;
 
-  playCard(selectedCard: IProjectCard, payment?: Payment, cardAction?: CardAction): void;
+  playCard(selectedCard: IProjectCard): void;
+  playProxy(proxy: ProxyCard): void;
   onCardPlayed(card: IProjectCard): void;
   playAdditionalCorporationCard(corporationCard: ICorporationCard): void;
   playCorporationCard(corporationCard: ICorporationCard): void;
@@ -291,12 +276,10 @@ export interface IPlayer {
   pass(): void;
   takeActionForFinalGreenery(): void;
   getPlayableCards(): Array<IProjectCard>;
-  canPlay(card: IProjectCard): boolean;
-  simpleCanPlay(card: IProjectCard, canAffordOptions?: CanAffordOptions): boolean;
+  canPlay(action: Action): boolean;
   payingAmount(options: PaymentOptions, payment: Payment): number;
-  canAfford(options: number | CanAffordOptions): boolean;
-  getRedsCostForCard(card: ICard): number;
-  getRedsCostFromTRSource(tr?: TRSource | DynamicTRSource): number;
+  canAfford(action: number | CanAffordOptions): boolean;
+  getRedsCost(tr: TRSource): number;
   getStandardProjectOption(): SelectCard<IStandardProjectCard>;
   takeAction(saveBeforeTakingAction?: boolean): void;
   getOpponents(): ReadonlyArray<IPlayer>;

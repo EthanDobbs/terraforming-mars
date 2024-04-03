@@ -5,7 +5,7 @@ import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Tag} from '../../../common/cards/Tag';
-import {AddResourcesToCard} from '../../deferredActions/AddResourcesToCard';
+import {AddResourcesToCard} from '../../behaviorComponents/AddResourcesToCard';
 import {CardResource} from '../../../common/CardResource';
 import {ICard} from '../ICard';
 import {all} from '../Options';

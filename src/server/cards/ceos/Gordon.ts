@@ -4,7 +4,7 @@ import {CardRenderer} from '../render/CardRenderer';
 import {CeoCard} from './CeoCard';
 import {Board} from '../../boards/Board';
 import {Space} from '../../boards/Space';
-import {GainResources} from '../../deferredActions/GainResources';
+import {GainResources} from '../../behaviorComponents/GainResources';
 import {Resource} from '../../../common/Resource';
 import {SpaceType} from '../../../common/boards/SpaceType';
 import {BoardType} from '../../boards/BoardType';

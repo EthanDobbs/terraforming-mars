@@ -4,7 +4,7 @@ import {GlobalEventName} from '../../../common/turmoil/globalEvents/GlobalEventN
 import {PartyName} from '../../../common/turmoil/PartyName';
 import {IGame} from '../../IGame';
 import {Turmoil} from '../Turmoil';
-import {CorrosiveRainDeferredAction} from '../../deferredActions/CorrosiveRainDeferredAction';
+import {CorrosiveRainDeferredAction} from '../../behaviorComponents/CorrosiveRainDeferredAction';
 import {CardRenderer} from '../../cards/render/CardRenderer';
 
 const RENDER_DATA = CardRenderer.builder((b) => {

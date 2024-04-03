@@ -7,7 +7,7 @@ import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {SelectCard} from '../../inputs/SelectCard';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
 import {CardName} from '../../../common/cards/CardName';
-import {Priority} from '../../deferredActions/DeferredAction';
+import {Priority} from '../../behaviorComponents/BehaviorComponent';
 import {CardRenderer} from '../render/CardRenderer';
 import {played} from '../Options';
 

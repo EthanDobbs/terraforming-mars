@@ -6,7 +6,7 @@ import {IGame} from '../../IGame';
 import {Turmoil} from '../../turmoil/Turmoil';
 import {Resource} from '../../../common/Resource';
 import {CardResource} from '../../../common/CardResource';
-import {AddResourcesToCards} from '../../deferredActions/AddResourcesToCards';
+import {AddResourcesToCards} from '../../behaviorComponents/AddResourcesToCards';
 import {CardRenderer} from '../render/CardRenderer';
 import {PathfindersExpansion} from '../../pathfinders/PathfindersExpansion';
 

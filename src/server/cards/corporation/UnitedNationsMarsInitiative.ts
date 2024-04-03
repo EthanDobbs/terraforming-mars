@@ -5,7 +5,7 @@ import {IPlayer} from '../../IPlayer';
 import {ICorporationCard} from './ICorporationCard';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
+import {SelectPaymentDeferred} from '../../behaviorComponents/SelectPaymentDeferred';
 import {TITLES} from '../../inputs/titles';
 export const ACTION_COST = 3;
 export class UnitedNationsMarsInitiative extends CorporationCard implements IActionCard, ICorporationCard {

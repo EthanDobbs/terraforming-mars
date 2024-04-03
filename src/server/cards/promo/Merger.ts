@@ -4,7 +4,7 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {SelectCard} from '../../inputs/SelectCard';
 import {Size} from '../../../common/cards/render/Size';
-import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
+import {SelectPaymentDeferred} from '../../behaviorComponents/SelectPaymentDeferred';
 import {LogHelper} from '../../LogHelper';
 import {ICorporationCard} from '../corporation/ICorporationCard';
 import {CARD_COST} from '../../../common/constants';

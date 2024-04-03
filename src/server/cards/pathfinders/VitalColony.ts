@@ -3,7 +3,7 @@ import {PreludeCard} from '../prelude/PreludeCard';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Tag} from '../../../common/cards/Tag';
-import {BuildColony} from '../../deferredActions/BuildColony';
+import {BuildColony} from '../../behaviorComponents/BuildColony';
 
 export class VitalColony extends PreludeCard {
   constructor() {

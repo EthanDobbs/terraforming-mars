@@ -11,7 +11,7 @@ import {SelectSpace} from '../../inputs/SelectSpace';
 import {Tag} from '../../../common/cards/Tag';
 import {SpaceBonus} from '../../../common/boards/SpaceBonus';
 import {TileType} from '../../../common/TileType';
-import {SelectResourceTypeDeferred} from '../../deferredActions/SelectResourceTypeDeferred';
+import {SelectResourceTypeDeferred} from '../../behaviorComponents/SelectResourceTypeDeferred';
 
 export abstract class MiningCard extends Card implements IProjectCard {
   public bonusResource?: Array<Resource>;

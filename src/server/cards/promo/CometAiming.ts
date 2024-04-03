@@ -10,7 +10,7 @@ import {SelectCard} from '../../inputs/SelectCard';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {LogHelper} from '../../LogHelper';
-import {PlaceOceanTile} from '../../deferredActions/PlaceOceanTile';
+import {PlaceOceanTile} from '../../behaviorComponents/PlaceOceanTile';
 import {CardRenderer} from '../render/CardRenderer';
 import {Payment} from '../../../common/inputs/Payment';
 

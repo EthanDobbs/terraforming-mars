@@ -1,5 +1,5 @@
 import {IPlayer} from '../IPlayer';
-import {DeferredAction, Priority} from '../deferredActions/DeferredAction';
+import {DeferredAction, Priority} from '../behaviorComponents/BehaviorComponent';
 import {SelectSpace} from '../inputs/SelectSpace';
 import {UnderworldExpansion} from '../underworld/UnderworldExpansion';
 

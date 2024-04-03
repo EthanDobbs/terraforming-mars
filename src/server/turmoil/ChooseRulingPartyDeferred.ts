@@ -1,5 +1,5 @@
 import {IPlayer} from '../IPlayer';
-import {DeferredAction} from '../deferredActions/DeferredAction';
+import {DeferredAction} from '../behaviorComponents/BehaviorComponent';
 import {OrOptions} from '../inputs/basicInputs/OrOptions';
 import {Turmoil} from './Turmoil';
 import {PoliticalAgendas} from './PoliticalAgendas';

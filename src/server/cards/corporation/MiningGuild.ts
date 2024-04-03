@@ -6,7 +6,7 @@ import {Space} from '../../boards/Space';
 import {SpaceBonus} from '../../../common/boards/SpaceBonus';
 import {Resource} from '../../../common/Resource';
 import {CardName} from '../../../common/cards/CardName';
-import {GainProduction} from '../../deferredActions/GainProduction';
+import {GainProduction} from '../../behaviorComponents/GainProduction';
 import {CardRenderer} from '../render/CardRenderer';
 import {BoardType} from '../../boards/BoardType';
 import {digit} from '../Options';

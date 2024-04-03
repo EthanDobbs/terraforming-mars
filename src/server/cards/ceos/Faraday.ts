@@ -10,7 +10,7 @@ import {AltSecondaryTag} from '../../../common/cards/render/AltSecondaryTag';
 import {Tag} from '../../../common/cards/Tag';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
-import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
+import {SelectPaymentDeferred} from '../../behaviorComponents/SelectPaymentDeferred';
 import {message} from '../../logs/MessageBuilder';
 import {TITLES} from '../../inputs/titles';
 

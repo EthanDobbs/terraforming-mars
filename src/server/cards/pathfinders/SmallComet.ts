@@ -6,9 +6,9 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Tag} from '../../../common/cards/Tag';
 import {all} from '../Options';
-import {RemoveResources} from '../../deferredActions/RemoveResources';
+import {RemoveResources} from '../../behaviorComponents/RemoveResources';
 import {Resource} from '../../../common/Resource';
-import {Priority} from '../../../server/deferredActions/DeferredAction';
+import {Priority} from '../../behaviorComponents/BehaviorComponent';
 
 export class SmallComet extends Card implements IProjectCard {
   constructor() {

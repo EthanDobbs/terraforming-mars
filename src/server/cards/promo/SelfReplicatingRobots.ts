@@ -8,6 +8,7 @@ import {SelectCard} from '../../inputs/SelectCard';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {CardRenderer} from '../render/CardRenderer';
 import {Size} from '../../../common/cards/render/Size';
+import { ICard } from '../ICard';
 
 export interface RobotCard {
   card: IProjectCard;
@@ -38,6 +39,8 @@ export class SelfReplicatingRobots extends Card implements IProjectCard {
 
   public targetCards: Array<RobotCard> = [];
 
+  public owner: IPlayer | undefined;
+
   public override getCardDiscount(_player: IPlayer, card: IProjectCard): number {
     for (const targetCard of this.targetCards) {
       if (targetCard.card.name === card.name) {
@@ -47,14 +50,17 @@ export class SelfReplicatingRobots extends Card implements IProjectCard {
     return 0;
   }
 
+  private selectableCards(): Array<ICard> {
+    return this.owner?.cardsInHand.filter((card) => card.tags.some((tag) => tag === Tag.SPACE || tag === Tag.BUILDING)) ?? []; 
+  }
+
   public canAct(player: IPlayer): boolean {
-    return this.targetCards.length > 0 ||
-             player.cardsInHand.some((card) => card.tags.some((tag) => tag === Tag.SPACE || tag === Tag.BUILDING));
+    return this.targetCards.length > 0 || player.cardsInHand.some((card) => card.tags.some((tag) => tag === Tag.SPACE || tag === Tag.BUILDING));
   }
 
   public action(player: IPlayer) {
     const orOptions = new OrOptions();
-    const selectableCards = player.cardsInHand.filter((card) => card.tags.some((tag) => tag === Tag.SPACE || tag === Tag.BUILDING));
+    const selectableCards = 
 
     if (this.targetCards.length > 0) {
       const robotCards = this.targetCards.map((targetCard) => targetCard.card);

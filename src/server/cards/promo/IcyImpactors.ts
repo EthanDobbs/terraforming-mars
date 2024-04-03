@@ -7,10 +7,10 @@ import {Tag} from '../../../common/cards/Tag';
 import {IPlayer} from '../../IPlayer';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
-import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
+import {SelectPaymentDeferred} from '../../behaviorComponents/SelectPaymentDeferred';
 import {message} from '../../logs/MessageBuilder';
 import {CardResource} from '../../../common/CardResource';
-import {PlaceOceanTile} from '../../deferredActions/PlaceOceanTile';
+import {PlaceOceanTile} from '../../behaviorComponents/PlaceOceanTile';
 
 export class IcyImpactors extends Card implements IActionCard {
   constructor() {

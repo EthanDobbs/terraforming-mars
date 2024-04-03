@@ -1,12 +1,14 @@
 import {Units} from '../../common/Units';
 import {TileType} from '../../common/TileType';
-import {ICard} from '../cards/ICard';
 import {IPlayer} from '../IPlayer';
 import {Countable, CountableUnits} from './Countable';
 import {hasIntersection} from '../../common/utils/utils';
 import {MoonExpansion} from '../moon/MoonExpansion';
 import {CardResource} from '../../common/CardResource';
 import * as utils from '../../common/utils/utils'; // Since there's already a sum variable.
+import { Action } from '../BasicAction/BasicAction';
+import { CardName } from '@/common/cards/CardName';
+import { Tag } from '@/common/cards/Tag';
 
 /**
  * Counts things in game state.
@@ -36,8 +38,11 @@ export class Counter {
    */
   private cardIsUnplayed: boolean;
 
-  public constructor(private player: IPlayer, private card: ICard) {
-    this.cardIsUnplayed = !player.cardIsInEffect(card.name);
+  public constructor(private player: IPlayer, private action: Action) {
+    this.cardIsUnplayed = false
+    if ('name' in action && typeof action.name === 'string') {
+      this.cardIsUnplayed = !player.cardsInHand.some((card) => )(action.name as CardName);
+    }
   }
 
   public count(countable: Countable, context: 'default' | 'vps' = 'default'): number {
@@ -48,7 +53,6 @@ export class Counter {
     let sum = countable.start ?? 0;
 
     const player = this.player;
-    const card = this.card;
     const game = player.game;
 
     if (countable.cities !== undefined) {
@@ -80,12 +84,14 @@ export class Counter {
     }
     if (countable.tag !== undefined) {
       const tag = countable.tag;
+      let cardTags: Tag[] = [];
+      if ('tags' in this.action)
 
       if (Array.isArray(tag)) { // Multiple tags
         // These two error cases could be coded up, but they don't have a case just yet, and if they do come
         // up, better for the code to error than silently ignore it.
-        if (this.cardIsUnplayed && hasIntersection(tag, card.tags)) {
-          throw new Error(`Not supporting the case counting tags ${tag} when played card tags are ${card.tags}`);
+        if (this.cardIsUnplayed && hasIntersection(tag, cardTags)) {
+          throw new Error(`Not supporting the case counting tags ${tag} when played card tags are ${cardTags}`);
         }
         if (countable.others === true) {
           throw new Error('Not counting others\' multiple Tags.');
@@ -172,15 +178,5 @@ export class Counter {
       sum = Math.floor(sum / countable.per);
     }
     return sum;
-  }
-
-  public countUnits(countableUnits: Partial<CountableUnits>): Units {
-    const units: Units = {...Units.EMPTY};
-    for (const key of Object.keys(units)) {
-      const safeKey = key as keyof CountableUnits;
-      const countable = countableUnits[safeKey] ?? 0;
-      units[safeKey] = this.count(countable);
-    }
-    return units;
   }
 }

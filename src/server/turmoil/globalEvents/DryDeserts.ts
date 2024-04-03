@@ -4,8 +4,8 @@ import {GlobalEventName} from '../../../common/turmoil/globalEvents/GlobalEventN
 import {PartyName} from '../../../common/turmoil/PartyName';
 import {IGame} from '../../IGame';
 import {Turmoil} from '../Turmoil';
-import {RemoveOceanTile} from '../../deferredActions/RemoveOceanTile';
-import {SelectResourcesDeferred} from '../../deferredActions/SelectResourcesDeferred';
+import {RemoveOceanTile} from '../../behaviorComponents/RemoveOceanTile';
+import {SelectResourcesDeferred} from '../../behaviorComponents/SelectResourcesDeferred';
 import {CardRenderer} from '../../cards/render/CardRenderer';
 
 const RENDER_DATA = CardRenderer.builder((b) => {

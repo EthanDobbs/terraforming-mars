@@ -7,7 +7,7 @@ import {CardResource} from '../../common/CardResource';
 import {Tag} from '../../common/cards/Tag';
 import {CanAffordOptions, IPlayer} from '../IPlayer';
 import {TRSource} from '../../common/cards/TRSource';
-import {DynamicTRSource, ICard} from './ICard';
+import {ICard} from './ICard';
 import {CardRenderDynamicVictoryPoints} from './render/CardRenderDynamicVictoryPoints';
 import {CardRenderItemType} from '../../common/cards/render/CardRenderItemType';
 import {IVictoryPoints} from '../../common/cards/IVictoryPoints';
@@ -25,7 +25,7 @@ import {CardRequirementDescriptor} from '../../common/cards/CardRequirementDescr
 import {asArray} from '../../common/utils/utils';
 import {GlobalParameter} from '../../common/GlobalParameter';
 import {Warning} from '../../common/cards/Warning';
-import {SpendableResource} from '../player/SpendableResource';
+import {SpendableResource} from '../player/SpendableResources/SpendableResource';
 import { ReserveUnits } from '@/common/inputs/Payment';
 
 /**
@@ -60,7 +60,7 @@ type SharedProperties = {
   startingMegaCredits?: number;
   tags?: Array<Tag>;
   /** Descirbes where the card's TR comes from. Unnecessary for some behaviors. */
-  tr?: TRSource | DynamicTRSource,
+  tr?: TRSource,
   victoryPoints?: number | 'special' | IVictoryPoints,
   reserveUnits?: ReserveUnits,
 }
@@ -212,7 +212,7 @@ export abstract class Card implements ICard {
   public get reserveUnits(): ReserveUnits {
     return this.properties.reserveUnits || {};
   }
-  public get tr(): TRSource | DynamicTRSource | undefined {
+  public get tr(): TRSource | undefined {
     return this.properties.tr;
   }
   public get victoryPoints(): number | 'special' | IVictoryPoints | undefined {

@@ -1,5 +1,5 @@
 import {CardName} from '../../../common/cards/CardName';
-import {SendDelegateToArea} from '../../deferredActions/SendDelegateToArea';
+import {SendDelegateToArea} from '../../behaviorComponents/SendDelegateToArea';
 import {IPlayer} from '../../IPlayer';
 import {CorporationCard} from '../corporation/CorporationCard';
 import {CardRenderer} from '../render/CardRenderer';

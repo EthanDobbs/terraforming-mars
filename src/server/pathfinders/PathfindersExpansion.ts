@@ -1,27 +1,27 @@
-import {AddResourcesToCard} from '../deferredActions/AddResourcesToCard';
+import {AddResourcesToCard} from '../behaviorComponents/AddResourcesToCard';
 import {CardName} from '../../common/cards/CardName';
 import {IGame} from '../IGame';
 import {GameOptions} from '../game/GameOptions';
 import {GrantResourceDeferred} from './GrantResourceDeferred';
 import {ICard} from '../cards/ICard';
 import {PathfindersData, PlanetaryTag, isPlanetaryTag} from './PathfindersData';
-import {PlaceCityTile} from '../deferredActions/PlaceCityTile';
-import {PlaceGreeneryTile} from '../deferredActions/PlaceGreeneryTile';
+import {PlaceCityTile} from '../behaviorComponents/PlaceCityTile';
+import {PlaceGreeneryTile} from '../behaviorComponents/PlaceGreeneryTile';
 import {PlaceMoonMineTile} from '../moon/PlaceMoonMineTile';
 import {PlaceMoonRoadTile} from '../moon/PlaceMoonRoadTile';
-import {PlaceOceanTile} from '../deferredActions/PlaceOceanTile';
+import {PlaceOceanTile} from '../behaviorComponents/PlaceOceanTile';
 import {PlanetaryTracks} from '../../common/pathfinders/PlanetaryTracks';
 import {IPlayer} from '../IPlayer';
 import {Resource} from '../../common/Resource';
 import {CardResource} from '../../common/CardResource';
 import {Reward} from '../../common/pathfinders/Reward';
-import {SelectResourcesDeferred} from '../deferredActions/SelectResourcesDeferred';
-import {SendDelegateToArea} from '../deferredActions/SendDelegateToArea';
+import {SelectResourcesDeferred} from '../behaviorComponents/SelectResourcesDeferred';
+import {SendDelegateToArea} from '../behaviorComponents/SendDelegateToArea';
 import {Tag} from '../../common/cards/Tag';
 import {Turmoil} from '../turmoil/Turmoil';
 import {VictoryPointsBreakdown} from '../game/VictoryPointsBreakdown';
 import {GlobalEventName} from '../../common/turmoil/globalEvents/GlobalEventName';
-import {Priority} from '../deferredActions/DeferredAction';
+import {Priority} from '../behaviorComponents/BehaviorComponent';
 
 export const TRACKS = PlanetaryTracks.initialize();
 

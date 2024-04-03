@@ -8,7 +8,7 @@ import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Size} from '../../../common/cards/render/Size';
-import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
+import {SelectPaymentDeferred} from '../../behaviorComponents/SelectPaymentDeferred';
 import {TITLES} from '../../inputs/titles';
 
 export class Factorum extends CorporationCard implements IActionCard {

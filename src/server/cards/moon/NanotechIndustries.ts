@@ -5,7 +5,7 @@ import {CardRenderer} from '../render/CardRenderer';
 import {IActionCard} from '../ICard';
 import {CardResource} from '../../../common/CardResource';
 import {IPlayer} from '../../IPlayer';
-import {AddResourcesToCard} from '../../deferredActions/AddResourcesToCard';
+import {AddResourcesToCard} from '../../behaviorComponents/AddResourcesToCard';
 import {MoonCards} from '../../moon/MoonCards';
 
 export class NanotechIndustries extends CorporationCard implements IActionCard {

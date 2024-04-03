@@ -1,5 +1,5 @@
 import {IPlayer} from '../IPlayer';
-import {DeferredAction, Priority} from '../deferredActions/DeferredAction';
+import {DeferredAction, Priority} from '../behaviorComponents/BehaviorComponent';
 import {OrOptions} from '../inputs/basicInputs/OrOptions';
 import {SelectOption} from '../inputs/selectables/GenericSelection';
 import {ICloneTagCard} from '../cards/pathfinders/ICloneTagCard';

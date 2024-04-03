@@ -29,13 +29,13 @@ import {PlayerId, GameId, SpectatorId, SpaceId} from '../common/Types';
 import {PlayerInput} from './PlayerInput';
 import {CardResource} from '../common/CardResource';
 import {Resource} from '../common/Resource';
-import {AndThen, DeferredAction, Priority} from './deferredActions/DeferredAction';
-import {DeferredActionsQueue} from './deferredActions/DeferredActionsQueue';
-import {SelectPaymentDeferred} from './deferredActions/SelectPaymentDeferred';
+import {AndThen, DeferredAction, Priority} from './behaviorComponents/BehaviorComponent';
+import {DeferredActionsQueue} from './behaviorComponents/BehaviorComponentQueue';
+import {SelectPaymentDeferred} from './behaviorComponents/SelectPaymentDeferred';
 import {SelectInitialCards} from './inputs/SelectInitialCards';
-import {PlaceOceanTile} from './deferredActions/PlaceOceanTile';
-import {RemoveColonyFromGame} from './deferredActions/RemoveColonyFromGame';
-import {GainResources} from './deferredActions/GainResources';
+import {PlaceOceanTile} from './behaviorComponents/PlaceOceanTile';
+import {RemoveColonyFromGame} from './behaviorComponents/RemoveColonyFromGame';
+import {GainResources} from './behaviorComponents/GainResources';
 import {SerializedGame} from './SerializedGame';
 import {SpaceBonus} from '../common/boards/SpaceBonus';
 import {TileType} from '../common/TileType';
@@ -57,7 +57,7 @@ import {MultiSet} from 'mnemonist';
 import {GrantVenusAltTrackBonusDeferred} from './venusNext/GrantVenusAltTrackBonusDeferred';
 import {PathfindersExpansion} from './pathfinders/PathfindersExpansion';
 import {PathfindersData} from './pathfinders/PathfindersData';
-import {AddResourcesToCard} from './deferredActions/AddResourcesToCard';
+import {AddResourcesToCard} from './behaviorComponents/AddResourcesToCard';
 import {ColonyDeserializer} from './colonies/ColonyDeserializer';
 import {GameLoader} from './database/GameLoader';
 import {DEFAULT_GAME_OPTIONS, GameOptions} from './game/GameOptions';
@@ -594,10 +594,7 @@ export class Game implements IGame, Logger {
   }
 
   private selectInitialCards(player: IPlayer): PlayerInput {
-    return new SelectInitialCards(player, (corporation: ICorporationCard) => {
-      this.playerHasPickedCorporationCard(player, corporation);
-      return undefined;
-    });
+    return new SelectInitialCards(player)
   }
 
   public hasPassedThisActionPhase(player: IPlayer): boolean {

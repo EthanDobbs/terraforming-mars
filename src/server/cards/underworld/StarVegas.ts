@@ -5,7 +5,7 @@ import {CardType} from '../../../common/cards/CardType';
 import {Card} from '../Card';
 import {IPlayer} from '../../IPlayer';
 import {SpaceName} from '../../SpaceName';
-import {PlaceCityTile} from '../../deferredActions/PlaceCityTile';
+import {PlaceCityTile} from '../../behaviorComponents/PlaceCityTile';
 import {Space} from '../../boards/Space';
 import {Resource} from '../../../common/Resource';
 import {all} from '../Options';

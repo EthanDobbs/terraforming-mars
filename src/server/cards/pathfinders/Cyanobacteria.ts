@@ -6,7 +6,7 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Tag} from '../../../common/cards/Tag';
 import {CardResource} from '../../../common/CardResource';
-import {AddResourcesToCards} from '../../deferredActions/AddResourcesToCards';
+import {AddResourcesToCards} from '../../behaviorComponents/AddResourcesToCards';
 
 export class Cyanobacteria extends Card implements IProjectCard {
   constructor() {

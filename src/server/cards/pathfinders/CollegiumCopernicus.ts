@@ -11,7 +11,7 @@ import {ColoniesHandler} from '../../colonies/ColoniesHandler';
 import {SelectColony} from '../../inputs/selectables/ColonySelection';
 import {IColonyTrader} from '../../colonies/IColonyTrader';
 import {IColony} from '../../colonies/IColony';
-import {AddResourcesToCard} from '../../deferredActions/AddResourcesToCard';
+import {AddResourcesToCard} from '../../behaviorComponents/AddResourcesToCard';
 import {message} from '../../logs/MessageBuilder';
 
 function tradeCost(player: IPlayer) {

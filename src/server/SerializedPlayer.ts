@@ -4,7 +4,7 @@ import {Color} from '../common/Color';
 import {SerializedCard} from './SerializedCard';
 import {SerializedTimer} from '../common/SerializedTimer';
 import {UnderworldPlayerData} from './underworld/UnderworldData';
-import { SpendableResource } from './player/SpendableResource';
+import { SpendableResource } from './player/SpendableResources/SpendableResource';
 
 interface DeprecatedFields {
 }

@@ -4,7 +4,7 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import {AddResourcesToCard} from '../../deferredActions/AddResourcesToCard';
+import {AddResourcesToCard} from '../../behaviorComponents/AddResourcesToCard';
 import {CardResource} from '../../../common/CardResource';
 import {Tag} from '../../../common/cards/Tag';
 import {digit, played} from '../Options';

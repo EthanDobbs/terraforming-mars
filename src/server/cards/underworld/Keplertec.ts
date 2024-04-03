@@ -10,7 +10,7 @@ import {UndergroundResourceToken} from '../../../common/underworld/UndergroundRe
 import {UnderworldExpansion} from '../../../server/underworld/UnderworldExpansion';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
-import {SimpleDeferredAction} from '../../deferredActions/DeferredAction';
+import {SimpleDeferredAction} from '../../behaviorComponents/BehaviorComponent';
 
 export class Keplertec extends ActiveCorporationCard {
   constructor() {

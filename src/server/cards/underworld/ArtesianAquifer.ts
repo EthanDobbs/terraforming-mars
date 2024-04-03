@@ -6,7 +6,7 @@ import {Card} from '../Card';
 import {Tag} from '../../../common/cards/Tag';
 import {IPlayer} from '../../IPlayer';
 import {UnderworldExpansion} from '../../underworld/UnderworldExpansion';
-import {PlaceOceanTile} from '../../deferredActions/PlaceOceanTile';
+import {PlaceOceanTile} from '../../behaviorComponents/PlaceOceanTile';
 
 export class ArtesianAquifer extends Card implements IProjectCard {
   constructor() {

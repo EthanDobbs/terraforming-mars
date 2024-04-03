@@ -5,8 +5,8 @@ import {Card} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
 import {IPlayer} from '../../IPlayer';
 import {CardName} from '../../../common/cards/CardName';
-import {PlaceOceanTile} from '../../deferredActions/PlaceOceanTile';
-import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
+import {PlaceOceanTile} from '../../behaviorComponents/PlaceOceanTile';
+import {SelectPaymentDeferred} from '../../behaviorComponents/SelectPaymentDeferred';
 import {CardRenderer} from '../render/CardRenderer';
 import {TITLES} from '../../inputs/titles';
 

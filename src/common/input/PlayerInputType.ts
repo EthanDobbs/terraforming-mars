@@ -5,5 +5,6 @@ export enum PlayerInputType {
     SELECT_ONE = 'selectOne',
     SELECT_MANY = 'selectMany',
     AMOUNT = 'amount',
+    MULTIPLE_AMOUNTS = 'multipleAmounts',
     PAYMENT = 'payment',
 }

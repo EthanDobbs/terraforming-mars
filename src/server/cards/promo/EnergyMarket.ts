@@ -8,7 +8,7 @@ import {Resource} from '../../../common/Resource';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {SelectAmount} from '../../inputs/basicInputs/SelectAmount';
-import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
+import {SelectPaymentDeferred} from '../../behaviorComponents/SelectPaymentDeferred';
 import {CardRenderer} from '../render/CardRenderer';
 
 export class EnergyMarket extends Card implements IProjectCard {

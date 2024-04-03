@@ -1,4 +1,4 @@
-import {DeferredAction, Priority} from '../deferredActions/DeferredAction';
+import {DeferredAction, Priority} from '../behaviorComponents/BehaviorComponent';
 import {SelectAmount} from '../inputs/basicInputs/SelectAmount';
 import {IPlayer} from '../IPlayer';
 import {Resource} from '../../common/Resource';

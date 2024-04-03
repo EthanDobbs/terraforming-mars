@@ -5,7 +5,7 @@ import {CardType} from '../../../common/cards/CardType';
 import {all, digit} from '../Options';
 import {IPlayer} from '../../IPlayer';
 import {Card} from '../Card';
-import {RemoveResourcesFromCard} from '../../deferredActions/RemoveResourcesFromCard';
+import {RemoveResourcesFromCard} from '../../behaviorComponents/RemoveResourcesFromCard';
 import {CardResource} from '../../../common/CardResource';
 import {UnderworldExpansion} from '../../underworld/UnderworldExpansion';
 import {cancelled} from '../Options';

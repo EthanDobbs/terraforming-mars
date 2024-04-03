@@ -8,8 +8,8 @@ import {PlayerInput} from '../../PlayerInput';
 import {CardName} from '../../../common/cards/CardName';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
 import {CardResource} from '../../../common/CardResource';
-import {RemoveAnyPlants} from '../../deferredActions/RemoveAnyPlants';
-import {RemoveResourcesFromCard} from '../../deferredActions/RemoveResourcesFromCard';
+import {RemoveAnyPlants} from '../../behaviorComponents/RemoveAnyPlants';
+import {RemoveResourcesFromCard} from '../../behaviorComponents/RemoveResourcesFromCard';
 import {CardRenderer} from '../render/CardRenderer';
 import {all, digit} from '../Options';
 

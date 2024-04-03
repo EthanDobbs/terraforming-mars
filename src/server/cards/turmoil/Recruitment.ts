@@ -3,7 +3,7 @@ import {Card} from '../Card';
 import {CardName} from '../../../common/cards/CardName';
 import {CardType} from '../../../common/cards/CardType';
 import {IPlayer} from '../../IPlayer';
-import {SendDelegateToArea} from '../../deferredActions/SendDelegateToArea';
+import {SendDelegateToArea} from '../../behaviorComponents/SendDelegateToArea';
 import {CardRenderer} from '../render/CardRenderer';
 import {Turmoil} from '../../turmoil/Turmoil';
 import {all} from '../Options';

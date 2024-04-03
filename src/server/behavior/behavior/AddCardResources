@@ -1,0 +1,15 @@
+import { IBehavior } from "../IBehaviorInstance";
+import { CountItem, CountableUnits } from "../CountItem";
+import { IPlayer } from "../../IPlayer";
+
+export class AddCardResources implements IBehavior {
+    constructor(private units: Partial<CountableUnits>) {}
+    
+    public Execute(player: IPlayer): player {
+        player.stock.addUnits(this.(player), {log: true});
+        return undefined;
+    }
+    private count(player: IPlayer): number {
+        return CountItem.resolve(this.amount, player)
+    }
+}

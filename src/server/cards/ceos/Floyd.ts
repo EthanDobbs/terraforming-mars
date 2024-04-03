@@ -3,7 +3,7 @@ import {IPlayer} from '../../IPlayer';
 import {PlayerInput} from '../../PlayerInput';
 import {CardRenderer} from '../render/CardRenderer';
 import {CeoCard} from './CeoCard';
-import {PlayProjectCard} from '../../deferredActions/PlayProjectCard';
+import {PlayProjectCard} from '../../behaviorComponents/PlayProjectCard';
 
 export class Floyd extends CeoCard {
   constructor() {

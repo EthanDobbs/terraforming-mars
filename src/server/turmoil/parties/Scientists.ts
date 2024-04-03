@@ -5,7 +5,7 @@ import {IGame} from '../../IGame';
 import {Tag} from '../../../common/cards/Tag';
 import {Resource} from '../../../common/Resource';
 import {Bonus} from '../Bonus';
-import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
+import {SelectPaymentDeferred} from '../../behaviorComponents/SelectPaymentDeferred';
 import {IPlayer} from '../../IPlayer';
 import {Policy} from '../Policy';
 import {TITLES} from '../../inputs/titles';

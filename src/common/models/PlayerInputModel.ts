@@ -15,6 +15,12 @@ export interface AndOptionsModel extends PlayerInputModel {
   options: Array<PlayerInputModel>;
 }
 
+export interface SelectMultipleAmountsModel extends PlayerInputModel {
+  type: PlayerInputType.MULTIPLE_AMOUNTS;
+  options: Map<string, SelectAmountModel>;
+  sum: number;
+}
+
 export interface OrOptionsModel extends PlayerInputModel {
   type: PlayerInputType.OR;
   options: Array<PlayerInputModel>;

@@ -10,7 +10,7 @@ import {IGame} from './IGame';
 import {Game} from './Game';
 import {Payment, PaymentOptions, ReserveUnits} from '../common/inputs/Payment';
 import {IAward} from './awards/IAward';
-import {ICard, isIActionCard, IActionCard, DynamicTRSource} from './cards/ICard';
+import {ICard, isIActionCard, IActionCard} from './cards/ICard';
 import {IMilestone} from './milestones/IMilestone';
 import {IProjectCard} from './cards/IProjectCard';
 import {OrOptions} from './inputs/basicInputs/OrOptions';
@@ -21,8 +21,8 @@ import {PlayerInput} from './PlayerInput';
 import {Resource} from '../common/Resource';
 import {CardResource} from '../common/CardResource';
 import {SellPatentsStandardProject} from './cards/base/standardProjects/SellPatentsStandardProject';
-import {Priority, SimpleDeferredAction} from './deferredActions/DeferredAction';
-import {SelectPaymentDeferred} from './deferredActions/SelectPaymentDeferred';
+import {Priority, SimpleDeferredAction} from './behaviorComponents/BehaviorComponent';
+import {SelectPaymentDeferred} from './behaviorComponents/SelectPaymentDeferred';
 import {SelectProjectCardToPlay} from './inputs/SelectProjectCardToPlay';
 import {SelectOption} from './inputs/basicInputs/SelectOption';
 import {RobotCard, SelfReplicatingRobots} from './cards/promo/SelfReplicatingRobots';
@@ -33,7 +33,7 @@ import {Tag} from '../common/cards/Tag';
 import {Timer} from '../common/Timer';
 import {TurmoilHandler} from './turmoil/TurmoilHandler';
 import {GameCards} from './GameCards';
-import {AllOptions, DrawCards, DrawOptions} from './deferredActions/DrawCards';
+import {AllOptions, DrawCards, DrawOptions} from './behaviorComponents/DrawCards';
 import {Units} from '../common/Units';
 import {MoonExpansion} from './moon/MoonExpansion';
 import {IStandardProjectCard} from './cards/IStandardProjectCard';
@@ -54,25 +54,27 @@ import {Colonies} from './player/Colonies';
 import {Production} from './player/Production';
 import {Stock} from './player/Stock';
 import {Merger} from './cards/promo/Merger';
-import {getBehaviorExecutor} from './behavior/BehaviorExecutor';
 import {CeoExtension} from './CeoExtension';
 import {ICeoCard, isCeoCard} from './cards/ceos/ICeoCard';
 import {message} from './logs/MessageBuilder';
 import {calculateVictoryPoints} from './game/calculateVictoryPoints';
 import {IVictoryPointsBreakdown} from '../common/game/IVictoryPointsBreakdown';
 import {Supercapacitors} from './cards/promo/Supercapacitors';
-import {CanAffordOptions, CardAction, IPlayer, ResourceSource, isIPlayer} from './IPlayer';
+import {IPlayer, ResourceSource, isIPlayer} from './IPlayer';
 import {IPreludeCard} from './cards/prelude/IPreludeCard';
 import {inplaceRemove, sum} from '../common/utils/utils';
 import {PreludesExpansion} from './preludes/PreludesExpansion';
-import {ChooseCards} from './deferredActions/ChooseCards';
+import {ChooseCards} from './behaviorComponents/ChooseCards';
 import {UnderworldPlayerData} from './underworld/UnderworldData';
 import {UnderworldExpansion} from './underworld/UnderworldExpansion';
 import {Counter} from './behavior/Counter';
-import {SpendableResource} from './player/SpendableResource';
+import {SpendableResource} from './player/SpendableResources/SpendableResource';
 import {TRSource} from '../common/cards/TRSource';
 import {SelectCard} from './inputs/SelectCard';
 import {SelectSpace} from './inputs/SelectSpace';
+import { PlayerHand } from './player/PlayerHand';
+import { ProxyCard } from './cards/ProxyCard';
+import { Action, CanAffordOptions } from './BasicAction/BasicAction';
 
 const THROW_WAITING_FOR = Boolean(process.env.THROW_WAITING_FOR);
 
@@ -166,6 +168,7 @@ export class Player implements IPlayer {
   public lastCardPlayed: CardName | undefined;
   public pendingInitialActions: Array<ICorporationCard> = [];
 
+  public playerHand = new PlayerHand();
   // Cards
   public dealtCorporationCards: Array<ICorporationCard> = [];
   public dealtPreludeCards: Array<IProjectCard> = [];
@@ -851,32 +854,23 @@ export class Player implements IPlayer {
     }
   }
 
-  public playCard(selectedCard: IProjectCard, payment?: Payment, cardAction: CardAction = 'add'): void {
-    if (payment !== undefined) {
-      this.pay(payment);
-    }
-
+  public playCard(selectedCard: IProjectCard): void {
     ColoniesHandler.onCardPlayed(this.game, selectedCard);
 
-    if (selectedCard.type !== CardType.PROXY) {
-      this.lastCardPlayed = selectedCard.name;
-      this.game.log('${0} played ${1}', (b) => b.player(this).card(selectedCard));
-    }
+    this.lastCardPlayed = selectedCard.name;
+    this.game.log('${0} played ${1}', (b) => b.player(this).card(selectedCard));
 
     // Play the card
     const action = selectedCard.play(this);
     this.defer(action, Priority.DEFAULT);
 
-    // This could probably include 'nothing' but for now this will work.
-    if (cardAction !== 'discard') {
-      // Remove card from hand
-      const projectCardIndex = this.cardsInHand.findIndex((card) => card.name === selectedCard.name);
-      const preludeCardIndex = this.preludeCardsInHand.findIndex((card) => card.name === selectedCard.name);
-      if (projectCardIndex !== -1) {
-        this.cardsInHand.splice(projectCardIndex, 1);
-      } else if (preludeCardIndex !== -1) {
-        this.preludeCardsInHand.splice(preludeCardIndex, 1);
-      }
+    const projectCardIndex = this.cardsInHand.findIndex((card) => card.name === selectedCard.name);
+    const preludeCardIndex = this.preludeCardsInHand.findIndex((card) => card.name === selectedCard.name);
+    if (projectCardIndex !== -1) {
+      this.cardsInHand.splice(projectCardIndex);
+    } else if (preludeCardIndex !== -1) {
+      this.preludeCardsInHand.splice(preludeCardIndex);
+    }
 
       // Remove card from Self Replicating Robots
       const card = this.playedCards.find((card) => card.name === CardName.SELF_REPLICATING_ROBOTS);
@@ -888,32 +882,21 @@ export class Player implements IPlayer {
           }
         }
       }
-    }
 
-    switch (cardAction) {
-    case 'add':
       if (selectedCard.name !== CardName.LAW_SUIT && selectedCard.name !== CardName.PRIVATE_INVESTIGATOR) {
         this.playedCards.push(selectedCard);
       }
-      break;
-    // Card is already played. Discard it.
-    case 'discard':
-      this.discardPlayedCard(selectedCard);
-      break;
-    // Do nothing. Good for fake cards and replaying events.
-    case 'nothing':
-      break;
-    // Do nothing, used for Double Down.
-    case 'action-only':
-      break;
-    }
 
     // See DeclareCloneTag for why this skips cards with clone tags.
-    if (!selectedCard.tags.includes(Tag.CLONE) && cardAction !== 'action-only') {
+    if (!selectedCard.tags.includes(Tag.CLONE)) {
       this.onCardPlayed(selectedCard);
     }
 
     return undefined;
+  }
+
+  public playProxy(proxy: ProxyCard): void {
+      
   }
 
   private triggerOtherCorpEffects(playedCorporationCard: ICorporationCard) {
@@ -1242,8 +1225,8 @@ export class Player implements IPlayer {
     return playableCards;
   }
 
-  public canPlay(card: IProjectCard): boolean {
-    const options: CanAffordOptions = {card: card};
+  public canPlay(action: Action): boolean {
+    const options = action.canExecute(this);
     return this.newCanAfford(options) && card.canPlay(this, options);
   }
 
@@ -1279,13 +1262,8 @@ export class Player implements IPlayer {
     return retVal;
   }
 
-  public getRedsCostFromTRSource(tr?: TRSource | DynamicTRSource): number{
-    return TurmoilHandler.computeTerraformRatingBump(this, tr) * REDS_RULING_POLICY_COST;
-  }
-
-  public getRedsCostForCard(card: ICard): number{
-    let tr = card.behavior !== undefined ? getBehaviorExecutor().toTRSource(card.behavior, new Counter(this, card)) : undefined;
-    return this.getRedsCostFromTRSource(tr)
+  public getRedsCost(tr?: TRSource): number{
+    return TurmoilHandler.computeTerraformRatingBump(this, tr) * REDS_RULING_POLICY_COST
   }
 
   /**
@@ -1293,8 +1271,7 @@ export class Player implements IPlayer {
    */
   public newCanAfford(options: CanAffordOptions): boolean {
     const additionalCosts = options.additionalCosts ?? 0 + this.getRedsCostForCard(options.card) + this.getRedsCostFromTRSource(options.additionalTR)
-    if (this.spendableMegacredits() < additionalCosts)
-      return false
+    
     return options.card.cost + additionalCosts <= this.maxSpendable(this.GetPaymentOptions(options.card));
   }
 
@@ -1303,9 +1280,9 @@ export class Player implements IPlayer {
    * and additionally pay the reserveUnits (no replaces here)
    */
   public canAfford(o: number | CanAffordOptions): boolean {
-    if (typeof o === 'number') {
-      return o <= this.spendableMegacredits()
-    }
+    if (typeof o === 'number') return o <= this.spendableMegacredits()
+    const additionalCosts = o.additionalCosts?.megacredits ?? 0 + this.getRedsCost(o.action.getTRsources(this)) + this.getRedsCost(o.additionalTR);
+    if (this.spendableMegacredits() < additionalCosts) return false;
     return this.newCanAfford(o);
   }
 

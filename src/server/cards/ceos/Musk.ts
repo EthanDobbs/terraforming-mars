@@ -4,7 +4,7 @@ import {PlayerInput} from '../../PlayerInput';
 import {CardRenderer} from '../render/CardRenderer';
 import {CeoCard} from './CeoCard';
 
-import {DrawCards} from '../../deferredActions/DrawCards';
+import {DrawCards} from '../../behaviorComponents/DrawCards';
 
 import {Tag} from '../../../common/cards/Tag';
 import {Resource} from '../../../common/Resource';

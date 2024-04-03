@@ -6,7 +6,7 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Resource} from '../../../common/Resource';
 import {Tag} from '../../../common/cards/Tag';
-import {RemoveResourcesFromCard} from '../../deferredActions/RemoveResourcesFromCard';
+import {RemoveResourcesFromCard} from '../../behaviorComponents/RemoveResourcesFromCard';
 import {CardResource} from '../../../common/CardResource';
 import {all, digit} from '../Options';
 

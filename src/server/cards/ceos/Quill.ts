@@ -4,10 +4,10 @@ import {PlayerInput} from '../../PlayerInput';
 import {CardRenderer} from '../render/CardRenderer';
 import {CeoCard} from './CeoCard';
 import {CardResource} from '../../../common/CardResource';
-import {AddResourcesToCard} from '../../deferredActions/AddResourcesToCard';
+import {AddResourcesToCard} from '../../behaviorComponents/AddResourcesToCard';
 import {AltSecondaryTag} from '../../../common/cards/render/AltSecondaryTag';
 import {Resource} from '../../../common/Resource';
-import {GainResources} from '../../deferredActions/GainResources';
+import {GainResources} from '../../behaviorComponents/GainResources';
 
 
 export class Quill extends CeoCard {

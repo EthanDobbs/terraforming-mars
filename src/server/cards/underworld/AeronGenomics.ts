@@ -5,7 +5,7 @@ import {ActiveCorporationCard} from '../corporation/CorporationCard';
 import {digit} from '../Options';
 import {CardResource} from '../../../common/CardResource';
 import {IPlayer} from '../../IPlayer';
-import {SimpleDeferredAction} from '../../deferredActions/DeferredAction';
+import {SimpleDeferredAction} from '../../behaviorComponents/BehaviorComponent';
 import {SelectCard} from '../../inputs/SelectCard';
 import {Space} from '../../boards/Space';
 

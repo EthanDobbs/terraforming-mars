@@ -3,7 +3,7 @@ import {Tag} from '../../../common/cards/Tag';
 import {CardType} from '../../../common/cards/CardType';
 import {IPlayer} from '../../IPlayer';
 import {CardName} from '../../../common/cards/CardName';
-import {BuildColony} from '../../deferredActions/BuildColony';
+import {BuildColony} from '../../behaviorComponents/BuildColony';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {Card} from '../Card';
 import {CardRenderer} from '../render/CardRenderer';

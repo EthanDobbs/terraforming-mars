@@ -1,4 +1,4 @@
-import {Units} from '../../common/Units';
+
 import {OneOrArray} from '../../common/utils/types';
 import {Tag} from '../../common/cards/Tag';
 import {NoAttributes} from './NoAttributes';
@@ -59,10 +59,3 @@ export type _Countable = {
    */
   per?: number;
 };
-
-export type Countable = number | _Countable;
-
-/**
- * A companion to Units with countable values.
- */
-export type CountableUnits = {[k in keyof Units]: Countable}

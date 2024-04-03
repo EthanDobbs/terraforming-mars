@@ -4,7 +4,7 @@ import {TRSource} from '../../common/cards/TRSource';
 import {PlayerInput} from '../PlayerInput';
 import {ICardMetadata} from '../../common/cards/ICardMetadata';
 import {CardName} from '../../common/cards/CardName';
-import {SelectPaymentDeferred} from '../deferredActions/SelectPaymentDeferred';
+import {SelectPaymentDeferred} from '../behaviorComponents/SelectPaymentDeferred';
 import {Card} from './Card';
 import {MoonExpansion} from '../moon/MoonExpansion';
 import {Units} from '../../common/Units';

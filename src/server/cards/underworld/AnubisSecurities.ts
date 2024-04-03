@@ -3,7 +3,7 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {CorporationCard} from '../corporation/CorporationCard';
 import {IPlayer} from '../../IPlayer';
-import {PlayProjectCard} from '../../deferredActions/PlayProjectCard';
+import {PlayProjectCard} from '../../behaviorComponents/PlayProjectCard';
 import {Resource} from '../../../common/Resource';
 import {all} from '../Options';
 import {Size} from '../../../common/cards/render/Size';

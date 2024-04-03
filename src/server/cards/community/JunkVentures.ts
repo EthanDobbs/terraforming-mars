@@ -2,7 +2,7 @@ import {CardName} from '../../../common/cards/CardName';
 import {Size} from '../../../common/cards/render/Size';
 import {CorporationCard} from '../corporation/CorporationCard';
 import {CardRenderer} from '../render/CardRenderer';
-import {ChooseCards} from '../../deferredActions/ChooseCards';
+import {ChooseCards} from '../../behaviorComponents/ChooseCards';
 import {IPlayer} from '../../IPlayer';
 
 export class JunkVentures extends CorporationCard {

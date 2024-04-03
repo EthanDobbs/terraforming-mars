@@ -7,7 +7,7 @@ import { ICard } from "../cards/ICard";
 export class SelectCard<T extends ICard> extends SelectMany<T> {
     constructor(
         title: string | Message,
-        buttonLabel: string,
+        buttonLabel: string = 'Save',
         cards: Array<T>,
         amount?: number,
         config?: Partial<Options>,

@@ -45,10 +45,6 @@ export abstract class CardRequirement {
   /**
    * Evaluate whether |player| satisfies this requirement. It takes into account any
    * player modifiers (e.g. Adaptation Technology, and fan-based Think Tank.)
-   *
-   * Returns true if |player| can satisfy the requirement, false if it cannot, and
-   * YesAnd if it can only do that under certain conditions (e.g. spend 2 Think Tank
-   * resources.)
    */
   public abstract satisfies(player: IPlayer, thinkTankResources?: number) : boolean;
 }

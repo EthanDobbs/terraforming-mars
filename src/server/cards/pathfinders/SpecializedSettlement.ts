@@ -9,7 +9,7 @@ import {Space} from '../../boards/Space';
 import {Resource} from '../../../common/Resource';
 import {CardRenderer} from '../render/CardRenderer';
 import {SpaceBonus} from '../../../common/boards/SpaceBonus';
-import {SelectResourceTypeDeferred} from '../../deferredActions/SelectResourceTypeDeferred';
+import {SelectResourceTypeDeferred} from '../../behaviorComponents/SelectResourceTypeDeferred';
 
 export class SpecializedSettlement extends Card implements IProjectCard {
   constructor() {

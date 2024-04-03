@@ -7,7 +7,7 @@ import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
 import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';
-import {Priority} from '../../deferredActions/DeferredAction';
+import {Priority} from '../../behaviorComponents/BehaviorComponent';
 import {CardRenderer} from '../render/CardRenderer';
 import {played} from '../Options';
 
@@ -57,7 +57,7 @@ export class OlympusConference extends Card implements IProjectCard {
         options.title = 'Select an option for Olympus Conference';
         return options;
       },
-      Priority.SUPERPOWER); // Unshift that deferred action
+      Priority.COST); // Unshift that deferred action
     }
     return undefined;
   }

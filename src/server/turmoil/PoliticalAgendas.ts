@@ -1,4 +1,4 @@
-import {ChoosePoliticalAgenda} from '../deferredActions/ChoosePoliticalAgenda';
+import {ChoosePoliticalAgenda} from '../behaviorComponents/ChoosePoliticalAgenda';
 import {IGame} from '../IGame';
 import {Bonus} from './Bonus';
 import {IParty} from './parties/IParty';

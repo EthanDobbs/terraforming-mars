@@ -8,7 +8,7 @@ import {CardResource} from '../../../common/CardResource';
 import {CardType} from '../../../common/cards/CardType';
 import {IPlayer} from '../../IPlayer';
 import {IdentifySpacesDeferred} from '../../underworld/IdentifySpacesDeferred';
-import {AddResourcesToCard} from '../../deferredActions/AddResourcesToCard';
+import {AddResourcesToCard} from '../../behaviorComponents/AddResourcesToCard';
 
 export class StemFieldSubsidies extends Card implements IProjectCard {
   constructor() {

@@ -2,7 +2,7 @@ import {Phase} from '../common/Phase';
 import {CardName} from '../common/cards/CardName';
 import {SerializedClaimedMilestone} from './milestones/ClaimedMilestone';
 import {SerializedFundedAward} from './awards/FundedAward';
-import {DeferredAction} from './deferredActions/DeferredAction';
+import {DeferredAction} from './behaviorComponents/BehaviorComponent';
 import {SerializedColony} from './SerializedColony';
 import {SerializedPlayer} from './SerializedPlayer';
 import {SerializedTurmoil} from './turmoil/SerializedTurmoil';

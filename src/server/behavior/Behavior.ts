@@ -55,7 +55,7 @@ export type Behavior = {
   standardResource?: number | {count: number, same?: boolean};
 
   /** Add resources to this card itself */
-  addResources?: Countable;
+  addResources?: Countable; // aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
   /** Add resources to any cards */
   addResourcesToAnyCard?: AddResource | Array<Omit<AddResource, 'mustHaveCard'>>;

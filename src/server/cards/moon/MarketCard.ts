@@ -1,4 +1,4 @@
-import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
+import {SelectPaymentDeferred} from '../../behaviorComponents/SelectPaymentDeferred';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {SelectAmount} from '../../inputs/basicInputs/SelectAmount';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';

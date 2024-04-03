@@ -2,7 +2,7 @@ import {Tag} from '../../../common/cards/Tag';
 import {CardName} from '../../../common/cards/CardName';
 import {IPlayer} from '../../IPlayer';
 import {PreludeCard} from './PreludeCard';
-import {PlayProjectCard} from '../../deferredActions/PlayProjectCard';
+import {PlayProjectCard} from '../../behaviorComponents/PlayProjectCard';
 import {CardRenderer} from '../render/CardRenderer';
 
 export class EcologyExperts extends PreludeCard {

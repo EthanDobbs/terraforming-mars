@@ -8,9 +8,9 @@ import {IProjectCard} from '../IProjectCard';
 import {Tag} from '../../../common/cards/Tag';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
-import {SendDelegateToArea} from '../../deferredActions/SendDelegateToArea';
+import {SendDelegateToArea} from '../../behaviorComponents/SendDelegateToArea';
 import {Turmoil} from '../../turmoil/Turmoil';
-import {PlaceCityTile} from '../../deferredActions/PlaceCityTile';
+import {PlaceCityTile} from '../../behaviorComponents/PlaceCityTile';
 import {Size} from '../../../common/cards/render/Size';
 
 export class MindSetMars extends CorporationCard {

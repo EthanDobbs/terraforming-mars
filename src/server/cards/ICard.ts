@@ -38,8 +38,6 @@ export function isIHasCheckLoops(object: any): object is IHasCheckLoops {
   return object.getCheckLoops !== undefined;
 }
 
-export type DynamicTRSource = (player: IPlayer) => TRSource;
-
 export interface ICard {
   name: CardName;
   tags: Array<Tag>;
@@ -136,7 +134,7 @@ export interface ICard {
 
   behavior?: Behavior,
   produce?(player: IPlayer): void;
-  tr?: TRSource | DynamicTRSource;
+  tr?: TRSource;
   resourceCount: number;
   resourceType?: CardResource;
   protectedResources?: boolean;

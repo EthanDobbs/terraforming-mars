@@ -4,9 +4,9 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Card} from '../Card';
 import {IPlayer} from '../../IPlayer';
-import {RemoveResourcesFromCard} from '../../deferredActions/RemoveResourcesFromCard';
+import {RemoveResourcesFromCard} from '../../behaviorComponents/RemoveResourcesFromCard';
 import {UnderworldExpansion} from '../../underworld/UnderworldExpansion';
-import {AddResourcesToCard} from '../../deferredActions/AddResourcesToCard';
+import {AddResourcesToCard} from '../../behaviorComponents/AddResourcesToCard';
 
 export class CorporateTheft extends Card implements IProjectCard {
   constructor() {

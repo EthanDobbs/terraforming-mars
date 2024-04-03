@@ -11,7 +11,7 @@ import {Space} from '../../boards/Space';
 import {Resource} from '../../../common/Resource';
 import {OrOptions} from '../../inputs/basicInputs/OrOptions';
 import {SelectOption} from '../../inputs/selectables/GenericSelection';
-import {Priority} from '../../deferredActions/DeferredAction';
+import {Priority} from '../../behaviorComponents/BehaviorComponent';
 import {SpaceType} from '../../../common/boards/SpaceType';
 import {Phase} from '../../../common/Phase';
 

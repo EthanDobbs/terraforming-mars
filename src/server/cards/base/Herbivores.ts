@@ -7,7 +7,7 @@ import {Space} from '../../boards/Space';
 import {Resource} from '../../../common/Resource';
 import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';
-import {AddResourcesToCard} from '../../deferredActions/AddResourcesToCard';
+import {AddResourcesToCard} from '../../behaviorComponents/AddResourcesToCard';
 import {CardRenderer} from '../render/CardRenderer';
 import {all} from '../Options';
 import {Board} from '../../boards/Board';

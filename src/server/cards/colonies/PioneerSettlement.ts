@@ -5,7 +5,7 @@ import {IPlayer} from '../../IPlayer';
 import {CardName} from '../../../common/cards/CardName';
 import {Resource} from '../../../common/Resource';
 import {ColonyName} from '../../../common/colonies/ColonyName';
-import {BuildColony} from '../../deferredActions/BuildColony';
+import {BuildColony} from '../../behaviorComponents/BuildColony';
 import {CardRenderer} from '../render/CardRenderer';
 import {Card} from '../Card';
 import {max} from '../Options';

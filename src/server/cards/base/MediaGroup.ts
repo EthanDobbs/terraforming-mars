@@ -6,7 +6,7 @@ import {IPlayer} from '../../IPlayer';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {played} from '../Options';
-import {GainResources} from '../../deferredActions/GainResources';
+import {GainResources} from '../../behaviorComponents/GainResources';
 import {Resource} from '../../../common/Resource';
 
 export class MediaGroup extends Card implements IProjectCard {

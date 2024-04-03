@@ -16,7 +16,7 @@ import {AgendaStyle} from '../../common/turmoil/Types';
 import {CardName} from '../../common/cards/CardName';
 import {MultiSet} from 'mnemonist';
 import {IPlayer} from '../IPlayer';
-import {SendDelegateToArea} from '../deferredActions/SendDelegateToArea';
+import {SendDelegateToArea} from '../behaviorComponents/SendDelegateToArea';
 import {SelectParty} from '../inputs/selectables/PartySelection';
 import {Policy, PolicyId, policyDescription} from './Policy';
 import {PlayerId} from '@/common/Types';

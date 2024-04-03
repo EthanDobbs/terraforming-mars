@@ -7,7 +7,7 @@ import {Card} from '../Card';
 import {IActionCard} from '../ICard';
 import {CardResource} from '../../../common/CardResource';
 import {IPlayer} from '../../IPlayer';
-import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
+import {SelectPaymentDeferred} from '../../behaviorComponents/SelectPaymentDeferred';
 import {SelectPlayer} from '../../inputs/SelectPlayer';
 import {UnderworldExpansion} from '../../underworld/UnderworldExpansion';
 import {TITLES} from '../../inputs/titles';

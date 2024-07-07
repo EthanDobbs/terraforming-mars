@@ -17,8 +17,8 @@ export class DesignedFlyers extends Card implements IProjectCard {
       tags: [Tag.SCIENCE, Tag.ANIMAL, Tag.VENUS],
       cost: 14,
 
-      behavior:{
-        addResources: 1
+      behavior: {
+        addResources: 1,
       },
 
       resourceType: CardResource.ANIMAL,
@@ -29,10 +29,10 @@ export class DesignedFlyers extends Card implements IProjectCard {
         cardNumber: 'x268',
         renderData: CardRenderer.builder((b) => {
           b.action('Draw a card and add an animal to this card ONLY IF you\'ve raised Venus this generation (or if the parameter is maxed).', (eb) => {
-            eb.plus().venus(1).asterix().nbsp.colon().nbsp.startAction.cards(1).animals(1);
+            eb.plus().venus(1).asterix().nbsp.colon().nbsp.startAction.cards(1).resource(CardResource.ANIMAL);
           }).br;
           b.vpText('1 VP for every animal on this card.').br;
-          b.animals(1);
+          b.resource(CardResource.ANIMAL);
         }),
         description: 'Requires 5 science tags. Add an animal to this card.',
       },

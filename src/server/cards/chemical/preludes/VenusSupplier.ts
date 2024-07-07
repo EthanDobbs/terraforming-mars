@@ -5,7 +5,7 @@ import {ActivePreludeCard} from '../../prelude2/ActivePreludeCard';
 import {IProjectCard} from '../../IProjectCard';
 import {CardResource} from '../../../../common/CardResource';
 
-export class VenusSupplier extends ActivePreludeCard implements IProjectCard{
+export class VenusSupplier extends ActivePreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.VENUS_SUPPLIER,
@@ -34,11 +34,11 @@ export class VenusSupplier extends ActivePreludeCard implements IProjectCard{
         cardNumber: 'xP38',
         renderData: CardRenderer.builder((b) => {
           b.action('Add a floater to ANY card or gain 2 M€.', (eb) => {
-            eb.empty().startAction.floaters(1).asterix().slash().megacredits(2);
+            eb.empty().startAction.resource(CardResource.FLOATER).asterix().slash().megacredits(2);
           }).br;
           b.venus(1).production((pb) => pb.energy(1));
         }),
-        description: 'Raise Venus 1 step and increase your energy production 1 step.'
+        description: 'Raise Venus 1 step and increase your energy production 1 step.',
       },
     });
   }

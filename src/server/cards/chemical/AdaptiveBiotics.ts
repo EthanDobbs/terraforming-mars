@@ -6,7 +6,7 @@ import {CardResource} from '../../../common/CardResource';
 import {Space} from '../../boards/Space';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import { Board } from '../../boards/Board';
+import {Board} from '../../boards/Board';
 import {IPlayer} from '../../IPlayer';
 import {GlobalParameter} from '../../../common/GlobalParameter';
 
@@ -26,11 +26,11 @@ export class AdaptiveBiotics extends Card implements IProjectCard {
         cardNumber: 'x058',
         renderData: CardRenderer.builder((b) => {
           b.effect('For every step you raise the temperature or oxygen, and for every ocean tile you place, add an animal to this card', (eb) => {
-            eb.temperature(1).slash().oxygen(1).slash().oceans(1).startEffect.animals(1);
+            eb.temperature(1).slash().oxygen(1).slash().oceans(1).startEffect.resource(CardResource.ANIMAL);
           }).br;
           b.vpText('1 VP for every 2 animals on this card.');
         }),
-        description: 'Requires 2 science tags.'
+        description: 'Requires 2 science tags.',
       },
     });
   }

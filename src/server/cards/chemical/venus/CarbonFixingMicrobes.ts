@@ -36,11 +36,11 @@ export class CarbonFixingMicrobes extends ActionCard implements IProjectCard {
         cardNumber: 'x267',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 1 M€ to add 1 microbe to this card.', (eb) => {
-            eb.megacredits(1).startAction.microbes(1);
+            eb.megacredits(1).startAction.resource(CardResource.MICROBE);
           }).br;
           b.or().br;
           b.action('Remove 2 microbes From this card to raise Venus 1 step.', (eb) => {
-            eb.microbes(2).startAction.venus(1);
+            eb.resource(CardResource.MICROBE, 2).startAction.venus(1);
           }).br;
         }),
         description: 'Requires Venus 10%.',

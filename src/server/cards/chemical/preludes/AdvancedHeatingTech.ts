@@ -6,7 +6,7 @@ import {IPlayer} from '../../../IPlayer';
 import {PlayerInput} from '../../../PlayerInput';
 import {AltSecondaryTag} from '../../../../common/cards/render/AltSecondaryTag';
 
-export class AdvancedHeatingTech extends PreludeCard implements IProjectCard{
+export class AdvancedHeatingTech extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.ADVANCED_HEATING_TECH,
@@ -20,7 +20,7 @@ export class AdvancedHeatingTech extends PreludeCard implements IProjectCard{
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.heat(3)).nbsp.cards(2, {secondaryTag: AltSecondaryTag.HEAT});
         }),
-        description: 'Increase your heat production 3 steps and draw 2 cards with heat icons.'
+        description: 'Increase your heat production 3 steps and draw 2 cards with heat icons.',
       },
     });
   }
@@ -32,7 +32,7 @@ export class AdvancedHeatingTech extends PreludeCard implements IProjectCard{
         found.push(card.name);
       }
       return undefined;
-    })
+    });
     player.drawCard(2, {
       include: (card) => found.includes(card.name),
     });

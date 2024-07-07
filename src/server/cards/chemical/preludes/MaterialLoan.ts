@@ -37,7 +37,7 @@ export class MaterialLoan extends PreludeCard {
           player.production.add(resource, -1, {log: true});
           player.stock.add(resource, 5, {log: true});
           return undefined;
-        }))
+        }));
       }
     });
 

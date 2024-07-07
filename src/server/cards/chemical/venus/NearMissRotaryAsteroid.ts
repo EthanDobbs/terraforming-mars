@@ -17,13 +17,13 @@ export class NearMissRotaryAsteroid extends Card implements IProjectCard {
 
       behavior: {
         global: {venus: 1},
-        addResourcesToAnyCard: {type: CardResource.ASTEROID, count: 1}
+        addResourcesToAnyCard: {type: CardResource.ASTEROID, count: 1},
       },
 
       metadata: {
         cardNumber: 'x242',
         renderData: CardRenderer.builder((b) => {
-          b.venus(1).nbsp.asteroids(1).asterix();
+          b.venus(1).nbsp.resource(CardResource.ASTEROID).asterix();
         }),
         description: 'Raise Venus 1 step and add an asteroid to ANOTHER card.',
       },

@@ -30,10 +30,10 @@ export class Raptors extends ActionCard implements IProjectCard {
         cardNumber: 'x052',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 animal to this card.', (eb) => {
-            eb.empty().startAction.animals(1);
+            eb.empty().startAction.resource(CardResource.ANIMAL);
           }).br;
           b.vpText('1 VP for each animal on this card.').br;
-          b.minus().animals(2, {all});
+          b.minus().resource(CardResource.ANIMAL, {amount: 2, all});
         }),
         description: {
           text: 'Requires 13% oxygen. Remove 2 animals from any player.',
@@ -46,7 +46,7 @@ export class Raptors extends ActionCard implements IProjectCard {
     if (player.game.isSoloMode()) {
       return true;
     }
-    return RemoveResourcesFromCard.getAvailableTargetCards(player, CardResource.ANIMAL, false).filter( (card) => card.resourceCount >= 2).length >= 1;
+    return RemoveResourcesFromCard.getAvailableTargetCards(player, CardResource.ANIMAL).filter( (card) => card.resourceCount >= 2).length >= 1;
   }
   public override bespokePlay(player: IPlayer) {
     if (player.game.isSoloMode()) {

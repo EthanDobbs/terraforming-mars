@@ -6,12 +6,11 @@ import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Resource} from '../../../../common/Resource';
-import { Tag } from '../../../../common/cards/Tag';
-import { played } from '../../Options';
-import { Size } from '../../../../common/cards/render/Size';
+import {Tag} from '../../../../common/cards/Tag';
+import {Size} from '../../../../common/cards/render/Size';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.production((pb) => pb.megacredits(1)).slash().space({played}).space({played}).influence({size: Size.SMALL});
+  b.production((pb) => pb.megacredits(1)).slash().tag(Tag.SPACE, 2).influence({size: Size.SMALL});
 });
 
 export class ColonizationOfMercury extends GlobalEvent implements IGlobalEvent {

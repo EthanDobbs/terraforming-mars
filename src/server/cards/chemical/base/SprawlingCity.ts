@@ -15,7 +15,7 @@ export class SprawlingCity extends ActionCard implements IProjectCard {
       cost: 25,
       resourceType: CardResource.BUILDING_RESOURCE,
       behavior: {
-        city: {}
+        city: {},
       },
 
       action: {
@@ -29,7 +29,7 @@ export class SprawlingCity extends ActionCard implements IProjectCard {
         cardNumber: 'x083',
         renderData: CardRenderer.builder((b) => {
           b.action('Decrease your energy production 1 step to increase your M€ production 1 step and add a building resource to this card.', (eb) => {
-            eb.production((pb) => pb.energy(1)).startAction.production((pb) => pb.megacredits(1)).buildingResource(1);
+            eb.production((pb) => pb.energy(1)).startAction.production((pb) => pb.megacredits(1)).resource(CardResource.BUILDING_RESOURCE);
           }).br;
           b.city().br;
           b.vpText('1VP for each building resource on this card.');

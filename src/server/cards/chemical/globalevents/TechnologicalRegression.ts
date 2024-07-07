@@ -5,13 +5,12 @@ import {PartyName} from '../../../../common/turmoil/PartyName';
 import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
-import { Resource } from '../../../../common/Resource';
-import { Tag } from '../../../../common/cards/Tag';
-import { played } from '../../Options';
-import { Size } from '../../../../common/cards/render/Size';
+import {Resource} from '../../../../common/Resource';
+import {Tag} from '../../../../common/cards/Tag';
+import {Size} from '../../../../common/cards/render/Size';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.megacredits(-1).slash().science(1, {played}).space({played}).energy(1, {played}).influence({size: Size.SMALL})
+  b.megacredits(-1).slash().tag(Tag.SCIENCE).tag(Tag.SPACE).tag(Tag.POWER).influence({size: Size.SMALL});
 });
 
 export class TechnologicalRegression extends GlobalEvent implements IGlobalEvent {
@@ -27,7 +26,7 @@ export class TechnologicalRegression extends GlobalEvent implements IGlobalEvent
 
   public resolve(game: IGame, turmoil: Turmoil) {
     game.getPlayersInGenerationOrder().forEach((player) => {
-      const amount = Math.max(Math.min(5, player.tags.count(Tag.SPACE, 'raw')) + 
+      const amount = Math.max(Math.min(5, player.tags.count(Tag.SPACE, 'raw')) +
         Math.min(5, player.tags.count(Tag.POWER, 'raw')) +
         Math.min(5, player.tags.count(Tag.SCIENCE, 'raw')) -
         turmoil.getPlayerInfluence(player), 0);

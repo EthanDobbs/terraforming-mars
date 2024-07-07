@@ -25,7 +25,7 @@ export class ArcticEndoliths extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x381',
         renderData: CardRenderer.builder((b) => {
-          b.plants(2).nbsp.microbes(1).asterix();
+          b.plants(2).nbsp.resource(CardResource.MICROBE).asterix();
         }),
         description: 'Requires -16°C or colder. Gain 2 plants and add a microbe to ANOTHER card.',
       },

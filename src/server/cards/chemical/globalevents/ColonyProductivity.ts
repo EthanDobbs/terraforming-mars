@@ -5,8 +5,9 @@ import {PartyName} from '../../../../common/turmoil/PartyName';
 import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
-import { SelectResourcesDeferred } from '../../../deferredActions/SelectResourcesDeferred';
-import { SimpleDeferredAction } from '../../../deferredActions/DeferredAction';
+import {SimpleDeferredAction} from '../../../deferredActions/DeferredAction';
+import {GainResources} from '../../../inputs/GainResources';
+import {message} from '../../../logs/MessageBuilder';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
   b.text('GAIN ALL YOUR COLONY BONUSES').br.wild(1).slash().influence();
@@ -32,10 +33,10 @@ export class ColonyProductivity extends GlobalEvent implements IGlobalEvent {
       });
       const count = turmoil.getPlayerInfluence(player);
       if (count > 0) {
-        game.defer(new SelectResourcesDeferred(
+        player.defer(new GainResources(
           player,
           count,
-          'Colony Productivity Global Event - Gain ' + count + ' resource(s) for influence',
+          message('Colony Productivity Global Event - Gain ${0} resource(s) for influence', (b) => b.number(count)),
         ));
       }
     });

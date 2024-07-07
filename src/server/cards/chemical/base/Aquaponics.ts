@@ -18,6 +18,10 @@ export class Aquaponics extends Card implements IProjectCard {
       tags: [Tag.ANIMAL, Tag.BUILDING],
       cost: 10,
 
+      behavior: {
+        addResources: 2,
+      },
+
       requirements: [{tag: Tag.PLANT}, {tag: Tag.ANIMAL}, {tag: Tag.MICROBE}],
       resourceType: CardResource.ANIMAL,
       victoryPoints: 1,
@@ -26,15 +30,15 @@ export class Aquaponics extends Card implements IProjectCard {
         cardNumber: 'x062',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 animal to this card.', (eb) => {
-            eb.empty().startAction.animals(1);
+            eb.empty().startAction.resource(CardResource.ANIMAL);
           }).br;
           b.or().br;
           b.action('Gain 1 M€ for each animal here.', (eb) => {
-            eb.empty().startAction.megacredits(1).slash().animals(1);
+            eb.empty().startAction.megacredits(1).slash().resource(CardResource.ANIMAL);
           }).br;
-          b.animals(1)
+          b.resource(CardResource.ANIMAL, 2);
         }),
-        description: 'Requires a plant tag, an animal tag, and a microbe tag. Add an animal to this card.'
+        description: 'Requires a plant tag, an animal tag, and a microbe tag. Add 2 animals to this card.',
       },
     });
   }

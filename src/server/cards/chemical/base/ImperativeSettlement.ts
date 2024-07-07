@@ -7,7 +7,6 @@ import {TileType} from '../../../../common/TileType';
 import {Space} from '../../../boards/Space';
 import {CardName} from '../../../../common/cards/CardName';
 import {AdjacencyBonus} from '../../../ares/AdjacencyBonus';
-import {ICardMetadata} from '../../../../common/cards/ICardMetadata';
 import {CardRenderer} from '../../render/CardRenderer';
 import {all} from '../../Options';
 import {Resource} from '../../../../common/Resource';
@@ -17,15 +16,15 @@ export class ImperativeSettlement extends Card implements IProjectCard {
     name = CardName.IMPERATIVE_SETTLEMENT,
     cost = 22,
     adjacencyBonus: AdjacencyBonus | undefined = undefined,
-    metadata: ICardMetadata = {
+    metadata = {
       cardNumber: 'x081',
       renderData: CardRenderer.builder((b) => {
         b.effect('Whenever any tile is placed adjacent to this city, increase your M€ production 2 steps.', (eb) => {
           eb.emptyTile('normal', {all}).tile(TileType.IMPERATIVE_SETTLEMENT, false).startEffect.production((pb) => pb.megacredits(2));
         }).br;
-        b.production((pb) => pb.minus().energy(1)).nbsp.tile(TileType.IMPERATIVE_SETTLEMENT, false)
+        b.production((pb) => pb.minus().energy(1)).nbsp.tile(TileType.IMPERATIVE_SETTLEMENT, false);
       }),
-      description: 'Decrease your energy productuion 1 step and place this city tile.'
+      description: 'Decrease your energy productuion 1 step and place this city tile.',
     },
   ) {
     super({
@@ -51,7 +50,7 @@ export class ImperativeSettlement extends Card implements IProjectCard {
     const usedSpace = player.game.board.getSpaceByTileCard(this.name);
     if (usedSpace !== undefined && space.tile?.tileType !== TileType.MARS_NOMADS) {
       if (player.game.board.getAdjacentSpaces(space).includes(usedSpace)) {
-        cardOwner.production.add(Resource.MEGACREDITS, 2)
+        cardOwner.production.add(Resource.MEGACREDITS, 2);
       }
     }
   }

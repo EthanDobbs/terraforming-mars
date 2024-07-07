@@ -7,7 +7,7 @@ import {PlayerInput} from '../../../PlayerInput';
 import {ColoniesHandler} from '../../../colonies/ColoniesHandler';
 import {Size} from '../../../../common/cards/render/Size';
 
-export class TradingNetwork extends PreludeCard implements IProjectCard{
+export class TradingNetwork extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.TRADING_NETWORK,
@@ -25,7 +25,7 @@ export class TradingNetwork extends PreludeCard implements IProjectCard{
           }).br;
           b.production((pb) => pb.megacredits(2)).nbsp.colonyTile();
         }),
-        description: 'Increase your M€ production 2 steps and put an additional colony tile of your choice in play.'
+        description: 'Increase your M€ production 2 steps and put an additional colony tile of your choice in play.',
       },
     });
   }

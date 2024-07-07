@@ -16,7 +16,7 @@ export class BasaltMining extends Card implements IProjectCard {
 
       behavior: {
         global: {venus: 2},
-        production: {energy: -1, steel: 1, megacredits: 2}
+        production: {energy: -1, steel: 1, megacredits: 2},
       },
 
       metadata: {

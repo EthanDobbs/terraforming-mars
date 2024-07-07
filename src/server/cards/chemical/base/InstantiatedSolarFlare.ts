@@ -31,7 +31,7 @@ export class InstantiatedSolarFlare extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.temperature(3).nbsp;
           b.minus().plants(4, {all, digit}).nbsp;
-          b.minus().animals(1, {all});
+          b.minus().resource(CardResource.ANIMAL, {all});
         }),
         description: 'Raise the temperature 3 steps. Remove up to 4 plants from any player and remove up to 1 animal from any player.',
       },

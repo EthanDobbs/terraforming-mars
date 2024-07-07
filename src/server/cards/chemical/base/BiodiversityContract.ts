@@ -21,7 +21,7 @@ export class BiodiversityContract extends Card implements IProjectCard {
         cardNumber: 'x080',
         renderData: CardRenderer.builder((b) => {
           b.effect('When you gain a microbe or animal to ANY CARD, also gain 1 M€.', (eb) => {
-            eb.microbes(1).asterix().slash().animals(1).asterix().startEffect.megacredits(1);
+            eb.resource(CardResource.MICROBE).asterix().slash().resource(CardResource.ANIMAL).asterix().startEffect.megacredits(1);
           }).br;
         }),
       },

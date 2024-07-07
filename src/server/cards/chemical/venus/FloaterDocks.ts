@@ -5,7 +5,6 @@ import {CardType} from '../../../../common/cards/CardType';
 import {CardResource} from '../../../../common/CardResource';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 import {IPlayer} from '../../../IPlayer';
 import {SimpleDeferredAction} from '../../../deferredActions/DeferredAction';
 import {SelectCard} from '../../../inputs/SelectCard';
@@ -28,7 +27,7 @@ export class FloaterDocks extends Card implements IProjectCard {
         cardNumber: 'x257',
         renderData: CardRenderer.builder((b) => {
           b.effect('For every Venus or Jovian tag you play, add a floater to ANY card.', (eb) => {
-            eb.venus(1, {played}).slash().jovian({played}).startEffect.floaters(1).asterix();
+            eb.tag(Tag.VENUS).slash().tag(Tag.JOVIAN).startEffect.resource(CardResource.FLOATER).asterix();
           }).br;
           b.vpText('1 VP per 3 floaters on this card.').br;
           b.production((pb) => pb.megacredits(2));
@@ -49,7 +48,7 @@ export class FloaterDocks extends Card implements IProjectCard {
       return undefined;
     }
     for (let i = 0; i < resourceCount; i++) {
-      player.game.defer(new SimpleDeferredAction(player,() => new SelectCard(
+      player.game.defer(new SimpleDeferredAction(player, () => new SelectCard(
         'Select card to add 1 floater from Floater Docks (' + String(i + 1) + '/' + String(resourceCount) + ')',
         'Add floater',
         floaterCards).andThen(

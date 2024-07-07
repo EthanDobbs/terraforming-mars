@@ -15,13 +15,13 @@ export class Overclock extends Card implements IProjectCard {
       cost: 3,
       requirements: {tag: Tag.POWER, count: 2},
       behavior: {
-        stock: {energy: 8}
+        stock: {energy: 8},
       },
 
       metadata: {
         cardNumber: 'x027',
         renderData: CardRenderer.builder((b) => {
-          b.energy(8, {digit})
+          b.energy(8, {digit});
         }),
         description: 'Requires 2 power tags. Gain 8 energy.',
       },

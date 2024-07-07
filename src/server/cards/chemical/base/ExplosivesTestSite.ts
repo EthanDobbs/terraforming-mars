@@ -26,7 +26,7 @@ export class ExplosivesTestSite extends Card implements IProjectCard {
             pb.minus().energy(1).br;
             pb.plus().megacredits(2);
           });
-          b.temperature(2)
+          b.temperature(2);
         }),
         description: 'Decrease your energy production 1 step and increase your M€ production 2 steps. Raise the temperature 2 steps.',
       },

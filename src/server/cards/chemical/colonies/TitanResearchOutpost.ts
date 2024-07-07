@@ -19,7 +19,7 @@ export class TitanReseachOutpost extends ActionCard implements IActionCard {
 
       behavior: {
         drawCard: 2,
-        addResourcesToAnyCard: {type: CardResource.FLOATER, count: 2}
+        addResourcesToAnyCard: {type: CardResource.FLOATER, count: 2},
       },
 
       action: {
@@ -31,10 +31,10 @@ export class TitanReseachOutpost extends ActionCard implements IActionCard {
         cardNumber: 'x330',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 floater to any Jovian card', (eb) => {
-            eb.empty().startAction.floaters(1, {secondaryTag: Tag.JOVIAN});
+            eb.empty().startAction.resource(CardResource.FLOATER, {secondaryTag: Tag.JOVIAN});
           }).br;
           b.vpText('1 VP for every 3rd Floater on this card.').br;
-          b.cards(2).floaters(2).asterix();
+          b.cards(2).resource(CardResource.FLOATER, 2).asterix();
         }),
         description: 'Requires 3 science tags. Draw 2 cards and add 2 floaters to ANY card.',
       },

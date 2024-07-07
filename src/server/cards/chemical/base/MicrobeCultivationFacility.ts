@@ -16,20 +16,20 @@ export class MicrobeCultivationFacility extends ActionCard implements IProjectCa
       requirements: {tag: Tag.MICROBE, count: 2},
 
       behavior: {
-        production: {plants: 1}
+        production: {plants: 1},
       },
 
       action: {
-        addResourcesToAnyCard: {type: CardResource.MICROBE, count: 2}
+        addResourcesToAnyCard: {type: CardResource.MICROBE, count: 2},
       },
 
       metadata: {
         cardNumber: 'x079',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 2 microbes to ANOTHER card.', (eb) => {
-            eb.empty().startAction.microbes(2).asterix();
+            eb.empty().startAction.resource(CardResource.MICROBE, 2).asterix();
           }).br;
-          b.production((pb) => pb.plants(1))
+          b.production((pb) => pb.plants(1));
         }),
         description: 'Requires 2 microbe tags. Increase your plant production 1 step.',
       },

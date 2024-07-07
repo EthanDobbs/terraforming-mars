@@ -7,10 +7,10 @@ import {Turmoil} from '../../../turmoil/Turmoil';
 import {IPlayer} from '../../../IPlayer';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Size} from '../../../../common/cards/render/Size';
-import { Resource } from '../../../../common/Resource';
+import {Resource} from '../../../../common/Resource';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.tr(1).colon().nbsp.text('1st:', Size.SMALL).megacredits(10).production((pb) => pb.megacredits(-2)).br
+  b.tr(1).colon().nbsp.text('1st:', Size.SMALL).megacredits(10).production((pb) => pb.megacredits(-2)).br;
   b.text('2nd:', Size.SMALL).megacredits(5).production((pb) => pb.megacredits(-1)).nbsp.megacredits(2).slash().influence();
 });
 
@@ -27,8 +27,8 @@ export class PreferentialLoans extends GlobalEvent implements IGlobalEvent {
 
   public resolve(game: IGame, turmoil: Turmoil) {
     game.getPlayersInGenerationOrder().forEach((player) => {
-      player.stock.add(Resource.MEGACREDITS, turmoil.getPlayerInfluence(player), {log: true, from: this.name})
-    })
+      player.stock.add(Resource.MEGACREDITS, turmoil.getPlayerInfluence(player), {log: true, from: this.name});
+    });
     // Solo
     if (game.isSoloMode()) {
       const player = game.getPlayers()[0];
@@ -40,7 +40,7 @@ export class PreferentialLoans extends GlobalEvent implements IGlobalEvent {
 
       // We have one rank 1 player
       if (this.getScore(players[0]) > this.getScore(players[1])) {
-        this.firstPlaceReward(players[0])
+        this.firstPlaceReward(players[0]);
         players.shift();
 
         const score = this.getScore(players[0]);
@@ -52,7 +52,7 @@ export class PreferentialLoans extends GlobalEvent implements IGlobalEvent {
       } else {
         const score = this.getScore(players[0]);
         while (players.length > 0 && this.getScore(players[0]) === score) {
-          this.firstPlaceReward(players[0])
+          this.firstPlaceReward(players[0]);
           players.shift();
         }
       }
@@ -60,12 +60,12 @@ export class PreferentialLoans extends GlobalEvent implements IGlobalEvent {
   }
 
   public getScore(player: IPlayer) {
-    return player.getTerraformRating()
+    return player.getTerraformRating();
   }
   private firstPlaceReward(player: IPlayer) {
     player.stock.add(Resource.MEGACREDITS, 10, {log: true, from: this.name});
     if (player.production.megacredits > -5) {
-      const decreaseAmount = -Math.min(player.production.megacredits + 5, 2)
+      const decreaseAmount = -Math.min(player.production.megacredits + 5, 2);
       player.production.add(Resource.MEGACREDITS, decreaseAmount, {log: true, from: this.name});
     }
   }

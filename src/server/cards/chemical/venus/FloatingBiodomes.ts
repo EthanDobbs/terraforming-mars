@@ -26,11 +26,11 @@ export class FloatingBiodomes extends Card implements IActionCard {
         cardNumber: 'x263',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 floater to this card.', (eb) => {
-            eb.empty().startAction.floaters(1);
+            eb.empty().startAction.resource(CardResource.FLOATER);
           }).br;
           b.or().br;
           b.action('Spend any number of floater here to gain that amount of plants.', (eb) => {
-            eb.text('X').floaters(1).startAction.text('X').plants(1);
+            eb.text('X').resource(CardResource.FLOATER).startAction.text('X').plants(1);
           });
         }),
         description: 'Requires 2 science tags.',

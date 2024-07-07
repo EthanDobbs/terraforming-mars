@@ -30,7 +30,7 @@ export class DwarfPlanetCollision extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x243',
         renderData: CardRenderer.builder((b) => {
-          b.venus(3).br.minus().megacredits(8, {all, secondaryTag: Tag.VENUS}).floaters(2, {all, secondaryTag: Tag.VENUS});
+          b.venus(3).br.minus().megacredits(8, {all, secondaryTag: Tag.VENUS}).resource(CardResource.FLOATER, {amount: 2, all, secondaryTag: Tag.VENUS});
         }),
         description: 'Requires Venus 6% or lower. Raise Venus 3 steps, Remove up to 8 M€ from any player with a Venus tag, and remove up to 2 floaters from any Venus card.',
       },
@@ -55,9 +55,9 @@ export class DwarfPlanetCollision extends Card implements IProjectCard {
           }),
         new SelectOption(
           'Do not remove M€',
-          'Confirm')
+          'Confirm'),
       ).andThen(() => {
-        const resourceCards = RemoveResourcesFromCard.getAvailableTargetCards(player, CardResource.FLOATER, false).filter((card) => card.tags.includes(Tag.VENUS));
+        const resourceCards = RemoveResourcesFromCard.getAvailableTargetCards(player, CardResource.FLOATER).filter((card) => card.tags.includes(Tag.VENUS));
 
         if (resourceCards.length === 0) {
           return undefined;
@@ -72,9 +72,9 @@ export class DwarfPlanetCollision extends Card implements IProjectCard {
             owner.removeResourceFrom(card, 2, {removingPlayer: player});
             return undefined;
           });
-          return new OrOptions(
-            selectCard,
-            new SelectOption('Do not remove'));
+        return new OrOptions(
+          selectCard,
+          new SelectOption('Do not remove'));
       });
     }
     return undefined;

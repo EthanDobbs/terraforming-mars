@@ -8,10 +8,10 @@ import {Board} from '../../../boards/Board';
 import {all} from '../../Options';
 import {Space} from '../../../boards/Space';
 import {GainProduction} from '../../../deferredActions/GainProduction';
-import {Priority} from '../../../deferredActions/DeferredAction';
+import {Priority} from '../../../deferredActions/Priority';
 import {Tag} from '../../../../common/cards/Tag';
 
-export class NoctisSettlement extends PreludeCard implements IProjectCard{
+export class NoctisSettlement extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.NOCTIS_SETTLEMENT,
@@ -30,7 +30,7 @@ export class NoctisSettlement extends PreludeCard implements IProjectCard{
           }).br;
           b.production((pb) => pb.megacredits(2)).plants(2);
         }),
-        description: 'Increase your M€ production 2 steps and gain 2 plants.'
+        description: 'Increase your M€ production 2 steps and gain 2 plants.',
       },
     });
   }

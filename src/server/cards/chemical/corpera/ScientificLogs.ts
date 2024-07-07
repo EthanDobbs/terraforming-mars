@@ -7,9 +7,9 @@ import {OrOptions} from '../../../inputs/OrOptions';
 import {SelectOption} from '../../../inputs/SelectOption';
 import {CardResource} from '../../../../common/CardResource';
 import {CardName} from '../../../../common/cards/CardName';
-import {Priority, SimpleDeferredAction} from '../../../deferredActions/DeferredAction';
+import {SimpleDeferredAction} from '../../../deferredActions/DeferredAction';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
+import {Priority} from '../../../deferredActions/Priority';
 
 export class ScientificLogs extends Card implements IProjectCard {
   constructor() {
@@ -23,9 +23,9 @@ export class ScientificLogs extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x196',
         renderData: CardRenderer.builder((b) => {
-          b.event({played}).colon().science().br;
+          b.tag(Tag.EVENT).colon().resource(CardResource.SCIENCE).br;
           b.or().br;
-          b.minus().science(2).nbsp.plus().cards(1);
+          b.minus().resource(CardResource.SCIENCE).nbsp.plus().cards(1);
         }),
         description: 'When you play an event card, either add a science resource to this card, or remove 2 science resources from this card to draw a card.',
       },

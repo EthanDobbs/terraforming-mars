@@ -5,15 +5,15 @@ import {PartyName} from '../../../../common/turmoil/PartyName';
 import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
-import { Resource } from '../../../../common/Resource';
-import { SimpleDeferredAction } from '../../../deferredActions/DeferredAction';
-import { CardResource } from '../../../../common/CardResource';
-import { SelectOption } from '../../../inputs/SelectOption';
-import { SelectCard } from '../../../inputs/SelectCard';
-import { OrOptions } from '../../../inputs/OrOptions';
+import {Resource} from '../../../../common/Resource';
+import {SimpleDeferredAction} from '../../../deferredActions/DeferredAction';
+import {CardResource} from '../../../../common/CardResource';
+import {SelectOption} from '../../../inputs/SelectOption';
+import {SelectCard} from '../../../inputs/SelectCard';
+import {OrOptions} from '../../../inputs/OrOptions';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.megacredits(-8).nbsp.or().nbsp.minus().microbes(2).nbsp.plants(1).slash().influence();
+  b.megacredits(-8).nbsp.or().nbsp.minus().resource(CardResource.MICROBE).nbsp.plants(1).slash().influence();
 });
 
 export class EcosystemDisruption extends GlobalEvent implements IGlobalEvent {
@@ -43,10 +43,10 @@ export class EcosystemDisruption extends GlobalEvent implements IGlobalEvent {
         selectAction.options.push(payMC, removeMicrobes);
         if (microbeCards.length === 0) {
           payMC.cb(undefined);
-         return undefined;
+          return undefined;
         }
         return selectAction;
-      }))
+      }));
       player.stock.add(Resource.PLANTS, turmoil.getPlayerInfluence(player), {log: true, from: this.name});
     });
   }

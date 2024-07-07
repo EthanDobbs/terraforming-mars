@@ -17,13 +17,13 @@ export class UltralightFloaters extends Card implements IProjectCard {
 
       behavior: {
         production: {megacredits: 1},
-        addResourcesToAnyCard: {type: CardResource.FLOATER, tag: Tag.VENUS, count: 2, autoSelect: true}
+        addResourcesToAnyCard: {type: CardResource.FLOATER, tag: Tag.VENUS, count: 2, autoSelect: true},
       },
 
       metadata: {
         cardNumber: 'x250',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.megacredits(1)).floaters(2, {secondaryTag: Tag.VENUS});
+          b.production((pb) => pb.megacredits(1)).resource(CardResource.FLOATER, {amount: 2, secondaryTag: Tag.VENUS});
         }),
         description: 'Requires Venus 6%. Increase your M€ production 1 step and add 2 floaters to any Venus card.',
       },

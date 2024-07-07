@@ -4,7 +4,6 @@ import {Card} from '../../Card';
 import {CardType} from '../../../../common/cards/CardType';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 
 export class MolecularScienceLab extends Card implements IProjectCard {
   constructor() {
@@ -22,7 +21,7 @@ export class MolecularScienceLab extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x219',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.megacredits(1).slash().microbes(1, {played}));
+          b.production((pb) => pb.megacredits(1).slash().tag(Tag.MICROBE));
         }),
         description: 'Increase your M€ production 1 step for each microbe tag you have.',
       },

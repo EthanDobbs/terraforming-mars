@@ -5,7 +5,6 @@ import {CardType} from '../../../../common/cards/CardType';
 import {CardResource} from '../../../../common/CardResource';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 
 export class AsteroidBeltColony extends ActionCard implements IProjectCard {
   constructor() {
@@ -29,10 +28,10 @@ export class AsteroidBeltColony extends ActionCard implements IProjectCard {
         cardNumber: 'x326',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 2 M€ to add an asteroid to ANY card.', (eb) => {
-            eb.megacredits(2).startAction.asteroids(1).asterix();
+            eb.megacredits(2).startAction.resource(CardResource.ASTEROID).asterix();
           }).br;
           b.effect('Asteroids on this card may be used as 5 M€ when paying for cards with space tags.', (eb) => {
-            eb.space({played}).startEffect.asteroids(1).equals().megacredits(5);
+            eb.tag(Tag.SPACE).startEffect.resource(CardResource.ASTEROID).equals().megacredits(5);
           }).br;
           b.colonies(1);
         }),

@@ -5,7 +5,7 @@ import {ActivePreludeCard} from '../../prelude2/ActivePreludeCard';
 import {IProjectCard} from '../../IProjectCard';
 import {CardResource} from '../../../../common/CardResource';
 
-export class ProtistLifeforms extends ActivePreludeCard implements IProjectCard{
+export class ProtistLifeforms extends ActivePreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.PROTIST_LIFEFORMS,
@@ -19,19 +19,19 @@ export class ProtistLifeforms extends ActivePreludeCard implements IProjectCard{
 
       behavior: {
         production: {plants: 1},
-        drawCard: {count: 1, tag: Tag.MICROBE}
+        drawCard: {count: 1, tag: Tag.MICROBE},
       },
 
       metadata: {
         cardNumber: 'xP23',
         renderData: CardRenderer.builder((b) => {
           b.action('Add a microbe to ANY card.', (eb) => {
-            eb.empty().startAction.microbes(1).asterix();
+            eb.empty().startAction.resource(CardResource.MICROBE).asterix();
           }).br;
           b.vpText('1 VP per 3 Microbes on this card.').br;
           b.production((pb) => pb.plants(1)).nbsp.cards(1, {secondaryTag: Tag.MICROBE});
         }),
-        description: 'Increase your plant production 1 step and draw a card with a microbe tag.'
+        description: 'Increase your plant production 1 step and draw a card with a microbe tag.',
       },
     });
   }

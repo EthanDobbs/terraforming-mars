@@ -6,7 +6,6 @@ import {CardRenderer} from '../../render/CardRenderer';
 import {Tag} from '../../../../common/cards/Tag';
 import {TileType} from '../../../../common/TileType';
 import {AdjacencyBonus} from '../../../ares/AdjacencyBonus';
-import {ICardMetadata} from '../../../../common/cards/ICardMetadata';
 import {digit} from '../../Options';
 
 export class GHGFactoryDistrict extends Card implements IProjectCard {
@@ -14,7 +13,7 @@ export class GHGFactoryDistrict extends Card implements IProjectCard {
     name = CardName.GHG_FACTORY_DISTRICT,
     cost = 24,
     adjacencyBonus: AdjacencyBonus | undefined = undefined,
-    metadata: ICardMetadata = {
+    metadata = {
       cardNumber: 'x158',
       renderData: CardRenderer.builder((b) => {
         b.production((pb) => {
@@ -23,7 +22,7 @@ export class GHGFactoryDistrict extends Card implements IProjectCard {
         });
         b.nbsp.tile(TileType.GHG_FACTORY_DISTRICT, false);
       }),
-      description: 'Decrease your energy production 2 steps, increase your heat production 7 steps, and place this tile.'
+      description: 'Decrease your energy production 2 steps, increase your heat production 7 steps, and place this tile.',
     },
   ) {
     super({

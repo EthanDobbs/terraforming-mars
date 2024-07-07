@@ -26,7 +26,7 @@ export class CarbonateDeposit extends Card implements IProjectCard {
             pb.minus().energy(1).br;
             pb.plus().heat(2);
           }).nbsp;
-          b.heat(4, {digit})
+          b.heat(4, {digit});
         }),
         description: 'Decrease your energy production 1 step, increase your heat production 2 steps, and gain 4 heat.',
       },

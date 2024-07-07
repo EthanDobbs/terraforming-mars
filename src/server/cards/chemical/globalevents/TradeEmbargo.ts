@@ -31,9 +31,9 @@ export class TradeEmbargo extends GlobalEvent implements IGlobalEvent {
       (p1, p2) => turmoil.getPlayerInfluence(p2) - turmoil.getPlayerInfluence(p1),
     );
     const score = turmoil.getPlayerInfluence(players[0]);
-      while (players.length > 0 && turmoil.getPlayerInfluence(players[0]) === score) {
-        players[0].stock.add(Resource.MEGACREDITS, 6, {log: true, from: this.name})
-        players.shift();
-      }
+    while (players.length > 0 && turmoil.getPlayerInfluence(players[0]) === score) {
+      players[0].stock.add(Resource.MEGACREDITS, 6, {log: true, from: this.name});
+      players.shift();
+    }
   }
 }

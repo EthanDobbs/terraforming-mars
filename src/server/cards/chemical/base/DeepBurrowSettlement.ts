@@ -24,7 +24,7 @@ export class DeepBurrowSettlement extends Card implements IProjectCard {
           b.production((pb) => {
             pb.minus().energy(1).br;
             pb.plus().steel(1).heat(2);
-          })
+          });
           b.city();
         }),
         description: 'Decrease your energy production 1 step. Increase your steel production 1 step and your heat production 2 steps. Place a city tile.',

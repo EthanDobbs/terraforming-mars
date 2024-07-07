@@ -5,7 +5,6 @@ import {CardType} from '../../../../common/cards/CardType';
 import {CardResource} from '../../../../common/CardResource';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 import {IPlayer} from '../../../IPlayer';
 
 export class AstrophysicsCenter extends Card implements IProjectCard {
@@ -24,7 +23,7 @@ export class AstrophysicsCenter extends Card implements IProjectCard {
         cardNumber: 'x181',
         renderData: CardRenderer.builder((b) => {
           b.effect('When you play a science tag, including this, add an asteroid to this card', (eb) => {
-            eb.science(1, {played}).startEffect.asteroids(1);
+            eb.tag(Tag.SCIENCE).startEffect.resource(CardResource.ASTEROID);
           }).br;
           b.vpText('1 VP for every asteroid on this card.');
         }),

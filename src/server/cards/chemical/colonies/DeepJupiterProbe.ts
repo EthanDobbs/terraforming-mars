@@ -23,7 +23,7 @@ export class DeepJupiterProbe extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x321',
         renderData: CardRenderer.builder((b) => {
-          b.floaters(2, {secondaryTag: Tag.JOVIAN}).nbsp.cards(1);
+          b.resource(CardResource.FLOATER, {amount: 2, secondaryTag: Tag.JOVIAN}).nbsp.cards(1);
         }),
         description: 'Add 2 floaters to any Jovian card and draw a card.',
       },

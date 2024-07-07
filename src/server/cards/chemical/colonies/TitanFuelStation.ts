@@ -7,9 +7,9 @@ import {OrOptions} from '../../../inputs/OrOptions';
 import {SelectOption} from '../../../inputs/SelectOption';
 import {CardResource} from '../../../../common/CardResource';
 import {CardName} from '../../../../common/cards/CardName';
-import {Priority, SimpleDeferredAction} from '../../../deferredActions/DeferredAction';
+import {SimpleDeferredAction} from '../../../deferredActions/DeferredAction';
+import {Priority} from '../../../deferredActions/Priority';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 import {Resource} from '../../../../common/Resource';
 
 export class TitanFuelStation extends Card implements IProjectCard {
@@ -22,20 +22,14 @@ export class TitanFuelStation extends Card implements IProjectCard {
       resourceType: CardResource.FLOATER,
       victoryPoints: 1,
 
-      behavior:{
-        colonies: {addTradeFleet: 1},
-      },
-
       metadata: {
         cardNumber: '335',
         renderData: CardRenderer.builder((b) => {
-          b.space({played}).colon().floaters(1).br;
+          b.tag(Tag.SPACE).colon().resource(CardResource.FLOATER).br;
           b.or().br;
-          b.minus().floaters(1).plus().titanium(2).br;
+          b.minus().resource(CardResource.FLOATER).plus().titanium(2).br;
           b.description('When you play a space tag, including this, either add a floater to this card, or remove 1 floater from this card to gain 2 titanium.').br;
-          b.tradeFleet();
         }),
-        description: 'Gain a trade fleet',
       },
     });
   }

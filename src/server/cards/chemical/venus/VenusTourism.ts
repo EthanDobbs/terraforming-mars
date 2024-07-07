@@ -4,7 +4,6 @@ import {Card} from '../../Card';
 import {CardType} from '../../../../common/cards/CardType';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 
 export class VenusTourism extends Card implements IProjectCard {
   constructor() {
@@ -12,7 +11,7 @@ export class VenusTourism extends Card implements IProjectCard {
       type: CardType.AUTOMATED,
       name: CardName.VENUS_TOURISM,
       tags: [Tag.EARTH, Tag.VENUS],
-      cost: 6,
+      cost: 5,
       requirements: {venus: 8},
 
       behavior: {
@@ -23,7 +22,7 @@ export class VenusTourism extends Card implements IProjectCard {
         cardNumber: 'x297',
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => {
-            pb.megacredits(1).slash().venus(1, {played});
+            pb.megacredits(1).slash().tag(Tag.VENUS);
           });
         }),
         description: 'Requires Venus 8%. Increase your M€ production 1 step for each Venus tag you have.',

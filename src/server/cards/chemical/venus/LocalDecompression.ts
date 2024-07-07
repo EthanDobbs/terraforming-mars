@@ -27,7 +27,7 @@ export class LocalDecompression extends Card implements IProjectCard {
           }).br;
           b.venus(1);
         }),
-        description: 'Raise Venus 1 step.'
+        description: 'Raise Venus 1 step.',
       },
     });
   }

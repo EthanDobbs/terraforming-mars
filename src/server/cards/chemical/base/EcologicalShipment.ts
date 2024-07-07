@@ -27,8 +27,8 @@ export class EcologicalShipment extends Card implements IProjectCard {
         cardNumber: 'x006',
         renderData: CardRenderer.builder((b) => {
           b.plants(5, {digit}).nbsp;
-          b.microbes(3, {digit}).asterix().nbsp;
-          b.animals(3, {digit}).asterix();
+          b.resource(CardResource.MICROBE, {amount: 3, digit}).asterix().nbsp;
+          b.resource(CardResource.ANIMAL, {amount: 3, digit}).asterix();
         }),
         description: 'Gain 5 plants. Add 3 microbes to ANOTHER card and 3 animals to ANOTHER card.',
       },

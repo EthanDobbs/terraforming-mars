@@ -130,7 +130,7 @@ export interface ICard {
 
   onTrade?(cardOwner: IPlayer, activePlayer: IPlayer, colony: IColony): void;
   onColonyBuilt?(cardOwner: IPlayer, activePlayer: IPlayer, colony: IColony): void;
-  
+
   cost?: number; /** Used with IProjectCard and PreludeCard. */
   type: CardType;
   requirements: Array<CardRequirementDescriptor>;

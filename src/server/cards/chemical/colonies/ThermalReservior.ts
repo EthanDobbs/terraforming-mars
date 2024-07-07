@@ -25,7 +25,7 @@ export class ThermalReservior extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x356',
         renderData: CardRenderer.builder((b) => {
-          b.oceans(1).production((pb) => pb.text('-X').heat(1)).text('+X').microbes(1).asterix();
+          b.oceans(1).production((pb) => pb.text('-X').heat(1)).text('+X').resource(CardResource.MICROBE).asterix();
         }),
         description: 'Place an ocean tile. Decrease your heat production any number of steps and add the same number of microbes to ANOTHER card.',
       },

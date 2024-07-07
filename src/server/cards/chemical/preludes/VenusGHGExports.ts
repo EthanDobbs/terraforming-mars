@@ -7,7 +7,7 @@ import {all} from '../../Options';
 import {IPlayer} from '../../../IPlayer';
 import {SelectPaymentDeferred} from '../../../deferredActions/SelectPaymentDeferred';
 
-export class VenusGHGExports extends PreludeCard implements IProjectCard{
+export class VenusGHGExports extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.VENUS_GHG_EXPORTS,
@@ -29,7 +29,7 @@ export class VenusGHGExports extends PreludeCard implements IProjectCard{
           }).br;
           b.venus(1).production((pb) => pb.heat(3)).megacredits(-3);
         }),
-        description: 'Raise Venus 1 step, increase your heat production 3 steps, and lose 3 M€.'
+        description: 'Raise Venus 1 step, increase your heat production 3 steps, and lose 3 M€.',
       },
     });
   }

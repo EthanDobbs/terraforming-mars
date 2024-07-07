@@ -6,7 +6,6 @@ import {IPlayer} from '../../../IPlayer';
 import {CardResource} from '../../../../common/CardResource';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 
 export class InterplanetaryDiplomacy extends Card implements IProjectCard {
   constructor() {
@@ -25,10 +24,10 @@ export class InterplanetaryDiplomacy extends Card implements IProjectCard {
         description: 'Requires 25 TR.',
         renderData: CardRenderer.builder((b) => {
           b.effect('When you play a Venus, Earth, or Jovian tag, including this, add a diplomacy resource to this card.', (be) => {
-            be.venus(1, {played}).slash();
-            be.earth(1, {played}).slash();
-            be.jovian({played});
-            be.startEffect.diplomacy(1);
+            be.tag(Tag.VENUS).slash();
+            be.tag(Tag.EARTH).slash();
+            be.tag(Tag.JOVIAN);
+            be.startEffect.resource(CardResource.DIPLOMACY);
           }).br;
           b.vpText('1 VP per 3 diplomacy resources on this card.');
         }),

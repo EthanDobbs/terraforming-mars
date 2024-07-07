@@ -15,10 +15,10 @@ export class CommitteeCoalition extends Card implements IProjectCard {
         cardNumber: 'x401',
         renderData: CardRenderer.builder((b) => {
           b.effect('If you have a party leader in a NON-DOMINANT PARTY, you have +1 influence.',
-            (eb) => eb.partyLeaders(1).asterix().nbsp.startEffect.nbsp.plus().influence())
+            (eb) => eb.partyLeaders(1).asterix().nbsp.startEffect.nbsp.plus().influence());
         }),
       },
     });
   }
-  //effect handled in Turmoil.ts
+  // effect handled in Turmoil.ts
 }

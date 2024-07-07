@@ -7,12 +7,12 @@ import {Turmoil} from '../../../turmoil/Turmoil';
 import {IPlayer} from '../../../IPlayer';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Size} from '../../../../common/cards/render/Size';
-import { SelectSpace } from '../../../inputs/SelectSpace';
+import {SelectSpace} from '../../../inputs/SelectSpace';
 import {LogHelper} from '../../../LogHelper';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
   b.influence().plus().emptyTile('normal', {size: Size.SMALL}).colon().nbsp;
-  b.text('1st & 2nd:', Size.SMALL).community()
+  b.text('1st & 2nd:', Size.SMALL).community();
 });
 
 export class LandDelegation extends GlobalEvent implements IGlobalEvent {
@@ -65,13 +65,13 @@ export class LandDelegation extends GlobalEvent implements IGlobalEvent {
     return turmoil.getPlayerInfluence(player) + game.board.spaces.filter((space) => space.tile !== undefined && space.player === player).length;
   }
   private landClaim(player: IPlayer): SelectSpace {
-  return new SelectSpace(
-    'Select space for claim',
-    player.game.board.getNonReservedLandSpaces())
-    .andThen((space) => {
-      space.player = player;
-      LogHelper.logBoardTileAction(player, space, 'land claim');
-      return undefined;
-    });
+    return new SelectSpace(
+      'Select space for claim',
+      player.game.board.getNonReservedLandSpaces())
+      .andThen((space) => {
+        space.player = player;
+        LogHelper.logBoardTileAction(player, space, 'land claim');
+        return undefined;
+      });
   }
 }

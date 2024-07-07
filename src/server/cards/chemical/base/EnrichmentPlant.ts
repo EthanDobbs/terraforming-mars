@@ -22,7 +22,7 @@ export class EnrichmentPlant extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => {
             pb.minus().megacredits(1).br;
-            pb.plus().energy(2)
+            pb.plus().energy(2);
           });
         }),
         description: 'Decrease your M€ production 1 step and increase your energy production 2 steps.',

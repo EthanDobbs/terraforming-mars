@@ -12,7 +12,7 @@ export class FloatingResearchBase extends ActionCard implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.FLOATING_RESEARCH_BASE,
       tags: [Tag.SCIENCE, Tag.VENUS],
-      cost: 12,
+      cost: 11,
       victoryPoints: {resourcesHere: {}, per: 3},
       requirements: {tag: Tag.SCIENCE, count: 2},
       resourceType: CardResource.FLOATER,
@@ -29,7 +29,7 @@ export class FloatingResearchBase extends ActionCard implements IProjectCard {
         cardNumber: 'x256',
         renderData: CardRenderer.builder((b) => {
           b.action('Add a floater to ANY card.', (eb) => {
-            eb.empty().startAction.floaters(1).asterix();
+            eb.empty().startAction.resource(CardResource.FLOATER).asterix();
           }).br;
           b.vpText('1 VP per 3 floaters on this card.').br;
           b.cards(2);

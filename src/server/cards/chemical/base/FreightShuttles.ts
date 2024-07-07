@@ -6,7 +6,7 @@ import {CardType} from '../../../../common/cards/CardType';
 import {IPlayer} from '../../../IPlayer';
 import {CardName} from '../../../../common/cards/CardName';
 import {Resource} from '../../../../common/Resource';
-import {Priority} from '../../../deferredActions/DeferredAction';
+import {Priority} from '../../../deferredActions/Priority';
 import {GainResources} from '../../../deferredActions/GainResources';
 import {Board} from '../../../boards/Board';
 import {CardRenderer} from '../../render/CardRenderer';
@@ -24,7 +24,7 @@ export class FreightShuttles extends Card implements IProjectCard {
       requirements: {oxygen: 5},
 
       behavior: {
-        production: {megacredits: 5, energy: -2}
+        production: {megacredits: 5, energy: -2},
       },
 
       metadata: {
@@ -38,7 +38,7 @@ export class FreightShuttles extends Card implements IProjectCard {
             pb.plus().megacredits(5);
           });
         }),
-        description: 'Requires 5% oxygen. Decrease your energy production 2 steps and increase your M€ production 5 steps.'
+        description: 'Requires 5% oxygen. Decrease your energy production 2 steps and increase your M€ production 5 steps.',
       },
     });
   }

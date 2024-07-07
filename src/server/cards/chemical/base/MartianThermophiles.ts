@@ -37,11 +37,11 @@ export class MartianThermophiles extends ActionCard implements IProjectCard {
         cardNumber: 'x040',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 1 heat to add 1 microbe to this card.', (eb) => {
-            eb.heat(1).startAction.microbes(1);
+            eb.heat(1).startAction.resource(CardResource.MICROBE);
           }).br;
           b.or().br;
           b.action('Spend 4 heat to add 2 microbes to this card.', (eb) => {
-            eb.heat(4, {digit}).startAction.microbes(2);
+            eb.heat(4, {digit}).startAction.resource(CardResource.MICROBE, 2);
           }).br;
           b.vpText('1 VP per 3 Microbes on this card.').br;
         }),

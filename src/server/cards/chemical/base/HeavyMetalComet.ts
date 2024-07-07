@@ -3,7 +3,7 @@ import {CardRenderer} from '../../render/CardRenderer';
 import {PreludeCard} from '../../prelude/PreludeCard';
 import {IProjectCard} from '../../IProjectCard';
 
-export class HeavyMetalComet extends PreludeCard implements IProjectCard{
+export class HeavyMetalComet extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.HEAVY_METAL_COMET,
@@ -19,7 +19,7 @@ export class HeavyMetalComet extends PreludeCard implements IProjectCard{
         renderData: CardRenderer.builder((b) => {
           b.temperature(1).oceans(1).steel(3);
         }),
-        description: 'Raise the temperature 1 step, place an ocean tile, and gain 3 steel.'
+        description: 'Raise the temperature 1 step, place an ocean tile, and gain 3 steel.',
       },
     });
   }

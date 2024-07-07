@@ -9,7 +9,7 @@ import {message} from '../../../logs/MessageBuilder';
 import {PlayerInput} from '../../../PlayerInput';
 import {OrOptions} from '../../../inputs/OrOptions';
 
-export class CommitteeRepresentative extends PreludeCard implements IProjectCard{
+export class CommitteeRepresentative extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.COMMITTEE_REPRESENTATIVE,
@@ -24,7 +24,7 @@ export class CommitteeRepresentative extends PreludeCard implements IProjectCard
         renderData: CardRenderer.builder((b) => {
           b.tr(2).delegates(1).br.award();
         }),
-        description: 'Raise your TR 2 steps, place a delegate, and fund an award for free.'
+        description: 'Raise your TR 2 steps, place a delegate, and fund an award for free.',
       },
     });
   }

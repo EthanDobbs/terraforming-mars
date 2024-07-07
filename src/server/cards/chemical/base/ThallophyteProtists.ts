@@ -39,15 +39,15 @@ export class ThallophyteProtists extends ActionCard implements IProjectCard {
         cardNumber: 'x046',
         renderData: CardRenderer.builder((b) => {
           b.action('Add a microbe to this card.', (eb) => {
-            eb.empty().startAction.microbes(1);
+            eb.empty().startAction.resource(CardResource.MICROBE);
           }).br;
           b.or().br;
           b.action('Remove 2 microbes from this card to raise your plant production one step.', (eb) => {
-            eb.microbes(2).startAction.production((pb) => pb.plants(1));
+            eb.resource(CardResource.MICROBE, 2).startAction.production((pb) => pb.plants(1));
           }).br;
-          b.microbes(2);
+          b.resource(CardResource.MICROBE, 2);
         }),
-        description: 'Requires -24°C or warmer. Add 2 microbes to this card.'
+        description: 'Requires -24°C or warmer. Add 2 microbes to this card.',
       },
     });
   }

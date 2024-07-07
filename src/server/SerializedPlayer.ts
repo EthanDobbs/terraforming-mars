@@ -5,7 +5,7 @@ import {SerializedCard} from './SerializedCard';
 import {SerializedTimer} from '../common/SerializedTimer';
 import {UnderworldPlayerData} from './underworld/UnderworldData';
 import {AlliedParty} from './turmoil/AlliedParty';
-import { GenerationData } from './player/GenerationData';
+import {GenerationData} from './player/GenerationData';
 
 interface DeprecatedFields {
 }

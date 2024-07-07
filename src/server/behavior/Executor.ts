@@ -29,7 +29,7 @@ import {SelectResources} from '../inputs/SelectResources';
 import {TITLES} from '../inputs/titles';
 import {message} from '../logs/MessageBuilder';
 import {IdentifySpacesDeferred} from '../underworld/IdentifySpacesDeferred';
-import {ExcavateSpacesDeferred} from '../underworld/ExcavateSpacesDeferred'
+import {ExcavateSpacesDeferred} from '../underworld/ExcavateSpacesDeferred';
 import {UnderworldExpansion} from '../underworld/UnderworldExpansion';
 import {SelectResource} from '../inputs/SelectResource';
 import {RemoveResourcesFromCard} from '../deferredActions/RemoveResourcesFromCard';

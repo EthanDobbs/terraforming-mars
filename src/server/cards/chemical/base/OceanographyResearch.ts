@@ -16,7 +16,7 @@ export class OceanographyResearch extends Card implements IProjectCard {
       globalParameterRequirementBonus: {parameter: GlobalParameter.OCEANS, steps: 2},
 
       behavior: {
-        drawCard: 1
+        drawCard: 1,
       },
 
       metadata: {
@@ -27,7 +27,7 @@ export class OceanographyResearch extends Card implements IProjectCard {
           }).br;
           b.cards(1);
         }),
-        description: 'Draw a card.'
+        description: 'Draw a card.',
       },
     });
   }

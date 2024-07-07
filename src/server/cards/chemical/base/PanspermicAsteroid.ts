@@ -5,7 +5,6 @@ import {CardType} from '../../../../common/cards/CardType';
 import {CardResource} from '../../../../common/CardResource';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {digit} from '../../Options';
 
 export class PanspermicAsteroid extends Card implements IProjectCard {
   constructor() {
@@ -18,7 +17,7 @@ export class PanspermicAsteroid extends Card implements IProjectCard {
 
       behavior: {
         addResourcesToAnyCard: [
-          {type: CardResource.MICROBE, count: 3},
+          {type: CardResource.MICROBE, count: 2},
           {type: CardResource.ASTEROID, count: 1},
         ],
       },
@@ -26,8 +25,8 @@ export class PanspermicAsteroid extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x010',
         renderData: CardRenderer.builder((b) => {
-          b.asteroids(1).asterix().nbsp;
-          b.microbes(3, {digit}).asterix();
+          b.resource(CardResource.ASTEROID).asterix().nbsp;
+          b.resource(CardResource.MICROBE, 2).asterix();
         }),
         description: 'Add 1 asteorid to ANOTHER card and 3 microbes to ANOTHER card.',
       },

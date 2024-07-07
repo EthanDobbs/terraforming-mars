@@ -23,11 +23,11 @@ export class FloatingTechInvestments extends Card implements IProjectCard {
         cardNumber: 'x338',
         renderData: CardRenderer.builder((b) => {
           b.effect('When you gain a floater to ANY CARD, also gain 1 M€.', (eb) => {
-            eb.floaters(1).asterix().startEffect.megacredits(1);
+            eb.resource(CardResource.FLOATER).asterix().startEffect.megacredits(1);
           }).br;
-          b.production((pb) => pb.minus().megacredits(1))
+          b.production((pb) => pb.minus().megacredits(1));
         }),
-        description: 'Decrease your M€ production 1 step.'
+        description: 'Decrease your M€ production 1 step.',
       },
     });
   }

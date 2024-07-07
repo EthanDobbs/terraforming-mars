@@ -21,11 +21,11 @@ export class ProductionDrones extends Card implements IActionCard {
         cardNumber: 'x037',
         renderData: CardRenderer.builder((b) => {
           b.action('Add a floater to this card.', (eb) => {
-            eb.empty().startAction.floaters(1);
+            eb.empty().startAction.resource(CardResource.FLOATER);
           }).br;
           b.or().br;
           b.action('Remove 1 floater from this card to increase (one of) your LOWEST PRODUCTION 1 step.', (eb) => {
-            eb.floaters(1).startAction.production((pb) => pb.wild(1)).asterix();
+            eb.resource(CardResource.FLOATER).startAction.production((pb) => pb.wild(1)).asterix();
           }).br;
         }),
       },

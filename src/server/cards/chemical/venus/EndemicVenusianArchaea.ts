@@ -23,7 +23,7 @@ export class EndemicVenusianArchaea extends Card implements IProjectCard {
         cardNumber: 'x264',
         renderData: CardRenderer.builder((b) => {
           b.effect('For every step you raise Venus, add a microbe to this card.', (eb) => {
-            eb.venus(1).startEffect.microbes(1);
+            eb.venus(1).startEffect.resource(CardResource.MICROBE);
           }).br;
           b.vpText('1 VP per 2 microbes on this card.').br;
         }),
@@ -33,7 +33,7 @@ export class EndemicVenusianArchaea extends Card implements IProjectCard {
   }
   onGlobalParameterIncrease?(player: IPlayer, parameter: GlobalParameter, steps: number) {
     if (parameter === GlobalParameter.VENUS) {
-      const qty = steps
+      const qty = steps;
       player.addResourceTo(this, {qty, log: true});
     }
   }

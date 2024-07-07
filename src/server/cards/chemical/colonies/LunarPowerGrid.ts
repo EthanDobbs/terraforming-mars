@@ -4,7 +4,6 @@ import {Card} from '../../Card';
 import {CardType} from '../../../../common/cards/CardType';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 
 export class LunarPowerGrid extends Card implements IProjectCard {
   constructor() {
@@ -21,7 +20,7 @@ export class LunarPowerGrid extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x372',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.energy(1).slash().earth(2, {played}));
+          b.production((pb) => pb.energy(1).slash().tag(Tag.EARTH, 2));
         }),
         description: 'Increase your energy production 1 step for every 2 Earth tags you have, including this.',
       },

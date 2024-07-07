@@ -33,7 +33,7 @@ import {Stock} from './player/Stock';
 import {UnderworldPlayerData} from './underworld/UnderworldData';
 import {AlliedParty} from './turmoil/AlliedParty';
 import {IParty} from './turmoil/parties/IParty';
-import { GenerationData } from './player/GenerationData';
+import {GenerationData} from './player/GenerationData';
 
 export type ResourceSource = IPlayer | GlobalEventName | ICard;
 

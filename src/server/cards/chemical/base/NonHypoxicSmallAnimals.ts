@@ -32,7 +32,7 @@ export class NonHypoxicSmallAnimals extends ActionCard implements IProjectCard {
         cardNumber: 'x056',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 animal to this card.', (eb) => {
-            eb.empty().startAction.animals(1);
+            eb.empty().startAction.resource(CardResource.ANIMAL);
           }).br;
           b.minus().plants(2, {all}).br;
           b.vpText('1 VP for every 2 animals on this card.');
@@ -44,7 +44,7 @@ export class NonHypoxicSmallAnimals extends ActionCard implements IProjectCard {
       },
     });
   }
- 
+
   public override bespokeCanPlay(player: IPlayer, _canAffordOptions?: CanAffordOptions | undefined): boolean {
     if (player.game.isSoloMode()) {
       return true;

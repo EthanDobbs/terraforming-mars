@@ -54,7 +54,7 @@ export class DirectedSabotageImpact extends Card implements IProjectCard {
         }),
       new SelectOption(
         'Do not remove resources',
-        'Confirm')
-    ); 
+        'Confirm'),
+    );
   }
 }

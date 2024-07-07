@@ -24,8 +24,8 @@ export class FirstMaritanMemorial extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.cards(1);
         }),
-        description: 'Requires that you are chairman. Draw a card.'
-      }
-    })
+        description: 'Requires that you are chairman. Draw a card.',
+      },
+    });
   }
 }

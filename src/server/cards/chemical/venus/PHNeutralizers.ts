@@ -35,11 +35,11 @@ export class PHNeutralizers extends ActionCard implements IProjectCard {
         cardNumber: 'x266',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 microbe to this card.', (eb) => {
-            eb.empty().startAction.microbes(1);
+            eb.empty().startAction.resource(CardResource.MICROBE);
           }).br;
           b.or().br;
           b.action('Remove 2 microbes from this card to raise your TR 1 step.', (eb) => {
-            eb.microbes(2).startAction.tr(1);
+            eb.resource(CardResource.MICROBE, 2).startAction.tr(1);
           }).br;
         }),
         description: 'Requires Venus 6%.',

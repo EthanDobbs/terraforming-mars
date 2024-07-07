@@ -25,7 +25,7 @@ export class HyperExtremophileFungi extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x382',
         renderData: CardRenderer.builder((b) => {
-          b.plants(2).slash().colonies(1, {all}).nbsp.microbes(2).asterix();
+          b.plants(2).slash().colonies(1, {all}).nbsp.resource(CardResource.MICROBE, 2).asterix();
         }),
         description: 'Requires 6 science tags. Gain 2 plants for each colony in play and add 2 microbes to ANOTHER card.',
       },

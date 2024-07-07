@@ -4,7 +4,7 @@ import {PreludeCard} from '../../prelude/PreludeCard';
 import {IProjectCard} from '../../IProjectCard';
 import {digit} from '../../Options';
 
-export class RareMineralReserve extends PreludeCard implements IProjectCard{
+export class RareMineralReserve extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.RARE_MINERAL_RESERVE,
@@ -18,7 +18,7 @@ export class RareMineralReserve extends PreludeCard implements IProjectCard{
         renderData: CardRenderer.builder((b) => {
           b.steel(4, {digit}).nbsp.titanium(6, {digit});
         }),
-        description: 'Gain 4 steel and 6 titanium.'
+        description: 'Gain 4 steel and 6 titanium.',
       },
     });
   }

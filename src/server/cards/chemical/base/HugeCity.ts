@@ -28,10 +28,10 @@ export class HugeCity extends Card implements IProjectCard {
           b.production((pb) => {
             pb.minus().energy(2).br;
             pb.plus().megacredits(6);
-          })
+          });
           b.city().city().asterix();
         }),
-        description: 'Requires that you own 2 cities. Decrease your energy production 2 steps and increase your M€ production 6 steps. Place 2 adjacent city tiles.' 
+        description: 'Requires that you own 2 cities. Decrease your energy production 2 steps and increase your M€ production 6 steps. Place 2 adjacent city tiles.',
       },
     });
   }
@@ -56,6 +56,6 @@ export class HugeCity extends Card implements IProjectCard {
         player.game.addCity(player, secondCity);
         return undefined;
       });
-    })
+    });
   }
 }

@@ -34,7 +34,7 @@ export class MartianBanking extends Card implements IProjectCard {
   public override bespokePlay(player: IPlayer) {
     const otherPlayers = player.game.getPlayers().filter((p) => p.id !== player.id);
     for (const p of otherPlayers) {
-      p.production.add(Resource.MEGACREDITS, 1)
+      p.production.add(Resource.MEGACREDITS, 1);
     }
     return undefined;
   }

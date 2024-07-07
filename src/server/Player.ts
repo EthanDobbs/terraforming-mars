@@ -22,7 +22,7 @@ import {PlayerInput} from './PlayerInput';
 import {Resource} from '../common/Resource';
 import {CardResource} from '../common/CardResource';
 import {SelectCard} from './inputs/SelectCard';
-import {SellPatentsStandardProject} from './cards/base/standardProjects/SellPatentsStandardProject';
+import {SellPatentsStandardProject} from './cards/base/standardActions/standardProjects/SellPatentsStandardProject';
 import {SimpleDeferredAction} from './deferredActions/DeferredAction';
 import {Priority} from './deferredActions/Priority';
 import {SelectPaymentDeferred} from './deferredActions/SelectPaymentDeferred';
@@ -73,15 +73,12 @@ import {ChooseCards} from './deferredActions/ChooseCards';
 import {UnderworldPlayerData} from './underworld/UnderworldData';
 import {UnderworldExpansion} from './underworld/UnderworldExpansion';
 import {Counter} from './behavior/Counter';
-<<<<<<< HEAD
 import {SelectAmount} from './inputs/SelectAmount';
-import { GenerationData } from './player/GenerationData';
-=======
+import {GenerationData} from './player/GenerationData';
 import {TRSource} from '../common/cards/TRSource';
 import {IParty} from './turmoil/parties/IParty';
 import {AlliedParty} from './turmoil/AlliedParty';
 import {newStandardDraft} from './Draft';
->>>>>>> c5d8137427a62f388a640ef543101ded20430596
 
 const THROW_STATE_ERRORS = Boolean(process.env.THROW_STATE_ERRORS);
 
@@ -485,8 +482,8 @@ export class Player implements IPlayer {
     }
   }
   public legalFirmEffect(attackingPlayer: IPlayer) {
-    if (this.cardIsInEffect(CardName.LEGAL_FIRM) || this.cardIsInEffect(CardName.LEGAL_EXPERTS)){
-      const retribution = Math.min(attackingPlayer.stock.megacredits, 3)
+    if (this.cardIsInEffect(CardName.LEGAL_FIRM) || this.cardIsInEffect(CardName.LEGAL_EXPERTS)) {
+      const retribution = Math.min(attackingPlayer.stock.megacredits, 3);
       attackingPlayer.stock.deduct(Resource.MEGACREDITS, retribution, {log: false});
       this.game.log('${0} payed a retribution of ${1} M€ to ${2}', (b) => b.player(attackingPlayer).number(retribution).player(this));
       this.stock.megacredits += retribution;
@@ -833,14 +830,11 @@ export class Player implements IPlayer {
       auroraiData: card.type === CardType.STANDARD_PROJECT,
       graphene: card.tags.includes(Tag.CITY) || card.tags.includes(Tag.SPACE),
       kuiperAsteroids: card.name === CardName.AQUIFER_STANDARD_PROJECT || card.name === CardName.ASTEROID_STANDARD_PROJECT,
-<<<<<<< HEAD
       bioengineeringStudiesAnimals: bioengineeringStudies,
       asteroidBeltColonyAsteroids: card.tags.includes(Tag.SPACE),
       jovianConstructionYardFloaters: card.tags.includes(Tag.JOVIAN),
       aerialMassDriversFloaters: card.type === CardType.STANDARD_PROJECT,
-=======
       corruption: card.tags.includes(Tag.EARTH) && this.cardIsInEffect(CardName.FRIENDS_IN_HIGH_PLACES),
->>>>>>> c5d8137427a62f388a640ef543101ded20430596
     };
   }
 
@@ -923,15 +917,12 @@ export class Player implements IPlayer {
     removeResourcesOnCard(CardName.SOYLENT_SEEDLING_SYSTEMS, payment.seeds);
     removeResourcesOnCard(CardName.AURORAI, payment.auroraiData);
     removeResourcesOnCard(CardName.KUIPER_COOPERATIVE, payment.kuiperAsteroids);
-<<<<<<< HEAD
     removeResourcesOnCard(CardName.BIOENGINEERING_STUDIES, payment.bioengineeringStudiesAnimals);
     removeResourcesOnCard(CardName.ASTEROID_BELT_COLONY, payment.asteroidBeltColonyAsteroids);
     removeResourcesOnCard(CardName.JOVIAN_CONSTRUCTION_YARD, payment.jovianConstructionYardFloaters);
-=======
     if (payment.corruption > 0) {
       UnderworldExpansion.loseCorruption(this, payment.corruption);
     }
->>>>>>> c5d8137427a62f388a640ef543101ded20430596
 
     if (payment.megaCredits > 0 || payment.steel > 0 || payment.titanium > 0) {
       PathfindersExpansion.addToSolBank(this);
@@ -1404,14 +1395,11 @@ export class Player implements IPlayer {
       auroraiData: this.getSpendable('auroraiData'),
       graphene: this.getSpendable('graphene'),
       kuiperAsteroids: this.getSpendable('kuiperAsteroids'),
-<<<<<<< HEAD
       bioengineeringStudiesAnimals: this.getSpendable('bioengineeringStudiesAnimals'),
       asteroidBeltColonyAsteroids: this.getSpendable('asteroidBeltColonyAsteroids'),
       jovianConstructionYardFloaters: this.getSpendable('jovianConstructionYardFloaters'),
       aerialMassDriversFloaters: this.getSpendable('aerialMassDriversFloaters'),
-=======
       corruption: this.underworldData.corruption,
->>>>>>> c5d8137427a62f388a640ef543101ded20430596
     };
   }
 
@@ -1454,14 +1442,11 @@ export class Player implements IPlayer {
       auroraiData: options?.auroraiData ?? false,
       graphene: options?.graphene ?? false,
       kuiperAsteroids: options?.kuiperAsteroids ?? false,
-<<<<<<< HEAD
       bioengineeringStudiesAnimals: options?.bioengineeringStudiesAnimals ?? false,
       asteroidBeltColonyAsteroids: options?.asteroidBeltColonyAsteroids ?? false,
       jovianConstructionYardFloaters: options?.jovianConstructionYardFloaters ?? false,
       aerialMassDriversFloaters: options?.aerialMassDriversFloaters ?? false,
-=======
       corruption: options?.corruption ?? false,
->>>>>>> c5d8137427a62f388a640ef543101ded20430596
     };
 
     // HOOK: Luna Trade Federation
@@ -1976,13 +1961,10 @@ export class Player implements IPlayer {
       victoryPointsByGeneration: this.victoryPointsByGeneration,
       totalDelegatesPlaced: this.totalDelegatesPlaced,
       underworldData: this.underworldData,
-<<<<<<< HEAD
       generationData: this.generationData,
-=======
       alliedParty: this._alliedParty,
       draftHand: this.draftHand.map((c) => c.name),
       autoPass: this.autopass,
->>>>>>> c5d8137427a62f388a640ef543101ded20430596
     };
 
     if (this.lastCardPlayed !== undefined) {
@@ -2008,10 +1990,6 @@ export class Player implements IPlayer {
     player.colonies.victoryPoints = d.colonyVictoryPoints;
     player.victoryPointsByGeneration = d.victoryPointsByGeneration;
     player.energy = d.energy;
-<<<<<<< HEAD
-=======
-    player.hasIncreasedTerraformRatingThisGeneration = d.hasIncreasedTerraformRatingThisGeneration;
->>>>>>> c5d8137427a62f388a640ef543101ded20430596
     player.hasTurmoilScienceTagBonus = d.hasTurmoilScienceTagBonus;
     player.heat = d.heat;
     player.megaCredits = d.megaCredits;
@@ -2086,16 +2064,13 @@ export class Player implements IPlayer {
     if (d.underworldData !== undefined) {
       player.underworldData = d.underworldData;
     }
-<<<<<<< HEAD
     player.generationData = d.generationData;
-=======
     if (d.alliedParty !== undefined) {
       player._alliedParty = d.alliedParty;
     }
 
     player.draftHand = cardsFromJSON(d.draftHand);
 
->>>>>>> c5d8137427a62f388a640ef543101ded20430596
     return player;
   }
 

@@ -72,7 +72,7 @@ export enum CardRenderItemType {
 
   BUILDING_RESOURCE = 'building-resource',
   DIPLOMACY = 'diplomacy',
-  
+
   // Underworld
   IDENTIFY = 'identify',
   EXCAVATE = 'excavate',

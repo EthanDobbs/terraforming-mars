@@ -15,13 +15,13 @@ export class HydrothermalVents extends Card implements IProjectCard {
 
       behavior: {
         production: {heat: 2},
-        addResourcesToAnyCard: {type: CardResource.MICROBE, count: 2}
+        addResourcesToAnyCard: {type: CardResource.MICROBE, count: 2},
       },
 
       metadata: {
         cardNumber: 'x374',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.heat(2)).nbsp.microbes(2).asterix();
+          b.production((pb) => pb.heat(2)).nbsp.resource(CardResource.MICROBE, 2).asterix();
         }),
         description: 'Requires 4 ocean tiles. Increase your heat production 2 steps and add 2 microbes to ANOTHER card.',
       },

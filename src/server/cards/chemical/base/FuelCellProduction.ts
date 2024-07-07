@@ -22,7 +22,7 @@ export class FuelCellProduction extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => {
             pb.minus().megacredits(2).br;
-            pb.plus().energy(2)
+            pb.plus().energy(2);
           });
         }),
         description: 'Decrease your M€ production 2 steps and increase your energy production 2 steps.',

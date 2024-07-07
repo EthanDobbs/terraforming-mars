@@ -5,7 +5,6 @@ import {CardResource} from '../../../../common/CardResource';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
 import {ActionCard} from '../../ActionCard';
-import {played} from '../../Options';
 
 export class JovianConstructionYard extends ActionCard implements IActionCard {
   constructor() {
@@ -19,7 +18,7 @@ export class JovianConstructionYard extends ActionCard implements IActionCard {
       resourceType: CardResource.FLOATER,
 
       behavior: {
-        production: {titanium: 1}
+        production: {titanium: 1},
       },
 
       action: {
@@ -30,10 +29,10 @@ export class JovianConstructionYard extends ActionCard implements IActionCard {
         cardNumber: 'x331',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 floater to any Jovian card', (eb) => {
-            eb.empty().startAction.floaters(1, {secondaryTag: Tag.JOVIAN});
+            eb.empty().startAction.resource(CardResource.FLOATER, {secondaryTag: Tag.JOVIAN});
           }).br;
           b.effect('Floaters on this card mey be used as 3 M€ when paying for cards with Jovian tags.', (eb) => {
-            eb.jovian({played}).startEffect.floaters(1).equals().megacredits(3);
+            eb.tag(Tag.JOVIAN).startEffect.resource(CardResource.FLOATER).equals().megacredits(3);
           }).br;
           b.production((pb) => pb.titanium(1));
         }),

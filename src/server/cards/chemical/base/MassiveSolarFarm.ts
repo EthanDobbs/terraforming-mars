@@ -6,19 +6,18 @@ import {CardRenderer} from '../../render/CardRenderer';
 import {Tag} from '../../../../common/cards/Tag';
 import {TileType} from '../../../../common/TileType';
 import {AdjacencyBonus} from '../../../ares/AdjacencyBonus';
-import {ICardMetadata} from '../../../../common/cards/ICardMetadata';
 
 export class MassiveSolarFarm extends Card implements IProjectCard {
   constructor(
     name = CardName.MASSIVE_SOLAR_FARM,
     cost = 28,
     adjacencyBonus: AdjacencyBonus | undefined = undefined,
-    metadata: ICardMetadata = {
+    metadata = {
       cardNumber: 'x143',
       renderData: CardRenderer.builder((b) => {
         b.production((pb) => pb.energy(3)).nbsp.tile(TileType.MASSIVE_SOLAR_FARM, false);
       }),
-      description: 'Increase your energy production 3 steps and place this tile.'
+      description: 'Increase your energy production 3 steps and place this tile.',
     },
   ) {
     super({

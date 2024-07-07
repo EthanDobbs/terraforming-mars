@@ -6,7 +6,7 @@ import {IPlayer} from '../../../IPlayer';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardResource} from '../../../../common/CardResource';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played, all} from '../../Options';
+import {all} from '../../Options';
 
 export class ViralAmeboid extends Card implements IProjectCard {
   constructor() {
@@ -23,11 +23,11 @@ export class ViralAmeboid extends Card implements IProjectCard {
         cardNumber: 'x187',
         renderData: CardRenderer.builder((b) => {
           b.effect('When any player plays a microbe tag, including this, add a microbe to this card.', (eb) => {
-            eb.microbes(1, {played, all}).startEffect.microbes(1);
+            eb.tag(Tag.MICROBE, {all}).startEffect.resource(CardResource.MICROBE);
           }).br;
           b.vpText('1 VP per 3 Microbes on this card.').br;
         }),
-        description: 'Requires -20°C or warmer.'
+        description: 'Requires -20°C or warmer.',
       },
     });
   }

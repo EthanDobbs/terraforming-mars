@@ -3,9 +3,7 @@ import {CardRenderer} from '../../render/CardRenderer';
 import {PreludeCard} from '../../prelude/PreludeCard';
 import {IProjectCard} from '../../IProjectCard';
 import {Tag} from '../../../../common/cards/Tag';
-import {played} from '../../Options';
-
-export class PhobosSpacePort extends PreludeCard implements IProjectCard{
+export class PhobosSpacePort extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.PHOBOS_SPACE_PORT,
@@ -21,11 +19,11 @@ export class PhobosSpacePort extends PreludeCard implements IProjectCard{
         cardNumber: 'xP51',
         renderData: CardRenderer.builder((b) => {
           b.effect('When you play a space card, you pay 2 M€ less for it.', (eb) => {
-            eb.space({played}).startEffect.megacredits(-2);
+            eb.tag(Tag.SPACE).startEffect.megacredits(-2);
           }).br;
           b.production((pb) => pb.titanium(1)).nbsp.tradeFleet();
         }),
-        description: 'Increase your titanium production 1 step and gain a trade fleet.'
+        description: 'Increase your titanium production 1 step and gain a trade fleet.',
       },
     });
   }

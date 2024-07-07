@@ -4,7 +4,7 @@ import {PreludeCard} from '../../prelude/PreludeCard';
 import {IProjectCard} from '../../IProjectCard';
 import {Tag} from '../../../../common/cards/Tag';
 
-export class ThermalPlant extends PreludeCard implements IProjectCard{
+export class ThermalPlant extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.THERMAL_PLANT,
@@ -21,7 +21,7 @@ export class ThermalPlant extends PreludeCard implements IProjectCard{
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.energy(1).heat(2)).megacredits(5);
         }),
-        description: 'Increase your energy production 1 step and your heat production 2 steps. Gain 5 M€'
+        description: 'Increase your energy production 1 step and your heat production 2 steps. Gain 5 M€',
       },
     });
   }

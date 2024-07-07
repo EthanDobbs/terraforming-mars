@@ -1,7 +1,7 @@
-import { IProjectCard } from '../../IProjectCard';
-import { Card } from '../../Card';
-import { CardName } from '../../../../common/cards/CardName';
-import { CardType } from '../../../../common/cards/CardType';
+import {IProjectCard} from '../../IProjectCard';
+import {Card} from '../../Card';
+import {CardName} from '../../../../common/cards/CardName';
+import {CardType} from '../../../../common/cards/CardType';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Tag} from '../../../../common/cards/Tag';
 
@@ -18,9 +18,9 @@ export class MercurialSunshade extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x342',
         renderData: CardRenderer.builder((b) => {
-          b.tr(3)
+          b.tr(3);
         }),
-        description: "Requires 3 science tags. Raise your TR 3 steps."
+        description: 'Requires 3 science tags. Raise your TR 3 steps.',
       },
     });
   }

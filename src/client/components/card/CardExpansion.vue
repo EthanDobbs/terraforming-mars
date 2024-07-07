@@ -1,7 +1,7 @@
 <template>
   <div :class="templateClasses()">
     <div :class="iconClasses(expansion)"></div>
-    <template v-for="x in compatibility"> 
+    <template v-for="x in compatibility">
       <template v-if="x !== expansion">
         <div :class="iconClasses(x)"></div>
       </template>
@@ -48,7 +48,7 @@ export default Vue.extend({
     },
     compatibility: {
       type: Array<GameModule>,
-      required: false, 
+      required: false,
     },
   },
   methods: {
@@ -64,14 +64,14 @@ export default Vue.extend({
       if (this.isCorporation) {
         classes.push('card-corporation-expansion');
       } else {
-        if (this.isResourceCard){
+        if (this.isResourceCard) {
           classes.push('resource-card-icon-expansion-container');
         } else {
           classes.push('project-icon-expansion-container');
         }
       }
       return classes.join(' ');
-    }
+    },
   },
 });
 

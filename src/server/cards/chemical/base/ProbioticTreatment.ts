@@ -13,13 +13,13 @@ export class ProbioticTreatment extends Card implements IProjectCard {
       cost: 3,
 
       behavior: {
-        addResourcesToAnyCard: {type: CardResource.MICROBE, count: 3}
+        addResourcesToAnyCard: {type: CardResource.MICROBE, count: 3},
       },
 
       metadata: {
         cardNumber: 'x163',
         renderData: CardRenderer.builder((b) => {
-          b.microbes(3).asterix();
+          b.resource(CardResource.MICROBE, 3).asterix();
         }),
         description: 'Add 3 microbes to ANOTHER card.',
       },

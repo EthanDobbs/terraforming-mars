@@ -6,12 +6,11 @@ import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Size} from '../../../../common/cards/render/Size';
-import { Resource } from '../../../../common/Resource';
-import { Tag } from '../../../../common/cards/Tag';
-import { played } from '../../Options';
+import {Resource} from '../../../../common/Resource';
+import {Tag} from '../../../../common/cards/Tag';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.minus().plants(2).nbsp.megacredits(-3).slash().building(1, {played}).influence({size: Size.SMALL});
+  b.minus().plants(2).nbsp.megacredits(-3).slash().tag(Tag.BUILDING).influence({size: Size.SMALL});
 });
 
 export class Famine extends GlobalEvent implements IGlobalEvent {

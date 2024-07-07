@@ -28,8 +28,8 @@ export class OxygenShipment extends Card implements IProjectCard {
         cardNumber: 'x007',
         renderData: CardRenderer.builder((b) => {
           b.oxygen(2).br;
-          b.microbes(3, {digit}).asterix().or();
-          b.animals(2, {digit}).asterix();
+          b.resource(CardResource.MICROBE, {amount: 3, digit}).asterix().or();
+          b.resource(CardResource.ANIMAL, {amount: 2, digit}).asterix();
         }),
         description: 'Raise the oxygen 2 steps and add 3 microbes or 2 animals to ANOTHER card.',
       },
@@ -51,9 +51,9 @@ export class OxygenShipment extends Card implements IProjectCard {
       availableActions.push(new SelectCard('Add 3 microbes to a card',
         'Add microbes',
         availableMicrobeCards).andThen( ([card]) => {
-          player.addResourceTo(card, {qty: 3, log: true});
-          return undefined;
-        }));
+        player.addResourceTo(card, {qty: 3, log: true});
+        return undefined;
+      }));
     }
 
     if (availableAnimalCards.length === 1) {
@@ -68,8 +68,8 @@ export class OxygenShipment extends Card implements IProjectCard {
         return undefined;
       }));
     }
-    if(availableActions.length === 0){
-      return undefined
+    if (availableActions.length === 0) {
+      return undefined;
     }
 
     return new OrOptions(...availableActions);

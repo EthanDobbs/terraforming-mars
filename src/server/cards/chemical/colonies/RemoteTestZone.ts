@@ -13,11 +13,11 @@ export class RemoteTestZone extends ActionCard implements IProjectCard {
       name: CardName.REMOTE_TEST_ZONE,
       type: CardType.ACTIVE,
 
-      behavior:{
+      behavior: {
         colonies: {buildColony: {}},
       },
-      
-      action:{
+
+      action: {
         spend: {megacredits: 3},
         drawCard: 1,
       },
@@ -30,7 +30,7 @@ export class RemoteTestZone extends ActionCard implements IProjectCard {
           }).br;
           b.colonies(1);
         }),
-        description: 'Place a colony.'
+        description: 'Place a colony.',
       },
     });
   }

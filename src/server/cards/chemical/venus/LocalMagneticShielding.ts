@@ -12,11 +12,11 @@ export class LocalMagneticShielding extends ActionCard implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.LOCAL_MAGNETIC_SHIELDING,
       tags: [Tag.VENUS],
-      cost: 9,
+      cost: 10,
       resourceType: CardResource.FLOATER,
 
       behavior: {
-        addResources: 1,
+        addResources: 2,
       },
 
       action: {
@@ -39,15 +39,15 @@ export class LocalMagneticShielding extends ActionCard implements IProjectCard {
         cardNumber: 'x261',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 2 M€ to add 1 floater to ANY card.', (eb) => {
-            eb.megacredits(2).startAction.floaters(1).asterix();
+            eb.megacredits(2).startAction.resource(CardResource.FLOATER).asterix();
           }).br;
           b.or().br;
           b.action('Remove 2 floaters from this card to raise your TR 1 step.', (eb) => {
-            eb.floaters(2).startAction.tr(1);
+            eb.resource(CardResource.FLOATER, 2).startAction.tr(1);
           }).br;
-          b.floaters(1);
+          b.resource(CardResource.FLOATER, 2);
         }),
-        description: "Add a floater to this card."
+        description: 'Add 2 floaters to this card.',
       },
     });
   }

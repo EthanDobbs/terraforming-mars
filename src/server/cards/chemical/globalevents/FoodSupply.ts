@@ -6,12 +6,11 @@ import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Size} from '../../../../common/cards/render/Size';
-import { Resource } from '../../../../common/Resource';
-import {played} from '../../Options';
-import { Tag } from '../../../../common/cards/Tag';
+import {Resource} from '../../../../common/Resource';
+import {Tag} from '../../../../common/cards/Tag';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.megacredits(2).slash().plants(1, {played}).influence({size: Size.SMALL});
+  b.megacredits(2).slash().tag(Tag.PLANT).influence({size: Size.SMALL});
 });
 
 export class FoodSupply extends GlobalEvent implements IGlobalEvent {

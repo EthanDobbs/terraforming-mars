@@ -35,11 +35,11 @@ export class CeresMiningOperations extends ActionCard implements IProjectCard {
         cardNumber: 'x033',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 asteroid to this card.', (eb) => {
-            eb.empty().startAction.asteroids(1);
+            eb.empty().startAction.resource(CardResource.ASTEROID);
           }).br;
           b.or().br;
           b.action('Remove 1 asteroid from this card to increase your steel production 1 step.', (eb) => {
-            eb.asteroids(1).startAction.production((pb) => pb.steel(1));
+            eb.resource(CardResource.ASTEROID).startAction.production((pb) => pb.steel(1));
           }).br;
           b.vpText('1 VP per Jovian tag you have.');
         }),

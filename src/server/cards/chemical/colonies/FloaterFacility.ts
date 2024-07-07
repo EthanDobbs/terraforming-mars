@@ -13,13 +13,13 @@ export class FloaterFacility extends ActionCard implements IProjectCard {
       tags: [Tag.BUILDING],
       name: CardName.FLOATER_FACILITY,
       type: CardType.ACTIVE,
-      
-      action:{
+
+      action: {
         or: {
           autoSelect: true,
           behaviors: [{
             title: 'Add a floater to ANY card',
-            addResourcesToAnyCard: {type: CardResource.FLOATER, count: 1,},
+            addResourcesToAnyCard: {type: CardResource.FLOATER, count: 1},
           },
           {
             title: 'gain 2 M€',
@@ -32,7 +32,7 @@ export class FloaterFacility extends ActionCard implements IProjectCard {
         cardNumber: 'x337',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 floater to ANY card or gain 2 M€.', (eb) => {
-            eb.empty().startAction.floaters(1).asterix().nbsp.or().nbsp.megacredits(2);
+            eb.empty().startAction.resource(CardResource.FLOATER).asterix().nbsp.or().nbsp.megacredits(2);
           }).br;
         }),
       },

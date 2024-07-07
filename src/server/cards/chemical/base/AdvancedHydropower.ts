@@ -28,10 +28,10 @@ export class AdvancedHydropower extends Card implements IProjectCard {
     });
   }
   public override bespokePlay(player: IPlayer): PlayerInput | undefined {
-      player.game.defer(new PlaceOceanTile(player).andThen(() => {
-        const energyProduction = Math.floor(player.game.board.getOceanSpaces().length / 2);
-        player.production.add(Resource.ENERGY, energyProduction, {log: true});
-      }));
-      return undefined;
+    player.game.defer(new PlaceOceanTile(player).andThen(() => {
+      const energyProduction = Math.floor(player.game.board.getOceanSpaces().length / 2);
+      player.production.add(Resource.ENERGY, energyProduction, {log: true});
+    }));
+    return undefined;
   }
 }

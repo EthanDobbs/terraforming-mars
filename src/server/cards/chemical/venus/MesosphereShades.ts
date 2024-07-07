@@ -34,11 +34,11 @@ export class MesosphereShades extends ActionCard implements IProjectCard {
         cardNumber: 'x258',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 floater to ANY card.', (eb) => {
-            eb.empty().startAction.floaters(1).asterix();
+            eb.empty().startAction.resource(CardResource.FLOATER).asterix();
           }).br;
           b.or().br;
           b.action('Remove 2 floaters from this card to raise Venus 1 step.', (eb) => {
-            eb.floaters(2).startAction.venus(1);
+            eb.resource(CardResource.FLOATER, 2).startAction.venus(1);
           }).br;
         }),
       },

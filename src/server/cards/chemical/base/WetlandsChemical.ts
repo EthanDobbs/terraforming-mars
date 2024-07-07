@@ -7,19 +7,18 @@ import {AdjacencyBonus} from '../../../ares/AdjacencyBonus';
 import {Tag} from '../../../../common/cards/Tag';
 import {CardResource} from '../../../../common/CardResource';
 import {TileType} from '../../../../common/TileType';
-import {ICardMetadata} from '../../../../common/cards/ICardMetadata';
 
 export class WetlandsChemical extends Card implements IProjectCard {
   constructor(
     name = CardName.WETLANDS_CHEMICAL,
     cost = 14,
     adjacencyBonus: AdjacencyBonus | undefined = undefined,
-    metadata: ICardMetadata = {
+    metadata = {
       cardNumber: 'x125',
       renderData: CardRenderer.builder((b) => {
-        b.tile(TileType.WETLANDS_CHEMICAL, false).nbsp.plants(3).br.microbes(2).asterix();
+        b.tile(TileType.WETLANDS_CHEMICAL, false).nbsp.plants(3).br.resource(CardResource.MICROBE, 2).asterix();
       }),
-      description: 'Requires -6°C or warmer. Place this tile, gain 3 plants, and add 2 microbes to ANOTHER card.'
+      description: 'Requires -6°C or warmer. Place this tile, gain 3 plants, and add 2 microbes to ANOTHER card.',
     },
   ) {
     super({

@@ -4,7 +4,6 @@ import {CardResource} from '../../../../common/CardResource';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Card} from '../../Card';
-import {played} from '../../Options';
 import {IProjectCard} from '../../IProjectCard';
 
 export class HydrogenFromSaturn extends Card implements IProjectCard {
@@ -25,7 +24,7 @@ export class HydrogenFromSaturn extends Card implements IProjectCard {
         cardNumber: 'x020',
         renderData: CardRenderer.builder((b) => {
           b.oceans(1).nbsp.nbsp;
-          b.microbes(1).asterix().slash().jovian({played});
+          b.resource(CardResource.MICROBE).asterix().slash().tag(Tag.JOVIAN);
         }),
         description: 'Place an ocean tile. Add 1 microbe to ANY card for each Jovian tag you have.',
       },

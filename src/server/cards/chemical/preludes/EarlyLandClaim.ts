@@ -10,7 +10,7 @@ import {Space} from '../../../boards/Space';
 import {Resource} from '../../../../common/Resource';
 import {Size} from '../../../../common/cards/render/Size';
 
-export class EarlyLandClaim extends PreludeCard implements IProjectCard{
+export class EarlyLandClaim extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.EARLY_LAND_CLAIM,
@@ -36,18 +36,18 @@ export class EarlyLandClaim extends PreludeCard implements IProjectCard{
   }
   public override bespokePlay(player: IPlayer) {
     return new SelectSpace('Select first space for claim', player.game.board.getNonReservedLandSpaces()).andThen((space) => {
+      space.player = player;
+      LogHelper.logBoardTileAction(player, space, 'land claim');
+      return new SelectSpace('Select second space for claim', player.game.board.getNonReservedLandSpaces()).andThen((space) => {
         space.player = player;
         LogHelper.logBoardTileAction(player, space, 'land claim');
-        return new SelectSpace('Select second space for claim', player.game.board.getNonReservedLandSpaces()).andThen((space) => {
+        return new SelectSpace('Select third space for claim', player.game.board.getNonReservedLandSpaces()).andThen((space) => {
           space.player = player;
           LogHelper.logBoardTileAction(player, space, 'land claim');
-          return new SelectSpace('Select third space for claim', player.game.board.getNonReservedLandSpaces()).andThen((space) => {
-            space.player = player;
-            LogHelper.logBoardTileAction(player, space, 'land claim');
-            return undefined;
-          });
+          return undefined;
         });
       });
+    });
   }
   onTilePlaced(cardOwner: IPlayer, activePlayer: IPlayer, _space: Space, _boardType: BoardType): void {
     if (activePlayer.id === cardOwner.id) {

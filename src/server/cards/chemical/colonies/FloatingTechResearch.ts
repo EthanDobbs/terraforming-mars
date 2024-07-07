@@ -20,7 +20,7 @@ export class FloatingTechResearch extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x320',
         renderData: CardRenderer.builder((b) => {
-          b.floaters(2).asterix().nbsp.cards(2);
+          b.resource(CardResource.FLOATER, 2).asterix().nbsp.cards(2);
         }),
         description: 'Add 2 floaters to ANY card and draw 2 cards.',
       },

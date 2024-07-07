@@ -26,7 +26,7 @@ export class FreshwaterLake extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x094',
         renderData: CardRenderer.builder((b) => {
-          b.oceans(1).asterix().nbsp.animals(2).asterix();
+          b.oceans(1).asterix().nbsp.resource(CardResource.ANIMAL, 2).asterix();
         }),
         description: 'Requires 0°C or warmer. Place an ocean tile ON LAND, AND NEXT TO NO OTHER OCEAN. Add 2 animals to ANOTHER card.',
       },

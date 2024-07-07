@@ -16,7 +16,7 @@ export class HFCProduction extends Card implements IProjectCard {
       victoryPoints: -1,
 
       behavior: {
-        production: {energy: -1, heat:5},
+        production: {energy: -1, heat: 5},
       },
 
       metadata: {

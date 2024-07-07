@@ -12,7 +12,7 @@ export class ResearchLoan extends PreludeCard {
       behavior: {
         stock: {megacredits: 15},
         production: {megacredits: -1},
-        drawCard: {count: 1, tag: Tag.SCIENCE}
+        drawCard: {count: 1, tag: Tag.SCIENCE},
       },
       startingMegacredits: 15,
 

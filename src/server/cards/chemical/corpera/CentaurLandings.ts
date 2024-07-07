@@ -27,7 +27,7 @@ export class CentaurLandings extends ActionCard implements IProjectCard {
         cardNumber: 'x182',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 1 titanium to add an asteroid to this card.', (eb) => {
-            eb.titanium(1).startAction.asteroids(1);
+            eb.titanium(1).startAction.resource(CardResource.ASTEROID);
           }).br;
           b.vpText('1 VP for every asteroid on this card.');
         }),

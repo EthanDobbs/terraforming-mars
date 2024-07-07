@@ -7,10 +7,10 @@ import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Size} from '../../../../common/cards/render/Size';
 import {Tag} from '../../../../common/cards/Tag';
-import { played, digit } from '../../Options';
+import {digit} from '../../Options';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.science(5, {played, digit}).influence({size: Size.SMALL}).colon().cards(2);
+  b.tag(Tag.SCIENCE, {amount: 5, digit}).influence({size: Size.SMALL}).colon().cards(2);
 });
 
 export class IntellectualistMovements extends GlobalEvent implements IGlobalEvent {

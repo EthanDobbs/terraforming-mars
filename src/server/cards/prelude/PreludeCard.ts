@@ -44,7 +44,6 @@ export abstract class PreludeCard extends Card implements IPreludeCard {
       resourceType: properties.resourceType,
       tilesBuilt: properties.tilesBuilt,
       victoryPoints: properties.victoryPoints,
-      cardDiscount: properties.cardDiscount,
     };
     if (startingMegaCredits !== undefined) {
       obj.startingMegaCredits = startingMegaCredits;

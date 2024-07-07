@@ -6,7 +6,7 @@ import {IProjectCard} from '../../IProjectCard';
 import {IPlayer} from '../../../IPlayer';
 import {SelectPaymentDeferred} from '../../../deferredActions/SelectPaymentDeferred';
 
-export class NuclearFuelMining extends PreludeCard implements IProjectCard{
+export class NuclearFuelMining extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.NUCLEAR_FUEL_MINING,
@@ -22,7 +22,7 @@ export class NuclearFuelMining extends PreludeCard implements IProjectCard{
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.steel(1).energy(2)).megacredits(-2);
         }),
-        description: 'Increase your steel production 1 step and your energy production 2 steps. Lose 2 M€.'
+        description: 'Increase your steel production 1 step and your energy production 2 steps. Lose 2 M€.',
       },
     });
   }

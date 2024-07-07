@@ -5,7 +5,6 @@ import {CardType} from '../../../../common/cards/CardType';
 import {CardResource} from '../../../../common/CardResource';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 import {IPlayer} from '../../../IPlayer';
 import {PartyName} from '../../../../common/turmoil/PartyName';
 
@@ -25,11 +24,11 @@ export class TellurianEcosystems extends Card implements IProjectCard {
         cardNumber: 'x392',
         renderData: CardRenderer.builder((b) => {
           b.effect('When you play an Earth tag, including this, add an animal to this card', (eb) => {
-            eb.earth(1, {played}).startEffect.animals(1);
+            eb.tag(Tag.EARTH).startEffect.resource(CardResource.ANIMAL);
           }).br;
           b.vpText('1 VP for every 2 animals on this card.');
         }),
-        description: 'Requires that Greens are in power or that you have 2 delegates there.'
+        description: 'Requires that Greens are in power or that you have 2 delegates there.',
       },
     });
   }

@@ -4,7 +4,7 @@ import {PreludeCard} from '../../prelude/PreludeCard';
 import {IProjectCard} from '../../IProjectCard';
 import {Tag} from '../../../../common/cards/Tag';
 
-export class JovianProjectBase extends PreludeCard implements IProjectCard{
+export class JovianProjectBase extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.JOVIAN_PROJECT_BASE,
@@ -12,7 +12,7 @@ export class JovianProjectBase extends PreludeCard implements IProjectCard{
 
       behavior: {
         colonies: {buildColony: {}},
-        drawCard: {count: 1, tag: Tag.JOVIAN}
+        drawCard: {count: 1, tag: Tag.JOVIAN},
       },
 
       metadata: {
@@ -20,7 +20,7 @@ export class JovianProjectBase extends PreludeCard implements IProjectCard{
         renderData: CardRenderer.builder((b) => {
           b.colonies(1).nbsp.cards(1, {secondaryTag: Tag.JOVIAN});
         }),
-        description: 'Place a colony and draw a card with a Jovian tag.'
+        description: 'Place a colony and draw a card with a Jovian tag.',
       },
     });
   }

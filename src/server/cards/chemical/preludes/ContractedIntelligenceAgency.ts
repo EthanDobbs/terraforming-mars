@@ -58,6 +58,6 @@ export class ContractedIntelligenceAgency extends PreludeCard implements IProjec
         }),
       );
     }));
-    return undefined
+    return undefined;
   }
 }

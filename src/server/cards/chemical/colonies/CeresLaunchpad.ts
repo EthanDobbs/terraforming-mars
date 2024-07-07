@@ -31,11 +31,11 @@ export class CeresLaunchpad extends Card implements IActionCard {
         cardNumber: 'x335',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 asteroid to this card.', (eb) => {
-            eb.empty().startAction.asteroids(1);
+            eb.empty().startAction.resource(CardResource.ASTEROID);
           }).br;
           b.or().br;
           b.action('Spend 1 asteroid to trade, first increasing the colony track one step.', (eb) => {
-            eb.asteroids(1).startAction.trade().colon().text('+ 1');
+            eb.resource(CardResource.ASTEROID).startAction.trade().colon().text('+ 1');
           }).br;
           b.tradeFleet();
         }),
@@ -55,11 +55,11 @@ export class CeresLaunchpad extends Card implements IActionCard {
     });
     const tradeableColonies = ColoniesHandler.tradeableColonies(player.game);
     const spendResource = new SelectColony('Select colony tile for trade', 'trade', tradeableColonies)
-    .andThen((colony: IColony) => {
-      this.resourceCount -= 1;
-      colony.trade(player, {}, 1);
-      return undefined;
-    });
+      .andThen((colony: IColony) => {
+        this.resourceCount -= 1;
+        colony.trade(player, {}, 1);
+        return undefined;
+      });
 
     opts.push(addResource);
 

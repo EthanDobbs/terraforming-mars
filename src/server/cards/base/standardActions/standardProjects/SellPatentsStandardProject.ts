@@ -1,9 +1,9 @@
-import {IPlayer} from '../../../IPlayer';
-import {CardName} from '../../../../common/cards/CardName';
-import {CardRenderer} from '../../render/CardRenderer';
-import {StandardProjectCard} from '../../StandardProjectCard';
-import {SelectCard} from '../../../inputs/SelectCard';
-import {IProjectCard} from '../../IProjectCard';
+import {IPlayer} from '../../../../IPlayer';
+import {CardName} from '../../../../../common/cards/CardName';
+import {CardRenderer} from '../../../render/CardRenderer';
+import {StandardProjectCard} from '../../../StandardProjectCard';
+import {SelectCard} from '../../../../inputs/SelectCard';
+import {IProjectCard} from '../../../IProjectCard';
 
 export class SellPatentsStandardProject extends StandardProjectCard {
   constructor() {

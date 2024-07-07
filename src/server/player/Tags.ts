@@ -83,7 +83,7 @@ export class Tags {
       if (tag !== Tag.WILD) {
         tagCount += this.rawCount(Tag.WILD, includeEvents);
       }
-      //Public Records hook
+      // Public Records hook
       if (this.player.lastCardPlayed === CardName.PUBLIC_RECORDS) {
         tagCount += 1;
       }
@@ -184,7 +184,7 @@ export class Tags {
     }
 
     if (mode !== 'award') {
-      //Public Records hook
+      // Public Records hook
       if (this.player.lastCardPlayed === CardName.PUBLIC_RECORDS) tagCount += 1;
 
       tagCount += this.rawCount(Tag.WILD, false);
@@ -246,7 +246,7 @@ export class Tags {
 
     if (mode === 'milestone' && this.player.isCorporation(CardName.CHIMERA)) wildTagCount--;
 
-    //Public Records hook
+    // Public Records hook
     if (this.player.lastCardPlayed === CardName.PUBLIC_RECORDS) wildTagCount++;
 
     // TODO(kberg): it might be more correct to count all the tags
@@ -271,7 +271,7 @@ export class Tags {
         distinctCount++;
       }
     });
-    if(this.player.lastCardPlayed === CardName.PUBLIC_RECORDS) distinctCount++;
+    if (this.player.lastCardPlayed === CardName.PUBLIC_RECORDS) distinctCount++;
     if (distinctCount + this.count(Tag.WILD) >= tags.length) {
       return true;
     }

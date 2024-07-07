@@ -4,7 +4,7 @@ import {CardType} from '../../../../common/cards/CardType';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Tag} from '../../../../common/cards/Tag';
-import {played, all} from '../../Options';
+import {all} from '../../Options';
 
 export class SulphurProcessing extends Card implements IProjectCard {
   constructor() {
@@ -22,7 +22,7 @@ export class SulphurProcessing extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x293',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.megacredits(2)).nbsp.megacredits(1).slash().venus(1, {played, all}).br;
+          b.production((pb) => pb.megacredits(2)).nbsp.megacredits(1).slash().tag(Tag.VENUS, {all}).br;
         }),
         description: 'Increase your M€ production 2 steps and gain 1 M€ for every Venus tag in play.',
       },

@@ -193,7 +193,6 @@ export class TradeWithMegacredits implements IColonyTrader {
   private tradeCost;
 
   constructor(private player: IPlayer) {
-
     // Fuel Subsidies hook
     const fuelSubsidies = player.cardIsInEffect(CardName.FUEL_SUBSIDIES) ? 5 : 0;
 

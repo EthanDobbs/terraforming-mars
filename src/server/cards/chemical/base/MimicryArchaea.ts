@@ -7,7 +7,6 @@ import {CardName} from '../../../../common/cards/CardName';
 import {CardResource} from '../../../../common/CardResource';
 import {SimpleDeferredAction} from '../../../deferredActions/DeferredAction';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 import {SelectCard} from '../../../inputs/SelectCard';
 
 export class MimicryArchaea extends Card implements IProjectCard {
@@ -21,19 +20,19 @@ export class MimicryArchaea extends Card implements IProjectCard {
       victoryPoints: {resourcesHere: {}, per: 3},
 
       behavior: {
-        stock: {plants: 2}
+        stock: {plants: 2},
       },
 
       metadata: {
         cardNumber: 'x041',
         renderData: CardRenderer.builder((b) => {
           b.effect('When you play a plant, microbe, or an animal tag, including this, add a microbe to ANY card.', (eb) => {
-            eb.plants(1, {played}).slash().microbes(1, {played}).slash().animals(1, {played}).startEffect.microbes(1).asterix();
+            eb.tag(Tag.PLANT).slash().tag(Tag.ANIMAL).slash().tag(Tag.MICROBE).startEffect.resource(CardResource.MICROBE).asterix();
           }).br;
           b.vpText('1 VP per 3 Microbes on this card.').br;
           b.plants(2);
         }),
-        description: 'Gain 2 plants.'
+        description: 'Gain 2 plants.',
       },
     });
   }
@@ -49,7 +48,7 @@ export class MimicryArchaea extends Card implements IProjectCard {
       return undefined;
     }
     for (let i = 0; i < resourceCount; i++) {
-      player.game.defer(new SimpleDeferredAction(player,() => new SelectCard(
+      player.game.defer(new SimpleDeferredAction(player, () => new SelectCard(
         'Select card to add 1 microbe from Mimicry Archea (' + String(i + 1) + '/' + String(resourceCount) + ')',
         'Add microbe',
         microbeCards).andThen(

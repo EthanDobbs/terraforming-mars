@@ -27,7 +27,7 @@ export class ShortTermBonuses extends Card implements IProjectCard {
     });
   }
   public onIncreaseTerraformRating(player: IPlayer, cardOwner: IPlayer, steps: number): void {
-    if(player.id === cardOwner.id) {
+    if (player.id === cardOwner.id) {
       cardOwner.stock.add(Resource.MEGACREDITS, steps * 2, {log: true});
     }
   }

@@ -23,10 +23,10 @@ export class SocialWelfare extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x416',
         renderData: CardRenderer.builder((b) => {
-          b.megacredits(1).slash().city({all, size: Size.SMALL})
+          b.megacredits(1).slash().city({all, size: Size.SMALL});
         }),
-        description: 'Requires that Mars First are in power or that you have 2 delegates there. Gain 1 M€ for each city tile.'
-      }
-    })
+        description: 'Requires that Mars First are in power or that you have 2 delegates there. Gain 1 M€ for each city tile.',
+      },
+    });
   }
 }

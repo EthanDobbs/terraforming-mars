@@ -5,7 +5,7 @@ import {PartyName} from '../../../../common/turmoil/PartyName';
 import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
-import { Resource } from '../../../../common/Resource';
+import {Resource} from '../../../../common/Resource';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
   b.megacredits(1).slash().diverseTag().nbsp.cards(1).slash().influence();

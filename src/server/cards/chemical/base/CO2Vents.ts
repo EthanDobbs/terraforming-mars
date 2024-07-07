@@ -19,7 +19,7 @@ export class CO2Vents extends Card implements IProjectCard {
       cost: 9,
 
       behavior: {
-        production: {heat: 1}
+        production: {heat: 1},
       },
 
       metadata: {
@@ -30,7 +30,7 @@ export class CO2Vents extends Card implements IProjectCard {
           }).br;
           b.production((pb) => pb.heat(1));
         }),
-        description: 'Increase your heat production 1 step.'
+        description: 'Increase your heat production 1 step.',
       },
     });
   }

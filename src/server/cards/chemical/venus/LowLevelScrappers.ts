@@ -36,11 +36,11 @@ export class LowLevelScrappers extends ActionCard implements IProjectCard {
         cardNumber: 'x259',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 2 energy to add 2 floaters to this card.', (eb) => {
-            eb.energy(2).startAction.floaters(2);
+            eb.energy(2).startAction.resource(CardResource.FLOATER, 2);
           }).br;
           b.or().br;
           b.action('Remove 2 floaters from this card to raise Venus 1 step.', (eb) => {
-            eb.floaters(2).startAction.venus(1);
+            eb.resource(CardResource.FLOATER, 2).startAction.venus(1);
           }).br;
         }),
         description: 'Requires Venus 10%.',

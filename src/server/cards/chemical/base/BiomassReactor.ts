@@ -14,7 +14,7 @@ export class BiomassReactor extends ActionCard implements IProjectCard {
       cost: 9,
 
       behavior: {
-        stock: {energy: 2}
+        stock: {energy: 2},
       },
 
       action: {

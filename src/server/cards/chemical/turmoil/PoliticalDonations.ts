@@ -8,7 +8,7 @@ import {IPlayer} from '../../../IPlayer';
 import {PlayerInput} from '../../../PlayerInput';
 import {Resource} from '../../../../common/Resource';
 import {Turmoil} from '../../../turmoil/Turmoil';
-  
+
 export class PoliticalDonations extends Card implements IProjectCard {
   constructor() {
     super({

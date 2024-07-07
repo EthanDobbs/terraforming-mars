@@ -5,9 +5,9 @@ import {IProjectCard} from '../../IProjectCard';
 import {IPlayer} from '../../../IPlayer';
 import {Resource} from '../../../../common/Resource';
 import {Tag} from '../../../../common/cards/Tag';
-import {IColony} from '@/server/colonies/IColony';
+import {IColony} from '../../../colonies/IColony';
 
-export class EarlyColony extends PreludeCard implements IProjectCard{
+export class EarlyColony extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.EARLY_COLONY,
@@ -25,7 +25,7 @@ export class EarlyColony extends PreludeCard implements IProjectCard{
           }).br;
           b.colonies(1);
         }),
-        description: 'Place a colony.'
+        description: 'Place a colony.',
       },
     });
   }

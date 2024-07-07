@@ -5,7 +5,7 @@ import {ActivePreludeCard} from '../../prelude2/ActivePreludeCard';
 import {IProjectCard} from '../../IProjectCard';
 import {CardResource} from '../../../../common/CardResource';
 
-export class GasMine extends ActivePreludeCard implements IProjectCard{
+export class GasMine extends ActivePreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.GAS_MINE,
@@ -27,18 +27,18 @@ export class GasMine extends ActivePreludeCard implements IProjectCard{
 
       behavior: {
         production: {megacredits: 2},
-        stock: {megacredits: 6}
+        stock: {megacredits: 6},
       },
 
       metadata: {
         cardNumber: 'xP47',
         renderData: CardRenderer.builder((b) => {
           b.action('Add a floater to ANY card or gain 2 heat.', (eb) => {
-            eb.empty().startAction.floaters(1).asterix().slash().heat(2);
+            eb.empty().startAction.resource(CardResource.FLOATER).asterix().slash().heat(2);
           }).br;
           b.production((pb) => pb.megacredits(2)).nbsp.megacredits(6);
         }),
-        description: 'Increase your M€ production 2 steps and gain 6 M€.'
+        description: 'Increase your M€ production 2 steps and gain 6 M€.',
       },
     });
   }

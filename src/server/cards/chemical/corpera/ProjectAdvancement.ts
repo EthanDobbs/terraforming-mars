@@ -9,7 +9,7 @@ import {ALL_RESOURCES} from '../../../../common/Resource';
 import {PlayerInput} from '../../../PlayerInput';
 import {SelectOption} from '../../../inputs/SelectOption';
 import {Tag} from '../../../../common/cards/Tag';
-import { message } from '../../../logs/MessageBuilder';
+import {message} from '../../../logs/MessageBuilder';
 
 export class ProjectAdvancement extends Card implements IProjectCard {
   constructor() {
@@ -29,7 +29,7 @@ export class ProjectAdvancement extends Card implements IProjectCard {
     });
   }
   public override bespokeCanPlay(player: IPlayer, _canAffordOptions?: CanAffordOptions | undefined): boolean {
-      return ALL_RESOURCES.some((resource) => player.generationData.hasRaisedProduction[resource] === true);
+    return ALL_RESOURCES.some((resource) => player.generationData.hasRaisedProduction[resource] === true);
   }
   public override bespokePlay(player: IPlayer): PlayerInput | undefined {
     const orOptions = new OrOptions();
@@ -38,9 +38,9 @@ export class ProjectAdvancement extends Card implements IProjectCard {
         orOptions.options.push(new SelectOption(message('Raise ${0} production', (b) => b.string(resource)), 'Select').andThen( () => {
           player.production.add(resource, 1, {log: true});
           return undefined;
-        }))
+        }));
       }
-    })
+    });
     return orOptions;
   }
 }

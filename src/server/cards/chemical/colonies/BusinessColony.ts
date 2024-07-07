@@ -5,7 +5,7 @@ import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Tag} from '../../../../common/cards/Tag';
 import {Size} from '../../../../common/cards/render/Size';
-import {IPlayer, CanAffordOptions} from '@/server/IPlayer';
+import {IPlayer, CanAffordOptions} from '../../../IPlayer';
 import {PlayerInput} from '../../../PlayerInput';
 import {BuildColony} from '../../../deferredActions/BuildColony';
 import {Resource} from '../../../../common/Resource';
@@ -34,7 +34,7 @@ export class BusinessColony extends Card implements IProjectCard {
     player.game.defer(new BuildColony(player).andThen(() => {
       player.production.add(Resource.MEGACREDITS, player.getColoniesCount(), {log: true});
       return undefined;
-    }))
-  return undefined;
+    }));
+    return undefined;
   }
 }

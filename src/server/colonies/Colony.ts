@@ -121,7 +121,7 @@ export abstract class Colony implements IColony {
     const steps = maxTrackPosition - this.trackPosition;
 
 
-    for (const p of player.game.getPlayers()){
+    for (const p of player.game.getPlayers()) {
       for (const playedCard of p.tableau) {
         playedCard.onTrade?.(p, player, this);
       }

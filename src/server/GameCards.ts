@@ -61,7 +61,7 @@ export class GameCards {
       [gameOptions.ceoExtension, CEO_CARD_MANIFEST],
       [gameOptions.starWarsExpansion, STAR_WARS_CARD_MANIFEST],
       [gameOptions.underworldExpansion, UNDERWORLD_CARD_MANIFEST],
-      [gameOptions.chemicalExpansion, CHEMICAL_CARD_MANIFEST]
+      [gameOptions.chemicalExpansion, CHEMICAL_CARD_MANIFEST],
     ];
     this.moduleManifests = manifests
       .filter(([option, _manifest]) => option === true)

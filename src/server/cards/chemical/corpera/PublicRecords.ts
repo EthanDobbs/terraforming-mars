@@ -3,7 +3,7 @@ import {Card} from '../../Card';
 import {CardType} from '../../../../common/cards/CardType';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
+import {Tag} from '../../../../common/cards/Tag';
 
 export class PublicRecords extends Card implements IProjectCard {
   constructor() {
@@ -16,10 +16,10 @@ export class PublicRecords extends Card implements IProjectCard {
         cardNumber: 'x173',
         description: 'For your next action this generation, act as if you had an additional wild tag in play.',
         renderData: CardRenderer.builder((b) => {
-          b.wild(1, {played}).asterix();
+          b.tag(Tag.WILD).asterix();
         }),
       },
     });
   }
-  //Behavior handled in player/Tags.ts
+  // Behavior handled in player/Tags.ts
 }

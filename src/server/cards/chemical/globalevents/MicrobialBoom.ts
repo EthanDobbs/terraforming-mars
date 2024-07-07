@@ -1,5 +1,5 @@
-import { IGlobalEvent } from '../../../turmoil/globalEvents/IGlobalEvent';
-import { GlobalEvent } from '../../../turmoil/globalEvents/GlobalEvent';
+import {IGlobalEvent} from '../../../turmoil/globalEvents/IGlobalEvent';
+import {GlobalEvent} from '../../../turmoil/globalEvents/GlobalEvent';
 import {GlobalEventName} from '../../../../common/turmoil/globalEvents/GlobalEventName';
 import {PartyName} from '../../../../common/turmoil/PartyName';
 import {IGame} from '../../../IGame';
@@ -10,8 +10,8 @@ import {CardRenderer} from '../../render/CardRenderer';
 import {AltSecondaryTag} from '../../../../common/cards/render/AltSecondaryTag';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.cards(1, {secondaryTag: AltSecondaryTag.MICROBE}).colon().microbes(1).nbsp;
-  b.microbes(1).slash().influence();
+  b.cards(1, {secondaryTag: AltSecondaryTag.MICROBE}).colon().resource(CardResource.MICROBE).nbsp;
+  b.resource(CardResource.MICROBE).slash().influence();
 });
 
 export class MicrobialBoom extends GlobalEvent implements IGlobalEvent {

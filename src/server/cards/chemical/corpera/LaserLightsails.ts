@@ -9,7 +9,6 @@ import {CardRenderer} from '../../render/CardRenderer';
 import {Resource} from '../../../../common/Resource';
 import {OrOptions} from '../../../inputs/OrOptions';
 import {SelectOption} from '../../../inputs/SelectOption';
-import {played} from '../../Options';
 
 export class LaserLightsails extends Card implements IProjectCard {
   constructor() {
@@ -27,11 +26,11 @@ export class LaserLightsails extends Card implements IProjectCard {
         cardNumber: 'x189',
         renderData: CardRenderer.builder((b) => {
           b.effect('When you play a space tag, including this, you may choose to lose 1 energy to gain 3 M€.', (eb) => {
-            eb.space({played}).startEffect.minus().energy(1).nbsp.plus().megacredits(3);
+            eb.tag(Tag.SPACE).startEffect.minus().energy(1).nbsp.plus().megacredits(3);
           }).br;
           b.production((pb) => pb.megacredits(1));
         }),
-        description: 'Increase your M€ production 1 step.'
+        description: 'Increase your M€ production 1 step.',
       },
     });
   }
@@ -42,8 +41,10 @@ export class LaserLightsails extends Card implements IProjectCard {
         player.stock.deduct(Resource.ENERGY, 1);
         return undefined;
       });
-      const abstain = new SelectOption('Do nothing', 'Do nothing').andThen( () => {return undefined} );
-      player.game.defer(new SimpleDeferredAction(player,() => new OrOptions(useEffect, abstain)));
+      const abstain = new SelectOption('Do nothing', 'Do nothing').andThen( () => {
+        return undefined;
+      } );
+      player.game.defer(new SimpleDeferredAction(player, () => new OrOptions(useEffect, abstain)));
     }
     return undefined;
   }

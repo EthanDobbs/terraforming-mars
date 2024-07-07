@@ -8,14 +8,14 @@ import {ColoniesHandler} from '../../../colonies/ColoniesHandler';
 import {SelectColony} from '../../../inputs/SelectColony';
 import {IColony} from '../../../colonies/IColony';
 
-export class InterplanetaryTradingPort extends PreludeCard implements IProjectCard{
+export class InterplanetaryTradingPort extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.INTERPLANETARY_TRADING_PORT,
       tags: [Tag.SPACE],
 
       behavior: {
-        colonies: {buildColony: {}, addTradeFleet: 1}
+        colonies: {buildColony: {}, addTradeFleet: 1},
       },
 
       metadata: {
@@ -26,7 +26,7 @@ export class InterplanetaryTradingPort extends PreludeCard implements IProjectCa
           }).br;
           b.colonies(1).tradeFleet();
         }),
-        description: 'Place a colony and gain a trade fleet.'
+        description: 'Place a colony and gain a trade fleet.',
       },
     });
   }

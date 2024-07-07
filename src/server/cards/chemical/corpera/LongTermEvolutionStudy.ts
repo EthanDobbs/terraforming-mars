@@ -16,7 +16,7 @@ export class LongTermEvolutionStudy extends ActionCard implements IProjectCard {
       resourceType: CardResource.ANIMAL,
 
       behavior: {
-        production: {megacredits: -1}
+        production: {megacredits: -1},
       },
 
       action: {
@@ -38,15 +38,15 @@ export class LongTermEvolutionStudy extends ActionCard implements IProjectCard {
         cardNumber: 'x188',
         renderData: CardRenderer.builder((b) => {
           b.action('Add an animal to this card.', (eb) => {
-            eb.empty().startAction.animals(1);
+            eb.empty().startAction.resource(CardResource.ANIMAL);
           }).br;
           b.or().br;
           b.action('Remove 1 animal from this card to draw a card.', (eb) => {
-            eb.animals(1).startAction.cards(1);
+            eb.resource(CardResource.ANIMAL).startAction.cards(1);
           }).br;
           b.production((pb) => pb.megacredits(-1));
         }),
-        description: 'Decrease your M€ production 1 step.'
+        description: 'Decrease your M€ production 1 step.',
       },
     });
   }

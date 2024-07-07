@@ -3,7 +3,6 @@ import {Card} from '../../Card';
 import {CardType} from '../../../../common/cards/CardType';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 import {Tag} from '../../../../common/cards/Tag';
 import {IPlayer} from '../../../IPlayer';
 import {CardResource} from '../../../../common/CardResource';
@@ -19,7 +18,7 @@ export class HabitatConservation extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x025',
         renderData: CardRenderer.builder((b) => {
-          b.animals(1).slash().animals(1, {played}).asterix();
+          b.resource(CardResource.ANIMAL).slash().tag(Tag.ANIMAL).asterix();
         }),
         description: 'Add an animal to every card you have that can contain animals.',
       },
@@ -27,7 +26,7 @@ export class HabitatConservation extends Card implements IProjectCard {
   }
 
   public override bespokePlay(player: IPlayer): undefined {
-    for (const card of player.getResourceCards(CardResource.ANIMAL)){
+    for (const card of player.getResourceCards(CardResource.ANIMAL)) {
       player.addResourceTo(card, {qty: 1, log: false});
     }
     return undefined;

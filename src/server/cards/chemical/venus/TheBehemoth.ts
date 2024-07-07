@@ -24,7 +24,7 @@ export class TheBehemoth extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x278',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.megacredits(2)).floaters(3, {secondaryTag: Tag.VENUS}).br;
+          b.production((pb) => pb.megacredits(2)).resource(CardResource.FLOATER, {amount: 3, secondaryTag: Tag.VENUS}).br;
           b.vpText('1 VP for every 2 Venus tags you have.').br;
         }),
         description: 'Requires 4 science tags. Increase your M€ production 2 steps and add 3 floaters to any Venus card.',

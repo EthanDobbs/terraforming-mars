@@ -24,7 +24,7 @@ export class VenusianFungi extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x289',
         renderData: CardRenderer.builder((b) => {
-          b.venus(1).microbes(3, {secondaryTag: Tag.VENUS}).br;
+          b.venus(1).resource(CardResource.MICROBE, {amount: 3, secondaryTag: Tag.VENUS}).br;
         }),
         description: 'Requires Venus 10%. Raise Venus 1 step and add 3 microbes to any Venus card.',
       },

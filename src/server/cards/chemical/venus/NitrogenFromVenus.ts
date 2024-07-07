@@ -17,13 +17,13 @@ export class NitrogenFromVenus extends Card implements IProjectCard {
 
       behavior: {
         tr: 1,
-        addResourcesToAnyCard: [{type: CardResource.MICROBE, count: 2, autoSelect: true}, {type: CardResource.FLOATER, count: 2, autoSelect: true}]
+        addResourcesToAnyCard: [{type: CardResource.MICROBE, count: 2, autoSelect: true}, {type: CardResource.FLOATER, count: 2, autoSelect: true}],
       },
 
       metadata: {
         cardNumber: 'x247',
         renderData: CardRenderer.builder((b) => {
-          b.tr(1).br.microbes(2).asterix().floaters(2).asterix();
+          b.tr(1).br.resource(CardResource.MICROBE, 2).asterix().resource(CardResource.FLOATER, 2).asterix();
         }),
         description: 'Raise your TR 1 step, add 2 microbes to ANOTHER card, and 2 floaters to ANOTHER card.',
       },

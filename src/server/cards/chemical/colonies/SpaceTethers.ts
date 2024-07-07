@@ -35,11 +35,11 @@ export class SpaceTethers extends ActionCard implements IProjectCard {
         cardNumber: 'x327',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 floater to ANY card.', (eb) => {
-            eb.empty().startAction.floaters(1).asterix();
+            eb.empty().startAction.resource(CardResource.FLOATER).asterix();
           }).br;
           b.or().br;
           b.action('Remove 1 floater from this card to gain 5 M€.', (eb) => {
-            eb.floaters(1).startAction.megacredits(5);
+            eb.resource(CardResource.FLOATER).startAction.megacredits(5);
           }).br;
         }),
       },

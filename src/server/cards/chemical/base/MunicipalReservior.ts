@@ -18,7 +18,7 @@ export class MunicipalReservior extends Card implements IProjectCard {
       tags: [Tag.BUILDING],
 
       behavior: {
-        production: {megacredits: 1}
+        production: {megacredits: 1},
       },
 
       metadata: {
@@ -30,7 +30,7 @@ export class MunicipalReservior extends Card implements IProjectCard {
       },
     });
   }
-  private adjacencyTest(player: IPlayer, space: Space){
+  private adjacencyTest(player: IPlayer, space: Space) {
     return player.game.board.getAdjacentSpaces(space).filter((adjacentSpace) => adjacentSpace.tile !== undefined).length >= 3;
   }
   private getAvailableSpaces(player: IPlayer, canAffordOptions?: CanAffordOptions): Array<Space> {

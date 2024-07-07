@@ -4,7 +4,6 @@ import {Card} from '../../Card';
 import {CardType} from '../../../../common/cards/CardType';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 import {CardResource} from '../../../../common/CardResource';
 
 export class RhizobiomeResearch extends Card implements IProjectCard {
@@ -23,7 +22,7 @@ export class RhizobiomeResearch extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x302',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.plants(1).slash().microbes(2, {played})).microbes(2).asterix();
+          b.production((pb) => pb.plants(1).slash().tag(Tag.MICROBE, 2)).resource(CardResource.MICROBE).asterix();
         }),
         description: 'Increase your plant production 1 step for every 2 microbe tags you have, including this. Add 2 microbes to another card.',
       },

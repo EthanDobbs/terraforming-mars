@@ -17,7 +17,7 @@ export class LargeAquaticMammals extends ActionCard implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.LARGE_AQUATIC_MAMMALS,
       tags: [Tag.ANIMAL],
-      cost: 28,
+      cost: 26,
 
       behavior: {
         decreaseAnyProduction: {type: Resource.PLANTS, count: 2},
@@ -35,7 +35,7 @@ export class LargeAquaticMammals extends ActionCard implements IProjectCard {
         cardNumber: 'x050',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 animal to this card. THIS CARD MAY NOT CONTAIN MORE THAN 4 ANIMALS.', (eb) => {
-            eb.empty().startAction.animals(1).asterix().nbsp.text('(max 4)', Size.SMALL, true);
+            eb.empty().startAction.resource(CardResource.ANIMAL).asterix().nbsp.text('(max 4)', Size.SMALL, true);
           }).br;
           b.production((pb) => pb.minus().plants(2, {all})).br;
           b.vpText('2 VP for each animal on this card.');

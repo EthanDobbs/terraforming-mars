@@ -15,8 +15,8 @@ export class WaterFromTitan extends ActionCard implements IProjectCard {
       type: CardType.ACTIVE,
       resourceType: CardResource.FLOATER,
       victoryPoints: 2,
-      
-      action:{
+
+      action: {
         or: {
           autoSelect: true,
           behaviors: [{
@@ -36,11 +36,11 @@ export class WaterFromTitan extends ActionCard implements IProjectCard {
         cardNumber: 'x332',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 1 titanium to add 2 floaters here.', (eb) => {
-            eb.titanium(1).startAction.floaters(2);
+            eb.titanium(1).startAction.resource(CardResource.FLOATER, 2);
           }).br;
           b.or().br;
           b.action('Remove 2 floaters from this card to place an ocean tile.', (eb) => {
-            eb.floaters(2).startAction.oceans(1);
+            eb.resource(CardResource.FLOATER, 2).startAction.oceans(1);
           });
         }),
       },

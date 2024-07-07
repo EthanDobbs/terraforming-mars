@@ -126,7 +126,7 @@ export default Vue.extend({
       reserveUnits: card.reserveUnits ?? Units.EMPTY,
       cards: cards,
       cost: 0,
-      tags: [],payment: {...Payment.EMPTY},
+      tags: [], payment: {...Payment.EMPTY},
       warning: undefined,
       available: Units.of({}),
     };
@@ -268,7 +268,7 @@ export default Vue.extend({
           'jovianConstructionYardFloaters',
           'lunaArchivesScience',
           'corruption',
-          'megaCredits',] as const) {
+          'megaCredits'] as const) {
           this.payment[key] -= saveOverspendingUnits(this.payment[key], this.getResourceRate(key));
         }
       }

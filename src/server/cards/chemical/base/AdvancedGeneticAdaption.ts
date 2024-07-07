@@ -16,7 +16,7 @@ export class AdvancedGeneticAdaption extends Card implements IProjectCard {
       globalParameterRequirementBonus: {parameter: GlobalParameter.OXYGEN, steps: 3},
 
       behavior: {
-        production: {plants: 1}
+        production: {plants: 1},
       },
 
       metadata: {
@@ -25,9 +25,9 @@ export class AdvancedGeneticAdaption extends Card implements IProjectCard {
           b.effect('Your oxygen requirements are +/- 3 steps, your choice in each case.', (eb) => {
             eb.plate('Oxygen requirements').startEffect.text('+/- 3');
           }).br;
-          b.production((pb) => pb.plants(1))
+          b.production((pb) => pb.plants(1));
         }),
-        description: 'Increase your plant production 1 step.'
+        description: 'Increase your plant production 1 step.',
       },
     });
   }

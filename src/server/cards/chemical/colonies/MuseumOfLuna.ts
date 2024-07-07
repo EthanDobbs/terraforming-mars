@@ -22,7 +22,7 @@ export class MuseumOfLuna extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x359',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.megacredits(1))
+          b.production((pb) => pb.megacredits(1));
           b.cards(1);
         }),
         description: 'Increase your M€ production 1 step and draw a card.',

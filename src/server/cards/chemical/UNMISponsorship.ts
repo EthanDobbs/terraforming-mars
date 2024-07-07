@@ -17,9 +17,9 @@ export class UNMISponsorship extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x342',
         renderData: CardRenderer.builder((b) => {
-          b.tr(2)
+          b.tr(2);
         }),
-        description: "Requires you've raised your TR this generation. Raise your TR 2 steps."
+        description: 'Requires you\'ve raised your TR this generation. Raise your TR 2 steps.',
       },
     });
   }

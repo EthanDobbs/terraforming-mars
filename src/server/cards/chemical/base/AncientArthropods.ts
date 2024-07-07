@@ -6,7 +6,7 @@ import {CardResource} from '../../../../common/CardResource';
 import {Resource} from '../../../../common/Resource';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {all, played} from '../../Options';
+import {all} from '../../Options';
 import {IPlayer} from '../../../IPlayer';
 
 export class AncientArthopods extends Card implements IProjectCard {
@@ -29,7 +29,7 @@ export class AncientArthopods extends Card implements IProjectCard {
         cardNumber: 'x060',
         renderData: CardRenderer.builder((b) => {
           b.effect('When you play a science tag, including this, add an animal to this card', (eb) => {
-            eb.science(1, {played}).startEffect.animals(1);
+            eb.tag(Tag.SCIENCE).startEffect.resource(CardResource.ANIMAL);
           }).br;
           b.production((pb) => pb.minus().plants(1, {all})).br;
           b.vpText('1 VP for every 2 animals on this card.');

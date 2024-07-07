@@ -23,7 +23,7 @@ export class FloatingPowerStation extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x303',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.energy(1)).floaters(2, {secondaryTag: Tag.VENUS}).br;
+          b.production((pb) => pb.energy(1)).resource(CardResource.FLOATER, {amount: 2, secondaryTag: Tag.VENUS}).br;
         }),
         description: 'Increase your energy production 1 step and add 2 floaters to any Venus card.',
       },

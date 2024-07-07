@@ -270,14 +270,6 @@ abstract class Builder<T> {
     opts.resource = resource;
     return this._appendToRow(new CardRenderItem(CardRenderItemType.RESOURCE, -1, opts));
   }
-
-  public buildingResource(amount: number = 1) {
-    return this._appendToRow(new CardRenderItem(CardRenderItemType.BUILDING_RESOURCE, amount));
-  }
-  public diplomacy(amount: number = 1) {
-    return this._appendToRow(new CardRenderItem(CardRenderItemType.DIPLOMACY, amount));
-  }
-
   public selfReplicatingRobots() {
     return this._appendToRow(new CardRenderItem(CardRenderItemType.SELF_REPLICATING));
   }

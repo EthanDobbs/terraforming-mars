@@ -16,11 +16,11 @@ export class GalileanMiningNetwork extends ActionCard implements IProjectCard {
       resourceType: CardResource.FLOATER,
       victoryPoints: 1,
 
-      behavior:{
+      behavior: {
         stock: {titanium: 2},
       },
-      
-      action:{
+
+      action: {
         or: {
           autoSelect: true,
           behaviors: [{
@@ -39,15 +39,15 @@ export class GalileanMiningNetwork extends ActionCard implements IProjectCard {
         cardNumber: 'x334',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 floater to any Jovian card.', (eb) => {
-            eb.empty().startAction.floaters(1, {secondaryTag: Tag.JOVIAN});
+            eb.empty().startAction.resource(CardResource.FLOATER, {secondaryTag: Tag.JOVIAN});
           }).br;
           b.or().br;
           b.action('Spend 1 floater here to increase your titanium production 1 step.', (eb) => {
-            eb.floaters(2).startAction.production((pb) => pb.titanium(1));
+            eb.resource(CardResource.FLOATER, 2).startAction.production((pb) => pb.titanium(1));
           }).br;
           b.titanium(2);
         }),
-        description: 'Gain 2 titanium.'
+        description: 'Gain 2 titanium.',
       },
     });
   }

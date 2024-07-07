@@ -54,7 +54,7 @@ export enum TileType {
 
     MARS_NOMADS, // 40
     REY_SKYWALKER, // 41
-    
+
     // Underworld
     MAN_MADE_VOLCANO, // 42
 
@@ -63,9 +63,9 @@ export enum TileType {
     WETLANDS_CHEMICAL, // 45
     MASSIVE_SOLAR_FARM, // 46
     GHG_FACTORY_DISTRICT, // 47
-    MILITARY_BASE, //48
-    GREAT_HARBOR, //49
-    PRIMAL_NATIONAL_PARK, //50
+    MILITARY_BASE, // 48
+    GREAT_HARBOR, // 49
+    PRIMAL_NATIONAL_PARK, // 50
   }
 
 export const tileTypeToString: Record<TileType, string> = {

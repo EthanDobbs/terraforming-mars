@@ -34,13 +34,13 @@ export class FailedSpaceMission extends Card implements IProjectCard {
     const availablePlayerTargets = player.game.getPlayers().filter((p) => p.id !== player.id);
     const availableActions = new OrOptions();
     availablePlayerTargets.forEach((target) => {
-        const optionTitle = message('Remove resources from ${0}', (b) => b.player(target))
-        availableActions.options.push(new SelectOption(optionTitle).andThen(() => {
-          target.stock.deduct(Resource.MEGACREDITS, 2, {log: true, from: player});
-          if (!target.alloysAreProtected()) target.stock.deduct(Resource.TITANIUM, 2, {log: true, from: player});
-          return undefined;
-        }));
-      });
+      const optionTitle = message('Remove resources from ${0}', (b) => b.player(target));
+      availableActions.options.push(new SelectOption(optionTitle).andThen(() => {
+        target.stock.deduct(Resource.MEGACREDITS, 2, {log: true, from: player});
+        if (!target.alloysAreProtected()) target.stock.deduct(Resource.TITANIUM, 2, {log: true, from: player});
+        return undefined;
+      }));
+    });
     if (availableActions.options.length > 0) {
       availableActions.options.push(new SelectOption('Do not remove resource').andThen(() => {
         return undefined;

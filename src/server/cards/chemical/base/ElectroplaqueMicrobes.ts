@@ -24,11 +24,11 @@ export class ElectroplaqueMicrobes extends Card implements IActionCard {
         cardNumber: 'x049',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 2 microbes to this card.', (eb) => {
-            eb.empty().startAction.microbes(2);
+            eb.empty().startAction.resource(CardResource.MICROBE, 2);
           }).br;
           b.or().br;
           b.action('Spend any number of microbes here to gain that amount of energy.', (eb) => {
-            eb.text('x').microbes(1).startAction.text('x').energy(1);
+            eb.text('x').resource(CardResource.MICROBE).startAction.text('x').energy(1);
           });
         }),
       },

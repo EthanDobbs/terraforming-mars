@@ -6,7 +6,7 @@ import {IProjectCard} from '../../IProjectCard';
 import {Resource} from '../../../../common/Resource';
 import {Tag} from '../../../../common/cards/Tag';
 
-export class TerraformingSponors extends PreludeCard implements IProjectCard{
+export class TerraformingSponors extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.TERRAFORMING_SPONSORS,
@@ -23,7 +23,7 @@ export class TerraformingSponors extends PreludeCard implements IProjectCard{
     });
   }
   onIncreaseTerraformRating(player: IPlayer, cardOwner: IPlayer, steps: number): void {
-    if(player.id === cardOwner.id) {
+    if (player.id === cardOwner.id) {
       cardOwner.stock.add(Resource.MEGACREDITS, steps * 2, {log: true});
     }
   }

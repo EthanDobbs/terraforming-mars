@@ -59,7 +59,7 @@ export enum SpaceName {
     HADRIACUS_MONS = '38',
     TYRRHENUS_MONS = '21',
 
-    //Chemical Off-world Cities
+    // Chemical Off-world Cities
     TOWERS_OF_FREYJA = '80',
     OVDA_CITY = '81',
     CAPITAL_OF_VENUS = '82',

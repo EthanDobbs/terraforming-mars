@@ -17,12 +17,12 @@ export class JupiterFloatingCity extends ActionCard implements IProjectCard {
       requirements: {tag: Tag.SCIENCE, count: 4},
       victoryPoints: {tag: Tag.JOVIAN},
 
-      behavior:{
+      behavior: {
         production: {energy: -1},
         city: {space: SpaceName.JUPITER_FLOATING_CITY},
       },
-      
-      action:{
+
+      action: {
         addResourcesToAnyCard: {type: CardResource.FLOATER, count: 2, tag: Tag.JOVIAN},
       },
 
@@ -30,12 +30,12 @@ export class JupiterFloatingCity extends ActionCard implements IProjectCard {
         cardNumber: 'x336',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 2 floaters to any Jovian card.', (eb) => {
-            eb.empty().startAction.floaters(2, {secondaryTag: Tag.JOVIAN});
+            eb.empty().startAction.resource(CardResource.FLOATER, {amount: 2, secondaryTag: Tag.JOVIAN});
           }).br;
           b.vpText('1 VP per Jovian tag you have').br;
           b.production((pb) => pb.minus().energy(1)).nbsp.city().asterix();
         }),
-        description: 'Requires 4 science tags. Decrease your energy production 1 step. Place a city tile ON THE RESERVED AREA.'
+        description: 'Requires 4 science tags. Decrease your energy production 1 step. Place a city tile ON THE RESERVED AREA.',
       },
     });
   }

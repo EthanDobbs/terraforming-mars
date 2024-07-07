@@ -26,10 +26,10 @@ export class OxygenatedComets extends Card implements IActionCard {
         cardNumber: 'x031',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 6 M€ to add an asteroid resource to this card [TITANIUM MAY BE USED].', (eb) => {
-            eb.megacredits(6).openBrackets.titanium(1).closeBrackets.startAction.asteroids(1).asterix();
+            eb.megacredits(6).super((b) => b.titanium(1)).startAction.resource(CardResource.ASTEROID).asterix();
           }).br;
           b.action('Remove 1 asteroid from this card to increase the oxygen 1 step.', (eb) => {
-            eb.or().asteroids(1).startAction.oxygen(1);
+            eb.or().resource(CardResource.ASTEROID).startAction.oxygen(1);
           });
         }),
       },
@@ -74,9 +74,9 @@ export class OxygenatedComets extends Card implements IActionCard {
       'Select card to add 1 asteroid',
       'Add asteroid',
       asteroidCards).andThen( ([card]) => {
-        player.addResourceTo(card, {log: true});
-        return undefined;
-      },
+      player.addResourceTo(card, {log: true});
+      return undefined;
+    },
     );
   }
 

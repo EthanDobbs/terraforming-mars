@@ -23,14 +23,14 @@ export class AcquiredConsultingFirm extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.megacredits(1).slash().delegates(1, {all});
         }),
-        description: 'Gain 1 M€ for each active delegate.'
-      }
-    })
+        description: 'Gain 1 M€ for each active delegate.',
+      },
+    });
   }
   public override bespokePlay(player: IPlayer): PlayerInput | undefined {
     let delegates = 0;
     Turmoil.getTurmoil(player.game).parties.forEach((party) => delegates += party.delegates.size);
-    player.stock.add(Resource.MEGACREDITS, delegates, {log: true})
+    player.stock.add(Resource.MEGACREDITS, delegates, {log: true});
     return undefined;
   }
 }

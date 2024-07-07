@@ -27,10 +27,10 @@ export class GasGiantHabs extends ActionCard implements IActionCard {
         cardNumber: 'x329',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 2 M€ to add 1 floater to any Jovian card', (eb) => {
-            eb.megacredits(2).startAction.floaters(1, {secondaryTag: Tag.JOVIAN});
+            eb.megacredits(2).startAction.resource(CardResource.FLOATER, {secondaryTag: Tag.JOVIAN});
           }).br;
           b.vpText('1 VP for every 2nd Floater on this card.').br;
-          b.floaters(2);
+          b.resource(CardResource.FLOATER, 2);
         }),
         description: 'Requires 2 Jovian tags. Add 2 floaters to this card.',
       },

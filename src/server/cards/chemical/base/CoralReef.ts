@@ -25,7 +25,7 @@ export class CoralReef extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x129',
         renderData: CardRenderer.builder((b) => {
-          b.oceans(1).plants(3).animals(1).asterix();
+          b.oceans(1).plants(3).resource(CardResource.ANIMAL).asterix();
         }),
         description: 'Requires +6°C or warmer. Place an ocean tile, gain 3 plants, and add an animal to ANOTHER card.',
       },

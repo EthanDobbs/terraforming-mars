@@ -5,7 +5,7 @@ import {ActivePreludeCard} from '../../prelude2/ActivePreludeCard';
 import {IProjectCard} from '../../IProjectCard';
 import {CardResource} from '../../../../common/CardResource';
 
-export class EarlyVenusBiosphere extends ActivePreludeCard implements IProjectCard{
+export class EarlyVenusBiosphere extends ActivePreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.EARLY_VENUS_BIOSPHERE,
@@ -26,12 +26,12 @@ export class EarlyVenusBiosphere extends ActivePreludeCard implements IProjectCa
         cardNumber: 'xP37',
         renderData: CardRenderer.builder((b) => {
           b.action('Add a microbe to ANY card.', (eb) => {
-            eb.empty().startAction.microbes(1).asterix();
+            eb.empty().startAction.resource(CardResource.MICROBE).asterix();
           }).br;
           b.vpText('1 VP per 3 Microbes on this card.').br;
           b.venus(1).production((pb) => pb.plants(1));
         }),
-        description: 'Raise Venus 1 step and increase your plant production 1 step.'
+        description: 'Raise Venus 1 step and increase your plant production 1 step.',
       },
     });
   }

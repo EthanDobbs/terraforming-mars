@@ -5,12 +5,12 @@ import {PartyName} from '../../../../common/turmoil/PartyName';
 import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
-import { Tag } from '../../../../common/cards/Tag';
-import { CardResource } from '../../../../common/CardResource';
-import { AddResourcesToCard } from '../../../deferredActions/AddResourcesToCard';
+import {Tag} from '../../../../common/cards/Tag';
+import {CardResource} from '../../../../common/CardResource';
+import {AddResourcesToCard} from '../../../deferredActions/AddResourcesToCard';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.floaters(2, {secondaryTag: Tag.VENUS}).nbsp.wild(1, {secondaryTag: Tag.VENUS}).slash().influence();
+  b.resource(CardResource.FLOATER, {amount: 2, secondaryTag: Tag.VENUS}).nbsp.wild(1, {secondaryTag: Tag.VENUS}).slash().influence();
 });
 
 export class AnticorrosiveMaterials extends GlobalEvent implements IGlobalEvent {

@@ -23,7 +23,7 @@ export class Composting extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x112',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.plants(1)).microbes(2).asterix();
+          b.production((pb) => pb.plants(1)).resource(CardResource.MICROBE, 2).asterix();
         }),
         description: 'Requires a plant tag, an animal tag, and a microbe tag. Increase your plant production 1 step and add 2 microbes to ANOTHER card.',
       },

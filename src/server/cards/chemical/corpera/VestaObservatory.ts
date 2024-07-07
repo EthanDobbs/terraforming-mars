@@ -5,7 +5,6 @@ import {CardType} from '../../../../common/cards/CardType';
 import {CardResource} from '../../../../common/CardResource';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 import {IPlayer} from '../../../IPlayer';
 import {SelectAmount} from '../../../inputs/SelectAmount';
 import {Resource} from '../../../../common/Resource';
@@ -25,10 +24,10 @@ export class VestaObservatory extends Card implements IProjectCard {
         cardNumber: 'x183',
         renderData: CardRenderer.builder((b) => {
           b.effect('When you play a science tag, including this, add an asteroid to this card', (eb) => {
-            eb.science(1, {played}).startEffect.asteroids(1);
+            eb.tag(Tag.SCIENCE).startEffect.resource(CardResource.ASTEROID);
           }).br;
           b.action('Spend 1 titanium to remove X asteroids from this card and look at X cards from the deck, take 1 into your hand, and discard the rest.', (eb) => {
-            eb.titanium(1).startAction.minus().text('X').asteroids(1).nbsp.plus().text('X').cards(1).asterix();
+            eb.titanium(1).startAction.minus().text('X').resource(CardResource.ASTEROID).nbsp.plus().text('X').cards(1).asterix();
           }).br;
         }),
       },
@@ -45,7 +44,7 @@ export class VestaObservatory extends Card implements IProjectCard {
     return new SelectAmount('Select amount of asteroids to remove', 'OK', 1, this.resourceCount)
       .andThen((amount) => {
         player.stock.deduct(Resource.TITANIUM, 1);
-        this.resourceCount -= amount
+        this.resourceCount -= amount;
         if (amount === 1) {
           player.drawCard();
           return undefined;

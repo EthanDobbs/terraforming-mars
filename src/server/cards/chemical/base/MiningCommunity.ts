@@ -27,7 +27,7 @@ export class MiningCommunity extends Card implements IProjectCard {
           b.production((pb) => {
             pb.minus().energy(2).br;
             pb.plus().megacredits(3).steel(1);
-          })
+          });
           b.city().asterix();
         }),
         description: 'Decrease your energy production 2 steps. Increase your M€ production 3 steps and your steel production 1 step. Place a city tile ON A STEEL PLACEMENT BONUS, regardless of adjacent city tiles.',

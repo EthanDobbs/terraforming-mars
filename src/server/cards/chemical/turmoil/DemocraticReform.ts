@@ -5,7 +5,7 @@ import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
 import {PartyName} from '../../../../common/turmoil/PartyName';
 import {all} from '../../Options';
-/*import {IPlayer} from '../../IPlayer';
+/* import {IPlayer} from '../../IPlayer';
 import {OrOptions} from '../../inputs/OrOptions';
 import {SelectDelegate} from '../../inputs/SelectDelegate';
 import {Turmoil} from '../../turmoil/Turmoil';
@@ -33,7 +33,7 @@ export class DemocraticReform extends Card implements IProjectCard {
       },
     });
   }
-  /*public override bespokeCanPlay(player: IPlayer): boolean {
+  /* public override bespokeCanPlay(player: IPlayer): boolean {
     const turmoil = Turmoil.getTurmoil(player.game);
     var nonLeaderDelegates = 0;
     for (const party of turmoil.parties) {

@@ -6,7 +6,7 @@ import {IPlayer} from '../../../IPlayer';
 import {CardName} from '../../../../common/cards/CardName';
 import {Resource} from '../../../../common/Resource';
 import {CardRenderer} from '../../render/CardRenderer';
-import {all, played} from '../../Options';
+import {all} from '../../Options';
 
 export class TyrrhenusArchives extends Card implements IProjectCard {
   constructor() {
@@ -14,7 +14,7 @@ export class TyrrhenusArchives extends Card implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.TYRRHENUS_ARCHIVES,
       tags: [Tag.SCIENCE, Tag.BUILDING],
-      cost: 18,
+      cost: 20,
       requirements: {tag: Tag.SCIENCE, count: 2},
       victoryPoints: 1,
 
@@ -26,18 +26,18 @@ export class TyrrhenusArchives extends Card implements IProjectCard {
         cardNumber: 'x074',
         renderData: CardRenderer.builder((b) => {
           b.effect('Whenever any player plays an event card, gain 2 M€.', (eb) => {
-            eb.event({played, all}).startEffect.megacredits(2);
+            eb.tag(Tag.EVENT, {all}).startEffect.megacredits(2);
           }).br;
           b.cards(2);
         }),
-        description: 'Requires 2 science tags. Draw 2 cards.'
+        description: 'Requires 2 science tags. Draw 2 cards.',
       },
     });
   }
 
   public onCardPlayedFromAnyPlayer(thisCardOwner: IPlayer, _playedCardOwner: IPlayer, card: IProjectCard) {
     if (card.type === CardType.EVENT) {
-      thisCardOwner.stock.add(Resource.MEGACREDITS, 2, {log: true, from: this})
+      thisCardOwner.stock.add(Resource.MEGACREDITS, 2, {log: true, from: this});
     }
     return undefined;
   }

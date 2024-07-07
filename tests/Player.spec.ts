@@ -35,7 +35,7 @@ import {IPreludeCard} from '../src/server/cards/prelude/IPreludeCard';
 import {OrOptions} from '../src/server/inputs/OrOptions';
 import {Payment} from '../src/common/inputs/Payment';
 import {PhysicsComplex} from '../src/server/cards/base/PhysicsComplex';
-import { GenerationData } from '@/server/player/GenerationData';
+import {GenerationData} from '@/server/player/GenerationData';
 
 describe('Player', function() {
   it('should initialize with right defaults', function() {

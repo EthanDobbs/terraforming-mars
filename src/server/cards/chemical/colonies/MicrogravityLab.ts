@@ -17,7 +17,7 @@ export class MicrogravityLab extends Card implements IProjectCard {
 
       behavior: {
         production: {megacredits: 2, energy: -1},
-        stock: {megacredits: {colonies: {colonies: {}}, each: 5}}
+        stock: {megacredits: {colonies: {colonies: {}}, each: 5}},
       },
 
       metadata: {
@@ -25,7 +25,7 @@ export class MicrogravityLab extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => {
             pb.minus().energy(1).br;
-            pb.plus().megacredits(2)
+            pb.plus().megacredits(2);
           });
           b.megacredits(5).slash().colonies(1);
         }),

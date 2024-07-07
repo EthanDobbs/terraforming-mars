@@ -7,7 +7,7 @@ import {IPlayer} from '../../../IPlayer';
 import {PlayerInput} from '../../../PlayerInput';
 import {AltSecondaryTag} from '../../../../common/cards/render/AltSecondaryTag';
 
-export class WildlifeSponsors extends PreludeCard implements IProjectCard{
+export class WildlifeSponsors extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.WILDLIFE_SPONSORS,
@@ -22,7 +22,7 @@ export class WildlifeSponsors extends PreludeCard implements IProjectCard{
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(3)).nbsp.cards(2, {secondaryTag: AltSecondaryTag.ANIMAL}).asterix();
         }),
-        description: 'Increase your M€ production 3 steps and draw 2 cards with animal icons or tags.'
+        description: 'Increase your M€ production 3 steps and draw 2 cards with animal icons or tags.',
       },
     });
   }
@@ -34,7 +34,7 @@ export class WildlifeSponsors extends PreludeCard implements IProjectCard{
         found.push(card.name);
       }
       return undefined;
-    })
+    });
     player.drawCard(2, {
       include: (card) => found.includes(card.name),
     });

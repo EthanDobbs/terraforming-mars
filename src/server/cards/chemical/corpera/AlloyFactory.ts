@@ -15,7 +15,7 @@ export class AlloyFactory extends ActionCard implements IProjectCard {
       cost: 5,
 
       behavior: {
-        stock: {energy: 4}
+        stock: {energy: 4},
       },
 
       action: {

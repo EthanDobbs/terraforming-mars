@@ -6,7 +6,7 @@ import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Resource} from '../../../../common/Resource';
-import { digit } from '../../Options';
+import {digit} from '../../Options';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
   b.cards(8, {digit}).colon().megacredits(-8).nbsp.cards(1).slash().influence();
@@ -24,7 +24,7 @@ export class RevisedPatentLaw extends GlobalEvent implements IGlobalEvent {
   }
   public resolve(game: IGame, turmoil: Turmoil) {
     game.getPlayersInGenerationOrder().forEach((player) => {
-      if (player.cardsInHand.length >= 8){
+      if (player.cardsInHand.length >= 8) {
         player.stock.deduct(Resource.MEGACREDITS, 8, {log: true, from: this.name});
       }
       player.drawCard(turmoil.getPlayerInfluence(player));

@@ -27,7 +27,7 @@ export class InstituteSettlement extends Card implements IProjectCard {
           b.production((pb) => {
             pb.minus().energy(1).br;
             pb.plus().plants(1);
-          })
+          });
           b.city();
         }),
         description: 'Requires -18°C or colder. Decrease your energy production 1 step and increase your plant production 1 step. Place a city tile.',

@@ -37,8 +37,9 @@ export class CorporateAlliance extends PreludeCard implements IProjectCard {
       orOptions.options.push(new SelectOption('Increase ' + resource + ' production 1 step', 'Select').andThen( () => {
         player.production.add(resource, 1, {log: true});
         return undefined;
-      })
-    )});
+      }),
+      );
+    });
 
     return orOptions;
   }

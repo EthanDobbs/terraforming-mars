@@ -26,7 +26,7 @@ export class ColonySuppliers extends Card implements IProjectCard {
           }).br;
           b.tradeFleet();
         }),
-        description: 'Gain a trade fleet.'
+        description: 'Gain a trade fleet.',
       },
     });
   }

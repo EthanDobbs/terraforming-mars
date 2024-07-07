@@ -25,8 +25,8 @@ export class ExoplanetLanding extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.cards(2);
         }),
-        description: 'Requires that Scientists are in power or that you have 2 delegates there. Draw 2 cards.'
-      }
-    })
+        description: 'Requires that Scientists are in power or that you have 2 delegates there. Draw 2 cards.',
+      },
+    });
   }
 }

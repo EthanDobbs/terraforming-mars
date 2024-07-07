@@ -26,7 +26,7 @@ export class BuriedSettlement extends Card implements IProjectCard {
           b.production((pb) => {
             pb.minus().energy(1).br;
             pb.plus().megacredits(2);
-          })
+          });
           b.city();
         }),
         description: 'Oxygen must be 5% or lower. Decrease your energy production 1 step and increase your M€ production 2 steps. Place a city tile.',

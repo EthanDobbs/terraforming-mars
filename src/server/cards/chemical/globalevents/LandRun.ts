@@ -6,7 +6,7 @@ import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Size} from '../../../../common/cards/render/Size';
-import { Resource } from '../../../../common/Resource';
+import {Resource} from '../../../../common/Resource';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
   b.megacredits(1).slash().emptyTile('normal', {size: Size.SMALL}).influence({size: Size.SMALL});

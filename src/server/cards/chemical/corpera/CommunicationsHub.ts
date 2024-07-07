@@ -4,7 +4,6 @@ import {Card} from '../../Card';
 import {CardType} from '../../../../common/cards/CardType';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 
 export class CommunicationsHub extends Card implements IProjectCard {
   constructor() {
@@ -24,7 +23,7 @@ export class CommunicationsHub extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => {
             pb.minus().energy(1).br;
-            pb.plus().megacredits(1).slash().earth(1, {played});
+            pb.plus().megacredits(1).slash().tag(Tag.EARTH);
           }).nbsp;
           b.city();
         }),

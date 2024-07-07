@@ -4,7 +4,7 @@ import {PreludeCard} from '../../prelude/PreludeCard';
 import {IProjectCard} from '../../IProjectCard';
 import {Tag} from '../../../../common/cards/Tag';
 
-export class InnerSolarMission extends PreludeCard implements IProjectCard{
+export class InnerSolarMission extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.INNER_SOLAR_MISSION,
@@ -20,7 +20,7 @@ export class InnerSolarMission extends PreludeCard implements IProjectCard{
         renderData: CardRenderer.builder((b) => {
           b.venus(1).oceans(1).cards(1, {secondaryTag: Tag.VENUS});
         }),
-        description: 'Raise Venus 1 step, place an ocean tile, and draw a card with a Venus tag.'
+        description: 'Raise Venus 1 step, place an ocean tile, and draw a card with a Venus tag.',
       },
     });
   }

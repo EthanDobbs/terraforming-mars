@@ -30,7 +30,7 @@ import {CorruptionRequirement} from './CorruptionRequirement';
 import {ExcavationRequirement} from './ExcavationRequirement';
 import {SumTagsCardRequirement} from './SumTagsCardRequirement';
 import {UniqueTagsCardRequirement} from './UniqueTagsCardRequirement';
-import { RaisedTRRequirement } from './RaisedTRRequirement';
+import {RaisedTRRequirement} from './RaisedTRRequirement';
 
 export class CardRequirements {
   constructor(public requirements: Array<CardRequirement>) {}

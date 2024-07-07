@@ -16,7 +16,7 @@ export class AsteroidMiningExpedition extends Card implements IProjectCard {
       cost: 7,
 
       behavior: {
-        stock: {steel: 2, titanium: 4}
+        stock: {steel: 2, titanium: 4},
       },
 
       metadata: {

@@ -5,9 +5,9 @@ import {CardType} from '../../../../common/cards/CardType';
 import {IPlayer} from '../../../IPlayer';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {digit, played} from '../../Options';
 import {AddResourcesToCard} from '../../../deferredActions/AddResourcesToCard';
 import {CardResource} from '../../../../common/CardResource';
+import {digit} from '../../Options';
 
 export class BiodiversityBoom extends Card implements IProjectCard {
   constructor() {
@@ -20,8 +20,8 @@ export class BiodiversityBoom extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x383',
         renderData: CardRenderer.builder((b) => {
-          b.animals(1).asterix().nbsp.or().nbsp;
-          b.animals(3, {played, digit}).colon().nbsp.animals(3, {digit}).asterix();
+          b.resource(CardResource.ANIMAL).asterix().nbsp.or().nbsp;
+          b.tag(Tag.ANIMAL, {amount: 3, digit}).colon().nbsp.resource(CardResource.ANIMAL, {amount: 3, digit}).asterix();
         }),
         description: 'Add an animal to ANOTHER card or add 3 animals to ANOTHER card if you have 3 animal tags.',
       },

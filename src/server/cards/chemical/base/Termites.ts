@@ -18,7 +18,7 @@ export class Termites extends ActionCard implements IProjectCard {
       victoryPoints: {resourcesHere: {}, per: 2},
 
       behavior: {
-        production: {heat: 1}
+        production: {heat: 1},
       },
 
       action: {
@@ -29,12 +29,12 @@ export class Termites extends ActionCard implements IProjectCard {
         cardNumber: 'x039',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 microbe to this card.', (eb) => {
-            eb.empty().startAction.microbes(1);
+            eb.empty().startAction.resource(CardResource.MICROBE);
           }).br;
           b.vpText('1 VP per 2 Microbes on this card.').br;
           b.production((pb) => pb.heat(1));
         }),
-        description: 'Requires 4% oxygen. Increase your heat production 1 step.'
+        description: 'Requires 4% oxygen. Increase your heat production 1 step.',
       },
     });
   }

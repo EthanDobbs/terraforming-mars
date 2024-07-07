@@ -4,7 +4,7 @@ import {PreludeCard} from '../../prelude/PreludeCard';
 import {IProjectCard} from '../../IProjectCard';
 import {Tag} from '../../../../common/cards/Tag';
 
-export class AirScrappingOperations extends PreludeCard implements IProjectCard{
+export class AirScrappingOperations extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.AIR_SCRAPPING_OPERATIONS,
@@ -23,7 +23,7 @@ export class AirScrappingOperations extends PreludeCard implements IProjectCard{
           }).br;
           b.venus(2).megacredits(8);
         }),
-        description: 'Raise Venus 2 steps and gain 8 M€.'
+        description: 'Raise Venus 2 steps and gain 8 M€.',
       },
     });
   }

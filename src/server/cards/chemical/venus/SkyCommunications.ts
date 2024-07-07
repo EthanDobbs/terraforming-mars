@@ -26,10 +26,10 @@ export class SkyCommunications extends Card implements IProjectCard {
         cardNumber: 'x262',
         renderData: CardRenderer.builder((b) => {
           b.effect('When any city tile is placed, add a floater here.', (eb) => {
-            eb.city({all}).startEffect.floaters(1);
+            eb.city({all}).startEffect.resource(CardResource.FLOATER);
           }).br;
           b.action('Gain 1 M€ for each floater here (max 4).', (eb) => {
-            eb.empty().startAction.megacredits(1).slash().floaters(1).text('[max 4]', Size.SMALL);
+            eb.empty().startAction.megacredits(1).slash().resource(CardResource.FLOATER).text('[max 4]', Size.SMALL);
           }).br;
         }),
       },
@@ -37,7 +37,7 @@ export class SkyCommunications extends Card implements IProjectCard {
   }
   public onTilePlaced(_cardOwner: IPlayer, _activePlayer: IPlayer, space: Space) {
     if (Board.isCitySpace(space)) {
-      this.resourceCount += 1
+      this.resourceCount += 1;
     }
     return undefined;
   }

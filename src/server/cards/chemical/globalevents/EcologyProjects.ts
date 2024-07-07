@@ -5,18 +5,18 @@ import {PartyName} from '../../../../common/turmoil/PartyName';
 import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
-import { Resource } from '../../../../common/Resource';
-import { SimpleDeferredAction } from '../../../deferredActions/DeferredAction';
-import { PlayerInput } from '../../../PlayerInput';
-import { CardResource } from '../../../../common/CardResource';
-import { SelectOption } from '../../../inputs/SelectOption';
-import { SelectCard } from '../../../inputs/SelectCard';
-import { message } from '../../../logs/MessageBuilder';
-import { OrOptions } from '../../../inputs/OrOptions';
-import { digit } from '../../Options';
+import {Resource} from '../../../../common/Resource';
+import {SimpleDeferredAction} from '../../../deferredActions/DeferredAction';
+import {PlayerInput} from '../../../PlayerInput';
+import {CardResource} from '../../../../common/CardResource';
+import {SelectOption} from '../../../inputs/SelectOption';
+import {SelectCard} from '../../../inputs/SelectCard';
+import {message} from '../../../logs/MessageBuilder';
+import {OrOptions} from '../../../inputs/OrOptions';
+import {digit} from '../../Options';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.plants(3, {digit}).or().microbes(3, {digit}).or().animals(2, {digit}).br.cards(1).slash().influence();
+  b.plants(3, {digit}).or().resource(CardResource.MICROBE, {amount: 1, digit}).or().resource(CardResource.ANIMAL, {amount: 2, digit}).br.cards(1).slash().influence();
 });
 
 export class EcologyProjects extends GlobalEvent implements IGlobalEvent {
@@ -54,7 +54,7 @@ export class EcologyProjects extends GlobalEvent implements IGlobalEvent {
             player.addResourceTo(targetMicrobeCard, {qty: 3, log: true});
             return undefined;
           }));
-       } else if (availableMicrobeCards.length > 1) {
+        } else if (availableMicrobeCards.length > 1) {
           availableActions.push(new SelectCard('Add 3 microbes to a card',
             'Add microbes',
             availableMicrobeCards)
@@ -72,12 +72,12 @@ export class EcologyProjects extends GlobalEvent implements IGlobalEvent {
         } else if (availableAnimalCards.length > 1) {
           availableActions.push(new SelectCard('Add 2 animals to a card', 'Add animals', availableAnimalCards)
             .andThen(([card]) => {
-            player.addResourceTo(card, {qty: 2, log: true});
+              player.addResourceTo(card, {qty: 2, log: true});
               return undefined;
             }));
         }
         return new OrOptions(...availableActions);
-      }))
+      }));
       player.drawCard(turmoil.getPlayerInfluence(player));
     });
   }

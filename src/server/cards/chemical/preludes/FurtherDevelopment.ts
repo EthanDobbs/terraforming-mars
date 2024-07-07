@@ -8,12 +8,12 @@ import {IPlayer} from '../../../IPlayer';
 import {PreludesExpansion} from '../../../preludes/PreludesExpansion';
 import {SelectPaymentDeferred} from '../../../deferredActions/SelectPaymentDeferred';
 
-export class FurtherDevelopment extends PreludeCard implements IProjectCard{
+export class FurtherDevelopment extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.FURTHER_DEVELOPMENT,
       tags: [Tag.EARTH],
-      
+
       startingMegacredits: -3,
 
       metadata: {
@@ -21,7 +21,7 @@ export class FurtherDevelopment extends PreludeCard implements IProjectCard{
         renderData: CardRenderer.builder((b) => {
           b.megacredits(-3).nbsp.prelude().asterix();
         }),
-        description: 'Lose 3 M€. Immediately draw 4 prelude cards. Play 1 of them, and discard the rest.'
+        description: 'Lose 3 M€. Immediately draw 4 prelude cards. Play 1 of them, and discard the rest.',
       },
     });
   }

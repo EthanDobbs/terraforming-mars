@@ -35,7 +35,7 @@ export class AssetLiquidation extends Card implements IProjectCard {
           player.production.add(resource, -1, {log: true});
           player.stock.add(resource, 5, {log: true});
           return undefined;
-        }))
+        }));
       }
     });
 

@@ -4,7 +4,7 @@ import {PreludeCard} from '../../prelude/PreludeCard';
 import {IProjectCard} from '../../IProjectCard';
 import {Tag} from '../../../../common/cards/Tag';
 
-export class VenusFirstChemical extends PreludeCard implements IProjectCard{
+export class VenusFirstChemical extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.VENUS_FIRST_CHEMICAL,
@@ -20,7 +20,7 @@ export class VenusFirstChemical extends PreludeCard implements IProjectCard{
         renderData: CardRenderer.builder((b) => {
           b.venus(2).cards(2, {secondaryTag: Tag.VENUS});
         }),
-        description: 'Raise Venus 2 steps and draw 2 cards with Venus tags.'
+        description: 'Raise Venus 2 steps and draw 2 cards with Venus tags.',
       },
     });
   }

@@ -4,7 +4,6 @@ import {Card} from '../../Card';
 import {CardType} from '../../../../common/cards/CardType';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 
 export class SyntheticGrowthHormones extends Card implements IProjectCard {
   constructor() {
@@ -15,13 +14,13 @@ export class SyntheticGrowthHormones extends Card implements IProjectCard {
       cost: 10,
 
       behavior: {
-        stock: {plants: {tag: Tag.PLANT, each: 2}}
+        stock: {plants: {tag: Tag.PLANT, each: 2}},
       },
 
       metadata: {
         cardNumber: 'x162',
         renderData: CardRenderer.builder((b) => {
-          b.plants(2).slash().plants(1, {played});
+          b.plants(2).slash().tag(Tag.PLANT);
         }),
         description: 'Gain 2 plants for each plant tag you have.',
       },

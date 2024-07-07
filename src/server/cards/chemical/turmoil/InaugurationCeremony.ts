@@ -5,7 +5,7 @@ import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
 import {all} from '../../Options';
 import {Size} from '../../../../common/cards/render/Size';
-  
+
 export class InaugurationCeremony extends Card implements IProjectCard {
   constructor() {
     super({

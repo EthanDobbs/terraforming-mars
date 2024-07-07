@@ -4,7 +4,7 @@ import {PreludeCard} from '../../prelude/PreludeCard';
 import {IProjectCard} from '../../IProjectCard';
 import {Tag} from '../../../../common/cards/Tag';
 
-export class EnergyBeam extends PreludeCard implements IProjectCard{
+export class EnergyBeam extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.ENERGY_BEAM,
@@ -19,7 +19,7 @@ export class EnergyBeam extends PreludeCard implements IProjectCard{
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.megacredits(-1).energy(2).heat(2));
         }),
-        description: 'Decrease your M€ production 1 step. Increase your energy production 2 steps and your heat production 2 steps.'
+        description: 'Decrease your M€ production 1 step. Increase your energy production 2 steps and your heat production 2 steps.',
       },
     });
   }

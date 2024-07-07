@@ -8,7 +8,7 @@ import {AltSecondaryTag} from '../../../../common/cards/render/AltSecondaryTag';
 import {IPlayer} from '../../../IPlayer';
 import {PlayerInput} from '../../../PlayerInput';
 
-export class FloatingCity extends ActivePreludeCard implements IProjectCard{
+export class FloatingCity extends ActivePreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.FLOATING_CITY,
@@ -24,12 +24,12 @@ export class FloatingCity extends ActivePreludeCard implements IProjectCard{
         cardNumber: 'xP42',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 2 floaters to ANY card.', (eb) => {
-            eb.empty().startAction.floaters(2).asterix();
+            eb.empty().startAction.resource(CardResource.FLOATER, 2).asterix();
           }).br;
           b.vpText('1 VP per 3 Floaters on this card.').br;
-          b.cards(2, {secondaryTag: AltSecondaryTag.FLOATER})
+          b.cards(2, {secondaryTag: AltSecondaryTag.FLOATER});
         }),
-        description: 'Draw 2 cards with floater icons.'
+        description: 'Draw 2 cards with floater icons.',
       },
     });
   }
@@ -41,7 +41,7 @@ export class FloatingCity extends ActivePreludeCard implements IProjectCard{
         found.push(card.name);
       }
       return undefined;
-    })
+    });
     player.drawCard(2, {
       include: (card) => found.includes(card.name),
     });

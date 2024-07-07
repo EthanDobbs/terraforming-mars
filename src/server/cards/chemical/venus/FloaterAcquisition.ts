@@ -15,11 +15,11 @@ export class FloaterAcquisition extends Card implements IProjectCard {
       type: CardType.EVENT,
       name: CardName.FLOATER_ACQUISITION,
       cost: 6,
-      
+
       metadata: {
         cardNumber: 'x241',
         renderData: CardRenderer.builder((b) => {
-          b.text('Steal').nbsp.floaters(2, {all});
+          b.text('Steal').nbsp.resource(CardResource.FLOATER, {amount: 2, all});
         }),
         description: 'Steal 2 floaters from another player.',
       },
@@ -29,7 +29,7 @@ export class FloaterAcquisition extends Card implements IProjectCard {
     if (player.game.isSoloMode()) {
       return true;
     }
-    return RemoveResourcesFromCard.getAvailableTargetCards(player, CardResource.FLOATER, false).filter( (card) => card.resourceCount >= 2).length >= 1;
+    return RemoveResourcesFromCard.getAvailableTargetCards(player, CardResource.FLOATER).filter( (card) => card.resourceCount >= 2).length >= 1;
   }
   public override bespokePlay(player: IPlayer) {
     if (player.game.isSoloMode()) {

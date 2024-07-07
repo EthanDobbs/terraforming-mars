@@ -5,8 +5,8 @@ import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
 import {IPlayer} from '../../../IPlayer';
 import {Card} from '../../Card';
-import { PartyName } from '../../../../common/turmoil/PartyName';
-import { Size } from '../../../../common/cards/render/Size';
+import {PartyName} from '../../../../common/turmoil/PartyName';
+import {Size} from '../../../../common/cards/render/Size';
 
 export class Preservationism extends Card implements IProjectCard {
   constructor() {
@@ -23,17 +23,17 @@ export class Preservationism extends Card implements IProjectCard {
         cardNumber: 'x268',
         renderData: CardRenderer.builder((b) => {
           b.action('During the production phase, if you did not raise your TR this generation, add a preservation resource to this card.', (eb) => {
-            eb.tr(1, {size: Size.SMALL, cancelled: true}).startEffect.preservation(1)
+            eb.tr(1, {size: Size.SMALL, cancelled: true}).startEffect.resource(CardResource.PRESERVATION);
           }).br;
           b.vpText('1 VP for every preservation resource on this card.');
         }),
-        description: 'Requires that Reds are in power or that you have 2 delegates there.'
+        description: 'Requires that Reds are in power or that you have 2 delegates there.',
       },
     });
   }
   public onProductionPhase(player: IPlayer): void {
-      if (!player.generationData.hasRaisedTR){
-        this.resourceCount += 1;
-      }
+    if (!player.generationData.hasRaisedTR) {
+      this.resourceCount += 1;
+    }
   }
 }

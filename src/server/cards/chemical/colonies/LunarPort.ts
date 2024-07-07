@@ -22,7 +22,7 @@ export class LunarPort extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x358',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.megacredits(3))
+          b.production((pb) => pb.megacredits(3));
           b.tradeFleet();
         }),
         description: 'Increase your M€ production 3 steps and gain a trade fleet.',

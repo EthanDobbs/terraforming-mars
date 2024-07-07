@@ -6,20 +6,19 @@ import {CardRenderer} from '../../render/CardRenderer';
 import {Tag} from '../../../../common/cards/Tag';
 import {TileType} from '../../../../common/TileType';
 import {AdjacencyBonus} from '../../../ares/AdjacencyBonus';
-import {ICardMetadata} from '../../../../common/cards/ICardMetadata';
-import {IPlayer, CanAffordOptions} from '@/server/IPlayer';
+import {IPlayer, CanAffordOptions} from '../../../IPlayer';
 
 export class PrimalNationalPark extends Card implements IProjectCard {
   constructor(
     name = CardName.MASSIVE_SOLAR_FARM,
     cost = 8,
     adjacencyBonus: AdjacencyBonus | undefined = undefined,
-    metadata: ICardMetadata = {
+    metadata = {
       cardNumber: 'x408',
       renderData: CardRenderer.builder((b) => {
         b.production((pb) => pb.energy(3)).nbsp.tile(TileType.MASSIVE_SOLAR_FARM, false);
       }),
-      description: 'Raise your energy production 3 steps and place this tile.'
+      description: 'Raise your energy production 3 steps and place this tile.',
     },
   ) {
     super({
@@ -41,7 +40,7 @@ export class PrimalNationalPark extends Card implements IProjectCard {
       metadata,
     });
   }
-  /*private getTRPenalty(player: IPlayer): number {
+  /* private getTRPenalty(player: IPlayer): number {
     return Math.floor((player.getTerraformRating() - 15) / 5)
   }*/
   public override bespokeCanPlay(player: IPlayer, _canAffordOptions?: CanAffordOptions | undefined): boolean {

@@ -5,7 +5,8 @@ import {PartyName} from '../../../../common/turmoil/PartyName';
 import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
-import { SelectResourcesDeferred } from '../../../deferredActions/SelectResourcesDeferred';
+import {message} from '../../../logs/MessageBuilder';
+import {GainResources} from '../../../inputs/GainResources';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
   b.minus().venus(1).nbsp.wild(1).slash().influence();
@@ -27,10 +28,10 @@ export class DegredationOfVenus extends GlobalEvent implements IGlobalEvent {
     game.getPlayersInGenerationOrder().forEach((player) => {
       const count = turmoil.getPlayerInfluence(player);
       if (count > 0) {
-        game.defer(new SelectResourcesDeferred(
+        player.defer(new GainResources(
           player,
           count,
-          'Degredation of Venus Global Event - Gain ' + count + ' resource(s) for influence',
+          message('Degredation of Venus Global Event - Gain ${0} resource(s) for influence', (b) => b.number(count)),
         ));
       }
     });

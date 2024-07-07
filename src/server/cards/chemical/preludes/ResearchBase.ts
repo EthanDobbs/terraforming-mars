@@ -6,7 +6,7 @@ import {Tag} from '../../../../common/cards/Tag';
 import {IPlayer} from '../../../IPlayer';
 import {SelectPaymentDeferred} from '../../../deferredActions/SelectPaymentDeferred';
 
-export class ResearchBase extends PreludeCard implements IProjectCard{
+export class ResearchBase extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.RESEARCH_BASE,
@@ -16,14 +16,14 @@ export class ResearchBase extends PreludeCard implements IProjectCard{
         city: {},
         drawCard: 2,
       },
-     startingMegacredits: -3,
+      startingMegacredits: -3,
 
       metadata: {
         cardNumber: 'xP31',
         renderData: CardRenderer.builder((b) => {
           b.city().nbsp.megacredits(-3).nbsp.cards(2);
         }),
-        description: 'Place a city tile, lose 3 M€, and draw 2 cards.'
+        description: 'Place a city tile, lose 3 M€, and draw 2 cards.',
       },
     });
   }

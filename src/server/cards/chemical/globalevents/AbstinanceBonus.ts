@@ -5,9 +5,10 @@ import {PartyName} from '../../../../common/turmoil/PartyName';
 import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
-import { Resource } from '../../../../common/Resource';
-import { SelectResourcesDeferred } from '../../../deferredActions/SelectResourcesDeferred';
-import { Size } from '../../../../common/cards/render/Size';
+import {Resource} from '../../../../common/Resource';
+import {GainResources} from '../../../inputs/GainResources';
+import {Size} from '../../../../common/cards/render/Size';
+import {message} from '../../../logs/MessageBuilder';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
   b.tr(1, {size: Size.SMALL, cancelled: true}).colon().megacredits(5).nbsp.wild(1).slash().influence();
@@ -31,10 +32,10 @@ export class AbstinanceBonus extends GlobalEvent implements IGlobalEvent {
       }
       const count = turmoil.getPlayerInfluence(player);
       if (count > 0) {
-        game.defer(new SelectResourcesDeferred(
+        player.defer(new GainResources(
           player,
           count,
-          'Abstinance Bonus Global Event - Gain ' + count + ' resource(s) for influence',
+          message('Abstinance Bonus Global Event - Gain ${0} resource(s) for influence', (b) => b.number(count)),
         ));
       }
     });

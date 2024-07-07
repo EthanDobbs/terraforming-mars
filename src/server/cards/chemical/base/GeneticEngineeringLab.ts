@@ -4,7 +4,6 @@ import {Card} from '../../Card';
 import {CardType} from '../../../../common/cards/CardType';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 
 export class GeneticEngineeringLab extends Card implements IProjectCard {
   constructor() {
@@ -22,10 +21,10 @@ export class GeneticEngineeringLab extends Card implements IProjectCard {
         cardNumber: 'x072',
         renderData: CardRenderer.builder((b) => {
           b.effect('Your plant tags, animal tags, and microbe tags cost 3 M€ less.', (eb) => {
-            eb.plants(1, {played}).slash().microbes(1, {played}).slash().animals(1, {played}).startEffect.megacredits(-3);
+            eb.tag(Tag.PLANT).slash().tag(Tag.ANIMAL).slash().tag(Tag.ANIMAL).startEffect.megacredits(-3);
           });
         }),
-        description: 'Requires 2 science tags.'
+        description: 'Requires 2 science tags.',
       },
     });
   }

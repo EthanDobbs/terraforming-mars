@@ -25,11 +25,11 @@ export class MTypeAsteroidMining extends Card implements IActionCard {
         cardNumber: 'x035',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 asteroid to this card.', (eb) => {
-            eb.empty().startAction.asteroids(1);
+            eb.empty().startAction.resource(CardResource.ASTEROID);
           }).br;
           b.or().br;
           b.action('Spend any number of asteroids here to gain triple amount of steel.', (eb) => {
-            eb.text('X').asteroids(1).startAction.text('X').steel(3, {digit});
+            eb.text('X').resource(CardResource.ASTEROID).startAction.text('X').steel(3, {digit});
           });
         }),
       },

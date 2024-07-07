@@ -25,7 +25,7 @@ export class AquiferRelocation extends Card implements IProjectCard {
     });
   }
   public override bespokeCanPlay(player: IPlayer, _canAffordOptions?: CanAffordOptions | undefined): boolean {
-    return player.game.board.getAvailableSpacesForOcean(player).length > 0 && player.game.board.spaces.filter((space) => space.tile?.tileType === TileType.OCEAN).length > 0; 
+    return player.game.board.getAvailableSpacesForOcean(player).length > 0 && player.game.board.spaces.filter((space) => space.tile?.tileType === TileType.OCEAN).length > 0;
   }
   public override bespokePlay(player: IPlayer) {
     return new SelectSpace('Select ocean to remove', player.game.board.spaces.filter((space) => space.tile?.tileType === TileType.OCEAN)).andThen((removedOcean) => {
@@ -34,6 +34,6 @@ export class AquiferRelocation extends Card implements IProjectCard {
         player.game.addOcean(player, newOcean);
         return undefined;
       });
-    })
+    });
   }
 }

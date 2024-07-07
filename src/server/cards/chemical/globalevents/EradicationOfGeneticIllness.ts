@@ -7,11 +7,10 @@ import {Turmoil} from '../../../turmoil/Turmoil';
 import {IPlayer} from '../../../IPlayer';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Size} from '../../../../common/cards/render/Size';
-import { played } from '../../Options';
-import { Tag } from '../../../../common/cards/Tag';
+import {Tag} from '../../../../common/cards/Tag';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.influence().plus().science(1, {played}).colon().br;
+  b.influence().plus().tag(Tag.SCIENCE).colon().br;
   b.text('1st:', Size.SMALL).tr(2).nbsp.text('2nd:', Size.SMALL).tr(1);
 });
 
@@ -30,10 +29,10 @@ export class EradicationOfGeneticIllness extends GlobalEvent implements IGlobalE
     // Solo
     if (game.isSoloMode()) {
       const player = game.getPlayers()[0];
-      if (this.getScore(player, turmoil) >= 6){
-        player.increaseTerraformRating(2, {log: true})
-      } else if (this.getScore(player, turmoil) >= 3){
-        player.increaseTerraformRating(1, {log: true})
+      if (this.getScore(player, turmoil) >= 6) {
+        player.increaseTerraformRating(2, {log: true});
+      } else if (this.getScore(player, turmoil) >= 3) {
+        player.increaseTerraformRating(1, {log: true});
       }
     } else {
       const players = game.getPlayers().slice().sort(
@@ -42,15 +41,15 @@ export class EradicationOfGeneticIllness extends GlobalEvent implements IGlobalE
 
       // We have one rank 1 player
       if (this.getScore(players[0], turmoil) > this.getScore(players[1], turmoil)) {
-        players[0].increaseTerraformRating(2, {log: true})
+        players[0].increaseTerraformRating(2, {log: true});
         players.shift();
 
         if (players.length === 1) {
-          players[0].increaseTerraformRating(1, {log: true})
+          players[0].increaseTerraformRating(1, {log: true});
         } else if (players.length > 1) {
           const score = this.getScore(players[0], turmoil);
           while (players.length > 0 && this.getScore(players[0], turmoil) === score) {
-            players[0].increaseTerraformRating(1, {log: true})
+            players[0].increaseTerraformRating(1, {log: true});
             players.shift();
           }
         }
@@ -58,7 +57,7 @@ export class EradicationOfGeneticIllness extends GlobalEvent implements IGlobalE
       } else {
         const score = this.getScore(players[0], turmoil);
         while (players.length > 0 && this.getScore(players[0], turmoil) === score) {
-          players[0].increaseTerraformRating(2, {log: true})
+          players[0].increaseTerraformRating(2, {log: true});
           players.shift();
         }
       }
@@ -66,6 +65,6 @@ export class EradicationOfGeneticIllness extends GlobalEvent implements IGlobalE
   }
 
   public getScore(player: IPlayer, turmoil: Turmoil) {
-    return turmoil.getPlayerInfluence(player) + player.tags.count(Tag.SCIENCE, 'raw')
+    return turmoil.getPlayerInfluence(player) + player.tags.count(Tag.SCIENCE, 'raw');
   }
 }

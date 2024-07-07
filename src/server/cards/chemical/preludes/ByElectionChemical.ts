@@ -7,7 +7,7 @@ import {IParty} from '../../../turmoil/parties/IParty';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {ChooseRulingPartyDeferred} from '../../../turmoil/ChooseRulingPartyDeferred';
 
-export class ByElectionChemical extends PreludeCard implements IProjectCard{
+export class ByElectionChemical extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.BY_ELECTION_CHEMICAL,
@@ -25,19 +25,19 @@ export class ByElectionChemical extends PreludeCard implements IProjectCard{
           }).br;
           b.rulingParty().chairman().delegates(2).asterix();
         }),
-        description: 'Set the ruling party for this generation. Replace the neutral chairman with one of your own delegates and gain the associated TR. Place 2 delegates in the new ruling party.'
+        description: 'Set the ruling party for this generation. Replace the neutral chairman with one of your own delegates and gain the associated TR. Place 2 delegates in the new ruling party.',
       },
     });
   }
   public override bespokePlay(player: IPlayer) {
-    const game = player.game
+    const game = player.game;
     Turmoil.ifTurmoil((game), (turmoil) => {
       game.defer(new ChooseRulingPartyDeferred(player, turmoil)).andThen((party: IParty) => {
         turmoil.delegateReserve.remove(player);
         turmoil.setNewChairman(player, game, false);
         turmoil.sendDelegateToParty(player, party.name, game);
         turmoil.sendDelegateToParty(player, party.name, game);
-       });
+      });
     });
     return undefined;
   }

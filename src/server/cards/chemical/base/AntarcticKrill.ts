@@ -29,21 +29,21 @@ export class AntarcticKrill extends ActionCard implements IProjectCard {
         cardNumber: 'x059',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 animal to this card.', (eb) => {
-            eb.empty().startAction.animals(1);
+            eb.empty().startAction.resource(CardResource.ANIMAL);
           }).br;
-          b.minus().microbes(2, {all}).br;
+          b.minus().resource(CardResource.MICROBE, {amount: 2, all}).br;
           b.vpText('1 VP for every 2 animals on this card.');
         }),
         description: 'Requires -12°C or warmer. Remove 2 microbes from any player.',
       },
     });
   }
- 
+
   public override bespokeCanPlay(player: IPlayer, _canAffordOptions?: CanAffordOptions | undefined): boolean {
     if (player.game.isSoloMode()) {
       return true;
     }
-    return RemoveResourcesFromCard.getAvailableTargetCards(player, CardResource.MICROBE, false).filter( (card) => card.resourceCount >= 2).length >= 1;
+    return RemoveResourcesFromCard.getAvailableTargetCards(player, CardResource.MICROBE).filter( (card) => card.resourceCount >= 2).length >= 1;
   }
   public override bespokePlay(player: IPlayer) {
     if (player.game.isSoloMode()) {

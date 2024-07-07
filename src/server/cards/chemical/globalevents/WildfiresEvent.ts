@@ -5,8 +5,8 @@ import {PartyName} from '../../../../common/turmoil/PartyName';
 import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
-import { Resource } from '../../../../common/Resource';
-import { TileType } from '../../../../common/TileType';
+import {Resource} from '../../../../common/Resource';
+import {TileType} from '../../../../common/TileType';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
   b.minus().plants(1).slash().greenery().nbsp.heat(2).slash().influence();

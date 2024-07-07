@@ -25,9 +25,9 @@ export class TerraformingUnion extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.tr(2).nbsp.plus().tr(1, {all}).asterix();
         }),
-        description: 'Requires 25 TR. Raise your TR 2 steps. ALL OPPONENTS raise their TR 1 step.'
-      }
-    })
+        description: 'Requires 25 TR. Raise your TR 2 steps. ALL OPPONENTS raise their TR 1 step.',
+      },
+    });
   }
   public override bespokePlay(player: IPlayer) {
     const otherPlayers = player.game.getPlayers().filter((p) => p.id !== player.id);

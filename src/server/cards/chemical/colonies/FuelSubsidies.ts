@@ -26,7 +26,7 @@ export class FuelSubsidies extends Card implements IProjectCard {
           }).br;
           b.energy(2);
         }),
-        description: 'Requires 2 Earth tags. Gain 2 energy.'
+        description: 'Requires 2 Earth tags. Gain 2 energy.',
       },
     });
   }

@@ -35,7 +35,7 @@ export class IonizingRadiationBeam extends Card implements IProjectCard {
             pb.energy(3).br;
             pb.heat(3);
           }).br;
-          b.minus().animals(1, {all}).nbsp.minus().plants(4, {digit, all})
+          b.minus().resource(CardResource.ANIMAL, {all}).nbsp.minus().plants(4, {digit, all});
         }),
         description: 'Requires that Kelvinists are in power or that you have 2 delegates there. Increase your energy production 3 steps and your heat production 3 steps. Remove up to 4 plants from any player and remove up to 1 animal from any player.',
       },

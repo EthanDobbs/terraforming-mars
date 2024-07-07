@@ -23,7 +23,7 @@ export class FloatingArchitechture extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x310',
         renderData: CardRenderer.builder((b) => {
-          b.floaters(2).asterix().br;
+          b.resource(CardResource.FLOATER).asterix().br;
           b.vpText('1 VP for every 3rd City in play.');
         }),
         description: 'Requires 5 floaters. Add 2 floaters to ANOTHER card.',

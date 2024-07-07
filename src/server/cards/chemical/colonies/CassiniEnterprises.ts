@@ -5,7 +5,6 @@ import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Tag} from '../../../../common/cards/Tag';
 import {CardResource} from '../../../../common/CardResource';
-import {digit} from '../../Options';
 import {IPlayer} from '../../../IPlayer';
 import {ICard} from '../../ICard';
 import {SelectCard} from '../../../inputs/SelectCard';
@@ -20,14 +19,14 @@ export class CassiniEnterprises extends Card implements IProjectCard {
       requirements: {tag: Tag.JOVIAN, count: 1},
       victoryPoints: 1,
 
-      behavior:{
+      behavior: {
         production: {titanium: 1},
       },
 
       metadata: {
         cardNumber: 'x379',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.titanium(1)).br.asteroids(2).asterix().nbsp.or().nbsp.floaters(3, {digit}).asterix();
+          b.production((pb) => pb.titanium(1)).br.resource(CardResource.ASTEROID, 2).asterix().nbsp.or().nbsp.resource(CardResource.FLOATER, 3).asterix();
         }),
         description: 'Requires a Jovian tag. Raise your titanium production 1 step and add 2 asteroids or 3 floaters to ANOTHER card.',
       },
@@ -39,7 +38,7 @@ export class CassiniEnterprises extends Card implements IProjectCard {
     return resourceCards;
   }
   public amount(card: ICard): number {
-    return card.resourceType === CardResource.FLOATER ? 3 : 2
+    return card.resourceType === CardResource.FLOATER ? 3 : 2;
   }
 
   public override bespokePlay(player: IPlayer) {

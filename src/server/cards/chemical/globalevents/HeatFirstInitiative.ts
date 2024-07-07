@@ -11,7 +11,7 @@ export class HeatFirstInitiative extends PreludeCard implements IProjectCard {
 
       behavior: {
         turmoil: {sendDelegates: {count: 2, party: PartyName.KELVINISTS}},
-        global: {temperature: 2}
+        global: {temperature: 2},
       },
 
       metadata: {

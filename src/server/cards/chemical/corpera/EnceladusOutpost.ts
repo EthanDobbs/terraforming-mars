@@ -20,12 +20,12 @@ export class EnceladusOutpost extends ActionCard implements IProjectCard {
           autoSelect: true,
           behaviors: [{
             title: 'Add a microbe to ANY card',
-            addResourcesToAnyCard: {type: CardResource.MICROBE, count: 1}
+            addResourcesToAnyCard: {type: CardResource.MICROBE, count: 1},
           },
           {
             title: 'Spend 1 titanium to add 1 asteroid to ANY card',
             spend: {titanium: 1},
-            addResourcesToAnyCard: {type: CardResource.ASTEROID, count: 1}
+            addResourcesToAnyCard: {type: CardResource.ASTEROID, count: 1},
           }],
         },
       },
@@ -34,11 +34,11 @@ export class EnceladusOutpost extends ActionCard implements IProjectCard {
         cardNumber: 'x184',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 microbe to ANY card.', (eb) => {
-            eb.empty().startAction.microbes(1).asterix();
+            eb.empty().startAction.resource(CardResource.MICROBE).asterix();
           }).br;
           b.or().br;
           b.action('Spend 1 titanium to add 1 asteroid to ANY card.', (eb) => {
-            eb.titanium(1).startAction.asteroids(1).asterix();
+            eb.titanium(1).startAction.resource(CardResource.ASTEROID).asterix();
           }).br;
         }),
       },

@@ -16,11 +16,11 @@ export class MethaneExports extends ActionCard implements IProjectCard {
       resourceType: CardResource.FLOATER,
       victoryPoints: 1,
 
-      behavior:{
+      behavior: {
         addResourcesToAnyCard: {type: CardResource.FLOATER, count: 2, tag: Tag.JOVIAN},
       },
-      
-      action:{
+
+      action: {
         or: {
           autoSelect: true,
           behaviors: [{
@@ -39,15 +39,15 @@ export class MethaneExports extends ActionCard implements IProjectCard {
         cardNumber: 'x333',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 floater to this card.', (eb) => {
-            eb.empty().startAction.floaters(1);
+            eb.empty().startAction.resource(CardResource.FLOATER);
           }).br;
           b.or().br;
           b.action('Remove 1 floater from this card to increase your heat production 1 step.', (eb) => {
-            eb.floaters(1).startAction.production((pb) => pb.heat(1));
+            eb.resource(CardResource.FLOATER).startAction.production((pb) => pb.heat(1));
           }).br;
-          b.floaters(2, {secondaryTag: Tag.JOVIAN});
+          b.resource(CardResource.FLOATER, {amount: 2, secondaryTag: Tag.JOVIAN});
         }),
-        description: 'Add 2 floaters to any Jovian card.'
+        description: 'Add 2 floaters to any Jovian card.',
       },
     });
   }

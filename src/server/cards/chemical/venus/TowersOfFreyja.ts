@@ -3,7 +3,6 @@ import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Card} from '../../Card';
 import {CardType} from '../../../../common/cards/CardType';
-import {played} from '../../Options';
 import {SpaceName} from '../../../SpaceName';
 
 export class TowersOfFreyja extends Card {
@@ -25,11 +24,11 @@ export class TowersOfFreyja extends Card {
         cardNumber: 'x275',
         renderData: CardRenderer.builder((b) => {
           b.effect('When you play a Venus card, you pay 2 M€ less for it.', (eb) => {
-            eb.venus(1, {played}).startEffect.megacredits(-2);
+            eb.tag(Tag.VENUS).startEffect.megacredits(-2);
           }).br;
           b.city().asterix();
         }),
-        description: 'Requires 10% Venus or higher. Place a city tile ON THE RESERVED AREA'
+        description: 'Requires 10% Venus or higher. Place a city tile ON THE RESERVED AREA',
       },
     });
   }

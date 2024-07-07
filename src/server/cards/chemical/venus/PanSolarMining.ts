@@ -31,7 +31,7 @@ export class PanSolarMining extends ActionCard implements IProjectCard {
           },
           {
             title: 'Add 1 asteroid to ANY card',
-            addResourcesToAnyCard: {type: CardResource.ASTEROID, count: 1}
+            addResourcesToAnyCard: {type: CardResource.ASTEROID, count: 1},
           }],
         },
       },
@@ -40,15 +40,15 @@ export class PanSolarMining extends ActionCard implements IProjectCard {
         cardNumber: 'x254',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 asteroid to ANY card.', (eb) => {
-            eb.empty().startAction.asteroids(1).asterix();
+            eb.empty().startAction.resource(CardResource.ASTEROID).asterix();
           }).br;
           b.or().br;
           b.action('Remove 1 asteroid from this card to raise your titanium production 1 step.', (eb) => {
-            eb.asteroids(1).startAction.production((pb) => pb.titanium(1));
+            eb.resource(CardResource.ASTEROID).startAction.production((pb) => pb.titanium(1));
           }).br;
-          b.asteroids(1);
+          b.resource(CardResource.ASTEROID);
         }),
-        description: 'Requires an Earth tag, a Venus tag, and a Jovian tag. Add an asteroid to this card.'
+        description: 'Requires an Earth tag, a Venus tag, and a Jovian tag. Add an asteroid to this card.',
       },
     });
   }

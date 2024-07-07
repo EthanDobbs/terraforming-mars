@@ -157,7 +157,7 @@ export default Vue.extend({
       case RequirementType.ROAD_TILES:
         return ['card-tile-lunar-road--S', 'tile--req'];
       case RequirementType.UNIQUE_TAGS:
-        return ['card-resource-tag--S', 'card-resource-diverse']
+        return ['card-resource-tag--S', 'card-resource-diverse'];
       case RequirementType.EXCAVATION:
         return ['card-excavation req'];
       case RequirementType.CORRUPTION:
@@ -227,6 +227,6 @@ export default Vue.extend({
       const class1 = index === 0 ? 'card-resource-tag--S' : 'card-resource-tag--overlap';
       return [class1, 'card-tag-' + tag];
     },
-  }
+  },
 });
 </script>

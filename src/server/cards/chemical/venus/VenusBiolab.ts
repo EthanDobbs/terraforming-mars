@@ -22,13 +22,13 @@ export class VenusBiolab extends ActionCard implements IProjectCard {
           behaviors: [{
             title: 'Spend 2 M€ to add 2 microbes to ANY card',
             spend: {megacredits: 2},
-            addResourcesToAnyCard: {type: CardResource.MICROBE, count: 2}
+            addResourcesToAnyCard: {type: CardResource.MICROBE, count: 2},
           },
           {
             title: 'Spend 2 M€ to add 1 animal to ANY card',
             spend: {megacredits: 2},
-            addResourcesToAnyCard: {type: CardResource.ANIMAL, count: 1}
-          },],
+            addResourcesToAnyCard: {type: CardResource.ANIMAL, count: 1},
+          }],
         },
       },
 
@@ -36,7 +36,7 @@ export class VenusBiolab extends ActionCard implements IProjectCard {
         cardNumber: 'x272',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 2 M€ to add 2 microbes or 1 animal to ANY card.', (eb) => {
-            eb.megacredits(2).startAction.microbes(2).asterix().slash().animals(1).asterix();
+            eb.megacredits(2).startAction.resource(CardResource.MICROBE, 2).asterix().slash().resource(CardResource.ANIMAL).asterix();
           }).br;
         }),
         description: 'Requires Venus 10%.',

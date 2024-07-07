@@ -10,7 +10,6 @@ import {SelectAmount} from '../../../inputs/SelectAmount';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Card} from '../../Card';
-import {multiplier} from '../../Options';
 import {SelectCard} from '../../../inputs/SelectCard';
 
 export class FloatingColony extends Card implements IActionCard {
@@ -31,15 +30,15 @@ export class FloatingColony extends Card implements IActionCard {
         cardNumber: 'x328',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 floater to ANY card.', (eb) => {
-            eb.empty().startAction.floaters(1).asterix();
+            eb.empty().startAction.resource(CardResource.FLOATER).asterix();
           }).br;
           b.or().br;
           b.action('Spend any number of floaters here to gain triple amount of M€.', (eb) => {
-            eb.text('X').floaters(1).startAction.megacredits(3, {multiplier});
+            eb.text('X').resource(CardResource.FLOATER).startAction.text('X').megacredits(3);
           }).br;
           b.colonies(1);
         }),
-        description: 'Requires 3 floaters. Place a colony.'
+        description: 'Requires 3 floaters. Place a colony.',
       },
     });
   }

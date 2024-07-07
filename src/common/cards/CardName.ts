@@ -1005,7 +1005,7 @@ export enum CardName {
   STANDARD_TECHNOLOGY_UNDERWORLD = 'Standard Technology:u',
   HACKERS_UNDERWORLD = 'Hackers:u',
   HIRED_RAIDERS_UNDERWORLD = 'Hired Raiders:u',
-    
+
     // Chemical's Cards
     OVERGROWTH = 'Overgrowth',
     WILDFIRES = 'Wildfires',
@@ -1122,7 +1122,7 @@ export enum CardName {
     ENZYMATIC_TREATMENT = 'Enzymatic Treatment',
     EXTREME_NITROPHILES = 'Extreme Nitrophiles',
     VASCULAR_TUNDRA_PLANTS = 'Vascular Tundra Plants',
-    BAMBOO = "Bamboo",
+    BAMBOO = 'Bamboo',
     EROSION_REDUCING_GREENERY = 'Erosion Reducing Greenery',
     DWARF_WILLOW = 'Dwarf Willow',
     WILDBERRIES = 'Wildberries',
@@ -1136,7 +1136,7 @@ export enum CardName {
     ADAPTED_FRUIT_FARMING = 'Adapted Fruit Farming',
     RICE_FIELDS = 'Rice Fields',
     CORAL_REEF = 'Coral Reef',
-    CYANOBACTERIA_CHEMICAL = "Cyanobacteria:chemical",
+    CYANOBACTERIA_CHEMICAL = 'Cyanobacteria:chemical',
     HYDROPONICS_FACILITY = 'Hydroponics Facility',
     RED_ALGAE = 'Red Algae',
     IRRIGATION = 'Irrigation',
@@ -1200,7 +1200,7 @@ export enum CardName {
     ALLOY_FACTORY = 'Alloy Factory',
     UNDERGROUND_TEST_SITE = 'Underground Test Site',
     SCIENTIFIC_MEGAOPOLIS = 'Scientific Megaopolis',
-    NOVA_FOUNDRY = 'Nova Foundry', //ALCHEMIC_REACTIONS = 'Alchemic Reactions',
+    NOVA_FOUNDRY = 'Nova Foundry', // ALCHEMIC_REACTIONS = 'Alchemic Reactions',
     WIRELESS_ENERGY_TRANSFER = 'Wireless Energy Transfer',
     KUGELBLITZ_ENGINE = 'Kugelblitz Engine',
     SCIENTIFIC_LOGS = 'Scientific Logs',

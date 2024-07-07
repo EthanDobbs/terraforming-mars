@@ -6,7 +6,7 @@ import {IPlayer} from '../../../IPlayer';
 import {Resource} from '../../../../common/Resource';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {digit, played} from '../../Options';
+import {digit} from '../../Options';
 
 export class EnzymaticTreatment extends Card implements IProjectCard {
   constructor() {
@@ -20,7 +20,7 @@ export class EnzymaticTreatment extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => {
             pb.plants(1).nbsp.or().br;
-            pb.plants(2, {played, digit}).colon().nbsp.plants(2, {digit});
+            pb.tag(Tag.PLANT, {amount: 2, digit}).colon().nbsp.plants(2, {digit});
           });
         }),
         description: 'Increase your plant production 1 step, or 2 steps if you have 2 plant tags.',

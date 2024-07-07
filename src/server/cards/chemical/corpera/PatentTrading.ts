@@ -7,7 +7,6 @@ import {IPlayer} from '../../../IPlayer';
 import {DiscardCards} from '../../../deferredActions/DiscardCards';
 import {DrawCards} from '../../../deferredActions/DrawCards';
 import {Tag} from '../../../../common/cards/Tag';
-import {played} from '../../Options';
 
 export class PatentTrading extends Card implements IProjectCard {
   constructor() {
@@ -21,7 +20,7 @@ export class PatentTrading extends Card implements IProjectCard {
         cardNumber: 'x176',
         description: 'Discard a card, then draw a card for every 2 Earth tags you have, including this.',
         renderData: CardRenderer.builder((b) => {
-          b.minus().cards(1).nbsp.cards(1).slash().earth(2, {played});
+          b.minus().cards(1).nbsp.cards(1).slash().tag(Tag.EARTH, 2);
         }),
       },
     });
@@ -31,8 +30,8 @@ export class PatentTrading extends Card implements IProjectCard {
   }
   public override bespokePlay(player: IPlayer) {
     // TODO(kberg): Use DiscardCards.andThen().
-    player.game.defer(new DiscardCards(player)).andThen(() => 
-      player.game.defer(DrawCards.keepAll(player, Math.floor((player.tags.count(Tag.EARTH) + 1)/ 2)))
+    player.game.defer(new DiscardCards(player)).andThen(() =>
+      player.game.defer(DrawCards.keepAll(player, Math.floor((player.tags.count(Tag.EARTH) + 1)/ 2))),
     );
     return undefined;
   }

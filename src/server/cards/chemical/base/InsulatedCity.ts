@@ -24,7 +24,7 @@ export class InsulatedCity extends Card implements IProjectCard {
           b.production((pb) => {
             pb.minus().heat(2).br;
             pb.plus().megacredits(4);
-          })
+          });
           b.city();
         }),
         description: 'Decrease your heat production 2 steps and increase your M€ production 4 steps. Place a city tile.',

@@ -12,7 +12,7 @@ export class LatticeConstructionMicrobes extends ActionCard implements IProjectC
       type: CardType.ACTIVE,
       name: CardName.LATTICE_CONSTRUCTION_MICROBES,
       tags: [Tag.MICROBE],
-      cost: 6,
+      cost: 5,
       requirements: {tag: Tag.MICROBE, count: 1},
       resourceType: CardResource.MICROBE,
 
@@ -35,14 +35,14 @@ export class LatticeConstructionMicrobes extends ActionCard implements IProjectC
         cardNumber: 'x048',
         renderData: CardRenderer.builder((b) => {
           b.action('Add a microbe to this card.', (eb) => {
-            eb.empty().startAction.microbes(1);
+            eb.empty().startAction.resource(CardResource.MICROBE);
           }).br;
           b.or().br;
           b.action('Remove 1 microbe from this card to gain 1 steel and 1 titanium.', (eb) => {
-            eb.microbes(1).startAction.steel(1).titanium(1);
+            eb.resource(CardResource.MICROBE).startAction.steel(1).titanium(1);
           }).br;
         }),
-        description: 'Requires 1 microbe tag.'
+        description: 'Requires 1 microbe tag.',
       },
     });
   }

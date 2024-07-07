@@ -31,6 +31,6 @@ export class ColonyReforms extends Card implements IProjectCard {
     return new SelectColony('Select a colony to increase the track of', 'Increase track', colonies).andThen((colony) => {
       colony.increaseTrack(1);
       return undefined;
-    })
+    });
   }
 }

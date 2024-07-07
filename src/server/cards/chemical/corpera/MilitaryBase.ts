@@ -6,19 +6,18 @@ import {CardRenderer} from '../../render/CardRenderer';
 import {Tag} from '../../../../common/cards/Tag';
 import {TileType} from '../../../../common/TileType';
 import {AdjacencyBonus} from '../../../ares/AdjacencyBonus';
-import {ICardMetadata} from '../../../../common/cards/ICardMetadata';
 
 export class MilitaryBase extends Card implements IProjectCard {
   constructor(
     name = CardName.MILITARY_BASE,
     cost = 10,
     adjacencyBonus: AdjacencyBonus | undefined = undefined,
-    metadata: ICardMetadata = {
+    metadata = {
       cardNumber: 'x211',
       renderData: CardRenderer.builder((b) => {
         b.production((pb) => pb.megacredits(2)).nbsp.cards(1).nbsp.tile(TileType.MILITARY_BASE, false);
       }),
-      description: 'Increase your M€ production 2 steps, draw a card, and place this tile.'
+      description: 'Increase your M€ production 2 steps, draw a card, and place this tile.',
     },
   ) {
     super({

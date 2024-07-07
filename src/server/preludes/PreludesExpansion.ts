@@ -40,9 +40,10 @@ export class PreludesExpansion {
           if (card.initialAction) {
             player.pendingInitialActions.push(card as any as ICorporationCard);
           }
-          return player.playCard(card, undefined, cardAction);
+          player.playCard(card, undefined, cardAction);
         }
         return undefined;
-      });
+      },
+      );
   }
 }

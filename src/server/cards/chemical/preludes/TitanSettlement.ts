@@ -7,7 +7,7 @@ import {PlayerInput} from '../../../PlayerInput';
 import {Tag} from '../../../../common/cards/Tag';
 import {AltSecondaryTag} from '../../../../common/cards/render/AltSecondaryTag';
 
-export class TitanSettlement extends PreludeCard implements IProjectCard{
+export class TitanSettlement extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.TITAN_SETTLEMENT,
@@ -22,7 +22,7 @@ export class TitanSettlement extends PreludeCard implements IProjectCard{
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.titanium(1)).cards(2, {secondaryTag: AltSecondaryTag.FLOATER});
         }),
-        description: 'Increase your titanium production 1 step. Draw 2 cards with floater icons.'
+        description: 'Increase your titanium production 1 step. Draw 2 cards with floater icons.',
       },
     });
   }
@@ -34,7 +34,7 @@ export class TitanSettlement extends PreludeCard implements IProjectCard{
         found.push(card.name);
       }
       return undefined;
-    })
+    });
     player.drawCard(2, {
       include: (card) => found.includes(card.name),
     });

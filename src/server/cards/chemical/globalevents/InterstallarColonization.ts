@@ -5,7 +5,7 @@ import {PartyName} from '../../../../common/turmoil/PartyName';
 import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
-import { Resource } from '../../../../common/Resource';
+import {Resource} from '../../../../common/Resource';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
   b.megacredits(2).slash().colonies().nbsp.influence().colon().megacredits(5);
@@ -25,15 +25,15 @@ export class InterstallarColonization extends GlobalEvent implements IGlobalEven
   public resolve(game: IGame, turmoil: Turmoil) {
     game.getPlayersInGenerationOrder().forEach((player) => {
       const colonies = Math.min(player.getColoniesCount(), 5);
-      player.stock.add(Resource.MEGACREDITS, colonies * 2, {from: this.name, log: true})
+      player.stock.add(Resource.MEGACREDITS, colonies * 2, {from: this.name, log: true});
     });
     const players = game.getPlayers().slice().sort(
       (p1, p2) => turmoil.getPlayerInfluence(p2) - turmoil.getPlayerInfluence(p1),
     );
     const score = turmoil.getPlayerInfluence(players[0]);
-      while (players.length > 0 && turmoil.getPlayerInfluence(players[0]) === score) {
-        players[0].stock.add(Resource.MEGACREDITS, 5, {log: true, from: this.name})
-        players.shift();
-      }
+    while (players.length > 0 && turmoil.getPlayerInfluence(players[0]) === score) {
+      players[0].stock.add(Resource.MEGACREDITS, 5, {log: true, from: this.name});
+      players.shift();
+    }
   }
 }

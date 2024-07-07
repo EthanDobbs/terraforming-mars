@@ -6,14 +6,14 @@ import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Size} from '../../../../common/cards/render/Size';
-import { Resource } from '../../../../common/Resource';
-import { Space } from '../../../boards/Space';
+import {Resource} from '../../../../common/Resource';
+import {Space} from '../../../boards/Space';
 import {isHazardTileType} from '../../../../common/AresTileType';
-import { SpaceType } from '../../../../common/boards/SpaceType';
-import { IPlayer } from '@/server/IPlayer';
+import {SpaceType} from '../../../../common/boards/SpaceType';
+import {IPlayer} from '@/server/IPlayer';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.megacredits(1).slash().text("2").emptyTile('normal', {size: Size.SMALL}).asterix().influence({size: Size.SMALL});
+  b.megacredits(1).slash().text('2').emptyTile('normal', {size: Size.SMALL}).asterix().influence({size: Size.SMALL});
 });
 
 export class RedTourism extends GlobalEvent implements IGlobalEvent {
@@ -41,7 +41,7 @@ export class RedTourism extends GlobalEvent implements IGlobalEvent {
       return board.getAdjacentSpaces(space).some((adj) => {
         return RedTourism.hasRealTile(adj) && adj.player === player;
       });
-    }).length
+    }).length;
   }
   public resolve(game: IGame, turmoil: Turmoil) {
     game.getPlayersInGenerationOrder().forEach((player) => {

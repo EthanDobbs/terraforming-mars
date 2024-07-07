@@ -12,13 +12,13 @@ export class EuropanBacteria extends ActionCard implements IProjectCard {
       type: CardType.ACTIVE,
       name: CardName.EUROPAN_BACTERIA,
       tags: [Tag.JOVIAN, Tag.MICROBE],
-      cost: 18,
+      cost: 20,
       requirements: {tag: Tag.JOVIAN, count: 1},
       resourceType: CardResource.MICROBE,
       victoryPoints: {resourcesHere: {}, per: 2},
 
       behavior: {
-        tr: 1
+        tr: 1,
       },
 
       action: {
@@ -29,12 +29,12 @@ export class EuropanBacteria extends ActionCard implements IProjectCard {
         cardNumber: 'x038',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 microbe to this card.', (eb) => {
-            eb.empty().startAction.microbes(1);
+            eb.empty().startAction.resource(CardResource.MICROBE);
           }).br;
           b.vpText('1 VP per 2 Microbes on this card.').br;
           b.tr(1);
         }),
-        description: 'Requires 1 Jovian tag. Raise your TR one step.'
+        description: 'Requires 1 Jovian tag. Raise your TR one step.',
       },
     });
   }

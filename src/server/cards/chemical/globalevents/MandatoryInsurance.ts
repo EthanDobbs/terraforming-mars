@@ -25,7 +25,7 @@ export class MandatoryInsurance extends GlobalEvent implements IGlobalEvent {
   public resolve(game: IGame, turmoil: Turmoil) {
     game.getPlayersInGenerationOrder().forEach((player) => {
       if (player.production.megacredits > -5) {
-        const decreaseAmount = -Math.min(player.production.megacredits + 5, 3)
+        const decreaseAmount = -Math.min(player.production.megacredits + 5, 3);
         player.production.add(Resource.MEGACREDITS, decreaseAmount, {log: true, from: this.name});
       }
       player.stock.add(Resource.MEGACREDITS, turmoil.getPlayerInfluence(player) * 3, {log: true, from: this.name});

@@ -5,16 +5,15 @@ import {PartyName} from '../../../../common/turmoil/PartyName';
 import {IGame} from '../../../IGame';
 import {Turmoil} from '../../../turmoil/Turmoil';
 import {CardRenderer} from '../../render/CardRenderer';
-import { Resource } from '../../../../common/Resource';
-import { Tag } from '../../../../common/cards/Tag';
-import { played } from '../../Options';
-import { Size } from '../../../../common/cards/render/Size';
-import { SimpleDeferredAction } from '../../../deferredActions/DeferredAction';
-import { SelectSpace } from '../../../inputs/SelectSpace';
-import { TileType } from '../../../../common/TileType';
+import {Resource} from '../../../../common/Resource';
+import {Tag} from '../../../../common/cards/Tag';
+import {Size} from '../../../../common/cards/render/Size';
+import {SimpleDeferredAction} from '../../../deferredActions/DeferredAction';
+import {SelectSpace} from '../../../inputs/SelectSpace';
+import {TileType} from '../../../../common/TileType';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.minus().oceans(1, {all: true}).nbsp.plus().oceans(1).nbsp.megacredits(-2).slash().building(1, {played}).influence({size: Size.SMALL})
+  b.minus().oceans(1, {all: true}).nbsp.plus().oceans(1).nbsp.megacredits(-2).slash().tag(Tag.BUILDING).influence({size: Size.SMALL});
 });
 
 export class LowlandFlooding extends GlobalEvent implements IGlobalEvent {
@@ -38,8 +37,8 @@ export class LowlandFlooding extends GlobalEvent implements IGlobalEvent {
             game.addOcean(firstPlayer, newOcean);
             return undefined;
           });
-        })
-      }))
+        });
+      }));
     }
     game.getPlayersInGenerationOrder().forEach((player) => {
       const amount = Math.max(Math.min(5, player.tags.count(Tag.BUILDING, 'raw')) - turmoil.getPlayerInfluence(player), 0);

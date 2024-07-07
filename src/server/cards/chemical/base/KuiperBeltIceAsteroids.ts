@@ -35,11 +35,11 @@ export class KuiperBeltIceAsteroids extends ActionCard implements IProjectCard {
         cardNumber: 'x032',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 asteroid to this card.', (eb) => {
-            eb.empty().startAction.asteroids(1);
+            eb.empty().startAction.resource(CardResource.ASTEROID);
           }).br;
           b.or().br;
           b.action('Remove 2 asteroids from this card to place an ocean tile.', (eb) => {
-            eb.asteroids(2).startAction.oceans(1);
+            eb.resource(CardResource.ASTEROID).startAction.oceans(1);
           }).br;
         }),
       },

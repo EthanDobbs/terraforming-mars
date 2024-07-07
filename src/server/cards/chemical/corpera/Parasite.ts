@@ -9,7 +9,7 @@ import {SelectOption} from '../../../inputs/SelectOption';
 import {CardResource} from '../../../../common/CardResource';
 import {RemoveResourcesFromCard} from '../../../deferredActions/RemoveResourcesFromCard';
 import {CardRenderer} from '../../render/CardRenderer';
-import {all, digit} from '../../Options';
+import {all} from '../../Options';
 import {Size} from '../../../../common/cards/render/Size';
 
 export class Parasite extends Card implements IProjectCard {
@@ -25,10 +25,10 @@ export class Parasite extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x169',
         renderData: CardRenderer.builder((b) => {
-          b.microbes(1).asterix().br;
-          b.nbsp.minus().microbes(3, {all, digit}).nbsp.or(Size.SMALL).nbsp.minus().animals(1, {all});
+          b.resource(CardResource.MICROBE).asterix().br;
+          b.nbsp.minus().resource(CardResource.MICROBE, {amount: 2, all}).nbsp.or(Size.SMALL).nbsp.minus().resource(CardResource.ANIMAL, {all});
         }),
-        description: 'Add 1 microbe to ANOTHER card. Remove up to 3 microbes or 1 animal from any player.',
+        description: 'Add 1 microbe to ANOTHER card. Remove up to 2 microbes or 1 animal from any player.',
       },
     });
   }
@@ -38,7 +38,7 @@ export class Parasite extends Card implements IProjectCard {
     }
 
     const orOptionsAnimals = new RemoveResourcesFromCard(player, CardResource.ANIMAL, 1, {mandatory: false}).execute() as OrOptions;
-    const orOptionsMicrobes = new RemoveResourcesFromCard(player, CardResource.MICROBE, 3, {mandatory: false}).execute() as OrOptions;
+    const orOptionsMicrobes = new RemoveResourcesFromCard(player, CardResource.MICROBE, 2, {mandatory: false}).execute() as OrOptions;
     const removeAnimals = orOptionsAnimals !== undefined ?
       orOptionsAnimals.options[0] :
       undefined;
@@ -61,9 +61,11 @@ export class Parasite extends Card implements IProjectCard {
       orOptions.options.push(removeMicrobes);
     }
     orOptions.options.push(new SelectOption('Skip removal', 'Confirm')
-      .andThen(() => {return undefined})
+      .andThen(() => {
+        return undefined;
+      }),
     );
-    
+
     return orOptions;
   }
 }

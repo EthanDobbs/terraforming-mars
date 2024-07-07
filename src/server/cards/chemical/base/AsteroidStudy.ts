@@ -15,12 +15,12 @@ export class AsteroidStudy extends ActionCard implements IProjectCard {
       cost: 12,
       resourceType: CardResource.ASTEROID,
       behavior: {
-        addResourcesToAnyCard: {type: CardResource.ASTEROID, count: 2}
+        addResourcesToAnyCard: {type: CardResource.ASTEROID, count: 2},
       },
 
       action: {
         spend: {energy: 1},
-        addResourcesToAnyCard: {type: CardResource.ASTEROID, count: 1}
+        addResourcesToAnyCard: {type: CardResource.ASTEROID, count: 1},
       },
 
       victoryPoints: {resourcesHere: {}, per: 2},
@@ -29,9 +29,9 @@ export class AsteroidStudy extends ActionCard implements IProjectCard {
         cardNumber: 'x029',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 1 energy to add 1 asteroid to ANY card.', (eb) => {
-            eb.energy(1).startAction.asteroids(1).asterix();
+            eb.energy(1).startAction.resource(CardResource.ASTEROID).asterix();
           }).br;
-          b.asteroids(2).asterix().br;
+          b.resource(CardResource.ASTEROID, 2).asterix().br;
           b.vpText('1VP for each 2 asteroids on this card.');
         }),
         description: 'Add 2 asteroids to ANY card.',

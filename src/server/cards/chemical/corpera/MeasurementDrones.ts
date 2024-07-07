@@ -5,7 +5,6 @@ import {CardType} from '../../../../common/cards/CardType';
 import {CardResource} from '../../../../common/CardResource';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
-import {played} from '../../Options';
 import {IPlayer} from '../../../IPlayer';
 
 export class MeasurementDrones extends ActionCard implements IProjectCard {
@@ -37,14 +36,14 @@ export class MeasurementDrones extends ActionCard implements IProjectCard {
         cardNumber: 'x185',
         renderData: CardRenderer.builder((b) => {
           b.effect('When you play a science tag, add a floater to this card', (eb) => {
-            eb.science(1, {played}).startEffect.floaters(1);
+            eb.tag(Tag.SCIENCE).startEffect.resource(CardResource.FLOATER);
           }).br;
           b.action('Add a floater to this card.', (eb) => {
-            eb.empty().startAction.floaters(1);
+            eb.empty().startAction.resource(CardResource.FLOATER);
           }).br;
           b.or().br;
           b.action('Spend 2 floaters here to draw a card.', (eb) => {
-            eb.floaters(2).startAction.cards(1);
+            eb.resource(CardResource.FLOATER, 2).startAction.cards(1);
           }).br;
         }),
       },

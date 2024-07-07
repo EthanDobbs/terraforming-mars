@@ -27,7 +27,7 @@ export class OuterSolarMission extends Card implements IProjectCard {
         cardNumber: 'x316',
         renderData: CardRenderer.builder((b) => {
           b.trade().br;
-          b.titanium(2).floaters(2, {secondaryTag: Tag.JOVIAN});
+          b.titanium(2).resource(CardResource.FLOATER, {amount: 2, secondaryTag: Tag.JOVIAN});
         }),
         description: 'Trade for free. Gain 2 titanium and add 2 floaters to any Jovian card.',
       },

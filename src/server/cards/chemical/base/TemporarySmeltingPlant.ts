@@ -38,11 +38,11 @@ export class TemporarySmeltingPlant extends Card implements IProjectCard {
     return player.energy >= 3 || player.heat >= 5;
   }
   public override bespokePlay(player: IPlayer) {
-    if (player.energy < 3){
+    if (player.energy < 3) {
       player.heat -= 5;
       return undefined;
-    } 
-    if (player.heat < 5){
+    }
+    if (player.heat < 5) {
       player.energy -= 3;
       return undefined;
     }

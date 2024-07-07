@@ -29,10 +29,10 @@ export class AirborneMicrobes extends ActionCard implements IProjectCard {
         cardNumber: 'x265',
         renderData: CardRenderer.builder((b) => {
           b.action('Add a microbe to any Venus card.', (eb) => {
-            eb.empty().startAction.microbes(1, {secondaryTag: Tag.VENUS});
+            eb.empty().startAction.resource(CardResource.MICROBE, {secondaryTag: Tag.VENUS});
           }).br;
           b.vpText('1 VP per 3 microbes on this card.').br;
-          b.microbes(2, {secondaryTag: Tag.VENUS});
+          b.resource(CardResource.MICROBE, {amount: 2, secondaryTag: Tag.VENUS});
         }),
         description: 'Requires Venus 4%. Add 2 microbes to any Venus card.',
       },

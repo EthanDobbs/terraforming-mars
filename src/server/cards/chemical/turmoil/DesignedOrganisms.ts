@@ -31,7 +31,7 @@ export class DesignedOrganisms extends Card implements IProjectCard {
         cardNumber: 'x268',
         renderData: CardRenderer.builder((b) => {
           b.action('Draw a card and add an animal to this card ONLY IF you\'ve raised the oxygen this generation (or if the parameter is maxed).', (eb) => {
-            eb.plus().oxygen(1).asterix().nbsp.colon().nbsp.startAction.cards(1).animals(1);
+            eb.plus().oxygen(1).asterix().nbsp.colon().nbsp.startAction.cards(1).resource(CardResource.ANIMAL);
           }).br;
           b.production((pb) => pb.minus().plants(1, {all})).br;
           b.vpText('1 VP for every animal on this card.');

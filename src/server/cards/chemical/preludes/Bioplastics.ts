@@ -4,7 +4,7 @@ import {Tag} from '../../../../common/cards/Tag';
 import {ActivePreludeCard} from '../../prelude2/ActivePreludeCard';
 import {IProjectCard} from '../../IProjectCard';
 
-export class Bioplastics extends ActivePreludeCard implements IProjectCard{
+export class Bioplastics extends ActivePreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.BIOPLASTICS,
@@ -27,7 +27,7 @@ export class Bioplastics extends ActivePreludeCard implements IProjectCard{
           }).br;
           b.steel(2).plants(3);
         }),
-        description: 'Gain 2 steel and 3 plants.'
+        description: 'Gain 2 steel and 3 plants.',
       },
     });
   }

@@ -18,7 +18,7 @@ export class Macroplankton extends ActionCard implements IProjectCard {
       victoryPoints: {resourcesHere: {}, per: 4},
 
       behavior: {
-        stock: {plants: 2}
+        stock: {plants: 2},
       },
 
       action: {
@@ -29,12 +29,12 @@ export class Macroplankton extends ActionCard implements IProjectCard {
         cardNumber: 'x043',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 2 microbes to this card.', (eb) => {
-            eb.empty().startAction.microbes(2);
+            eb.empty().startAction.resource(CardResource.MICROBE, 2);
           }).br;
           b.vpText('1 VP per 4 Microbes on this card.').br;
           b.plants(2);
         }),
-        description: 'Requires -14°C or warmer. Gain 2 plants.'
+        description: 'Requires -14°C or warmer. Gain 2 plants.',
       },
     });
   }

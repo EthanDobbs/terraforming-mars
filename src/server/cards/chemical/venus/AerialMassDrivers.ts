@@ -5,7 +5,6 @@ import {CardResource} from '../../../../common/CardResource';
 import {CardName} from '../../../../common/cards/CardName';
 import {CardRenderer} from '../../render/CardRenderer';
 import {ActionCard} from '../../ActionCard';
-import {played} from '../../Options';
 
 export class AerialMassDrivers extends ActionCard implements IActionCard {
   constructor() {
@@ -26,10 +25,10 @@ export class AerialMassDrivers extends ActionCard implements IActionCard {
         cardNumber: 'x331',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 floater to any card', (eb) => {
-            eb.empty().startAction.floaters(1);
+            eb.empty().startAction.resource(CardResource.FLOATER);
           }).br;
           b.effect('Floaters on this card mey be used as 4 M€ when paying for standard projects.', (eb) => {
-            eb.jovian({played}).startEffect.floaters(1).equals().megacredits(3);
+            eb.plate('Standard projects').startEffect.resource(CardResource.FLOATER).equals().megacredits(4);
           }).br;
         }),
       },

@@ -31,7 +31,7 @@ export class ConsistentBombardment extends ActionCard implements IProjectCard {
           {
             title: 'Spend 1 titanium to add 1 asteroid to ANY card',
             spend: {titanium: 1},
-            addResourcesToAnyCard: {type: CardResource.ASTEROID, count: 1}
+            addResourcesToAnyCard: {type: CardResource.ASTEROID, count: 1},
           }],
         },
       },
@@ -40,11 +40,11 @@ export class ConsistentBombardment extends ActionCard implements IProjectCard {
         cardNumber: 'x253',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 1 titanium to add 1 asteroid to ANY card.', (eb) => {
-            eb.titanium(1).startAction.asteroids(1).asterix();
+            eb.titanium(1).startAction.resource(CardResource.ASTEROID).asterix();
           }).br;
           b.or().br;
           b.action('Remove 1 asteroid from this card to raise the temperature or Venus 1 step.', (eb) => {
-            eb.asteroids(1).startAction.temperature(1).slash().venus(1);
+            eb.resource(CardResource.ASTEROID).startAction.temperature(1).slash().venus(1);
           }).br;
         }),
       },

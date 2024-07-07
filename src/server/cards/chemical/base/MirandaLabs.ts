@@ -22,7 +22,7 @@ export class MirandaLabs extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x164',
         renderData: CardRenderer.builder((b) => {
-          b.animals(2).asterix().nbsp.or(Size.SMALL).nbsp.asteroids(2).asterix();
+          b.resource(CardResource.ANIMAL, 2).asterix().nbsp.or(Size.SMALL).nbsp.resource(CardResource.ASTEROID, 2).asterix();
         }),
         description: 'Add 2 animals or 2 asteroids to ANOTHER card.',
       },

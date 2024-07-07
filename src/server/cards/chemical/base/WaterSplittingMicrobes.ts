@@ -36,14 +36,14 @@ export class WaterSplittingMicrobes extends ActionCard implements IProjectCard {
         cardNumber: 'x044',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 1 M€ to add 1 microbe to this card.', (eb) => {
-            eb.megacredits(1).startAction.microbes(1);
+            eb.megacredits(1).startAction.resource(CardResource.MICROBE);
           }).br;
           b.or().br;
           b.action('Remove 2 microbes from this card to raise the oxygen 1 step.', (eb) => {
-            eb.microbes(2).startAction.oxygen(1);
+            eb.resource(CardResource.MICROBE, 2).startAction.oxygen(1);
           }).br;
         }),
-        description: 'Requires 3 ocean tiles.'
+        description: 'Requires 3 ocean tiles.',
       },
     });
   }

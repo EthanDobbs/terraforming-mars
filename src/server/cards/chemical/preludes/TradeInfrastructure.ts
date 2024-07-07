@@ -3,7 +3,7 @@ import {CardRenderer} from '../../render/CardRenderer';
 import {PreludeCard} from '../../prelude/PreludeCard';
 import {IProjectCard} from '../../IProjectCard';
 
-export class TradeInfrastructure extends PreludeCard implements IProjectCard{
+export class TradeInfrastructure extends PreludeCard implements IProjectCard {
   constructor() {
     super({
       name: CardName.TRADE_INFRASTRUCTURE,
@@ -21,7 +21,7 @@ export class TradeInfrastructure extends PreludeCard implements IProjectCard{
           }).br;
           b.tradeFleet().energy(4);
         }),
-        description: 'Gain a trade fleet and 4 energy.'
+        description: 'Gain a trade fleet and 4 energy.',
       },
     });
   }

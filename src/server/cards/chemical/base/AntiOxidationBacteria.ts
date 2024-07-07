@@ -11,7 +11,6 @@ import {Resource} from '../../../../common/Resource';
 import {OrOptions} from '../../../inputs/OrOptions';
 import {SelectOption} from '../../../inputs/SelectOption';
 import {Size} from '../../../../common/cards/render/Size';
-import {played} from '../../Options';
 
 export class AntiOxidationBacteria extends Card implements IProjectCard {
   constructor() {
@@ -27,10 +26,10 @@ export class AntiOxidationBacteria extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x045',
         renderData: CardRenderer.builder((b) => {
-          b.building(1, {played}).colon().microbes(1).or(Size.SMALL).minus().microbes(1).plus().production((pb) => pb.megacredits(1)).br;
+          b.tag(Tag.BUILDING).colon().resource(CardResource.MICROBE).or(Size.SMALL).minus().resource(CardResource.MICROBE).plus().production((pb) => pb.megacredits(1)).br;
           b.description('When you play a building tag, either add a microbe to this card or remove a microbe from this card to increase your M€ production 1 step.').br;
         }),
-        description: 'Requires 2% oxygen.'
+        description: 'Requires 2% oxygen.',
       },
     });
   }
@@ -42,7 +41,7 @@ export class AntiOxidationBacteria extends Card implements IProjectCard {
       player.addResourceTo(this);
       return undefined;
     }
-  
+
     const addResource = new SelectOption('Add a microbe resource to Anti-Oxidation Bacteria', 'Add microbe').andThen( () => {
       player.addResourceTo(this);
       return undefined;
@@ -54,7 +53,7 @@ export class AntiOxidationBacteria extends Card implements IProjectCard {
       return undefined;
     });
 
-    player.game.defer(new SimpleDeferredAction(player,() => new OrOptions(spendResource, addResource)));
+    player.game.defer(new SimpleDeferredAction(player, () => new OrOptions(spendResource, addResource)));
     return undefined;
   }
 }

@@ -8,7 +8,7 @@ import {IPlayer} from '../../../IPlayer';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Size} from '../../../../common/cards/render/Size';
 import {Board} from '../../../boards/Board';
-import { Resource } from '../../../../common/Resource';
+import {Resource} from '../../../../common/Resource';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
   b.influence().plus().city({size: Size.SMALL}).colon().nbsp.text('1st:', Size.SMALL).megacredits(-9).br;
@@ -30,12 +30,12 @@ export class Insurgency extends GlobalEvent implements IGlobalEvent {
     // Solo
     if (game.isSoloMode()) {
       const player = game.getPlayers()[0];
-      if (this.getScore(player, turmoil, game) >= 4){
-        player.stock.deduct(Resource.MEGACREDITS, 9, {log: true, from: this.name})
-      } else if (this.getScore(player, turmoil, game) >= 2){
-        player.stock.deduct(Resource.MEGACREDITS, 6, {log: true, from: this.name})
+      if (this.getScore(player, turmoil, game) >= 4) {
+        player.stock.deduct(Resource.MEGACREDITS, 9, {log: true, from: this.name});
+      } else if (this.getScore(player, turmoil, game) >= 2) {
+        player.stock.deduct(Resource.MEGACREDITS, 6, {log: true, from: this.name});
       } else {
-        player.stock.deduct(Resource.MEGACREDITS, 3, {log: true, from: this.name})
+        player.stock.deduct(Resource.MEGACREDITS, 3, {log: true, from: this.name});
       }
     } else {
       const players = game.getPlayers().slice().sort(
@@ -44,27 +44,27 @@ export class Insurgency extends GlobalEvent implements IGlobalEvent {
 
       // We have one rank 1 player
       if (this.getScore(players[0], turmoil, game) > this.getScore(players[1], turmoil, game)) {
-        players[0].stock.deduct(Resource.MEGACREDITS, 9, {log: true, from: this.name})
+        players[0].stock.deduct(Resource.MEGACREDITS, 9, {log: true, from: this.name});
         players.shift();
 
         const score = this.getScore(players[0], turmoil, game);
         while (players.length > 0 && this.getScore(players[0], turmoil, game) === score) {
-          players[0].stock.deduct(Resource.MEGACREDITS, 6, {log: true, from: this.name})
+          players[0].stock.deduct(Resource.MEGACREDITS, 6, {log: true, from: this.name});
           players.shift();
         }
         // We have at least two rank 1 players
       } else {
         const score = this.getScore(players[0], turmoil, game);
         while (players.length > 0 && this.getScore(players[0], turmoil, game) === score) {
-          players[0].stock.deduct(Resource.MEGACREDITS, 9, {log: true, from: this.name})
+          players[0].stock.deduct(Resource.MEGACREDITS, 9, {log: true, from: this.name});
           players.shift();
         }
       }
       const score = this.getScore(players[0], turmoil, game);
-        while (players.length > 0 && this.getScore(players[0], turmoil, game) === score) {
-          players[0].stock.deduct(Resource.MEGACREDITS, 3, {log: true, from: this.name})
-          players.shift();
-        }
+      while (players.length > 0 && this.getScore(players[0], turmoil, game) === score) {
+        players[0].stock.deduct(Resource.MEGACREDITS, 3, {log: true, from: this.name});
+        players.shift();
+      }
     }
   }
 

@@ -2,7 +2,6 @@ import {CardName} from '../../../common/cards/CardName';
 import {GlobalEventName} from '../../../common/turmoil/globalEvents/GlobalEventName';
 import {ModuleManifest} from '../ModuleManifest';
 import {Overgrowth} from './base/Overgrowth';
-import {Wildfires} from './base/Wildfires';
 import {AsteroidMiningExpedition} from './base/AsteroidMiningExpedition';
 import {ArtificialAsteroid} from './base/ArtificialAsteroid';
 import {TemporarySmeltingPlant} from './base/TemporarySmeltingPlant';
@@ -26,7 +25,6 @@ import {LargeThermalDetonator} from './base/LargeThermalDetonator';
 import {SubcrustVaporTrapping} from './base/SubcrustVaporTrapping';
 import {CyanobacteriaBloom} from './base/CyanobacteriaBloom';
 import {HabitatConservation} from './base/HabitatConservation';
-import {ArchivalStudies} from './base/ArchivalStudies';
 import {Overclock} from './base/Overclock';
 import {EarlyExpeditionChemical} from './base/EarlyExpeditionChemical';
 import {AsteroidStudy} from './base/AsteroidStudy';
@@ -47,12 +45,11 @@ import {Macroplankton} from './base/Macroplankton';
 import {WaterSplittingMicrobes} from './base/WaterSplittingMicrobes';
 import {AntiOxidationBacteria} from './base/AntiOxidationBacteria';
 import {ThallophyteProtists} from './base/ThallophyteProtists';
-import {EnzymeConstructors} from './base/EnzymeConstructors';
 import {LatticeConstructionMicrobes} from './base/LatticeConstructionMicrobes';
 import {ElectroplaqueMicrobes} from './base/ElectroplaqueMicrobes';
 import {LargeAquaticMammals} from './base/LargeAquaticMammals';
 import {TundraWildlife} from './base/TundraWildlife';
-import {Raptors} from './base/Raptors'; //import {Poultry} from './base/Poultry';
+import {Raptors} from './base/Raptors'; // import {Poultry} from './base/Poultry';
 import {FishFarmingLake} from './base/FishFarmingLake';
 import {Cephalopods} from './base/Cephalopods';
 import {EndangeredSpeciesRefuge} from './base/EndangeredSpeciesRefuge';
@@ -60,7 +57,6 @@ import {NonHypoxicSmallAnimals} from './base/NonHypoxicSmallAnimals';
 import {SubterranianCreatures} from './base/SubterranianCreatures';
 import {AntarcticKrill} from './base/AntarcticKrill';
 import {AncientArthopods} from './base/AncientArthropods';
-import {UrbanWildlife} from './base/UrbanWildlife';
 import {HabitatDomes} from './base/HabitatDomes';
 import {Aquaponics} from './base/Aquaponics';
 import {RegolithTreatment} from './base/RegolithTreatment';
@@ -180,7 +176,6 @@ import {PatentTrading} from './corpera/PatentTrading';
 import {TechnologyExhibition} from './corpera/TechnologyExhibition';
 import {ResearchDonation} from './corpera/ResearchDonation';
 import {PopulationBoom} from './corpera/PopulationBoom';
-import {GeneticBreakthrough} from './corpera/GeneticBreakthrough';
 import {AstrophysicsCenter} from './corpera/AstrophysicsCenter';
 import {CentaurLandings} from './corpera/CentaurLandings';
 import {VestaObservatory} from './corpera/VestaObservatory';
@@ -193,8 +188,7 @@ import {LaserLightsails} from './corpera/LaserLightsails';
 import {AlloyFactory} from './corpera/AlloyFactory';
 import {UndergroundTestSite} from './corpera/UndergroundTestSite';
 import {ScientificMegaopolis} from './corpera/ScientificMegaopolis';
-import {NovaFoundry} from './corpera/NovaFoundry'; //import {AlchemicReactions} from './colonies/AlchemicReactions';
-import {WirelessEnergyTransfer} from './corpera/WirelessEnergyTransfer';
+import {NovaFoundry} from './corpera/NovaFoundry';
 import {KugelblitzEngine} from './corpera/KugelblitzEngine';
 import {ScientificLogs} from './corpera/ScientificLogs';
 import {SponsoredResearchFirm} from './corpera/SponsoredResearchFirm';
@@ -242,7 +236,7 @@ import {InterstellarProbe} from './corpera/InterstallarProbe';
 import {TheoryOfEverything} from './corpera/TheoryOfEverything';
 import {GreatHarbor} from './corpera/GreatHarbor';
 import {FloaterAcquisition} from './venus/FloaterAcquisition';
-import {IonicGasSequestration} from './venus/IonicGasSequestration'; //import {ImportedNeutralGasses} from './ImportedNeutralGasses';
+import {IonicGasSequestration} from './venus/IonicGasSequestration'; // import {ImportedNeutralGasses} from './ImportedNeutralGasses';
 import {NearMissRotaryAsteroid} from './venus/NearMissRotaryAsteroid';
 import {DwarfPlanetCollision} from './venus/DwarfPlanetCollision';
 import {ConvoyToVenus} from './venus/ConvoyToVenus';
@@ -275,7 +269,7 @@ import {VenusBiolab} from './venus/VenusBiolab';
 import {LocalDecompression} from './venus/LocalDecompression';
 import {UndergroundVenusBase} from './venus/UndergroundVenusBase';
 import {TowersOfFreyja} from './venus/TowersOfFreyja';
-import {VeneraOutpost} from './venus/VeneraOutpost'; //import {VenusianInvertebrates} from './venus/VenusianInvertebrates';
+import {VeneraOutpost} from './venus/VeneraOutpost'; // import {VenusianInvertebrates} from './venus/VenusianInvertebrates';
 import {VenusSolarWaystation} from './venus/VenusSolarWaystation';
 import {DryIceRings} from './venus/DryIceRings';
 import {TheBehemoth} from './venus/TheBehemoth';
@@ -283,7 +277,7 @@ import {VenusMiningIndustries} from './venus/VenusMiningIndustries';
 import {OvdaCity} from './venus/OvdaCity';
 import {CapitalOfVenus} from './venus/CapitalOfVenus';
 import {HydrogenInjection} from './venus/HydrogenInjection';
-import {AtmosphericSolarCollectors} from './venus/AtmoshpericSolarCollectors'; //import {SpinInducingMassDrivers} from './SpinInducingMassDrivers';
+import {AtmosphericSolarCollectors} from './venus/AtmoshpericSolarCollectors'; // import {SpinInducingMassDrivers} from './SpinInducingMassDrivers';
 import {SwarmShaders} from './venus/SwarmShaders';
 import {VortexEngine} from './venus/VortexEngine';
 import {PhotonicMetamaterials} from './venus/PhontoicMetamaterials';
@@ -379,15 +373,13 @@ import {EarthEmbassyChemical} from './colonies/EarthEmbassyChemical';
 import {MercurialSunshade} from './colonies/MercurialSunshade';
 import {HighOrbitResearchStation} from './colonies/HighOrbitResearchStation';
 import {TerrestrialResearchSummit} from './colonies/TerrestrialResearchSummit';
-import {AstronomicalClaim} from './colonies/AstronomicalClaim';
-import {ThisAtmosphereFloaters} from './colonies/ThinAtmosphereFloaters';
 import {ArcticEndoliths} from './colonies/ArcticEndoliths';
 import {HyperExtremophileFungi} from './colonies/HyperExtremophileFungi';
 import {BiodiversityBoom} from './colonies/BiodiversityBoom';
 import {ColonyReforms} from './colonies/ColonyReforms';
 import {DirectedSabotageImpact} from './turmoil/DirectedSabotageImpact';
 import {FusionBombing} from './turmoil/FusionBombing';
-//import {DemocraticReform} from './DemocraticReform';
+// import {DemocraticReform} from './DemocraticReform';
 import {MediaManipulation} from './turmoil/MediaManipulation';
 import {InaugurationCeremony} from './turmoil/InaugurationCeremony';
 import {PoliticalDonations} from './turmoil/PoliticalDonations';
@@ -400,7 +392,7 @@ import {HybridVessels} from './turmoil/HybridVessels';
 import {ShortTermBonuses} from './turmoil/ShortTermBonuses';
 import {MartianResearchNetwork} from './turmoil/MartianResearchNetwork';
 import {EnergyLab} from './turmoil/EnergyLab';
-//import {StimulusPrograms} from './StimulusPrograms',
+// import {StimulusPrograms} from './StimulusPrograms',
 import {CommitteeCoalition} from './turmoil/CommitteeCoalition';
 import {LegalFirm} from './turmoil/LegalFirm';
 import {Kickbacks} from './turmoil/Kickbacks';
@@ -408,7 +400,7 @@ import {RemoteAreaSuppliers} from './turmoil/RemoteAreaSuppliers';
 import {MedicalInstitute} from './turmoil/MedicalInstitute';
 import {MicrobialSupport} from './turmoil/MicrobialSupport';
 import {VenusSocietySupport} from './turmoil/VenusSocietySupport';
-//import {PrimalNationalPark} from './PrimalNationalPark';
+// import {PrimalNationalPark} from './PrimalNationalPark';
 import {CorporateCitadel} from './turmoil/CorporateCitadel';
 import {PreservationistSettlement} from './turmoil/PreservationistSettlement';
 import {AuthoritarianState} from './turmoil/AuthoritarianState';
@@ -421,48 +413,6 @@ import {ExoplanetLanding} from './turmoil/ExoplanetLanding';
 import {FirstMaritanMemorial} from './turmoil/FirstMartianMemorial';
 import {TerraformingUnion} from './turmoil/TerraformingUnion';
 import {AcquiredConsultingFirm} from './turmoil/AcquiredConsultingFirm';
-//import {SpecialDesignChemical} from './replacements/archived/SpecialDesignChemical';
-import {AerobrakedAmmoniaAsteroidChemical} from './replacements/AerobrakedAmmoniaAsteroidChemical';
-//import {SmallAsteroidChemical} from './replacements/archived/SmallAsteroidChemical';
-//import {GHGProducingBacteriaChemical} from './replacements/archived/GHGProducingBacteriaChemical';
-//import {AdaptationTechnologyChemical} from './replacements/archived/AdaptationTechnologyChemical';
-import {UndergroundDetonationsChemical} from './replacements/UndergroundDetonationsChemical';
-//import {SpaceMirrorsChemical} from './replacements/archived/SpaceMirrorsChemical';
-import {EarthCatapultChemical} from './replacements/EarthCatapultChemical';
-import {MarsUniversityChemical} from './replacements/MarsUniversityChemical';
-//import {OlympusConferenceChemical} from './replacements/archived/OlympusConferenceChemical';
-import {IndustrialCenterChemical} from './replacements/IndustrialCenterChemical';
-import {ForcedPrecipitationChemical} from './replacements/ForcedPrecipitationChemical';
-import {JetStreamMicroscrappersChemical} from './replacements/JetStreamMicroscrappersChemical';
-import {ExtractorBalloonsChemical} from './replacements/ExtractorBalloonsChemical';
-import {ThermophilesChemical} from './replacements/ThermophilesChemical';
-import {VenusWaystationChemical} from './replacements/VenusWaystationChemical';
-//import {SubZeroSaltFishChemical} from './replacements/archived/SubZeroSaltFishChemical';
-import {MartianZooChemical} from './replacements/MartianZooChemical';
-import {TradingColonyChemical} from './replacements/TradingColonyChemical';
-//import {SpinoffDepartmentChemical} from './replacements/archived/SpinoffDepartmentChemical';
-//import {DirectedImpactorsChemical} from './replacements/archived/DirectedImpactorsChemical';
-import {AsteroidHollowingChemical} from './replacements/AsteroidHollowingChemical';
-import {OrbitalCleanupChemical} from './replacements/OrbitalCleanupChemical';
-import {CuttingEdgeTechnologyChemical} from './replacements/CuttingEdgeTechnologyChemical';
-import {MeatIndustryChemical} from './replacements/MeatIndustryChemical';
-//import {CarbonNanosystemsChemical} from './CarbonNanosystemsChemical';
-//import {SolarLogisticsChemical} from './replacements/archived/SolarLogisticsChemical';
-//import {MartianLumberCorpChemical} from './replacements/archived/MartianLumberCorpChemical';
-//import {UndergroundCityChemical} from './replacements/archived/UndergroundCityChemical';
-//import {CloudSeedingChemical} from './replacements/archived/CloudSeedingChemical';
-import {BiomassCombustorsChemical} from './replacements/BiomassCombustorsChemical';
-import {WormsChemical} from './replacements/WormsChemical';
-import {AsteroidMiningConsortiumChemical} from './replacements/AsteroidMiningConsortiumChemical';
-import {TollStationChemical} from './replacements/TollStationChemical';
-//import {ResearchChemical} from './replacements/archived/ResearchChemical';
-//import {HackersChemical} from './replacements/archived/HackersChemical';
-//import {CorporateStrongholdChemical} from './replacements/archived/CorporateStrongholdChemical';
-import {VenusSoilsChemical} from './replacements/VenusSoilsChemical';
-import {ResearchColonyChemical} from './replacements/ResearchColonyChemical';
-import {SpacePortColonyChemical} from './replacements/SpacePortColonyChemical';
-//import {SnowAlgaeChemical} from './replacements/archived/SnowAlgaeChemical';
-import {BactoviralResearchChemical} from './replacements/BactoviralResearchChemical';
 import {LegalExperts} from './preludes/LegalExperts';
 import {MaterialLoan} from './preludes/MaterialLoan';
 import {ResearchLoan} from './preludes/ResearchLoan';
@@ -478,7 +428,6 @@ import {RareMineralReserve} from './preludes/RareMineralReserve';
 import {HeavyMetalComet} from './base/HeavyMetalComet';
 import {Bioplastics} from './preludes/Bioplastics';
 import {NuclearFuelMining} from './preludes/NuclearFuelMining';
-import {AsteroidBeltOperations} from './preludes/AsteroidBeltOperations';
 import {LunarMiningIndustries} from './preludes/LunarMiningIndustries';
 import {LaserMining} from './preludes/LaserMining';
 import {InfrastructureSupport} from './preludes/InfrastructureSupport';
@@ -491,7 +440,6 @@ import {PowerCore} from './preludes/PowerCore';
 import {EnergyBeam} from './preludes/EnergyBeam';
 import {ThermalPlant} from './preludes/ThermalPlant';
 import {AdvancedHeatingTech} from './preludes/AdvancedHeatingTech';
-import {NanotechLab} from './preludes/NanotechLab';
 import {ResearchBase} from './preludes/ResearchBase';
 import {FurtherDevelopment} from './preludes/FurtherDevelopment';
 import {CorporateEspionage} from './preludes/CorporateEspionage';
@@ -516,7 +464,7 @@ import {PhobosSpacePort} from './preludes/PhobosSpacePort';
 import {CommitteeRepresentative} from './preludes/CommitteeRepresentative';
 import {ByElectionChemical} from './preludes/ByElectionChemical';
 import {ExecutiveOrderChemical} from './preludes/ExecutiveOrderChemical';
-//import {ContractedIntelligenceAgency} from './ContractedIntelligenceAgency';
+// import {ContractedIntelligenceAgency} from './ContractedIntelligenceAgency';
 import {PartyInsiders} from './preludes/PartyInsiders';
 import {PoliticalUprisingChemical} from './preludes/PoliticalUprisingChemical';
 import {MartianRepublic} from './preludes/MartianRepublic';
@@ -525,73 +473,60 @@ import {CorporateAlliance} from './preludes/CorporateAlliance';
 import {GreenMarsInitiative} from './preludes/GreenMarsInitiative';
 import {PreservationistCampaign} from './preludes/PreservationistCampaign';
 import {HeatFirstInitiative} from './globalevents/HeatFirstInitiative';
-import { SelfSufficientSettlementChemical } from './replacements/SelfSufficientSettlementChemical';
-import { MoholeExcavationChemical } from './replacements/MoholeExcavationChemical';
-import { GalileanMiningChemical } from './replacements/GalileanMiningChemical';
-import { OrbitalConstructionYardChemical } from './replacements/OrbitalConstructionYardChemical';
-import { NitrogenShipmentChemical } from './replacements/NitrogenShipmentChemical';
-import { BiosphereSupportChemical } from './replacements/BiosphereSupportChemical';
-import { EarlySettlementChemical } from './replacements/EarlySettlementChemical';
-import { BiofuelsChemical } from './replacements/BiofuelsChemical';
-import { DomeFarmingChemical } from './replacements/DomeFarmingChemical';
-import { SocietySupportChemical } from './replacements/SocietySupportChemical';
-import { MoholeChemical } from './replacements/MoholeChemical';
-import { PolarIndustriesChemical } from './replacements/PolarIndustriesChemical';
-import { HugeAsteroidChemical } from './replacements/HugeAsteroidChemical';
-import { LandDelegation } from './globalevents/LandDelegation';
-import { IntellectualistMovements } from './preludes/IntellectualistMovements';
-import { MandatoryInsurance } from './globalevents/MandatoryInsurance';
-import { TradeEmbargo } from './globalevents/TradeEmbargo';
-import { Insurgency } from './globalevents/Insurgency';
-import { LaborRevolt } from './globalevents/LaborRevolt';
-import { InterplanetaryCommunities } from './globalevents/InterplanetaryCommunities';
-import { ChemicalPollution } from './globalevents/ChemicalPollution';
-import { PesticideApplication } from './globalevents/PesticideApplication';
-import { Cyberattacks } from './globalevents/Cyberattacks';
-import { MiningIndustries } from './globalevents/MiningIndustries';
-import { Famine } from './globalevents/Famine';
-import { NanotechInnovation } from './globalevents/NanotechInnovation';
-import { PowerSurplus } from './globalevents/PowerSurplus';
-import { LandRun } from './globalevents/LandRun';
-import { EradicationOfGeneticIllness } from './globalevents/EradicationOfGeneticIllness';
-import { MagneticFieldFailure } from './globalevents/MagneticFieldFailure';
-import { FoodSupply } from './globalevents/FoodSupply';
-import { ConstitutionalReformation } from './globalevents/ConstitutionalReformation';
-import { EcologyProjects } from './globalevents/EcologyProjects';
-import { EcosystemDisruption } from './globalevents/EcosystemDisruption';
+import {LandDelegation} from './globalevents/LandDelegation';
+import {IntellectualistMovements} from './preludes/IntellectualistMovements';
+import {MandatoryInsurance} from './globalevents/MandatoryInsurance';
+import {TradeEmbargo} from './globalevents/TradeEmbargo';
+import {Insurgency} from './globalevents/Insurgency';
+import {LaborRevolt} from './globalevents/LaborRevolt';
+import {InterplanetaryCommunities} from './globalevents/InterplanetaryCommunities';
+import {ChemicalPollution} from './globalevents/ChemicalPollution';
+import {PesticideApplication} from './globalevents/PesticideApplication';
+import {Cyberattacks} from './globalevents/Cyberattacks';
+import {MiningIndustries} from './globalevents/MiningIndustries';
+import {Famine} from './globalevents/Famine';
+import {NanotechInnovation} from './globalevents/NanotechInnovation';
+import {PowerSurplus} from './globalevents/PowerSurplus';
+import {LandRun} from './globalevents/LandRun';
+import {EradicationOfGeneticIllness} from './globalevents/EradicationOfGeneticIllness';
+import {MagneticFieldFailure} from './globalevents/MagneticFieldFailure';
+import {FoodSupply} from './globalevents/FoodSupply';
+import {ConstitutionalReformation} from './globalevents/ConstitutionalReformation';
+import {EcologyProjects} from './globalevents/EcologyProjects';
+import {EcosystemDisruption} from './globalevents/EcosystemDisruption';
 import {RedUprising} from './globalevents/RedUprising';
-import { WildfiresEvent } from './globalevents/WildfiresEvent';
-import { EgalitarianMovements } from './globalevents/EgalitarianMovements';
-import { MarsStockExchange } from './globalevents/MarsStockExchange';
-import { ColonizationOfMercury } from './globalevents/ColonizationOfMercury';
-import { RevisedPatentLaw } from './globalevents/RevisedPatentLaw';
-import { EcologicalSupport } from './globalevents/EcologicalSupport';
+import {WildfiresEvent} from './globalevents/WildfiresEvent';
+import {EgalitarianMovements} from './globalevents/EgalitarianMovements';
+import {MarsStockExchange} from './globalevents/MarsStockExchange';
+import {ColonizationOfMercury} from './globalevents/ColonizationOfMercury';
+import {RevisedPatentLaw} from './globalevents/RevisedPatentLaw';
+import {EcologicalSupport} from './globalevents/EcologicalSupport';
 import {AbstinanceBonus} from './globalevents/AbstinanceBonus';
-import { RedTourism } from './globalevents/RedTourism';
-import { PreferentialLoans } from './globalevents/PreferentialLoans';
-import { SevereMarsquake } from './globalevents/SevereMarsquake';
-import { ExtinctionEvent } from './globalevents/ExtinctionEvent';
-import { SpaceTravelLimitations } from './globalevents/SpaceTravelLimitations';
-import { RimShortages } from './globalevents/RimShortages';
-import { MicrobialBoom } from './globalevents/MicrobialBoom';
-import { TechnologicalRegression } from './globalevents/TechnologicalRegression';
-import { PowerGenerationSubsidies } from './globalevents/PowerGenerationSubsidies';
-import { TaxationOfVenus } from './globalevents/TaxationOfVenus';
-import { VenusMining } from './globalevents/VenusMining';
-import { DegredationOfVenus } from './globalevents/DegredationOfVenus';
-import { FloaterTechnologyEvent } from './globalevents/FloaterTechnologyEvent';
-import { VenusianEcosystems } from './globalevents/VenusianEcosystems';
-import { SocietiesOfVenus } from './globalevents/SocietiesOfVenus';
-import { AnticorrosiveMaterials } from './globalevents/AnticorrosiveMaterials';
-import { LowlandFlooding } from './globalevents/LowlandFlooding';
-import { CommunityServicesEvent } from './globalevents/CommunityServicesEvent';
-import { PowerFailureEvent } from './globalevents/PowerFailureEvent';
-import { InterstallarColonization } from './globalevents/InterstallarColonization';
-import { ColonyProductivity } from './globalevents/ColonyProductivity';
-import { CommandEconomy } from './globalevents/CommandEconomy';
-import { JovianWar } from './globalevents/JovianWar';
-import { RefugeeCrisis } from './globalevents/RefugeeCrisis';
-import { EconomicDepression } from './globalevents/EconomicDepression';
+import {RedTourism} from './globalevents/RedTourism';
+import {PreferentialLoans} from './globalevents/PreferentialLoans';
+import {SevereMarsquake} from './globalevents/SevereMarsquake';
+import {ExtinctionEvent} from './globalevents/ExtinctionEvent';
+import {SpaceTravelLimitations} from './globalevents/SpaceTravelLimitations';
+import {RimShortages} from './globalevents/RimShortages';
+import {MicrobialBoom} from './globalevents/MicrobialBoom';
+import {TechnologicalRegression} from './globalevents/TechnologicalRegression';
+import {PowerGenerationSubsidies} from './globalevents/PowerGenerationSubsidies';
+import {TaxationOfVenus} from './globalevents/TaxationOfVenus';
+import {VenusMining} from './globalevents/VenusMining';
+import {DegredationOfVenus} from './globalevents/DegredationOfVenus';
+import {FloaterTechnologyEvent} from './globalevents/FloaterTechnologyEvent';
+import {VenusianEcosystems} from './globalevents/VenusianEcosystems';
+import {SocietiesOfVenus} from './globalevents/SocietiesOfVenus';
+import {AnticorrosiveMaterials} from './globalevents/AnticorrosiveMaterials';
+import {LowlandFlooding} from './globalevents/LowlandFlooding';
+import {CommunityServicesEvent} from './globalevents/CommunityServicesEvent';
+import {PowerFailureEvent} from './globalevents/PowerFailureEvent';
+import {InterstallarColonization} from './globalevents/InterstallarColonization';
+import {ColonyProductivity} from './globalevents/ColonyProductivity';
+import {CommandEconomy} from './globalevents/CommandEconomy';
+import {JovianWar} from './globalevents/JovianWar';
+import {RefugeeCrisis} from './globalevents/RefugeeCrisis';
+import {EconomicDepression} from './globalevents/EconomicDepression';
 
 export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
   module: 'chemical',
@@ -615,7 +550,6 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.BIOPLASTICS]: {Factory: Bioplastics},
     [CardName.INFRASTRUCTURE_SUPPORT]: {Factory: InfrastructureSupport},
     [CardName.NUCLEAR_FUEL_MINING]: {Factory: NuclearFuelMining},
-    [CardName.ASTEROID_BELT_OPERATIONS]: {Factory: AsteroidBeltOperations},
     [CardName.LUNAR_MINING_INDUSTRIES]: {Factory: LunarMiningIndustries},
     [CardName.LASER_MINING]: {Factory: LaserMining},
     [CardName.GLACIAL_ALGAE]: {Factory: GlacialAlgae},
@@ -627,7 +561,6 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.ENERGY_BEAM]: {Factory: EnergyBeam},
     [CardName.THERMAL_PLANT]: {Factory: ThermalPlant},
     [CardName.ADVANCED_HEATING_TECH]: {Factory: AdvancedHeatingTech},
-    [CardName.NANOTECH_LAB]: {Factory: NanotechLab},
     [CardName.RESEARCH_BASE]: {Factory: ResearchBase},
     [CardName.FURTHER_DEVELOPMENT]: {Factory: FurtherDevelopment},
     [CardName.CORPORATE_ESPIONAGE]: {Factory: CorporateEspionage},
@@ -652,7 +585,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.COMMITTEE_REPRESENTATIVE]: {Factory: CommitteeRepresentative, compatibility: 'turmoil'},
     [CardName.BY_ELECTION_CHEMICAL]: {Factory: ByElectionChemical, compatibility: 'turmoil'},
     [CardName.EXECUTIVE_ORDER_CHEMICAL]: {Factory: ExecutiveOrderChemical, compatibility: 'turmoil'},
-    //[CardName.CONTRACTED_INTELLIGENCE_AGENCY]: {Factory: ContractedIntelligenceAgency, compatibiliy: 'turmoil'},
+    // [CardName.CONTRACTED_INTELLIGENCE_AGENCY]: {Factory: ContractedIntelligenceAgency, compatibiliy: 'turmoil'},
     [CardName.PARTY_INSIDERS]: {Factory: PartyInsiders, compatibility: 'turmoil'},
     [CardName.POLITICAL_UPRISING_CHEMICAL]: {Factory: PoliticalUprisingChemical, compatibility: 'turmoil'},
     [CardName.MARTIAN_REPUBLIC]: {Factory: MartianRepublic, compatibility: 'turmoil'},
@@ -661,24 +594,9 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.GREEN_MARS_INITIATIVE]: {Factory: GreenMarsInitiative, compatibility: 'turmoil'},
     [CardName.PRESERVATIONIST_CAMPAIGN]: {Factory: PreservationistCampaign, compatibility: 'turmoil'},
     [CardName.HEAT_FIRST_INITIATIVE]: {Factory: HeatFirstInitiative, compatibility: 'turmoil'},
-
-    [CardName.SELF_SUFFICIENT_SETTLEMENT_CHEMICAL]: {Factory: SelfSufficientSettlementChemical},
-    [CardName.MOHOLE_EXCAVATION_CHEMICAL]: {Factory: MoholeExcavationChemical},
-    [CardName.GALILEAN_MINING_CHEMICAL]: {Factory: GalileanMiningChemical},
-    [CardName.ORBITAL_CONSTRUCTION_YARD_CHEMICAL]: {Factory: OrbitalConstructionYardChemical},
-    [CardName.NITROGEN_SHIPMENT_CHEMICAL]: {Factory: NitrogenShipmentChemical},
-    [CardName.BIOSPHERE_SUPPORT_CHEMICAL]: {Factory: BiosphereSupportChemical},
-    [CardName.EARLY_SETTLEMENT_CHEMICAL]: {Factory: EarlySettlementChemical},
-    [CardName.DOME_FARMING_CHEMICAL]: {Factory: DomeFarmingChemical},
-    [CardName.BIOFUELS_CHEMICAL]: {Factory: BiofuelsChemical},
-    [CardName.SOCIETY_SUPPORT_CHEMICAL]: {Factory: SocietySupportChemical},
-    [CardName.MOHOLE_CHEMICAL]: {Factory: MoholeChemical},
-    [CardName.POLAR_INDUSTRIES_CHEMICAL]: {Factory: PolarIndustriesChemical},
-    [CardName.HUGE_ASTEROID_CHEMICAL]: {Factory: HugeAsteroidChemical},
   },
   projectCards: {
     [CardName.OVERGROWTH]: {Factory: Overgrowth},
-    [CardName.WILDFIRES]: {Factory: Wildfires},
     [CardName.ASTEROID_MINING_EXPEDITION]: {Factory: AsteroidMiningExpedition},
     [CardName.ARTIFICIAL_ASTEROID]: {Factory: ArtificialAsteroid},
     [CardName.TEMPORARY_SMELTING_PLANT]: {Factory: TemporarySmeltingPlant},
@@ -702,7 +620,6 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.SUBCRUST_VAPOR_TRAPPING]: {Factory: SubcrustVaporTrapping},
     [CardName.CYANOBACTERIA_BLOOM]: {Factory: CyanobacteriaBloom},
     [CardName.HABITAT_CONSERVATION]: {Factory: HabitatConservation},
-    [CardName.ARCHIVAL_STUDIES]: {Factory: ArchivalStudies},
     [CardName.OVERCLOCK]: {Factory: Overclock},
     [CardName.EARLY_EXPEDITION_CHEMICAL]: {Factory: EarlyExpeditionChemical},
     [CardName.ASTEROID_STUDY]: {Factory: AsteroidStudy},
@@ -723,7 +640,6 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.WATER_SPLITTING_MICROBES]: {Factory: WaterSplittingMicrobes},
     [CardName.ANTI_OXIDATION_BACTERIA]: {Factory: AntiOxidationBacteria},
     [CardName.THALLOPHYTE_PROTISTS]: {Factory: ThallophyteProtists},
-    [CardName.ENZYME_CONSTRUCTORS]: {Factory: EnzymeConstructors},
     [CardName.LATTICE_CONSTRUCTION_MICROBES]: {Factory: LatticeConstructionMicrobes},
     [CardName.ELECTROPLAQUE_MICROBES]: {Factory: ElectroplaqueMicrobes},
     [CardName.LARGE_AQUATIC_MAMMALS]: {Factory: LargeAquaticMammals},
@@ -736,7 +652,6 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.SUBTERRANEAN_CREATURES]: {Factory: SubterranianCreatures},
     [CardName.ANTARCTIC_KRILL]: {Factory: AntarcticKrill},
     [CardName.ANCIENT_ARTHROPODS]: {Factory: AncientArthopods},
-    [CardName.URBAN_WILDLIFE]: {Factory: UrbanWildlife},
     [CardName.HABITAT_DOMES]: {Factory: HabitatDomes},
     [CardName.AQUAPONICS]: {Factory: Aquaponics},
     [CardName.REGOLITH_TREATMENT]: {Factory: RegolithTreatment},
@@ -857,7 +772,6 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.TECHNOLOGY_EXHIBITION]: {Factory: TechnologyExhibition, compatibility: 'corpera'},
     [CardName.RESEARCH_DONATION]: {Factory: ResearchDonation, compatibility: 'corpera'},
     [CardName.POPULATION_BOOM]: {Factory: PopulationBoom, compatibility: 'corpera'},
-    [CardName.GENETIC_BREAKTHROUGH]: {Factory: GeneticBreakthrough, compatibility: 'corpera'},
     [CardName.ASTROPHYSICS_CENTER]: {Factory: AstrophysicsCenter, compatibility: 'corpera'},
     [CardName.CENTAUR_LANDINGS]: {Factory: CentaurLandings, compatibility: 'corpera'},
     [CardName.VESTA_OBSERVATORY]: {Factory: VestaObservatory, compatibility: 'corpera'},
@@ -871,7 +785,6 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.UNDERGROUND_TEST_SITE]: {Factory: UndergroundTestSite, compatibility: 'corpera'},
     [CardName.SCIENTIFIC_MEGAOPOLIS]: {Factory: ScientificMegaopolis, compatibility: 'corpera'},
     [CardName.NOVA_FOUNDRY]: {Factory: NovaFoundry, compatibility: 'corpera'},
-    [CardName.WIRELESS_ENERGY_TRANSFER]: {Factory: WirelessEnergyTransfer, compatibility: 'corpera'},
     [CardName.KUGELBLITZ_ENGINE]: {Factory: KugelblitzEngine, compatibility: 'corpera'},
     [CardName.SCIENTIFIC_LOGS]: {Factory: ScientificLogs, compatibility: 'corpera'},
     [CardName.SPONSORED_RESEARCH_FIRM]: {Factory: SponsoredResearchFirm, compatibility: 'corpera'},
@@ -1058,8 +971,6 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.MERCURIAL_SUNSHADE]: {Factory: MercurialSunshade, compatibility: 'colonies'},
     [CardName.HIGH_ORBIT_RESEARCH_STATION]: {Factory: HighOrbitResearchStation, compatibility: 'colonies'},
     [CardName.TERRESTRIAL_RESEARCH_SUMMIT]: {Factory: TerrestrialResearchSummit, compatibility: 'colonies'},
-    [CardName.ASTRONOMICAL_CLAIM]: {Factory: AstronomicalClaim, compatibility: 'colonies'},
-    [CardName.THIN_ATMOSPHERE_FLOATERS]: {Factory: ThisAtmosphereFloaters, compatibility: 'colonies'},
     [CardName.ARCTIC_ENDOLITHS]: {Factory: ArcticEndoliths, compatibility: 'colonies'},
     [CardName.HYPER_EXTREMOPHILE_FUNGI]: {Factory: HyperExtremophileFungi, compatibility: 'colonies'},
     [CardName.BIODIVERSITY_BOOM]: {Factory: BiodiversityBoom, compatibility: 'colonies'},
@@ -1067,7 +978,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
 
     [CardName.DIRECTED_SABOTAGE_IMPACT]: {Factory: DirectedSabotageImpact, compatibility: 'turmoil'},
     [CardName.FUSION_BOMBING]: {Factory: FusionBombing, compatibility: 'turmoil'},
-    //[CardName.DEMOCRATIC_REFORM]: {Factory: DemocraticReform, compatibility: 'turmoil'},
+    // [CardName.DEMOCRATIC_REFORM]: {Factory: DemocraticReform, compatibility: 'turmoil'},
     [CardName.MEDIA_MANIPULATION]: {Factory: MediaManipulation, compatibility: 'turmoil'},
     [CardName.INAUGURATION_CEREMONY]: {Factory: InaugurationCeremony, compatibility: 'turmoil'},
     [CardName.POLITICAL_DONATIONS]: {Factory: PoliticalDonations, compatibility: 'turmoil'},
@@ -1080,7 +991,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.SHORT_TERM_BONUSES]: {Factory: ShortTermBonuses, compatibility: 'turmoil'},
     [CardName.MARTIAN_RESEARCH_NETWORK]: {Factory: MartianResearchNetwork, compatibility: 'turmoil'},
     [CardName.ENERGY_LAB]: {Factory: EnergyLab, compatibility: 'turmoil'},
-    //[CardName.STIMULUS_PROGRAMS]: {Factory: StimulusPrograms, compatibility: 'turmoil'},
+    // [CardName.STIMULUS_PROGRAMS]: {Factory: StimulusPrograms, compatibility: 'turmoil'},
     [CardName.COMMITTEE_COALITION]: {Factory: CommitteeCoalition, compatibility: 'turmoil'},
     [CardName.LEGAL_FIRM]: {Factory: LegalFirm, compatibility: 'turmoil'},
     [CardName.KICKBACKS]: {Factory: Kickbacks, compatibility: 'turmoil'},
@@ -1088,7 +999,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.MEDICAL_INSTITUTE]: {Factory: MedicalInstitute, compatibility: 'turmoil'},
     [CardName.MICROBIAL_SUPPORT]: {Factory: MicrobialSupport, compatibility: 'turmoil'},
     [CardName.VENUS_SOCIETY_SUPPORT]: {Factory: VenusSocietySupport, compatibility: 'turmoil'},
-    //[CardName.PRIMAL_NATIONAL_PARK]: {Factory: PrimalNationalPark, compatability: 'turmoil'},
+    // [CardName.PRIMAL_NATIONAL_PARK]: {Factory: PrimalNationalPark, compatability: 'turmoil'},
     [CardName.CORPORATE_CITADEL]: {Factory: CorporateCitadel, compatibility: 'turmoil'},
     [CardName.PRESERVATIONIST_SETTLEMENT]: {Factory: PreservationistSettlement, compatibility: 'turmoil'},
     [CardName.AUTHORITARIAN_STATE]: {Factory: AuthoritarianState, compatibility: 'turmoil'},
@@ -1101,56 +1012,6 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.FIRST_MARTIAN_MEMORIAL]: {Factory: FirstMaritanMemorial, compatibility: 'turmoil'},
     [CardName.TERRAFORMING_UNION]: {Factory: TerraformingUnion, compatibility: 'turmoil'},
     [CardName.ACQUIRED_CONSULTING_FIRM]: {Factory: AcquiredConsultingFirm, compatibility: 'turmoil'},
-
-    //[CardName.ALCHEMIC_REACTIONS]: {Factory: AlchemicReactions, compatibility: 'corpera'},
-    //[CardName.UNMI_SPONSORSHIP]: {Factory: UNMISponsorship, compatibility: 'colonies'},
-    //[CardName.IMPORTED_NEUTRAL_GASSES]: {Factory: ImportedNeutralGasses, compatibility: 'venus'},
-    //[CardName.SPIN_INDUCING_MASS_DRIVERS]: {Factory: SpinInducingMassDrivers, compatibility: 'venus'},
-    //[CardName.POULTRY]: {Factory: Poultry},
-    //[CardName.HIGH_ALTITUDE_STATIONS]: {Factory: HighAltitudeStations, compatibility: 'venus'},
-
-    //[CardName.SPECIAL_DESIGN_CHEMICAL]: {Factory: SpecialDesignChemical},
-    [CardName.AEROBRAKED_AMMONIA_ASTEROID_CHEMICAL]: {Factory: AerobrakedAmmoniaAsteroidChemical},
-    //[CardName.SMALL_ASTEROID_CHEMICAL]: {Factory: SmallAsteroidChemical, compatibility: 'promo'},
-    //[CardName.GHG_PRODUCING_BACTERIA_CHEMICAL]: {Factory: GHGProducingBacteriaChemical},
-    //[CardName.ADAPTATION_TECHNOLOGY_CHEMICAL]: {Factory: AdaptationTechnologyChemical},
-    [CardName.UNDERGROUND_DETONATIONS_CHEMICAL]: {Factory: UndergroundDetonationsChemical},
-    //[CardName.SPACE_MIRRORS_CHEMICAL]: {Factory: SpaceMirrorsChemical},
-    [CardName.EARTH_CATAPULT_CHEMICAL]: {Factory: EarthCatapultChemical, compatibility: 'corpera'},
-    [CardName.MARS_UNIVERSITY_CHEMICAL]: {Factory: MarsUniversityChemical, compatibility: 'corpera'},
-    //[CardName.OLYMPUS_CONFERENCE_CHEMICAL]: {Factory: OlympusConferenceChemical, compatibility: 'corpera'},
-    [CardName.INDUSTRIAL_CENTER_CHEMICAL]: {Factory: IndustrialCenterChemical, compatibility: 'corpera'},
-    [CardName.FORCED_PRECIPITATION_CHEMICAL]: {Factory: ForcedPrecipitationChemical, compatibility: 'venus'},
-    [CardName.JET_STREAM_MICROSCRAPPERS_CHEMICAL]: {Factory: JetStreamMicroscrappersChemical, compatibility: 'venus'},
-    [CardName.EXTRACTOR_BALLOONS_CHEMICAL]: {Factory: ExtractorBalloonsChemical, compatibility: 'venus'},
-    [CardName.THERMOPHILES_CHEMICAL]: {Factory: ThermophilesChemical, compatibility: 'venus'},
-    [CardName.VENUS_WAYSTATION_CHEMICAL]: {Factory: VenusWaystationChemical, compatibility: 'venus'},
-    //[CardName.SUBZERO_SALT_FISH_CHEMICAL]: {Factory: SubZeroSaltFishChemical, compatibility: 'colonies'},
-    [CardName.MARTIAN_ZOO_CHEMICAL]: {Factory: MartianZooChemical, compatibility: 'colonies'},
-    [CardName.TRADING_COLONY_CHEMICAL]: {Factory: TradingColonyChemical, compatibility: 'colonies'},
-    //[CardName.SPINOFF_DEPARTMENT_CHEMICAL]: {Factory: SpinoffDepartmentChemical, compatibility: 'colonies'},
-    //[CardName.DIRECTED_IMPACTORS_CHEMICAL]: {Factory: DirectedImpactorsChemical, compatibility: 'promo'},
-    [CardName.ASTEROID_HOLLOWING_CHEMICAL]: {Factory: AsteroidHollowingChemical, compatibility: 'promo'},
-    [CardName.ORBITAL_CLEANUP_CHEMICAL]: {Factory: OrbitalCleanupChemical, compatibility: 'promo'},
-    [CardName.CUTTING_EDGE_TECHNOLOGY_CHEMICAL]: {Factory: CuttingEdgeTechnologyChemical, compatibility: 'promo'},
-    [CardName.MEAT_INDUSTRY_CHEMICAL]: {Factory: MeatIndustryChemical, compatibility: 'promo'},
-    //[CardName.CARBON_NANOSYSTEMS_CHEMICAL]: {Factory: CarbonNanosystemsChemical, compatibility: 'promo'},
-    //[CardName.SOLAR_LOGISTICS_CHEMICAL]: {Factory: SolarLogisticsChemical, compatibility: 'promo'},
-    //[CardName.MARTIAN_LUMBER_CORP_CHEMICAL]: {Factory: MartianLumberCorpChemical, compatibility: 'promo'},
-    //[CardName.UNDERGROUND_CITY_CHEMICAL]: {Factory: UndergroundCityChemical},
-    //[CardName.CLOUD_SEEDING_CHEMICAL]: {Factory: CloudSeedingChemical},
-    [CardName.BIOMASS_COMBUSTORS_CHEMICAL]: {Factory: BiomassCombustorsChemical},
-    [CardName.WORMS_CHEMICAL]: {Factory: WormsChemical},
-    [CardName.ASTEROID_MINING_CONSORTIUM_CHEMICAL]: {Factory: AsteroidMiningConsortiumChemical, compatibility: 'corpera'},
-    [CardName.TOLL_STATION_CHEMICAL]: {Factory: TollStationChemical, compatibility: 'corpera'},
-    //[CardName.RESEARCH_CHEMICAL]: {Factory: ResearchChemical, compatibility: 'corpera'},
-    //[CardName.HACKERS_CHEMICAL]: {Factory: HackersChemical, compatibility: 'corpera'},
-    //[CardName.CORPORATE_STRONGHOLD_CHEMICAL]: {Factory: CorporateStrongholdChemical, compatibility: 'corpera'},
-    [CardName.VENUS_SOILS_CHEMICAL]: {Factory: VenusSoilsChemical, compatibility: 'venus'},
-    [CardName.RESEARCH_COLONY_CHEMICAL]: {Factory: ResearchColonyChemical, compatibility: 'colonies'},
-    [CardName.SPACE_PORT_COLONY_CHEMICAL]: {Factory: SpacePortColonyChemical, compatibility: 'colonies'},
-    //[CardName.SNOW_ALGAE_CHEMICAL]: {Factory: SnowAlgaeChemical, compatibility: 'promo'},
-    [CardName.BACTOVIRAL_RESEARCH_CHEMICAL]: {Factory: BactoviralResearchChemical, compatibility: 'promo'},
   },
   globalEvents: {
     [GlobalEventName.LAND_DELEGATION]: {Factory: LandDelegation},
@@ -1208,61 +1069,4 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [GlobalEventName.REFUGEE_CRISIS]: {Factory: RefugeeCrisis, compatibility: 'colonies'},
     [GlobalEventName.ECONOMIC_DEPRESSION]: {Factory: EconomicDepression, compatibility: 'colonies'},
   },
-  cardsToRemove: [
-    //CardName.SPECIAL_DESIGN,
-    CardName.AEROBRAKED_AMMONIA_ASTEROID,
-    //CardName.SMALL_ASTEROID,
-    //CardName.GHG_PRODUCING_BACTERIA,
-    //CardName.ADAPTATION_TECHNOLOGY,
-    CardName.UNDERGROUND_DETONATIONS,
-    //CardName.SPACE_MIRRORS,
-    CardName.EARTH_CATAPULT,
-    CardName.MARS_UNIVERSITY,
-    //CardName.OLYMPUS_CONFERENCE,
-    CardName.INDUSTRIAL_CENTER,
-    CardName.FORCED_PRECIPITATION,
-    CardName.JET_STREAM_MICROSCRAPPERS,
-    CardName.EXTRACTOR_BALLOONS,
-    CardName.THERMOPHILES,
-    CardName.VENUS_WAYSTATION,
-    //CardName.SUBZERO_SALT_FISH,
-    CardName.MARTIAN_ZOO,
-    CardName.TRADING_COLONY,
-    //CardName.SPINOFF_DEPARTMENT,
-    CardName.DIRECTED_IMPACTORS,
-    CardName.ASTEROID_HOLLOWING,
-    CardName.ORBITAL_CLEANUP,
-    CardName.CUTTING_EDGE_TECHNOLOGY,
-    CardName.MEAT_INDUSTRY,
-    //CardName.CARBON_NANOSYSTEMS,
-    //CardName.SOLAR_LOGISTICS,
-    //CardName.MARTIAN_LUMBER_CORP,
-    //CardName.UNDERGROUND_CITY,
-    //CardName.CLOUD_SEEDING,
-    CardName.BIOMASS_COMBUSTORS,
-    CardName.WORMS,
-    CardName.ASTEROID_MINING_CONSORTIUM,
-    CardName.TOLL_STATION,
-    //CardName.RESEARCH,
-    //CardName.HACKERS,
-    //CardName.CORPORATE_STRONGHOLD,
-    CardName.VENUS_SOILS,
-    CardName.RESEARCH_COLONY,
-    CardName.SPACE_PORT_COLONY,
-    //CardName.SNOW_ALGAE,
-    CardName.BACTOVIRAL_RESEARCH,
-    CardName.SELF_SUFFICIENT_SETTLEMENT,
-    CardName.MOHOLE_EXCAVATION,
-    CardName.GALILEAN_MINING,
-    CardName.ORBITAL_CONSTRUCTION_YARD,
-    CardName.NITROGEN_SHIPMENT,
-    CardName.BIOSPHERE_SUPPORT,
-    CardName.EARLY_SETTLEMENT,
-    CardName.DOME_FARMING,
-    CardName.BIOFUELS,
-    CardName.SOCIETY_SUPPORT,
-    CardName.MOHOLE,
-    CardName.POLAR_INDUSTRIES,
-    CardName.HUGE_ASTEROID,
-  ],
 });

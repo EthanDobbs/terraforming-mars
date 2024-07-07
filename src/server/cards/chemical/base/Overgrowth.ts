@@ -8,7 +8,6 @@ import {SelectSpace} from '../../../inputs/SelectSpace';
 import {Space} from '../../../boards/Space';
 import {CardName} from '../../../../common/cards/CardName';
 import {AdjacencyBonus} from '../../../ares/AdjacencyBonus';
-import {ICardMetadata} from '../../../../common/cards/ICardMetadata';
 import {CardRenderer} from '../../render/CardRenderer';
 import {Board} from '../../../boards/Board';
 import {OrOptions} from '../../../inputs/OrOptions';
@@ -22,11 +21,8 @@ export class Overgrowth extends Card implements IProjectCard {
     name = CardName.OVERGROWTH,
     cost = 7,
     adjacencyBonus: AdjacencyBonus | undefined = undefined,
-    metadata: ICardMetadata = {
-      description: {
-        text: 'Requires that YOU have a greenery tile. Raise the oxygen 1 step. Place this tile adjacent to ANY greenery. IF THERE ARE TILES ADJACENT TO THIS TILE, YOU MAY REMOVE 4 M€ FROM THE OWNER OF ONE OF THOSE TILES.',
-        align: 'left',
-      },
+    metadata = {
+      description: 'Requires that YOU have a greenery tile. Raise the oxygen 1 step. Place this tile adjacent to ANY greenery. IF THERE ARE TILES ADJACENT TO THIS TILE, YOU MAY REMOVE 4 M€ FROM THE OWNER OF ONE OF THOSE TILES.',
       cardNumber: 'x001',
       renderData: CardRenderer.builder((b) => {
         b.tile(TileType.OVERGROWTH, false).asterix().nbsp.minus().megacredits(4, {all}).asterix();
@@ -84,10 +80,10 @@ export class Overgrowth extends Card implements IProjectCard {
               .andThen(() => {
                 return undefined;
               }),
-          )
-        };
+          );
+        }
         return undefined;
       },
-    );
+      );
   }
 }

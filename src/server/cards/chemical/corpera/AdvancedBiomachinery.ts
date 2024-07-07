@@ -27,7 +27,7 @@ export class AdvancedBiomachinery extends ActionCard implements IProjectCard {
           },
           {
             title: 'Add a microbe to ANY card',
-            addResourcesToAnyCard: {type: CardResource.MICROBE, count: 1}
+            addResourcesToAnyCard: {type: CardResource.MICROBE, count: 1},
           }],
         },
       },
@@ -36,14 +36,14 @@ export class AdvancedBiomachinery extends ActionCard implements IProjectCard {
         cardNumber: 'x186',
         renderData: CardRenderer.builder((b) => {
           b.action('Add a microbe to ANY card.', (eb) => {
-            eb.empty().startAction.microbes(1).asterix();
+            eb.empty().startAction.resource(CardResource.MICROBE).asterix();
           }).br;
           b.or().br;
           b.action('Spend 1 microbe here to draw a card.', (eb) => {
-            eb.microbes(1).startAction.cards(1);
+            eb.resource(CardResource.MICROBE).startAction.cards(1);
           }).br;
         }),
-        description: 'Requires 2 microbe tags.'
+        description: 'Requires 2 microbe tags.',
       },
     });
   }

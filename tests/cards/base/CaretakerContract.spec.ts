@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {CaretakerContract} from '../../../src/server/cards/base/CaretakerContract';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {Phase} from '../../../src/common/Phase';
 import {Greens} from '../../../src/server/turmoil/parties/Greens';
@@ -14,7 +14,7 @@ import {setTemperature} from '../../TestingUtils';
 describe('CaretakerContract', function() {
   let card: CaretakerContract;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new CaretakerContract();
@@ -22,13 +22,13 @@ describe('CaretakerContract', function() {
   });
 
   it('Cannot play or act', function() {
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
     expect(card.canAct(player)).is.not.true;
   });
 
   it('Should play', function() {
     setTemperature(game, 0);
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
   });
 
   it('Cannot act', function() {
@@ -90,7 +90,7 @@ describe('CaretakerContract', function() {
 
   it('Can use Stormcraft Incorporated', function() {
     const stormcraft = new StormCraftIncorporated();
-    player.setCorporationForTest(stormcraft);
+    player.corporations.push(stormcraft);
     stormcraft.play(player);
     stormcraft.resourceCount = 3;
     player.heat = 1;

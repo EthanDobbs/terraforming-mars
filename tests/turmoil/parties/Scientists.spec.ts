@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {setRulingParty, setOxygenLevel} from '../../TestingUtils';
 import {TestPlayer} from '../../TestPlayer';
 import {SCIENTISTS_BONUS_1, SCIENTISTS_BONUS_2, SCIENTISTS_POLICY_1, SCIENTISTS_POLICY_2, SCIENTISTS_POLICY_3, SCIENTISTS_POLICY_4} from '../../../src/server/turmoil/parties/Scientists';
@@ -16,7 +16,7 @@ import {PartyName} from '../../../src/common/turmoil/PartyName';
 
 describe('Scientists', function() {
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     [game, player] = testGame(1, {turmoilExtension: true});
@@ -31,7 +31,7 @@ describe('Scientists', function() {
   });
 
   it('Ruling bonus 1: Gain 1 M€ for each science tag you have, with Habitat Marte', function() {
-    player.setCorporationForTest(new HabitatMarte());
+    player.corporations.push(new HabitatMarte());
     player.playedCards.push(new SearchForLife(), new DesignedOrganisms());
 
     const bonus = SCIENTISTS_BONUS_1;
@@ -68,7 +68,7 @@ describe('Scientists', function() {
 
     const card = new SearchForLife();
     setOxygenLevel(game, 8);
-    expect(player.simpleCanPlay(card)).to.be.true;
+    expect(card.canPlay(player)).to.be.true;
   });
 
   it('Ruling policy 3: When you raise a global parameter, draw a card per step raised', function() {
@@ -87,12 +87,12 @@ describe('Scientists', function() {
     setRulingParty(game, PartyName.SCIENTISTS, SCIENTISTS_POLICY_4.id);
 
     const card = new GeneRepair();
-    expect(player.simpleCanPlay(card)).to.be.false;
+    expect(card.canPlay(player)).to.be.false;
 
     const scientistsPolicy = SCIENTISTS_POLICY_4;
     scientistsPolicy.onPolicyStart(game);
     player.playedCards.push(new Research());
-    expect(player.simpleCanPlay(card)).to.be.true;
+    expect(card.canPlay(player)).to.be.true;
   });
 
   it('Ruling policy 4: Cards with multiple tag requirements may be played with 1 less Science tag', function() {
@@ -100,13 +100,13 @@ describe('Scientists', function() {
     player.playedCards.push(new SpaceStation(), new Satellites());
     player.titanium = 2;
     const card = new PrideoftheEarthArkship();
-    expect(player.simpleCanPlay(card)).to.be.false;
+    expect(card.canPlay(player)).to.be.false;
 
     setRulingParty(game, PartyName.SCIENTISTS, SCIENTISTS_POLICY_4.id);
     const scientistsPolicy = SCIENTISTS_POLICY_4;
     scientistsPolicy.onPolicyStart(game);
-    expect(player.simpleCanPlay(card)).to.be.true;
+    expect(card.canPlay(player)).to.be.true;
     scientistsPolicy.onPolicyEnd(game);
-    expect(player.simpleCanPlay(card)).to.be.false;
+    expect(card.canPlay(player)).to.be.false;
   });
 });

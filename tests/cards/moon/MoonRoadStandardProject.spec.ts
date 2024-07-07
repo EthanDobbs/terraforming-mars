@@ -8,9 +8,8 @@ import {TestPlayer} from '../../TestPlayer';
 import {MoonRoadStandardProject} from '../../../src/server/cards/moon/MoonRoadStandardProject';
 import {SelectPaymentDeferred} from '../../../src/server/deferredActions/SelectPaymentDeferred';
 import {MooncrateBlockFactory} from '../../../src/server/cards/moon/MooncrateBlockFactory';
-import {Phase} from '../../../src/common/Phase';
 import {Payment} from '../../../src/common/inputs/Payment';
-import {UnderworldTestHelper} from '../../underworld/UnderworldTestHelper';
+import {assertPlaceTile} from '../../assertions';
 import {TileType} from '../../../src/common/TileType';
 
 describe('MoonRoadStandardProject', () => {
@@ -64,17 +63,16 @@ describe('MoonRoadStandardProject', () => {
     expect(moonData.logisticRate).eq(0);
 
     runAllActions(game);
-    UnderworldTestHelper.assertPlaceTile(player, player.popWaitingFor(), TileType.MOON_ROAD);
+    assertPlaceTile(player, player.popWaitingFor(), TileType.MOON_ROAD);
 
     expect(moonData.logisticRate).eq(1);
     expect(player.getTerraformRating()).eq(15);
   });
 
 
-  it('can act when Reds are in power.', () => {
+  it('can act when Reds are in power', () => {
     const [game, player] = testGame(1, {moonExpansion: true, turmoilExtension: true});
     const moonData = MoonExpansion.moonData(game);
-    game.phase = Phase.ACTION;
 
     // Card requirements
     player.steel = 1;

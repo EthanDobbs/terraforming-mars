@@ -53,7 +53,12 @@ export type Behavior = {
   stock?: Partial<CountableUnits>;
 
   /** Gain n standard resources */
-  standardResource?: number | {count: number, same?: boolean};
+  standardResource?: number | {
+    /** Number of resources to gain. */
+    count: number,
+    /** Must all resources be the same type? Default is true. */
+    same?: boolean,
+  };
 
   /** Add resources to this card itself */
   addResources?: Countable;
@@ -165,6 +170,15 @@ export type Behavior = {
     corruption?: Countable,
     markThisGeneration?: NoAttributes,
   },
+
+  /**
+   * Log a message using a parameterized string replacement. This is not a normal template.
+   *
+   * Template does not accept traditional parameters ${0} and ${1}, but rather
+   * variables like ${player} and ${card}. These are the only values that can be
+   * replaced since this is the only context known at execution time.
+   */
+  log?: string,
 }
 
 export interface PlaceMoonTile {

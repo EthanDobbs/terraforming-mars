@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {VeneraBase} from '../../../src/server/cards/pathfinders/VeneraBase';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {TileType} from '../../../src/common/TileType';
 import {testGame} from '../../TestGame';
@@ -20,7 +20,7 @@ import {cast, churnAction} from '../../TestingUtils';
 describe('VeneraBase', function() {
   let card: VeneraBase;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let nonVenusFloater: IProjectCard;
   let venusFloater: IProjectCard;
   let venusFloater2: IProjectCard;
@@ -47,7 +47,7 @@ describe('VeneraBase', function() {
 
   it('play', function() {
     expect(player.production.asUnits()).deep.eq(Units.EMPTY);
-    const space = game.board.getSpace(SpaceName.VENERA_BASE);
+    const space = game.board.getSpaceOrThrow(SpaceName.VENERA_BASE);
     expect(space.tile).is.undefined;
     expect(space.player).is.undefined;
 

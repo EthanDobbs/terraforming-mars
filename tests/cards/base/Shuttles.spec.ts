@@ -2,7 +2,7 @@ import {expect} from 'chai';
 import {Bushes} from '../../../src/server/cards/base/Bushes';
 import {Shuttles} from '../../../src/server/cards/base/Shuttles';
 import {TollStation} from '../../../src/server/cards/base/TollStation';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {Resource} from '../../../src/common/Resource';
 import {setOxygenLevel} from '../../TestingUtils';
@@ -11,7 +11,7 @@ import {testGame} from '../../TestGame';
 describe('Shuttles', function() {
   let card: Shuttles;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new Shuttles();
@@ -20,19 +20,19 @@ describe('Shuttles', function() {
 
   it('Can not play without energy production', function() {
     setOxygenLevel(game, 5);
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
   });
 
   it('Can not play if oxygen level too low', function() {
     player.production.add(Resource.ENERGY, 1);
     setOxygenLevel(game, 4);
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
   });
 
   it('Should play', function() {
     setOxygenLevel(game, 5);
     player.production.add(Resource.ENERGY, 1);
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
 
     card.play(player);
     expect(player.production.energy).to.eq(0);

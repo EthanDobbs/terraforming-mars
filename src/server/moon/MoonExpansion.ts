@@ -16,6 +16,8 @@ import {Phase} from '../../common/Phase';
 import {BoardType} from '../boards/BoardType';
 import {VictoryPointsBreakdown} from '../game/VictoryPointsBreakdown';
 import {SpaceId} from '../../common/Types';
+import {Random} from '../../common/utils/Random';
+import {GameOptions} from '../game/GameOptions';
 
 export class MoonExpansion {
   public static readonly MOON_TILES: Set<TileType> = new Set([
@@ -63,9 +65,9 @@ export class MoonExpansion {
     throw new Error('Assertion error: Using a Moon feature when the Moon expansion is undefined.');
   }
 
-  public static initialize(): MoonData {
+  public static initialize(gameOptions: GameOptions, rng: Random): MoonData {
     return {
-      moon: MoonBoard.newInstance(),
+      moon: MoonBoard.newInstance(gameOptions, rng),
       habitatRate: 0,
       miningRate: 0,
       logisticRate: 0,
@@ -96,7 +98,7 @@ export class MoonExpansion {
   public static addTile(player: IPlayer, spaceId: SpaceId, tile: Tile): void {
     const game = player.game;
     MoonExpansion.ifMoon(game, (moonData) => {
-      const space = moonData.moon.getSpace(spaceId);
+      const space = moonData.moon.getSpaceOrThrow(spaceId);
       if (!this.MOON_TILES.has(tile.tileType)) {
         throw new Error(`Bad tile type for the moon: ${tile.tileType}`);
       }
@@ -300,9 +302,8 @@ export class MoonExpansion {
           if (include && options?.surfaceOnly) {
             include = space.spaceType !== SpaceType.COLONY;
           }
-
           if (include && options?.ownedBy !== undefined) {
-            include = space.player === options.ownedBy;
+            include = space.player === options.ownedBy || space.coOwner === options.ownedBy;
           }
 
           return include;
@@ -324,26 +325,38 @@ export class MoonExpansion {
     const reserveUnits: Units = card.reserveUnits || Units.EMPTY;
 
     const heat = reserveUnits.heat || 0;
+    const plants = reserveUnits.plants || 0;
     let steel = reserveUnits.steel || 0;
     let titanium = reserveUnits.titanium || 0;
 
-    const tilesBuilt: Array<TileType> = card.tilesBuilt || [];
+    for (const tileBuilt of card.tilesBuilt) {
+      switch (tileBuilt) {
+      case TileType.MOON_HABITAT:
+        if (player.cardIsInEffect(CardName.SUBTERRANEAN_HABITATS)) {
+          // Edge case: Momentum Virum is a space habitat, not a habitat
+          // ON the moon.
+          if (card.name !== CardName.MOMENTUM_VIRUM_HABITAT) {
+            titanium -= 1;
+          }
+        }
+        break;
 
-    if (tilesBuilt.includes(TileType.MOON_HABITAT) && player.cardIsInEffect(CardName.SUBTERRANEAN_HABITATS)) {
-      titanium -= 1;
-    }
+      case TileType.MOON_MINE:
+        if (player.cardIsInEffect(CardName.IMPROVED_MOON_CONCRETE)) {
+          titanium -= 1;
+        }
+        break;
 
-    if (tilesBuilt.includes(TileType.MOON_MINE) && player.cardIsInEffect(CardName.IMPROVED_MOON_CONCRETE)) {
-      titanium -= 1;
-    }
-
-    if (tilesBuilt.includes(TileType.MOON_ROAD) && player.cardIsInEffect(CardName.LUNAR_DUST_PROCESSING_PLANT)) {
-      steel = 0;
+      case TileType.MOON_ROAD:
+        if (player.cardIsInEffect(CardName.LUNAR_DUST_PROCESSING_PLANT)) {
+          steel = 0;
+        }
+      }
     }
 
     steel = Math.max(steel, 0);
     titanium = Math.max(titanium, 0);
-    return Units.of({steel, titanium, heat});
+    return Units.of({steel, titanium, heat, plants});
   }
 
   public static calculateVictoryPoints(player: IPlayer, vpb: VictoryPointsBreakdown): void {
@@ -351,7 +364,7 @@ export class MoonExpansion {
       // Each road tile on the map awards 1VP to the player owning it.
       // Each mine and colony (habitat) tile on the map awards 1VP per road tile touching them.
       const moon = moonData.moon;
-      const mySpaces = moon.spaces.filter((space) => space.player?.id === player.id);
+      const mySpaces = moon.spaces.filter((space) => space.player?.id === player.id || space.coOwner?.id === player.id);
       mySpaces.forEach((space) => {
         if (space.tile !== undefined) {
           const type = space.tile.tileType;

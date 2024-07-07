@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {TharsisRepublic} from '../../../src/server/cards/corporation/TharsisRepublic';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {SpaceType} from '../../../src/common/boards/SpaceType';
 import {TileType} from '../../../src/common/TileType';
 import {addCity, cast, runAllActions} from '../../TestingUtils';
@@ -12,13 +12,13 @@ describe('TharsisRepublic', function() {
   let card: TharsisRepublic;
   let player: TestPlayer;
   let player2: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new TharsisRepublic();
     [game, player, player2] = testGame(2);
 
-    player.setCorporationForTest(card);
+    player.corporations.push(card);
   });
 
   it('Should take initial action', function() {
@@ -58,8 +58,7 @@ describe('TharsisRepublic', function() {
   });
 
   it('Gives 2 M€ production in solo mode', function() {
-    const player = TestPlayer.BLUE.newPlayer();
-    const game = Game.newInstance('gameid', [player], player);
+    [game, player] = testGame(1);
     card.play(player);
     runAllActions(game);
     expect(player.production.megacredits).to.eq(2);

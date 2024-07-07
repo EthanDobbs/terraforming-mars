@@ -30,9 +30,9 @@ export class NeptunianPowerConsultants extends Card implements IProjectCard {
         renderData: CardRenderer.builder((b) => {
           b.oceans(1, {all, size: Size.SMALL}).asterix()
             .colon()
-            .minus().megacredits(5).openBrackets.steel(1).closeBrackets;
+            .minus().megacredits(5).super((b) => b.steel(1));
           b.br;
-          b.nbsp.nbsp.plus().production((pb) => pb.energy(1)).plus().hydroelectricResource(1);
+          b.nbsp.nbsp.plus().production((pb) => pb.energy(1)).plus().resource(CardResource.HYDROELECTRIC_RESOURCE);
           b.br;
           b.plainText('(Effect: When any ocean is placed, you MAY pay 5 M€ (steel may be used), to ' +
             'raise energy production 1 step and add 1 hydroelectric resource to this card.)');

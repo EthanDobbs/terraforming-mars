@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {PowerSupplyConsortium} from '../../../src/server/cards/base/PowerSupplyConsortium';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {SelectPlayer} from '../../../src/server/inputs/SelectPlayer';
 import {TestPlayer} from '../../TestPlayer';
 import {Resource} from '../../../src/common/Resource';
@@ -11,7 +11,7 @@ describe('PowerSupplyConsortium', function() {
   let card: PowerSupplyConsortium;
   let player: TestPlayer;
   let player2: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new PowerSupplyConsortium();
@@ -20,16 +20,16 @@ describe('PowerSupplyConsortium', function() {
 
   it('Cannot play without power tags', function() {
     player.production.add(Resource.ENERGY, 3);
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
     player.tagsForTest = {power: 1};
-    expect(player.simpleCanPlay(card)).is.false;
+    expect(card.canPlay(player)).is.false;
     player.tagsForTest = {power: 2};
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
   });
 
   it('Can play - no targets', function() {
     player.tagsForTest = {power: 2};
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
 
     card.play(player);
     runAllActions(game);
@@ -47,7 +47,7 @@ describe('PowerSupplyConsortium', function() {
   it('Can play - single target', function() {
     player2.production.override({energy: 1});
     player.tagsForTest = {power: 2};
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
 
     card.play(player);
     runAllActions(game);

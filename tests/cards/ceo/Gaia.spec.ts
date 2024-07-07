@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {TestPlayer} from '../../TestPlayer';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {testGame} from '../../TestGame';
 import {addGreenery, addCity, cast, forceGenerationEnd, runAllActions} from '../../TestingUtils';
 import {SelectSpace} from '../../../src/server/inputs/SelectSpace';
@@ -16,7 +16,7 @@ describe('Gaia', function() {
   let player: TestPlayer;
   let player2: TestPlayer;
   let player3: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(() => {
     card = new Gaia();
@@ -47,7 +47,7 @@ describe('Gaia', function() {
 
   it('Takes action, does not gain bonuses from Oceans', function() {
     // Place a tile that grants 1MC adjacency bonuses
-    const naturalPreservesSpace = game.board.getSpace('04');
+    const naturalPreservesSpace = game.board.getSpaceOrThrow('04');
     game.simpleAddTile(player2, naturalPreservesSpace, {tileType: TileType.NATURAL_PRESERVE});
     naturalPreservesSpace.adjacency = {bonus: [SpaceBonus.MEGACREDITS]};
 
@@ -63,7 +63,7 @@ describe('Gaia', function() {
 
   it('Takes action, Networker Milestone does not get a benefit', function() {
     // Place a tile that grants 1MC adjacency bonuses
-    const naturalPreservesSpace = game.board.getSpace('04');
+    const naturalPreservesSpace = game.board.getSpaceOrThrow('04');
     game.simpleAddTile(player2, naturalPreservesSpace, {tileType: TileType.NATURAL_PRESERVE});
     naturalPreservesSpace.adjacency = {bonus: [SpaceBonus.MEGACREDITS]};
 
@@ -81,7 +81,7 @@ describe('Gaia', function() {
 
   it('Takes action, owner of the adjacency bonus tile does not gain MC', function() {
     // Place a tile that grants 1MC adjacency bonuses
-    const naturalPreservesSpace = game.board.getSpace('04');
+    const naturalPreservesSpace = game.board.getSpaceOrThrow('04');
     game.simpleAddTile(player2, naturalPreservesSpace, {tileType: TileType.NATURAL_PRESERVE});
     naturalPreservesSpace.adjacency = {bonus: [SpaceBonus.MEGACREDITS]};
 

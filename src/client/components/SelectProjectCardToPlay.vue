@@ -1,3 +1,47 @@
+<template>
+<div class="payments_cont">
+
+  <div v-if="showtitle === true">{{ $t(playerinput.title) }}</div>
+
+  <label v-for="availableCard in cards" class="payments_cards" :key="availableCard.name">
+    <input class="hidden" type="radio" v-model="cardName" v-on:change="cardChanged()" :value="availableCard.name" />
+    <Card class="cardbox" :card="availableCard" />
+  </label>
+
+  <section v-trim-whitespace>
+    <div v-if="selectedCardHasWarning()" class="card-warning">{{ $t(card.warning) }}</div>
+    <warnings-component :warnings="card.warnings"></warnings-component>
+
+    <h3 class="payments_title" v-i18n>How to pay?</h3>
+
+    <template v-for="unit of SPENDABLE_RESOURCES">
+      <div v-bind:key="unit">
+        <payment-unit-component
+          v-model.number="payment[unit]"
+          v-if="canUse(unit) === true"
+          :unit="unit"
+          :description="descriptions[unit]"
+          @plus="addValue(unit)"
+          @minus="reduceValue(unit)"
+          @max="setMaxValue(unit)">
+        </payment-unit-component>
+        <div v-if="showReserveWarning(unit)" class="card-warning" v-i18n>
+        (Some {{unit}} are unavailable here in reserve for the project card.)
+        </div>
+      </div>
+    </template>
+
+    <div v-if="hasWarning()" class="tm-warning">
+      <label class="label label-error">{{ $t(warning) }}</label>
+    </div>
+
+    <div v-if="showsave === true" class="payments_save">
+      <AppButton size="big" @click="saveData" :title="$t(playerinput.buttonLabel)" data-test="save"/>
+    </div>
+  </section>
+</div>
+</template>
+
 <script lang="ts">
 import Vue from 'vue';
 
@@ -56,6 +100,7 @@ export default Vue.extend({
         'seeds',
         'graphene',
         'megaCredits',
+        'corruption',
         'bioengineeringStudiesAnimals',
         'asteroidBeltColonyAsteroids',
         'jovianConstructionYardFloaters',
@@ -64,10 +109,8 @@ export default Vue.extend({
   },
   data(): SelectProjectCardToPlayDataModel {
     let card: CardModel | undefined;
-    let cards: Array<CardModel> = [];
-    if (this.playerinput !== undefined &&
-            this.playerinput.cards !== undefined &&
-            this.playerinput.cards.length > 0) {
+    let cards: ReadonlyArray<CardModel> = [];
+    if ((this.playerinput?.cards?.length ?? 0) > 0) {
       cards = CardOrderStorage.getOrdered(
         CardOrderStorage.getCardOrder(this.playerView.id),
         this.playerinput.cards,
@@ -125,9 +168,17 @@ export default Vue.extend({
         this.payment[target] = 0;
       }
 
+      // Automatically use as many MC as possible, saving the rest for special resources.
+      //
+      // If the player wanted to maximize all standard resources / card resources, that line would have to be
+      // let megacreditBalance = this.cost;
+      // along with the last line in the function setting the MC value.
+      //
       let megacreditBalance = Math.max(this.cost - this.thisPlayer.megaCredits, 0);
 
-      // Calcualtes the optimal number of units to use given the unit value.
+      // console.log(this.cost, this.thisPlayer.megaCredits, megacreditBalance);
+
+      // Calculates the optimal number of units to use given the unit value.
       //
       // It reads `megacreditBalance` as the remaining balance, and deducts the
       // consumed balance as part of this method.
@@ -144,6 +195,8 @@ export default Vue.extend({
         const _tmp = megacreditBalance / unitValue;
         const balanceAsUnits = overpay ? Math.ceil(_tmp) : Math.floor(_tmp);
         const contributingUnits = Math.min(availableUnits, balanceAsUnits);
+
+        // console.log(megacreditBalance, unitValue, availableUnits, overpay, '-', _tmp, balanceAsUnits, contributingUnits);
 
         megacreditBalance -= contributingUnits * unitValue;
         return contributingUnits;
@@ -164,7 +217,7 @@ export default Vue.extend({
         return toSaveUnits;
       }
 
-      for (const unit of ['seeds', 'microbes', 'dirigiblesFloaters', 'lunaArchivesScience', 'graphene', 'bioengineeringStudiesAnimals'] as const) {
+      for (const unit of ['seeds', 'microbes', 'dirigiblesFloaters', 'lunaArchivesScience', 'graphene', 'corruption', 'bioengineeringStudiesAnimals'] as const) {
         if (megacreditBalance > 0 && this.canUse(unit)) {
           this.payment[unit] = deductUnits(this.getAvailableUnits(unit), this.getResourceRate(unit));
         }
@@ -214,10 +267,13 @@ export default Vue.extend({
           'asteroidBeltColonyAsteroids',
           'jovianConstructionYardFloaters',
           'lunaArchivesScience',
+          'corruption',
           'megaCredits',] as const) {
           this.payment[key] -= saveOverspendingUnits(this.payment[key], this.getResourceRate(key));
         }
       }
+      // See top that sets megacreditBalance
+      // this.payment['megaCredits'] = megacreditBalance;
     },
     canUseTitaniumRegularly(): boolean {
       return this.tags.includes(Tag.SPACE) ||
@@ -254,6 +310,8 @@ export default Vue.extend({
       case 'graphene':
         return this.tags.includes(Tag.SPACE) ||
             this.tags.includes(Tag.CITY);
+      case 'corruption':
+        return this.tags.includes(Tag.EARTH) && this.playerinput.paymentOptions.corruption === true;
       case 'bioengineeringStudiesAnimals':
         return this.tags.includes(Tag.ANIMAL);
       case 'asteroidBeltColonyAsteroids':
@@ -363,46 +421,3 @@ export default Vue.extend({
   },
 });
 </script>
-<template>
-<div class="payments_cont">
-
-  <div v-if="showtitle === true">{{ $t(playerinput.title) }}</div>
-
-  <label v-for="availableCard in cards" class="payments_cards" :key="availableCard.name">
-    <input class="hidden" type="radio" v-model="cardName" v-on:change="cardChanged()" :value="availableCard.name" />
-    <Card class="cardbox" :card="availableCard" />
-  </label>
-
-  <section v-trim-whitespace>
-    <div v-if="selectedCardHasWarning()" class="card-warning">{{ $t(card.warning) }}</div>
-    <warnings-component :warnings="card.warnings"></warnings-component>
-
-    <h3 class="payments_title" v-i18n>How to pay?</h3>
-
-    <template v-for="unit of SPENDABLE_RESOURCES">
-      <div v-bind:key="unit">
-        <payment-unit-component
-          v-model.number="payment[unit]"
-          v-if="canUse(unit) === true"
-          :unit="unit"
-          :description="descriptions[unit]"
-          @plus="addValue(unit)"
-          @minus="reduceValue(unit)"
-          @max="setMaxValue(unit)">
-        </payment-unit-component>
-        <div v-if="showReserveWarning(unit)" class="card-warning" v-i18n>
-        (Some {{unit}} are unavailable here in reserve for the project card.)
-        </div>
-      </div>
-    </template>
-
-    <div v-if="hasWarning()" class="tm-warning">
-      <label class="label label-error">{{ $t(warning) }}</label>
-    </div>
-
-    <div v-if="showsave === true" class="payments_save">
-      <AppButton size="big" @click="saveData" :title="$t(playerinput.buttonLabel)" data-test="save"/>
-    </div>
-  </section>
-</div>
-</template>

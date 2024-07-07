@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {UrbanizedArea} from '../../../src/server/cards/base/UrbanizedArea';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {Space} from '../../../src/server/boards/Space';
 import {Resource} from '../../../src/common/Resource';
 import {SpaceName} from '../../../src/server/SpaceName';
@@ -13,25 +13,25 @@ import {testGame} from '../../TestGame';
 describe('UrbanizedArea', function() {
   let card: UrbanizedArea;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let lands: Space[];
 
   beforeEach(function() {
     card = new UrbanizedArea();
     [game, player] = testGame(2);
 
-    const tharsisTholus = game.board.getSpace(SpaceName.THARSIS_THOLUS);
+    const tharsisTholus = game.board.getSpaceOrThrow(SpaceName.THARSIS_THOLUS);
     lands = game.board.getAdjacentSpaces(tharsisTholus).filter((space) => space.spaceType === SpaceType.LAND);
   });
 
   it('Can not play without energy production', function() {
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
   });
 
   it('Can not play without available space between two cities', function() {
     game.addCity(player, lands[0]);
     player.production.add(Resource.ENERGY, 1);
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
   });
 
   it('Should play', function() {
@@ -39,7 +39,7 @@ describe('UrbanizedArea', function() {
     game.addCity(player, lands[1]);
 
     player.production.add(Resource.ENERGY, 1);
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
 
     const action = cast(card.play(player), SelectSpace);
     expect(action.spaces).has.lengthOf(1);

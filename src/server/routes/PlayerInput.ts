@@ -1,4 +1,4 @@
-import * as responses from './responses';
+import * as responses from '../server/responses';
 import {IPlayer} from '../IPlayer';
 import {Server} from '../models/ServerModel';
 import {Handler} from './Handler';
@@ -12,12 +12,10 @@ import {Response} from '../Response';
 import {runId} from '../utils/server-ids';
 import {AppError} from '../server/AppError';
 import {statusCode} from '../../common/http/statusCode';
+import {InputError} from '../inputs/InputError';
 
 export class PlayerInput extends Handler {
   public static readonly INSTANCE = new PlayerInput();
-  private constructor() {
-    super();
-  }
 
   public override async post(req: Request, res: Response, ctx: Context): Promise<void> {
     const playerId = ctx.url.searchParams.get('id');
@@ -83,6 +81,8 @@ export class PlayerInput extends Handler {
   }
 
   private processInput(req: Request, res: Response, ctx: Context, player: IPlayer): Promise<void> {
+    // TODO(kberg): Find a better place for this optimization.
+    player.tableau.forEach((card) => card.warnings.clear());
     return new Promise((resolve) => {
       let body = '';
       req.on('data', (data) => {
@@ -100,7 +100,7 @@ export class PlayerInput extends Handler {
           }
           resolve();
         } catch (e) {
-          if (!(e instanceof AppError)) {
+          if (!(e instanceof AppError || e instanceof InputError)) {
             console.warn('Error processing input from player', e);
           }
           // TODO(kberg): use responses.ts, though that changes the output.

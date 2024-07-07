@@ -25,11 +25,11 @@ export class JetStreamMicroscrappers extends Card implements IActionCard {
         cardNumber: '234',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 1 titanium to add 2 floaters here', (eb) => {
-            eb.titanium(1).startAction.floaters(2);
+            eb.titanium(1).startAction.resource(CardResource.FLOATER, 2);
           }).br;
           b.or().br;
           b.action('Spend 2 floaters here to raise Venus 1 step', (eb) => {
-            eb.floaters(2).startAction.venus(1);
+            eb.resource(CardResource.FLOATER, 2).startAction.venus(1);
           });
         }),
       },
@@ -44,7 +44,7 @@ export class JetStreamMicroscrappers extends Card implements IActionCard {
   }
 
   public action(player: IPlayer) {
-    const opts: Array<SelectOption> = [];
+    const opts = [];
 
     const addResource = new SelectOption('Spend one titanium to add 2 floaters to this card', 'Spend titanium').andThen(() => this.addResource(player));
     const spendResource = new SelectOption('Remove 2 floaters to raise Venus 1 step', 'Remove floaters').andThen(() => this.spendResource(player));

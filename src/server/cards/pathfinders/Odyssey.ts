@@ -4,11 +4,9 @@ import {IPlayer} from '../../IPlayer';
 import {CardName} from '../../../common/cards/CardName';
 import {CardType} from '../../../common/cards/CardType';
 import {CardRenderer} from '../render/CardRenderer';
-import {played} from '../Options';
 import {IActionCard} from '../ICard';
 import {Size} from '../../../common/cards/render/Size';
 import {SelectProjectCardToPlay} from '../../inputs/SelectProjectCardToPlay';
-import {PlayableCard} from '../IProjectCard';
 
 export class Odyssey extends CorporationCard implements IActionCard {
   constructor() {
@@ -25,7 +23,7 @@ export class Odyssey extends CorporationCard implements IActionCard {
           b.text('(Effect: Your event cards stay face up, and their tags are in use as if those were automated (green) cards.)',
             Size.TINY, false, false).br;
           b.action('Pay for and play an event card you have already played that has a base cost of 16M€ or less (INCLUDING events that place special tiles,) after which discard that card.', (e) => {
-            e.empty().startAction.event({played}).asterix().nbsp.text('≤').nbsp.megacredits(16);
+            e.empty().startAction.tag(Tag.EVENT).asterix().nbsp.text('≤').nbsp.megacredits(16);
           });
         }),
       },
@@ -43,8 +41,12 @@ export class Odyssey extends CorporationCard implements IActionCard {
   private availableEventCards(player: IPlayer) {
     this.checkLoops++;
     try {
-      const array: Array<PlayableCard> = [];
+      const array = [];
       for (const card of player.playedCards) {
+        // Special case Price Wars, which is not easy to work with.
+        if (card.name === CardName.PRICE_WARS) {
+          continue;
+        }
         if (card.type === CardType.EVENT && card.cost <= 16) {
           const details = player.canPlay(card);
           if (details !== false) {

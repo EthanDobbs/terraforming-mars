@@ -8,6 +8,7 @@ export type GameOptionsModel = {
   altVenusBoard: boolean,
   boardName: BoardName,
   bannedCards: Array<CardName>;
+  includedCards: Array<CardName>;
   ceoExtension: boolean,
   chemicalExpansion: boolean,
   coloniesExtension: boolean,
@@ -25,8 +26,9 @@ export type GameOptionsModel = {
   initialDraftVariant: boolean,
   moonExpansion: boolean,
   pathfindersExpansion: boolean,
-  preludeExtension: boolean,
   prelude2Expansion: boolean,
+  preludeDraftVariant: boolean,
+  preludeExtension: boolean,
   promoCardsOption: boolean,
   politicalAgendasExtension: AgendaStyle,
   removeNegativeGlobalEvents: boolean,

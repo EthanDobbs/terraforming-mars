@@ -28,11 +28,11 @@ export class DirectedImpactors extends Card implements IActionCard, IProjectCard
         cardNumber: 'X19',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 6 M€ to add 1 asteroid to ANY CARD (titanium may be used to pay for this).', (eb) => {
-            eb.megacredits(6).openBrackets.titanium(1).closeBrackets.startAction.asteroids(1).asterix();
+            eb.megacredits(6).super((b) => b.titanium(1)).startAction.resource(CardResource.ASTEROID).asterix();
           }).br;
           b.or().br;
           b.action('Remove 1 asteroid here to raise temperature 1 step.', (eb) => {
-            eb.asteroids(1).startAction.temperature(1);
+            eb.resource(CardResource.ASTEROID).startAction.temperature(1);
           });
         }),
       },
@@ -51,7 +51,7 @@ export class DirectedImpactors extends Card implements IActionCard, IProjectCard
 
   public action(player: IPlayer) {
     const asteroidCards = player.getResourceCards(CardResource.ASTEROID);
-    const opts: Array<SelectOption> = [];
+    const opts = [];
 
     const addResource = new SelectOption('Pay 6 M€ to add 1 asteroid to a card', 'Pay').andThen(() => this.addResource(player, asteroidCards));
     const spendResource = new SelectOption('Remove 1 asteroid to raise temperature 1 step', 'Remove asteroid').andThen(() => this.spendResource(player));

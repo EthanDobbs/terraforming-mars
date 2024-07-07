@@ -10,7 +10,6 @@ import {GameId} from '../Types';
 export type BoardNameType = BoardName | RandomBoardOption;
 
 export interface NewPlayerModel {
-  index: number;
   name: string;
   color: Color;
   beginner: boolean;
@@ -18,6 +17,9 @@ export interface NewPlayerModel {
   first: boolean;
 }
 
+/**
+ * Like GameOptions, but the data structure sent from the new game page.
+ */
 export interface NewGameConfig {
   players: Array<NewPlayerModel>;
   prelude: boolean;
@@ -26,7 +28,6 @@ export interface NewGameConfig {
   turmoil: boolean;
   board: BoardNameType;
   seed: number;
-  initialDraft: boolean;
   randomFirstPlayer: boolean;
 
   // boardName: BoardName;
@@ -59,7 +60,8 @@ export interface NewGameConfig {
 
   // Variants
   draftVariant: boolean;
-  // initialDraftVariant: boolean;
+  initialDraft: boolean; // initialDraftVariant: boolean;
+  preludeDraftVariant: boolean;
   startingCorporations: number;
   shuffleMapOption: boolean;
   randomMA: RandomMAOptionType;
@@ -67,11 +69,13 @@ export interface NewGameConfig {
   soloTR: boolean; // Solo victory by getting TR 63 by game end
   customCorporationsList: Array<CardName>;
   bannedCards: Array<CardName>;
+  includedCards: Array<CardName>;
   customColoniesList: Array<ColonyName>;
   customPreludes: Array<CardName>;
   requiresMoonTrackCompletion: boolean; // Moon must be completed to end the game
   requiresVenusTrackCompletion: boolean; // Venus must be completed to end the game
   moonStandardProjectVariant: boolean;
+  moonStandardProjectVariant1: boolean;
   altVenusBoard: boolean;
   escapeVelocityMode: boolean;
   escapeVelocityThreshold: number | undefined;

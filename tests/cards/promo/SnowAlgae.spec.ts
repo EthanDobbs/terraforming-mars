@@ -1,7 +1,6 @@
 import {expect} from 'chai';
 import {SnowAlgae} from '../../../src/server/cards/promo/SnowAlgae';
-import {Game} from '../../../src/server/Game';
-import {maxOutOceans} from '../../TestingUtils';
+import {maxOutOceans, testGame} from '../../TestingUtils';
 import {TestPlayer} from '../../TestPlayer';
 
 describe('SnowAlgae', function() {
@@ -10,18 +9,17 @@ describe('SnowAlgae', function() {
 
   beforeEach(function() {
     card = new SnowAlgae();
-    player = TestPlayer.BLUE.newPlayer();
-    Game.newInstance('gameid', [player], player);
+    [/* game */, player] = testGame(1);
   });
 
   it('Can not play', function() {
     maxOutOceans(player, 1);
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
   });
 
   it('Should play', function() {
     maxOutOceans(player, 2);
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
 
     card.play(player);
     expect(player.production.plants).to.eq(1);

@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {Crashlanding} from '../../../src/server/cards/pathfinders/Crashlanding';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {testGame} from '../../TestGame';
 import {CardName} from '../../../src/common/cards/CardName';
@@ -27,7 +27,7 @@ import {EmptyBoard} from '../../ares/EmptyBoard';
 describe('Crashlanding', () => {
   let card: Crashlanding;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let dataCard: IProjectCard;
   let microbeCard: IProjectCard;
   let animalCard: IProjectCard;
@@ -60,7 +60,7 @@ describe('Crashlanding', () => {
   });
 
   it('play - cannot play next to 2 cities', () => {
-    const spaceBetweenTwoCities = game.board.getSpace('36');
+    const spaceBetweenTwoCities = game.board.getSpaceOrThrow('36');
     addCity(player, '37'),
     expect(cast(card.play(player), SelectSpace).spaces).to.include(spaceBetweenTwoCities);
     addCity(player, '35');
@@ -82,7 +82,7 @@ describe('Crashlanding', () => {
   it('adjacency bonuses', () => {
     game.board = EmptyBoard.newInstance(); // Avoids other adjacency bonuses
     player.playedCards.push(dataCard);
-    const space = game.board.getSpace('36');
+    const space = game.board.getSpaceOrThrow('36');
     const selectSpace = cast(card.play(player), SelectSpace);
     const orOptions = cast(selectSpace.cb(space), OrOptions);
     orOptions.options[0].cb();
@@ -104,7 +104,7 @@ describe('Crashlanding', () => {
   it('adjacency bonuses, rotated', () => {
     game.board = EmptyBoard.newInstance(); // Avoids other adjacency bonuses
     player.playedCards.push(dataCard);
-    const space = game.board.getSpace('36');
+    const space = game.board.getSpaceOrThrow('36');
     const selectSpace = cast(card.play(player), SelectSpace);
     const orOptions = cast(selectSpace.cb(space), OrOptions);
     orOptions.options[1].cb();
@@ -130,7 +130,7 @@ describe('Crashlanding', () => {
 
     addGreenery(player, '35');
 
-    const space = game.board.getSpace('36');
+    const space = game.board.getSpaceOrThrow('36');
     const selectSpace = cast(card.play(player), SelectSpace);
     const orOptions = cast(selectSpace.cb(space), OrOptions);
     orOptions.options[1].cb();

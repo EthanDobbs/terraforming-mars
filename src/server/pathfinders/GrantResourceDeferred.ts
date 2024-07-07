@@ -1,8 +1,9 @@
 import {OrOptions} from '../inputs/OrOptions';
 import {SelectCard} from '../inputs/SelectCard';
-import {DeferredAction, Priority} from '../deferredActions/DeferredAction';
+import {DeferredAction} from '../deferredActions/DeferredAction';
+import {Priority} from '../deferredActions/Priority';
 import {IPlayer} from '../IPlayer';
-import {SelectResources} from '../inputs/SelectResources';
+import {GainResources} from '../inputs/GainResources';
 
 // TODO(kberg): Copied from GrantVenusAltTrackBonusDeferred, get these together.
 export class GrantResourceDeferred extends DeferredAction {
@@ -13,7 +14,7 @@ export class GrantResourceDeferred extends DeferredAction {
   public execute() {
     const options = new OrOptions();
     options.title = 'Choose your resource bonus';
-    options.options.push(new SelectResources(this.player, 1, 'Gain 1 standard resource.'));
+    options.options.push(new GainResources(this.player, 1, 'Gain 1 standard resource.'));
     if (this.wild) {
       const cards = this.player.getResourceCards(undefined);
       if (cards.length > 0) {

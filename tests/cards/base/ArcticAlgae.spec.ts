@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import {testGame} from '../../TestGame';
 import {ArcticAlgae} from '../../../src/server/cards/base/ArcticAlgae';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {addOcean, runNextAction, setTemperature} from '../../TestingUtils';
 import {TestPlayer} from '../../TestPlayer';
 
@@ -9,7 +9,7 @@ describe('ArcticAlgae', function() {
   let card: ArcticAlgae;
   let player: TestPlayer;
   let player2: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new ArcticAlgae();
@@ -18,7 +18,7 @@ describe('ArcticAlgae', function() {
 
   it('Can not play', function() {
     setTemperature(game, -10);
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
   });
 
   it('Should play', function() {

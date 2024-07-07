@@ -1,7 +1,7 @@
 import {AddResourcesToCard} from '../deferredActions/AddResourcesToCard';
-import {CardName} from '../../common/cards/CardName';
 import {ColonyBenefit} from '../../common/colonies/ColonyBenefit';
-import {DeferredAction, Priority, SimpleDeferredAction} from '../deferredActions/DeferredAction';
+import {DeferredAction, SimpleDeferredAction} from '../deferredActions/DeferredAction';
+import {Priority} from '../deferredActions/Priority';
 import {DiscardCards} from '../deferredActions/DiscardCards';
 import {DrawCards} from '../deferredActions/DrawCards';
 import {GiveColonyBonus} from '../deferredActions/GiveColonyBonus';
@@ -27,6 +27,9 @@ import {colonyMetadata, IColonyMetadata, IInputColonyMetadata} from '../../commo
 import {ColonyName} from '../../common/colonies/ColonyName';
 import {sum} from '../../common/utils/utils';
 import {message} from '../logs/MessageBuilder';
+import {PlaceHazardTile} from '../deferredActions/PlaceHazardTile';
+import {TileType} from '../../../src/common/TileType';
+import {ErodeSpacesDeferred} from '../underworld/ErodeSpacesDeferred';
 
 export enum ShouldIncreaseTrack { YES, NO, ASK }
 export abstract class Colony implements IColony {
@@ -89,28 +92,16 @@ export abstract class Colony implements IColony {
       this.trackPosition = this.colonies.length;
     }
 
-    for (const p of player.game.getPlayers()){
-      for (const playedCard of p.tableau) {
-        playedCard.onColonyBuilt?.(p, player, this);
+    for (const cardOwner of player.game.getPlayers()) {
+      for (const card of cardOwner.tableau) {
+        card.onColonyAdded?.(player, cardOwner);
       }
     }
 
-    // Poseidon hook
-    const poseidon = player.game.getPlayers().find((player) => player.isCorporation(CardName.POSEIDON));
-    if (poseidon !== undefined) {
-      poseidon.production.add(Resource.MEGACREDITS, 1, {log: true});
-    }
-
-    // CEO Naomi hook
-    if (player.cardIsInEffect(CardName.NAOMI)) {
-      player.stock.add(Resource.ENERGY, 2, {log: true});
-      player.stock.add(Resource.MEGACREDITS, 3, {log: true});
-    }
-
-    // Colony Trade Hub hook
-    const colonyTradeHub = player.game.getPlayers().find((player) => player.cardIsInEffect(CardName.COLONY_TRADE_HUB));
-    if (colonyTradeHub !== undefined) {
-      colonyTradeHub.stock.add(Resource.MEGACREDITS, 2, {log: true});
+    if (this.name === ColonyName.LEAVITT) {
+      for (const card of player.tableau) {
+        card.onColonyAddedToLeavitt?.(player);
+      }
     }
   }
 
@@ -232,8 +223,10 @@ export abstract class Colony implements IColony {
       break;
 
     case ColonyBenefit.DRAW_CARDS_AND_DISCARD_ONE:
-      player.drawCard();
-      action = new DiscardCards(player, 1, 1, this.name + ' colony bonus. Select a card to discard');
+      player.defer(() => {
+        player.drawCard();
+        player.game.defer(new DiscardCards(player, 1, 1, this.name + ' colony bonus. Select a card to discard'), Priority.SUPERPOWER);
+      });
       break;
 
     case ColonyBenefit.DRAW_CARDS_AND_KEEP_ONE:
@@ -291,6 +284,25 @@ export abstract class Colony implements IColony {
       });
       break;
 
+    case ColonyBenefit.PLACE_HAZARD_TILE:
+      const spaces = game.board.getAvailableSpacesOnLand(player)
+        .filter(((space) => space.tile === undefined))
+        .filter((space) => {
+          const adjacentSpaces = game.board.getAdjacentSpaces(space);
+          return adjacentSpaces.filter((space) => space.tile !== undefined).length === 0;
+        });
+
+      game.defer(new PlaceHazardTile(player, TileType.EROSION_MILD, {title: 'Select space next to no other tile for hazard', spaces}));
+      break;
+
+    case ColonyBenefit.ERODE_SPACES_ADJACENT_TO_HAZARDS:
+      game.defer(new ErodeSpacesDeferred(player, quantity));
+      break;
+
+    case ColonyBenefit.GAIN_MC_PER_HAZARD_TILE:
+      player.stock.megacredits += game.board.getHazards().length;
+      break;
+
     case ColonyBenefit.GAIN_TR:
       if (quantity > 0) {
         player.increaseTerraformRating(quantity, {log: true});
@@ -346,9 +358,11 @@ export abstract class Colony implements IColony {
       if (isGiveColonyBonus) {
         /*
          * When this method is called from within the GiveColonyBonus deferred action
-         * we return the player input directly instead of deferring it
+         * we return the player input directly instead of deferring it.
+         *
+         * TODO(kberg): why?
          */
-        return action.execute(); // undefined | PlayerInput
+        return action.execute();
       } else {
         game.defer(action);
         return undefined;

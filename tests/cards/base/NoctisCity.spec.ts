@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {NoctisCity} from '../../../src/server/cards/base/NoctisCity';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {Resource} from '../../../src/common/Resource';
 import {SpaceName} from '../../../src/server/SpaceName';
 import {TileType} from '../../../src/common/TileType';
@@ -13,7 +13,7 @@ import {SelectSpace} from '../../../src/server/inputs/SelectSpace';
 describe('NoctisCity', function() {
   let card: NoctisCity;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new NoctisCity();
@@ -21,7 +21,7 @@ describe('NoctisCity', function() {
   });
 
   it('Cannot play without energy production', function() {
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
   });
 
   it('All land spaces are available on Hellas', function() {
@@ -34,13 +34,13 @@ describe('NoctisCity', function() {
 
   it('Should play', function() {
     player.production.add(Resource.ENERGY, 1);
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
 
     card.play(player);
     expect(player.production.energy).to.eq(0);
     expect(player.production.megacredits).to.eq(3);
 
-    const noctis = game.board.getSpace(SpaceName.NOCTIS_CITY);
+    const noctis = game.board.getSpaceOrThrow(SpaceName.NOCTIS_CITY);
     expect(noctis.tile?.tileType).to.eq(TileType.CITY);
   });
 });

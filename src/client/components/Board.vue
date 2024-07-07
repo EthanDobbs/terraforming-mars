@@ -94,6 +94,17 @@
             />
 
             <svg id="board_legend" height="550" width="630" class="board-legend">
+              <g v-for="(key, idx) of LEGENDS[boardName]" :key="idx" :transform="`translate(${key.position[0]}, ${key.position[1]})`">
+                <text class="board-caption">
+                  <tspan y="0">{{key.text[0]}}</tspan>
+                  <tspan :x="key.secondRowX || 0" y="1.1em">{{key.text[1]}}</tspan>
+                </text>
+                <template v-if="key.line !== undefined">
+                  <line :x1="key.line.from[0]" :y1="key.line.from[1]" :x2="key.line.to[0]" :y2="key.line.to[1]" class="board-line"></line>
+                  <circle :cx="key.line.to[0]" :cy="key.line.to[1]" r="2" class="board-caption board_caption--black"/>
+                </template>
+              </g>
+
               <template v-if="boardName === BoardName.THARSIS">
                   <g id="ascraeus_mons" transform="translate(95, 192)">
                       <text class="board-caption">
@@ -167,6 +178,48 @@
                       <text class="board-caption">
                           <tspan x="-5" dy="15">Olympus</tspan>
                           <tspan x="4" dy="12">Mons</tspan>
+                      </text>
+                  </g>
+                </template>
+
+                <template v-if="boardName === BoardName.VASTITAS_BOREALIS_NOVUS">
+                  <g id="hectates_tholius_vastitas_borealis_novus"  transform="translate(270, 70)">
+                      <text class="board-caption">
+                          <tspan dy="15">Hectates</tspan>
+                          <tspan x="5" dy="12">Tholius</tspan>
+                      </text>
+                  </g>
+
+                  <g id="elysium_mons_vastitas_borealis_novus" transform="translate(480, 145)">
+                      <text class="board-caption">
+                          <tspan x="-5" dy="15">Elysium</tspan>
+                          <tspan x="4" dy="12">Mons</tspan>
+                      </text>
+                  </g>
+
+                  <g id="alba_mons_vastitas_borealis_novus" transform="translate(105, 230)">
+                      <text class="board-caption">
+                          <tspan x="0" dy="15">Alba</tspan>
+                          <tspan x="-1" dy="12">Mons</tspan>
+                      </text>
+                  </g>
+
+                  <g id="viking_2_vastitas_borealis_novus" transform="translate(530, 235)">
+                      <text class="board-caption">
+                          <tspan x="-5" dy="15">Viking 2</tspan>
+                      </text>
+                  </g>
+
+                  <g id="uranius_tholus_vastitas_borealis_novus" transform="translate(115, 370)">
+                      <text class="board-caption">
+                          <tspan x="0" dy="0">Uranius</tspan>
+                          <tspan x="2" dy="12">Tholus</tspan>
+                      </text>
+                  </g>
+
+                  <g id="viking_1_vastitas_borealis_novus" transform="translate(164, 445)">
+                      <text class="board-caption">
+                          <tspan x="-5" dy="15">Viking 1</tspan>
                       </text>
                   </g>
                 </template>
@@ -276,6 +329,8 @@
                           <tspan dy="15">Albor</tspan>
                           <tspan x="5" dy="12">Tholus</tspan>
                       </text>
+                      <line x1="38" y1="26" x2="63" y2="38" class="board-line"></line>
+                      <text x="61" y="41" class="board-caption board_caption--black">●</text>
                   </g>
                   <g id="apollinaris_mons" transform="translate(500, 210)">
                       <text class="board-caption">
@@ -315,6 +370,7 @@ import {SpaceType} from '@/common/boards/SpaceType';
 import {SpaceId} from '@/common/Types';
 import {TileView} from '@/client/components/board/TileView';
 import {BoardName} from '@/common/boards/BoardName';
+import {LEGENDS} from '@/client/components/Legends';
 
 class GlobalParamLevel {
   constructor(public value: number, public isActive: boolean, public strValue: string) {
@@ -337,7 +393,7 @@ export default Vue.extend({
       type: Boolean,
     },
     boardName: {
-      type: String,
+      type: String as () => BoardName,
     },
     oceans_count: {
       type: Number,
@@ -394,7 +450,7 @@ export default Vue.extend({
       throw new Error('Board space not found by id \'' + spaceId + '\'');
     },
     getValuesForParameter(targetParameter: string): Array<GlobalParamLevel> {
-      const values: Array<GlobalParamLevel> = [];
+      const values = [];
       let startValue: number;
       let endValue: number;
       let step: number;
@@ -455,6 +511,9 @@ export default Vue.extend({
   computed: {
     BoardName(): typeof BoardName {
       return BoardName;
+    },
+    LEGENDS(): typeof LEGENDS {
+      return LEGENDS;
     },
   },
 });

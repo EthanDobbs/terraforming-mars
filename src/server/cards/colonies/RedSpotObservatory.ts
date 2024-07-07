@@ -28,8 +28,8 @@ export class RedSpotObservatory extends Card implements IProjectCard {
         cardNumber: 'C32',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 floater to this card, or spend 1 floater here to draw a card.', (eb) => {
-            eb.empty().arrow().floaters(1).or();
-            eb.floaters(1).startAction.cards(1);
+            eb.empty().arrow().resource(CardResource.FLOATER).or();
+            eb.resource(CardResource.FLOATER).startAction.cards(1);
           }).br;
           b.cards(2);
         }),
@@ -52,7 +52,7 @@ export class RedSpotObservatory extends Card implements IProjectCard {
       return undefined;
     }
 
-    const opts: Array<SelectOption> = [];
+    const opts = [];
 
     const addResource = new SelectOption('Add 1 floater on this card', 'Add floater').andThen(() => this.addResource(player));
     const spendResource = new SelectOption('Remove 1 floater on this card to draw a card', 'Remove floater').andThen(() => this.spendResource(player));

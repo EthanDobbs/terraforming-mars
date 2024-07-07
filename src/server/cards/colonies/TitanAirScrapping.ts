@@ -24,11 +24,11 @@ export class TitanAirScrapping extends Card implements IProjectCard {
         cardNumber: 'C43',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 1 titanium to add 2 floaters here.', (eb) => {
-            eb.titanium(1).startAction.floaters(2);
+            eb.titanium(1).startAction.resource(CardResource.FLOATER, 2);
           }).br;
           b.or().br;
           b.action('Spend 2 floaters here to increase your TR 1 step.', (eb) => {
-            eb.floaters(2).startAction.tr(1);
+            eb.resource(CardResource.FLOATER, 2).startAction.tr(1);
           });
         }),
       },
@@ -47,7 +47,7 @@ export class TitanAirScrapping extends Card implements IProjectCard {
   }
 
   public action(player: IPlayer) {
-    const opts: Array<SelectOption> = [];
+    const opts = [];
 
     const addResource = new SelectOption('Spend 1 titanium to add 2 floaters on this card', 'Spend titanium').andThen(() => this.addResource(player));
     const spendResource = new SelectOption('Remove 2 floaters on this card to increase your TR 1 step', 'Remove floaters').andThen(() => this.spendResource(player));

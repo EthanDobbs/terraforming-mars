@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {Aurorai} from '../../../src/server/cards/pathfinders/Aurorai';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {testGame} from '../../TestGame';
 import {cast, runAllActions} from '../../TestingUtils';
@@ -12,12 +12,12 @@ import {Payment} from '../../../src/common/inputs/Payment';
 describe('Aurorai', function() {
   let card: Aurorai;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new Aurorai();
     [game, player] = testGame(1);
-    player.setCorporationForTest(card);
+    player.corporations.push(card);
   });
 
   it('on TR bump', () => {

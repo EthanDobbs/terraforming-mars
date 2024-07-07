@@ -1,10 +1,10 @@
 import {expect} from 'chai';
 import {WildlifeDome} from '../../../src/server/cards/turmoil/WildlifeDome';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {Phase} from '../../../src/common/Phase';
 import {PartyName} from '../../../src/common/turmoil/PartyName';
 import {PoliticalAgendas} from '../../../src/server/turmoil/PoliticalAgendas';
-import {cast, runAllActions} from '../../TestingUtils';
+import {cast, runAllActions, testGame} from '../../TestingUtils';
 import {TestPlayer} from '../../TestPlayer';
 import {SelectSpace} from '../../../src/server/inputs/SelectSpace';
 import {Turmoil} from '../../../src/server/turmoil/Turmoil';
@@ -13,17 +13,14 @@ import {IParty} from '../../../src/server/turmoil/parties/IParty';
 describe('WildlifeDome', function() {
   let card: WildlifeDome;
   let player: TestPlayer;
-  let redPlayer: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let turmoil: Turmoil;
   let reds: IParty;
   let greens: IParty;
 
   beforeEach(() => {
     card = new WildlifeDome();
-    player = TestPlayer.BLUE.newPlayer();
-    redPlayer = TestPlayer.RED.newPlayer();
-    game = Game.newInstance('gameid', [player, redPlayer], player, {turmoilExtension: true});
+    [game, player/* , player2 */] = testGame(2, {turmoilExtension: true});
     turmoil = game.turmoil!;
     reds = turmoil.getPartyByName(PartyName.REDS);
     greens = turmoil.getPartyByName(PartyName.GREENS);
@@ -32,7 +29,7 @@ describe('WildlifeDome', function() {
   it('Should play: reds', function() {
     turmoil.rulingParty = reds;
     PoliticalAgendas.setNextAgenda(turmoil, game);
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
   });
 
   it('Play when greens are in power', function() {
@@ -63,6 +60,6 @@ describe('WildlifeDome', function() {
     expect(player.canPlay(card)).is.not.true;
 
     player.megaCredits = 18;
-    expect(player.canPlay(card)).is.true;
+    expect(player.canPlay(card)).deep.eq({redsCost: 3});
   });
 });

@@ -8,7 +8,6 @@ import {Tag} from '../../../common/cards/Tag';
 import {IPlayer} from '../../IPlayer';
 import {CardRenderer} from '../render/CardRenderer';
 import {Size} from '../../../common/cards/render/Size';
-import {played} from '../Options';
 
 export class AsteroidDeflectionSystem extends Card implements IActionCard, IProjectCard {
   constructor() {
@@ -29,7 +28,7 @@ export class AsteroidDeflectionSystem extends Card implements IActionCard, IProj
         cardNumber: 'X14',
         renderData: CardRenderer.builder((b) => {
           b.action('REVEAL AND DISCARD the top card of the deck. If it has a space tag, add an asteroid here.', (eb) => {
-            eb.empty().startAction.cards(1).asterix().nbsp.space({played}).colon().asteroids(1);
+            eb.empty().startAction.cards(1).asterix().nbsp.tag(Tag.SPACE).colon().resource(CardResource.ASTEROID);
           }).br;
           b.production((pb) => pb.minus().energy(1)).text('opponents may not remove your plants', Size.SMALL, true);
         }),
@@ -41,17 +40,23 @@ export class AsteroidDeflectionSystem extends Card implements IActionCard, IProj
     });
   }
 
-  public canAct(): boolean {
+  public canAct(player: IPlayer): boolean {
+    if (!player.game.projectDeck.canDraw(1)) {
+      this.warnings.add('deckTooSmall');
+    }
     return true;
   }
 
   public action(player: IPlayer) {
-    const topCard = player.game.projectDeck.drawLegacy(player.game);
-    player.game.log('${0} revealed and discarded ${1}', (b) => b.player(player).card(topCard, {tags: true}));
-    if (topCard.tags.includes(Tag.SPACE)) {
+    const card = player.game.projectDeck.draw(player.game);
+    if (card === undefined) {
+      return;
+    }
+    player.game.log('${0} revealed and discarded ${1}', (b) => b.player(player).card(card, {tags: true}));
+    if (card.tags.includes(Tag.SPACE)) {
       player.addResourceTo(this, {qty: 1, log: true});
     }
-    player.game.projectDeck.discard(topCard);
+    player.game.projectDeck.discard(card);
     return undefined;
   }
 }

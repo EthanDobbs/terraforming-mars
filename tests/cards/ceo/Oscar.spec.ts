@@ -1,10 +1,9 @@
 import {expect} from 'chai';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {testGame} from '../../TestGame';
 import {forceGenerationEnd, runAllActions} from '../../TestingUtils';
 import {TestPlayer} from '../../TestPlayer';
 import {Turmoil} from '../../../src/server/turmoil/Turmoil';
-
 import {Oscar} from '../../../src/server/cards/ceos/Oscar';
 import {Politician} from '../../../src/server/awards/terraCimmeria/Politician';
 import {TempestConsultancy} from '../../../src/server/cards/moon/TempestConsultancy';
@@ -13,7 +12,7 @@ describe('Oscar', function() {
   let card: Oscar;
   let player: TestPlayer;
   let player2: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let turmoil: Turmoil;
 
   beforeEach(() => {
@@ -78,7 +77,7 @@ describe('Oscar', function() {
 
   it('OPG gains 1 TR with Tempest Consultancy', function() {
     const tempcons = new TempestConsultancy();
-    player.setCorporationForTest(tempcons);
+    player.corporations.push(tempcons);
     const tr = player.getTerraformRating();
     card.action(player);
     runAllActions(game);

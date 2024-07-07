@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import {testGame} from '../../TestGame';
 import {RobotPollinators} from '../../../src/server/cards/promo/RobotPollinators';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {fakeCard, setOxygenLevel} from '../../TestingUtils';
 import {TestPlayer} from '../../TestPlayer';
 import {Tag} from '../../../src/common/cards/Tag';
@@ -9,7 +9,7 @@ import {Tag} from '../../../src/common/cards/Tag';
 describe('Robot Pollinators', function() {
   let card: RobotPollinators;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new RobotPollinators();
@@ -19,9 +19,9 @@ describe('Robot Pollinators', function() {
 
   it('Can not play if oxygen level too low', function() {
     setOxygenLevel(game, 1);
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
     setOxygenLevel(game, 10);
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
   });
 
   it('Play, No tags', function() {

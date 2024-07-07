@@ -1,4 +1,4 @@
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {cast, runAllActions} from '../../TestingUtils';
 import {TestPlayer} from '../../TestPlayer';
 import {TheDarksideofTheMoonSyndicate} from '../../../src/server/cards/moon/TheDarksideofTheMoonSyndicate';
@@ -11,7 +11,7 @@ import {Phase} from '../../../src/common/Phase';
 import {testGame} from '../../TestGame';
 
 describe('TheDarksideofTheMoonSyndicate', () => {
-  let game: Game;
+  let game: IGame;
   let player: TestPlayer;
   let player2: TestPlayer;
   let player3: TestPlayer;
@@ -97,7 +97,7 @@ describe('TheDarksideofTheMoonSyndicate', () => {
   });
 
   it('effect', () => {
-    const centerSpace = moonData.moon.getSpace('m07');
+    const centerSpace = moonData.moon.getSpaceOrThrow('m07');
     const adjacentSpaces = moonData.moon.getAdjacentSpaces(centerSpace);
 
     // Space 0 intentionallyleft blank
@@ -113,7 +113,7 @@ describe('TheDarksideofTheMoonSyndicate', () => {
     // Test 1: Remove 6 M€ for each of the 3 adjacent spaces.
     player2.megaCredits = 10;
     player.megaCredits = 0;
-    player.setCorporationForTest(card);
+    player.corporations.push(card);
     // Trigger the effect.
     MoonExpansion.addMineTile(player, centerSpace.id);
     expect(player2.megaCredits).eq(4);
@@ -131,7 +131,7 @@ describe('TheDarksideofTheMoonSyndicate', () => {
   });
 
   it('no effect during solar phase', () => {
-    const centerSpace = moonData.moon.getSpace('m07');
+    const centerSpace = moonData.moon.getSpaceOrThrow('m07');
     const adjacentSpaces = moonData.moon.getAdjacentSpaces(centerSpace);
 
     // Space 0 intentionallyleft blank
@@ -147,7 +147,7 @@ describe('TheDarksideofTheMoonSyndicate', () => {
     // Test 1: Remove 6 M€ for each of the 3 adjacent spaces.
     player2.megaCredits = 10;
     player.megaCredits = 0;
-    player.setCorporationForTest(card);
+    player.corporations.push(card);
 
     player.game.phase = Phase.SOLAR;
 

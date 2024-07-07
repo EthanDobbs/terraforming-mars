@@ -2,7 +2,7 @@
   <div :class="getClasses()">
     <CardRequirementsComponent v-if="requirements.length > 0" :requirements="requirements"/>
     <CardRenderData v-if="metadata.renderData" :renderData="metadata.renderData" />
-    <CardDescription v-if="metadata.description" :item="metadata.description" />
+    <CardDescription v-if="hasDescription" :item="metadata.description" />
     <CardVictoryPoints v-if="metadata.victoryPoints" :victoryPoints="metadata.victoryPoints" />
     <div class="padBottom" v-if="padBottom" style="padding-bottom: 22px;"></div>
   </div>
@@ -11,7 +11,7 @@
 <script lang="ts">
 
 import Vue from 'vue';
-import {ICardMetadata} from '@/common/cards/ICardMetadata';
+import {CardMetadata} from '@/common/cards/CardMetadata';
 import CardRequirementsComponent from './CardRequirementsComponent.vue';
 import CardVictoryPoints from './CardVictoryPoints.vue';
 import CardDescription from './CardDescription.vue';
@@ -22,7 +22,7 @@ export default Vue.extend({
   name: 'CardContent',
   props: {
     metadata: {
-      type: Object as () => ICardMetadata,
+      type: Object as () => CardMetadata,
       required: true,
     },
     requirements: {
@@ -49,6 +49,12 @@ export default Vue.extend({
         classes.push('card-content-corporation');
       }
       return classes.join(' ');
+    },
+  },
+  computed: {
+    hasDescription(): boolean {
+      const description = this.metadata.description;
+      return description !== undefined && (typeof(description) !== 'string' || description.length > 0);
     },
   },
 });

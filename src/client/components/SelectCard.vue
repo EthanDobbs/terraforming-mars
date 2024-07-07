@@ -32,7 +32,6 @@ import {Color} from '@/common/Color';
 import {Message} from '@/common/logs/Message';
 import {CardOrderStorage} from '@/client/utils/CardOrderStorage';
 import {PlayerViewModel} from '@/common/models/PlayerModel';
-import {VueModelCheckbox, VueModelRadio} from '@/client/types';
 import Card from '@/client/components/card/Card.vue';
 import {CardModel} from '@/common/models/CardModel';
 import {CardName} from '@/common/cards/CardName';
@@ -48,9 +47,9 @@ type Owner = {
 
 type WidgetDataModel = {
   // The selected item or items
-  cards: VueModelRadio<CardModel> | VueModelCheckbox<Array<CardModel>>;
+  cards: CardModel | Array<CardModel>;
   warning: string | Message | undefined;
-  warnings: Readonly<Array<Warning>>;
+  warnings: ReadonlyArray<Warning> | undefined;
   owners: Map<CardName, Owner>,
 }
 
@@ -80,7 +79,7 @@ export default Vue.extend({
       cards: [],
       warning: undefined,
       owners: new Map(),
-      warnings: [],
+      warnings: undefined,
     };
   },
   components: {
@@ -97,13 +96,13 @@ export default Vue.extend({
     cardsSelected(): number {
       if (Array.isArray(this.cards)) {
         return this.cards.length;
-      } else if (this.cards === false || this.cards === undefined) {
+      } else if (this.cards === undefined) {
         return 0;
       }
       return 1;
     },
-    getOrderedCards(): Array<CardModel> {
-      let cards: Array<CardModel> = [];
+    getOrderedCards(): ReadonlyArray<CardModel> {
+      let cards: ReadonlyArray<CardModel> = [];
       if (this.playerinput.cards !== undefined) {
         if (this.playerinput.selectBlueCardAction) {
           cards = sortActiveCards(this.playerinput.cards);
@@ -129,9 +128,7 @@ export default Vue.extend({
       if (Array.isArray(this.cards)) {
         return false;
       } else if (typeof this.cards === 'object') {
-        if (this.cards.warnings !== undefined) {
-          this.warnings = this.cards.warnings ?? [];
-        }
+        this.warnings = this.cards.warnings;
         if (this.cards.warning !== undefined) {
           this.warning = this.cards.warning;
           return true;

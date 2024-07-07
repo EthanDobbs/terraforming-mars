@@ -6,7 +6,7 @@ import {IPlayer} from '../IPlayer';
 import {Tag} from '../../common/cards/Tag';
 import {CardResource} from '../../common/CardResource';
 import {CardName} from '../../common/cards/CardName';
-import {ICardMetadata} from '../../common/cards/ICardMetadata';
+import {CardMetadata} from '../../common/cards/CardMetadata';
 import {GlobalParameter} from '../../common/GlobalParameter';
 import {BoardType} from '../boards/BoardType';
 import {CardDiscount} from '../../common/cards/Types';
@@ -19,6 +19,8 @@ import {OneOrArray} from '../../common/utils/types';
 import {JSONValue} from '../../common/Types';
 import {IStandardProjectCard} from './IStandardProjectCard';
 import {Warning} from '../../common/cards/Warning';
+import {Resource} from '../../common/Resource';
+import {Units} from '../../common/Units';
 import {IColony} from '../colonies/IColony';
 
 /*
@@ -36,8 +38,6 @@ export interface IHasCheckLoops {
 export function isIHasCheckLoops(object: any): object is IHasCheckLoops {
   return object.getCheckLoops !== undefined;
 }
-
-export type DynamicTRSource = (player: IPlayer) => TRSource;
 
 export interface ICard {
   name: CardName;
@@ -57,6 +57,10 @@ export interface ICard {
    * Having descriptions this simple also makes it easier to render its discount in the UI.
    */
   cardDiscount?: OneOrArray<CardDiscount>;
+  /**
+   * Describes the M€ discount `player` could apply to playing `card`.
+   */
+  getStandardProjectDiscount?(player: IPlayer, card: IStandardProjectCard): number;
 
   /**
    * The +/- bonus applied to global parameter requirements, e.g. Adaptation Technology.
@@ -104,8 +108,9 @@ export interface ICard {
    *   or undefined if added by a neutral player.
    * @param cardOwner the player who owns THIS CARD.
    * @param space the space that was just identified.
+   * @param fromExcavate when true, this identifacation came from excavating an unidentified space.
    */
-  onIdentification?(identifyingPlayer: IPlayer | undefined, cardOwner: IPlayer, space: Space): void;
+  onIdentification?(identifyingPlayer: IPlayer | undefined, cardOwner: IPlayer, space: Space, fromExcavate: boolean): void;
 
   /**
    * Optional callback when any player excavates a space.
@@ -115,7 +120,13 @@ export interface ICard {
    */
   onExcavation?(player: IPlayer, space: Space): void;
 
+  onProductionGain?(player: IPlayer, resource: Resource, amount: number): void;
   onProductionPhase?(player: IPlayer): void;
+
+  /** Optional callback when ANY player adds a colony. */
+  onColonyAdded?(player: IPlayer, cardOwner: IPlayer): void;
+  /** Optional callback when `player` adds a colony to Leavitt. */
+  onColonyAddedToLeavitt?(player: IPlayer): void;
 
   onTrade?(cardOwner: IPlayer, activePlayer: IPlayer, colony: IColony): void;
   onColonyBuilt?(cardOwner: IPlayer, activePlayer: IPlayer, colony: IColony): void;
@@ -123,7 +134,7 @@ export interface ICard {
   cost?: number; /** Used with IProjectCard and PreludeCard. */
   type: CardType;
   requirements: Array<CardRequirementDescriptor>;
-  metadata: ICardMetadata;
+  metadata: CardMetadata;
 
   /**
    * Per-instance state-specific warnings about this card's action.
@@ -131,12 +142,36 @@ export interface ICard {
   warnings: Set<Warning>;
 
   behavior?: Behavior,
+
+  /**
+   * Returns the contents of the card's production box.
+   *
+   * Use with Robotic Workforce and Cyberia Systems.
+   *
+   * Prefer this to `produce` and prefer `behavior` to this.
+   */
+  productionBox?(player: IPlayer): Units;
+
+  /**
+   * Applies the production change for the card's production box.
+   *
+   * Use with Robotic Workforce and Cyberia Systems.
+   * (Special case for Small Open Pit Mine.)
+   *
+   * Prefer both `productionBox` and `behavior` over this.
+   */
   produce?(player: IPlayer): void;
-  tr?: TRSource | DynamicTRSource;
+
+  /** Terraform Rating predicted when this card is played */
+  tr?: TRSource;
+  /** Terraform Rating predicted when this card is played */
+  computeTr?(player: IPlayer): TRSource;
+
   resourceCount: number;
   resourceType?: CardResource;
+  protectedResources?: boolean;
   /** Currently used for The Moon, but can be expanded to encompass other tile-placing cards. */
-  tilesBuilt?: Array<TileType>;
+  tilesBuilt: ReadonlyArray<TileType>;
   isDisabled?: boolean; // For Pharmacy Union and CEO cards.
   /**
    * Extra data that the game will serialize and deserialize along with the card.

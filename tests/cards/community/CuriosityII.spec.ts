@@ -1,11 +1,11 @@
 import {expect} from 'chai';
 import {OceanSanctuary} from '../../../src/server/cards/ares/OceanSanctuary';
 import {CuriosityII} from '../../../src/server/cards/community/CuriosityII';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {OrOptions} from '../../../src/server/inputs/OrOptions';
 import {Phase} from '../../../src/common/Phase';
 import {TileType} from '../../../src/common/TileType';
-import {runAllActions, cast} from '../../TestingUtils';
+import {runAllActions, cast, testGame} from '../../TestingUtils';
 import {TestPlayer} from '../../TestPlayer';
 import {SelectSpace} from '../../../src/server/inputs/SelectSpace';
 
@@ -13,16 +13,14 @@ describe('CuriosityII', function() {
   let card: CuriosityII;
   let player: TestPlayer;
   let player2: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new CuriosityII();
-    player = TestPlayer.BLUE.newPlayer();
-    player2 = TestPlayer.RED.newPlayer();
-    game = Game.newInstance('gameid', [player, player2], player, {aresExtension: true, aresHazards: false});
+    [game, player, player2] = testGame(2, {aresExtension: true, aresHazards: false});
     game.phase = Phase.ACTION;
 
-    player.setCorporationForTest(card);
+    player.corporations.push(card);
     player.megaCredits = 2;
   });
 
@@ -65,7 +63,7 @@ describe('CuriosityII', function() {
   it('Placing a tile on top of another one triggers the bonus', () => {
     // particularly when the space bonus is empty.
     const oceanSpace = game.board.getAvailableSpacesForOcean(player2).find((space) => space.bonus.length === 0)!;
-    game.board.getSpace(oceanSpace.id).tile = {tileType: TileType.OCEAN};
+    game.board.getSpaceOrThrow(oceanSpace.id).tile = {tileType: TileType.OCEAN};
 
     const oceanSanctuary = new OceanSanctuary();
     oceanSanctuary.play(player);

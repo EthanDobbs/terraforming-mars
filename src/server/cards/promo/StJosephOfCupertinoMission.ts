@@ -27,7 +27,7 @@ export class StJosephOfCupertinoMission extends Card implements IActionCard {
         cardNumber: 'X29',
         renderData: CardRenderer.builder((b) => {
           b.action('Pay 5 M€ (STEEL MAY BE USED) to build  1 Cathedral in a city. Max 1 per city. City owner can pay 2 M€  to draw 1 card.', (eb) => {
-            eb.megacredits(5).openBrackets.steel(1).closeBrackets.startAction.cathedral().asterix();
+            eb.megacredits(5).super((b) => b.steel(1)).startAction.cathedral().asterix();
           });
         }),
         description: '1 VP per City with a Cathedral in it.',
@@ -65,7 +65,6 @@ export class StJosephOfCupertinoMission extends Card implements IActionCard {
             if (spaceOwner.canAfford(2)) {
               spaceOwner.defer(
                 new OrOptions(
-                  new SelectOption('Do not buy a card'),
                   new SelectPayment('Pay 2 M€ to draw a card', 2, {})
                     .andThen((payment) => {
                     // TODO(kberg): pay should have an afterPay for the heat / floaters costs.
@@ -73,6 +72,7 @@ export class StJosephOfCupertinoMission extends Card implements IActionCard {
                       spaceOwner.drawCard();
                       return undefined;
                     }),
+                  new SelectOption('Do not buy a card'),
                 ));
             }
             return undefined;

@@ -4,7 +4,6 @@
       :space="space"
       :aresExtension="false"
       :tileView="tileView"
-      :restricted="false"
     ></board-space-tile>
     <div class="board-space-text" v-if="text" v-i18n>{{ text }}</div>
     <bonus v-if="space.tileType === undefined || tileView === 'hide'" :bonus="space.bonus" />
@@ -16,6 +15,12 @@
       class="board-cube"
       :class="`board-cube--${space.color}`"
     />
+    <div
+      v-if="space.coOwner !== undefined && tileView === 'show'"
+      class="board-cube-coOwner"
+      :class="`board-cube--${space.coOwner}`"
+    />
+
   </div>
 </template>
 

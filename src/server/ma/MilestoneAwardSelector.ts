@@ -6,11 +6,12 @@ import {
   ELYSIUM_AWARDS,
   HELLAS_AWARDS,
   MOON_AWARDS,
-  THARSIS_AWARDS,
   TERRA_CIMMERIA_AWARDS,
+  THARSIS_AWARDS,
+  UNDERWORLD_AWARDS,
+  // UTOPIA_PLANITIA_AWARDS,
   VASTITAS_BOREALIS_AWARDS,
   VENUS_AWARDS,
-  UNDERWORLD_AWARDS,
 } from '../awards/Awards';
 import {IAward} from '../awards/IAward';
 import {BoardName} from '../../common/boards/BoardName';
@@ -24,11 +25,12 @@ import {
   HELLAS_MILESTONES,
   Milestones,
   MOON_MILESTONES,
-  THARSIS_MILESTONES,
   TERRA_CIMMERIA_MILESTONES,
+  THARSIS_MILESTONES,
+  UNDERWORLD_MILESTONES,
+  // UTOPIA_PLANITIA_MILESTONES,
   VASTITAS_BOREALIS_MILESTONES,
   VENUS_MILESTONES,
-  UNDERWORLD_MILESTONES,
 } from '../milestones/Milestones';
 import {FullMoon} from '../moon/FullMoon';
 import {Lunarchitect} from '../moon/Lunarchitect';
@@ -123,6 +125,11 @@ export function chooseMilestonesAndAwards(gameOptions: GameOptions): DrawnMilest
     case BoardName.VASTITAS_BOREALIS:
       push(VASTITAS_BOREALIS_MILESTONES, VASTITAS_BOREALIS_AWARDS);
       break;
+    case BoardName.UTOPIA_PLANITIA:
+    case BoardName.VASTITAS_BOREALIS_NOVUS:
+    case BoardName.TERRA_CIMMERIA_NOVUS:
+      // There's no need to add more milestones and awards for these boards, so it returns.
+      return getRandomMilestonesAndAwards(gameOptions, requiredQty, LIMITED_SYNERGY);
     }
     if (includeVenus) {
       push(VENUS_MILESTONES, VENUS_AWARDS);

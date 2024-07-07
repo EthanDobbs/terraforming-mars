@@ -1,7 +1,7 @@
 import {expect} from 'chai';
 import {EcologicalZone} from '../../../src/server/cards/base/EcologicalZone';
 import {EcologyExperts} from '../../../src/server/cards/prelude/EcologyExperts';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {SelectSpace} from '../../../src/server/inputs/SelectSpace';
 import {Phase} from '../../../src/common/Phase';
 import {TileType} from '../../../src/common/TileType';
@@ -12,7 +12,7 @@ import {testGame} from '../../TestGame';
 describe('EcologicalZone', function() {
   let card: EcologicalZone;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new EcologicalZone();
@@ -32,7 +32,7 @@ describe('EcologicalZone', function() {
 
     const adjacentSpace = action.spaces[0];
     action.cb(adjacentSpace);
-    expect(adjacentSpace.tile && adjacentSpace.tile.tileType).to.eq(TileType.ECOLOGICAL_ZONE);
+    expect(adjacentSpace.tile?.tileType).to.eq(TileType.ECOLOGICAL_ZONE);
 
     card.onCardPlayed(player, card);
     expect(card.resourceCount).to.eq(2);

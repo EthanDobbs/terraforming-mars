@@ -1,6 +1,6 @@
 <template>
   <div id="game-end" class="game_end_cont">
-      <h1  v-i18n>{{ constants.APP_NAME }} - Game finished!</h1>
+      <h1 v-i18n>{{ constants.APP_NAME }} - Game finished!</h1>
       <div class="game_end">
           <div v-if="isSoloGame">
               <div v-if="game.isSoloModeWin">
@@ -129,22 +129,20 @@
                       </div>
                       <div v-for="v in p.victoryPointsBreakdown.detailsMilestones" :key="v">
                         <div class="game-end-column-row">
-                          <div class="game-end-column-vp">{{v.split(':', 2)[1]}}</div>
-                          <div class="game-end-column-text" v-i18n>{{v.split(':', 2)[0]}}</div>
+                          <div class="game-end-column-vp">{{v.victoryPoint}}</div>
+                          <div class="game-end-column-text">{{translateMilestoneDetails(v)}}</div>
                         </div>
                       </div>
                       <div v-for="v in p.victoryPointsBreakdown.detailsAwards" :key="v">
                         <div class="game-end-column-row">
-                          <div class="game-end-column-vp">{{v.split(':', 2)[1]}}</div>
-                          <div class="game-end-column-text">
-                            <span v-i18n>{{v.split('(')[0]}}</span><span>{{v.split('award')[1].split(':')[0]}}</span>
-                          </div>
+                          <div class="game-end-column-vp">{{v.victoryPoint}}</div>
+                          <div class="game-end-column-text">{{translateAwardDetails(v)}}</div>
                         </div>
                       </div>
                       <div v-for="v in p.victoryPointsBreakdown.detailsPlanetaryTracks" :key="v.tag">
                         <div class="game-end-column-row">
                           <div class="game-end-column-vp">{{v.points}}</div>
-                          <div class="game-end-column-text">Most tags on the {{v.tag}} track</div>
+                          <div class="game-end-column-text" v-i18n>Most tags on the {{v.tag}} track</div>
                         </div>
                       </div>
                   </div>
@@ -196,7 +194,7 @@ import {PlayerViewModel, PublicPlayerModel, ViewModel} from '@/common/models/Pla
 import Board from '@/client/components/Board.vue';
 import MoonBoard from '@/client/components/moon/MoonBoard.vue';
 import PlanetaryTracks from '@/client/components/pathfinders/PlanetaryTracks.vue';
-import LogPanel from '@/client/components/LogPanel.vue';
+import LogPanel from '@/client/components/logpanel/LogPanel.vue';
 import AppButton from '@/client/components/common/AppButton.vue';
 import VictoryPointChart, {DataSet} from '@/client/components/gameend/VictoryPointChart.vue';
 import {playerColorClass} from '@/common/utils/utils';
@@ -206,6 +204,11 @@ import {Color} from '@/common/Color';
 import {CardType} from '@/common/cards/CardType';
 import {getCard} from '@/client/cards/ClientCardManifest';
 import {GlobalParameter} from '@/common/GlobalParameter';
+import {$t, translateTextWithParams, translateMessage} from '@/client/directives/i18n';
+import {Message} from '@/common/logs/Message';
+import {LogMessageDataType} from '@/common/logs/LogMessageDataType';
+import {MADetail} from '@/common/game/IVictoryPointsBreakdown';
+import {AwardName} from '@/common/ma/AwardName';
 
 function getViewModel(playerView: ViewModel | undefined, spectator: ViewModel | undefined): ViewModel {
   if (playerView !== undefined) return playerView;
@@ -271,7 +274,7 @@ export default Vue.extend({
     isSoloGame(): boolean {
       return this.players.length === 1;
     },
-    vpDataset(): Array<DataSet> {
+    vpDataset(): ReadonlyArray<DataSet> {
       return this.players.map((player) => {
         return {
           label: player.name,
@@ -280,27 +283,27 @@ export default Vue.extend({
         };
       });
     },
-    globalsDataset(): Array<DataSet> {
-      const dataset: Array<DataSet> = [];
+    globalsDataset(): ReadonlyArray<DataSet> {
+      const dataset = [];
 
       const gpg = this.game.globalsPerGeneration;
-      function getValues(param: GlobalParameter, min: number, max: number): Array<number> {
+      function getValues(param: GlobalParameter, min: number, max: number): ReadonlyArray<number> {
         return gpg.map((entry) => {
           const val = entry[param] ?? min;
           return 100 * (val - min) / (max - min);
         });
       }
 
-      dataset.push({label: 'Temperature', color: Color.RED, data: getValues(GlobalParameter.TEMPERATURE, -30, 8)});
-      dataset.push({label: 'Oxygen', color: Color.GREEN, data: getValues(GlobalParameter.OXYGEN, 0, 14)});
-      dataset.push({label: 'Oceans', color: Color.BLUE, data: getValues(GlobalParameter.OCEANS, 0, 9)});
+      dataset.push({label: $t('Temperature'), color: Color.RED, data: getValues(GlobalParameter.TEMPERATURE, -30, 8)});
+      dataset.push({label: $t('Oxygen'), color: Color.GREEN, data: getValues(GlobalParameter.OXYGEN, 0, 14)});
+      dataset.push({label: $t('Oceans'), color: Color.BLUE, data: getValues(GlobalParameter.OCEANS, 0, 9)});
       if (this.game.gameOptions.venusNextExtension === true) {
-        dataset.push({label: 'Venus', color: Color.YELLOW, data: getValues(GlobalParameter.VENUS, 0, 30)});
+        dataset.push({label: $t('Venus'), color: Color.YELLOW, data: getValues(GlobalParameter.VENUS, 0, 30)});
       }
       if (this.game.gameOptions.moonExpansion === true) {
-        dataset.push({label: 'L. Habitat', color: Color.ORANGE, data: getValues(GlobalParameter.MOON_HABITAT_RATE, 0, 8)});
-        dataset.push({label: 'L. Mining', color: Color.PINK, data: getValues(GlobalParameter.MOON_MINING_RATE, 0, 8)});
-        dataset.push({label: 'L. Logistics', color: Color.PURPLE, data: getValues(GlobalParameter.MOON_LOGISTICS_RATE, 0, 8)});
+        dataset.push({label: $t('L. Habitat'), color: Color.ORANGE, data: getValues(GlobalParameter.MOON_HABITAT_RATE, 0, 8)});
+        dataset.push({label: $t('L. Mining'), color: Color.PINK, data: getValues(GlobalParameter.MOON_MINING_RATE, 0, 8)});
+        dataset.push({label: $t('L. Logistics'), color: Color.PURPLE, data: getValues(GlobalParameter.MOON_LOGISTICS_RATE, 0, 8)});
       }
       return dataset;
     },
@@ -331,6 +334,41 @@ export default Vue.extend({
         .filter((card) => getCard(card.name)?.type === CardType.CORPORATION)
         .map((card) => card.name);
       return corporationCards.length === 0 ? [''] : corporationCards;
+    },
+    translateMilestoneDetails(data: MADetail): string {
+      const args = (data.messageArgs || []).map($t);
+      return translateTextWithParams(data.message, args);
+    },
+    translateAwardDetails(data: MADetail): string {
+      if ( ! data.messageArgs || data.messageArgs.length < 3) {
+        console.error( // data.message: ${0} place for ${1} award (funded by ${2})
+          `Award detail has not enought data.
+          It must contain at least 3 arguments:
+          1) a Player's place in the race for the award
+          2) translatable Award name
+          3) not translatable Player name
+          `,
+        );
+        return this.translateMilestoneDetails(data);
+      }
+      const message: Message = {
+        message: data.message,
+        data: [
+          {
+            type: LogMessageDataType.STRING,
+            value: data.messageArgs[0],
+          },
+          {
+            type: LogMessageDataType.AWARD,
+            value: data.messageArgs[1] as AwardName,
+          },
+          {
+            type: LogMessageDataType.PLAYER,
+            value: data.messageArgs[2] as Color,
+          },
+        ],
+      };
+      return translateMessage(message);
     },
   },
 });

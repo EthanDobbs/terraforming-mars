@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {InterplanetaryTransport} from '../../../src/server/cards/pathfinders/InterplanetaryTransport';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {testGame} from '../../TestGame';
 import {TileType} from '../../../src/common/TileType';
@@ -9,7 +9,7 @@ import {SpaceName} from '../../../src/server/SpaceName';
 describe('InterplanetaryTransport', function() {
   let card: InterplanetaryTransport;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new InterplanetaryTransport();
@@ -26,13 +26,13 @@ describe('InterplanetaryTransport', function() {
   });
 
   it('play - greeneries in space yield nothing', function() {
-    game.simpleAddTile(player, game.board.getSpace(SpaceName.STANFORD_TORUS), {tileType: TileType.GREENERY});
+    game.simpleAddTile(player, game.board.getSpaceOrThrow(SpaceName.STANFORD_TORUS), {tileType: TileType.GREENERY});
     card.play(player);
     expect(player.production.megacredits).eq(0);
   });
 
   it('play - cities in space yield money', function() {
-    game.simpleAddTile(player, game.board.getSpace(SpaceName.STANFORD_TORUS), {tileType: TileType.CITY});
+    game.simpleAddTile(player, game.board.getSpaceOrThrow(SpaceName.STANFORD_TORUS), {tileType: TileType.CITY});
     card.play(player);
     expect(player.production.megacredits).eq(1);
   });

@@ -1,15 +1,15 @@
 import {expect} from 'chai';
 import {RedTourismWave} from '../../../src/server/cards/turmoil/RedTourismWave';
-import {Game} from '../../../src//server/Game';
+import {IGame} from '../../../src//server/IGame';
 import {SpaceName} from '../../../src/server/SpaceName';
 import {SpaceType} from '../../../src/common/boards/SpaceType';
 import {PartyName} from '../../../src/common/turmoil/PartyName';
 import {testGame} from '../../TestGame';
-import {TestPlayer} from 'tests/TestPlayer';
+import {TestPlayer} from '../../TestPlayer';
 
 describe('RedTourismWave', function() {
   let card: RedTourismWave;
-  let game: Game;
+  let game: IGame;
   let player: TestPlayer;
 
   beforeEach(() => {
@@ -18,15 +18,15 @@ describe('RedTourismWave', function() {
   });
 
   it('Can play', function() {
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
 
     const reds = game.turmoil!.getPartyByName(PartyName.REDS);
     reds.delegates.add(player, 2);
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
   });
 
   it('play', function() {
-    const tharsis = game.board.getSpace(SpaceName.THARSIS_THOLUS);
+    const tharsis = game.board.getSpaceOrThrow(SpaceName.THARSIS_THOLUS);
     const lands = game.board.getAdjacentSpaces(tharsis).filter((space) => space.spaceType === SpaceType.LAND);
     game.addCity(player, lands[0]);
     card.play(player);

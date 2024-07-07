@@ -15,6 +15,7 @@ import {CardName} from '../src/common/cards/CardName';
 import {GlobalParameter} from '../src/common/GlobalParameter';
 import {cast, doWait, getSendADelegateOption, runAllActions} from './TestingUtils';
 import {SelfReplicatingRobots} from '../src/server/cards/promo/SelfReplicatingRobots';
+import {IProjectCard} from '../src/server/cards/IProjectCard';
 import {Pets} from '../src/server/cards/base/Pets';
 import {TestPlayer} from './TestPlayer';
 import {SelectParty} from '../src/server/inputs/SelectParty';
@@ -32,6 +33,8 @@ import {Donation} from '../src/server/cards/prelude/Donation';
 import {Loan} from '../src/server/cards/prelude/Loan';
 import {IPreludeCard} from '../src/server/cards/prelude/IPreludeCard';
 import {OrOptions} from '../src/server/inputs/OrOptions';
+import {Payment} from '../src/common/inputs/Payment';
+import {PhysicsComplex} from '../src/server/cards/base/PhysicsComplex';
 import { GenerationData } from '@/server/player/GenerationData';
 
 describe('Player', function() {
@@ -222,6 +225,7 @@ describe('Player', function() {
       heatProduction: 12,
       titaniumValue: 13,
       steelValue: 14,
+      canUseCorruptionAsMegacredits: true,
       canUseHeatAsMegaCredits: false,
       canUseTitaniumAsMegacredits: false,
       canUsePlantsAsMegaCredits: false,
@@ -268,20 +272,38 @@ describe('Player', function() {
       totalDelegatesPlaced: 0,
       victoryPointsByGeneration: [],
       underworldData: {corruption: 0},
+      alliedParty: {agenda: {bonusId: 'gb01', policyId: 'gp01'}, partyName: PartyName.GREENS},
+      draftHand: [],
     };
 
     const newPlayer = Player.deserialize(json);
 
     expect(newPlayer.color).eq(Color.PURPLE);
     expect(newPlayer.colonies.tradesThisGeneration).eq(100);
+    expect(newPlayer.canUseCorruptionAsMegacredits).eq(true);
   });
   it('pulls self replicating robots target cards', function() {
     const player = new Player('blue', Color.BLUE, false, 0, 'p-blue');
     expect(player.getSelfReplicatingRobotsTargetCards()).is.empty;
     const srr = new SelfReplicatingRobots();
     player.playedCards.push(srr);
-    srr.targetCards.push({card: new LunarBeam(), resourceCount: 0});
+    srr.targetCards.push(new LunarBeam());
     expect(player.getSelfReplicatingRobotsTargetCards().length).eq(1);
+  });
+  it('removes tags from card played from self replicating robots', () => {
+    const player = TestPlayer.BLUE.newPlayer();
+    Game.newInstance('gameid', [player], player);
+    const srr = new SelfReplicatingRobots();
+    player.stock.megacredits = 10;
+    player.playedCards.push(srr);
+    const physicsComplex = new PhysicsComplex();
+    player.cardsInHand.push(physicsComplex);
+    const action = cast(srr.action(player), OrOptions);
+    action.options[0].cb([cast(action.options[0], SelectCard<IProjectCard>).cards[0]]);
+    expect(srr.targetCards[0].resourceCount).to.eq(2);
+    player.playCard(physicsComplex, Payment.of({'megaCredits': 10}));
+    expect(player.playedCards).to.contain(physicsComplex);
+    expect(physicsComplex.resourceCount).to.eq(0);
   });
 
   it('addResourceTo', () => {
@@ -483,33 +505,57 @@ describe('Player', function() {
     expect(player.megaCredits).eq(15);
     expect(player.preludeCardsInHand).deep.eq([alliedBanks]);
   });
+
+  it('autopass', () => {
+    const [game, player, player2] = testGame(2);
+
+    game.phase = Phase.ACTION;
+
+    player.autopass = true;
+    player.takeAction();
+    expect(game.activePlayer).eq(player2.id);
+  });
+});
+
+it('everybody autopasses', () => {
+  const [game, player, player2] = testGame(2);
+
+  game.phase = Phase.ACTION;
+
+  player.autopass = true;
+  player2.autopass = true;
+  player.takeAction();
+
+  expect(game.phase).eq(Phase.RESEARCH);
+  expect(player.autopass).is.false;
+  expect(player2.autopass).is.false;
 });
 
 function waitingForGlobalParameters(player: Player): Array<GlobalParameter> {
+  function titlesToGlobalParameter(title: string): GlobalParameter {
+    if (title.includes('temperature')) {
+      return GlobalParameter.TEMPERATURE;
+    }
+    if (title.includes('ocean')) {
+      return GlobalParameter.OCEANS;
+    }
+    if (title.includes('oxygen')) {
+      return GlobalParameter.OXYGEN;
+    }
+    if (title.includes('Venus')) {
+      return GlobalParameter.VENUS;
+    }
+    if (title.includes('habitat')) {
+      return GlobalParameter.MOON_HABITAT_RATE;
+    }
+    if (title.includes('mining')) {
+      return GlobalParameter.MOON_MINING_RATE;
+    }
+    if (title.includes('logistics')) {
+      return GlobalParameter.MOON_LOGISTICS_RATE;
+    }
+    throw new Error('title does not match any description: ' + title);
+  }
   return cast(player.getWaitingFor(), OrOptions).options.map((o) => o.title as string).map(titlesToGlobalParameter);
 }
 
-function titlesToGlobalParameter(title: string): GlobalParameter {
-  if (title.includes('temperature')) {
-    return GlobalParameter.TEMPERATURE;
-  }
-  if (title.includes('ocean')) {
-    return GlobalParameter.OCEANS;
-  }
-  if (title.includes('oxygen')) {
-    return GlobalParameter.OXYGEN;
-  }
-  if (title.includes('Venus')) {
-    return GlobalParameter.VENUS;
-  }
-  if (title.includes('habitat')) {
-    return GlobalParameter.MOON_HABITAT_RATE;
-  }
-  if (title.includes('mining')) {
-    return GlobalParameter.MOON_MINING_RATE;
-  }
-  if (title.includes('logistics')) {
-    return GlobalParameter.MOON_LOGISTICS_RATE;
-  }
-  throw new Error('title does not match any description: ' + title);
-}

@@ -1,13 +1,13 @@
 import {expect} from 'chai';
 import {RadSuits} from '../../../src/server/cards/base/RadSuits';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {testGame} from '../../TestGame';
 
 describe('RadSuits', function() {
   let card: RadSuits;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new RadSuits();
@@ -15,7 +15,7 @@ describe('RadSuits', function() {
   });
 
   it('Can not play', function() {
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
   });
 
   it('Should play', function() {
@@ -23,7 +23,7 @@ describe('RadSuits', function() {
     game.addCity(player, lands[0]);
     game.addCity(player, lands[1]);
 
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
     card.play(player);
 
     expect(player.production.megacredits).to.eq(1);

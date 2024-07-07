@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {Space} from '../../../src/server/boards/Space';
 import {cast, setRulingParty} from '../../TestingUtils';
 import {TestPlayer} from '../../TestPlayer';
@@ -14,7 +14,7 @@ import {PartyName} from '../../../src/common/turmoil/PartyName';
 
 describe('Kelvinists', function() {
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     [game, player] = testGame(1, {turmoilExtension: true});
@@ -75,7 +75,7 @@ describe('Kelvinists', function() {
     setRulingParty(game, PartyName.KELVINISTS, KELVINISTS_POLICY_3.id);
 
     const stormcraft = new StormCraftIncorporated();
-    player.setCorporationForTest(stormcraft);
+    player.corporations.push(stormcraft);
     stormcraft.resourceCount = 2;
     player.stock.add(Resource.HEAT, 8);
 

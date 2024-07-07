@@ -1,9 +1,8 @@
 import {expect} from 'chai';
 import {BreedingFarms} from '../../../src/server/cards/pathfinders/BreedingFarms';
 import {Fish} from '../../../src/server/cards/base/Fish';
-import {Game} from '../../../src/server/Game';
 import {TestPlayer} from '../../TestPlayer';
-import {runAllActions} from '../../TestingUtils';
+import {runAllActions, testGame} from '../../TestingUtils';
 
 describe('BreedingFarms', function() {
   let card: BreedingFarms;
@@ -12,8 +11,7 @@ describe('BreedingFarms', function() {
 
   beforeEach(function() {
     card = new BreedingFarms();
-    player = TestPlayer.BLUE.newPlayer();
-    Game.newInstance('gameid', [player], player);
+    [/* game */, player] = testGame(1);
     player.playedCards.push(card);
     fish = new Fish();
     player.popWaitingFor();
@@ -21,16 +19,16 @@ describe('BreedingFarms', function() {
 
   it('canPlay', function() {
     player.tagsForTest = {};
-    expect(player.simpleCanPlay(card)).is.false;
+    expect(card.canPlay(player)).is.false;
 
     player.tagsForTest = {science: 1};
-    expect(player.simpleCanPlay(card)).is.false;
+    expect(card.canPlay(player)).is.false;
 
     player.tagsForTest = {animal: 1};
-    expect(player.simpleCanPlay(card)).is.false;
+    expect(card.canPlay(player)).is.false;
 
     player.tagsForTest = {science: 1, animal: 1};
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
   });
 
   it('play', function() {

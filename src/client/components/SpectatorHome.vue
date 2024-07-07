@@ -46,9 +46,11 @@
 
     <MoonBoard v-if="game.gameOptions.moonExpansion" :model="game.moon" :tileView="tileView"/>
 
+    <PlanetaryTracks v-if="game.gameOptions.pathfindersExpansion" :tracks="game.pathfinders" :gameOptions="game.gameOptions"/>
+
     <div v-if="spectator.players.length > 1" class="player_home_block--milestones-and-awards">
         <Milestone :milestones="game.milestones" />
-        <Awards :awards="game.awards" />
+        <Awards :awards="game.awards" show-scores />
     </div>
 
     <!-- TODO(kberg): add the spectator tab. -->
@@ -86,7 +88,7 @@ import Board from '@/client/components/Board.vue';
 import Colony from '@/client/components/colonies/Colony.vue';
 import PlanetaryTracks from '@/client/components/pathfinders/PlanetaryTracks.vue';
 import DynamicTitle from '@/client/components/common/DynamicTitle.vue';
-import LogPanel from '@/client/components/LogPanel.vue';
+import LogPanel from '@/client/components/logpanel/LogPanel.vue';
 import MoonBoard from '@/client/components/moon/MoonBoard.vue';
 import Milestone from '@/client/components/Milestones.vue';
 import Sidebar from '@/client/components/Sidebar.vue';

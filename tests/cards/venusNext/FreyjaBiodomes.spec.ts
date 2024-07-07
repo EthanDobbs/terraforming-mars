@@ -3,7 +3,7 @@ import {ICard} from '../../../src/server/cards/ICard';
 import {Extremophiles} from '../../../src/server/cards/venusNext/Extremophiles';
 import {FreyjaBiodomes} from '../../../src/server/cards/venusNext/FreyjaBiodomes';
 import {VenusianAnimals} from '../../../src/server/cards/venusNext/VenusianAnimals';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {SelectCard} from '../../../src/server/inputs/SelectCard';
 import {Resource} from '../../../src/common/Resource';
 import {TestPlayer} from '../../TestPlayer';
@@ -13,7 +13,7 @@ import {testGame} from '../../TestGame';
 describe('FreyjaBiodomes', function() {
   let card: FreyjaBiodomes;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new FreyjaBiodomes();
@@ -22,13 +22,13 @@ describe('FreyjaBiodomes', function() {
 
   it('Can not play without energy production', function() {
     setVenusScaleLevel(game, 10);
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
   });
 
   it('Can not play if Venus requirement not met', function() {
     player.production.add(Resource.ENERGY, 1);
     setVenusScaleLevel(game, 8);
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
   });
 
   it('Should play - single target', function() {
@@ -37,7 +37,7 @@ describe('FreyjaBiodomes', function() {
 
     player.production.add(Resource.ENERGY, 1);
     setVenusScaleLevel(game, 10);
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
 
     expect(card.play(player)).is.undefined;
     expect(player.production.energy).to.eq(0);

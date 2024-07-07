@@ -1,8 +1,9 @@
 import {OrOptions} from '../inputs/OrOptions';
 import {SelectCard} from '../inputs/SelectCard';
-import {DeferredAction, Priority} from '../deferredActions/DeferredAction';
+import {DeferredAction} from '../deferredActions/DeferredAction';
+import {Priority} from '../deferredActions/Priority';
 import {IPlayer} from '../IPlayer';
-import {SelectResources} from '../inputs/SelectResources';
+import {GainResources} from '../inputs/GainResources';
 import {message} from '../logs/MessageBuilder';
 
 export class GrantVenusAltTrackBonusDeferred extends DeferredAction {
@@ -15,10 +16,10 @@ export class GrantVenusAltTrackBonusDeferred extends DeferredAction {
   }
 
   private selectStandardResources(count: number) {
-    return new SelectResources(
+    return new GainResources(
       this.player,
       count,
-      `Gain ${count} resources for your Venus track bonus.`,
+      message('Gain ${0} resource(s) for your Venus track bonus', (b) => b.number(count)),
     );
   }
 

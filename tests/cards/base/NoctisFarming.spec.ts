@@ -1,14 +1,14 @@
 import {expect} from 'chai';
 import {setTemperature} from '../../TestingUtils';
 import {NoctisFarming} from '../../../src/server/cards/base/NoctisFarming';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {testGame} from '../../TestGame';
 
 describe('NoctisFarming', function() {
   let card: NoctisFarming;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new NoctisFarming();
@@ -21,7 +21,7 @@ describe('NoctisFarming', function() {
 
   it('Should play', function() {
     setTemperature(game, -20);
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
 
     card.play(player);
     expect(player.production.megacredits).to.eq(1);

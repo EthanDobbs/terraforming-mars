@@ -71,11 +71,18 @@ export type RecursivePartial<T> = {
 
 /**
  * Remove the `element` from `array`.
+ *
+ * Returns true if the element was removed from the array, false otherwise.
  */
 export function inplaceRemove<T>(array: Array<T>, element: T): boolean {
   return inplaceRemoveIf(array, (e) => e === element) !== undefined;
 }
 
+/**
+ * Remove the first element that satisfies the predicate from the array
+ *.
+ * Returns the removed element, or undefined if no element was removed.
+ */
 export function inplaceRemoveIf<T>(array: Array<T>, predicate: (e: T) => boolean): T | undefined {
   const idx = array.findIndex(predicate);
   if (idx === -1) {
@@ -121,4 +128,29 @@ export function zip<S, T>(first: ReadonlyArray<S>, second: ReadonlyArray<T>): Ar
  */
 export function asArray<T>(elem: OneOrArray<T>): Array<T> {
   return Array.isArray(elem) ? elem : [elem];
+}
+
+export function definedOrThrow<T>(obj: T | undefined): T {
+  if (obj === undefined) {
+    throw new Error('object is undefined');
+  }
+  return obj;
+}
+
+export function deNull<T>(array: ReadonlyArray<T | undefined>): Array<T> {
+  const output: Array<T> = [];
+  for (const elem of array) {
+    if (elem !== undefined) {
+      output.push(elem);
+    }
+  }
+  return output;
+}
+
+// Makes a copy of array, but then empties it.
+// Useful for moving contents.
+export function copyAndClear<T>(array: Array<T>): Array<T> {
+  const copy = [...array];
+  array.length = 0;
+  return copy;
 }

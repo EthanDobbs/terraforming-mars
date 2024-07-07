@@ -1,4 +1,4 @@
-import {DATA_VALUE, FLOATERS_VALUE, MICROBES_VALUE, GRAPHENE_VALUE, SEED_VALUE} from '../constants';
+import {DATA_VALUE, FLOATERS_VALUE, MICROBES_VALUE, GRAPHENE_VALUE, SEED_VALUE, CORRUPTION_VALUE} from '../constants';
 
 import {SpendableResource, SPENDABLE_RESOURCES} from './Spendable';
 
@@ -37,6 +37,7 @@ export const DEFAULT_PAYMENT_VALUES: Record<SpendableResource, number> = {
   auroraiData: DATA_VALUE,
   graphene: GRAPHENE_VALUE,
   kuiperAsteroids: 1,
+  corruption: CORRUPTION_VALUE,
   bioengineeringStudiesAnimals: 3,
   asteroidBeltColonyAsteroids: 5,
   jovianConstructionYardFloaters: 3,
@@ -59,6 +60,7 @@ export namespace Payment {
     auroraiData: 0,
     graphene: 0,
     kuiperAsteroids: 0,
+    corruption: 0,
     bioengineeringStudiesAnimals: 0,
     asteroidBeltColonyAsteroids: 0,
     jovianConstructionYardFloaters: 0,
@@ -81,6 +83,7 @@ export namespace Payment {
       graphene: payment.graphene ?? 0,
       kuiperAsteroids: payment.kuiperAsteroids ?? 0,
       plants: payment.plants ?? 0,
+      corruption: payment.corruption ?? 0,
       bioengineeringStudiesAnimals: payment.bioengineeringStudiesAnimals ?? 0,
       asteroidBeltColonyAsteroids: payment.asteroidBeltColonyAsteroids ?? 0,
       jovianConstructionYardFloaters: payment.jovianConstructionYardFloaters ?? 0,

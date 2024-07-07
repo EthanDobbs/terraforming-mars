@@ -1,10 +1,9 @@
 import {expect} from 'chai';
-import {cast} from '../../TestingUtils';
+import {cast, testGame} from '../../TestingUtils';
 import {Research} from '../../../src/server/cards/base/Research';
 import {IProjectCard} from '../../../src/server/cards/IProjectCard';
 import {HousePrinting} from '../../../src/server/cards/prelude/HousePrinting';
 import {SelfReplicatingRobots} from '../../../src/server/cards/promo/SelfReplicatingRobots';
-import {Game} from '../../../src/server/Game';
 import {OrOptions} from '../../../src/server/inputs/OrOptions';
 import {SelectCard} from '../../../src/server/inputs/SelectCard';
 import {TestPlayer} from '../../TestPlayer';
@@ -16,17 +15,16 @@ describe('SelfReplicatingRobots', function() {
 
   beforeEach(function() {
     card = new SelfReplicatingRobots();
-    player = TestPlayer.BLUE.newPlayer();
-    Game.newInstance('gameid', [player], player);
+    [/* game */, player] = testGame(1);
   });
 
   it('Can not play', function() {
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
   });
 
   it('Should play', function() {
     player.playedCards.push(new Research());
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
   });
 
   it('Should act', function() {

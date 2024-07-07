@@ -43,7 +43,7 @@ import SelectCard from '@/client/components/SelectCard.vue';
 import ConfirmDialog from '@/client/components/common/ConfirmDialog.vue';
 import {getPreferences, Preferences, PreferencesManager} from '@/client/utils/PreferencesManager';
 import {Tag} from '@/common/cards/Tag';
-import {AndOptionsResponse} from '@/common/inputs/InputResponse';
+import {SelectInitialCardsResponse} from '@/common/inputs/InputResponse';
 import {CardType} from '@/common/cards/CardType';
 import Colony from '@/client/components/colonies/Colony.vue';
 import {ColonyName} from '@/common/colonies/ColonyName';
@@ -76,7 +76,7 @@ export default (Vue as WithRefs<Refs>).extend({
       type: Object as () => SelectInitialCardsModel,
     },
     onsave: {
-      type: Function as unknown as () => (out: AndOptionsResponse) => void,
+      type: Function as unknown as () => (out: SelectInitialCardsResponse) => void,
     },
     showsave: {
       type: Boolean,
@@ -147,7 +147,6 @@ export default (Vue as WithRefs<Refs>).extend({
       case CardName.APHRODITE:
         switch (prelude) {
         case CardName.VENUS_FIRST:
-        case CardName.VENUS_FIRST_PATHFINDERS:
           return 4;
         case CardName.HYDROGEN_BOMBARDMENT:
           return 2;
@@ -184,7 +183,7 @@ export default (Vue as WithRefs<Refs>).extend({
       // Gain 4MC for playing a card with no tags.
       // Gain 1MC for playing a card with 1 tag.
       case CardName.SAGITTA_FRONTIER_SERVICES:
-        const count = card.tags.filter((tag) => tag !== Tag.WILD).length + (card.type === CardType.EVENT ? 1 : 0);
+        const count = card.tags.filter((tag) => tag !== Tag.WILD).length;
         return count === 0 ? 4 : count === 1 ? 1 : 0;
 
       default:
@@ -215,9 +214,8 @@ export default (Vue as WithRefs<Refs>).extend({
       }
     },
     saveData() {
-      // SelectInitialCards should have its own response type.
-      const result: AndOptionsResponse = {
-        type: 'and',
+      const result: SelectInitialCardsResponse = {
+        type: 'initialCards',
         responses: [],
       };
 

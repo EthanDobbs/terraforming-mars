@@ -31,7 +31,7 @@ export class Playwrights extends CorporationCard {
           b.megacredits(38).production((pb) => pb.energy(1));
           b.corpBox('action', (cb) => {
             cb.action('Replay a played event from any player (INCLUDING events that place special tiles) by paying its cost ONLY in M€ (discounts and rebates apply), then REMOVE IT FROM PLAY.', (eb) => {
-              eb.megacredits(0, {questionMark: true}).startAction;
+              eb.megacredits(1, {text: '?'}).startAction;
               eb.text('replay', Size.SMALL, true);
               eb.nbsp.cards(1, {all, secondaryTag: Tag.EVENT});
             });
@@ -54,7 +54,7 @@ export class Playwrights extends CorporationCard {
     const replayableEvents = this.getReplayableEvents(player);
 
     return new SelectCard<IProjectCard>(
-      'Select event card to replay at cost in M€ and remove from play', 'Select', replayableEvents)
+      'Select event card to replay at cost in M€ and remove from play', 'Select', replayableEvents, {played: false})
       .andThen(
         ([card]) => {
           const selectedCard: IProjectCard = card;
@@ -107,13 +107,17 @@ export class Playwrights extends CorporationCard {
     try {
       player.game.getPlayers().forEach((p) => {
         playedEvents.push(...p.playedCards.filter((card) => {
+          // Special case Price Wars, which is not easy to work with.
+          if (card.name === CardName.PRICE_WARS) {
+            return false;
+          }
           const canAffordOptions = {
             cost: player.getCardCost(card),
             reserveUnits: MoonExpansion.adjustedReserveCosts(player, card),
           };
           return card.type === CardType.EVENT &&
           // Can player.canPlay(card) replace this?
-          player.canAfford(canAffordOptions) && player.simpleCanPlay(card, canAffordOptions);
+          player.canAfford(canAffordOptions) && card.canPlay(player, canAffordOptions);
         }));
       });
     } finally {

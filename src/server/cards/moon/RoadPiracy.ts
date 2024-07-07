@@ -14,6 +14,8 @@ import {SelectAmount} from '../../inputs/SelectAmount';
 import {Resource} from '../../../common/Resource';
 import {sum} from '../../../common/utils/utils';
 import {Message} from '../../../common/logs/Message';
+import {SimpleDeferredAction} from '../../deferredActions/DeferredAction';
+import {Priority} from '../../deferredActions/Priority';
 
 export class RoadPiracy extends Card implements IProjectCard {
   constructor() {
@@ -37,13 +39,10 @@ export class RoadPiracy extends Card implements IProjectCard {
   }
 
   private generateOption(player: IPlayer, resource: Resource, title: Message, limit: number) {
-    const selectAmounts: Array<SelectAmount> = [];
+    const selectAmounts = [];
     const ledger: Map<IPlayer, number> = new Map();
-    for (const opponent of player.game.getPlayers()) {
-      if (opponent === player) {
-        continue;
-      }
-      if (opponent.stock.get(resource) > 0) {
+    for (const opponent of player.getOpponents()) {
+      if (opponent.stock.get(resource) > 0 && !opponent.alloysAreProtected()) {
         const selectAmount =
           new SelectAmount(
             message('${0}', (b) => b.player(opponent)), undefined, 0, opponent.stock.get(resource))
@@ -81,7 +80,13 @@ export class RoadPiracy extends Card implements IProjectCard {
     return option;
   }
 
+
   public override bespokePlay(player: IPlayer) {
+    player.game.defer(new SimpleDeferredAction(player, () => this.do(player)), Priority.ATTACK_OPPONENT);
+    return undefined;
+  }
+
+  public do(player: IPlayer) {
     const game = player.game;
     const stealSteel = message('Steal ${0} steel', (b) => b.number(6));
     const stealTitanium = message('Steal ${0} titanium', (b) => b.number(4));

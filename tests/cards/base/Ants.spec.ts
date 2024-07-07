@@ -5,7 +5,7 @@ import {NitriteReducingBacteria} from '../../../src/server/cards/base/NitriteRed
 import {ProtectedHabitats} from '../../../src/server/cards/base/ProtectedHabitats';
 import {SecurityFleet} from '../../../src/server/cards/base/SecurityFleet';
 import {Tardigrades} from '../../../src/server/cards/base/Tardigrades';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {SelectCard} from '../../../src/server/inputs/SelectCard';
 import {TestPlayer} from '../../TestPlayer';
 import {runAllActions, cast, churnAction, setOxygenLevel} from '../../TestingUtils';
@@ -15,7 +15,7 @@ describe('Ants', function() {
   let card: Ants;
   let player: TestPlayer;
   let player2: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new Ants();
@@ -24,12 +24,12 @@ describe('Ants', function() {
 
   it('Can not play without oxygen', function() {
     setOxygenLevel(game, 3);
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
   });
 
   it('Should play', function() {
     setOxygenLevel(game, 4);
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
 
     card.play(player);
     card.resourceCount += 5;

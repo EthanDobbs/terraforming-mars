@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {GeologicalExpedition} from '../../../src/server/cards/pathfinders/GeologicalExpedition';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {testGame} from '../../TestGame';
 import {EmptyBoard} from '../../ares/EmptyBoard';
@@ -17,7 +17,7 @@ import {TileType} from '../../../src/common/TileType';
 describe('GeologicalExpedition', function() {
   let card: GeologicalExpedition;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let space: Space;
   let microbeCard: IProjectCard;
   let scienceCard: IProjectCard;
@@ -45,7 +45,7 @@ describe('GeologicalExpedition', function() {
   it('City tile on a space colony, no bonus', () => {
     addCity(player, SpaceName.GANYMEDE_COLONY);
 
-    expect(game.board.getSpace(SpaceName.GANYMEDE_COLONY).tile?.tileType).eq(TileType.CITY);
+    expect(game.board.getSpaceOrThrow(SpaceName.GANYMEDE_COLONY).tile?.tileType).eq(TileType.CITY);
 
     expect(player.stock.asUnits()).deep.eq(Units.EMPTY);
     expect(microbeCard.resourceCount).eq(0);

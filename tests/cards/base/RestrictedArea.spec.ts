@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {RestrictedArea} from '../../../src/server/cards/base/RestrictedArea';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TileType} from '../../../src/common/TileType';
 import {TestPlayer} from '../../TestPlayer';
 import {cast, runAllActions} from '../../TestingUtils';
@@ -10,7 +10,7 @@ import {testGame} from '../../TestGame';
 describe('RestrictedArea', function() {
   let card: RestrictedArea;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new RestrictedArea();
@@ -29,7 +29,7 @@ describe('RestrictedArea', function() {
     const space = action.spaces[0];
     action.cb(space);
 
-    expect(space.tile && space.tile.tileType).to.eq(TileType.RESTRICTED_AREA);
+    expect(space.tile?.tileType).to.eq(TileType.RESTRICTED_AREA);
     expect(space.adjacency?.bonus).eq(undefined);
   });
 

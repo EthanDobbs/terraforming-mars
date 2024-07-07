@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {MagneticFieldGeneratorsAres} from '../../../src/server/cards/ares/MagneticFieldGeneratorsAres';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {SelectSpace} from '../../../src/server/inputs/SelectSpace';
 import {Resource} from '../../../src/common/Resource';
 import {TestPlayer} from '../../TestPlayer';
@@ -12,7 +12,7 @@ import {CardResource} from '../../../src/common/CardResource';
 describe('MagneticFieldGeneratorsAres', function() {
   let card: MagneticFieldGeneratorsAres;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new MagneticFieldGeneratorsAres();
@@ -21,7 +21,7 @@ describe('MagneticFieldGeneratorsAres', function() {
 
   it('Cannot play without enough energy production', function() {
     player.production.add(Resource.ENERGY, 3);
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
   });
 
   it('Play and Adjacency Bonus Grants', function() {
@@ -30,7 +30,7 @@ describe('MagneticFieldGeneratorsAres', function() {
     player.playedCards = [microbeCard, dataCard];
 
     player.production.add(Resource.ENERGY, 4);
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
 
     card.play(player);
     runAllActions(game);

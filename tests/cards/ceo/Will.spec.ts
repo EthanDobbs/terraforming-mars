@@ -1,22 +1,19 @@
 import {expect} from 'chai';
 import {ICard} from '../../../src/server/cards/ICard';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {SelectCard} from '../../../src/server/inputs/SelectCard';
-import {forceGenerationEnd} from '../../TestingUtils';
+import {cast, forceGenerationEnd} from '../../TestingUtils';
 import {testGame} from '../../TestGame';
 import {TestPlayer} from '../../TestPlayer';
-
 import {Ants} from '../../../src/server/cards/base/Ants';
 import {Birds} from '../../../src/server/cards/base/Birds';
 import {CommunicationCenter} from '../../../src/server/cards/pathfinders/CommunicationCenter';
-
 import {Will} from '../../../src/server/cards/ceos/Will';
-
 
 describe('Will', function() {
   let card: Will;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(() => {
     card = new Will();
@@ -50,7 +47,7 @@ describe('Will', function() {
     game.deferredActions.runNext(); // No Floater resource cards, skip
 
     // Add resource to any card
-    const selectCard = game.deferredActions.pop()!.execute() as SelectCard<ICard>;
+    const selectCard = cast(game.deferredActions.pop()!.execute(), SelectCard<ICard>);
     selectCard.cb([selectCard.cards[1]]);
     expect(ants.resourceCount).eq(4);
   });

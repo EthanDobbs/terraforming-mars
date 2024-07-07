@@ -32,10 +32,10 @@ export class DarksideIncubationPlant extends Card implements IActionCard, IProje
         cardNumber: 'M45',
         renderData: CardRenderer.builder((b) => {
           b.action('Add 1 microbe here.', (eb) => {
-            eb.empty().startAction.microbes(1);
+            eb.empty().startAction.resource(CardResource.MICROBE);
           }).br;
           b.action('Spend 2 microbes to raise the habitat rate 1 step.', (eb) => {
-            eb.microbes(2).startAction.moonHabitatRate();
+            eb.resource(CardResource.MICROBE, 2).startAction.moonHabitatRate();
           });
 
           b.br;
@@ -54,7 +54,7 @@ export class DarksideIncubationPlant extends Card implements IActionCard, IProje
   }
 
   public action(player: IPlayer) {
-    const options: Array<SelectOption> = [];
+    const options = [];
     MoonExpansion.ifMoon(player.game, (moonData) => {
       if (this.canRaiseHabitatRate(player) && moonData.habitatRate < 8) {
         options.push(new SelectOption('Spend 2 microbes to raise the habitat rate 1 step.').andThen(() => {

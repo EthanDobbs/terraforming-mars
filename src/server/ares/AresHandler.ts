@@ -16,6 +16,7 @@ import {SelectPaymentDeferred} from '../deferredActions/SelectPaymentDeferred';
 import {SelectProductionToLoseDeferred} from '../deferredActions/SelectProductionToLoseDeferred';
 import {_AresHazardPlacement} from './AresHazards';
 import {CrashlandingBonus} from '../pathfinders/CrashlandingBonus';
+import {Board} from '../boards/Board';
 
 export class AresHandler {
   private constructor() {}
@@ -27,26 +28,17 @@ export class AresHandler {
     }
   }
 
-  public static earnAdjacencyBonuses(aresData: AresData, player: IPlayer, space: Space, options?: {incrementMilestone?: boolean, giveAresTileOwnerBonus?: boolean}) {
-    let incrementMilestone = false;
+  public static earnAdjacencyBonuses(player: IPlayer, space: Space, options?: {giveAresTileOwnerBonus?: boolean}) {
     for (const adjacentSpace of player.game.board.getAdjacentSpaces(space)) {
-      const grantedBonus = this.earnAdacencyBonus(space, adjacentSpace, player, options?.giveAresTileOwnerBonus);
-      incrementMilestone ||= grantedBonus;
-    }
-    if (incrementMilestone && options?.incrementMilestone !== false) {
-      const entry : MilestoneCount | undefined = aresData.milestoneResults.find((e) => e.id === player.id);
-      if (entry === undefined) {
-        throw new Error('Player ID not in the Ares milestone results map: ' + player.id);
-      }
-      entry.count++;
+      this.earnAdacencyBonus(space, adjacentSpace, player, options?.giveAresTileOwnerBonus);
     }
   }
 
   // |player| placed a tile at |space| next to |adjacentSpace|.
   // Returns true if the adjacent space contains a bonus for adjacency.
-  private static earnAdacencyBonus(newTileSpace: Space, adjacentSpace: Space, player: IPlayer, giveAresTileOwnerBonus: boolean = true): boolean {
+  private static earnAdacencyBonus(newTileSpace: Space, adjacentSpace: Space, player: IPlayer, giveAresTileOwnerBonus: boolean = true): void {
     if (adjacentSpace.adjacency === undefined || adjacentSpace.adjacency.bonus.length === 0) {
-      return false;
+      return;
     }
     const adjacentPlayer = adjacentSpace.player;
     if (adjacentPlayer === undefined) {
@@ -130,16 +122,32 @@ export class AresHandler {
       adjacentPlayer.megaCredits += ownerBonus;
       player.game.log('${0} gains ${1} M€ for a tile placed next to ${2}', (b) => b.player(adjacentPlayer).number(ownerBonus).string(tileText));
     }
-
-    return true;
   }
 
-  // TODO(kberg): replace with isHazardTileType?
+  public static maybeIncrementMilestones(aresData: AresData, player: IPlayer, space: Space) {
+    const hasAdjacencyBonus = player.game.board.getAdjacentSpaces(space).some((adjacentSpace) => {
+      return (adjacentSpace.adjacency?.bonus?? []).length > 0;
+    });
+
+    if (hasAdjacencyBonus) {
+      const entry : MilestoneCount | undefined = aresData.milestoneResults.find((e) => e.id === player.id);
+      if (entry === undefined) {
+        throw new Error('Player ID not in the Ares milestone results map: ' + player.id);
+      }
+      entry.count++;
+    }
+  }
+
   public static hasHazardTile(space: Space): boolean {
     return hazardSeverity(space.tile?.tileType) !== HazardSeverity.NONE;
   }
 
-  private static computeAdjacencyCosts(game: IGame, space: Space, subjectToHazardAdjacency: boolean): AdjacencyCost {
+  private static computeAdjacencyCosts(player: IPlayer, space: Space, subjectToHazardAdjacency: boolean): AdjacencyCost {
+    if (player.isCorporation(CardName.ATHENA)) {
+      subjectToHazardAdjacency = false;
+    }
+
+    const game = player.game;
     // Summing up production cost isn't really the way to do it, because each tile could
     // reduce different production costs. Oh well.
     let megaCreditCost = 0;
@@ -176,7 +184,7 @@ export class AresHandler {
     if (player.game.phase === Phase.SOLAR) {
       return {megacredits: 0, production: 0};
     }
-    const cost = AresHandler.computeAdjacencyCosts(player.game, space, subjectToHazardAdjacency);
+    const cost = AresHandler.computeAdjacencyCosts(player, space, subjectToHazardAdjacency);
 
     // Make this more sophisticated, a player can pay for different adjacencies
     // with different production units, and, a severe hazard can't split payments.
@@ -261,5 +269,9 @@ export class AresHandler {
     }
     player.increaseTerraformRating(steps);
     player.game.log('${0}\'s TR increases ${1} step(s) for removing ${2}', (b) => b.player(player).number(steps).tileType(initialTileType));
+  }
+
+  public static anyAdjacentSpaceGivesBonus(board: Board, space: Space, bonus: SpaceBonus): boolean {
+    return board.getAdjacentSpaces(space).some((adj) => adj.adjacency?.bonus.includes(bonus));
   }
 }

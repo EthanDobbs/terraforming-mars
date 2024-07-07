@@ -1,4 +1,4 @@
-import {ICardMetadata} from '../../common/cards/ICardMetadata';
+import {CardMetadata} from '../../common/cards/CardMetadata';
 import {CardName} from '../../common/cards/CardName';
 import {CardType} from '../../common/cards/CardType';
 import {CardDiscount, GlobalParameterRequirementBonus} from '../../common/cards/Types';
@@ -8,7 +8,7 @@ import {Tag} from '../../common/cards/Tag';
 import {CanAffordOptions, IPlayer} from '../IPlayer';
 import {TRSource} from '../../common/cards/TRSource';
 import {Units} from '../../common/Units';
-import {DynamicTRSource} from './ICard';
+import {ICard} from './ICard';
 import {CardRenderDynamicVictoryPoints} from './render/CardRenderDynamicVictoryPoints';
 import {CardRenderItemType} from '../../common/cards/render/CardRenderItemType';
 import {IVictoryPoints} from '../../common/cards/IVictoryPoints';
@@ -51,14 +51,15 @@ type SharedProperties = {
   initialActionText?: string;
   firstAction?: Behavior & {text: string};
   globalParameterRequirementBonus?: GlobalParameterRequirementBonus;
-  metadata: ICardMetadata;
+  metadata: CardMetadata;
   requirements?: CardRequirementsDescriptor;
   name: CardName;
   resourceType?: CardResource;
+  protectedResources?: boolean;
   startingMegaCredits?: number;
   tags?: Array<Tag>;
-  tilesBuilt?: Array<TileType>,
-  tr?: TRSource | DynamicTRSource,
+  /** Describes where the card's TR comes from. */
+  tr?: TRSource,
   victoryPoints?: number | 'special' | IVictoryPoints,
   optionalEnergyConversion?: boolean,
 }
@@ -68,12 +69,14 @@ type InternalProperties = SharedProperties & {
   reserveUnits?: Units,
   requirements: Array<CardRequirementsDescriptor>
   compiledRequirements: CardRequirements;
+  tilesBuilt: ReadonlyArray<TileType>,
 }
 
 /* External representation of card properties. */
 export type StaticCardProperties = SharedProperties & {
   reserveUnits?: Partial<Units>,
   requirements?: OneOrArray<CardRequirementDescriptor>,
+  tilesBuilt?: ReadonlyArray<TileType>,
 }
 
 const cardProperties = new Map<CardName, InternalProperties>();
@@ -85,7 +88,7 @@ const cardProperties = new Map<CardName, InternalProperties>();
  *    consumes very little memory.
  *
  * 2. It's key behavior is to provide a lot of the `canPlay` and `play` behavior currently
- *    in player.simpleCanPlay and player.simplePlay. These will eventually be removed and
+ *    in player.canPlay and player.play. These will eventually be removed and
  *    put right in here.
  *
  * In order to implement this default behavior, Card subclasses should ideally not
@@ -97,7 +100,7 @@ const cardProperties = new Map<CardName, InternalProperties>();
  * be custom-written for each card, _no_ common behavior should be custom-written for
  * each card, either.
  */
-export abstract class Card {
+export abstract class Card implements ICard {
   protected readonly properties: InternalProperties;
   public resourceCount = 0;
   public warnings = new Set<Warning>();
@@ -112,25 +115,49 @@ export abstract class Card {
         throw new Error(`${name} must have a cost property`);
       }
     }
+    let step = 0;
     try {
       // TODO(kberg): apply these changes in CardVictoryPoints.vue and remove this conditional altogether.
       Card.autopopulateMetadataVictoryPoints(external);
 
-      validateBehavior(external.behavior);
-      validateBehavior(external.firstAction);
-      validateBehavior(external.action);
+      step = 1;
+      validateBehavior(external.behavior, name);
+      step = 2;
+      validateBehavior(external.firstAction, name);
+      step = 3;
+      validateBehavior(external.action, name);
+      step = 4;
+      Card.validateTilesBuilt(external);
+      step = 5;
     } catch (e) {
-      throw new Error(`Cannot validate ${name}: ${e}`);
+      throw new Error(`Cannot validate ${name} (${step}): ${e}`);
     }
 
     const translatedRequirements = asArray(external.requirements ?? []).map((req) => populateCount(req));
     const compiledRequirements = CardRequirements.compile(translatedRequirements);
+    const tilesBuilt = [...external.tilesBuilt ?? []];
+    if (external.behavior?.tile?.type !== undefined) {
+      tilesBuilt.push(external.behavior?.tile.type);
+    }
+    if (external.behavior?.moon?.tile?.type !== undefined) {
+      tilesBuilt.push(external.behavior.moon.tile.type);
+    }
+    if (external.behavior?.moon?.habitatTile !== undefined) {
+      tilesBuilt.push(TileType.MOON_HABITAT);
+    }
+    if (external.behavior?.moon?.mineTile !== undefined) {
+      tilesBuilt.push(TileType.MOON_MINE);
+    }
+    if (external.behavior?.moon?.roadTile !== undefined) {
+      tilesBuilt.push(TileType.MOON_ROAD);
+    }
 
     const internal: InternalProperties = {
       ...external,
       reserveUnits: external.reserveUnits === undefined ? undefined : Units.of(external.reserveUnits),
       requirements: translatedRequirements,
       compiledRequirements: compiledRequirements,
+      tilesBuilt: tilesBuilt,
     };
     return internal;
   }
@@ -178,6 +205,9 @@ export abstract class Card {
   public get resourceType() {
     return this.properties.resourceType;
   }
+  public get protectedResources() {
+    return this.properties.protectedResources;
+  }
   public get startingMegaCredits() {
     return this.properties.startingMegaCredits === undefined ? 0 : this.properties.startingMegaCredits;
   }
@@ -190,14 +220,14 @@ export abstract class Card {
   public get reserveUnits(): Units {
     return this.properties.reserveUnits || Units.EMPTY;
   }
-  public get tr(): TRSource | DynamicTRSource | undefined {
+  public get tr(): TRSource | undefined {
     return this.properties.tr;
   }
   public get victoryPoints(): number | 'special' | IVictoryPoints | undefined {
     return this.properties.victoryPoints;
   }
-  public get tilesBuilt(): Array<TileType> {
-    return this.properties.tilesBuilt || [];
+  public get tilesBuilt(): ReadonlyArray<TileType> {
+    return this.properties.tilesBuilt;
   }
   public canPlay(player: IPlayer, canAffordOptions?: CanAffordOptions): boolean | YesAnd {
     let yesAnd: YesAnd | undefined = undefined;
@@ -214,7 +244,7 @@ export abstract class Card {
         return false;
       }
     }
-    const bespokeCanPlay = this.bespokeCanPlay(player, canAffordOptions);
+    const bespokeCanPlay = this.bespokeCanPlay(player, canAffordOptions ?? {cost: 0});
     if (bespokeCanPlay === false) {
       return false;
     }
@@ -225,7 +255,7 @@ export abstract class Card {
     return true;
   }
 
-  public bespokeCanPlay(_player: IPlayer, _canAffordOptions?: CanAffordOptions): boolean {
+  public bespokeCanPlay(_player: IPlayer, _canAffordOptions: CanAffordOptions): boolean {
     return true;
   }
 
@@ -277,24 +307,14 @@ export abstract class Card {
     let units: number | undefined = 0;
 
     switch (vps.item?.type) {
-    case CardRenderItemType.MICROBES:
-    case CardRenderItemType.ANIMALS:
-    case CardRenderItemType.FIGHTER:
-    case CardRenderItemType.FLOATERS:
-    case CardRenderItemType.ASTEROIDS:
-    case CardRenderItemType.PRESERVATION:
-    case CardRenderItemType.DATA_RESOURCE:
-    case CardRenderItemType.RESOURCE_CUBE:
-    case CardRenderItemType.SCIENCE:
-    case CardRenderItemType.CAMPS:
-      units = this.resourceCount ?? 0;
+    case CardRenderItemType.RESOURCE:
+      units = this.resourceCount;
       break;
-
-    case CardRenderItemType.JOVIAN:
-      units = player?.tags.count(Tag.JOVIAN, 'raw');
-      break;
-    case CardRenderItemType.MOON:
-      units = player?.tags.count(Tag.MOON, 'raw');
+    case CardRenderItemType.TAG:
+      if (vps.item.tag === undefined) {
+        throw new Error('tag attribute missing');
+      }
+      units = player.tags.count(vps.item.tag, 'raw');
       break;
     }
 
@@ -351,12 +371,32 @@ export abstract class Card {
     }
   }
 
+  private static validateTilesBuilt(properties: StaticCardProperties) {
+    if (properties.tilesBuilt !== undefined) {
+      if (properties.behavior?.tile?.type !== undefined) {
+        throw new Error('tilesBuilt and behavior.tile.tileType both defined: ' + properties.name);
+      }
+      if (properties.behavior?.moon?.tile?.type !== undefined) {
+        throw new Error('tilesBuilt and behavior.moon.tile.tileType both defined: ' + properties.name);
+      }
+      if (properties.behavior?.moon?.habitatTile !== undefined) {
+        throw new Error('tilesBuilt and behavior.moon.habitatTile both defined: ' + properties.name);
+      }
+      if (properties.behavior?.moon?.mineTile !== undefined) {
+        throw new Error('tilesBuilt and behavior.moon.mineTile both defined: ' + properties.name);
+      }
+      if (properties.behavior?.moon?.roadTile !== undefined) {
+        throw new Error('tilesBuilt and behavior.moon.roadTile both defined: ' + properties.name);
+      }
+    }
+  }
+
   public getCardDiscount(_player?: IPlayer, card?: IProjectCard): number {
     if (this.cardDiscount === undefined) {
       return 0;
     }
     let sum = 0;
-    const discounts = Array.isArray(this.cardDiscount) ? this.cardDiscount : [this.cardDiscount];
+    const discounts = asArray(this.cardDiscount);
     for (const discount of discounts) {
       if (discount.tag === undefined) {
         sum += discount.amount;
@@ -417,10 +457,10 @@ function populateCount(requirement: CardRequirementDescriptor): CardRequirementD
   return requirement;
 }
 
-export function validateBehavior(behavior: Behavior | undefined) : void {
+export function validateBehavior(behavior: Behavior | undefined, name: CardName) : void {
   function validate(condition: boolean, error: string) {
     if (condition === false) {
-      throw new Error(error);
+      throw new Error(`for ${name}: ${error}`);
     }
   }
   if (behavior === undefined) {

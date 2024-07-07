@@ -1,6 +1,6 @@
 import {Card, StaticCardProperties} from '../Card';
 import {CardType} from '../../../common/cards/CardType';
-import {ICardMetadata} from '../../../common/cards/ICardMetadata';
+import {CardMetadata} from '../../../common/cards/CardMetadata';
 import {CardName} from '../../../common/cards/CardName';
 import {Tag} from '../../../common/cards/Tag';
 import {TileType} from '../../../common/TileType';
@@ -12,19 +12,19 @@ import {GlobalParameterRequirementBonus} from '../../../common/cards/Types';
 import {OneOrArray} from '../../../common/utils/types';
 import {CardDiscount} from '../../../common/cards/Types';
 
-export interface StaticPreludeProperties {
-    behavior?: Partial<Behavior>,
-    globalParameterRequirementBonus?: GlobalParameterRequirementBonus;
-    action?: Behavior;
-    cardDiscount?: OneOrArray<CardDiscount>;
-    metadata: ICardMetadata;
-    name: CardName;
-    tags?: Array<Tag>;
-    tilesBuilt?: Array<TileType>,
-    resourceType?: CardResource;
-    startingMegacredits?: number,
-    victoryPoints?: number | 'special' | IVictoryPoints,
-  }
+export type StaticPreludeProperties = {
+  action?: Behavior;
+  behavior?: Partial<Behavior>,
+  globalParameterRequirementBonus?: GlobalParameterRequirementBonus;
+  metadata: CardMetadata;
+  name: CardName;
+  tags?: Array<Tag>;
+  tilesBuilt?: ReadonlyArray<TileType>,
+  resourceType?: CardResource;
+  startingMegacredits?: number,
+  victoryPoints?: number | 'special' | IVictoryPoints,
+  cardDiscount?: OneOrArray<CardDiscount>;
+}
 
 export abstract class PreludeCard extends Card implements IPreludeCard {
   constructor(properties: StaticPreludeProperties) {
@@ -42,7 +42,9 @@ export abstract class PreludeCard extends Card implements IPreludeCard {
       cardDiscount: properties.cardDiscount,
       metadata: properties.metadata,
       resourceType: properties.resourceType,
+      tilesBuilt: properties.tilesBuilt,
       victoryPoints: properties.victoryPoints,
+      cardDiscount: properties.cardDiscount,
     };
     if (startingMegaCredits !== undefined) {
       obj.startingMegaCredits = startingMegaCredits;

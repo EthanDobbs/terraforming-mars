@@ -6,7 +6,6 @@ import {Card} from '../Card';
 import {Tag} from '../../../common/cards/Tag';
 import {IPlayer} from '../../IPlayer';
 import {Units} from '../../../common/Units';
-import {Resource} from '../../../common/Resource';
 
 export class Landfill extends Card implements IProjectCard {
   constructor() {
@@ -21,7 +20,7 @@ export class Landfill extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'U36',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.megacredits(1, {questionMark: true})).asterix();
+          b.production((pb) => pb.megacredits(1, {text: '?'})).asterix();
         }),
         description: 'Increase your M€ production 1 step for each different TYPE of production ' +
           'you have at least 1 step of.',
@@ -29,14 +28,14 @@ export class Landfill extends Card implements IProjectCard {
     });
   }
 
-  public produce(player: IPlayer) {
+  public productionBox(player: IPlayer) {
     const count = Units.keys.filter((type) => player.production[type] > 0).length;
-    player.production.add(Resource.MEGACREDITS, count, {log: true});
+    return Units.of({megacredits: count});
   }
 
 
   override bespokePlay(player: IPlayer) {
-    this.produce(player);
+    player.production.adjust(this.productionBox(player), {log: true});
     return undefined;
   }
 }

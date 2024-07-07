@@ -5,7 +5,7 @@ import {TestPlayer} from '../../TestPlayer';
 import {testGame} from '../../TestGame';
 import {cast, runAllActions} from '../../TestingUtils';
 import {IGame} from '../../../src/server/IGame';
-import {UnderworldTestHelper} from '../../underworld/UnderworldTestHelper';
+import {assertIsExcavationAction} from '../../underworld/underworldAssertions';
 import {OrOptions} from '../../../src/server/inputs/OrOptions';
 
 describe('Deepnuking', () => {
@@ -28,13 +28,13 @@ describe('Deepnuking', () => {
 
     expect(card.play(player)).is.undefined;
     runAllActions(game);
-    UnderworldTestHelper.assertIsExcavationAction(player, player.popWaitingFor());
+    assertIsExcavationAction(player, player.popWaitingFor());
     runAllActions(game);
-    UnderworldTestHelper.assertIsExcavationAction(player, player.popWaitingFor());
+    assertIsExcavationAction(player, player.popWaitingFor());
     runAllActions(game);
 
     const orOptions = cast(player.popWaitingFor(), OrOptions);
-    expect(orOptions.options).has.length(2);
+    expect(orOptions.options).has.length(3);
     orOptions.options[0].cb();
     expect(player2.plants).to.eq(2);
 

@@ -25,7 +25,10 @@ export class PreludesExpansion {
     // This preps the warning attribute in preludes.
     // All preludes can be presented. Unplayable ones just fizzle.
     for (const card of cards) {
-      card.canPlay(player);
+      card.warnings.clear();
+      if (!card.canPlay(player)) {
+        card.warnings.add('preludeFizzle');
+      }
     }
 
     return new SelectCard(
@@ -33,13 +36,13 @@ export class PreludesExpansion {
       .andThen(([card]) => {
         if (card.canPlay?.(player) === false) {
           PreludesExpansion.fizzle(player, card);
-          return undefined;
         } else {
           if (card.initialAction) {
             player.pendingInitialActions.push(card as any as ICorporationCard);
           }
           return player.playCard(card, undefined, cardAction);
         }
+        return undefined;
       });
   }
 }

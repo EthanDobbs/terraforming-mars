@@ -438,6 +438,8 @@ export enum CardName {
   RED_APPEASEMENT = 'Red Appeasement',
   SUMMIT_LOGISTICS = 'Summit Logistics',
   CERES_TECH_MARKET = 'Ceres Tech Market',
+  GHG_SHIPMENT = 'GHG Shipment',
+  SPONSORING_NATION = 'Sponsoring Nation',
 
   // Prelude 2 Preludes
   APPLIED_SCIENCE = 'Applied Science',
@@ -445,6 +447,7 @@ export enum CardName {
   OLD_MINING_COLONY = 'Old Mining Colony',
   NOBEL_PRIZE = 'Nobel Prize',
   COLONY_TRADE_HUB = 'Colony Trade Hub',
+  SPACE_CORRIDORS = 'Space Corridors',
 
   // Prelude 2 Corps
   NIRGAL_ENTERPRISES = 'Nirgal Enterprises',
@@ -452,6 +455,14 @@ export enum CardName {
   ECOTEC = 'EcoTec',
   SAGITTA_FRONTIER_SERVICES = 'Sagitta Frontier Services',
   SPIRE = 'Spire',
+
+  // Other cards known to be in the latest KS and should move appropriately
+  CLOUD_TOURISM = 'Cloud Tourism',
+  FLOATING_REFINERY = 'Floating Refinery',
+  VENUS_TRADE_HUB = 'Venus Trade Hub',
+  BOARD_OF_DIRECTORS = 'Board of Directors',
+  CORRIDORS_OF_POWER = 'Corridors of Power',
+  ATMOSPHERIC_ENHANCERS = 'Atmospheric Enhancers',
 
   // Promo cards
   DUSK_LASER_MINING = 'Dusk Laser Mining',
@@ -520,6 +531,9 @@ export enum CardName {
   SOLAR_LOGISTICS = 'Solar Logistics',
   TESLARACT = 'Teslaract',
   ICY_IMPACTORS = 'Icy Impactors',
+  SOIL_ENRICHMENT = 'Soil Enrichment',
+  CITY_PARK = 'City Park',
+  SUPERMARKETS = 'Supermarkets',
   // End of promo cards
 
   // Community corps
@@ -531,10 +545,11 @@ export enum CardName {
   PROJECT_WORKSHOP = 'Project Workshop',
   UNITED_NATIONS_MISSION_ONE = 'United Nations Mission One',
   JUNK_VENTURES = 'Junk Ventures',
+  ERIS = 'Eris',
+  ATHENA = 'Athena',
 
   // Community preludes
   VALUABLE_GASES = 'Valuable Gases',
-  VENUS_FIRST = 'Venus First',
   RESEARCH_GRANT = 'Research Grant',
   AEROSPACE_MISSION = 'Aerospace Mission',
   TRADE_ADVANCE = 'Trade Advance',
@@ -587,7 +602,7 @@ export enum CardName {
   THE_WOMB = 'The Womb',
   TYCHO_ROAD_NETWORK = 'Tycho Road Network',
   ARISTARCHUS_ROAD_NETWORK = 'Aristarchus Road Network',
-  SINUS_IRIDIUM_ROAD_NETWORK = 'Sinus Iridium Road Network',
+  SINUS_IRDIUM_ROAD_NETWORK = 'Sinus Irdium Road Network',
   MOMENTUM_VIRUM_HABITAT = 'Momentum Virium Habitat',
   LUNA_TRADE_STATION = 'Luna Trade Station',
   LUNA_MINING_HUB = 'Luna Mining Hub',
@@ -607,7 +622,7 @@ export enum CardName {
   STEEL_MARKET_MONOPOLISTS = 'Steel Market Monopolists',
   TITANIUM_MARKET_MONOPOLISTS = 'Titanium Market Monopolists',
   LUNA_STAGING_STATION = 'Luna Staging Station',
-  NEW_COLONY_PLANNING_INITIAITIVES = 'New Colony Planning Initiaitives',
+  NEW_COLONY_PLANNING_INITIAITIVES = 'New Colony Planning Initiatives',
   AI_CONTROLLED_MINE_NETWORK = 'AI Controlled Mine Network',
   DARKSIDE_METEOR_BOMBARDMENT = 'Darkside Meteor Bombardment',
   UNDERGROUND_DETONATORS = 'Underground Detonators',
@@ -685,9 +700,12 @@ export enum CardName {
   MOON_ROAD_STANDARD_PROJECT = 'Road Infrastructure',
   MOON_MINE_STANDARD_PROJECT = 'Lunar Mine',
   MOON_HABITAT_STANDARD_PROJECT = 'Lunar Habitat',
-  MOON_ROAD_STANDARD_PROJECT_V2 = 'Road Infrastructure (var.)',
-  MOON_MINE_STANDARD_PROJECT_V2 = 'Lunar Mine (var.)',
-  MOON_HABITAT_STANDARD_PROJECT_V2 = 'Lunar Habitat (var.)',
+  MOON_ROAD_STANDARD_PROJECT_VARIANT_1 = 'Road Infrastructure (var. 1)',
+  MOON_MINE_STANDARD_PROJECT_VARIANT_1 = 'Lunar Mine (var. 1)',
+  MOON_HABITAT_STANDARD_PROJECT_VARIANT_1 = 'Lunar Habitat (var. 1)',
+  MOON_ROAD_STANDARD_PROJECT_VARIANT_2 = 'Road Infrastructure (var. 2)',
+  MOON_MINE_STANDARD_PROJECT_VARIANT_2 = 'Lunar Mine (var. 2)',
+  MOON_HABITAT_STANDARD_PROJECT_VARIANT_2 = 'Lunar Habitat (var. 2)',
 
   // Pathfinders
   BREEDING_FARMS = 'Breeding Farms',
@@ -767,7 +785,7 @@ export enum CardName {
   CONTROLLED_BLOOM = 'Controlled Bloom',
   TERRAFORMING_ROBOTS = 'Terraforming Robots',
 
-  VENUS_FIRST_PATHFINDERS = 'Venus First:Pathfinders',
+  VENUS_FIRST = 'Venus First',
   VALUABLE_GASES_PATHFINDERS = 'Valuable Gases:Pathfinders',
   CO2_REDUCERS = 'CO² Reducers',
   HYDROGEN_BOMBARDMENT = 'Hydrogen Bombardment',
@@ -961,7 +979,7 @@ export enum CardName {
   VOLTAGON = 'Voltagon',
   ARES_MEDIA = 'Ares Media',
   ANUBIS_SECURITIES = 'Anubis Securities',
-  HECTATE_SPEDITIONS = 'Hectate Speditions',
+  HECATE_SPEDITIONS = 'Hecate Speditions',
   // Underworld Preludes
   FREE_TRADE_PORT = 'Free Trade Port',
   INVESTOR_PLAZA = 'Investor Plaza',

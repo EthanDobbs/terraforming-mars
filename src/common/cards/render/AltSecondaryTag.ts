@@ -20,6 +20,9 @@ export enum AltSecondaryTag {
   // used in Faraday CEO
   DIVERSE = 'diverse',
 
+  // Used in Ares community corp
+  ARES = 'ares',
+
   ANIMAL = 'animal-resource',
   HEAT = 'heat',
   MICROBE = 'microbe-resource',

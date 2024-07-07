@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {GreatEscarpmentConsortium} from '../../../src/server/cards/base/GreatEscarpmentConsortium';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {SelectPlayer} from '../../../src/server/inputs/SelectPlayer';
 import {TestPlayer} from '../../TestPlayer';
 import {Resource} from '../../../src/common/Resource';
@@ -11,7 +11,7 @@ describe('GreatEscarpmentConsortium', function() {
   let card: GreatEscarpmentConsortium;
   let player: TestPlayer;
   let player2: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     card = new GreatEscarpmentConsortium();
@@ -19,12 +19,12 @@ describe('GreatEscarpmentConsortium', function() {
   });
 
   it('Cannot play without steel production', function() {
-    expect(player.simpleCanPlay(card)).is.not.true;
+    expect(card.canPlay(player)).is.not.true;
   });
 
   it('Can play if player has steel production', function() {
     player.production.add(Resource.STEEL, 1);
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
   });
 
   it('Should play - auto select if single target', function() {

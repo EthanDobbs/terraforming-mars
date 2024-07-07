@@ -3,7 +3,7 @@ import {testGame} from '../../TestGame';
 import {MinorityRefuge} from '../../../src/server/cards/colonies/MinorityRefuge';
 import {SelectColony} from '../../../src/server/inputs/SelectColony';
 import {ColonyName} from '../../../src/common/colonies/ColonyName';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {cast, churnPlay, runAllActions} from '../../TestingUtils';
 import {Units} from '../../../src/common/Units';
@@ -13,7 +13,7 @@ import {Luna} from '../../../src/server/colonies/Luna';
 describe('MinorityRefuge', function() {
   let card: MinorityRefuge;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let triton: IColony;
 
   beforeEach(function() {
@@ -35,9 +35,9 @@ describe('MinorityRefuge', function() {
 
   it('canPlay', () => {
     player.production.override(Units.of({megacredits: -4}));
-    expect(player.simpleCanPlay(card)).is.false;
+    expect(card.canPlay(player)).is.false;
     player.production.override(Units.of({megacredits: -3}));
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
   });
 
   it('play)', () => {
@@ -61,9 +61,9 @@ describe('MinorityRefuge', function() {
   it('can play with low MC production when Luna is in play', () => {
     const luna = new Luna();
     player.production.override(Units.of({megacredits: -4}));
-    expect(player.simpleCanPlay(card)).is.false;
+    expect(card.canPlay(player)).is.false;
     game.colonies[0] = luna;
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
     const selectColony = cast(churnPlay(card, player), SelectColony);
 
     // Gain plant production

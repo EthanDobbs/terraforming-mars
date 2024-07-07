@@ -3,11 +3,12 @@ import {PreludeDeck, CeoDeck, ProjectDeck} from '../../src/server/cards/Deck';
 import {GameCards} from '../../src/server/GameCards';
 import {DEFAULT_GAME_OPTIONS} from '../../src/server/game/GameOptions';
 import {ICard} from '../../src/server/cards/ICard';
-import {Game} from '../../src/server/Game';
+import {IGame} from '../../src/server/IGame';
 import {IProjectCard} from '../../src/server/cards/IProjectCard';
 import {CardName} from '../../src/common/cards/CardName';
 import {ConstRandom, UnseededRandom} from '../../src/common/utils/Random';
 import {testGame} from '../TestGame';
+import {fakeCard} from '../TestingUtils';
 
 function name(card: ICard): CardName {
   return card.name;
@@ -57,8 +58,8 @@ describe('PreludeDeck', function() {
       log: () => {},
     };
 
-    deck.discard(deck.drawLegacy(logger));
-    deck.discard(deck.drawLegacy(logger));
+    deck.discard(deck.drawOrThrow(logger));
+    deck.discard(deck.drawOrThrow(logger));
 
     expect(deck.drawPile).has.length(33);
     expect(deck.discardPile).has.length(2);
@@ -96,7 +97,7 @@ describe('CeoDeck', function() {
     const drawCardsCount = 3;
     const deckLength = deck.drawPile.length - drawCardsCount;
     for (let i = 0; i < drawCardsCount; i++) {
-      deck.discard(deck.drawLegacy(logger));
+      deck.discard(deck.drawOrThrow(logger));
     }
 
     expect(deck.drawPile).has.length(deckLength);
@@ -117,7 +118,7 @@ describe('CeoDeck', function() {
 
 describe('draw()', function() {
   let deck: ProjectDeck;
-  let game: Game;
+  let game: IGame;
   let drawnCard: IProjectCard | undefined;
   let originalLength: number;
   let topCard: IProjectCard | undefined;
@@ -125,7 +126,7 @@ describe('draw()', function() {
 
   describe('with more than enough cards in the draw pile', function() {
     beforeEach(function() {
-      [game] = testGame(2, {skipInitialCardSelection: true});
+      [game] = testGame(2);
       deck = game.projectDeck;
       originalLength = game.projectDeck.drawPile.length;
     });
@@ -163,7 +164,7 @@ describe('draw()', function() {
 
   describe('draw from the top with only 1 card left in the draw pile', function() {
     beforeEach(function() {
-      [game] = testGame(2, {skipInitialCardSelection: true});
+      [game] = testGame(2);
       deck = game.projectDeck;
       originalLength = game.projectDeck.drawPile.length;
       bottomCard = deck.drawPile[0];
@@ -189,7 +190,7 @@ describe('draw()', function() {
     let removedCards: IProjectCard[];
 
     beforeEach(function() {
-      [game] = testGame(2, {skipInitialCardSelection: true});
+      [game] = testGame(2);
       deck = game.projectDeck;
       originalLength = game.projectDeck.drawPile.length;
       bottomCard = deck.drawPile[0];
@@ -227,5 +228,37 @@ describe('draw()', function() {
         expect(deck.drawPile.length).to.equal(10);
       });
     });
+  });
+
+  it('drawN', function() {
+    const [game] = testGame(2);
+    expect(game.projectDeck.drawN(game, 3)).to.have.length(3);
+    game.projectDeck.drawPile.length = 2;
+    expect(game.projectDeck.drawN(game, 3)).to.have.length(2);
+    expect(game.projectDeck.drawN(game, 3)).to.have.length(0);
+  });
+
+  it('drawNOrThrow', function() {
+    const [game] = testGame(2);
+    expect(game.projectDeck.drawNOrThrow(game, 3)).to.have.length(3);
+    game.projectDeck.drawPile.length = 2;
+    expect(() => game.projectDeck.drawNOrThrow(game, 3)).to.throw();
+  });
+
+  it('size', () => {
+    const [game] = testGame(2);
+    game.projectDeck.drawPile.length = 2;
+    expect(game.projectDeck.size()).eq(2);
+    game.projectDeck.discardPile.push(fakeCard());
+    expect(game.projectDeck.size()).eq(3);
+  });
+
+  it('canDraw', () => {
+    const [game] = testGame(2);
+    expect(game.projectDeck.canDraw(3)).is.true;
+    game.projectDeck.drawPile.length = 2;
+    expect(game.projectDeck.canDraw(3)).is.false;
+    game.projectDeck.discardPile.push(fakeCard());
+    expect(game.projectDeck.canDraw(3)).is.true;
   });
 });

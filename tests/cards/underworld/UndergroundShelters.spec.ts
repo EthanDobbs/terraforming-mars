@@ -2,7 +2,7 @@ import {expect} from 'chai';
 import {UndergroundShelters} from '../../../src/server/cards/underworld/UndergroundShelters';
 import {testGame} from '../../TestGame';
 import {addCity, cast, runAllActions} from '../../TestingUtils';
-import {UnderworldTestHelper} from '../../underworld/UnderworldTestHelper';
+import {assertIsExcavationAction} from '../../underworld/underworldAssertions';
 
 describe('UndergroundShelters', () => {
   it('Should play', () => {
@@ -13,7 +13,7 @@ describe('UndergroundShelters', () => {
 
     runAllActions(game);
 
-    UnderworldTestHelper.assertIsExcavationAction(player, player.popWaitingFor());
+    assertIsExcavationAction(player, player.popWaitingFor());
 
     runAllActions(game);
     cast(player.popWaitingFor(), undefined);
@@ -26,7 +26,7 @@ describe('UndergroundShelters', () => {
     const board = game.board;
 
     expect(card.getVictoryPoints(player)).eq(0);
-    const city1 = board.getSpace('31');
+    const city1 = board.getSpaceOrThrow('31');
     addCity(player, city1.id);
     const adjacent1 = board.getAdjacentSpaces(city1);
 
@@ -43,7 +43,7 @@ describe('UndergroundShelters', () => {
     adjacent1[5].excavator = player;
     expect(card.getVictoryPoints(player)).eq(2);
 
-    const city2 = board.getSpace('35');
+    const city2 = board.getSpaceOrThrow('35');
     addCity(player, city2.id);
     const adjacent2 = board.getAdjacentSpaces(city2);
 

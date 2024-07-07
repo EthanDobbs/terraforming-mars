@@ -7,7 +7,7 @@ import {CardRenderer} from '../render/CardRenderer';
 import {AddResourcesToCard} from '../../deferredActions/AddResourcesToCard';
 import {CardResource} from '../../../common/CardResource';
 import {Tag} from '../../../common/cards/Tag';
-import {digit, played} from '../Options';
+import {digit} from '../Options';
 import {Resource} from '../../../common/Resource';
 import {Size} from '../../../common/cards/render/Size';
 
@@ -23,9 +23,9 @@ export class OumuamuaTypeObjectSurvey extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'Pf53',
         renderData: CardRenderer.builder((b) => {
-          b.data({amount: 2}).asterix().cards(2, {size: Size.SMALL}).asterix().br;
-          b.science(1, {played}).microbes(1, {played}).colon().text('play ', Size.SMALL, false, true);
-          b.space({played}).colon().production((pb) => pb.energy(3, {digit})).br;
+          b.resource(CardResource.DATA, 2).asterix().cards(2, {size: Size.SMALL}).asterix().br;
+          b.tag(Tag.SCIENCE).tag(Tag.MICROBE).colon().text('play ', Size.SMALL, false, true);
+          b.tag(Tag.SPACE).colon().production((pb) => pb.energy(3, {digit})).br;
           b.text(
             'Draw 2 cards face up. If the first has a science or microbe tag, play it outright ignoring requirements and cost. ' +
             'If not, and it has a space tag, gain 3 energy prod. If it has none of those, apply the check to the second card.',
@@ -56,11 +56,15 @@ export class OumuamuaTypeObjectSurvey extends Card implements IProjectCard {
     }
   }
 
+  public override bespokeCanPlay(player: IPlayer): boolean {
+    return player.game.projectDeck.canDraw(2);
+  }
+
   public override bespokePlay(player: IPlayer) {
     const game = player.game;
     // TODO(kberg): Make sure this action occurs after the card play, in case the played card has data.
     game.defer(new AddResourcesToCard(player, CardResource.DATA, {count: 2}));
-    const cards = [game.projectDeck.drawLegacy(player.game), game.projectDeck.drawLegacy(player.game)];
+    const cards = game.projectDeck.drawNOrThrow(game, 2);
 
     player.game.log('${0} revealed ${1} and ${2}', (b) => b.player(player).card(cards[0], {tags: true}).card(cards[1], {tags: true}));
     if (this.processCard(player, cards[0])) {

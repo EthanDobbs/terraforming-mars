@@ -1,9 +1,9 @@
 import {expect} from 'chai';
 import {PrefabricationofHumanHabitats} from '../../../src/server/cards/pathfinders/PrefabricationofHumanHabitats';
-import {Game} from '../../../src/server/Game';
 import {TestPlayer} from '../../TestPlayer';
 import {ImmigrantCity} from '../../../src/server/cards/base/ImmigrantCity';
 import {CityStandardProject} from '../../../src/server/cards/base/standardProjects/CityStandardProject';
+import {testGame} from '../../TestingUtils';
 
 describe('PrefabricationofHumanHabitats', function() {
   let card: PrefabricationofHumanHabitats;
@@ -11,19 +11,18 @@ describe('PrefabricationofHumanHabitats', function() {
 
   beforeEach(function() {
     card = new PrefabricationofHumanHabitats();
-    player = TestPlayer.BLUE.newPlayer();
-    Game.newInstance('gameid', [player], player);
+    [/* game */, player] = testGame(1);
     player.playedCards.push(card);
   });
 
   it('canPlay', function() {
-    expect(player.simpleCanPlay(card)).is.false;
+    expect(card.canPlay(player)).is.false;
 
     player.production.override({steel: 0});
-    expect(player.simpleCanPlay(card)).is.false;
+    expect(card.canPlay(player)).is.false;
 
     player.production.override({steel: 1});
-    expect(player.simpleCanPlay(card)).is.true;
+    expect(card.canPlay(player)).is.true;
   });
 
   it('City tag discount ', function() {

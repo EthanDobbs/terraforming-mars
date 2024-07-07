@@ -1,6 +1,27 @@
 <template>
-  <div v-if="waitingfor === undefined">{{ $t('Not your turn to take any actions') }}</div>
+  <div>
+  <template v-if="waitingfor === undefined">
+    {{ $t('Not your turn to take any actions') }}
+    <template v-if="playersWaitingFor.length > 0">
+      (⌛ <span v-for="color in playersWaitingFor" :style="'color:' + color" :key="color">&#9632;</span>)
+    </template>
+  </template>
   <div v-else class="wf-root">
+    <template v-if="preferences().experimental_ui && playerView.game.phase === Phase.ACTION && playerView.players.length !== 1">
+      <!--
+        Autopass is only available when you are taking actions because of how autopass is stored.
+        It's connected with when the player takes actions, and is saved along with the rest of the
+        game. This means that if you are waiting for someone else to take actions, you can't change
+        your autopass setting.
+
+        If there was another database table that stored autopass and other settings, this could be
+        changed to be available at all times.
+      -->
+      <input type="checkbox" name="autopass" id="autopass-checkbox" v-model="autopass" v-on:change="updateAutopass">
+      <label for="autopass-checkbox">
+          <span v-i18n>Automatically pass</span>
+      </label>
+    </template>
     <!-- <template v-if="waitingfor !== undefined && waitingfor.showReset && playerView.players.length === 1">
       <div @click="reset">Reset This Action <span class="reset" >(experimental)</span></div>
     </template> -->
@@ -10,35 +31,43 @@
                           :onsave="onsave"
                           :showsave="true"
                           :showtitle="true" />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 
 import Vue from 'vue';
+import * as constants from '@/common/constants';
+import * as raw_settings from '@/genfiles/settings.json';
 import {vueRoot} from '@/client/components/vueRoot';
 import {PlayerInputModel} from '@/common/models/PlayerInputModel';
-import {ViewModel, PublicPlayerModel} from '@/common/models/PlayerModel';
+import {PublicPlayerModel, PlayerViewModel} from '@/common/models/PlayerModel';
 import {getPreferences} from '@/client/utils/PreferencesManager';
 import {SoundManager} from '@/client/utils/SoundManager';
 import {WaitingForModel} from '@/common/models/WaitingForModel';
-
-import * as constants from '@/common/constants';
-import * as raw_settings from '@/genfiles/settings.json';
+import {Phase} from '@/common/Phase';
 import {paths} from '@/common/app/paths';
 import {statusCode} from '@/common/http/statusCode';
 import {isPlayerId} from '@/common/Types';
 import {InputResponse} from '@/common/inputs/InputResponse';
 import {INVALID_RUN_ID} from '@/common/app/AppErrorId';
+import {Color} from '@/common/Color';
 
 let ui_update_timeout_id: number | undefined;
 let documentTitleTimer: number | undefined;
+
+type DataModel = {
+  waitingForTimeout: typeof raw_settings.waitingForTimeout,
+  autopass: boolean,
+  playersWaitingFor: Array<Color>
+}
 
 export default Vue.extend({
   name: 'waiting-for',
   props: {
     playerView: {
-      type: Object as () => ViewModel,
+      type: Object as () => PlayerViewModel,
     },
     players: {
       type: Array as () => Array<PublicPlayerModel>,
@@ -50,9 +79,11 @@ export default Vue.extend({
       type: Object as () => PlayerInputModel | undefined,
     },
   },
-  data() {
+  data(): DataModel {
     return {
-      waitingForTimeout: this.settings.waitingForTimeout as typeof raw_settings.waitingForTimeout,
+      waitingForTimeout: this.settings.waitingForTimeout,
+      autopass: this.playerView.autopass,
+      playersWaitingFor: [],
     };
   },
   methods: {
@@ -128,6 +159,24 @@ export default Vue.extend({
         root.isServerSideRequestInProgress = false;
       };
     },
+    updateAutopass() {
+      const xhr = new XMLHttpRequest();
+      const root = vueRoot(this);
+      if (root.isServerSideRequestInProgress) {
+        console.warn('Server request in progress');
+        return;
+      }
+      xhr.onload = () => {
+        root.isServerSideRequestInProgress = true;
+      };
+      xhr.open('GET', paths.AUTOPASS + '?id=' + this.playerView.id + '&autopass=' + this.autopass);
+      xhr.responseType = 'json';
+      xhr.send();
+      xhr.onerror = function() {
+        // todo(kberg): Report error to caller
+        root.isServerSideRequestInProgress = false;
+      };
+    },
     loadPlayerViewResponse(xhr: XMLHttpRequest) {
       const root = vueRoot(this);
       const showAlert = vueRoot(this).showAlert;
@@ -160,38 +209,11 @@ export default Vue.extend({
         xhr.onload = () => {
           if (xhr.status === statusCode.ok) {
             const result = xhr.response as WaitingForModel;
+            this.playersWaitingFor = result.waitingFor;
             if (result.result === 'GO') {
               // Will only apply to player, not spectator.
               root.updatePlayer();
-
-              if (Notification.permission !== 'granted') {
-                Notification.requestPermission();
-              } else if (Notification.permission === 'granted') {
-                const notificationOptions = {
-                  icon: 'favicon.ico',
-                  body: 'It\'s your turn!',
-                };
-                const notificationTitle = constants.APP_NAME;
-                try {
-                  new Notification(notificationTitle, notificationOptions);
-                } catch (e) {
-                  // ok so the native Notification doesn't work which will happen
-                  // try to use the service worker if we can
-                  if (!window.isSecureContext || !navigator.serviceWorker) {
-                    return;
-                  }
-                  navigator.serviceWorker.ready.then((registration) => {
-                    registration.showNotification(notificationTitle, notificationOptions);
-                  }).catch((err) => {
-                    // avoid promise going uncaught
-                    console.warn('Failed to display notification with serviceWorker', err);
-                  });
-                }
-              }
-
-              const soundsEnabled = getPreferences().enable_sounds;
-              if (soundsEnabled) SoundManager.playActivePlayerSound();
-
+              this.notify();
               // We don't need to wait anymore - it's our turn
               return;
             } else if (result.result === 'REFRESH') {
@@ -214,6 +236,36 @@ export default Vue.extend({
       };
       ui_update_timeout_id = window.setTimeout(askForUpdate, this.waitingForTimeout);
     },
+    notify() {
+      if (getPreferences().enable_sounds) {
+        SoundManager.playActivePlayerSound();
+      }
+
+      if (Notification.permission !== 'granted') {
+        Notification.requestPermission();
+      } else if (Notification.permission === 'granted') {
+        const notificationOptions = {
+          icon: 'favicon.ico',
+          body: 'It\'s your turn!',
+        };
+        const notificationTitle = constants.APP_NAME;
+        try {
+          new Notification(notificationTitle, notificationOptions);
+        } catch (e) {
+          // ok so the native Notification doesn't work which will happen
+          // try to use the service worker
+          if (!window.isSecureContext || !navigator.serviceWorker) {
+            return;
+          }
+          navigator.serviceWorker.ready.then((registration) => {
+            registration.showNotification(notificationTitle, notificationOptions);
+          }).catch((err) => {
+            // avoid promise going uncaught
+            console.warn('Failed to display notification with serviceWorker', err);
+          });
+        }
+      }
+    },
   },
   mounted() {
     document.title = this.$t(constants.APP_NAME);
@@ -224,6 +276,14 @@ export default Vue.extend({
     if (this.playerView.players.length > 1 && this.waitingfor !== undefined) {
       documentTitleTimer = window.setInterval(() => this.animateTitle(), 1000);
     }
+  },
+  computed: {
+    Phase(): typeof Phase {
+      return Phase;
+    },
+    preferences(): typeof getPreferences {
+      return getPreferences;
+    },
   },
 });
 

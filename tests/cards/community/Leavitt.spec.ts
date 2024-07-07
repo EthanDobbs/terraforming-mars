@@ -1,18 +1,21 @@
 import {expect} from 'chai';
 import {Leavitt} from '../../../src/server/cards/community/Leavitt';
 import {Vitor} from '../../../src/server/cards/prelude/Vitor';
+import {SelfReplicatingRobots} from '../../../src/server/cards/promo/SelfReplicatingRobots';
 import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {Tag} from '../../../src/common/cards/Tag';
 import {cast, runAllActions} from '../../TestingUtils';
 import {SelectCard} from '../../../src/server/inputs/SelectCard';
 import {testGame} from '../../TestGame';
+import {VenusianAnimals} from '../../../src/server/cards/venusNext/VenusianAnimals';
 
 describe('Leavitt', function() {
   let leavitt: Leavitt;
   let player: TestPlayer;
   let player2: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(function() {
     leavitt = new Leavitt();
@@ -109,9 +112,30 @@ describe('Leavitt', function() {
     // This test verifies that a regression doesn't reoccur.
     // Merely completing these is sufficient because
     // it doesn't throw an Error.
-    player.setCorporationForTest(new Vitor());
+    player.corporations.push(new Vitor());
     expect(player.tags.count(Tag.SCIENCE)).to.eq(0);
     leavitt.addColony(player);
     expect(player.tags.count(Tag.SCIENCE)).to.eq(1);
+  });
+
+  it('Leavitt is compatible with Self-Replicating Robots #6664', () => {
+    // This test verifies that a regression doesn't reoccur.
+    // it doesn't throw an Error.
+    player.playedCards.push(new SelfReplicatingRobots());
+    expect(player.tags.count(Tag.SCIENCE)).to.eq(0);
+    leavitt.addColony(player);
+    expect(player.tags.count(Tag.SCIENCE)).to.eq(1);
+  });
+
+  // #6349
+  it('Leavitt is compatible with Venusian Animals', () => {
+    const venusianAnimals = new VenusianAnimals();
+    player.playedCards.push(venusianAnimals);
+
+    expect(venusianAnimals.resourceCount).eq(0);
+
+    leavitt.addColony(player);
+
+    expect(venusianAnimals.resourceCount).eq(1);
   });
 });

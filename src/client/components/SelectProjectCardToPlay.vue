@@ -289,7 +289,7 @@ export default Vue.extend({
         return this.tags.includes(Tag.BUILDING) ||
           this.thisPlayer.lastCardPlayed === CardName.LAST_RESORT_INGENUITY ||
           (this.playerinput.heavyAerospaceTechSteel && this.tags.includes(Tag.SPACE)) ||
-          (this.playerinput.undergroundVenusBaseSteel && this.tags.includes(Tag.VENUS));
+          (this.playerinput.undergroundVenusBaseSteel && this.tags.includes(Tag.VENUS))
       case 'titanium':
         return this.canUseTitaniumRegularly() ||
           this.playerinput.paymentOptions.lunaTradeFederationTitanium === true;

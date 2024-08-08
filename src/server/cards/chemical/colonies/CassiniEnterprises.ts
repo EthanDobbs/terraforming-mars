@@ -8,6 +8,7 @@ import {CardResource} from '../../../../common/CardResource';
 import {IPlayer} from '../../../IPlayer';
 import {ICard} from '../../ICard';
 import {SelectCard} from '../../../inputs/SelectCard';
+import { digit } from '../../Options';
 
 export class CassiniEnterprises extends Card implements IProjectCard {
   constructor() {
@@ -26,7 +27,7 @@ export class CassiniEnterprises extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'x379',
         renderData: CardRenderer.builder((b) => {
-          b.production((pb) => pb.titanium(1)).br.resource(CardResource.ASTEROID, 2).asterix().nbsp.or().nbsp.resource(CardResource.FLOATER, 3).asterix();
+          b.production((pb) => pb.titanium(1)).br.resource(CardResource.ASTEROID, 2).asterix().nbsp.or().nbsp.resource(CardResource.FLOATER, {amount: 3, digit}).asterix();
         }),
         description: 'Requires a Jovian tag. Raise your titanium production 1 step and add 2 asteroids or 3 floaters to ANOTHER card.',
       },

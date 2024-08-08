@@ -1,204 +1,214 @@
 import {CardName} from '../../../common/cards/CardName';
 import {GlobalEventName} from '../../../common/turmoil/globalEvents/GlobalEventName';
 import {ModuleManifest} from '../ModuleManifest';
-import {Overgrowth} from './base/Overgrowth';
-import {AsteroidMiningExpedition} from './base/AsteroidMiningExpedition';
-import {ArtificialAsteroid} from './base/ArtificialAsteroid';
-import {TemporarySmeltingPlant} from './base/TemporarySmeltingPlant';
-import {EcologicalShipment} from './base/EcologicalShipment';
-import {OxygenShipment} from './base/OxygenShipment';
-import {CondensedGasConvoy} from './base/CondensedGasConvoy';
-import {ImportedFuel} from './base/ImportedFuel';
-import {PanspermicAsteroid} from './base/PanspermicAsteroid';
-import {InstantiatedSolarFlare} from './base/InstantiatedSolarFlare';
-import {HighSpeedComet} from './base/HighSpeedComet';
-import {TitaniumComet} from './base/TitaniumComet';
-import {GiantCarbonateAsteroid} from './base/GiantCarbonateAsteroid';
-import {CarbonateAsteroid} from './base/CarbonateAsteroid';
-import {AcceleratedImpactor} from './base/AcceleratedImpactor';
-import {IronRichAsteroid} from './base/IronRichAsteroid';
-import {MinorImpactor} from './base/MinorImpactor';
-import {ConvoyFromTitan} from './base/ConvoyFromTitan';
-import {HydrogenFromSaturn} from './base/HydrogenFromSaturn';
-import {ExpeditionToDione} from './base/ExpeditionToDione';
-import {LargeThermalDetonator} from './base/LargeThermalDetonator';
-import {SubcrustVaporTrapping} from './base/SubcrustVaporTrapping';
-import {CyanobacteriaBloom} from './base/CyanobacteriaBloom';
-import {HabitatConservation} from './base/HabitatConservation';
-import {Overclock} from './base/Overclock';
-import {EarlyExpeditionChemical} from './base/EarlyExpeditionChemical';
-import {AsteroidStudy} from './base/AsteroidStudy';
-import {NitrogenAsteroids} from './base/NitrogenAsteroids';
-import {OxygenatedComets} from './base/OxygenatedComets';
-import {KuiperBeltIceAsteroids} from './base/KuiperBeltIceAsteroids';
-import {CeresMiningOperations} from './base/CeresMiningOperations';
-import {AmmoniaHeavyAsteroids} from './base/AmmoniaHeavyAsteroids';
-import {MTypeAsteroidMining} from './base/MTypeAsteroidMining';
-import {FloatingWeatherProbes} from './base/FloatingWeatherProbes';
-import {ProductionDrones} from './base/ProductionDrones';
-import {EuropanBacteria} from './base/EuropanBacteria';
-import {Termites} from './base/Termites';
-import {MartianThermophiles} from './base/MartianThermophiles';
-import {MimicryArchaea} from './base/MimicryArchaea';
-import {MyceliumFungi} from './base/MyceliumFungi';
-import {Macroplankton} from './base/Macroplankton';
-import {WaterSplittingMicrobes} from './base/WaterSplittingMicrobes';
-import {AntiOxidationBacteria} from './base/AntiOxidationBacteria';
-import {ThallophyteProtists} from './base/ThallophyteProtists';
-import {LatticeConstructionMicrobes} from './base/LatticeConstructionMicrobes';
-import {ElectroplaqueMicrobes} from './base/ElectroplaqueMicrobes';
-import {LargeAquaticMammals} from './base/LargeAquaticMammals';
-import {TundraWildlife} from './base/TundraWildlife';
-import {Raptors} from './base/Raptors'; // import {Poultry} from './base/Poultry';
-import {FishFarmingLake} from './base/FishFarmingLake';
-import {Cephalopods} from './base/Cephalopods';
-import {EndangeredSpeciesRefuge} from './base/EndangeredSpeciesRefuge';
-import {NonHypoxicSmallAnimals} from './base/NonHypoxicSmallAnimals';
-import {SubterranianCreatures} from './base/SubterranianCreatures';
-import {AntarcticKrill} from './base/AntarcticKrill';
-import {AncientArthopods} from './base/AncientArthropods';
-import {HabitatDomes} from './base/HabitatDomes';
-import {Aquaponics} from './base/Aquaponics';
-import {RegolithTreatment} from './base/RegolithTreatment';
-import {EuropaWaterSplitting} from './base/EuropaWaterSplitting';
-import {SiliconFactory} from './base/SiliconFactory';
-import {AluminumFoundry} from './base/AluminumFoundry';
-import {LocalTemperatureControl} from './base/LocalTemperatureControl';
-import {AdvancedGeneticAdaption} from './base/AdvancedGeneticAdaption';
-import {OceanographyResearch} from './base/OceanographyResearch';
-import {HeavyAerospaceTech} from './base/HeavyAerospaceTech';
-import {FreightShuttles} from './base/FreightShuttles';
-import {GeneticEngineeringLab} from './base/GeneticEngineeringLab';
-import {CO2Vents} from './base/CO2Vents';
-import {EcologicalContract} from './base/EcologicalContract';
-import {Biodomes} from './base/Biodomes';
-import {TemperateRainforest} from './base/TemperateRainforest';
-import {BiomassReactor} from './base/BiomassReactor';
-import {MicrobeCultivationFacility} from './base/MicrobeCultivationFacility';
-import {BiodiversityContract} from './base/BiodiversityContract';
-import {ImperativeSettlement} from './base/ImperativeSettlement';
-import {EcoCentral} from './base/EcoCentral';
-import {SprawlingCity} from './base/SprawlingCity';
-import {Superpolymers} from './base/Superpolymers';
-import {ThawMining} from './base/ThawMining';
-import {IndependentSettlement} from './base/IndependentSettlement';
-import {MultifunctionalDome} from './base/MultifunctionalDome';
-import {MiningCommunity} from './base/MiningCommunity';
-import {DeepBurrowSettlement} from './base/DeepBurrowSettlement';
-import {InsulatedCity} from './base/InsulatedCity';
-import {BuriedSettlement} from './base/BuriedSettlement';
-import {InstituteSettlement} from './base/InstituteSettlement';
-import {HugeCity} from './base/HugeCity';
-import {HugeGlacier} from './base/HugeGlacier';
-import {FreshwaterLake} from './base/FreshwaterLake';
-import {DeepWellPump} from './base/DeepWellPump';
-import {GeothermalReserviorHeating} from './base/GeothermalReserviorHeating';
-import {MunicipalReservior} from './base/MunicipalReservior';
-import {ExplosivesTestSite} from './base/ExplosivesTestSite';
-import {LumberMill} from './base/LumberMill';
-import {CommercialImports} from './base/CommercialImports';
-import {UrbanDevelopment} from './base/UrbanDevelopment';
-import {TunnelBoring} from './base/TunnelBoring';
-import {LithiumMine} from './base/LithiumMine';
-import {ChasmaExcavation} from './base/ChasmaExcavation';
-import {DeepPolarExtraction} from './base/DeepPolarExtraction';
-import {PhobosMiningOperations} from './base/PhobosMiningOperations';
-import {CallistoOperations} from './base/CallistoOperations';
-import {LaserFactory} from './base/LaserFactory';
-import {RegolithAeration} from './base/RegolithAeration';
-import {Mixotrophs} from './base/Mixotrophs';
-import {BotanicalLab} from './base/BotanicalLab';
-import {Composting} from './base/Composting';
-import {EnzymaticTreatment} from './base/EnzymaticTreatment';
-import {ExtremeNitrophiles} from './base/ExtremeNitrophiles';
-import {VascularTundraPlants} from './base/VascularTundraPlants';
-import {Bamboo} from './base/Bamboo';
-import {ErosionReducingGreenery} from './base/ErosionReducingGreenery';
-import {DwarfWillow} from './base/DwarfWillow';
-import {Wildberries} from './base/Wildberries';
-import {AnaerobicEnergyCropping} from './base/AnaerobicEnergyCropping';
-import {AdaptedHardwood} from './base/AdaptedHardwood';
-import {AquaticBiodomes} from './base/AquaticBiodomes';
-import {Conifers} from './base/Conifers';
-import {Barley} from './base/Barley';
-import {WetlandsChemical} from './base/WetlandsChemical';
-import {Cacti} from './base/Cacti';
-import {AdaptedFruitFarming} from './base/AdaptedFruitFarming';
-import {RiceFields} from './base/RiceFields';
-import {CoralReef} from './base/CoralReef';
-import {CyanobacteriaChemical} from './base/CyanobacteriaChemical';
-import {HydroponicsFacility} from './base/HydroponicsFacility';
-import {RedAlgae} from './base/RedAlgae';
-import {Irrigation} from './base/Irrigation';
-import {Monsoons} from './base/Monsoons';
-import {HeavyRespirators} from './base/HeavyRespirators';
-import {BeeFarming} from './base/BeeFarming';
-import {SaturnGasMine} from './base/SaturnGasMine';
-import {SpaceBasedSolarPower} from './base/SpaceBasedSolarPower';
-import {LargePowerPlant} from './base/LargePowerPlant';
-import {HydrocarbonSynthesis} from './base/HydrocarbonSynthesis';
-import {AtmosphericProcessing} from './base/AtmosphericProcessing';
-import {UraniumDeposit} from './base/UraniumDeposit';
-import {MassiveSolarFarm} from './base/MassiveSolarFarm';
-import {EnrichmentPlant} from './base/EnrichmentPlant';
-import {FuelCellProduction} from './base/FuelCellProduction';
-import {EnergyMohole} from './base/EnergyMohole';
-import {EfficientBatteries} from './base/EfficientBatteries';
-import {AdvancedHydropower} from './base/AdvancedHydropower';
-import {HighPowerBetavoltaics} from './base/HighPowerBetavoltaics';
-import {CentralPowerPlant} from './base/CentralPowerPlant';
-import {OsmoticPower} from './base/OsmoticPower';
-import {SolidStateWildEnergy} from './base/SolidStateWildEnergy';
-import {AtmosphericPressureEngine} from './base/AtmosphericPressureEngine';
-import {IsotopeEnrichingBacteria} from './base/IsotopeEnrichingBacteria';
-import {AnaerobicBacteria} from './base/AnaerobicBacteria';
-import {CarbonateDeposit} from './base/CarbonateDeposit';
-import {HFCProduction} from './base/HFCProduction';
-import {GHGFactoryDistrict} from './base/GHGFactoryDistrict';
-import {LaserCannon} from './base/LaserCannon';
-import {NaturalGasExtraction} from './base/NaturalGasExtraction';
-import {OzoneFactories} from './base/OzoneFactories';
-import {SyntheticGrowthHormones} from './base/SyntheticGrowthHormones';
-import {ProbioticTreatment} from './base/ProbioticTreatment';
-import {MirandaLabs} from './base/MirandaLabs';
-import {MarsLifeScienceInstitute} from './base/MarsLifeScienceInstitute';
-import {SpeciesCryopreservation} from './base/SpeciesCryopreservation';
-import {EarlyPolarOutpost} from './base/EarlyPolarOutpost';
-import {RuralHousing} from './base/RuralHousing';
-import {Parasite} from './corpera/Parasite';
-import {PowerFailure} from './corpera/PowerFailure';
-import {FailedSpaceMission} from './corpera/FailedSpaceMission';
-import {AquiferRelocation} from './corpera/AquiferRelocation';
-import {PublicRecords} from './corpera/PublicRecords';
-import {AssetLiquidation} from './corpera/AssetLiquidation';
-import {SmallSupplyDrop} from './corpera/SmallSupplyDrop';
-import {PatentTrading} from './corpera/PatentTrading';
-import {TechnologyExhibition} from './corpera/TechnologyExhibition';
-import {ResearchDonation} from './corpera/ResearchDonation';
-import {PopulationBoom} from './corpera/PopulationBoom';
-import {AstrophysicsCenter} from './corpera/AstrophysicsCenter';
-import {CentaurLandings} from './corpera/CentaurLandings';
-import {VestaObservatory} from './corpera/VestaObservatory';
-import {EnceladusOutpost} from './corpera/EnceladusOutpost';
-import {MeasurementDrones} from './corpera/MeasurementDrones';
-import {AdvancedBiomachinery} from './corpera/AdvancedBiomachinery';
+import {SubcrustVaporTrapping} from './base/1_SubcrustVaporTrapping';
+import {ConvoyFromTitan} from './base/2_ConvoyFromTitan';
+import {HighSpeedComet} from './base/3_HighSpeedComet';
+import {TitaniumComet} from './base/4_TitaniumComet';
+import {ExpeditionToDione} from './base/5_ExpeditionToDione';
+import {LargeThermalDetonator} from './base/6_LargeThermalDetonator';
+import {HydrogenFromSaturn} from './base/7_HydrogenFromSaturn';
+import {GiantCarbonateAsteroid} from './base/8_GiantCarbonateAsteroid';
+import {CarbonateAsteroid} from './base/9_CarbonateAsteroid';
+import {ArtificialAsteroid} from './base/10_ArtificialAsteroid';
+import {InstantiatedSolarFlare} from './base/11_InstantiatedSolarFlare';
+import {AcceleratedImpactor} from './base/12_AcceleratedImpactor';
+import {IronRichAsteroid} from './base/13_IronRichAsteroid';
+import {Overgrowth} from './base/14_Overgrowth';
+import {CondensedGasConvoy} from './base/15_CondensedGasConvoy';
+import {TemporarySmeltingPlant} from './base/16_TemporarySmeltingPlant';
+import {CyanobacteriaBloom} from './base/17_CyanobacteriaBloom';
+import {OxygenShipment} from './base/18_OxygenShipment';
+import {SpecialAerosols} from './base/19_SpecialAerosols';
+import {ImportedFuel} from './base/20_ImportedFuel';
+import {AsteroidMiningExpedition} from './base/21_AsteroidMiningExpedition';
+import {LowlandExpedition} from './base/22_LowlandExpedition';
+import {PowerSurge} from './base/23_PowerSurge';
+import {MinorImpactor} from './base/24_MinorImpactor';
+import {ControlledBurn} from './base/25_ControlledBurn';
+import {EcologicalShipment} from './base/26_EcologicalShipment';
+import {PanspermiaSurvey} from './base/27_PanspermiaSurvey';
+import {HabitatConservation} from './base/28_HabitatConservation';
+import {AsteroidStudy} from './base/29_AsteroidStudy';
+import {NitrogenAsteroids} from './base/30_NitrogenAsteroids';
+import {OxygenatedComets} from './base/31_OxygenatedComets';
+import {KuiperBeltIceAsteroids} from './base/32_KuiperBeltIceAsteroids';
+import {CeresMiningOperations} from './base/33_CeresMiningOperations';
+import {AmmoniaHeavyAsteroids} from './base/34_AmmoniaHeavyAsteroids';
+import {MTypeAsteroidMining} from './base/35_MTypeAsteroidMining';
+import {FloatingWeatherProbes} from './base/36_FloatingWeatherProbes';
+import {ProductionDrones} from './base/37_ProductionDrones';
+import {EuropanBacteria} from './base/38_EuropanBacteria';
+import {Termites} from './base/39_Termites';
+import {MartianThermophiles} from './base/40_MartianThermophiles';
+import {MimicryArchaea} from './base/41_MimicryArchaea';
+import {Macroplankton} from './base/42_Macroplankton';
+import {WaterSplittingMicrobes} from './base/43_WaterSplittingMicrobes';
+import {HalogenReconstructors} from './base/44_HalogenReconstructors';
+import {AntiOxidationBacteria} from './base/45_AntiOxidationBacteria';
+import {ThallophyteProtists} from './base/46_ThallophyteProtists';
+import {CarbonLatticeMicrobes} from './base/47_CarbonLatticeMicrobes';
+import {ElectroplaqueMicrobes} from './base/48_ElectroplaqueMicrobes';
+import {LargeAquaticMammals} from './base/49_LargeAquaticMammals';
+import {TundraWildlife} from './base/50_TundraWildlife';
+import {Raptors} from './base/51_Raptors';
+import {FishFarmingLake} from './base/52_FishFarmingLake';
+import {Cephalopods} from './base/53_Cephalopods';
+import {EndangeredSpeciesRefuge} from './base/54_EndangeredSpeciesRefuge';
+import {NonHypoxicSmallAnimals} from './base/55_NonHypoxicSmallAnimals';
+import {SubterranianCreatures} from './base/56_SubterranianCreatures';
+import {AntarcticKrill} from './base/57_AntarcticKrill';
+import {AncientArthopods} from './base/58_AncientArthropods';
+import {AdaptiveBiotics} from './base/59_AdaptiveBiotics';
+import {HabitatDomes} from './base/60_HabitatDomes';
+import {Aquaponics} from './base/61_Aquaponics';
+import {SprawlingCity} from './base/62_SprawlingCity';
+import {ImperativeSettlement} from './base/63_ImperativeSettlement';
+import {EcoCentral} from './base/64_EcoCentral';
+import {Canals} from './base/65_Canals';
+import {FreightShuttles} from './base/66_FreightShuttles';
+import {SiliconFactory} from './base/67_SiliconFactory';
+import {AluminumFoundry} from './base/68_AluminumFoundry';
+import {ThawMining} from './base/69_ThawMining';
+import {EcologicalContract} from './base/70_EcologicalContract';
+import {AdvancedGeneticAdaption} from './base/71_AdvancedGeneticAdaption';
+//import {EssentialSymbiotics} from './base/72_EssentialSymbiotics';
+import {MicrobeCultivationFacility} from './base/73_MicrobeCultivationFacility';
+import {Biodomes} from './base/74_Biodomes';
+import {BiomassReactor} from './base/75_BiomassReactor';
+import {LocalTemperatureControl} from './base/76_LocalTemperatureControl';
+import {CO2Vents} from './base/77_CO2Vents';
+import {RegolithTreatment} from './base/78_RegolithTreatment';
+import {EuropaWaterSplitting} from './base/79_EuropaWaterSplitting';
+import {BiodiversityContract} from './base/80_BiodiversityContract';
+import {TemperateRainforest} from './base/81_TemperateRainforest';
+import {GeneticEngineeringLab} from './base/82_GeneticEngineeringLab';
+import {OceanographyResearch} from './base/83_OceanographyResearch';
+import {HeavyAerospaceTech} from './base/84_HeavyAerospaceTech';
+import {InsulatedCity} from './base/85_InsulatedCity';
+import {BuriedSettlement} from './base/86_BuriedSettlement';
+import {HugeCity} from './base/87_HugeCity';
+import {MiningCommunity} from './base/88_MiningCommunity';
+import {DeepBurrowSettlement} from './base/89_DeepBurrowSettlement';
+import {InstituteSettlement} from './base/90_InstituteSettlement';
+import {MultifunctionalDome} from './base/91_MultifunctionalDome';
+import {IndependentSettlement} from './base/92_IndependentSettlement';
+import {GeothermalReserviorHeating} from './base/93_GeothermalReserviorHeating';
+import {MunicipalReservior} from './base/94_MunicipalReservior';
+import {FreshwaterLake} from './base/95_FreshwaterLake';
+import {HugeGlacier} from './base/96_HugeGlacier';
+import {DeepWellPump} from './base/97_DeepWellPump';
+import {CommercialImports} from './base/98_CommercialImports';
+import {UrbanDevelopment} from './base/99_UrbanDevelopment';
+import {ExplosivesTestSite} from './base/100_ExplosivesTestSite';
+import {GrandStadium} from './base/101_GrandStadium';
+import {PolarOutpost} from './base/102_PolarOutpost';
+import {RuralHousing} from './base/103_RuralHousing';
+import {TunnelBoring} from './base/104_TunnelBoring';
+import {LithiumMine} from './base/105_LithiumMine';
+import {ChasmaExcavation} from './base/106_ChasmaExcavation';
+import {DeepPolarExtraction} from './base/107_DeepPolarExtraction';
+import {CallistoOperations} from './base/108_CallistoOperations';
+import {SaturnGasMine} from './base/109_SaturnGasMine';
+import {LaserDrillMining} from './base/110_LaserDrillMining';
+import {HydrualicMining} from './base/111_HydrualicMining';
+import {EnzymaticTreatment} from './base/112_EnzymaticTreatment';
+import {RegolithAeration} from './base/113_RegolithAeration';
+import {Mixotrophs} from './base/114_Mixotrophs';
+import {BotanicalLab} from './base/115_BotanicalLab';
+import {IndustrialComposting} from './base/116_IndustrialComposting';
+import {ExtremeNitrophiles} from './base/117_ExtremeNitrophiles';
+import {VascularTundraPlants} from './base/118_VascularTundraPlants';
+import {Bamboo} from './base/119_Bamboo';
+import {ErosionReducingGreenery} from './base/120_ErosionReducingGreenery';
+import {ParasiticPlants} from './base/121_ParasiticPlants';
+import {Wildberries} from './base/122_Wildberries';
+import {AnaerobicEnergyCropping} from './base/123_AnaerobicEnergyCropping';
+import {AdaptedHardwood} from './base/124_AdaptedHardwood';
+import {AquaticBiodomes} from './base/125_AquaticBiodomes';
+import {Conifers} from './base/126_Conifers';
+import {WildBarley} from './base/127_WildBarley';
+import {WetlandsChemical} from './base/128_WetlandsChemical';
+import {Cacti} from './base/129_Cacti';
+import {AdaptedFruitFarming} from './base/130_AdaptedFruitFarming';
+import {RiceFields} from './base/131_RiceFields';
+import {CoralReef} from './base/132_CoralReef';
+import {CyanobacteriaChemical} from './base/133_CyanobacteriaChemical';
+import {HydroponicsFacility} from './base/134_HydroponicsFacility';
+import {RedAlgae} from './base/135_RedAlgae';
+import {Irrigation} from './base/136_Irrigation';
+import {Monsoons} from './base/137_Monsoons';
+import {HeavyRespirators} from './base/138_HeavyRespirators';
+import {BeeFarming} from './base/139_BeeFarming';
+import {SyntheticGrowthHormones} from './base/140_SyntheticGrowthHormones';
+import {SpaceBasedSolarPower} from './base/141_SpaceBasedSolarPower';
+import {EfficientBatteries} from './base/142_EfficientBatteries';
+import {LargePowerPlant} from './base/143_LargePowerPlant';
+import {HydrocarbonSynthesis} from './base/144_HydrocarbonSynthesis';
+import {AtmosphericProcessing} from './base/145_AtmosphericProcessing';
+import {UraniumDeposit} from './base/146_UraniumDeposit';
+import {AlgaeBioreactorsChemical} from './base/147_AlgaeBioreactors';
+import {MassiveSolarFarm} from './base/148_MassiveSolarFarm';
+import {AdvancedHydropower} from './base/149_AdvancedHydropower';
+import {EnrichmentPlant} from './base/150_EnrichmentPlant';
+import {FuelCellProduction} from './base/151_FuelCellProduction';
+import {EnergyMohole} from './base/152_EnergyMohole';
+import {HighPowerBetavoltaics} from './base/153_HighPowerBetavoltaics';
+import {CentralPowerPlant} from './base/154_CentralPowerPlant';
+import {IsotopeEnrichingBacteria} from './base/155_IsotopeEnrichingBacteria';
+import {AnaerobicBacteria} from './base/156_AnaerobicBacteria';
+import {SolidStateWildEnergy} from './base/157_SolidStateWildEnergy';
+import {AtmosphericPressureEngine} from './base/158_AtmosphericPressureEngine';
+import {LaserCannon} from './base/159_LaserCannon';
+import {PerfluorocarbonProduction} from './base/160_PerfluorocarbonProduction';
+import {GHGFactoryDistrict} from './base/161_GHGFactoryDistrict';
+import {NaturalGasExtraction} from './base/162_NaturalGasExtraction';
+import {HydrothermalVents} from './base/163_HydrothermalVents';
+import {OzoneFactories} from './base/164_OzoneFactories';
+import {ProbioticTreatment} from './base/165_ProbioticTreatment';
+import {MirandaLabs} from './base/166_MirandaLabs';
+import {MarsLifeScienceInstitute} from './base/167_MarsLifeScienceInstitute';
+import {SpeciesCryopreservation} from './base/168_SpeciesCryopreservation';
+import {AquiferRelocation} from './corpera/1_AquiferRelocation';
+import {SpeculativeMarkets} from './corpera/2_SpeculativeMarkets';
+import {ResearchGrantChemical} from './corpera/3_ResearchGrant';
+import {SmallSupplyDrop} from './corpera/4_SmallSupplyDrop';
+import {HermesMission} from './corpera/5_HermesMission';
+import {AssetLiquidation} from './corpera/6_AssetLiquidation';
+import {Parasite} from './corpera/7_Parasite';
+import {RoboticsExhibition} from './corpera/8_RoboticsExhibition';
+import {PatentTrading} from './corpera/9_PatentTrading';
+import {PublicRecords} from './corpera/10_PublicRecords';
+import {AcidRain} from './corpera/11_AcidRain';
+import {PowerFailure} from './corpera/12_PowerFailure';
+import {AstrophysicsCenter} from './corpera/13_AstrophysicsCenter';
+import {CentaurLandings} from './corpera/14_CentaurLandings';
+import {VestaObservatory} from './corpera/15_VestaObservatory';
+import {MeasurementDrones} from './corpera/16_MeasurementDrones';
+import {AdvancedBiomachinery} from './corpera/17_AdvancedBiomachinery';
+import {LongTermEvolutionStudy} from './corpera/18_LongTermEvolutionStudy';
+import {ScientificLogs} from './corpera/19_ScientificLogs';
+import {ConstructionCenter} from './corpera/20_ConstructionCenter';
+import {HomeworldHeadquarters} from './corpera/21_HomeworldHeadquarters';
+import {MartianInvestments} from './corpera/22_MartianInvestments';
+import {LaserLightsails} from './corpera/23_LaserLightsails';
+import {SponsoredResearchFirm} from './corpera/24_SponsoredResearchFirm';
+import {JovianSuppliers} from './corpera/25_JovianSuppliers';
+import {OlympusArchives} from './corpera/26_OlympusArchives';
+import {NeuralEnhancement} from './corpera/27_NeuralEnchancement';
+import {Superpolymers} from './corpera/28_Superpolymers';
+import {AlloyFactory} from './corpera/29_AlloyFactory';
+import {NovaFoundry} from './corpera/30_NovaFoundry';
+import {KugelblitzEngine} from './corpera/31_KugelblitzEngine';
+import {ExoticMatterReactor} from './corpera/32_ExoticMatterReactor';
+import {SolarStation} from './corpera/33_SolarStation';
+import {UndergroundTestSite} from './corpera/34_UndergroundTestSite';
+import {StandardAlloys} from './corpera/35_StandardAlloys';
+import {OverseerCommittee} from './corpera/36_OverseerCommittee';
+
 import {ViralAmeboid} from './corpera/ViralAmeboid';
-import {LongTermEvolutionStudy} from './corpera/LongTermEvolutionStudy';
-import {LaserLightsails} from './corpera/LaserLightsails';
-import {AlloyFactory} from './corpera/AlloyFactory';
-import {UndergroundTestSite} from './corpera/UndergroundTestSite';
 import {ScientificMegaopolis} from './corpera/ScientificMegaopolis';
-import {NovaFoundry} from './corpera/NovaFoundry';
-import {KugelblitzEngine} from './corpera/KugelblitzEngine';
-import {ScientificLogs} from './corpera/ScientificLogs';
-import {SponsoredResearchFirm} from './corpera/SponsoredResearchFirm';
-import {NeuralEnhancers} from './corpera/NeuralEnchancers';
-import {ConstructionCenter} from './corpera/ConstructionCenter';
-import {TyrrhenusArchives} from './corpera/TyrrhenusArchives';
-import {MarsBuinessInvestments} from './corpera/MarsBusinessInvestments';
-import {Canals} from './corpera/Canals';
 import {SteelExports} from './corpera/SteelExports';
-import {JovianSuppliers} from './corpera/JovianSuppliers';
 import {ProjectAdvancement} from './corpera/ProjectAdvancement';
 import {SuccessfulCommerce} from './corpera/SuccessfulCommerce';
 import {ScientificSupport} from './corpera/ScientificSupport';
@@ -209,7 +219,6 @@ import {MilitarySpacePort} from './corpera/MilitarySpacePort';
 import {MartianBanking} from './corpera/MartianBanking';
 import {ChemicalPlant} from './corpera/ChemicalPlant';
 import {SaltMine} from './corpera/SaltMine';
-import {GrandStadium} from './corpera/GrandStadium';
 import {LuxuryResort} from './corpera/LuxuryResort';
 import {ManufacturingPlant} from './corpera/ManufacturingPlant';
 import {ContractedConstruction} from './corpera/ContractedConstruction';
@@ -223,7 +232,6 @@ import {ExplosiveMining} from './corpera/ExplosiveMining';
 import {PrintManufacturing} from './corpera/PrintManufacturing';
 import {VolcanicFoundry} from './corpera/VolcanicFoundry';
 import {Shipyard} from './corpera/Shipyard';
-import {HydrualicMining} from './corpera/HydrualicMining';
 import {UpperMantleBoring} from './corpera/UpperMantleBoring';
 import {SeedSuppliers} from './corpera/SeedSuppliers';
 import {CashCrops} from './corpera/CashCrops';
@@ -336,13 +344,12 @@ import {FloatingTechInvestments} from './colonies/FloatingTechInvestments';
 import {Primates} from './base/Primates';
 import {ColonySuppliers} from './colonies/ColonySuppliers';
 import {FuelSubsidies} from './colonies/FuelSubsidies';
-import {SolarStation} from './colonies/SolarStation';
 import {RemoteTestZone} from './colonies/RemoteTestZone';
 import {WaypointColony} from './colonies/WaypointColony';
 import {PrivateColony} from './colonies/PrivateColony';
 import {RemoteMiningBase} from './colonies/RemoteMiningBase';
 import {ResearchMissions} from './colonies/ResearchMissions';
-import {VenusTradeStation} from './colonies/VenusTradeStation';
+import {VenusTradeStation} from './VenusTradeStation';
 import {RimPopulationCenter} from './colonies/RimPopulationCenter';
 import {BusinessColony} from './colonies/BusinessColony';
 import {SelfSufficientColony} from './colonies/SelfSufficientColony';
@@ -368,7 +375,6 @@ import {Wildflowers} from './colonies/Wildflowers';
 import {ColonySpaceMirrors} from './colonies/ColonySpaceMirrors';
 import {LunarPowerGrid} from './colonies/LunarPowerGrid';
 import {ProtoDysonSwarm} from './colonies/ProtoDysonSwarm';
-import {HydrothermalVents} from './colonies/HydrothermalVents';
 import {EarthEmbassyChemical} from './colonies/EarthEmbassyChemical';
 import {MercurialSunshade} from './colonies/MercurialSunshade';
 import {HighOrbitResearchStation} from './colonies/HighOrbitResearchStation';
@@ -413,54 +419,55 @@ import {ExoplanetLanding} from './turmoil/ExoplanetLanding';
 import {FirstMaritanMemorial} from './turmoil/FirstMartianMemorial';
 import {TerraformingUnion} from './turmoil/TerraformingUnion';
 import {AcquiredConsultingFirm} from './turmoil/AcquiredConsultingFirm';
-import {LegalExperts} from './preludes/LegalExperts';
-import {MaterialLoan} from './preludes/MaterialLoan';
-import {ResearchLoan} from './preludes/ResearchLoan';
-import {EarlyLandClaim} from './preludes/EarlyLandClaim';
-import {TerraformingSponors} from './preludes/TerraformingSponsors';
-import {EntertainmentIndustry} from './preludes/EntertainmentIndustry';
-import {CoerciveDealings} from './preludes/CoerciveDealings';
-import {NoctisSettlement} from './preludes/NoctisSettlement';
-import {AquaponicsFacility} from './preludes/AquaponicsFacility';
-import {WildlifeSponsors} from './preludes/WildlfieSponsors';
-import {BlueprintAI} from './preludes/BlueprintAI';
-import {RareMineralReserve} from './preludes/RareMineralReserve';
-import {HeavyMetalComet} from './base/HeavyMetalComet';
-import {Bioplastics} from './preludes/Bioplastics';
-import {NuclearFuelMining} from './preludes/NuclearFuelMining';
-import {LunarMiningIndustries} from './preludes/LunarMiningIndustries';
-import {LaserMining} from './preludes/LaserMining';
-import {InfrastructureSupport} from './preludes/InfrastructureSupport';
-import {GlacialAlgae} from './preludes/GlacialAlgae';
-import {AmmoniaAsteroid} from './preludes/AmmoniaAsteroid';
-import {AdaptedVascularGreenery} from './preludes/AdaptedVascularGreenery';
-import {ProtistLifeforms} from './preludes/ProtistLifeforms';
-import {EcologicalReserve} from './preludes/EcologicalReserve';
-import {PowerCore} from './preludes/PowerCore';
-import {EnergyBeam} from './preludes/EnergyBeam';
-import {ThermalPlant} from './preludes/ThermalPlant';
-import {AdvancedHeatingTech} from './preludes/AdvancedHeatingTech';
-import {ResearchBase} from './preludes/ResearchBase';
-import {FurtherDevelopment} from './preludes/FurtherDevelopment';
-import {CorporateEspionage} from './preludes/CorporateEspionage';
-import {VenusFirstChemical} from './preludes/VenusFirstChemical';
-import {AirScrappingOperations} from './preludes/AirScrappingOperations';
-import {HydrogenBombardmentChemical} from './preludes/HydrogenBombardmentChemical';
-import {EarlyVenusBiosphere} from './preludes/EarlyVenusBiosphere';
-import {VenusSupplier} from './preludes/VenusSupplier';
-import {VenusGHGExports} from './preludes/VenusGHGExports';
-import {InnerSolarMission} from './preludes/InnerSolarMission';
-import {SisterPlanetResearch} from './preludes/SisterPlanetResearch';
-import {FloatingCity} from './preludes/FloatingCity';
-import {EarlyColony} from './preludes/EarlyColony';
-import {IsolatedEcologyResearch} from './preludes/IsolatedEcologyResearch';
-import {JovianProjectBase} from './preludes/JovianProjectBase';
-import {InterplanetaryTradingPort} from './preludes/InterplanetaryTradingPort';
-import {GasMine} from './preludes/GasMine';
-import {TradingNetwork} from './preludes/TradingNetwork';
-import {TitanSettlement} from './preludes/TitanSettlement';
-import {TradeInfrastructure} from './preludes/TradeInfrastructure';
-import {PhobosSpacePort} from './preludes/PhobosSpacePort';
+import {ResearchBase} from './preludes/1_ResearchBase';
+import {HeavyMetalComet} from './preludes/2_HeavyMetalComet';
+import {LegalExperts} from './preludes/3_LegalExperts';
+import {MaterialLoan} from './preludes/4_MaterialLoan';
+import {ResearchLoan} from './preludes/5_ResearchLoan';
+import {EntertainmentIndustry} from './preludes/6_EntertainmentIndustry';
+import {CoerciveDealings} from './preludes/7_CoerciveDealings';
+import {AquaponicsFacility} from './preludes/8_AquaponicsFacility';
+import {NoctisSettlement} from './preludes/9_NoctisSettlement';
+import {WildlifeSponsors} from './preludes/10_WildlifeSponsors';
+import {BlueprintAI} from './preludes/11_BlueprintAI';
+import {Bioplastics} from './preludes/12_Bioplastics';
+import {InfrastructureSupport} from './preludes/13_InfrastructureSupport';
+import {IndustryAllies} from './preludes/14_IndustryAllies';
+import {NuclearFuelMining} from './preludes/15_NuclearFuelMining';
+import {LunarMiningIndustries} from './preludes/16_LunarMiningIndustries';
+import {LaserMining} from './preludes/17_LaserMining';
+import {CyanobacteriaPods} from './preludes/18_CyanobacteriaPods';
+import {GlacialAlgae} from './preludes/19_GlacialAlgae';
+import {AmmoniaAsteroid} from './preludes/20_AmmoniaAsteroid';
+import {AdaptedVascularGreenery} from './preludes/21_AdaptedVascularGreenery';
+import {EcologicalReserve} from './preludes/22_EcologicalReserve';
+import {ProtistLifeforms} from './preludes/23_ProtistLifeforms';
+import {PowerCore} from './preludes/24_PowerCore';
+import {EnergyBeam} from './preludes/25_EnergyBeam';
+import {ThermalPlant} from './preludes/26_ThermalPlant';
+import {AdvancedHeatingTech} from './preludes/27_AdvancedHeatingTech';
+import {TerritoryOccupation} from './preludes/28_TerritoryOccupation';
+import {RareMineralReserve} from './preludes/29_RareMineralReserve';
+import {CorporateEspionage} from './preludes/30_CorporateEspionage';
+import {VenusFirstChemical} from './preludes/31_VenusFirstChemical';
+import {AirScrappingOperations} from './preludes/32_AirScrappingOperations';
+import {TerrestrialPlanetMission} from './preludes/33_TerrestrialPlanetMission';
+import {HydrogenBombardmentChemical} from './preludes/34_HydrogenBombardmentChemical';
+import {ExperimentalOrganisms} from './preludes/35_ExperimentalOrganisms';
+import {VenusianIndustries} from './preludes/36_VenusianIndustries';
+import {VenusGHGExports} from './preludes/37_VenusGHGExports';
+import {SisterPlanetResearch} from './preludes/38_SisterPlanetResearch';
+import {FloatingCity} from './preludes/39_FloatingCity';
+import {EarlyColony} from './preludes/40_EarlyColony';
+import {IsolatedEcologyResearch} from './preludes/41_IsolatedEcologyResearch';
+import {JovianProjectBase} from './preludes/42_JovianProjectBase';
+import {InterplanetaryTradingPort} from './preludes/43_InterplanetaryTradingPort';
+import {TradingNetwork} from './preludes/44_TradingNetwork';
+import {GasMine} from './preludes/45_GasMine';
+import {PhobosSpacePort} from './preludes/46_PhobosSpacePort';
+import {TitanSettlement} from './preludes/47_TitanSettlement';
+import {TradeInfrastructure} from './preludes/48_TradeInfrastructure';
+
 import {CommitteeRepresentative} from './preludes/CommitteeRepresentative';
 import {ByElectionChemical} from './preludes/ByElectionChemical';
 import {ExecutiveOrderChemical} from './preludes/ExecutiveOrderChemical';
@@ -534,54 +541,55 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
 
   },
   preludeCards: {
+    [CardName.RESEARCH_BASE]: {Factory: ResearchBase},
+    [CardName.HEAVY_METAL_COMET]: {Factory: HeavyMetalComet},
     [CardName.LEGAL_EXPERTS]: {Factory: LegalExperts},
     [CardName.MATERIAL_LOAN]: {Factory: MaterialLoan},
     [CardName.RESEARCH_LOAN]: {Factory: ResearchLoan},
-    [CardName.EARLY_LAND_CLAIM]: {Factory: EarlyLandClaim},
-    [CardName.TERRAFORMING_SPONSORS]: {Factory: TerraformingSponors},
     [CardName.ENTERTAINMENT_INDUSTRY]: {Factory: EntertainmentIndustry},
     [CardName.COERCIVE_DEALINGS]: {Factory: CoerciveDealings},
-    [CardName.NOCTIS_SETTLEMENT]: {Factory: NoctisSettlement},
     [CardName.AQUAPONICS_FACILITY]: {Factory: AquaponicsFacility},
+    [CardName.NOCTIS_SETTLEMENT]: {Factory: NoctisSettlement},
     [CardName.WILDLIFE_SPONSORS]: {Factory: WildlifeSponsors},
     [CardName.BLUEPRINT_AI]: {Factory: BlueprintAI},
-    [CardName.RARE_MINERAL_RESERVE]: {Factory: RareMineralReserve},
-    [CardName.HEAVY_METAL_COMET]: {Factory: HeavyMetalComet},
     [CardName.BIOPLASTICS]: {Factory: Bioplastics},
     [CardName.INFRASTRUCTURE_SUPPORT]: {Factory: InfrastructureSupport},
+    [CardName.INDUSTRY_ALLIES]: {Factory: IndustryAllies},
     [CardName.NUCLEAR_FUEL_MINING]: {Factory: NuclearFuelMining},
     [CardName.LUNAR_MINING_INDUSTRIES]: {Factory: LunarMiningIndustries},
     [CardName.LASER_MINING]: {Factory: LaserMining},
+    [CardName.CYANOBACTERIA_PODS]: {Factory: CyanobacteriaPods},
     [CardName.GLACIAL_ALGAE]: {Factory: GlacialAlgae},
     [CardName.AMMONIA_ASTEROID]: {Factory: AmmoniaAsteroid},
     [CardName.ADAPTED_VASCULAR_GREENERY]: {Factory: AdaptedVascularGreenery},
-    [CardName.PROTIST_LIFEFORMS]: {Factory: ProtistLifeforms},
     [CardName.ECOLOGICAL_RESERVE]: {Factory: EcologicalReserve},
+    [CardName.PROTIST_LIFEFORMS]: {Factory: ProtistLifeforms},
     [CardName.POWER_CORE]: {Factory: PowerCore},
     [CardName.ENERGY_BEAM]: {Factory: EnergyBeam},
     [CardName.THERMAL_PLANT]: {Factory: ThermalPlant},
     [CardName.ADVANCED_HEATING_TECH]: {Factory: AdvancedHeatingTech},
-    [CardName.RESEARCH_BASE]: {Factory: ResearchBase},
-    [CardName.FURTHER_DEVELOPMENT]: {Factory: FurtherDevelopment},
+    [CardName.TERRITORY_OCCUPATION]: {Factory: TerritoryOccupation},
+    [CardName.RARE_MINERAL_RESERVE]: {Factory: RareMineralReserve},
     [CardName.CORPORATE_ESPIONAGE]: {Factory: CorporateEspionage},
     [CardName.VENUS_FIRST_CHEMICAL]: {Factory: VenusFirstChemical, compatibility: 'venus'},
-    [CardName.AIR_SCRAPPING_OPERATIONS]: {Factory: AirScrappingOperations, compatibility: 'venus'},
+    [CardName.AIR_SCRAPPING_OPERATIONS]: {Factory: AirScrappingOperations, compatibility: 'venus'},   
+    [CardName.TERRESTRIAL_PLANET_MISSION]: {Factory: TerrestrialPlanetMission, compatibility: 'venus'}, 
     [CardName.HYDROGEN_BOMBARDMENT_CHEMICAL]: {Factory: HydrogenBombardmentChemical, compatibility: 'venus'},
-    [CardName.EARLY_VENUS_BIOSPHERE]: {Factory: EarlyVenusBiosphere, compatibility: 'venus'},
-    [CardName.VENUS_SUPPLIER]: {Factory: VenusSupplier, compatibility: 'venus'},
+    [CardName.EXPERIMENTAL_ORGANISMS]: {Factory: ExperimentalOrganisms, compatibility: 'venus'},
+    [CardName.VENUSIAN_INDUSTRIES]: {Factory: VenusianIndustries, compatibility: 'venus'},
     [CardName.VENUS_GHG_EXPORTS]: {Factory: VenusGHGExports, compatibility: 'venus'},
-    [CardName.INNER_SOLAR_MISSION]: {Factory: InnerSolarMission, compatibility: 'venus'},
     [CardName.SISTER_PLANET_RESEARCH]: {Factory: SisterPlanetResearch, compatibility: 'venus'},
     [CardName.FLOATING_CITY]: {Factory: FloatingCity, compatibility: 'venus'},
     [CardName.EARLY_COLONY]: {Factory: EarlyColony, compatibility: 'colonies'},
     [CardName.ISOLATED_ECOLOGY_RESEARCH]: {Factory: IsolatedEcologyResearch, compatibility: 'colonies'},
     [CardName.JOVIAN_PROJECT_BASE]: {Factory: JovianProjectBase, compatibility: 'colonies'},
     [CardName.INTERPLANETARY_TRADING_PORT]: {Factory: InterplanetaryTradingPort, compatibility: 'colonies'},
-    [CardName.GAS_MINE]: {Factory: GasMine, compatibility: 'colonies'},
     [CardName.TRADING_NETWORK]: {Factory: TradingNetwork, compatibility: 'colonies'},
+    [CardName.GAS_MINE]: {Factory: GasMine, compatibility: 'colonies'},
+    [CardName.PHOBOS_SPACE_PORT]: {Factory: PhobosSpacePort, compatibility: 'colonies'},
     [CardName.TITAN_SETTLEMENT]: {Factory: TitanSettlement, compatibility: 'colonies'},
     [CardName.TRADE_INFRASTRUCTURE]: {Factory: TradeInfrastructure, compatibility: 'colonies'},
-    [CardName.PHOBOS_SPACE_PORT]: {Factory: PhobosSpacePort, compatibility: 'colonies'},
+   
     [CardName.COMMITTEE_REPRESENTATIVE]: {Factory: CommitteeRepresentative, compatibility: 'turmoil'},
     [CardName.BY_ELECTION_CHEMICAL]: {Factory: ByElectionChemical, compatibility: 'turmoil'},
     [CardName.EXECUTIVE_ORDER_CHEMICAL]: {Factory: ExecutiveOrderChemical, compatibility: 'turmoil'},
@@ -596,35 +604,37 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.HEAT_FIRST_INITIATIVE]: {Factory: HeatFirstInitiative, compatibility: 'turmoil'},
   },
   projectCards: {
-    [CardName.OVERGROWTH]: {Factory: Overgrowth},
-    [CardName.ASTEROID_MINING_EXPEDITION]: {Factory: AsteroidMiningExpedition},
-    [CardName.ARTIFICIAL_ASTEROID]: {Factory: ArtificialAsteroid},
-    [CardName.TEMPORARY_SMELTING_PLANT]: {Factory: TemporarySmeltingPlant},
-    [CardName.ECOLOGICAL_SHIPMENT]: {Factory: EcologicalShipment},
-    [CardName.OXYGEN_SHIPMENT]: {Factory: OxygenShipment},
-    [CardName.CONDENSED_GAS_CONVOY]: {Factory: CondensedGasConvoy},
-    [CardName.IMPORTED_FUEL]: {Factory: ImportedFuel},
-    [CardName.PANSPERMIC_ASTEROID]: {Factory: PanspermicAsteroid},
-    [CardName.INSTANTIATED_SOLAR_FLARE]: {Factory: InstantiatedSolarFlare},
+    [CardName.SUBCRUST_VAPOR_TRAPPING]: {Factory: SubcrustVaporTrapping},
+    [CardName.CONVOY_FROM_TITAN]: {Factory: ConvoyFromTitan},
     [CardName.HIGH_SPEED_COMET]: {Factory: HighSpeedComet},
     [CardName.TITANIUM_COMET]: {Factory: TitaniumComet},
-    [CardName.GIANT_CARBONATE_ASTEROID]: {Factory: GiantCarbonateAsteroid},
-    [CardName.CARBONATE_ASTEROID]: {Factory: CarbonateAsteroid},
-    [CardName.ACCELERATED_IMPACTOR]: {Factory: AcceleratedImpactor},
-    [CardName.IRON_RICH_ASTEROID]: {Factory: IronRichAsteroid},
-    [CardName.MINOR_IMPACTOR]: {Factory: MinorImpactor},
-    [CardName.CONVOY_FROM_TITAN]: {Factory: ConvoyFromTitan},
-    [CardName.HYDROGEN_FROM_SATURN]: {Factory: HydrogenFromSaturn},
     [CardName.EXPEDITION_TO_DIONE]: {Factory: ExpeditionToDione},
     [CardName.LARGE_THERMAL_DETONATOR]: {Factory: LargeThermalDetonator},
-    [CardName.SUBCRUST_VAPOR_TRAPPING]: {Factory: SubcrustVaporTrapping},
+    [CardName.HYDROGEN_FROM_SATURN]: {Factory: HydrogenFromSaturn},
+    [CardName.GIANT_CARBONATE_ASTEROID]: {Factory: GiantCarbonateAsteroid},
+    [CardName.CARBONATE_ASTEROID]: {Factory: CarbonateAsteroid},
+    [CardName.ARTIFICIAL_ASTEROID]: {Factory: ArtificialAsteroid},
+    [CardName.INSTANTIATED_SOLAR_FLARE]: {Factory: InstantiatedSolarFlare},
+    [CardName.ACCELERATED_IMPACTOR]: {Factory: AcceleratedImpactor},
+    [CardName.IRON_RICH_ASTEROID]: {Factory: IronRichAsteroid},
+    [CardName.OVERGROWTH]: {Factory: Overgrowth},
+    [CardName.CONDENSED_GAS_CONVOY]: {Factory: CondensedGasConvoy},
+    [CardName.TEMPORARY_SMELTING_PLANT]: {Factory: TemporarySmeltingPlant},
     [CardName.CYANOBACTERIA_BLOOM]: {Factory: CyanobacteriaBloom},
+    [CardName.OXYGEN_SHIPMENT]: {Factory: OxygenShipment},
+    [CardName.SPECIAL_AEROSOLS]: {Factory: SpecialAerosols},
+    [CardName.IMPORTED_FUEL]: {Factory: ImportedFuel},
+    [CardName.ASTEROID_MINING_EXPEDITION]: {Factory: AsteroidMiningExpedition},
+    [CardName.LOWLAND_EXPEDITION]: {Factory: LowlandExpedition},
+    [CardName.POWER_SURGE]: {Factory: PowerSurge},
+    [CardName.MINOR_IMPACTOR]: {Factory: MinorImpactor},
+    [CardName.CONTROLLED_BURN]: {Factory: ControlledBurn},
+    [CardName.ECOLOGICAL_SHIPMENT]: {Factory: EcologicalShipment},
+    [CardName.PANSPERMIA_SURVEY]: {Factory: PanspermiaSurvey},
     [CardName.HABITAT_CONSERVATION]: {Factory: HabitatConservation},
-    [CardName.OVERCLOCK]: {Factory: Overclock},
-    [CardName.EARLY_EXPEDITION_CHEMICAL]: {Factory: EarlyExpeditionChemical},
     [CardName.ASTEROID_STUDY]: {Factory: AsteroidStudy},
     [CardName.NITROGEN_ASTEROIDS]: {Factory: NitrogenAsteroids},
-    [CardName.OXYGENATED_COMETS]: {Factory: OxygenatedComets},
+    [CardName.OXYGENATED_COMETS]: {Factory: OxygenatedComets}, 
     [CardName.KUIPER_BELT_ICE_ASTEROIDS]: {Factory: KuiperBeltIceAsteroids},
     [CardName.CERES_MINING_OPERATIONS]: {Factory: CeresMiningOperations},
     [CardName.AMMONIA_HEAVY_ASTEROIDS]: {Factory: AmmoniaHeavyAsteroids},
@@ -635,12 +645,12 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.TERMITES]: {Factory: Termites},
     [CardName.MARTIAN_THERMOPHILES]: {Factory: MartianThermophiles},
     [CardName.MIMICRY_ARCHAEA]: {Factory: MimicryArchaea},
-    [CardName.MYCELIUM_FUNGI]: {Factory: MyceliumFungi},
-    [CardName.MACROPLANKTON]: {Factory: Macroplankton},
+    [CardName.MACROPLANKTON]: {Factory: Macroplankton},    
     [CardName.WATER_SPLITTING_MICROBES]: {Factory: WaterSplittingMicrobes},
+    [CardName.HALOGEN_RECONSTRUCTORS]: {Factory: HalogenReconstructors},
     [CardName.ANTI_OXIDATION_BACTERIA]: {Factory: AntiOxidationBacteria},
     [CardName.THALLOPHYTE_PROTISTS]: {Factory: ThallophyteProtists},
-    [CardName.LATTICE_CONSTRUCTION_MICROBES]: {Factory: LatticeConstructionMicrobes},
+    [CardName.CARBON_LATTICE_MICROBES]: {Factory: CarbonLatticeMicrobes},
     [CardName.ELECTROPLAQUE_MICROBES]: {Factory: ElectroplaqueMicrobes},
     [CardName.LARGE_AQUATIC_MAMMALS]: {Factory: LargeAquaticMammals},
     [CardName.TUNDRA_WILDLIFE]: {Factory: TundraWildlife},
@@ -652,70 +662,74 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.SUBTERRANEAN_CREATURES]: {Factory: SubterranianCreatures},
     [CardName.ANTARCTIC_KRILL]: {Factory: AntarcticKrill},
     [CardName.ANCIENT_ARTHROPODS]: {Factory: AncientArthopods},
+    [CardName.ADAPTIVE_BIOTICS]: {Factory: AdaptiveBiotics},
     [CardName.HABITAT_DOMES]: {Factory: HabitatDomes},
     [CardName.AQUAPONICS]: {Factory: Aquaponics},
-    [CardName.REGOLITH_TREATMENT]: {Factory: RegolithTreatment},
-    [CardName.EUROPA_WATER_SPLITTING]: {Factory: EuropaWaterSplitting},
-    [CardName.SILICON_FACTORY]: {Factory: SiliconFactory},
-    [CardName.ALUMINUM_FOUNDRY]: {Factory: AluminumFoundry},
-    [CardName.LOCAL_TEMPERATURE_CONTROL]: {Factory: LocalTemperatureControl},
-    [CardName.ADVANCED_GENETIC_ADAPTION]: {Factory: AdvancedGeneticAdaption},
-    [CardName.OCEANOGRAPHY_RESEARCH]: {Factory: OceanographyResearch},
-    [CardName.HEAVY_AEROSPACE_TECH]: {Factory: HeavyAerospaceTech},
-    [CardName.FREIGHT_SHUTTLES]: {Factory: FreightShuttles},
-    [CardName.GENETIC_ENGINEERING_LAB]: {Factory: GeneticEngineeringLab},
-    [CardName.CO2_VENTS]: {Factory: CO2Vents},
-    [CardName.ECOLOGICAL_CONTRACT]: {Factory: EcologicalContract},
-    [CardName.BIODOMES]: {Factory: Biodomes},
-    [CardName.TEMPERATE_RAINFOREST]: {Factory: TemperateRainforest},
-    [CardName.BIOMASS_REACTOR]: {Factory: BiomassReactor},
-    [CardName.MICROBE_CULTIVATION_FACILITY]: {Factory: MicrobeCultivationFacility},
-    [CardName.BIODIVERSITY_CONTRACT]: {Factory: BiodiversityContract},
+    [CardName.SPRAWLING_CITY]: {Factory: SprawlingCity},
     [CardName.IMPERATIVE_SETTLEMENT]: {Factory: ImperativeSettlement},
     [CardName.ECO_CENTRAL]: {Factory: EcoCentral},
-    [CardName.SPRAWLING_CITY]: {Factory: SprawlingCity},
-    [CardName.SUPERPOLYMERS]: {Factory: Superpolymers},
+    [CardName.CANALS]: {Factory: Canals},
+    [CardName.FREIGHT_SHUTTLES]: {Factory: FreightShuttles},
+    [CardName.SILICON_FACTORY]: {Factory: SiliconFactory},
+    [CardName.ALUMINUM_FOUNDRY]: {Factory: AluminumFoundry},
     [CardName.THAW_MINING]: {Factory: ThawMining},
-    [CardName.INDEPENDENT_SETTLEMENT]: {Factory: IndependentSettlement},
-    [CardName.MULTIFUNCTIONAL_DOME]: {Factory: MultifunctionalDome},
-    [CardName.MINING_COMMUNITY]: {Factory: MiningCommunity},
-    [CardName.DEEP_BURROW_SETTLEMENT]: {Factory: DeepBurrowSettlement},
+    [CardName.ECOLOGICAL_CONTRACT]: {Factory: EcologicalContract},
+    [CardName.ADVANCED_GENETIC_ADAPTION]: {Factory: AdvancedGeneticAdaption},
+    //[CardName.ESSENTIAL_SYMBIOTICS]: {Factory: EssentialSymbiotics},
+    [CardName.MICROBE_CULTIVATION_FACILITY]: {Factory: MicrobeCultivationFacility},
+    [CardName.BIODOMES]: {Factory: Biodomes},
+    [CardName.BIOMASS_REACTOR]: {Factory: BiomassReactor},
+    [CardName.LOCAL_TEMPERATURE_CONTROL]: {Factory: LocalTemperatureControl},
+    [CardName.CO2_VENTS]: {Factory: CO2Vents},
+    [CardName.REGOLITH_TREATMENT]: {Factory: RegolithTreatment},
+    [CardName.EUROPA_WATER_SPLITTING]: {Factory: EuropaWaterSplitting},  
+    [CardName.BIODIVERSITY_CONTRACT]: {Factory: BiodiversityContract},
+    [CardName.TEMPERATE_RAINFOREST]: {Factory: TemperateRainforest},
+    [CardName.GENETIC_ENGINEERING_LAB]: {Factory: GeneticEngineeringLab},
+    [CardName.OCEANOGRAPHY_RESEARCH]: {Factory: OceanographyResearch},
+    [CardName.HEAVY_AEROSPACE_TECH]: {Factory: HeavyAerospaceTech},
     [CardName.INSULATED_CITY]: {Factory: InsulatedCity},
     [CardName.BURIED_SETTLEMENT]: {Factory: BuriedSettlement},
-    [CardName.INSTITUTE_SETTLEMENT]: {Factory: InstituteSettlement},
     [CardName.HUGE_CITY]: {Factory: HugeCity},
-    [CardName.HUGE_GLACIER]: {Factory: HugeGlacier},
-    [CardName.FRESHWATER_LAKE]: {Factory: FreshwaterLake},
-    [CardName.DEEP_WELL_PUMP]: {Factory: DeepWellPump},
+    [CardName.MINING_COMMUNITY]: {Factory: MiningCommunity},
+    [CardName.DEEP_BURROW_SETTLEMENT]: {Factory: DeepBurrowSettlement},
+    [CardName.INSTITUTE_SETTLEMENT]: {Factory: InstituteSettlement},
+    [CardName.MULTIFUNCTIONAL_DOME]: {Factory: MultifunctionalDome},
+    [CardName.INDEPENDENT_SETTLEMENT]: {Factory: IndependentSettlement},
     [CardName.GEOTHERMAL_RESERVIOR_HEATING]: {Factory: GeothermalReserviorHeating},
     [CardName.MUNICIPAL_RESERVIOR]: {Factory: MunicipalReservior},
-    [CardName.EXPLOSIVES_TEST_SITE]: {Factory: ExplosivesTestSite},
-    [CardName.LUMBER_MILL]: {Factory: LumberMill},
+    [CardName.FRESHWATER_LAKE]: {Factory: FreshwaterLake},
+    [CardName.HUGE_GLACIER]: {Factory: HugeGlacier},
+    [CardName.DEEP_WELL_PUMP]: {Factory: DeepWellPump},
     [CardName.COMMERCIAL_IMPORTS]: {Factory: CommercialImports},
     [CardName.URBAN_DEVELOPMENT]: {Factory: UrbanDevelopment},
+    [CardName.EXPLOSIVES_TEST_SITE]: {Factory: ExplosivesTestSite},
+    [CardName.POLAR_OUTPOST]: {Factory: PolarOutpost},
+    [CardName.RURAL_HOUSING]: {Factory: RuralHousing},
     [CardName.TUNNEL_BORING]: {Factory: TunnelBoring},
     [CardName.LITHIUM_MINE]: {Factory: LithiumMine},
     [CardName.CHASMA_EXCAVATION]: {Factory: ChasmaExcavation},
     [CardName.DEEP_POLAR_EXTRACTION]: {Factory: DeepPolarExtraction},
-    [CardName.PHOBOS_MINING_OPERATIONS]: {Factory: PhobosMiningOperations},
     [CardName.CALLISTO_OPERATIONS]: {Factory: CallistoOperations},
-    [CardName.LASER_FACTORY]: {Factory: LaserFactory},
+    [CardName.SATURN_GAS_MINE]: {Factory: SaturnGasMine},
+    [CardName.LASER_DRILL_MINING]: {Factory: LaserDrillMining},
+    [CardName.HYDRUALIC_MINING]: {Factory: HydrualicMining},
+    [CardName.ENZYMATIC_TREATMENT]: {Factory: EnzymaticTreatment},
     [CardName.REGOLITH_AERATION]: {Factory: RegolithAeration},
     [CardName.MIXOTROPHS]: {Factory: Mixotrophs},
     [CardName.BOTANICAL_LAB]: {Factory: BotanicalLab},
-    [CardName.COMPOSTING]: {Factory: Composting},
-    [CardName.ENZYMATIC_TREATMENT]: {Factory: EnzymaticTreatment},
+    [CardName.INDUSTRIAL_COMPOSTING]: {Factory: IndustrialComposting},
     [CardName.EXTREME_NITROPHILES]: {Factory: ExtremeNitrophiles},
     [CardName.VASCULAR_TUNDRA_PLANTS]: {Factory: VascularTundraPlants},
     [CardName.BAMBOO]: {Factory: Bamboo},
     [CardName.EROSION_REDUCING_GREENERY]: {Factory: ErosionReducingGreenery},
-    [CardName.DWARF_WILLOW]: {Factory: DwarfWillow},
+    [CardName.PARASITIC_PLANTS]: {Factory: ParasiticPlants},
     [CardName.WILDBERRIES]: {Factory: Wildberries},
     [CardName.ANAEROBIC_ENERGY_CROPPING]: {Factory: AnaerobicEnergyCropping},
     [CardName.ADAPTED_HARDWOOD]: {Factory: AdaptedHardwood},
     [CardName.AQUATIC_BIODOMES]: {Factory: AquaticBiodomes},
     [CardName.CONIFERS]: {Factory: Conifers},
-    [CardName.BARLEY]: {Factory: Barley},
+    [CardName.WILD_BARLEY]: {Factory: WildBarley},
     [CardName.WETLANDS_CHEMICAL]: {Factory: WetlandsChemical},
     [CardName.CACTI]: {Factory: Cacti},
     [CardName.ADAPTED_FRUIT_FARMING]: {Factory: AdaptedFruitFarming},
@@ -728,73 +742,76 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.MONSOONS]: {Factory: Monsoons},
     [CardName.HEAVY_RESPIRATORS]: {Factory: HeavyRespirators},
     [CardName.BEE_FARMING]: {Factory: BeeFarming},
-    [CardName.SATURN_GAS_MINE]: {Factory: SaturnGasMine},
+    [CardName.SYNTHETIC_GROWTH_HORMONES]: {Factory: SyntheticGrowthHormones},
     [CardName.SPACE_BASED_SOLAR_POWER]: {Factory: SpaceBasedSolarPower},
+    [CardName.EFFICIENT_BATTERIES]: {Factory: EfficientBatteries},
     [CardName.LARGE_POWER_PLANT]: {Factory: LargePowerPlant},
     [CardName.HYDROCARBON_SYNTHESIS]: {Factory: HydrocarbonSynthesis},
     [CardName.ATMOSPHERIC_PROCESSING]: {Factory: AtmosphericProcessing},
     [CardName.URANIUM_DEPOSIT]: {Factory: UraniumDeposit},
+    [CardName.ALGAE_BIOREACTORS_CHEMICAL]: {Factory: AlgaeBioreactorsChemical},
     [CardName.MASSIVE_SOLAR_FARM]: {Factory: MassiveSolarFarm},
-    [CardName.ENRICHMENT_PLANT]: {Factory: EnrichmentPlant},
+    [CardName.ADVANCED_HYDROPOWER]: {Factory: AdvancedHydropower},
+    [CardName.ENRICHMENT_PLANT]: {Factory: EnrichmentPlant},    
     [CardName.FUEL_CELL_PRODUCTION]: {Factory: FuelCellProduction},
     [CardName.ENERGY_MOHOLE]: {Factory: EnergyMohole},
-    [CardName.EFFICIENT_BATTERIES]: {Factory: EfficientBatteries},
-    [CardName.ADVANCED_HYDROPOWER]: {Factory: AdvancedHydropower},
     [CardName.HIGH_POWER_BETAVOLTAICS]: {Factory: HighPowerBetavoltaics},
     [CardName.CENTRAL_POWER_PLANT]: {Factory: CentralPowerPlant},
-    [CardName.OSMOTIC_POWER]: {Factory: OsmoticPower},
-    [CardName.SOLID_STATE_WIND_ENERGY]: {Factory: SolidStateWildEnergy},
-    [CardName.ATMOSPHERIC_PRESSURE_ENGINE]: {Factory: AtmosphericPressureEngine},
     [CardName.ISOTOPE_ENRICHING_BACTERIA]: {Factory: IsotopeEnrichingBacteria},
     [CardName.ANAEROBIC_BACTERIA]: {Factory: AnaerobicBacteria},
-    [CardName.CARBONATE_DEPOSIT]: {Factory: CarbonateDeposit},
-    [CardName.HFC_PRODUCTION]: {Factory: HFCProduction},
-    [CardName.GHG_FACTORY_DISTRICT]: {Factory: GHGFactoryDistrict},
+    [CardName.SOLID_STATE_WIND_ENERGY]: {Factory: SolidStateWildEnergy},
+    [CardName.ATMOSPHERIC_PRESSURE_ENGINE]: {Factory: AtmosphericPressureEngine},
     [CardName.LASER_CANNON]: {Factory: LaserCannon},
+    [CardName.PERFLUOROCARBON_PRODUCTION]: {Factory: PerfluorocarbonProduction},
+    [CardName.GHG_FACTORY_DISTRICT]: {Factory: GHGFactoryDistrict},
     [CardName.NATURAL_GAS_EXTRACTION]: {Factory: NaturalGasExtraction},
+    [CardName.HYDROTHERMAL_VENTS]: {Factory: HydrothermalVents},
     [CardName.OZONE_FACTORIES]: {Factory: OzoneFactories},
-    [CardName.SYNTHETIC_GROWTH_HORMONES]: {Factory: SyntheticGrowthHormones},
     [CardName.PROBIOTIC_TREATMENT]: {Factory: ProbioticTreatment},
     [CardName.MIRANDA_LABS]: {Factory: MirandaLabs},
     [CardName.MARS_LIFE_SCIENCE_INSTITUTE]: {Factory: MarsLifeScienceInstitute},
     [CardName.SPECIES_CRYOPRESERVATION]: {Factory: SpeciesCryopreservation},
-    [CardName.EARLY_POLAR_OUTPOST]: {Factory: EarlyPolarOutpost},
-    [CardName.RURAL_HOUSING]: {Factory: RuralHousing},
 
-    [CardName.PARASITE]: {Factory: Parasite, compatibility: 'corpera'},
-    [CardName.POWER_FAILURE]: {Factory: PowerFailure, compatibility: 'corpera'},
-    [CardName.FAILED_SPACE_MISSION]: {Factory: FailedSpaceMission, compatibility: 'corpera'},
     [CardName.AQUIFER_RELOCATION]: {Factory: AquiferRelocation, compatibility: 'corpera'},
-    [CardName.PUBLIC_RECORDS]: {Factory: PublicRecords, compatibility: 'corpera'},
-    [CardName.ASSET_LIQUIDATION]: {Factory: AssetLiquidation, compatibility: 'corpera'},
+    [CardName.SPECULATIVE_MARKETS]: {Factory: SpeculativeMarkets, compatibility: 'corpera'},
+    [CardName.RESEARCH_GRANT_CHEMICAL]: {Factory: ResearchGrantChemical, compatibility: 'corpera'},
     [CardName.SMALL_SUPPLY_DROP]: {Factory: SmallSupplyDrop, compatibility: 'corpera'},
+    [CardName.HERMES_MISSION]: {Factory: HermesMission, compatibility: 'corpera'},
+    [CardName.ASSET_LIQUIDATION]: {Factory: AssetLiquidation, compatibility: 'corpera'},
+    [CardName.PARASITE]: {Factory: Parasite, compatibility: 'corpera'},
+    [CardName.ROBOTICS_EXHIBITION]: {Factory: RoboticsExhibition, compatibility: 'corpera'},
     [CardName.PATENT_TRADING]: {Factory: PatentTrading, compatibility: 'corpera'},
-    [CardName.TECHNOLOGY_EXHIBITION]: {Factory: TechnologyExhibition, compatibility: 'corpera'},
-    [CardName.RESEARCH_DONATION]: {Factory: ResearchDonation, compatibility: 'corpera'},
-    [CardName.POPULATION_BOOM]: {Factory: PopulationBoom, compatibility: 'corpera'},
+    [CardName.PUBLIC_RECORDS]: {Factory: PublicRecords, compatibility: 'corpera'},
+    [CardName.ACID_RAIN]: {Factory: AcidRain, compatibility: 'corpera'},
+    [CardName.POWER_FAILURE]: {Factory: PowerFailure, compatibility: 'corpera'},
     [CardName.ASTROPHYSICS_CENTER]: {Factory: AstrophysicsCenter, compatibility: 'corpera'},
     [CardName.CENTAUR_LANDINGS]: {Factory: CentaurLandings, compatibility: 'corpera'},
-    [CardName.VESTA_OBSERVATORY]: {Factory: VestaObservatory, compatibility: 'corpera'},
-    [CardName.ENCELADUS_OUTPOST]: {Factory: EnceladusOutpost, compatibility: 'corpera'},
+    [CardName.VESTA_OBSERVATORY]: {Factory: VestaObservatory, compatibility: 'corpera'},    
     [CardName.MEASUREMENT_DRONES]: {Factory: MeasurementDrones, compatibility: 'corpera'},
     [CardName.ADVANCED_BIOMACHINERY]: {Factory: AdvancedBiomachinery, compatibility: 'corpera'},
-    [CardName.VIRAL_AMEBOID]: {Factory: ViralAmeboid, compatibility: 'corpera'},
     [CardName.LONG_TERM_EVOLUTION_STUDY]: {Factory: LongTermEvolutionStudy, compatibility: 'corpera'},
+    [CardName.SCIENTIFIC_LOGS]: {Factory: ScientificLogs, compatibility: 'corpera'},
+    [CardName.CONSTRUCTION_CENTER]: {Factory: ConstructionCenter, compatibility: 'corpera'},
+    [CardName.HOMEWORLD_HEADQUARTERS]: {Factory: HomeworldHeadquarters, compatibility: 'corpera'},
+    [CardName.MARTIAN_INVESTMENTS]: {Factory: MartianInvestments, compatibility: 'corpera'},
     [CardName.LASER_LIGHTSAILS]: {Factory: LaserLightsails, compatibility: 'corpera'},
+    [CardName.SPONSORED_RESEARCH_FIRM]: {Factory: SponsoredResearchFirm, compatibility: 'corpera'},
+    [CardName.JOVIAN_SUPPLIERS]: {Factory: JovianSuppliers, compatibility: 'corpera'},
+    [CardName.OLYMPUS_ARCHIVES]: {Factory: OlympusArchives, compatibility: 'corpera'},
+    [CardName.NEURAL_ENCHANCEMENT]: {Factory: NeuralEnhancement, compatibility: 'corpera'},
+    [CardName.SUPERPOLYMERS]: {Factory: Superpolymers, compatibility: 'corpera'},
     [CardName.ALLOY_FACTORY]: {Factory: AlloyFactory, compatibility: 'corpera'},
-    [CardName.UNDERGROUND_TEST_SITE]: {Factory: UndergroundTestSite, compatibility: 'corpera'},
-    [CardName.SCIENTIFIC_MEGAOPOLIS]: {Factory: ScientificMegaopolis, compatibility: 'corpera'},
     [CardName.NOVA_FOUNDRY]: {Factory: NovaFoundry, compatibility: 'corpera'},
     [CardName.KUGELBLITZ_ENGINE]: {Factory: KugelblitzEngine, compatibility: 'corpera'},
-    [CardName.SCIENTIFIC_LOGS]: {Factory: ScientificLogs, compatibility: 'corpera'},
-    [CardName.SPONSORED_RESEARCH_FIRM]: {Factory: SponsoredResearchFirm, compatibility: 'corpera'},
-    [CardName.NEURAL_ENCHANCERS]: {Factory: NeuralEnhancers, compatibility: 'corpera'},
-    [CardName.CONSTRUCTION_CENTER]: {Factory: ConstructionCenter, compatibility: 'corpera'},
-    [CardName.TYRRHENUS_ARCHIVES]: {Factory: TyrrhenusArchives, compatibility: 'corpera'},
-    [CardName.MARS_BUSINESS_INVESTMENTS]: {Factory: MarsBuinessInvestments, compatibility: 'corpera'},
-    [CardName.CANALS]: {Factory: Canals, compatibility: 'corpera'},
+    [CardName.EXOTIC_MATTER_REACTOR]: {Factory: ExoticMatterReactor, compatibility: 'corpera'},
+    [CardName.SOLAR_STATION]: {Factory: SolarStation, compatibility: 'corpera'},
+    [CardName.UNDERGROUND_TEST_SITE]: {Factory: UndergroundTestSite, compatibility: 'corpera'},
+    [CardName.STANDARD_ALLOYS]: {Factory: StandardAlloys, compatibility: 'corpera'},
+    [CardName.OVERSEER_COMMITTEE]: {Factory: OverseerCommittee, compatibility: 'corpera'},
+    
+    [CardName.VIRAL_AMEBOID]: {Factory: ViralAmeboid, compatibility: 'corpera'},
+    [CardName.SCIENTIFIC_MEGAOPOLIS]: {Factory: ScientificMegaopolis, compatibility: 'corpera'},
     [CardName.STEEL_EXPORTS]: {Factory: SteelExports, compatibility: 'corpera'},
-    [CardName.JOVIAN_SUPPLIERS]: {Factory: JovianSuppliers, compatibility: 'corpera'},
     [CardName.PROJECT_ADVANCEMENT]: {Factory: ProjectAdvancement, compatibility: 'corpera'},
     [CardName.SUCCESSFUL_COMMERCE]: {Factory: SuccessfulCommerce, compatibility: 'corpera'},
     [CardName.SCIENTIFIC_SUPPORT]: {Factory: ScientificSupport, compatibility: 'corpera'},
@@ -819,7 +836,6 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.PRINT_MANUFACTURING]: {Factory: PrintManufacturing, compatibility: 'corpera'},
     [CardName.VOLCANIC_FOUNDRY]: {Factory: VolcanicFoundry, compatibility: 'corpera'},
     [CardName.SHIPYARD]: {Factory: Shipyard, compatibility: 'corpera'},
-    [CardName.HYDRUALIC_MINING]: {Factory: HydrualicMining, compatibility: 'corpera'},
     [CardName.UPPER_MANTLE_BORING]: {Factory: UpperMantleBoring, compatibility: 'corpera'},
     [CardName.SEED_SUPPLIERS]: {Factory: SeedSuppliers, compatibility: 'corpera'},
     [CardName.CASH_CROPS]: {Factory: CashCrops, compatibility: 'corpera'},
@@ -934,7 +950,6 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.PRIMATES]: {Factory: Primates, compatibility: 'colonies'},
     [CardName.COLONY_SUPPLIERS]: {Factory: ColonySuppliers, compatibility: 'colonies'},
     [CardName.FUEL_SUBSIDIES]: {Factory: FuelSubsidies, compatibility: 'colonies'},
-    [CardName.SOLAR_STATION]: {Factory: SolarStation, compatibility: 'colonies'},
     [CardName.REMOTE_TEST_ZONE]: {Factory: RemoteTestZone, compatibility: 'colonies'},
     [CardName.WAYPOINT_COLONY]: {Factory: WaypointColony, compatibility: 'colonies'},
     [CardName.PRIVATE_COLONY]: {Factory: PrivateColony, compatibility: 'colonies'},
@@ -966,7 +981,7 @@ export const CHEMICAL_CARD_MANIFEST = new ModuleManifest({
     [CardName.COLONY_SPACE_MIRRORS]: {Factory: ColonySpaceMirrors, compatibility: 'colonies'},
     [CardName.LUNAR_POWER_GRID]: {Factory: LunarPowerGrid, compatibility: 'colonies'},
     [CardName.PROTO_DYSON_SWARM]: {Factory: ProtoDysonSwarm, compatibility: 'colonies'},
-    [CardName.HYDROTHERMAL_VENTS]: {Factory: HydrothermalVents, compatibility: 'colonies'},
+
     [CardName.EARTH_EMBASSY_CHEMICAL]: {Factory: EarthEmbassyChemical, compatibility: 'colonies'},
     [CardName.MERCURIAL_SUNSHADE]: {Factory: MercurialSunshade, compatibility: 'colonies'},
     [CardName.HIGH_ORBIT_RESEARCH_STATION]: {Factory: HighOrbitResearchStation, compatibility: 'colonies'},

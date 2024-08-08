@@ -90,7 +90,7 @@ export abstract class StandardProjectCard extends Card implements IStandardProje
       player,
       this.adjustedCost(player),
       {
-        canUseSteel: canPayWith.steel,
+        canUseSteel: canPayWith.steel || player.cardIsInEffect(CardName.STANDARD_ALLOYS),
         canUseTitanium: canPayWith.titanium,
         canUseSeeds: canPayWith.seeds,
         canUseAuroraiData: player.isCorporation(CardName.AURORAI),

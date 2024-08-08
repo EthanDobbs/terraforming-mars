@@ -1,7 +1,7 @@
 import * as constants from '../common/constants';
 import {BeginnerCorporation} from './cards/corporation/BeginnerCorporation';
 import {Board} from './boards/Board';
-import {cardsFromJSON} from './createCard';
+import {cardsFromJSON, newProjectCard} from './createCard';
 import {CardName} from '../common/cards/CardName';
 import {CardType} from '../common/cards/CardType';
 import {ClaimedMilestone, serializeClaimedMilestones, deserializeClaimedMilestones} from './milestones/ClaimedMilestone';
@@ -346,6 +346,10 @@ export class Game implements IGame, Logger {
         player.dealtCorporationCards.push(...corporationDeck.drawN(game, gameOptions.startingCorporations));
         if (gameOptions.initialDraftVariant === false) {
           player.dealtProjectCards.push(...projectDeck.drawN(game, 10));
+          const standardAlloys = newProjectCard(CardName.OVERSEER_COMMITTEE)
+          if (standardAlloys) {
+            player.dealtProjectCards.push(standardAlloys);
+          }
         }
         if (gameOptions.preludeExtension) {
           player.dealtPreludeCards.push(...preludeDeck.drawN(game, constants.PRELUDE_CARDS_DEALT_PER_PLAYER));

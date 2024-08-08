@@ -16,7 +16,7 @@ import {OrOptions} from '../../../inputs/OrOptions';
 import {digit} from '../../Options';
 
 const RENDER_DATA = CardRenderer.builder((b) => {
-  b.plants(3, {digit}).or().resource(CardResource.MICROBE, {amount: 1, digit}).or().resource(CardResource.ANIMAL, {amount: 2, digit}).br.cards(1).slash().influence();
+  b.plants(3, {digit}).or().resource(CardResource.MICROBE, {amount: 3, digit}).or().resource(CardResource.ANIMAL, {amount: 2, digit}).br.cards(1).slash().influence();
 });
 
 export class EcologyProjects extends GlobalEvent implements IGlobalEvent {

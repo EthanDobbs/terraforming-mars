@@ -1,39 +1,39 @@
 import {expect} from 'chai';
-import {churnAction, setOxygenLevel} from '../../../TestingUtils';
+import {churn, setOxygenLevel} from '../../../TestingUtils';
 import {GreeneryStandardProject} from '../../../../src/server/cards/base/standardProjects/GreeneryStandardProject';
 import {TestPlayer} from '../../../TestPlayer';
-import {Game} from '../../../../src/server/Game';
+import {IGame} from '../../../../src/server/IGame';
 import {PoliticalAgendas} from '../../../../src/server/turmoil/PoliticalAgendas';
 import {Reds} from '../../../../src/server/turmoil/parties/Reds';
 import {Phase} from '../../../../src/common/Phase';
 import {MAX_OXYGEN_LEVEL} from '../../../../src/common/constants';
 import {TileType} from '../../../../src/common/TileType';
 import {testGame} from '../../../TestGame';
-import {UnderworldTestHelper} from '../../../underworld/UnderworldTestHelper';
+import {assertPlaceTile} from '../../../assertions';
 
-describe('GreeneryStandardProject', function() {
+describe('GreeneryStandardProject', () => {
   let card: GreeneryStandardProject;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new GreeneryStandardProject();
     [game, player] = testGame(1);
   });
 
-  it('Can act', function() {
+  it('Can act', () => {
     player.megaCredits = card.cost - 1;
     expect(card.canAct(player)).is.false;
     player.megaCredits = card.cost;
     expect(card.canAct(player)).is.true;
   });
 
-  it('action', function() {
+  it('action', () => {
     player.megaCredits = card.cost;
     player.setTerraformRating(20);
     expect(game.getOxygenLevel()).eq(0);
 
-    UnderworldTestHelper.assertPlaceTile(player, churnAction(card, player), TileType.GREENERY);
+    assertPlaceTile(player, churn(card.action(player), player), TileType.GREENERY);
 
     expect(player.megaCredits).eq(0);
     expect(player.getTerraformRating()).eq(21);

@@ -32,11 +32,11 @@ export class StormCraftIncorporated extends ActiveCorporationCard {
           b.corpBox('action', (ce) => {
             ce.vSpace(Size.LARGE);
             ce.action('Add a floater to ANY card.', (eb) => {
-              eb.empty().startAction.floaters(1).asterix();
+              eb.empty().startAction.resource(CardResource.FLOATER).asterix();
             });
             ce.vSpace();
             ce.effect('Floaters on this card may be used as 2 heat each.', (eb) => {
-              eb.startEffect.floaters(1).equals().heat(2);
+              eb.startEffect.resource(CardResource.FLOATER).equals().heat(2);
             });
           });
         }),
@@ -49,7 +49,7 @@ export class StormCraftIncorporated extends ActiveCorporationCard {
     let heatAmount: number;
     let floaterAmount: number;
 
-    const options = new AndOptions(
+    return new AndOptions(
       new SelectAmount('Heat', 'Spend heat', 0, Math.min(player.heat, targetAmount))
         .andThen((amount) => {
           heatAmount = amount;
@@ -73,8 +73,6 @@ export class StormCraftIncorporated extends ActiveCorporationCard {
       player.removeResourceFrom(this, floaterAmount);
       player.stock.deduct(Resource.HEAT, heatAmount);
       return cb();
-    });
-    options.title = message('Select how to spend ${0} heat', (b) => b.number(targetAmount));
-    return options;
+    }).setTitle(message('Select how to spend ${0} heat', (b) => b.number(targetAmount)));
   }
 }

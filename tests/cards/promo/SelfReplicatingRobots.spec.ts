@@ -1,35 +1,33 @@
 import {expect} from 'chai';
-import {cast} from '../../TestingUtils';
+import {cast, testGame} from '../../TestingUtils';
 import {Research} from '../../../src/server/cards/base/Research';
 import {IProjectCard} from '../../../src/server/cards/IProjectCard';
 import {HousePrinting} from '../../../src/server/cards/prelude/HousePrinting';
 import {SelfReplicatingRobots} from '../../../src/server/cards/promo/SelfReplicatingRobots';
-import {Game} from '../../../src/server/Game';
 import {OrOptions} from '../../../src/server/inputs/OrOptions';
 import {SelectCard} from '../../../src/server/inputs/SelectCard';
 import {TestPlayer} from '../../TestPlayer';
 import {EarthOffice} from '../../../src/server/cards/base/EarthOffice';
 
-describe('SelfReplicatingRobots', function() {
+describe('SelfReplicatingRobots', () => {
   let card: SelfReplicatingRobots;
   let player: TestPlayer;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new SelfReplicatingRobots();
-    player = TestPlayer.BLUE.newPlayer();
-    Game.newInstance('gameid', [player], player);
+    [/* game */, player] = testGame(1);
   });
 
-  it('Can not play', function() {
+  it('Can not play', () => {
     expect(card.canPlay(player)).is.not.true;
   });
 
-  it('Should play', function() {
+  it('Should play', () => {
     player.playedCards.push(new Research());
     expect(card.canPlay(player)).is.true;
   });
 
-  it('Should act', function() {
+  it('Should act', () => {
     player.playedCards.push(card);
     expect(card.canAct(player)).is.not.true;
 

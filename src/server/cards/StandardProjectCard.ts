@@ -2,7 +2,7 @@ import {CardType} from '../../common/cards/CardType';
 import {IPlayer} from '../IPlayer';
 import {TRSource} from '../../common/cards/TRSource';
 import {PlayerInput} from '../PlayerInput';
-import {ICardMetadata} from '../../common/cards/ICardMetadata';
+import {CardMetadata} from '../../common/cards/CardMetadata';
 import {CardName} from '../../common/cards/CardName';
 import {SelectPaymentDeferred} from '../deferredActions/SelectPaymentDeferred';
 import {Card} from './Card';
@@ -15,7 +15,7 @@ import {sum} from '../../common/utils/utils';
 type StaticStandardProjectCardProperties = {
   name: CardName,
   cost: number,
-  metadata: ICardMetadata,
+  metadata: CardMetadata,
   reserveUnits?: Partial<Units>,
   tr?: TRSource,
 }
@@ -44,9 +44,11 @@ export abstract class StandardProjectCard extends Card implements IStandardProje
     return 0;
   }
 
-  private _discount(player: IPlayer) {
-    const discountFromCards = sum(player.playedCards.map((card) => card.getStandardProjectDiscount?.(player, this) ?? 0));
-    return discountFromCards + this.discount(player);
+  private adjustedCost(player: IPlayer) {
+    const discountFromCards = sum(player.tableau.map((card) => card.getStandardProjectDiscount?.(player, this) ?? 0));
+    const discount = discountFromCards + this.discount(player);
+    const adjusted = Math.max(0, this.cost - discount);
+    return adjusted;
   }
 
   protected abstract actionEssence(player: IPlayer): void
@@ -61,7 +63,7 @@ export abstract class StandardProjectCard extends Card implements IStandardProje
     const canPayWith = this.canPayWith(player);
     return {
       ...canPayWith,
-      cost: this.cost - this._discount(player),
+      cost: this.adjustedCost(player),
       tr: this.tr,
       auroraiData: true,
       spireScience: true,
@@ -79,6 +81,10 @@ export abstract class StandardProjectCard extends Card implements IStandardProje
 
   protected projectPlayed(player: IPlayer) {
     player.game.log('${0} used ${1} standard project', (b) => b.player(player).card(this));
+    // standardProjectsThisGeneration does not include Sell Patents.
+    if (this.name !== CardName.SELL_PATENTS_STANDARD_PROJECT) {
+      player.standardProjectsThisGeneration.add(this.name);
+    }
     this.onStandardProject(player);
   }
 
@@ -86,7 +92,7 @@ export abstract class StandardProjectCard extends Card implements IStandardProje
     const canPayWith = this.canPayWith(player);
     player.game.defer(new SelectPaymentDeferred(
       player,
-      this.cost - this._discount(player),
+      this.adjustedCost(player),
       {
         canUseSteel: canPayWith.steel,
         canUseTitanium: canPayWith.titanium,

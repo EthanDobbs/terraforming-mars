@@ -5,16 +5,16 @@ import {IProjectCard} from '../../../src/server/cards/IProjectCard';
 import {expect} from 'chai';
 import {testGame} from '../../TestGame';
 import {TestPlayer} from '../../TestPlayer';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {runAllActions} from '../../TestingUtils';
 
-describe('BioengineeringEnclosure', function() {
+describe('BioengineeringEnclosure', () => {
   let card: BioengineeringEnclosure;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let animalHost: IProjectCard;
 
-  beforeEach(function() {
+  beforeEach(() => {
     animalHost = new Birds();
     card = new BioengineeringEnclosure();
     [game, player] = testGame(2, {aresExtension: true});

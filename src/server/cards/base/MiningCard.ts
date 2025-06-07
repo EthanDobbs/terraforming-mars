@@ -1,5 +1,5 @@
 import {Card} from '../Card';
-import {ICardMetadata} from '../../../common/cards/ICardMetadata';
+import {CardMetadata} from '../../../common/cards/CardMetadata';
 import {CardName} from '../../../common/cards/CardName';
 import {CardType} from '../../../common/cards/CardType';
 import {AdjacencyBonus} from '../../ares/AdjacencyBonus';
@@ -12,6 +12,7 @@ import {Tag} from '../../../common/cards/Tag';
 import {SpaceBonus} from '../../../common/boards/SpaceBonus';
 import {TileType} from '../../../common/TileType';
 import {SelectResourceTypeDeferred} from '../../deferredActions/SelectResourceTypeDeferred';
+import {Units} from '../../../common/Units';
 
 export abstract class MiningCard extends Card implements IProjectCard {
   public bonusResource?: Array<Resource>;
@@ -22,7 +23,7 @@ export abstract class MiningCard extends Card implements IProjectCard {
   constructor(
     name: CardName,
     cost: number,
-    metadata: ICardMetadata) {
+    metadata: CardMetadata) {
     super({
       type: CardType.AUTOMATED,
       name,
@@ -58,10 +59,13 @@ export abstract class MiningCard extends Card implements IProjectCard {
     return TileType.MINING_AREA;
   }
 
-  public produce(player: IPlayer) {
+  public productionBox() {
+    // TODO(kberg): Matches Specialzied Settlement
+    const units = {...Units.EMPTY};
     if (this.bonusResource && this.bonusResource.length === 1) {
-      player.production.add(this.bonusResource[0], 1, {log: true});
+      units[this.bonusResource[0]] += 1;
     }
+    return units;
   }
 
   public override bespokePlay(player: IPlayer): SelectSpace {

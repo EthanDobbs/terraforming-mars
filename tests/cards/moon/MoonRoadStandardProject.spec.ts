@@ -9,7 +9,7 @@ import {MoonRoadStandardProject} from '../../../src/server/cards/moon/MoonRoadSt
 import {SelectPaymentDeferred} from '../../../src/server/deferredActions/SelectPaymentDeferred';
 import {MooncrateBlockFactory} from '../../../src/server/cards/moon/MooncrateBlockFactory';
 import {Payment} from '../../../src/common/inputs/Payment';
-import {UnderworldTestHelper} from '../../underworld/UnderworldTestHelper';
+import {assertPlaceTile} from '../../assertions';
 import {TileType} from '../../../src/common/TileType';
 
 describe('MoonRoadStandardProject', () => {
@@ -63,7 +63,7 @@ describe('MoonRoadStandardProject', () => {
     expect(moonData.logisticRate).eq(0);
 
     runAllActions(game);
-    UnderworldTestHelper.assertPlaceTile(player, player.popWaitingFor(), TileType.MOON_ROAD);
+    assertPlaceTile(player, player.popWaitingFor(), TileType.MOON_ROAD);
 
     expect(moonData.logisticRate).eq(1);
     expect(player.getTerraformRating()).eq(15);
@@ -77,9 +77,9 @@ describe('MoonRoadStandardProject', () => {
     // Card requirements
     player.steel = 1;
 
-    testRedsCosts(() => card.canAct(player), player, card.cost, 3, /* canAct */ true);
+    testRedsCosts(() => card.canAct(player), player, card.cost, 3);
     moonData.logisticRate = 8;
-    testRedsCosts(() => card.canAct(player), player, card.cost, 0, /* canAct */ true);
+    testRedsCosts(() => card.canAct(player), player, card.cost, 0);
   });
 });
 

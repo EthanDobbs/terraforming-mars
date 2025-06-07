@@ -5,8 +5,9 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Size} from '../../../common/cards/render/Size';
 import {Resource} from '../../../common/Resource';
+import {ICorporationCard} from '../corporation/ICorporationCard';
 
-export class Pristar extends CorporationCard {
+export class Pristar extends CorporationCard implements ICorporationCard {
   constructor() {
     super({
       name: CardName.PRISTAR,
@@ -14,6 +15,10 @@ export class Pristar extends CorporationCard {
       resourceType: CardResource.PRESERVATION,
 
       victoryPoints: {resourcesHere: {}},
+
+      behavior: {
+        tr: -2,
+      },
 
       metadata: {
         cardNumber: 'R07',
@@ -24,17 +29,12 @@ export class Pristar extends CorporationCard {
           b.megacredits(53).nbsp.nbsp.minus().tr(2, {size: Size.SMALL});
           b.corpBox('effect', (ce) => {
             ce.effect('During production phase, if you did not get TR so far this generation, add one preservation resource here and gain 6 M€.', (eb) => {
-              eb.tr(1, {size: Size.SMALL, cancelled: true}).startEffect.preservation(1).megacredits(6);
+              eb.tr(1, {size: Size.SMALL, cancelled: true}).startEffect.resource(CardResource.PRESERVATION).megacredits(6);
             });
           });
         }),
       },
     });
-  }
-
-  public override bespokePlay(player: IPlayer) {
-    player.decreaseTerraformRating(2);
-    return undefined;
   }
 
   public onProductionPhase(player: IPlayer) {

@@ -2,11 +2,11 @@ import {Tag} from '../../../common/cards/Tag';
 import {Card, StaticCardProperties} from '../Card';
 import {IPlayer} from '../../IPlayer';
 import {SelectCard} from '../../inputs/SelectCard';
-import {CardName} from '../../../common/cards/CardName';
 import {ICard} from '../ICard';
 import {Behavior} from '../../behavior/Behavior';
 import {getBehaviorExecutor} from '../../behavior/BehaviorExecutor';
 import {PlayerInput} from '../../PlayerInput';
+import {CardName} from '../../../common/cards/CardName';
 
 export abstract class RoboticWorkforceBase extends Card {
   constructor(properties: StaticCardProperties) {
@@ -27,22 +27,33 @@ export abstract class RoboticWorkforceBase extends Card {
     return filtered;
   }
 
-  protected isCardApplicable(card: ICard, player: IPlayer): boolean {
+  protected isCardApplicable(card: ICard, player: IPlayer, canAfford: boolean): boolean {
     if (!card.tags.includes(Tag.BUILDING) && !card.tags.includes(Tag.WILD)) {
       return false;
     }
-    if (card.name === CardName.SPECIALIZED_SETTLEMENT) {
-      return player.production.energy >= 1;
+
+    // Small Open Pit Mine allows a player to choose between two options. Both are
+    // positive production so accept it rather than dig deep.
+    if (card.name === CardName.SMALL_OPEN_PIT_MINE) {
+      return true;
     }
 
-    if (card.produce !== undefined) {
-      return true;
+    if (card.productionBox !== undefined) {
+      if (canAfford) {
+        return player.production.canAdjust(card.productionBox(player));
+      } else {
+        return true; // Not checking if the player can afford it.
+      }
     }
 
     if (card.behavior !== undefined) {
       const productionBehavior = this.productionBehavior(card.behavior);
       if (Object.keys(productionBehavior).length > 0) {
-        return getBehaviorExecutor().canExecute(productionBehavior, player, card);
+        if (canAfford) {
+          return getBehaviorExecutor().canExecute(productionBehavior, player, card);
+        } else {
+          return true; // Not checking if the player can afford it.
+        }
       }
     }
 
@@ -50,12 +61,8 @@ export abstract class RoboticWorkforceBase extends Card {
     return false;
   }
 
-  protected getPlayableBuildingCards(player: IPlayer): ReadonlyArray<ICard> {
-    return player.tableau.filter((card) => this.isCardApplicable(card, player));
-  }
-
-  public override bespokeCanPlay(player: IPlayer): boolean {
-    return this.getPlayableBuildingCards(player).length > 0;
+  protected getPlayableBuildingCards(player: IPlayer, canAfford: boolean = true): ReadonlyArray<ICard> {
+    return player.tableau.filter((card) => this.isCardApplicable(card, player, canAfford));
   }
 
   protected selectBuildingCard(player: IPlayer, cards: ReadonlyArray<ICard>, title: string, cb: (card: ICard) => PlayerInput | undefined = () => undefined) {
@@ -69,6 +76,8 @@ export abstract class RoboticWorkforceBase extends Card {
 
         if (card.produce) {
           card.produce(player);
+        } else if (card.productionBox) {
+          player.production.adjust(card.productionBox(player), {log: true});
         } else if (card.behavior !== undefined) {
           getBehaviorExecutor().execute(this.productionBehavior(card.behavior), player, card);
         }

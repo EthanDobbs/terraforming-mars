@@ -2,8 +2,8 @@ import {CardResource} from '../CardResource';
 import {Units} from '../Units';
 import {CardName} from './CardName';
 import {CardType} from './CardType';
-import {GameModule} from './GameModule';
-import {ICardMetadata} from './ICardMetadata';
+import {Expansion, GameModule} from './GameModule';
+import {CardMetadata} from './CardMetadata';
 import {CardRequirementDescriptor} from './CardRequirementDescriptor';
 import {IVictoryPoints} from './IVictoryPoints';
 import {Tag} from './Tag';
@@ -19,10 +19,11 @@ export type ClientCard = {
   cost?: number;
   type: CardType;
   requirements: Array<CardRequirementDescriptor>;
-  metadata: ICardMetadata;
+  metadata: CardMetadata;
   productionBox?: Units; // Replace with behavior?
   resourceType?: CardResource;
   startingMegaCredits?: number; // Corporation and Prelude
   cardCost?: number; // Corporation
-  compatibility: Array<GameModule>;
+  compatibility: Array<Expansion>;
+  hasAction: boolean; // For Prelude 2 preludes with actions. Can be used for more, of course.
 }

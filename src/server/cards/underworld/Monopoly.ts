@@ -7,13 +7,17 @@ import {SelectResource} from '../../inputs/SelectResource';
 import {CardRenderer} from '../render/CardRenderer';
 import {all} from '../Options';
 import {Units} from '../../../common/Units';
+import {message} from '../../logs/MessageBuilder';
+import {Tag} from '../../../common/cards/Tag';
 
 export class Monopoly extends Card implements IProjectCard {
   constructor() {
     super({
       type: CardType.EVENT,
       name: CardName.MONOPOLY,
+      tags: [Tag.CRIME],
       cost: 12,
+
       requirements: {corruption: 3},
       victoryPoints: -2,
 
@@ -43,8 +47,8 @@ export class Monopoly extends Card implements IProjectCard {
   public override bespokePlay(player: IPlayer) {
     return new SelectResource(
       'Select which resource type to steal from all other players.',
-      this.availableProductions(player),
-      (unitKey) => {
+      this.availableProductions(player))
+      .andThen((unitKey) => {
         const resource = Units.ResourceMap[unitKey];
         if (player.game.isSoloMode()) {
           player.production.add(resource, 1, {log: true});
@@ -53,7 +57,8 @@ export class Monopoly extends Card implements IProjectCard {
         }
         for (const target of player.getOpponents()) {
           if (target.canHaveProductionReduced(resource, 1, player)) {
-            target.maybeBlockAttack(player, (proceed: boolean) => {
+            const msg = message('Lose ${0} ${1} production', (b) => b.number(1).string(resource));
+            target.maybeBlockAttack(player, msg, (proceed: boolean) => {
               if (proceed) {
                 target.production.add(resource, -1, {log: true, from: player, stealing: true});
                 player.production.add(resource, 1, {log: false});

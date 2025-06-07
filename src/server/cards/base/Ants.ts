@@ -28,7 +28,7 @@ export class Ants extends Card implements IActionCard, IProjectCard {
         description: 'Requires 4% oxygen.',
         renderData: CardRenderer.builder((b) => {
           b.action('Remove 1 microbe from any card to add 1 to this card.', (eb) => {
-            eb.microbes(1, {all}).startAction.microbes(1);
+            eb.resource(CardResource.MICROBE, {all}).startAction.resource(CardResource.MICROBE);
           }).br;
           b.vpText('1 VP per 2 microbes on this card.');
         }),
@@ -42,7 +42,7 @@ export class Ants extends Card implements IActionCard, IProjectCard {
   }
 
   public action(player: IPlayer) {
-    player.game.defer(new RemoveResourcesFromCard(player, CardResource.MICROBE).andThen((response) => {
+    player.game.defer(new RemoveResourcesFromCard(player, CardResource.MICROBE, 1, {log: true}).andThen((response) => {
       if (response.proceed) {
         player.game.defer(new AddResourcesToCard(player, CardResource.MICROBE, {filter: (c) => c.name === this.name}));
       }

@@ -2,11 +2,12 @@ import {expect} from 'chai';
 import {UndergroundResearchCenter} from '../../../src/server/cards/underworld/UndergroundResearchCenter';
 import {testGame} from '../../TestGame';
 import {cast, runAllActions} from '../../TestingUtils';
+import {toName} from '../../../src/common/utils/utils';
 import {CardName} from '../../../src/common/cards/CardName';
 import {Tag} from '../../../src/common/cards/Tag';
 import {BiomassCombustors} from '../../../src/server/cards/base/BiomassCombustors';
 import {UnderworldExpansion} from '../../../src/server/underworld/UnderworldExpansion';
-import {UnderworldTestHelper} from '../../underworld/UnderworldTestHelper';
+import {assertIsExcavationAction} from '../../underworld/underworldAssertions';
 import {OrOptions} from '../../../src/server/inputs/OrOptions';
 import {ColonizerTrainingCamp} from '../../../src/server/cards/base/ColonizerTrainingCamp';
 import {SearchForLife} from '../../../src/server/cards/base/SearchForLife';
@@ -38,7 +39,7 @@ describe('UndergroundResearchCenter', () => {
     const card = new UndergroundResearchCenter();
     const [game, player] = testGame(2, {underworldExpansion: true});
     player.production.override({energy: 1});
-    UnderworldTestHelper.assertIsExcavationAction(player, card.play(player));
+    assertIsExcavationAction(player, card.play(player));
     runAllActions(game);
     const options = cast(player.popWaitingFor(), OrOptions);
     expect(options.options[0].title).eq(Tag.BUILDING);
@@ -52,8 +53,8 @@ describe('UndergroundResearchCenter', () => {
 
     options.options[0].cb();
 
-    expect(player.cardsInHand.map((c) => c.name)).has.members([CardName.BIOMASS_COMBUSTORS, CardName.COLONIZER_TRAINING_CAMP]);
-    expect(game.projectDeck.discardPile.map((c) => c.name)).deep.eq([CardName.SEARCH_FOR_LIFE]);
+    expect(player.cardsInHand.map(toName)).has.members([CardName.BIOMASS_COMBUSTORS, CardName.COLONIZER_TRAINING_CAMP]);
+    expect(game.projectDeck.discardPile.map(toName)).deep.eq([CardName.SEARCH_FOR_LIFE]);
 
     expect(player.production.energy).eq(0);
   });

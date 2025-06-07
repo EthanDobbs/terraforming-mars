@@ -2,24 +2,9 @@ import {DEFAULT_GAME_OPTIONS} from '../../src/server/game/GameOptions';
 import {expect} from 'chai';
 import {TharsisBoard} from '../../src/server/boards/TharsisBoard';
 import {SeededRandom} from '../../src/common/utils/Random';
-import {SpaceType} from '../../src/common/boards/SpaceType';
-import {SpaceId} from '../../src/common/Types';
 
-describe('TharsisBoard', function() {
-  it('has error with input while calling getAdjacentSpaces', function() {
-    const board = TharsisBoard.newInstance(DEFAULT_GAME_OPTIONS, new SeededRandom(0));
-    expect(function() {
-      board.getAdjacentSpaces({
-        x: 0,
-        y: 0,
-        bonus: [],
-        id: 'foobar' as SpaceId,
-        spaceType: SpaceType.LAND,
-      });
-    }).to.throw('Unexpected space ID foobar');
-  });
-
-  it('sanity test', function() {
+describe('TharsisBoard', () => {
+  it('sanity test', () => {
     const board = TharsisBoard.newInstance(DEFAULT_GAME_OPTIONS, new SeededRandom(0));
     expect(board.spaces).to.deep.eq([
       {id: '01', spaceType: 'colony', bonus: [], x: -1, y: -1},
@@ -85,7 +70,6 @@ describe('TharsisBoard', function() {
       {id: '61', spaceType: 'land', bonus: [], x: 6, y: 8},
       {id: '62', spaceType: 'land', bonus: [], x: 7, y: 8},
       {id: '63', spaceType: 'ocean', bonus: [0, 0], x: 8, y: 8},
-      {id: '69', spaceType: 'colony', bonus: [], x: -1, y: -1},
     ]);
   });
 });

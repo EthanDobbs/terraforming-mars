@@ -3,9 +3,9 @@ import {expect} from 'chai';
 import {ImportedHeavyMachinery} from '../../../src/server/cards/underworld/ImportedHeavyMachinery';
 import {TestPlayer} from '../../TestPlayer';
 import {testGame} from '../../TestGame';
-import {runAllActions} from '../../TestingUtils';
+import {cast, runAllActions} from '../../TestingUtils';
 import {IGame} from '../../../src/server/IGame';
-import {UnderworldTestHelper} from '../../underworld/UnderworldTestHelper';
+import {assertIsExcavationAction} from '../../underworld/underworldAssertions';
 
 describe('ImportedHeavyMachinery', () => {
   let game: IGame;
@@ -22,11 +22,11 @@ describe('ImportedHeavyMachinery', () => {
   });
 
   it('play', () => {
-    expect(card.play(player)).is.undefined;
+    cast(card.play(player), undefined);
     runAllActions(game);
-    UnderworldTestHelper.assertIsExcavationAction(player, player.popWaitingFor());
+    assertIsExcavationAction(player, player.popWaitingFor());
     runAllActions(game);
-    UnderworldTestHelper.assertIsExcavationAction(player, player.popWaitingFor());
+    assertIsExcavationAction(player, player.popWaitingFor());
     runAllActions(game);
 
     expect(player.popWaitingFor()).is.undefined;

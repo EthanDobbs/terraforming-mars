@@ -2,7 +2,7 @@ require('dotenv').config();
 
 import * as http from 'http';
 import * as fs from 'fs';
-import * as responses from '../routes/responses';
+import * as responses from '../server/responses';
 
 import {chooseMilestonesAndAwards} from '../ma/MilestoneAwardSelector';
 import {DEFAULT_GAME_OPTIONS, GameOptions} from '../game/GameOptions';
@@ -45,7 +45,6 @@ function calc(params: URLSearchParams): string {
 
   if (params.get('venus') === 'true') {
     options.venusNextExtension = true;
-    options.includeVenusMA = true;
   }
 
   if (params.get('ares') === 'true') {
@@ -78,8 +77,8 @@ function calc(params: URLSearchParams): string {
     }
     try {
       const mas = chooseMilestonesAndAwards(options);
-      mas.awards.forEach((award) => results.add(award.name));
-      mas.milestones.forEach((milestone) => results.add(milestone.name));
+      mas.awards.forEach(results.add);
+      mas.milestones.forEach(results.add);
     } catch (err) {
       console.log(err);
       results.add('ERROR');
@@ -97,6 +96,7 @@ function simpleGameOptions(): GameOptions {
     aresHazards: false,
     corporateEra: false,
     initialDraftVariant: false,
+    preludeDraftVariant: false,
     showTimers: false,
     startingCorporations: 0,
 
@@ -104,7 +104,6 @@ function simpleGameOptions(): GameOptions {
     boardName: BoardName.THARSIS,
     venusNextExtension: false,
     aresExtension: false,
-    includeVenusMA: false,
     moonExpansion: false,
     pathfindersExpansion: false,
     includeFanMA: false,

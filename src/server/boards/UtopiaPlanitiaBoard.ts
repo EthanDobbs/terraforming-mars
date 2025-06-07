@@ -1,17 +1,13 @@
 import {SpaceBonus} from '../../common/boards/SpaceBonus';
-import {SpaceName} from '../SpaceName';
-import {Board} from './Board';
-import {IPlayer} from '../IPlayer';
 import {BoardBuilder} from './BoardBuilder';
-import {SerializedBoard} from './SerializedBoard';
 import {Random} from '../../common/utils/Random';
 import {GameOptions} from '../game/GameOptions';
-import {SpaceId} from '../../common/Types';
 import {MarsBoard} from './MarsBoard';
+import {Space} from './Space';
 
 export class UtopiaPlanitiaBoard extends MarsBoard {
   public static newInstance(gameOptions: GameOptions, rng: Random): UtopiaPlanitiaBoard {
-    const builder = new BoardBuilder(gameOptions.venusNextExtension, gameOptions.pathfindersExpansion);
+    const builder = new BoardBuilder(gameOptions);
 
     const PLANT = SpaceBonus.PLANT;
     const STEEL = SpaceBonus.STEEL;
@@ -39,17 +35,13 @@ export class UtopiaPlanitiaBoard extends MarsBoard {
     builder.land().land().land(STEEL, STEEL).ocean(PLANT).land(PLANT);
 
     if (gameOptions.shuffleMapOption) {
-      builder.shuffle(rng, SpaceName.NOCTIS_CITY, SpaceName.THARSIS_THOLUS, SpaceName.ASCRAEUS_MONS, SpaceName.ARSIA_MONS, SpaceName.PAVONIS_MONS);
+      builder.shuffle(rng);
     }
     const spaces = builder.build();
     return new UtopiaPlanitiaBoard(spaces);
   }
 
-  public static deserialize(board: SerializedBoard, players: ReadonlyArray<IPlayer>): UtopiaPlanitiaBoard {
-    return new UtopiaPlanitiaBoard(Board.deserializeSpaces(board.spaces, players));
-  }
-
-  public override getVolcanicSpaceIds(): ReadonlyArray<SpaceId> {
-    return [];
+  public constructor(spaces: ReadonlyArray<Space>) {
+    super(spaces, undefined, []);
   }
 }

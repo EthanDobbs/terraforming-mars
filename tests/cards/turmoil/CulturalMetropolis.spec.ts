@@ -1,43 +1,39 @@
 import {expect} from 'chai';
 import {CulturalMetropolis} from '../../../src/server/cards/turmoil/CulturalMetropolis';
 import {SendDelegateToArea} from '../../../src/server/deferredActions/SendDelegateToArea';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {Resource} from '../../../src/common/Resource';
 import {PartyName} from '../../../src/common/turmoil/PartyName';
 import {Turmoil} from '../../../src/server/turmoil/Turmoil';
-import {cast} from '../../TestingUtils';
+import {cast, testGame} from '../../TestingUtils';
 import {TestPlayer} from '../../TestPlayer';
 import {TileType} from '../../../src/common/TileType';
 
-describe('Cultural Metropolis', function() {
+describe('Cultural Metropolis', () => {
   let card: CulturalMetropolis;
   let player: TestPlayer;
-  let player2: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let turmoil: Turmoil;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new CulturalMetropolis();
-    player = TestPlayer.BLUE.newPlayer();
-    player2 = TestPlayer.RED.newPlayer();
-
-    game = Game.newInstance('gameid', [player, player2], player, {turmoilExtension: true});
+    [game, player/* , player2 */] = testGame(2, {turmoilExtension: true});
     turmoil = game.turmoil!;
   });
 
-  it('Can not play without energy production', function() {
+  it('Can not play without energy production', () => {
     turmoil.sendDelegateToParty(player, PartyName.UNITY, game);
     turmoil.sendDelegateToParty(player, PartyName.UNITY, game);
     expect(card.canPlay(player)).is.not.true;
   });
 
 
-  it('Can not play without two delegate in unity or unity ruling', function() {
+  it('Can not play without two delegate in unity or unity ruling', () => {
     player.production.add(Resource.ENERGY, 1);
     expect(card.canPlay(player)).is.not.true;
   });
 
-  it('Can not play without 2 delegates available', function() {
+  it('Can not play without 2 delegates available', () => {
     player.production.add(Resource.ENERGY, 1);
     turmoil.sendDelegateToParty(player, PartyName.UNITY, game);
     turmoil.sendDelegateToParty(player, PartyName.UNITY, game);
@@ -68,7 +64,7 @@ describe('Cultural Metropolis', function() {
     expect(card.canPlay(player)).is.false;
   });
 
-  it('Should play', function() {
+  it('Should play', () => {
     const unity = turmoil.getPartyByName(PartyName.UNITY);
     const startingUnityDelegateCount = unity.delegates.size;
 

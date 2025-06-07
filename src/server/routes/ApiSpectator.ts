@@ -1,4 +1,4 @@
-import * as responses from './responses';
+import * as responses from '../server/responses';
 import {Server} from '../models/ServerModel';
 import {Handler} from './Handler';
 import {Context} from './IHandler';
@@ -28,6 +28,6 @@ export class ApiSpectator extends Handler {
       responses.notFound(req, res);
       return;
     }
-    responses.writeJson(res, Server.getSpectatorModel(game));
+    responses.writeJson(res, ctx, Server.getSpectatorModel(game));
   }
 }

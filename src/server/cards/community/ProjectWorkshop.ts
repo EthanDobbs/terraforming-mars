@@ -17,8 +17,9 @@ import {PartyName} from '../../../common/turmoil/PartyName';
 import {REDS_RULING_POLICY_COST} from '../../../common/constants';
 import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
 import {TITLES} from '../../inputs/titles';
+import {ICorporationCard} from '../corporation/ICorporationCard';
 
-export class ProjectWorkshop extends CorporationCard {
+export class ProjectWorkshop extends CorporationCard implements ICorporationCard {
   constructor() {
     super({
       name: CardName.PROJECT_WORKSHOP,
@@ -62,7 +63,7 @@ export class ProjectWorkshop extends CorporationCard {
       return cards;
     }
     return cards.filter((card) => {
-      const vp = card.getVictoryPoints(player);
+      const vp = card.getVictoryPoints(player, 'projectWorkshop');
       if (vp <= 0) {
         return true;
       }
@@ -116,8 +117,7 @@ export class ProjectWorkshop extends CorporationCard {
   }
 
   private convertCardPointsToTR(player: IPlayer, card: ICard) {
-    const steps = card.getVictoryPoints(player);
-    // TODO(kberg): this doesn't reduce VPs below 0. What to do?
+    const steps = card.getVictoryPoints(player, 'projectWorkshop');
     if (steps > 0) {
       player.increaseTerraformRating(steps, {log: true});
     } else if (steps < 0) {

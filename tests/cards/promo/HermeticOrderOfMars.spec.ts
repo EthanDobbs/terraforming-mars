@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {HermeticOrderOfMars} from '../../../src/server/cards/promo/HermeticOrderofMars';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {testGame} from '../../TestGame';
 import {MarsBoard} from '../../../src/server/boards/MarsBoard';
@@ -8,13 +8,13 @@ import {addGreenery, addOcean, setOxygenLevel} from '../../TestingUtils';
 import {SpaceType} from '../../../src/common/boards/SpaceType';
 import {TileType} from '../../../src/common/TileType';
 
-describe('HermeticOrderOfMars', function() {
+describe('HermeticOrderOfMars', () => {
   let card: HermeticOrderOfMars;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let board: MarsBoard;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new HermeticOrderOfMars();
     [game, player/* , player2 */] = testGame(2);
     board = game.board;

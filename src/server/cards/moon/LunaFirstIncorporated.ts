@@ -6,8 +6,9 @@ import {CardRenderer} from '../render/CardRenderer';
 import {MoonExpansion} from '../../moon/MoonExpansion';
 import {Size} from '../../../common/cards/render/Size';
 import {all} from '../Options';
+import {ICorporationCard} from '../corporation/ICorporationCard';
 
-export class LunaFirstIncorporated extends CorporationCard {
+export class LunaFirstIncorporated extends CorporationCard implements ICorporationCard {
   constructor() {
     super({
       name: CardName.LUNA_FIRST_INCORPORATED,
@@ -22,7 +23,7 @@ export class LunaFirstIncorporated extends CorporationCard {
       metadata: {
         // description: 'You start with 40 M€, 2 steel, and 2 titanium.',
         description: 'You start with 40 M€, 1 steel, and 1 titanium.',
-        cardNumber: '',
+        cardNumber: 'MC6',
         renderData: CardRenderer.builder((b) => {
           // b.megacredits(40).steel(2).titanium(2).br;
           b.megacredits(40).steel(1).titanium(1).br;

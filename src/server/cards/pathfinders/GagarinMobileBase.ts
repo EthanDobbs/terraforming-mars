@@ -10,8 +10,9 @@ import {IActionCard} from '../ICard';
 import {BoardType} from '../../boards/BoardType';
 import {Board} from '../../boards/Board';
 import {message} from '../../logs/MessageBuilder';
+import {ICorporationCard} from '../corporation/ICorporationCard';
 
-export class GagarinMobileBase extends CorporationCard implements IActionCard {
+export class GagarinMobileBase extends CorporationCard implements ICorporationCard, IActionCard {
   constructor() {
     super({
       name: CardName.GAGARIN_MOBILE_BASE,
@@ -20,7 +21,7 @@ export class GagarinMobileBase extends CorporationCard implements IActionCard {
       initialActionText: 'Place Gagarin Mobile Base on ANY space ON MARS',
 
       metadata: {
-        cardNumber: 'PfC13',
+        cardNumber: 'PfC19',
         description: 'You start with 42 M€. As your first action, put Gagarin Mobile Base on ANY area on Mars. Collect the bonus.',
         renderData: CardRenderer.builder((b) => {
           b.megacredits(42).br;

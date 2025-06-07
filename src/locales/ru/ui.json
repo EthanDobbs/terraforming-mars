@@ -207,7 +207,7 @@
     "Pay ${0} titanium": "Заплатить ${0} титана",
     "Select 2 Prelude cards": "Выберите 2 карты прологов",
     "Select 1 card to discard": "Выберите 1 карту, чтобы сбросить",
-    "Self-Replicating Robots cards": "Карты Роботов-саморепликантов",
+    "Self-replicating Robots cards": "Карты Роботов-саморепликантов",
     "Remove colony": "Убрать колонию",
     "Tags Overview": "Статистика",
     "Fan-made": "Неофициальное",
@@ -306,8 +306,7 @@
     "seconds per action": "секунд на действие",
     "Reduce": "Уменьшить",
     "VP every": "ПО каждый",
-    "After ${0} min, reduce ${1} VP every ${2} min. (${3} bonus sec. per turn.)": "Через ${0} мин уменьшать по ${1} ПО каждые ${2} мин (${3} бонусные секунды за ход)",
-    "Venus Milestone/Award": "Достижения/награды Венеры",
+    "After ${0} min, reduce ${1} VP every ${2} min. (${3} bonus sec. per action.)": "Через ${0} мин уменьшать по ${1} ПО каждые ${2} мин (${3} бонусные секунды за действие)",
     "Mandatory Venus Terraforming": "Обязательное терраформирование Венеры",
     "corporation": "корпорация",
     "city": "город",
@@ -346,7 +345,6 @@
     "Sort by ID (work in progress)": "Сортировать по ID (в разработке)",
     "Corporations": "Корпорации",
     "Base": "База",
-    "CEOs": "Директора",
     "Preludes": "Прологи",
 
     "Increase production": "Увеличить производство",
@@ -395,5 +393,10 @@
     "Select resource to discard": "Выберите ресурс, который потратится",
     "Select resource to gain": "Выберите ресурс, который получите",
     "Select ${0} cards to discard": "Выберите ${0} карт(ы) чтобы сбросить",
-    "Select between ${0} and ${1} cards to discard": "Выберите от ${0} до ${1} карт чтобы сбросить"
+    "Select between ${0} and ${1} cards to discard": "Выберите от ${0} до ${1} карт чтобы сбросить",
+    "city-count": "Города",
+    "colony-count": "Колонии",
+    "corruption-count": "Коррупция",
+    "influence-count": "Влияние",
+    "excavation-count": "Раскопки"
 }

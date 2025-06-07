@@ -3,13 +3,14 @@
       <div class="card-content-wrapper" v-i18n @mouseover="hovering = true" @mouseleave="hovering = false">
           <div v-if="!isStandardProject()" class="card-cost-and-tags">
               <CardCost :amount="getCost()" :newCost="getReducedCost()" />
+              <div v-if="showPlayerCube" :class="playerCubeClass"></div>
               <card-help v-show="hasHelp" :name="card.name" />
               <CardTags :tags="getTags()" />
           </div>
           <CardTitle :title="card.name" :type="getCardType()"/>
           <CardContent v-if="getCardMetadata() !== undefined" :metadata="getCardMetadata()" :requirements="getCardRequirements()" :isCorporation="isCorporationCard()" :padBottom="hasResourceType" />
       </div>
-      <CardExpansion :expansion="getCardExpansion()" :isCorporation="isCorporationCard()"/>
+      <CardExpansion :expansion="getCardExpansion()" :isCorporation="isCorporationCard()" :isResourceCard="isResourceCard()" :compatibility="getCardCompatibility()" />
       <CardResourceCounter v-if="hasResourceType" :amount="getResourceAmount()" :type="resourceType" />
       <CardExtraContent :card="card" />
       <slot/>
@@ -30,12 +31,14 @@ import CardTags from './CardTags.vue';
 import {CardType} from '@/common/cards/CardType';
 import CardContent from './CardContent.vue';
 import CardHelp from './CardHelp.vue';
-import {ICardMetadata} from '@/common/cards/ICardMetadata';
+import {CardMetadata} from '@/common/cards/CardMetadata';
 import {Tag} from '@/common/cards/Tag';
 import {getPreferences} from '@/client/utils/PreferencesManager';
 import {CardResource} from '@/common/CardResource';
 import {getCardOrThrow} from '@/client/cards/ClientCardManifest';
+import {Color} from '@/common/Color';
 import {CardRequirementDescriptor} from '@/common/cards/CardRequirementDescriptor';
+import {GameModule} from '@/common/cards/GameModule';
 
 export default Vue.extend({
   name: 'Card',
@@ -63,6 +66,12 @@ export default Vue.extend({
       type: Object as () => CardModel | undefined,
       required: false,
     },
+    // Cube is only shown when actionUsed is true.
+    cubeColor: {
+      type: String as () => Color,
+      required: false,
+      default: 'neutral',
+    },
   },
   data() {
     const cardName = this.card.name;
@@ -74,8 +83,18 @@ export default Vue.extend({
     };
   },
   methods: {
-    getCardExpansion(): string {
+    getCardExpansion(): GameModule {
       return this.cardInstance.module;
+    },
+    getCardCompatibility(): Array<GameModule> {
+      return this.cardInstance.compatibility;
+    },
+    isResourceCard(): boolean {
+      if (this.cardInstance.resourceType !== undefined) {
+        return true;
+      } else {
+        return false;
+      }
     },
     getTags(): Array<string> {
       const type = this.getCardType();
@@ -105,9 +124,12 @@ export default Vue.extend({
       const classes = ['card-container', 'filterDiv', 'hover-hide-res'];
       classes.push('card-' + card.name.toLowerCase().replace(/ /g, '-'));
 
-      if (this.actionUsed || card.isDisabled) {
+      if (card.isDisabled) {
+        classes.push('card-unavailable');
+      } else if (!getPreferences().experimental_ui && this.actionUsed) {
         classes.push('card-unavailable');
       }
+
       if (this.isStandardProject()) {
         classes.push('card-standard-project');
       }
@@ -117,7 +139,7 @@ export default Vue.extend({
       }
       return classes.join(' ');
     },
-    getCardMetadata(): ICardMetadata {
+    getCardMetadata(): CardMetadata {
       return this.cardInstance.metadata;
     },
     getCardRequirements(): Array<CardRequirementDescriptor> {
@@ -148,6 +170,12 @@ export default Vue.extend({
     },
     hasHelp(): boolean {
       return this.hovering && this.cardInstance.metadata.hasExternalHelp === true;
+    },
+    showPlayerCube(): boolean {
+      return getPreferences().experimental_ui && this.actionUsed;
+    },
+    playerCubeClass(): string {
+      return `board-cube board-cube--${this.cubeColor}`;
     },
   },
 });

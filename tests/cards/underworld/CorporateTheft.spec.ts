@@ -5,7 +5,7 @@ import {cast, runAllActions} from '../../TestingUtils';
 import {CardName} from '../../../src/common/cards/CardName';
 import {newProjectCard} from '../../../src/server/createCard';
 import {SelectCard} from '../../../src/server/inputs/SelectCard';
-import {UnderworldTestHelper} from '../../underworld/UnderworldTestHelper';
+import {assertIsMaybeBlock} from '../../underworld/underworldAssertions';
 
 function toCard(e: readonly [CardName, number] | CardName) {
   const [cardName, count] = typeof(e) === 'string' ? [e, 0] : e;
@@ -62,12 +62,12 @@ describe('CorporateTheft', () => {
       runAllActions(game);
       const selectCard = cast(player.popWaitingFor(), SelectCard);
 
-      const selected = opponent.playedCards.find((c) => c.name === run.selection)!;
+      const selected = opponent.getPlayedCard(run.selection)!;
       selectCard.cb([selected]);
       runAllActions(game);
 
       if (run.opponent.corruption > 0) {
-        UnderworldTestHelper.assertIsMaybeBlock(opponent, opponent.popWaitingFor(), run.block ? 'corruption' : 'do not block');
+        assertIsMaybeBlock(opponent, opponent.popWaitingFor(), run.block ? 'corruption' : 'do not block');
       }
       if (run.block === true) {
         expect(player.underworldData.corruption).eq(run.player.corruption + 1);
@@ -83,7 +83,7 @@ describe('CorporateTheft', () => {
 
         if (run.match !== undefined) {
           // const selectCard = cast(player.popWaitingFor(), SelectCard);
-          const playedCard = player.playedCards.find((c) => c.name === run.match)!;
+          const playedCard = player.getPlayedCard(run.match)!;
           // selectCard.cb([playedCard]);
           expect(playedCard.resourceCount).eq(1);
         }
@@ -91,4 +91,18 @@ describe('CorporateTheft', () => {
       }
     });
   }
+
+  it('solo', () => {
+    const card = new CorporateTheft();
+    const [/* game */, player] = testGame(1, {underworldExpansion: true});
+
+    player.underworldData.corruption = 1;
+    expect(card.canPlay(player)).is.false;
+
+    player.underworldData.corruption = 2;
+    expect(card.canPlay(player)).is.true;
+
+    cast(card.play(player), undefined);
+    expect(player.underworldData.corruption).eq(3);
+  });
 });

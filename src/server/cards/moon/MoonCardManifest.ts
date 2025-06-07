@@ -70,16 +70,15 @@ import {MiningComplex} from './MiningComplex';
 import {MiningRobotsManufCenter} from './MiningRobotsManufCenter';
 import {MomentumViriumHabitat} from './MomentumViriumHabitat';
 import {MoonHabitatStandardProject} from './MoonHabitatStandardProject';
-import {MoonHabitatStandardProjectVariant2} from './MoonStandardProjectVariants';
+import {MoonHabitatStandardProjectVariant1, MoonMineStandardProjectVariant1, MoonRoadStandardProjectVariant1} from './MoonStandardProjectVariants1';
+import {MoonHabitatStandardProjectVariant2, MoonMineStandardProjectVariant2, MoonRoadStandardProjectVariant2} from './MoonStandardProjectVariants2';
 import {MooncrateBlockFactory} from './MooncrateBlockFactory';
 import {MooncrateConvoysToMars} from './MooncrateConvoysToMars';
 import {MoonMineStandardProject} from './MoonMineStandardProject';
-import {MoonMineStandardProjectVariant2} from './MoonStandardProjectVariants';
 import {MoonRoadStandardProject} from './MoonRoadStandardProject';
-import {MoonRoadStandardProjectVariant2} from './MoonStandardProjectVariants';
 import {MoonTether} from './MoonTether';
 import {NanotechIndustries} from './NanotechIndustries';
-import {NewColonyPlanningInitiaitives} from './NewColonyPlanningInitiaitives';
+import {NewColonyPlanningInitiatives} from './NewColonyPlanningInitiatives';
 import {OffWorldCityLiving} from './OffWorldCityLiving';
 import {PreliminaryDarkside} from './PreliminaryDarkside';
 import {OrbitalPowerGrid} from './OrbitalPowerGrid';
@@ -89,7 +88,7 @@ import {RevoltingColonists} from './RevoltingColonists';
 import {RoadPiracy} from './RoadPiracy';
 import {RoverDriversUnion} from './RoverDriversUnion';
 import {RustEatingBacteria} from './RustEatingBacteria';
-import {SinusIridiumRoadNetwork} from './SinusIridiumRoadNetwork';
+import {SinusIrdiumRoadNetwork} from './SinusIrdiumRoadNetwork';
 import {SmallDutyRovers} from './SmallDutyRovers';
 import {SolarPanelFoundry} from './SolarPanelFoundry';
 import {SphereHabitats} from './SphereHabitats';
@@ -124,7 +123,7 @@ export const MOON_CARD_MANIFEST = new ModuleManifest({
     [CardName.THE_WOMB]: {Factory: TheWomb},
     [CardName.TYCHO_ROAD_NETWORK]: {Factory: TychoRoadNetwork},
     [CardName.ARISTARCHUS_ROAD_NETWORK]: {Factory: AristarchusRoadNetwork},
-    [CardName.SINUS_IRIDIUM_ROAD_NETWORK]: {Factory: SinusIridiumRoadNetwork},
+    [CardName.SINUS_IRDIUM_ROAD_NETWORK]: {Factory: SinusIrdiumRoadNetwork},
     [CardName.MOMENTUM_VIRUM_HABITAT]: {Factory: MomentumViriumHabitat},
     [CardName.LUNA_TRADE_STATION]: {Factory: LunaTradeStation},
     [CardName.LUNA_MINING_HUB]: {Factory: LunaMiningHub},
@@ -144,7 +143,7 @@ export const MOON_CARD_MANIFEST = new ModuleManifest({
     [CardName.STEEL_MARKET_MONOPOLISTS]: {Factory: SteelMarketMonopolists},
     [CardName.TITANIUM_MARKET_MONOPOLISTS]: {Factory: TitaniumMarketMonopolists},
     [CardName.LUNA_STAGING_STATION]: {Factory: LunaStagingStation},
-    [CardName.NEW_COLONY_PLANNING_INITIAITIVES]: {Factory: NewColonyPlanningInitiaitives},
+    [CardName.NEW_COLONY_PLANNING_INITIAITIVES]: {Factory: NewColonyPlanningInitiatives},
     [CardName.AI_CONTROLLED_MINE_NETWORK]: {Factory: AIControlledMineNetwork},
     [CardName.DARKSIDE_METEOR_BOMBARDMENT]: {Factory: DarksideMeteorBombardment},
     [CardName.UNDERGROUND_DETONATORS]: {Factory: UndergroundDetonators},
@@ -220,11 +219,14 @@ export const MOON_CARD_MANIFEST = new ModuleManifest({
   },
   standardProjects: {
     [CardName.MOON_HABITAT_STANDARD_PROJECT]: {Factory: MoonHabitatStandardProject},
-    [CardName.MOON_HABITAT_STANDARD_PROJECT_V2]: {Factory: MoonHabitatStandardProjectVariant2},
+    [CardName.MOON_HABITAT_STANDARD_PROJECT_VARIANT_1]: {Factory: MoonHabitatStandardProjectVariant1},
+    [CardName.MOON_HABITAT_STANDARD_PROJECT_VARIANT_2]: {Factory: MoonHabitatStandardProjectVariant2},
     [CardName.MOON_MINE_STANDARD_PROJECT]: {Factory: MoonMineStandardProject},
-    [CardName.MOON_MINE_STANDARD_PROJECT_V2]: {Factory: MoonMineStandardProjectVariant2},
+    [CardName.MOON_MINE_STANDARD_PROJECT_VARIANT_1]: {Factory: MoonMineStandardProjectVariant1},
+    [CardName.MOON_MINE_STANDARD_PROJECT_VARIANT_2]: {Factory: MoonMineStandardProjectVariant2},
     [CardName.MOON_ROAD_STANDARD_PROJECT]: {Factory: MoonRoadStandardProject},
-    [CardName.MOON_ROAD_STANDARD_PROJECT_V2]: {Factory: MoonRoadStandardProjectVariant2},
+    [CardName.MOON_ROAD_STANDARD_PROJECT_VARIANT_1]: {Factory: MoonRoadStandardProjectVariant1},
+    [CardName.MOON_ROAD_STANDARD_PROJECT_VARIANT_2]: {Factory: MoonRoadStandardProjectVariant2},
   },
   preludeCards: {
     [CardName.FIRST_LUNAR_SETTLEMENT]: {Factory: FirstLunarSettlement, compatibility: 'moon'},

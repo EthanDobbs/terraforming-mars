@@ -3,8 +3,8 @@ import * as fs from 'fs';
 
 import {ALL_MODULE_MANIFESTS} from '../cards/AllManifests';
 import {CardManifest, GlobalEventManifest, ModuleManifest} from '../cards/ModuleManifest';
-import {ICard} from '../cards/ICard';
-import {GameModule} from '../../common/cards/GameModule';
+import {ICard, isIActionCard} from '../cards/ICard';
+import {Expansion, GameModule} from '../../common/cards/GameModule';
 import {IGlobalEvent} from '../turmoil/globalEvents/IGlobalEvent';
 import {IClientGlobalEvent} from '../../common/turmoil/IClientGlobalEvent';
 import {ClientCard} from '../../common/cards/ClientCard';
@@ -13,14 +13,14 @@ import {isPreludeCard} from '../cards/prelude/IPreludeCard';
 import {IColonyMetadata} from '../../common/colonies/IColonyMetadata';
 import {Units} from '../../common/Units';
 import {ALL_COLONIES_TILES, getColonyModule} from '../colonies/ColonyManifest';
-import {ALL_MILESTONES} from '../milestones/Milestones';
-import {ALL_AWARDS} from '../awards/Awards';
-import {MilestoneAwardMetadata} from '../../common/ma/MilestoneAwardMetadata';
-import {AwardName} from '../../common/ma/AwardName';
-import {MilestoneName} from '../../common/ma/MilestoneName';
+import {milestoneManifest} from '../milestones/Milestones';
+import {awardManifest} from '../awards/Awards';
+import {awardNames} from '../../common/ma/AwardName';
+import {milestoneNames} from '../../common/ma/MilestoneName';
+import {ClientAward, ClientMilestone} from '../../common/ma/ClientMilestoneAward';
 import {CardType} from '../../common/cards/CardType';
 import {OneOrArray} from '../../common/utils/types';
-import {initializeGlobalEventDealer} from '../turmoil/globalEvents/GlobalEventDealer';
+import {globalInitialize} from '../globalInitialize';
 
 class CardProcessor {
   public static json: Array<ClientCard> = [];
@@ -43,7 +43,7 @@ class CardProcessor {
     }
   }
 
-  private static processCard(module: GameModule, card: ICard, compatibility: undefined | OneOrArray<GameModule>) {
+  private static processCard(module: GameModule, card: ICard, compatibility: undefined | OneOrArray<Expansion>) {
     if (card.type === CardType.PROXY) return;
     let startingMegaCredits = undefined;
     let cardCost = undefined;
@@ -71,6 +71,7 @@ class CardProcessor {
       startingMegaCredits: startingMegaCredits,
       cardCost: cardCost,
       compatibility: [],
+      hasAction: isIActionCard(card),
     };
 
     if (Array.isArray(compatibility)) {
@@ -142,22 +143,28 @@ class ColoniesProcessor {
   }
 }
 
-class MAProcessor {
-  public static json: Array<MilestoneAwardMetadata> = [];
+class MilestoneProcessor {
+  public static json: Array<ClientMilestone> = [];
   public static makeJson() {
-    ALL_MILESTONES.forEach((entry) => {
-      MAProcessor.processEntry(entry);
-    });
-
-    ALL_AWARDS.forEach((entry) => {
-      MAProcessor.processEntry(entry);
+    milestoneNames.forEach((name) => {
+      MilestoneProcessor.json.push({
+        name,
+        description: milestoneManifest.createOrThrow(name).description,
+        requirements: milestoneManifest.all[name].compatibility,
+      });
     });
   }
+}
 
-  private static processEntry(metadata: {name: MilestoneName | AwardName, description: string}) {
-    MAProcessor.json.push({
-      name: metadata.name,
-      description: metadata.description,
+class AwardProcessor {
+  public static json: Array<ClientAward> = [];
+  public static makeJson() {
+    awardNames.forEach((name) => {
+      AwardProcessor.json.push({
+        name,
+        description: awardManifest.createOrThrow(name).description,
+        requirements: awardManifest.all[name].compatibility,
+      });
     });
   }
 }
@@ -166,13 +173,15 @@ if (!fs.existsSync('src/genfiles')) {
   fs.mkdirSync('src/genfiles');
 }
 
-initializeGlobalEventDealer(ALL_MODULE_MANIFESTS);
+globalInitialize();
 CardProcessor.makeJson();
 GlobalEventProcessor.makeJson();
 ColoniesProcessor.makeJson();
-MAProcessor.makeJson();
+MilestoneProcessor.makeJson();
+AwardProcessor.makeJson();
 
 fs.writeFileSync('src/genfiles/cards.json', JSON.stringify(CardProcessor.json, null, 2));
 fs.writeFileSync('src/genfiles/events.json', JSON.stringify(GlobalEventProcessor.json, null, 2));
 fs.writeFileSync('src/genfiles/colonies.json', JSON.stringify(ColoniesProcessor.json, null, 2));
-fs.writeFileSync('src/genfiles/ma.json', JSON.stringify(MAProcessor.json, null, 2));
+fs.writeFileSync('src/genfiles/milestones.json', JSON.stringify(MilestoneProcessor.json, null, 2));
+fs.writeFileSync('src/genfiles/awards.json', JSON.stringify(AwardProcessor.json, null, 2));

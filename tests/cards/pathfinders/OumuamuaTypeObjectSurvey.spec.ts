@@ -1,18 +1,20 @@
 import {expect} from 'chai';
 import {OumuamuaTypeObjectSurvey} from '../../../src/server/cards/pathfinders/OumuamuaTypeObjectSurvey';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {LunarObservationPost} from '../../../src/server/cards/moon/LunarObservationPost';
-import {fakeCard, runAllActions, setTemperature} from '../../TestingUtils';
+import {fakeCard, runAllActions, setTemperature, testGame} from '../../TestingUtils';
 import {IProjectCard} from '../../../src/server/cards/IProjectCard';
 import {CardName} from '../../../src/common/cards/CardName';
 import {Tag} from '../../../src/common/cards/Tag';
 import {ProjectDeck} from '../../../src/server/cards/Deck';
+import {SoilEnrichment} from '../../../src/server/cards/promo/SoilEnrichment';
+import {Tardigrades} from '../../../src/server/cards/base/Tardigrades';
 
-describe('OumuamuaTypeObjectSurvey', function() {
+describe('OumuamuaTypeObjectSurvey', () => {
   let card: OumuamuaTypeObjectSurvey;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let projectDeck: ProjectDeck;
 
   const noTags = fakeCard({
@@ -56,10 +58,9 @@ describe('OumuamuaTypeObjectSurvey', function() {
     tags: [],
   });
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new OumuamuaTypeObjectSurvey();
-    player = TestPlayer.BLUE.newPlayer();
-    game = Game.newInstance('gameid', [player], player);
+    [game, player] = testGame(1);
     projectDeck = game.projectDeck;
     projectDeck.discardPile = [];
     player.megaCredits = 100;
@@ -169,7 +170,35 @@ describe('OumuamuaTypeObjectSurvey', function() {
     expect(player.megaCredits).eq(100);
   });
 
-  it('The part where a card gets 2 data', function() {
+  it('Card with microbe tag cannot be played', () => {
+    // Requires a player has a card with a microbe on it.
+    const unplayableMicrobeTag = new SoilEnrichment();
+    projectDeck.drawPile = [slug, noTags, unplayableMicrobeTag];
+
+    card.play(player);
+
+    expect(projectDeck.drawPile).deep.eq([slug]);
+    expect(player.playedCards).is.empty;
+    expect(player.cardsInHand).deep.eq([unplayableMicrobeTag, noTags]);
+  });
+
+  it('Card with microbe tag can be played', () => {
+    // Requires a player has a card with a microbe on it.
+    const playableMicrobeTag = new SoilEnrichment();
+    projectDeck.drawPile = [slug, noTags, playableMicrobeTag];
+    const cardWithMicrobe = new Tardigrades();
+    cardWithMicrobe.resourceCount = 1;
+    player.playedCards.push(cardWithMicrobe);
+
+    card.play(player);
+
+    expect(projectDeck.drawPile).deep.eq([slug]);
+    expect(player.playedCards).deep.eq([cardWithMicrobe, playableMicrobeTag]);
+    expect(player.cardsInHand).deep.eq([noTags]);
+  });
+
+
+  it('The part where a card gets 2 data', () => {
     const lunarObservationPost = new LunarObservationPost();
     player.playedCards = [lunarObservationPost];
     // Put two cards on the front of the deck so they don't have data

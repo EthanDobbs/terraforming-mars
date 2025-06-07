@@ -7,6 +7,7 @@ import {NoAttributes} from './NoAttributes';
  * Describes something that can be counted.
  */
 export type _Countable = {
+  /** An initial value for the countable. e.g. { start: 10 } returns 10. */
   start?: number;
 
   /**
@@ -21,7 +22,9 @@ export type _Countable = {
   cities?: {where?: 'onmars' | 'offmars' | 'everywhere'},
   greeneries?: NoAttributes,
   oceans?: NoAttributes,
+  /** Count the number of resources on this card. */
   resourcesHere?: NoAttributes,
+  /** Count the number of floaters on all cards. */
   floaters?: NoAttributes,
   colonies?: {
     colonies?: {},

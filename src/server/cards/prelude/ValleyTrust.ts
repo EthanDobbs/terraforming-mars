@@ -4,10 +4,10 @@ import {CorporationCard} from '../corporation/CorporationCard';
 import {IProjectCard} from '../IProjectCard';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import {played} from '../Options';
 import {PreludesExpansion} from '../../preludes/PreludesExpansion';
+import {ICorporationCard} from '../corporation/ICorporationCard';
 
-export class ValleyTrust extends CorporationCard {
+export class ValleyTrust extends CorporationCard implements ICorporationCard {
   constructor() {
     super({
       name: CardName.VALLEY_TRUST,
@@ -24,7 +24,7 @@ export class ValleyTrust extends CorporationCard {
           b.megacredits(37).nbsp.prelude().asterix();
           b.corpBox('effect', (ce) => {
             ce.effect('When you play a science tag, you pay 2M€ less for it.', (eb) => {
-              eb.science(1, {played}).startEffect.megacredits(-2);
+              eb.tag(Tag.SCIENCE).startEffect.megacredits(-2);
             });
           });
         }),
@@ -41,6 +41,6 @@ export class ValleyTrust extends CorporationCard {
   public initialAction(player: IPlayer) {
     const game = player.game;
     const cards = game.preludeDeck.drawN(game, 3);
-    return PreludesExpansion.playPrelude(player, cards);
+    return PreludesExpansion.selectPreludeToPlay(player, cards, 'discard');
   }
 }

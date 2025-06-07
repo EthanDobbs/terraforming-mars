@@ -2,28 +2,28 @@ import {expect} from 'chai';
 import {AsteroidStandardProject} from '../../../../src/server/cards/base/standardProjects/AsteroidStandardProject';
 import {cast, runAllActions, setTemperature, testRedsCosts} from '../../../TestingUtils';
 import {TestPlayer} from '../../../TestPlayer';
-import {Game} from '../../../../src/server/Game';
+import {IGame} from '../../../../src/server/IGame';
 import {MAX_TEMPERATURE} from '../../../../src/common/constants';
 import {testGame} from '../../../TestGame';
 
-describe('AsteroidStandardProject', function() {
+describe('AsteroidStandardProject', () => {
   let card: AsteroidStandardProject;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new AsteroidStandardProject();
     [game, player] = testGame(2);
   });
 
-  it('Can act', function() {
+  it('Can act', () => {
     player.megaCredits = card.cost - 1;
     expect(card.canAct(player)).is.false;
     player.megaCredits = card.cost;
     expect(card.canAct(player)).is.true;
   });
 
-  it('action', function() {
+  it('action', () => {
     player.megaCredits = card.cost;
     player.setTerraformRating(20);
     expect(game.getTemperature()).eq(-30);
@@ -55,8 +55,8 @@ describe('AsteroidStandardProject', function() {
 
   it('Test reds', () => {
     [game, player] = testGame(1, {turmoilExtension: true});
-    testRedsCosts(() => card.canAct(player), player, card.cost, 3, /* canAct= */ true);
+    testRedsCosts(() => card.canAct(player), player, card.cost, 3);
     setTemperature(game, 8);
-    testRedsCosts(() => card.canAct(player), player, card.cost, 0, /* canAct= */ true);
+    testRedsCosts(() => card.canAct(player), player, card.cost, 0);
   });
 });

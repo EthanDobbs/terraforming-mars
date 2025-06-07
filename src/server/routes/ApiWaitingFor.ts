@@ -1,4 +1,4 @@
-import * as responses from './responses';
+import * as responses from '../server/responses';
 import {Handler} from './Handler';
 import {Context} from './IHandler';
 import {Phase} from '../../common/Phase';
@@ -19,21 +19,27 @@ export class ApiWaitingFor extends Handler {
     return player.getWaitingFor() !== undefined || player.game.phase === Phase.END;
   }
 
-  // When player is undefined, caller is a spectator.
+  private playersWithInputs(game: IGame) {
+    return game.getPlayersInGenerationOrder().filter((player) => player.getWaitingFor() !== undefined).map((player) => player.color);
+  }
+
   private getPlayerWaitingForModel(player: IPlayer, game: IGame, gameAge: number, undoCount: number): WaitingForModel {
+    const inputs = this.playersWithInputs(game);
     if (this.timeToGo(player)) {
-      return {result: 'GO'};
+      return {result: 'GO', waitingFor: inputs};
     } else if (game.gameAge > gameAge || game.undoCount > undoCount) {
-      return {result: 'REFRESH'};
+      return {result: 'REFRESH', waitingFor: inputs};
     }
-    return {result: 'WAIT'};
+    return {result: 'WAIT', waitingFor: inputs};
   }
 
   private getSpectatorWaitingForModel(game: IGame, gameAge: number, undoCount: number): WaitingForModel {
+    const inputs = this.playersWithInputs(game);
+
     if (game.gameAge > gameAge || game.undoCount > undoCount) {
-      return {result: 'REFRESH'};
+      return {result: 'REFRESH', waitingFor: inputs};
     }
-    return {result: 'WAIT'};
+    return {result: 'WAIT', waitingFor: inputs};
   }
 
   public override async get(req: Request, res: Response, ctx: Context): Promise<void> {
@@ -51,10 +57,15 @@ export class ApiWaitingFor extends Handler {
     }
     try {
       if (isPlayerId(id)) {
+        const player = game.getPlayerById(id);
+        if (!this.isUser(player.user, ctx)) {
+          responses.notAuthorized(req, res);
+          return;
+        }
         ctx.ipTracker.addParticipant(id, ctx.ip);
-        responses.writeJson(res, this.getPlayerWaitingForModel(game.getPlayerById(id), game, gameAge, undoCount));
+        responses.writeJson(res, ctx, this.getPlayerWaitingForModel(player, game, gameAge, undoCount));
       } else if (isSpectatorId(id)) {
-        responses.writeJson(res, this.getSpectatorWaitingForModel(game, gameAge, undoCount));
+        responses.writeJson(res, ctx, this.getSpectatorWaitingForModel(game, gameAge, undoCount));
       } else {
         responses.internalServerError(req, res, 'id not found');
       }

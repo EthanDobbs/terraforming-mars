@@ -7,13 +7,12 @@ import {CardRenderer} from '../render/CardRenderer';
 import {PartyName} from '../../../common/turmoil/PartyName';
 import {CardRenderDynamicVictoryPoints} from '../render/CardRenderDynamicVictoryPoints';
 import {TileType} from '../../../common/TileType';
-import {SelectSpace} from '../../inputs/SelectSpace';
+import {PlaceTile} from '../../deferredActions/PlaceTile';
 import {Board} from '../../boards/Board';
 import {IProjectCard} from '../IProjectCard';
 import {message} from '../../logs/MessageBuilder';
 import {Space} from '../../boards/Space';
 import {SpaceType} from '../../../common/boards/SpaceType';
-import {isHazardTileType} from '../../../common/AresTileType';
 
 export class RedCity extends Card implements IProjectCard {
   constructor() {
@@ -54,13 +53,13 @@ export class RedCity extends Card implements IProjectCard {
   }
 
   public override bespokePlay(player: IPlayer) {
-    return new SelectSpace(
-      message('Select space for ${0}', (b) => b.card(this)),
-      this.availableRedCitySpaces(player))
-      .andThen((space) => {
-        player.game.addTile(player, space, {tileType: TileType.RED_CITY, card: this.name});
-        return undefined;
-      });
+    player.game.defer(
+      new PlaceTile(player, {
+        tile: {tileType: TileType.RED_CITY, card: this.name},
+        on: () => this.availableRedCitySpaces(player),
+        title: message('Select space for ${0}', (b) => b.card(this)),
+      }));
+    return undefined;
   }
 
   public override getVictoryPoints(player: IPlayer): number {
@@ -74,6 +73,6 @@ export class RedCity extends Card implements IProjectCard {
   }
 
   private isEmpty(space: Space): boolean {
-    return space.spaceType === SpaceType.RESTRICTED || space.tile === undefined || isHazardTileType(space.tile.tileType);
+    return space.spaceType === SpaceType.RESTRICTED ||Board.hasRealTile(space) === false;
   }
 }

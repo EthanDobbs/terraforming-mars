@@ -33,12 +33,12 @@ export class TitanFloatingLaunchPad extends Card implements IProjectCard {
         cardNumber: 'C44',
         renderData: CardRenderer.builder((b) => {
           b.action(undefined, (eb) => {
-            eb.empty().startAction.floaters(1, {secondaryTag: Tag.JOVIAN}).nbsp.or();
+            eb.empty().startAction.resource(CardResource.FLOATER, {secondaryTag: Tag.JOVIAN}).nbsp.or();
           }).br;
           b.action('Add 1 floater to ANY JOVIAN CARD or spend 1 floater here to trade for free.', (eb) => {
-            eb.floaters(1).startAction.trade();
+            eb.resource(CardResource.FLOATER).startAction.trade();
           }).br.br;
-          b.floaters(2, {secondaryTag: Tag.JOVIAN});
+          b.resource(CardResource.FLOATER, {amount: 2, secondaryTag: Tag.JOVIAN});
         }),
         description: {
           text: 'Add two floaters to ANY JOVIAN CARD.',
@@ -81,13 +81,13 @@ export class TradeWithTitanFloatingLaunchPad implements IColonyTrader {
   private titanFloatingLaunchPad: TitanFloatingLaunchPad | undefined;
 
   constructor(private player: IPlayer) {
-    const card = player.playedCards.find((card) => card.name === CardName.TITAN_FLOATING_LAUNCHPAD);
+    const card = player.getPlayedCard(CardName.TITAN_FLOATING_LAUNCHPAD);
     this.titanFloatingLaunchPad = card === undefined ? undefined : (card as TitanFloatingLaunchPad);
   }
 
   public canUse() {
     return (this.titanFloatingLaunchPad?.resourceCount ?? 0) > 0 &&
-      !this.player.getActionsThisGeneration().has(CardName.TITAN_FLOATING_LAUNCHPAD);
+      !this.player.actionsThisGeneration.has(CardName.TITAN_FLOATING_LAUNCHPAD);
   }
 
   public optionText() {
@@ -99,7 +99,7 @@ export class TradeWithTitanFloatingLaunchPad implements IColonyTrader {
     if (this.titanFloatingLaunchPad !== undefined) {
       this.titanFloatingLaunchPad.resourceCount--;
     }
-    this.player.addActionThisGeneration(CardName.TITAN_FLOATING_LAUNCHPAD);
+    this.player.actionsThisGeneration.add(CardName.TITAN_FLOATING_LAUNCHPAD);
     this.player.game.log('${0} spent 1 floater to trade with ${1}', (b) => b.player(this.player).colony(colony));
     colony.trade(this.player);
   }

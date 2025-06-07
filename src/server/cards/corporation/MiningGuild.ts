@@ -10,8 +10,10 @@ import {GainProduction} from '../../deferredActions/GainProduction';
 import {CardRenderer} from '../render/CardRenderer';
 import {BoardType} from '../../boards/BoardType';
 import {digit} from '../Options';
+import {AresHandler} from '../../ares/AresHandler';
+import {ICorporationCard} from './ICorporationCard';
 
-export class MiningGuild extends CorporationCard {
+export class MiningGuild extends CorporationCard implements ICorporationCard {
   constructor() {
     super({
       name: CardName.MINING_GUILD,
@@ -53,7 +55,11 @@ export class MiningGuild extends CorporationCard {
     if (space.tile?.covers !== undefined) {
       return;
     }
-    if (space.bonus.some((bonus) => bonus === SpaceBonus.STEEL || bonus === SpaceBonus.TITANIUM)) {
+    const board = cardOwner.game.board;
+    const grant = space.bonus.some((bonus) => bonus === SpaceBonus.STEEL || bonus === SpaceBonus.TITANIUM) ||
+      AresHandler.anyAdjacentSpaceGivesBonus(board, space, SpaceBonus.STEEL) ||
+      AresHandler.anyAdjacentSpaceGivesBonus(board, space, SpaceBonus.TITANIUM);
+    if (grant) {
       cardOwner.game.defer(new GainProduction(cardOwner, Resource.STEEL));
     }
   }

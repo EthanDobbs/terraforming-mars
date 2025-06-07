@@ -5,16 +5,16 @@ import {PathfindersExpansion} from '../../src/server/pathfinders/PathfindersExpa
 import {Tag} from '../../src/common/cards/Tag';
 import {cast, fakeCard, runAllActions} from '../TestingUtils';
 import {CardResource} from '../../src/common/CardResource';
-import {Game} from '../../src/server/Game';
+import {IGame} from '../../src/server/IGame';
 import {PathfindersData} from '../../src/server/pathfinders/PathfindersData';
 import {CardName} from '../../src/common/cards/CardName';
 import {SelectParty} from '../../src/server/inputs/SelectParty';
 import {Turmoil} from '../../src/server/turmoil/Turmoil';
 
-describe('PathfindersExpansion', function() {
+describe('PathfindersExpansion', () => {
   let player1: TestPlayer;
   let player2: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let pathfindersData: PathfindersData;
 
   beforeEach(() => {

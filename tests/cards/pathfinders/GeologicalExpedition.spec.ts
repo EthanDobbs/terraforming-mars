@@ -1,9 +1,9 @@
 import {expect} from 'chai';
 import {GeologicalExpedition} from '../../../src/server/cards/pathfinders/GeologicalExpedition';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {testGame} from '../../TestGame';
-import {EmptyBoard} from '../../ares/EmptyBoard';
+import {EmptyBoard} from '../../testing/EmptyBoard';
 import {Space} from '../../../src/server/boards/Space';
 import {SpaceBonus} from '../../../src/common/boards/SpaceBonus';
 import {IProjectCard} from '../../../src/server/cards/IProjectCard';
@@ -11,18 +11,18 @@ import {addCity, cast, fakeCard, runAllActions} from '../../TestingUtils';
 import {CardResource} from '../../../src/common/CardResource';
 import {Units} from '../../../src/common/Units';
 import {OrOptions} from '../../../src/server/inputs/OrOptions';
-import {SpaceName} from '../../../src/server/SpaceName';
+import {SpaceName} from '../../../src/common/boards/SpaceName';
 import {TileType} from '../../../src/common/TileType';
 
-describe('GeologicalExpedition', function() {
+describe('GeologicalExpedition', () => {
   let card: GeologicalExpedition;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let space: Space;
   let microbeCard: IProjectCard;
   let scienceCard: IProjectCard;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new GeologicalExpedition();
     [game, player] = testGame(1);
     game.board = EmptyBoard.newInstance();

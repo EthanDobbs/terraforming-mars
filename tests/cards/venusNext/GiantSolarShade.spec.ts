@@ -1,34 +1,30 @@
 import {expect} from 'chai';
 import {Dirigibles} from '../../../src/server/cards/venusNext/Dirigibles';
 import {GiantSolarShade} from '../../../src/server/cards/venusNext/GiantSolarShade';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {Phase} from '../../../src/common/Phase';
 import {Reds} from '../../../src/server/turmoil/parties/Reds';
 import {PoliticalAgendas} from '../../../src/server/turmoil/PoliticalAgendas';
 import {TestPlayer} from '../../TestPlayer';
-import {cast} from '../../TestingUtils';
+import {cast, testGame} from '../../TestingUtils';
 
-describe('GiantSolarShade', function() {
+describe('GiantSolarShade', () => {
   let card: GiantSolarShade;
   let player: TestPlayer;
-  let redPlayer: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(() => {
     card = new GiantSolarShade();
-    player = TestPlayer.BLUE.newPlayer();
-    redPlayer = TestPlayer.RED.newPlayer();
-
-    game = Game.newInstance('gameid', [player, redPlayer], player, {venusNextExtension: true, turmoilExtension: true});
+    [game, player/* , player2 */] = testGame(2, {venusNextExtension: true, turmoilExtension: true});
   });
 
-  it('Should play', function() {
+  it('Should play', () => {
     cast(card.play(player), undefined);
     expect(game.getVenusScaleLevel()).to.eq(6);
     expect(player.getTerraformRating()).to.eq(23);
   });
 
-  it('Should play with Reds and Dirigibles', function() {
+  it('Should play with Reds and Dirigibles', () => {
     player.game.phase = Phase.ACTION;
     player.game.turmoil!.rulingParty = new Reds();
     PoliticalAgendas.setNextAgenda(game.turmoil!, game);

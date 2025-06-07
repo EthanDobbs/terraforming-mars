@@ -6,12 +6,12 @@ import {IoMiningIndustries} from '../../src/server/cards/base/IoMiningIndustries
 import {ICard} from '../../src/server/cards/ICard';
 import {CardName} from '../../src/common/cards/CardName';
 
-describe('SelectCard', function() {
+describe('SelectCard', () => {
   let aquiferPumping: ICard;
   let roboticWorkforce: ICard;
   let ioMiningIndustries: ICard;
-  let selected: Array<ICard>;
-  const cb = (cards: Array<ICard>) => {
+  let selected: ReadonlyArray<ICard>;
+  const cb = (cards: ReadonlyArray<ICard>) => {
     selected = cards;
     return undefined;
   };
@@ -23,7 +23,7 @@ describe('SelectCard', function() {
     selected = [];
   });
 
-  it('Simple', function() {
+  it('Simple', () => {
     const selectCards = new SelectCard(
       'Select card',
       'Save',
@@ -37,7 +37,7 @@ describe('SelectCard', function() {
     expect(selected).deep.eq([ioMiningIndustries]);
   });
 
-  it('Cannot select unavailable card', function() {
+  it('Cannot select unavailable card', () => {
     const selectCards = new SelectCard(
       'Select card',
       'Save',
@@ -48,7 +48,7 @@ describe('SelectCard', function() {
       .to.throw(Error, /Card Directed Impactors not found/);
   });
 
-  it('Throws error when selected card was not enabled', function() {
+  it('Throws error when selected card was not enabled', () => {
     const selectCards = new SelectCard(
       'Select card',
       'Save',

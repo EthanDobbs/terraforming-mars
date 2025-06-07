@@ -3,17 +3,17 @@ import {expect} from 'chai';
 import {ShiftAresGlobalParameters} from '../../../src/server/inputs/ShiftAresGlobalParameters';
 import {testGame} from '../../TestGame';
 import {TestPlayer} from '../../TestPlayer';
-import {Game} from '../../../src/server/Game';
-import {cast, churnPlay} from '../../TestingUtils';
+import {IGame} from '../../../src/server/IGame';
+import {cast, churn} from '../../TestingUtils';
 import {HAZARD_CONSTRAINTS} from '../../../src/common/ares/AresData';
 import {AresHandler} from '../../../src/server/ares/AresHandler';
 
-describe('ButterflyEffect', function() {
+describe('ButterflyEffect', () => {
   let card: ButterflyEffect;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new ButterflyEffect();
     [game, player] = testGame(2, {
       aresExtension: true,
@@ -21,10 +21,10 @@ describe('ButterflyEffect', function() {
     });
   });
 
-  it('play', function() {
+  it('play', () => {
     const priorTerraformingRating = player.getTerraformRating();
 
-    const input = cast(churnPlay(card, player), ShiftAresGlobalParameters);
+    const input = cast(churn(card.play(player), player), ShiftAresGlobalParameters);
     expect(player.getTerraformRating()).eq(priorTerraformingRating + 1);
 
     const originalHazardData = game.aresData!.hazardData;
@@ -58,7 +58,7 @@ describe('ButterflyEffect', function() {
 
     const priorTerraformingRating = player.getTerraformRating();
 
-    expect(churnPlay(card, player)).is.undefined;
+    expect(churn(card.play(player), player)).is.undefined;
     expect(player.getTerraformRating()).eq(priorTerraformingRating + 1);
   });
 });

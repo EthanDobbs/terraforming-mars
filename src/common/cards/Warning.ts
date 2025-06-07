@@ -7,7 +7,15 @@ export type Warning =
  'maxMiningRate' |
  'maxLogisticsRate' |
  'decreaseOwnProduction' |
+ 'removeOwnPlants' |
  'buildOnLuna' |
  'preludeFizzle' |
  'underworldMustExcavateEnergy' |
- 'deckTooSmall';
+ 'deckTooSmall' |
+ 'cannotAffordBoardOfDirectors' |
+ 'marsIsTerraformed' |
+ 'ineffectiveDoubleDown' |
+ 'noMatchingCards' |
+ 'unusableEventsForAstraMechanica' |
+ 'noEffect' |
+ 'selfTarget';

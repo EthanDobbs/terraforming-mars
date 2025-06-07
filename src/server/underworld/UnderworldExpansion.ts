@@ -20,6 +20,8 @@ import {SelectPaymentDeferred} from '../deferredActions/SelectPaymentDeferred';
 import {Phase} from '../../common/Phase';
 import {Units} from '../../common/Units';
 import {LogHelper} from '../LogHelper';
+import {Message} from '../../common/logs/Message';
+import {IdentificationTrigger} from '../cards/ICard';
 
 export class UnderworldExpansion {
   private constructor() {}
@@ -118,12 +120,15 @@ export class UnderworldExpansion {
   }
 
   /** Identify the token at `space`, optionally trigger callbacks */
-  public static identify(game: IGame, space: Space, player: IPlayer | undefined, fromExcavate: boolean = false): void {
+  public static identify(game: IGame, space: Space, player: IPlayer | undefined = undefined, trigger: IdentificationTrigger = 'normal'): void {
     if (game.gameOptions.underworldExpansion !== true) {
       throw new Error('Underworld expansion not in this game');
     }
 
     if (space.undergroundResources !== undefined) {
+      if (trigger === 'tile') {
+        return;
+      }
       if (player?.cardIsInEffect(CardName.NEUTRINOGRAPH) && space.excavator === undefined) {
         UnderworldExpansion.addTokens(game, [space.undergroundResources]);
         space.undergroundResources = undefined;
@@ -131,15 +136,11 @@ export class UnderworldExpansion {
         return;
       }
     }
-    const undergroundResource = game.underworldData?.tokens.pop();
-    if (undergroundResource === undefined) {
-      // TODO(kberg): collect tokens from all players
-      throw new Error('Cannot identify excavation space, no available tokens.');
-    }
+    const undergroundResource = this.drawExcavationToken(game);
     space.undergroundResources = undergroundResource;
     for (const p of game.getPlayersInGenerationOrder()) {
       for (const card of p.tableau) {
-        card.onIdentification?.(player, p, space, fromExcavate);
+        card.onIdentification?.(player, p, space, trigger);
       }
     }
   }
@@ -158,7 +159,7 @@ export class UnderworldExpansion {
    *
    * If a player played Concession Rights this generation, they automatically ignore placement restrictions.
    */
-  public static excavatableSpaces(player: IPlayer, ignorePlacementRestrictions: boolean = false, ignoreConcsesionRights: boolean = false) {
+  public static excavatableSpaces(player: IPlayer, options?: {ignorePlacementRestrictions?: boolean, ignoreConcsesionRights?: boolean}) {
     const board = player.game.board;
 
     // Compute any space that any player can excavate.
@@ -174,13 +175,13 @@ export class UnderworldExpansion {
       return space.spaceType !== SpaceType.COLONY;
     });
 
-    if (ignorePlacementRestrictions === true) {
+    if (options?.ignorePlacementRestrictions === true) {
       return anyExcavatableSpaces;
     }
 
-    const concessionRights = player.playedCards.find((card) => card.name === CardName.CONCESSION_RIGHTS);
+    const concessionRights = player.getPlayedCard(CardName.CONCESSION_RIGHTS);
     if (concessionRights?.generationUsed === player.game.generation) {
-      if (ignoreConcsesionRights === false) {
+      if (options?.ignoreConcsesionRights !== true) {
         return anyExcavatableSpaces;
       }
     }
@@ -208,7 +209,7 @@ export class UnderworldExpansion {
     }
 
     if (space.undergroundResources === undefined) {
-      this.identify(player.game, space, player, /* fromExcavate= */ true);
+      this.identify(player.game, space, player, 'excavation');
     }
 
     const undergroundResource = space.undergroundResources;
@@ -225,7 +226,7 @@ export class UnderworldExpansion {
     // TODO(kberg): The identification is supposed to be resolved after the benefit.
     game.board
       .getAdjacentSpaces(space)
-      .forEach((s) => UnderworldExpansion.identify(game, s, player, /* fromExcavate= */ true));
+      .forEach((s) => UnderworldExpansion.identify(game, s, player, 'excavation'));
     const leaser = game.getCardPlayerOrUndefined(CardName.EXCAVATOR_LEASING);
     if (leaser !== undefined) {
       leaser.stock.add(Resource.MEGACREDITS, 1, {log: true});
@@ -321,17 +322,18 @@ export class UnderworldExpansion {
   }
 
   // TODO(kberg): turn into a deferred action?
-  public static maybeBlockAttack(target: IPlayer, perpetrator: IPlayer, cb: (proceed: boolean) => PlayerInput | undefined): PlayerInput | undefined {
+  public static maybeBlockAttack(target: IPlayer, perpetrator: IPlayer, msg: Message | string, cb: (proceed: boolean) => PlayerInput | undefined): PlayerInput | undefined {
     if (target.game.gameOptions.underworldExpansion === false) {
       return cb(true);
     }
-    const privateMilitaryContractor = target.playedCards.find((card) => card.name === CardName.PRIVATE_MILITARY_CONTRACTOR);
+    const privateMilitaryContractor = target.getPlayedCard(CardName.PRIVATE_MILITARY_CONTRACTOR);
     const militaryContractorFighters = privateMilitaryContractor?.resourceCount ?? 0;
     if (target.underworldData.corruption === 0 && militaryContractorFighters === 0) {
       return cb(true);
     }
-    const options = new OrOptions();
-    options.title = message('Spend 1 corruption to block an attack by ${0}?', (b) => b.player(perpetrator));
+    const options = new OrOptions()
+      .setTitle(message('Spend 1 corruption to block an attack by ${0}?', (b) => b.player(perpetrator)))
+      .setWarning(msg);
     if (privateMilitaryContractor !== undefined && militaryContractorFighters > 0) {
       options.options.push(
         new SelectOption(
@@ -426,10 +428,12 @@ export class UnderworldExpansion {
   }
 
   static endGeneration(game: IGame) {
-    game.getPlayersInGenerationOrder().forEach((player) => player.underworldData.temperatureBonus = undefined);
+    for (const player of game.getPlayers()) {
+      player.underworldData.temperatureBonus = undefined;
+    }
   }
 
-  //   // TODO(kberg): add viz for temperature bonus.
+  //   // TODOc(kberg): add viz for temperature bonus.
   static onTemperatureChange(game: IGame, steps: number) {
     if (game.phase !== Phase.ACTION) {
       return;
@@ -458,5 +462,13 @@ export class UnderworldExpansion {
         throw new Error('Unknown temperatore bonus: ' + player.underworldData.temperatureBonus);
       }
     });
+  }
+
+  public static drawExcavationToken(game: IGame): UndergroundResourceToken {
+    const token = game.underworldData?.tokens.pop();
+    if (token === undefined) {
+      throw new Error('No underground resource token!');
+    }
+    return token;
   }
 }

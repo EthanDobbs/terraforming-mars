@@ -6,6 +6,7 @@
                 <a href="#" v-i18n v-on:click.prevent="selectAll('All')">All*</a> |
                 <a href="#" v-i18n v-on:click.prevent="selectNone('All')">None*</a> |
                 <a href="#" v-i18n v-on:click.prevent="invertSelection('All')">Invert*</a>
+                <input ref="filter" class="filter" :placeholder="$t('filter')" v-model="filterText">
             </div>
         </div>
         <br/>
@@ -19,11 +20,11 @@
                     <a href="#" v-i18n v-on:click.prevent="invertSelection(module)">Invert</a>
                 </div>
             </div>
-            <div v-for="corporation in cardsByModule[module]" v-bind:key="corporation">
+            <div v-for="corporation in cardsByModule[module]" v-bind:key="corporation" v-show="include(corporation)">
                 <label class="form-checkbox">
                     <input type="checkbox" v-model="selectedCorporations" :value="corporation"/>
                     <i class="form-icon"></i><span v-i18n>{{ corporation }}</span>
-                    <div v-for="expansion in expansions(corporation)" :key="expansion" :class="icon(expansion)"></div>
+                    <div v-for="expansion in compatibility(corporation)" :key="expansion" :class="icon(expansion)"></div>
                 </label>
             </div>
           </div>
@@ -35,9 +36,10 @@
 import Vue from 'vue';
 
 import {CardName} from '@/common/cards/CardName';
-import {GameModule, GAME_MODULES, MODULE_NAMES} from '@/common/cards/GameModule';
-import {byModule, byType, getCard, getCards, toName} from '@/client/cards/ClientCardManifest';
+import {Expansion, GameModule, GAME_MODULES, MODULE_NAMES} from '@/common/cards/GameModule';
+import {byModule, byType, getCard, getCards} from '@/client/cards/ClientCardManifest';
 import {CardType} from '@/common/cards/CardType';
+import {toName} from '@/common/utils/utils';
 
 function corpCardNames(module: GameModule): Array<CardName> {
   return getCards(byModule(module))
@@ -51,36 +53,7 @@ type Group = GameModule | 'All';
 export default Vue.extend({
   name: 'CorporationsFilter',
   props: {
-    corporateEra: {
-      type: Boolean,
-    },
-    prelude: {
-      type: Boolean,
-    },
-    prelude2: {
-      type: Boolean,
-    },
-    venusNext: {
-      type: Boolean,
-    },
-    colonies: {
-      type: Boolean,
-    },
-    turmoil: {
-      type: Boolean,
-    },
-    promoCardsOption: {
-      type: Boolean,
-    },
-    communityCardsOption: {
-      type: Boolean,
-    },
-    moonExpansion: {
-      type: Boolean,
-    },
-    pathfindersExpansion: {
-      type: Boolean,
-    },
+    expansions: Object as () => Record<Expansion, boolean>,
   },
   data() {
     // Start by giving every entry a default value
@@ -96,21 +69,22 @@ export default Vue.extend({
     GAME_MODULES.forEach((module) => cardsByModule[module].sort());
 
     return {
+      filterText: '',
       cardsByModule: cardsByModule,
       customCorporationsList: false,
       selectedCorporations: [
         // A bit sloppy since map is just above, but it will do.
         ...corpCardNames('base'),
-        ...this.corporateEra ? corpCardNames('corpera') : [],
-        ...this.prelude ? corpCardNames('prelude') : [],
-        ...this.prelude2 ? corpCardNames('prelude2') : [],
-        ...this.venusNext ? corpCardNames('venus') : [],
-        ...this.colonies ? corpCardNames('colonies') : [],
-        ...this.turmoil ? corpCardNames('turmoil') : [],
-        ...this.promoCardsOption ? corpCardNames('promo') : [],
-        ...this.communityCardsOption ? corpCardNames('community') : [],
-        ...this.moonExpansion ? corpCardNames('moon') : [],
-        ...this.pathfindersExpansion ? corpCardNames('pathfinders') : [],
+        ...this.expansions.corpera ? corpCardNames('corpera') : [],
+        ...this.expansions.prelude ? corpCardNames('prelude') : [],
+        ...this.expansions.prelude2 ? corpCardNames('prelude2') : [],
+        ...this.expansions.venus ? corpCardNames('venus') : [],
+        ...this.expansions.colonies ? corpCardNames('colonies') : [],
+        ...this.expansions.turmoil ? corpCardNames('turmoil') : [],
+        ...this.expansions.promo ? corpCardNames('promo') : [],
+        ...this.expansions.community ? corpCardNames('community') : [],
+        ...this.expansions.moon ? corpCardNames('moon') : [],
+        ...this.expansions.pathfinders ? corpCardNames('pathfinders') : [],
       ],
       GAME_MODULES: GAME_MODULES,
       MODULE_NAMES: MODULE_NAMES,
@@ -161,7 +135,7 @@ export default Vue.extend({
     watchSelect(module: GameModule, enabled: boolean) {
       enabled ? this.selectAll(module) : this.selectNone(module);
     },
-    expansions(corporation: CardName): Array<GameModule> {
+    compatibility(corporation: CardName): Array<GameModule> {
       return getCard(corporation)?.compatibility ?? [];
     },
     icon(module: GameModule) {
@@ -169,6 +143,13 @@ export default Vue.extend({
       if (module === 'colonies') suffix = 'colony';
       if (module === 'moon') suffix = 'themoon';
       return `create-game-expansion-icon expansion-icon-${suffix}`;
+    },
+    include(name: string) {
+      const normalized = this.filterText.toLocaleUpperCase();
+      if (normalized.length === 0) {
+        return true;
+      }
+      return name.toLocaleUpperCase().includes(normalized);
     },
   },
   watch: {

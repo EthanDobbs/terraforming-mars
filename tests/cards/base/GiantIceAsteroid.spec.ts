@@ -1,25 +1,25 @@
 import {expect} from 'chai';
 import {GiantIceAsteroid} from '../../../src/server/cards/base/GiantIceAsteroid';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {OrOptions} from '../../../src/server/inputs/OrOptions';
 import {SelectSpace} from '../../../src/server/inputs/SelectSpace';
 import {TestPlayer} from '../../TestPlayer';
 import {cast, maxOutOceans, setTemperature, testRedsCosts} from '../../TestingUtils';
 import {testGame} from '../../TestGame';
 
-describe('GiantIceAsteroid', function() {
+describe('GiantIceAsteroid', () => {
   let card: GiantIceAsteroid;
   let player: TestPlayer;
   let player2: TestPlayer;
   let player3: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new GiantIceAsteroid();
     [game, player, player2, player3] = testGame(3);
   });
 
-  it('Should play', function() {
+  it('Should play', () => {
     player2.plants = 4;
     player3.plants = 6;
     card.play(player);

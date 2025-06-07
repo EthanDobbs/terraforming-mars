@@ -14,7 +14,7 @@ import {PartyName} from '../../common/turmoil/PartyName';
 import {REDS_POLICY_2} from './parties/Reds';
 import {MoonExpansion} from '../moon/MoonExpansion';
 import {TRSource} from '../../common/cards/TRSource';
-import {Policy, policyDescription} from './Policy';
+import {IPolicy, policyDescription} from './Policy';
 
 export class TurmoilHandler {
   private constructor() {}
@@ -24,7 +24,7 @@ export class TurmoilHandler {
     if (turmoil === undefined) {
       return undefined;
     }
-    const policy: Policy = turmoil.rulingPolicy();
+    const policy: IPolicy = turmoil.rulingPolicy();
     if (policy.canAct?.(player)) {
       return new SelectOption(policyDescription(policy, player), 'Pay').andThen(() => policy.action?.(player));
     }
@@ -38,7 +38,7 @@ export class TurmoilHandler {
     }
 
     // PoliticalAgendas MarsFirst P2 hook
-    if (PartyHooks.shouldApplyPolicy(player, PartyName.MARS, 'mfp02')) {
+    if (PartyHooks.shouldApplyPolicy(player, PartyName.MARS, 'mp02')) {
       MARS_FIRST_POLICY_2.onCardPlayed(player, selectedCard);
     }
   }
@@ -83,8 +83,6 @@ export class TurmoilHandler {
     }
   }
 
-  // TODO(kberg): Add a test where if you raise oxygen to max temperature but temperature is maxed you do not have to pay for it.
-  // It works, but4 a test would be helpful.
   public static computeTerraformRatingBump(player: IPlayer, tr: TRSource = {}): number {
     if (!PartyHooks.shouldApplyPolicy(player, PartyName.REDS, 'rp01')) return 0;
 
@@ -147,6 +145,10 @@ export class TurmoilHandler {
     });
 
     total += tr.tr ?? 0;
+
+    if (player.preservationProgram === true) {
+      total = Math.max(total - 1, 0);
+    }
 
     return total;
   }

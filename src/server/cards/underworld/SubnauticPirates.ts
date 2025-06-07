@@ -6,12 +6,14 @@ import {Card} from '../Card';
 import {IPlayer} from '../../IPlayer';
 import {SelectSpace} from '../../inputs/SelectSpace';
 import {Resource} from '../../../common/Resource';
+import {Tag} from '../../../common/cards/Tag';
 
 export class SubnauticPirates extends Card implements IProjectCard {
   constructor() {
     super({
       name: CardName.SUBNAUTIC_PIRATES,
       type: CardType.EVENT,
+      tags: [Tag.CRIME],
       cost: 3,
 
       requirements: [{excavation: 1}, {corruption: 1}],
@@ -49,12 +51,7 @@ export class SubnauticPirates extends Card implements IProjectCard {
         }
 
         set.forEach((target) => {
-          target.maybeBlockAttack(player, (proceed) => {
-            if (proceed) {
-              target.stock.steal(Resource.MEGACREDITS, 6, player);
-            }
-            return undefined;
-          });
+          target.attack(player, Resource.MEGACREDITS, 6, {stealing: true, log: true});
         });
         return undefined;
       });

@@ -1,4 +1,4 @@
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {TheArchaicFoundationInstitute} from '../../../src/server/cards/moon/TheArchaicFoundationInstitute';
 import {expect} from 'chai';
@@ -15,13 +15,13 @@ import {PartyName} from '../../../src/common/turmoil/PartyName';
 
 describe('TheArchaicFoundationInstitute', () => {
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let card: TheArchaicFoundationInstitute;
 
   beforeEach(() => {
     [game, player] = testGame(1, {moonExpansion: true, turmoilExtension: true});
     card = new TheArchaicFoundationInstitute();
-    player.setCorporationForTest(card);
+    player.corporations.push(card);
   });
 
   it('effect', () => {

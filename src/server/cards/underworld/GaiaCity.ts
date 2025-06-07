@@ -4,7 +4,7 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Card} from '../Card';
 import {IPlayer} from '../../IPlayer';
-import {SelectSpace} from '../../inputs/SelectSpace';
+import {PlaceCityTile} from '../../deferredActions/PlaceCityTile';
 import {Tag} from '../../../common/cards/Tag';
 
 export class GaiaCity extends Card implements IProjectCard {
@@ -21,18 +21,18 @@ export class GaiaCity extends Card implements IProjectCard {
         cardNumber: 'U05',
         renderData: CardRenderer.builder((b) => {
           b.production((pb) => pb.minus().energy(1).megacredits(2)).br;
-          b.city().openBrackets.excavate().closeBrackets.asterix().text('Placement Bonus x2');
+          b.city().super((b) => b.excavate(1)).asterix().text('Placement Bonus x2');
         }),
         description: 'Reduce your energy production one step and increase your M€ production 2 steps. ' +
         'Place a city in a space with ANY player\'s excavation marker. ' +
-        'Its placement bonus is doubled (including adjacencies.)',
+        'Its placement bonus is doubled (including adjacencies.) Regular placement restriction still apply.',
       },
     });
   }
 
   private availableSpaces(player: IPlayer) {
     const availableSpaceForCity = player.game.board.getAvailableSpacesForCity(
-      player, {cost: player.getCardCost(this)});
+      player, {cost: player.getCardCost(this), bonusMultiplier: 2});
     return availableSpaceForCity.filter((space) => space.excavator !== undefined);
   }
 
@@ -41,13 +41,13 @@ export class GaiaCity extends Card implements IProjectCard {
   }
 
   public override bespokePlay(player: IPlayer) {
-    return new SelectSpace(
-      'Select space for a city tile',
-      this.availableSpaces(player))
-      .andThen((space) => {
-        player.game.addCity(player, space);
-        player.game.grantPlacementBonuses(player, space, /* coveringExistingTile= */false);
-        return undefined;
-      });
+    player.game.defer(new PlaceCityTile(player, {
+      spaces: this.availableSpaces(player),
+    })).andThen((space) => {
+      if (space) {
+        player.game.grantPlacementBonuses(player, space);
+      }
+    });
+    return undefined;
   }
 }

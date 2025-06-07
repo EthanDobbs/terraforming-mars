@@ -2,12 +2,12 @@ import {CorporationCard} from '../corporation/CorporationCard';
 import {IPlayer} from '../../IPlayer';
 import {Tag} from '../../../common/cards/Tag';
 import {CardResource} from '../../../common/CardResource';
-import {IProjectCard} from '../IProjectCard';
+import {ICorporationCard} from '../corporation/ICorporationCard';
+import {ICard} from '../ICard';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import {played} from '../Options';
 
-export class Arklight extends CorporationCard {
+export class Arklight extends CorporationCard implements ICorporationCard {
   constructor() {
     super({
       name: CardName.ARKLIGHT,
@@ -28,7 +28,7 @@ export class Arklight extends CorporationCard {
           b.megacredits(45).nbsp.production((pb) => pb.megacredits(2));
           b.corpBox('effect', (ce) => {
             ce.effect('When you play an animal or plant tag, including this, add 1 animal to this card.', (eb) => {
-              eb.animals(1, {played}).slash().plants(1, {played}).startEffect.animals(1);
+              eb.tag(Tag.ANIMAL).slash().tag(Tag.PLANT).startEffect.resource(CardResource.ANIMAL);
             });
             ce.vSpace(); // to offset the description to the top a bit so it can be readable
           });
@@ -37,7 +37,11 @@ export class Arklight extends CorporationCard {
     });
   }
 
-  public onCardPlayed(player: IPlayer, card: IProjectCard): void {
+  public onCorpCardPlayed(player: IPlayer, card: ICorporationCard) {
+    this.onCardPlayed(player, card);
+  }
+
+  public onCardPlayed(player: IPlayer, card: ICard): void {
     if (player.isCorporation(CardName.ARKLIGHT)) {
       player.addResourceTo(this, {qty: card.tags.filter((cardTag) => cardTag === Tag.ANIMAL || cardTag === Tag.PLANT).length, log: true});
     }

@@ -7,11 +7,12 @@ import {JovianLanterns} from '../../../src/server/cards/colonies/JovianLanterns'
 import {LocalShading} from '../../../src/server/cards/venusNext/LocalShading';
 import {AirRaid} from '../../../src/server/cards/colonies/AirRaid';
 import {cast, runAllActions} from '../../TestingUtils';
+import {toName} from '../../../src/common/utils/utils';
 import {SelectProjectCardToPlay} from '../../../src/server/inputs/SelectProjectCardToPlay';
 import {CardName} from '../../../src/common/cards/CardName';
 import {Payment} from '../../../src/common/inputs/Payment';
 
-describe('ValuableGases', function() {
+describe('ValuableGases', () => {
   let card: ValuableGases;
   let player: TestPlayer;
 
@@ -20,7 +21,7 @@ describe('ValuableGases', function() {
   let localShading: LocalShading;
   let airRaid: AirRaid;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new ValuableGases();
     [/* game */, player] = testGame(1);
 
@@ -35,7 +36,7 @@ describe('ValuableGases', function() {
     player.cardsInHand = [floatingHabs, jovianLanters, localShading, airRaid];
   });
 
-  it('Should play', function() {
+  it('Should play', () => {
     expect(player.getPlayableCardsForTest()).is.empty;
 
     card.play(player);
@@ -43,7 +44,7 @@ describe('ValuableGases', function() {
     runAllActions(player.game);
 
     const selectProjectCardToPlay = cast(player.popWaitingFor(), SelectProjectCardToPlay);
-    expect(selectProjectCardToPlay.cards.map((card) => card.name)).has.members([CardName.LOCAL_SHADING, CardName.FLOATING_HABS]);
+    expect(selectProjectCardToPlay.cards.map(toName)).has.members([CardName.LOCAL_SHADING, CardName.FLOATING_HABS]);
     expect(player.megaCredits).eq(10);
 
     selectProjectCardToPlay.payAndPlay(localShading, {

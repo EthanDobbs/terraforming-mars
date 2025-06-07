@@ -7,12 +7,12 @@ import {SpendableCardResource} from '../common/inputs/Spendable';
 import {ICard, IActionCard} from './cards/ICard';
 import {TRSource} from '../common/cards/TRSource';
 import {IProjectCard} from './cards/IProjectCard';
+import {IPreludeCard} from './cards/prelude/IPreludeCard';
 import {PlayerInput} from './PlayerInput';
 import {Resource} from '../common/Resource';
 import {CardResource} from '../common/CardResource';
 import {SelectCard} from './inputs/SelectCard';
 import {Priority} from './deferredActions/Priority';
-import {RobotCard} from './cards/promo/SelfReplicatingRobots';
 import {SerializedPlayer} from './SerializedPlayer';
 import {Timer} from '../common/Timer';
 import {AllOptions, DrawOptions} from './deferredActions/DrawCards';
@@ -25,20 +25,33 @@ import {Tags} from './player/Tags';
 import {Colonies} from './player/Colonies';
 import {Production} from './player/Production';
 import {ICeoCard} from './cards/ceos/ICeoCard';
-import {IVictoryPointsBreakdown} from '../common/game/IVictoryPointsBreakdown';
+import {VictoryPointsBreakdown} from '../common/game/VictoryPointsBreakdown';
 import {YesAnd} from './cards/requirements/CardRequirement';
 import {PlayableCard} from './cards/IProjectCard';
 import {Color} from '../common/Color';
 import {OrOptions} from './inputs/OrOptions';
 import {Stock} from './player/Stock';
 import {UnderworldPlayerData} from './underworld/UnderworldData';
+import {AlliedParty} from '../common/turmoil/Types';
+import {IParty} from './turmoil/parties/IParty';
+import {Message} from '../common/logs/Message';
+import {DiscordId} from './server/auth/discord';
 
 export type ResourceSource = IPlayer | GlobalEventName | ICard;
 
+/**
+ * Represents additional costs a player must pay to execute an action.
+ *
+ * For instance, when finding a space to place a tile, it has to take into account
+ * that the player must also pay some additional costs (e.g. additional TR from the
+ * card's action, or resources they have to spend.)
+ */
 export type CanAffordOptions = Partial<PaymentOptions> & {
   cost: number,
   reserveUnits?: Units,
   tr?: TRSource,
+  /** Represents when the action rewards the tile space more than once. */
+  bonusMultiplier?: number,
 }
 
 /**
@@ -48,7 +61,7 @@ export type CanAffordOptions = Partial<PaymentOptions> & {
  *   only play the card (used for replaying a card)
  *   or do nothing.
  */
-export type CardAction ='add' | 'discard' | 'nothing' | 'action-only';
+export type CardAction = 'add' | 'discard' | 'nothing' | 'double-down';
 
 export interface IPlayer {
   readonly id: PlayerId;
@@ -96,16 +109,21 @@ export interface IPlayer {
 
   // Cards
   dealtCorporationCards: Array<ICorporationCard>;
-  dealtPreludeCards: Array<IProjectCard>;
+  dealtPreludeCards: Array<IPreludeCard>;
   dealtCeoCards: Array<ICeoCard>;
   dealtProjectCards: Array<IProjectCard>;
   cardsInHand: Array<IProjectCard>;
-  preludeCardsInHand: Array<IProjectCard>;
+  preludeCardsInHand: Array<IPreludeCard>;
   ceoCardsInHand: Array<IProjectCard>;
   playedCards: Array<IProjectCard>;
-  draftedCards: Array<IProjectCard>;
-  draftedCorporations: Array<ICorporationCard>;
   cardCost: number;
+  tableau: Array<ICorporationCard | IProjectCard>;
+
+  /** Cards this player has in their draft hand. Player chooses from them, and passes them to the next player */
+  draftHand: Array<IProjectCard>;
+  /** Cards this player has already chosen during this draft round */
+  draftedCards: Array<IProjectCard>;
+  /** true when this player is drafting, false when player is not, undefined when there is no draft phase. */
   needsToDraft?: boolean;
 
   timer: Timer;
@@ -114,10 +132,12 @@ export interface IPlayer {
   turmoilPolicyActionUsed: boolean;
   politicalAgendasActionUsedCount: number;
 
+  /** Lakefront Resorts increases ocean adjacency to 3 MC  */
   oceanBonus: number;
 
   // Custom cards
   // Community Leavitt Station and Pathfinders Leavitt Station
+  // Additional science tags (currently only granted from placing colonies)
   scienceTagCount: number;
   // PoliticalAgendas Scientists P41
   hasTurmoilScienceTagBonus: boolean;
@@ -129,6 +149,21 @@ export interface IPlayer {
   // removedFromPlayCards is a bit of a misname: it's a temporary storage for
   // cards that provide 'next card' discounts. This will clear between turns.
   removedFromPlayCards: Array<IProjectCard>;
+  /**
+   * When true, Preservation Program is in effect, and the player has not triggered a TR gain this generation.
+   *
+   * False when the player does not have Preservation Program, or after the first TR in the action phase.
+   */
+  preservationProgram: boolean;
+  /**
+   * The list of standard projects (EXCEPT SELL PATENTS) this player has taken this generation.
+   *
+   * For Underworld: Standard Technology and Labor Trafficking
+   *
+   * Note: Sell Patents is absent to simplify Labor Trafficking. It's also not necessary.
+   */
+  standardProjectsThisGeneration: Set<CardName>;
+
 
   // The number of actions a player can take this round.
   // It's almost always 2, but certain cards can change this value.
@@ -142,9 +177,12 @@ export interface IPlayer {
   totalDelegatesPlaced: number;
 
   underworldData: UnderworldPlayerData;
+  readonly alliedParty?: AlliedParty;
 
   tearDown(): void;
-  tableau: Array<ICorporationCard | IProjectCard>;
+
+  // When set, this player can only be accessed by the user.
+  user?: DiscordId;
 
   /**
    * Return `true` if this player has played the supplied corporation card.
@@ -158,10 +196,14 @@ export interface IPlayer {
    * Return the corporation card this player has played by the given name, or throw an Error.
    */
   getCorporationOrThrow(corporationName: CardName): ICorporationCard;
+  /**
+   * Return the card this player has played by the given name, or `undefined`.
+   */
+  getPlayedCard(cardName: CardName): ICard | undefined;
   getTitaniumValue(): number;
   increaseTitaniumValue(): void;
   decreaseTitaniumValue(): void;
-  getSelfReplicatingRobotsTargetCards(): Array<RobotCard>;
+  getSelfReplicatingRobotsTargetCards(): Array<IProjectCard>;
   getSteelValue(): number;
   increaseSteelValue(): void;
   decreaseSteelValue(): void;
@@ -171,9 +213,10 @@ export interface IPlayer {
   setTerraformRating(value: number): void;
   logUnitDelta(resource: Resource, amount: number, unitType: 'production' | 'amount', from: ResourceSource | undefined, stealing?: boolean): void;
 
-  getActionsThisGeneration(): Set<CardName>;
-  addActionThisGeneration(cardName: CardName): void;
-  getVictoryPoints(): IVictoryPointsBreakdown;
+  // The action cards used this generation.
+  actionsThisGeneration: Set<CardName>;
+  getVictoryPoints(): VictoryPointsBreakdown;
+  /* A card is in effect if it is played. This does not apply to corporations. It could. */
   cardIsInEffect(cardName: CardName): boolean;
   hasProtectedHabitats(): boolean;
   plantsAreProtected(): boolean;
@@ -185,14 +228,19 @@ export interface IPlayer {
    * isn't protected.
    */
   canHaveProductionReduced(resource: Resource, minQuantity: number, attacker: IPlayer): boolean;
-  maybeBlockAttack(perpetrator: IPlayer, cb: (proceed: boolean) => PlayerInput | undefined): void;
+  /**
+   * Give this player a chance to block an attack made by `perpetrator`. Call `cb` with true if the attack
+   * is not blocked.
+   */
+  maybeBlockAttack(perpetrator: IPlayer, message: Message | string, cb: (proceed: boolean) => PlayerInput | undefined): void;
 
   /**
-   * Return true if this player cannot have their production reduced.
+   * Remove or steal standard resources from another player. Could be blocked (see `maybeBlockAttack`.)
    *
-   * It can if this player is attacking themselves, or if this player has played Private Security.
+   * Nothing happens if count is 0.
    */
-  productionIsProtected(attacker: IPlayer): boolean;
+  attack(perpetrator: IPlayer, type: Resource, count: number, options?: {log?: boolean, stealing?: boolean}): void;
+
   /**
    * In the multiplayer game, after an attack, the attacked player makes a claim
    * for insurance. If Mons Insurance is in the game, the claimant will receive
@@ -227,6 +275,11 @@ export interface IPlayer {
    */
   getGlobalParameterRequirementBonus(parameter: GlobalParameter): number;
   /**
+   * Called when this player is responsible for increasing a global parameter.
+   */
+  onGlobalParameterIncrease(parameter: GlobalParameter, steps: number): void;
+  readonly globalParameterSteps: Record<GlobalParameter, number>;
+  /**
    * Remove resources from this player's played card
    */
   removeResourceFrom(card: ICard, count?: number, options?: {removingPlayer? : IPlayer, log?: boolean}): void;
@@ -236,7 +289,7 @@ export interface IPlayer {
   addResourceTo(card: ICard, options?: number | {qty?: number, log: boolean, logZero?: boolean}): void;
 
   /**
-   * Returns the set of played cards that have actual resources on them.
+   * Returns the set of cards in play that have actual resources on them.
    *
    * If `resource` is absent, include cards that collect any resource.
    */
@@ -259,19 +312,8 @@ export interface IPlayer {
   getUsableOPGCeoCards(): Array<ICeoCard>;
   runProductionPhase(): void;
   finishProductionPhase(): void;
-  worldGovernmentTerraforming(): void;
-  dealForDraft(quantity: number, cards: Array<IProjectCard>): void;
 
-  /**
-   * Ask the player to draft from a set of cards.
-   *
-   * @param initialDraft when true, this is part of the first generation draft.
-   * @param passTo  The player _this_ player passes remaining cards to.
-   * @param passedCards The cards received from the draw, or from the prior player. If empty, it's the first
-   *   step in the draft, and this function will deal cards.
-   */
-  askPlayerToDraft(initialDraft: boolean, passTo: IPlayer, passedCards?: Array<IProjectCard>): void;
-  runResearchPhase(draftVariant: boolean): void;
+  runResearchPhase(): void;
   getCardCost(card: IProjectCard): number;
 
   /** The number of resources on this card for this player, or 0 if the player does not have this card. */
@@ -293,6 +335,8 @@ export interface IPlayer {
   discardPlayedCard(card: IProjectCard): void;
   discardCardFromHand(card: IProjectCard, options?: {log?: boolean}): void;
 
+  /** Player has prestated they want to pass on their next turn */
+  autopass: boolean;
   /** Player is done taking actions this generation. */
   pass(): void;
   takeActionForFinalGreenery(): void;
@@ -311,6 +355,7 @@ export interface IPlayer {
   getOpponents(): ReadonlyArray<IPlayer>;
   /** Add `corp`'s initial action to the deferred action queue, if it has one. */
   deferInitialAction(corp: ICorporationCard): void;
+  /** Return possible mid-game actions like play a card and fund an award, but not play prelude card. */
   getActions(): OrOptions;
   process(input: InputResponse): void;
   getWaitingFor(): PlayerInput | undefined;
@@ -319,6 +364,7 @@ export interface IPlayer {
   serialize(): SerializedPlayer;
   /** Shorthand for deferring evaluating a PlayerInput */
   defer(input: PlayerInput | undefined | void | (() => PlayerInput | undefined | void), priority?: Priority): void;
+  setAlliedParty(party: IParty): void;
 }
 
 export function isIPlayer(object: any): object is IPlayer {

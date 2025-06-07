@@ -4,7 +4,6 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Card} from '../Card';
 import {Tag} from '../../../common/cards/Tag';
-import {played} from '../Options';
 
 export class OldWorldMafia extends Card implements IProjectCard {
   constructor() {
@@ -12,7 +11,7 @@ export class OldWorldMafia extends Card implements IProjectCard {
       type: CardType.AUTOMATED,
       name: CardName.OLD_WORLD_MAFIA,
       cost: 11,
-      tags: [Tag.EARTH],
+      tags: [Tag.EARTH, Tag.CRIME],
 
       behavior: {
         underworld: {corruption: {tag: Tag.EARTH, per: 2}},
@@ -21,7 +20,7 @@ export class OldWorldMafia extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'U07',
         renderData: CardRenderer.builder((b) => {
-          b.corruption(1).slash().earth(2, {played});
+          b.corruption(1).slash().tag(Tag.EARTH, 2);
         }),
         description: 'Gain 1 corruption for every 2 Earth tags you have, including this.',
       },

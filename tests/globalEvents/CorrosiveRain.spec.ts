@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {Game} from '../../src/server/Game';
+import {IGame} from '../../src/server/IGame';
 import {CorrosiveRain} from '../../src/server/turmoil/globalEvents/CorrosiveRain';
 import {Kelvinists} from '../../src/server/turmoil/parties/Kelvinists';
 import {Turmoil} from '../../src/server/turmoil/Turmoil';
@@ -13,11 +13,11 @@ import {OrOptions} from '../../src/server/inputs/OrOptions';
 import {SelectOption} from '../../src/server/inputs/SelectOption';
 import {testGame} from '../TestGame';
 
-describe('CorrosiveRain', function() {
+describe('CorrosiveRain', () => {
   let card: CorrosiveRain;
   let player: TestPlayer;
   let player2: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let turmoil: Turmoil;
 
   beforeEach(() => {
@@ -26,7 +26,7 @@ describe('CorrosiveRain', function() {
     turmoil = game.turmoil!;
   });
 
-  it('resolve play', function() {
+  it('resolve play', () => {
     turmoil.chairman = player2;
     turmoil.dominantParty = new Kelvinists();
     turmoil.dominantParty.partyLeader = player2;

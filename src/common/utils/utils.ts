@@ -1,6 +1,7 @@
+import {Color} from '../Color';
 import {OneOrArray} from './types';
 
-export const playerColorClass = (color: string, type: 'shadow' | 'bg' | 'bg_transparent'): string => {
+export const playerColorClass = (color: Color, type: 'shadow' | 'bg' | 'bg_transparent'): string => {
   const prefix = {
     shadow: 'player_shadow_color_',
     bg_transparent: 'player_translucent_bg_color_',
@@ -62,20 +63,30 @@ export function twoWayDifference<T>(a: Array<T>, b: Array<T>): Array<T> {
     .concat(b.filter((x) => !a.includes(x)));
 }
 
-
 // https://stackoverflow.com/questions/47914536/use-partial-in-nested-property-with-typescript
 // Recursive partials are useful for nested partial objects.
 export type RecursivePartial<T> = {
   [P in keyof T]?: RecursivePartial<T[P]>;
 };
 
+// https://stackoverflow.com/questions/49285864/is-there-a-valueof-similar-to-keyof-in-typescript
+// Useful for replacing enums with a dictionary of values.
+export type ValueOf<T> = T[keyof T];
+
 /**
  * Remove the `element` from `array`.
+ *
+ * Returns true if the element was removed from the array, false otherwise.
  */
 export function inplaceRemove<T>(array: Array<T>, element: T): boolean {
   return inplaceRemoveIf(array, (e) => e === element) !== undefined;
 }
 
+/**
+ * Remove the first element that satisfies the predicate from the array
+ *.
+ * Returns the removed element, or undefined if no element was removed.
+ */
 export function inplaceRemoveIf<T>(array: Array<T>, predicate: (e: T) => boolean): T | undefined {
   const idx = array.findIndex(predicate);
   if (idx === -1) {
@@ -138,4 +149,25 @@ export function deNull<T>(array: ReadonlyArray<T | undefined>): Array<T> {
     }
   }
   return output;
+}
+
+/**
+ * Makes a copy of array, but then empties it.
+ * Useful for moving contents.
+ */
+export function copyAndClear<T>(array: Array<T>): Array<T> {
+  const copy = [...array];
+  array.length = 0;
+  return copy;
+}
+
+/**
+ * Returns the name of any named item. Ideal for iterating with the Array.map and other iterative functions.
+ */
+export function toName<T>(item: {name: T}): T {
+  return item.name;
+}
+
+export function toID<T>(item: {id: T}): T {
+  return item.id;
 }

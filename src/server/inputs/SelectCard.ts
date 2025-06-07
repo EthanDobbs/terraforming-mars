@@ -7,6 +7,7 @@ import {InputResponse, isSelectCardResponse} from '../../common/inputs/InputResp
 import {SelectCardModel} from '../../common/models/PlayerInputModel';
 import {IPlayer} from '../IPlayer';
 import {cardsToModel} from '../models/ModelUtils';
+import {InputError} from './InputError';
 
 export type Options = {
   max: number,
@@ -14,13 +15,13 @@ export type Options = {
   /** Default is false. When true, ??? */
   selectBlueCardAction: boolean,
   /** When provided, then the cards with false in `enabled` are not selectable and grayed out */
-  enabled: Array<boolean> | undefined,
+  enabled: ReadonlyArray<boolean> | undefined,
   /** Default is true. If true, then shows resources on those cards. If false than shows discounted price. */
   played: boolean | CardName.SELF_REPLICATING_ROBOTS
   /** Default is false. If true then show the name of the card owner below. */
   showOwner: boolean,
 }
-export class SelectCard<T extends ICard> extends BasePlayerInput<Array<T>> {
+export class SelectCard<T extends ICard> extends BasePlayerInput<ReadonlyArray<T>> {
   public config: Options;
 
   constructor(
@@ -61,20 +62,20 @@ export class SelectCard<T extends ICard> extends BasePlayerInput<Array<T>> {
 
   public process(input: InputResponse) {
     if (!isSelectCardResponse(input)) {
-      throw new Error('Not a valid SelectCardResponse');
+      throw new InputError('Not a valid SelectCardResponse');
     }
     if (input.cards.length < this.config.min) {
-      throw new Error('Not enough cards selected');
+      throw new InputError('Not enough cards selected');
     }
     if (input.cards.length > this.config.max) {
-      throw new Error('Too many cards selected');
+      throw new InputError('Too many cards selected');
     }
     const cards = [];
     for (const cardName of input.cards) {
       const {card, idx} = getCardFromPlayerInput(this.cards, cardName);
       cards.push(card);
       if (this.config.enabled?.[idx] === false) {
-        throw new Error(`${cardName} is not available`);
+        throw new InputError(`${cardName} is not available`);
       }
     }
     return this.cb(cards);

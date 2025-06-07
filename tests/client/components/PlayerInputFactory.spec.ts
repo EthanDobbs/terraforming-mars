@@ -11,7 +11,7 @@ import {PlayerViewModel, PublicPlayerModel} from '@/common/models/PlayerModel';
 import {PartyName} from '@/common/turmoil/PartyName';
 import {RecursivePartial} from '@/common/utils/utils';
 
-describe('PlayerInputFactory', function() {
+describe('PlayerInputFactory', () => {
   it('AndOptions', async () => {
     runTest({
       type: 'and',
@@ -129,7 +129,6 @@ describe('PlayerInputFactory', function() {
 
 // function runTest(playerInput: Omit<PlayerInputModel, 'title' | 'buttonLabel'>) {
 function runTest(playerInput: Partial<PlayerInputModel>) {
-  // TODO(kberg): this no longer needs to be partial, but needs all the invocations above to change.
   const fullInput: Partial<PlayerInputModel> = {
     title: 'test input',
     buttonLabel: 'save',
@@ -157,7 +156,7 @@ function runTest(playerInput: Partial<PlayerInputModel>) {
       players: [],
       playerView: playerView,
       playerinput: fullInput,
-      onsave: function() {
+      onsave: () => {
       },
       showsave: true,
       showtitle: true,

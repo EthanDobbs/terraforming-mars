@@ -1,23 +1,22 @@
 import {expect} from 'chai';
 import {HydrogenProcessingPlant} from '../../../src/server/cards/pathfinders/HydrogenProcessingPlant';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
-import {addOcean, setOxygenLevel} from '../../TestingUtils';
+import {addOcean, setOxygenLevel, testGame} from '../../TestingUtils';
 import {Units} from '../../../src/common/Units';
 
-describe('HydrogenProcessingPlant', function() {
+describe('HydrogenProcessingPlant', () => {
   let card: HydrogenProcessingPlant;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new HydrogenProcessingPlant();
-    player = TestPlayer.BLUE.newPlayer();
-    game = Game.newInstance('gameid', [player], player);
+    [game, player] = testGame(1);
     player.playedCards.push(card);
   });
 
-  it('canPlay', function() {
+  it('canPlay', () => {
     setOxygenLevel(game, 2);
     expect(card.canPlay(player)).is.false;
 
@@ -25,7 +24,7 @@ describe('HydrogenProcessingPlant', function() {
     expect(card.canPlay(player)).is.true;
   });
 
-  it('play', function() {
+  it('play', () => {
     game.increaseOxygenLevel(player, 1);
     game.increaseOxygenLevel(player, 1);
     game.increaseOxygenLevel(player, 1);

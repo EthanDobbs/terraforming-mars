@@ -31,7 +31,7 @@
 "Requires 1 corruption. Target a player that has at least 2 corruption. Unless that player pays you 10 M€, they lose 2 corruption.": "Benötigt 1 Korruption. Visiere einen Spieler, der mindestens 2 Korruption hat. Wenn dieser Spieler nicht 10 M€ an dich zahlt, verliert er 2 Korruptionspunkte.",
 
 "Corporate Theft": "Unternehmensdiebstahl",
-"Requires 2 corruption. Remove 1 resource from a card belonging to a different player. Then, if you have a card that can hold it, put it on such a card. If the target blocked this, you gain 1 corruption. NOTE: Do not use in single player games.": "Benötigt 2 Korruption. Entferne 1 Ressource von einer Karte, die einem anderen Spieler gehört. Wenn du dann eine Karte hast, die sie aufnehmen kann, lege sie auf eine solche Karte. Wenn das Ziel dies blockiert, erhältst du 1 Korruption. HINWEIS: Nicht im Solo-Modus verwenden.",
+"Requires 2 corruption. Remove 1 resource from a card belonging to a different player. Then, if you have a card that can hold it, put it on such a card. If the target blocked this, you gain 1 corruption. IF SOLO: gain 1 corruption.": "Benötigt 2 Korruption. Entferne 1 Ressource von einer Karte, die einem anderen Spieler gehört. Wenn du dann eine Karte hast, die sie aufnehmen kann, lege sie auf eine solche Karte. Wenn das Ziel dies blockiert, erhältst du 1 Korruption. WENN ALLEIN: 1 Korruption erhalten.",
 
 "Crater Survey": "Krater Vermessung",
 "Add 2 data resources to ANOTHER card. Identify 4 underground resources.": "Füge 2 Daten einer ANDEREN Karte hinzu. Identifiziere 4 unterirdische Ressourcen.",
@@ -40,7 +40,7 @@
 "Requires 1 corruption. Increase your M€, steel, and energy production 1 step each.": "Benötigt 1 Korruption. Erhöhe deine M€-, Stahl- und Energieproduktion um jeweils 1.",
 
 "Deepmining": "Tiefbohrung",
-"Excavate an IDENTIFIED underground resource ANYWHERE ON MARS with a steel or titanium placement bonus. Increase that production 1 step.": "Grabe eine IDENTIFIZIERTE unterirdische Ressource ÜBERALL AUF DEM MARS mit einem Stahl- oder Titan-Platzierungsbonus aus. Erhöhe diese Produktion um 1 Stufe.",
+"Excavate an underground resource that depicts steel or titanium ANYWHERE ON THE BOARD. Increase your production of that resource 1 step.": "Grabe eine IDENTIFIZIERTE unterirdische Ressource ÜBERALL AUF DEM MARS mit einem Stahl- oder Titan-Platzierungsbonus aus. Erhöhe diese Produktion um 1 Stufe.",
 
 "Deepnuking": "Tiefschürfen",
 "Excavate 2 underground resources. Remove up to 3 plants from any player.": "Grabe 2 unterirdische Ressourcen aus. Entferne bis zu 3 Pflanzen von einem beliebigen Spieler.",
@@ -69,7 +69,8 @@
 "Requires 1 corruption and 1 Earth tag. Gain 1 corruption.": "Benötigt 1 Korruption und 1 Erdsymbol. Erhalte 1 Korruption.",
 
 "Gaia City": "Gaia-Stadt",
-"Reduce your energy production one step and increase your M€ production 2 steps. Place a city in a space with ANY player's excavation marker. Its placement bonus is doubled (including adjacencies.)": "Verringere deine Energie-Produktion um 1 und erhöhe deine M€-Produktion um 2. Platziere eine Stadt auf einem Feld mit einem Ausgrabungsmarker eines beliebigen Spielers. Der Platzierungsbonus wird verdoppelt (einschließlich der Nachbarschaftsboni).",
+"Reduce your energy production one step and increase your M€ production 2 steps. Place a city in a space with ANY player's excavation marker. Its placement bonus is doubled (including adjacencies.) Regular placement restriction still apply.": "Verringere deine Energie-Produktion um 1 und erhöhe deine M€-Produktion um 2. Platziere eine Stadt auf einem Feld mit einem Ausgrabungsmarker eines beliebigen Spielers. Der Platzierungsbonus wird verdoppelt (einschließlich der Nachbarschaftsboni). Die normalen Platzierungsbeschränkungen gelten weiterhin.",
+"Placement Bonus x2": "2x Platzierungsbonus",
 
 "Geological Survey": "Geologische Untersuchung",
 "Add 1 data resource to ANOTHER card. Identify any 2 underground resources on Mars.": "Füge 1 Datum zu einer ANDEREN Karte hinzu. Identifiziere 2 beliebige unterirdische Ressourcen auf dem Mars.",
@@ -119,13 +120,13 @@
 
 "Labor Trafficking": "Arbeitskräftehandel",
 "FIRST": "ERSTE",
+"1ST": "1.",
 "Effect: The first standard project action you take each generation, except selling patents, costs 6 M€ less.": "EFFEKT: Die erste Standard-Projekt-Aktion, die Du pro Generation durchführst, außer dem Verkauf von Patenten, kostet 6 M€ weniger.",
 
 "Landfill": "Mülldeponie",
 "Increase your M€ production 1 step for each different TYPE of production you have at least 1 step of.": "Erhöhe deine M€-Produktion um 1 für jede andere Produktionsart, von der du mindestens 1 Stufe hast.",
 
 "Lobbying Network": "Lobbying-Netzwerk",
-"Gain 1 corruption.": "Erhalte 1 Korruption.",
 
 "Man-made Volcano": "Künstlicher Vulkan",
 "Increase your energy production 2 steps and your heat production 4 steps.": "Erhöhe deine Energie-Produktion um 2 und Ihre Wärme-Produktion um 4.",
@@ -204,6 +205,7 @@
 "Requires 3 oceans. Reduce your heat production 1 step. At the end of this generation only, during the production phase, gain 12 M€ and 1 corruption.": "Benötigt 3 Ozeane. Verringere deine Wärme-Produktion um 1. Nur am Ende dieser Generation, während der Produktionsphase, erhalte 12 M€ und 1 Korruption.",
 
 "Public Spaceline": "Öffentliche Raumfahrtlinie",
+"Increase your M€ production 2 steps": "Erhöhe deine M€-Produktion um 2.",
 "Requires 5 space tags. This card has 2 Earth tags, 2 Jovian tags, 2 Venus tags, and 2 Mars tags.": "Benötigt 5 Weltraum-Symbole. Diese Karte hat 2 Erd-, 2 Jupiter-, 2 Venus- und 2 Mars-Symbole.",
 
 "Reckless Detonation": "Rücksichtslose Sprengung",
@@ -215,7 +217,6 @@
 
 "Robot Moles": "Roboter-Maulwürfe",
 "Action: Spend 1 steel to add 1 data to this card and identify 2 underground resources.": "AKTION: Bezahle 1 Stahl, um 1 Datun zu dieser Karte hinzuzufügen und 2 unterirdische Ressourcen zu identifizieren.",
-"1 VP per 3 data resources on this card.": "1 SP für je 3 Datenressourcen auf dieser Karte.",
 
 "Scapegoat": "Sündenbock",
 "Gain 1 corruption.": "Erhalte 1 Korruption.",
@@ -226,7 +227,7 @@
 "Temperature must -18° C or colder.": "Die Temperatur muss -18° C oder kälter sein.",
 
 "Server Sabotage": "Server Sabotage",
-"Gain 1 corruption. Remove 2 data from any player. Remove all unclaimed underground resources from the board back into the pile. Their spaces can be identified again.": "Erhalte 1 Korruption. Entferne 2 Daten von einem beliebigen Spieler. Entferne alle nicht beanspruchten unterirdischen Ressourcen vom Spielbrett zurück auf den Stapel. Ihre Felder können wieder identifiziert werden.",
+"Gain 1 corruption. Remove up to 2 data from any player. Remove all unclaimed underground resources from the board back into the pile. Their spaces can be identified again.": "Erhalte 1 Korruption. Entferne bis zu 2 Daten von einem beliebigen Spieler. Entferne alle nicht beanspruchten unterirdischen Ressourcen vom Spielbrett zurück auf den Stapel. Ihre Felder können wieder identifiziert werden.",
 
 "Soil Export": "Export von Böden",
 "Excavate an underground resource.": "Grabe eine unterirdische Ressource aus.",
@@ -248,12 +249,12 @@
 "Requires 1 corruption. Gain 1 corruption. Until the end of this generation, milestones and awards cost +8 M€.": "Benötigt 1 Korruption. Erhalte 1 Korruption. Bis zum Ende dieser Generation kosten Meilensteine und Auszeichnungen +8 M€.",
 
 "Star Vegas": "Star Vegas",
-"Requires any 3 cities in play. Place a city on a space reserved for a different space city. Gain 2 corruption. Increase your MC production one step for each city in play.": "Benötigt 3 beliebige Städte im Spiel. Platziere eine Stadt auf einem Feld, das für eine andere Weltraum-Stadt reserviert ist. Erhalte 2 Korruption. Erhöhe deine MC-Produktion um 1 für jede Stadt im Spiel.",
+"Requires any 3 cities in play. Place a city on a space reserved for a different space city. Gain 2 corruption. Increase your M€ production one step for each city in play.": "Benötigt 3 beliebige Städte im Spiel. Platziere eine Stadt auf einem Feld, das für eine andere Weltraum-Stadt reserviert ist. Erhalte 2 Korruption. Erhöhe deine MC-Produktion um 1 für jede Stadt im Spiel.",
 
 "Standard Technology": "Standardtechnologie",
 "REPEAT": "WIEDERHOLE",
-"Action: Use a standard project that you've already done this generation, with its cost reduced by 8 M€.": "AKTION: Benutze ein Standardprojekt, das du in dieser Generation bereits durchgeführt hast und dessen Kosten um 8 Mio. € reduziert wurden.",
-
+"Action: Use a standard project that you've already used this generation, with its cost reduced by 8 M€.": "AKTION: Benutze ein Standardprojekt, das du in dieser Generation bereits durchgeführt hast, wobei die Kosten um 8 M€ reduziert werden.",
+  
 "Stem Field Subsidies": "Subventionen für Stammzellen",
 "Effect: Whenever you play a science tag (including this), add 1 data to ANY card and identify an underground resource.": "EFFEKT: Immer wenn du eine Wissenschaftssymbol spielst (einschließlich dieses), lege 1 Datum auf eine beliebige Karte und identifiziere eine unterirdische Ressource.",
 "1 VP per 3 data resources on this card.": "1 SP pro 3 Datenressourcen auf dieser Karte.",
@@ -273,7 +274,7 @@
 "Action: Spend 1 tool resource on this card to excavate an underground resource.": "AKTION: Bezahle 1 Werkzeugressource von dieser Karte, um eine unterirdische Ressource auszugraben.",
 
 "Tunnel Boring Machine": "Tunnelbohrmaschine",
-"Action: Pay 3 energy to excavate 2 underground resources": "AKTION: Bezahle 3 Energie, um 2 unterirdische Ressourcen auszugraben.",
+"Action: Pay 3 energy to excavate 2 underground resources.": "AKTION: Bezahle 3 Energie, um 2 unterirdische Ressourcen auszugraben.",
 
 "Tunneling Subcontractor": "Tunnelbau Subunternehmer",
 "Gain 1 corruption. Excavate an underground resource.": "Erhalte 1 Korruption. Grabe eine unterirdische Ressource aus.",

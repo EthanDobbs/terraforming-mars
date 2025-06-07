@@ -4,7 +4,6 @@ import {Tag} from '../../../common/cards/Tag';
 import {IPlayer} from '../../IPlayer';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import {played} from '../Options';
 import {IActionCard, ICard} from '../ICard';
 import {CardResource} from '../../../common/CardResource';
 import {ColoniesHandler} from '../../colonies/ColoniesHandler';
@@ -17,7 +16,7 @@ import {message} from '../../logs/MessageBuilder';
 function tradeCost(player: IPlayer) {
   return Math.max(0, 3 - player.colonies.tradeDiscount);
 }
-export class CollegiumCopernicus extends CorporationCard implements IActionCard {
+export class CollegiumCopernicus extends CorporationCard implements ICorporationCard, IActionCard {
   constructor() {
     super({
       name: CardName.COLLEGIUM_COPERNICUS,
@@ -35,16 +34,16 @@ export class CollegiumCopernicus extends CorporationCard implements IActionCard 
       },
 
       metadata: {
-        cardNumber: 'PfC4',
+        cardNumber: 'PfC16',
         description: 'You start with 33 M€. As your first action, draw 2 cards with a science tag.',
         renderData: CardRenderer.builder((b) => {
           b.br;
           b.megacredits(33).cards(2, {secondaryTag: Tag.SCIENCE}).br;
           b.effect('When you play a card with a science tag (including this) Add 1 data to ANY card.', (eb) => {
-            eb.science(1, {played}).startEffect.data().asterix();
+            eb.tag(Tag.SCIENCE).asterix().startEffect.resource(CardResource.DATA).asterix();
           }).br;
           b.action('Spend 3 data from this card to trade.', (eb) => {
-            eb.data({amount: 3}).startAction.trade();
+            eb.resource(CardResource.DATA, 3).startAction.trade();
           });
         }),
       },
@@ -93,7 +92,7 @@ export class TradeWithCollegiumCopernicus implements IColonyTrader {
 
   public canUse() {
     return (this.collegiumCopernicus?.resourceCount ?? 0) >= tradeCost(this.player) &&
-      !this.player.getActionsThisGeneration().has(CardName.COLLEGIUM_COPERNICUS);
+      !this.player.actionsThisGeneration.has(CardName.COLLEGIUM_COPERNICUS);
   }
 
   public optionText() {
@@ -101,7 +100,7 @@ export class TradeWithCollegiumCopernicus implements IColonyTrader {
   }
 
   public trade(colony: IColony) {
-    this.player.addActionThisGeneration(CardName.COLLEGIUM_COPERNICUS);
+    this.player.actionsThisGeneration.add(CardName.COLLEGIUM_COPERNICUS);
     if (this.collegiumCopernicus !== undefined) {
       tradeWithColony(this.collegiumCopernicus, this.player, colony);
     }

@@ -2,7 +2,7 @@ import {IPlayer} from '../../IPlayer';
 import {PartyName} from '../../../common/turmoil/PartyName';
 import {SpaceType} from '../../../common/boards/SpaceType';
 import {Phase} from '../../../common/Phase';
-import {PolicyId} from '../Policy';
+import {PolicyId} from '../../../common/turmoil/Types';
 import {Resource} from '../../../common/Resource';
 import {Space} from '../../boards/Space';
 import {GREENS_POLICY_1} from './Greens';
@@ -12,7 +12,7 @@ import {CardName} from '../../../common/cards/CardName';
 
 export class PartyHooks {
   static applyMarsFirstRulingPolicy(player: IPlayer, spaceType: SpaceType) {
-    if (this.shouldApplyPolicy(player, PartyName.MARS, 'mfp01') &&
+    if (this.shouldApplyPolicy(player, PartyName.MARS, 'mp01') &&
         spaceType !== SpaceType.COLONY) {
       player.stock.add(Resource.STEEL, 1);
     }
@@ -38,6 +38,12 @@ export class PartyHooks {
         return false;
       }
 
+      // Mars Alliance hook, always apply a policy when player is allied.
+      // Reds policy is excluded as its passive effect is negative and its application is optional.
+      const alliedPartyPolicy = player.alliedParty?.agenda.policyId;
+      if (policyId === alliedPartyPolicy && player.alliedParty?.partyName !== PartyName.REDS) {
+        return true;
+      }
       const currentPolicyId = PoliticalAgendas.currentAgenda(turmoil).policyId;
       return turmoil.rulingParty.name === partyName && currentPolicyId === policyId;
     }, () => false);

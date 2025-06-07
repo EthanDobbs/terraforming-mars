@@ -2,27 +2,27 @@ import {expect} from 'chai';
 import {BufferGasStandardProject} from '../../../src/server/cards/prelude/BufferGasStandardProject';
 import {runAllActions, testRedsCosts} from '../../TestingUtils';
 import {TestPlayer} from '../../TestPlayer';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {testGame} from '../../TestGame';
 
-describe('BufferGasStandardProject', function() {
+describe('BufferGasStandardProject', () => {
   let card: BufferGasStandardProject;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new BufferGasStandardProject();
     [game, player] = testGame(1);
   });
 
-  it('Can act', function() {
+  it('Can act', () => {
     player.megaCredits = card.cost - 1;
     expect(card.canAct(player)).is.false;
     player.megaCredits = card.cost;
     expect(card.canAct(player)).is.true;
   });
 
-  it('action', function() {
+  it('action', () => {
     player.megaCredits = card.cost;
     player.setTerraformRating(20);
 
@@ -35,6 +35,6 @@ describe('BufferGasStandardProject', function() {
 
   it('Test reds', () => {
     [game, player] = testGame(1, {turmoilExtension: true});
-    testRedsCosts(() => card.canAct(player), player, card.cost, 3, /* canAct= */ true);
+    testRedsCosts(() => card.canAct(player), player, card.cost, 3);
   });
 });

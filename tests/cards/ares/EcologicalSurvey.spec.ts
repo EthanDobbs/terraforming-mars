@@ -1,10 +1,10 @@
 import {EcologicalSurvey} from '../../../src/server/cards/ares/EcologicalSurvey';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {expect} from 'chai';
 import {TileType} from '../../../src/common/TileType';
 import {Ants} from '../../../src/server/cards/base/Ants';
 import {Pets} from '../../../src/server/cards/base/Pets';
-import {EmptyBoard} from '../../ares/EmptyBoard';
+import {EmptyBoard} from '../../testing/EmptyBoard';
 import {SpaceBonus} from '../../../src/common/boards/SpaceBonus';
 import {ArcticAlgae} from '../../../src/server/cards/base/ArcticAlgae';
 import {SpaceType} from '../../../src/common/boards/SpaceType';
@@ -21,7 +21,7 @@ describe('EcologicalSurvey', () => {
   let card: EcologicalSurvey;
   let player: TestPlayer;
   let redPlayer : TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(() => {
     card = new EcologicalSurvey();
@@ -183,7 +183,7 @@ describe('EcologicalSurvey', () => {
     runAllActions(game);
 
     const msg = game.gameLog.pop()!;
-    expect(msg.data.length).to.eq(3);
+    expect(msg.data).has.length(3);
     expect(msg.data[0].value).to.eq(player.color);
     expect(msg.data[1].value).to.eq('Microbe');
     expect(msg.data[2].value).to.eq(card.name);

@@ -2,7 +2,7 @@ import {expect} from 'chai';
 import {KingdomofTauraro} from '../../../src/server/cards/underworld/KingdomofTauraro';
 import {testGame} from '../../TestGame';
 import {addCity, addGreenery, runAllActions} from '../../TestingUtils';
-import {UnderworldTestHelper} from '../../underworld/UnderworldTestHelper';
+import {assertPlaceCity} from '../../assertions';
 
 describe('KingdomofTauraro', () => {
   it('Should play', () => {
@@ -22,13 +22,13 @@ describe('KingdomofTauraro', () => {
 
     player.deferInitialAction(card);
     runAllActions(game);
-    UnderworldTestHelper.assertPlaceCity(player, player.popWaitingFor());
+    assertPlaceCity(player, player.popWaitingFor());
   });
 
   it('May place next to own cities', () => {
     const card = new KingdomofTauraro();
     const [game, player] = testGame(2);
-    player.setCorporationForTest(card);
+    player.corporations.push(card);
 
     const board = game.board;
     const space = board.getSpaceOrThrow('35');
@@ -41,7 +41,7 @@ describe('KingdomofTauraro', () => {
   it('Must place next to own tiles', () => {
     const card = new KingdomofTauraro();
     const [game, player, player2] = testGame(2);
-    player.setCorporationForTest(card);
+    player.corporations.push(card);
 
     const board = game.board;
     // Spot 55 has 6 land spaces next to it. Makes testing easier.

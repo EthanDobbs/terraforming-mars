@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {CommercialDistrict} from '../../../src/server/cards/base/CommercialDistrict';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {SelectSpace} from '../../../src/server/inputs/SelectSpace';
 import {Resource} from '../../../src/common/Resource';
 import {TileType} from '../../../src/common/TileType';
@@ -8,21 +8,21 @@ import {TestPlayer} from '../../TestPlayer';
 import {cast, runAllActions} from '../../TestingUtils';
 import {testGame} from '../../TestGame';
 
-describe('CommercialDistrict', function() {
+describe('CommercialDistrict', () => {
   let card: CommercialDistrict;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new CommercialDistrict();
     [game, player] = testGame(2);
   });
 
-  it('Can not play', function() {
+  it('Can not play', () => {
     expect(card.canPlay(player)).is.not.true;
   });
 
-  it('Should play', function() {
+  it('Should play', () => {
     player.production.add(Resource.ENERGY, 1);
     expect(card.canPlay(player)).is.true;
 

@@ -9,17 +9,16 @@ import * as http from 'http';
 import * as fs from 'fs';
 import * as raw_settings from '../genfiles/settings.json';
 import * as prometheus from 'prom-client';
-import * as responses from './routes/responses';
+import * as responses from './server/responses';
+import * as ansi from 'ansi-escape-sequences';
 
 import {Database} from './database/Database';
 import {runId, serverId} from './utils/server-ids';
 import {processRequest} from './server/requestProcessor';
 import {timeAsync} from './utils/timer';
-import {registerBehaviorExecutor} from './behavior/BehaviorExecutor';
-import {Executor} from './behavior/Executor';
 import {GameLoader} from './database/GameLoader';
-import {ALL_MODULE_MANIFESTS} from './cards/AllManifests';
-import {initializeGlobalEventDealer} from './turmoil/globalEvents/GlobalEventDealer';
+import {globalInitialize} from './globalInitialize';
+import {SessionManager} from './server/auth/SessionManager';
 
 process.on('uncaughtException', (err: any) => {
   console.error('UNCAUGHT EXCEPTION', err);
@@ -78,8 +77,7 @@ async function start() {
     app: 'terraforming-mars-app',
   });
   prometheus.collectDefaultMetrics();
-  initializeGlobalEventDealer(ALL_MODULE_MANIFESTS);
-  registerBehaviorExecutor(new Executor());
+  globalInitialize();
 
   const server = createServer();
 
@@ -88,23 +86,33 @@ async function start() {
       metrics.startDatabase.set(v.duration);
     });
 
+  // Initialize the session manager after initializing the database.
+  await SessionManager.getInstance().initialize();
+
   try {
-    const stats = await Database.getInstance().stats();
-    console.log(JSON.stringify(stats, undefined, 2));
+    Database.getInstance().stats().then((stats) => {
+      console.log(JSON.stringify(stats, undefined, 2));
+    });
   } catch (err) {
     // Do not fail. Just continue. Stats aren't vital.
     console.error(err);
   }
   GameLoader.getInstance().maintenance();
 
-  const port = process.env.PORT || 8080;
   console.log(`Starting ${raw_settings.head}, built at ${raw_settings.builtAt}`);
-  console.log(`Starting server on port ${port}`);
 
-  server.listen(port);
+  const port = process.env.PORT || 8080;
+  const host = process.env.HOST;
+  if (host) {
+    console.log(`Starting server listening to ${host} on port ${port}`);
+  } else {
+    console.log(`Starting server on port ${port}`);
+  }
+
+  server.listen({port: port, host: host});
 
   if (!process.env.SERVER_ID) {
-    console.log(`The secret serverId for this server is \x1b[1m${serverId}\x1b[0m.`);
+    console.log(`The secret serverId for this server is ${ansi.style.bold}${serverId}${ansi.style.reset}.`);
     console.log(`Administrative routes can be found at admin?serverId=${serverId}`);
   }
   console.log(`The public run ID is ${runId}`);

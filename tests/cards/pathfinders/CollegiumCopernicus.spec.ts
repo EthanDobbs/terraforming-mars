@@ -2,7 +2,7 @@ import {expect} from 'chai';
 import {CollegiumCopernicus} from '../../../src/server/cards/pathfinders/CollegiumCopernicus';
 import {Luna} from '../../../src/server/colonies/Luna';
 import {Triton} from '../../../src/server/colonies/Triton';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {OrOptions} from '../../../src/server/inputs/OrOptions';
 import {SelectColony} from '../../../src/server/inputs/SelectColony';
 import {AndOptions} from '../../../src/server/inputs/AndOptions';
@@ -17,15 +17,15 @@ import {LunarObservationPost} from '../../../src/server/cards/moon/LunarObservat
 import {Tag} from '../../../src/common/cards/Tag';
 import {SelectCard} from '../../../src/server/inputs/SelectCard';
 
-describe('CollegiumCopernicus', function() {
+describe('CollegiumCopernicus', () => {
   let card: CollegiumCopernicus;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new CollegiumCopernicus();
     [game, player] = testGame(2, {coloniesExtension: true, pathfindersExpansion: true});
-    player.setCorporationForTest(card);
+    player.corporations.push(card);
     // Looks as though when Enceladus is first, the test fails. So removing flakiness by defining colonies.
     game.colonies = [
       new Europa(),
@@ -55,7 +55,7 @@ describe('CollegiumCopernicus', function() {
     expect(card.canAct(player)).is.true;
   });
 
-  it('action with multiple coloniess available', function() {
+  it('action with multiple coloniess available', () => {
     game.colonies = [new Luna(), new Triton()];
     card.resourceCount = 10;
 
@@ -100,7 +100,7 @@ describe('CollegiumCopernicus', function() {
     expect(player.megaCredits).eq(2);
   });
 
-  it('play', function() {
+  it('play', () => {
     expect(card.resourceCount).eq(0);
     card.play(player);
     runAllActions(game);
@@ -125,7 +125,7 @@ describe('CollegiumCopernicus', function() {
     expect(card.resourceCount).eq(0);
   });
 
-  it('initialAction', function() {
+  it('initialAction', () => {
     expect(player.cardsInHand).is.empty;
     player.deferInitialAction(card);
     runAllActions(game);

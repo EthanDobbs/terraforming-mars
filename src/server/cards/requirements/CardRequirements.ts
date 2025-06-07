@@ -39,16 +39,16 @@ export class CardRequirements {
     // Process tags separately, though max & any tag criteria will be processed later.
     // This pre-computation takes the wild tag into account.
     const tags: Array<Tag> = [];
-    this.requirements.forEach((requirement) => {
+    for (const requirement of this.requirements) {
       if ((requirement.type === RequirementType.TAG) &&
-      requirement.all !== true && requirement.max !== true) {
+        requirement.all !== true && requirement.max !== true) {
         tags.push((requirement as TagCardRequirement).tag);
       }
-    });
+    }
     if (tags.length > 1 && !player.tags.playerHas(tags)) {
       return false;
     }
-    const thinkTankResources = player.playedCards.find((c) => c.name === CardName.THINK_TANK)?.resourceCount;
+    const thinkTankResources = player.getPlayedCard(CardName.THINK_TANK)?.resourceCount;
     let result: boolean | YesAnd = true;
     for (const requirement of this.requirements) {
       const satisfies = requirement.satisfies(player, thinkTankResources);

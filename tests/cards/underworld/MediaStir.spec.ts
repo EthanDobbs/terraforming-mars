@@ -1,14 +1,14 @@
 import {expect} from 'chai';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {MediaStir} from '../../../src/server/cards/underworld/MediaStir';
 import {Turmoil} from '../../../src/server/turmoil/Turmoil';
 import {TestPlayer} from '../../TestPlayer';
 import {testGame} from '../../TestGame';
 
-describe('MediaStir', function() {
+describe('MediaStir', () => {
   let card: MediaStir;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let turmoil: Turmoil;
 
   beforeEach(() => {

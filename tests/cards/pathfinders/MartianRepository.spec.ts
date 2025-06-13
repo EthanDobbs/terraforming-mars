@@ -1,34 +1,33 @@
 import {expect} from 'chai';
 import {MartianRepository} from '../../../src/server/cards/pathfinders/MartianRepository';
-import {Game} from '../../../src/server/Game';
 import {TestPlayer} from '../../TestPlayer';
 import {Units} from '../../../src/common/Units';
 import {IProjectCard} from '../../../src/server/cards/IProjectCard';
 import {Tag} from '../../../src/common/cards/Tag';
+import {testGame} from '../../TestingUtils';
 
-describe('MartianRepository', function() {
+describe('MartianRepository', () => {
   let card: MartianRepository;
   let player: TestPlayer;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new MartianRepository();
-    player = TestPlayer.BLUE.newPlayer();
-    Game.newInstance('gameid', [player], player);
+    [/* game */, player] = testGame(1);
   });
 
-  it('can play', function() {
+  it('can play', () => {
     expect(card.canPlay(player)).is.false;
     player.production.override({energy: 1});
     expect(card.canPlay(player)).is.true;
   });
 
-  it('play', function() {
+  it('play', () => {
     player.production.override({energy: 1});
     card.play(player);
     expect(player.production.asUnits()).deep.eq(Units.EMPTY);
   });
 
-  it('effect', function() {
+  it('effect', () => {
     card.onCardPlayed(player, {tags: [Tag.VENUS]} as IProjectCard);
     expect(card.resourceCount).eq(0);
     card.onCardPlayed(player, {tags: [Tag.EARTH]} as IProjectCard);
@@ -48,7 +47,7 @@ describe('MartianRepository', function() {
   });
 
 
-  it('victoryPoints', function() {
+  it('victoryPoints', () => {
     card.resourceCount = 2;
     expect(card.getVictoryPoints(player)).eq(0);
     card.resourceCount = 3;

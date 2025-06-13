@@ -8,9 +8,8 @@ import {Resource} from '../../../common/Resource';
 import {CardRenderer} from '../render/CardRenderer';
 import {Size} from '../../../common/cards/render/Size';
 import {Card} from '../Card';
-import {isHazardTileType} from '../../../common/AresTileType';
-import {Space} from '../../../server/boards/Space';
 import {SpaceType} from '../../../common/boards/SpaceType';
+import {Board} from '../../boards/Board';
 
 export class RedTourismWave extends Card implements IProjectCard {
   constructor() {
@@ -23,6 +22,7 @@ export class RedTourismWave extends Card implements IProjectCard {
       requirements: {party: PartyName.REDS},
       metadata: {
         cardNumber: 'T12',
+        hasExternalHelp: true,
         renderData: CardRenderer.builder((b) => {
           b.megacredits(1).slash().emptyTile('normal', {size: Size.SMALL}).asterix();
         }),
@@ -37,10 +37,6 @@ export class RedTourismWave extends Card implements IProjectCard {
     return undefined;
   }
 
-  private static hasRealTile(space: Space) {
-    return space.tile !== undefined && !isHazardTileType(space.tile.tileType);
-  }
-
   // This is static because it's shared with Tourist.
   public static getAdjacentEmptySpacesCount(player: IPlayer): number {
     const board = player.game.board;
@@ -48,11 +44,14 @@ export class RedTourismWave extends Card implements IProjectCard {
       if (space.spaceType === SpaceType.COLONY) {
         return false;
       }
-      if (this.hasRealTile(space)) {
+      if (space.spaceType === SpaceType.RESTRICTED) {
+        return false;
+      }
+      if (Board.hasRealTile(space)) {
         return false;
       }
       return board.getAdjacentSpaces(space).some((adj) => {
-        return this.hasRealTile(adj) && adj.player === player;
+        return Board.hasRealTile(adj) && adj.player === player;
       });
     }).length;
   }

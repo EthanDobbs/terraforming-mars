@@ -7,7 +7,7 @@ import {Tag} from '../../common/cards/Tag';
 // import {CardResource} from '../../common/CardResource';
 // import {TileType} from '../../common/TileType';
 import {SpaceId} from '../../common/Types';
-import {MoonSpaces} from '../../common/moon/MoonSpaces';
+import {NamedMoonSpace} from '../../common/moon/NamedMoonSpaces';
 import {TileType} from '../../common/TileType';
 import {Countable, CountableUnits} from './Countable';
 import {PlacementType} from '../boards/PlacementType';
@@ -32,6 +32,9 @@ export type Spend = Units & {
 
   /** corruption from your personal supply. */
   corruption: number,
+
+  /** discard cards from your hand */
+  cards: number,
 }
 
 /** A set of steps that an action can perform in any specific order. */
@@ -40,7 +43,7 @@ export type Behavior = {
   or?: OrBehavior;
 
   /**
-   * Spend one of resources before taking the action.
+   * Spend one of resources bdecreaseTerraformRatingefore taking the action.
    *
    * This is specifically designed to spend only one resource type.
    */
@@ -52,7 +55,12 @@ export type Behavior = {
   stock?: Partial<CountableUnits>;
 
   /** Gain n standard resources */
-  standardResource?: number | {count: number, same?: boolean};
+  standardResource?: number | {
+    /** Number of resources to gain. */
+    count: number,
+    /** Must all resources be the same type? Default is true. */
+    same?: boolean,
+  };
 
   /** Add resources to this card itself */
   addResources?: Countable;
@@ -67,8 +75,7 @@ export type Behavior = {
   decreaseAnyProduction?: DecreaseAnyProduction;
   removeAnyPlants?: number,
 
-  /** Gain units of TR */
-  // TODO(kberg) permit losing TR for TerralabsResearch
+  /** Gain or lose units of TR */
   tr?: Countable;
 
   /** Raise certain global parameters. */
@@ -135,7 +142,7 @@ export type Behavior = {
   turmoil?: {
     influenceBonus?: 1,
     sendDelegates?: {
-      count: number,
+      count: Countable,
       manyParties?: boolean,
     },
   },
@@ -160,10 +167,19 @@ export type Behavior = {
     corruption?: Countable,
     markThisGeneration?: NoAttributes,
   },
+
+  /**
+   * Log a message using a parameterized string replacement. This is not a normal template.
+   *
+   * Template does not accept traditional parameters ${0} and ${1}, but rather
+   * variables like ${player} and ${card}. These are the only values that can be
+   * replaced since this is the only context known at execution time.
+   */
+  log?: string,
 }
 
 export interface PlaceMoonTile {
-  space?: MoonSpaces;
+  space?: NamedMoonSpace;
 }
 
 export interface DrawCard {

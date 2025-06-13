@@ -6,12 +6,17 @@ import {Space} from './Space';
 import {PlacementType} from './PlacementType';
 import {AresHandler} from '../ares/AresHandler';
 import {CardName} from '../../common/cards/CardName';
+import {SpaceId} from '../../common/Types';
+import {oneWayDifference} from '../../common/utils/utils';
 
 export class MarsBoard extends Board {
   private readonly edges: ReadonlyArray<Space>;
 
-  protected constructor(spaces: ReadonlyArray<Space>) {
-    super(spaces);
+  protected constructor(
+    spaces: ReadonlyArray<Space>,
+    noctisCitySpaceId: SpaceId | undefined,
+    volcanicSpaceIds: ReadonlyArray<SpaceId>) {
+    super(spaces, noctisCitySpaceId, volcanicSpaceIds);
     this.edges = this.computeEdges();
   }
 
@@ -41,9 +46,15 @@ export class MarsBoard extends Board {
     case 'ocean': return this.getAvailableSpacesForOcean(player);
     case 'greenery': return this.getAvailableSpacesForGreenery(player, canAffordOptions);
     case 'city': return this.getAvailableSpacesForCity(player, canAffordOptions);
+    case 'away-from-cities': return this.getSpacesAwayFromCities(player, canAffordOptions);
     case 'isolated': return this.getAvailableIsolatedSpaces(player, canAffordOptions);
     case 'volcanic': return this.getAvailableVolcanicSpaces(player, canAffordOptions);
     case 'upgradeable-ocean': return this.getOceanSpaces({upgradedOceans: false});
+    case 'upgradeable-ocean-new-holland': {
+      const oceanSpaces = this.getOceanSpaces({upgradedOceans: false});
+      const filtered = this.getAvailableSpacesForCity(player, undefined, oceanSpaces);
+      return filtered;
+    }
     default: throw new Error('unknown type ' + type);
     }
   }
@@ -54,10 +65,11 @@ export class MarsBoard extends Board {
    * The default condition is to return those oceans used to count toward the global parameter, so
    * upgraded oceans are included, but Wetlands is not. That's why the boolean values have different defaults.
    */
-  public getOceanSpaces(include?: {upgradedOceans?: boolean, wetlands?: boolean}): ReadonlyArray<Space> {
+  public getOceanSpaces(include?: {upgradedOceans?: boolean, wetlands?: boolean, newHolland?: boolean}): ReadonlyArray<Space> {
     const spaces = this.spaces.filter((space) => {
       if (!Board.isOceanSpace(space)) return false;
       if (space.tile?.tileType === undefined) return false;
+
       const tileType = space.tile.tileType;
       if (OCEAN_UPGRADE_TILES.has(tileType)) {
         return include?.upgradedOceans ?? true;
@@ -70,8 +82,8 @@ export class MarsBoard extends Board {
     return spaces;
   }
 
-  public getAvailableSpacesForCity(player: IPlayer, canAffordOptions?: CanAffordOptions): ReadonlyArray<Space> {
-    const spacesOnLand = this.getAvailableSpacesOnLand(player, canAffordOptions);
+  public getAvailableSpacesForCity(player: IPlayer, canAffordOptions?: CanAffordOptions, spaces?: ReadonlyArray<Space>): ReadonlyArray<Space> {
+    const spacesOnLand = spaces ?? this.getAvailableSpacesOnLand(player, canAffordOptions);
     // Gordon CEO can ignore placement restrictions for Cities+Greenery
     if (player.cardIsInEffect(CardName.GORDON)) {
       return spacesOnLand;
@@ -91,34 +103,49 @@ export class MarsBoard extends Board {
     );
   }
 
-  public getAvailableSpacesForGreenery(player: IPlayer, canAffordOptions?: CanAffordOptions): ReadonlyArray<Space> {
-    let spacesOnLand = this.getAvailableSpacesOnLand(player, canAffordOptions);
-    // Gordon CEO can ignore placement restrictions for Cities+Greenery
-    if (player.cardIsInEffect(CardName.GORDON)) return spacesOnLand;
-    // Spaces next to Red City are always unavialable.
-    if (player.game.gameOptions.pathfindersExpansion === true) {
-      spacesOnLand = spacesOnLand.filter((space) => {
-        return !this.getAdjacentSpaces(space).some((neighbor) => neighbor.tile?.tileType === TileType.RED_CITY);
-      });
-    }
+  public getSpacesAwayFromCities(player: IPlayer, canAffordOptions?: CanAffordOptions): ReadonlyArray<Space> {
+    const spacesOnLand = this.getAvailableSpacesOnLand(player, canAffordOptions);
 
-    const spacesForGreenery = spacesOnLand
-      .filter((space) => this.getAdjacentSpaces(space).find((adj) => adj.tile !== undefined && adj.player === player && adj.tile.tileType !== TileType.OCEAN) !== undefined);
+    return spacesOnLand.filter(
+      (space) => this.getAdjacentSpaces(space).some((adjacentSpace) => Board.isCitySpace(adjacentSpace)) === false,
+    );
+  }
+
+  public filterSpacesAroundRedCity(spaces: ReadonlyArray<Space>): ReadonlyArray<Space> {
+    const redCity = this.getSpaceByTileCard(CardName.RED_CITY);
+    if (redCity === undefined) {
+      return spaces;
+    }
+    const adjacentSpaces = this.getAdjacentSpaces(redCity);
+    return oneWayDifference(spaces, adjacentSpaces);
+  }
+
+  public getAvailableSpacesForGreenery(player: IPlayer, canAffordOptions?: CanAffordOptions): ReadonlyArray<Space> {
+    let availableLandSpaces = this.getAvailableSpacesOnLand(player, canAffordOptions);
+    // Gordon CEO can ignore placement restrictions for Cities+Greenery
+    if (player.cardIsInEffect(CardName.GORDON)) return availableLandSpaces;
+    // Spaces next to Red City are always unavialable for Greeneries.
+    availableLandSpaces = this.filterSpacesAroundRedCity(availableLandSpaces);
+
+    // player can place a greenery in an available land space that is next
+    // to a tile the player already owns.
+    const spacesForGreenery = availableLandSpaces.filter((space) => {
+      return this.getAdjacentSpaces(space).some((adj) => {
+        return MarsBoard.hasRealTile(adj) && adj.player === player;
+      });
+    });
 
     // Spaces next to tiles you own
     if (spacesForGreenery.length > 0) {
       return spacesForGreenery;
     }
     // Place anywhere if no space owned
-    return spacesOnLand;
+    return availableLandSpaces;
   }
 
   public getAvailableSpacesForOcean(player: IPlayer): ReadonlyArray<Space> {
     return this.getSpaces(SpaceType.OCEAN, player)
-      .filter(
-        (space) => space.tile === undefined &&
-                      (space.player === undefined || space.player === player),
-      );
+      .filter((space) => space.tile === undefined && (space.player === undefined || space.player === player));
   }
 
   private computeEdges(): ReadonlyArray<Space> {
@@ -149,7 +176,7 @@ export class MarsBoard extends Board {
   }
 
   public getAvailableVolcanicSpaces(player: IPlayer, canAffordOptions?: CanAffordOptions): ReadonlyArray<Space> {
-    const volcanicSpaceIds = this.getVolcanicSpaceIds();
+    const volcanicSpaceIds = this.volcanicSpaceIds;
 
     const spaces = this.getAvailableSpacesOnLand(player, canAffordOptions);
     if (volcanicSpaceIds.length > 0) {
@@ -163,6 +190,9 @@ export class MarsBoard extends Board {
    */
   public getNonReservedLandSpaces(): ReadonlyArray<Space> {
     return this.spaces.filter((space) => {
+      if (space.id === this.noctisCitySpaceId) {
+        return false;
+      }
       return (space.spaceType === SpaceType.LAND || space.spaceType === SpaceType.COVE) &&
         (space.tile === undefined || AresHandler.hasHazardTile(space)) &&
         space.player === undefined;

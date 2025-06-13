@@ -5,7 +5,8 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
 import {Tag} from '../../../common/cards/Tag';
 import {PartyName} from '../../../common/turmoil/PartyName';
-import {played} from '../Options';
+import {IPlayer} from '../../IPlayer';
+import {IStandardProjectCard} from '../IStandardProjectCard';
 
 export class HighTempSuperconductors extends Card implements IProjectCard {
   constructor() {
@@ -26,12 +27,19 @@ export class HighTempSuperconductors extends Card implements IProjectCard {
         cardNumber: 'PfTMP',
         renderData: CardRenderer.builder((b) => {
           b.effect('When playing a power card, THE STANDARD PROJECT POWER PLANT, OR THE KELVINIST RULING POLICY ACTION, pay 3M€ less.', (eb) => {
-            eb.energy(1, {played}).asterix().slash().text('Kelvinists').startEffect.megacredits(-3);
+            eb.tag(Tag.POWER).asterix().slash().text('Kelvinists').startEffect.megacredits(-3);
           }).br;
           b.production((pb) => pb.energy(2));
         }),
         description: 'Requires Kelvinists are ruling or you have 2 delegates there. Increase your energy production 2 steps.',
       },
     });
+  }
+
+  public getStandardProjectDiscount(_player: IPlayer, card: IStandardProjectCard): number {
+    if (card.name === CardName.POWER_PLANT_STANDARD_PROJECT) {
+      return 3;
+    }
+    return 0;
   }
 }

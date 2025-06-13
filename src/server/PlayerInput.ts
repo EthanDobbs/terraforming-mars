@@ -9,6 +9,7 @@ export interface PlayerInput {
     type: PlayerInputType;
     buttonLabel: string;
     title: string | Message;
+    warning?: string | Message;
     /**
      * When false, this input should not be the default selected PlayerInput.
      * When unset or true, this input may be the default selected PlayerInput.
@@ -32,11 +33,14 @@ export interface PlayerInput {
     process(response: InputResponse, player: IPlayer): PlayerInput | undefined;
 }
 
+const NULL_FUNCTION = () => undefined;
+
 export abstract class BasePlayerInput<T> implements PlayerInput {
   public readonly type: PlayerInputType;
   public buttonLabel: string = 'Save';
   public title: string | Message;
-  public cb: (param: T) => PlayerInput | undefined = () => undefined;
+  public warning?: string | Message;
+  public cb: (param: T) => PlayerInput | undefined = NULL_FUNCTION;
   public eligibleForDefault: boolean | undefined = undefined;
 
   public abstract toModel(player: IPlayer): PlayerInputModel;
@@ -48,11 +52,34 @@ export abstract class BasePlayerInput<T> implements PlayerInput {
   }
 
   public andThen(cb: (param: T) => PlayerInput | undefined): this {
+    if (this.cb !== NULL_FUNCTION) {
+      const THROW_STATE_ERRORS = Boolean(process.env.THROW_STATE_ERRORS);
+      if (THROW_STATE_ERRORS) {
+        throw new Error('andThen called twice');
+      } else {
+        console.error('andThen called twice');
+        return this;
+      }
+    }
     this.cb = cb;
     return this;
   }
-}
 
+  public setTitle(title: string | Message) : this {
+    this.title = title;
+    return this;
+  }
+
+  public setButtonLabel(buttonLabel: string) : this {
+    this.buttonLabel = buttonLabel;
+    return this;
+  }
+
+  public setWarning(warning: string | Message) : this {
+    this.warning = warning;
+    return this;
+  }
+}
 
 export function getCardFromPlayerInput<T extends ICard>(cards: ReadonlyArray<T>, cardName: string): {card: T, idx: number} {
   const idx = cards.findIndex((card) => card.name === cardName);

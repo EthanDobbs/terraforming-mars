@@ -17,7 +17,7 @@ export class SpacePrivateers extends Card implements IProjectCard, IActionCard {
       type: CardType.ACTIVE,
       name: CardName.SPACE_PRIVATEERS,
       cost: 10,
-      tags: [Tag.SPACE],
+      tags: [Tag.CRIME, Tag.SPACE],
       resourceType: CardResource.FIGHTER,
       victoryPoints: -2,
       requirements: {corruption: 3},
@@ -30,12 +30,12 @@ export class SpacePrivateers extends Card implements IProjectCard, IActionCard {
         cardNumber: 'U50',
         renderData: CardRenderer.builder((b) => {
           b.action('If there is at least 1 fighter on this card, steal 2 M€ from EACH OTHER player.',
-            (ab) => ab.empty().startAction.fighter(1).asterix().colon().text('STEAL').megacredits(2, {all})).br;
+            (ab) => ab.empty().startAction.resource(CardResource.FIGHTER).asterix().colon().text('STEAL').megacredits(2, {all})).br;
           b.effect(
             'If 1 or more targets block this with corruption, remove 1 fighter from here.',
-            (eb) => eb.corruptionShield().startEffect.minus().fighter()).br;
+            (eb) => eb.corruptionShield().startEffect.minus().resource(CardResource.FIGHTER)).br;
           b.plainText('(Solo: Gain 2 M€ and remove 1 fighter from this card.)').br;
-          b.fighter(3);
+          b.resource(CardResource.FIGHTER, 3);
         }),
         description: 'Requires 3 corruption. Put 3 fighter resources on this card.',
       },
@@ -66,7 +66,7 @@ export class SpacePrivateers extends Card implements IProjectCard, IActionCard {
     const targets = player.getOpponents();
     const waitingFor = new Set(targets);
     for (const target of targets) {
-      target.maybeBlockAttack(player, (proceed) => {
+      target.maybeBlockAttack(player, 'Lose 2 M€', (proceed) => {
         if (proceed) {
           target.stock.steal(Resource.MEGACREDITS, 2, player, {log: true});
           target.resolveInsurance();

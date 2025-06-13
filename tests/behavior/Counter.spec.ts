@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {Counter} from '../../src/server/behavior/Counter';
-import {Game} from '../../src/server/Game';
+import {IGame} from '../../src/server/IGame';
 import {TestPlayer} from '../TestPlayer';
 import {testGame} from '../TestGame';
 import {Tag} from '../../src/common/cards/Tag';
@@ -8,13 +8,13 @@ import {addCity, addGreenery, cast, fakeCard, maxOutOceans, runAllActions} from 
 import {IProjectCard} from '../../src/server/cards/IProjectCard';
 import {Units} from '../../src/common/Units';
 import {MoonExpansion} from '../../src/server/moon/MoonExpansion';
-import {SpaceName} from '../../src/server/SpaceName';
+import {SpaceName} from '../../src/common/boards/SpaceName';
 import {OceanCity} from '../../src/server/cards/ares/OceanCity';
 import {SelectSpace} from '../../src/server/inputs/SelectSpace';
 import {Wetlands} from '../../src/server/cards/pathfinders/Wetlands';
 
 describe('Counter', () => {
-  let game: Game;
+  let game: IGame;
   let player: TestPlayer;
   let player2: TestPlayer;
   let player3: TestPlayer;
@@ -80,9 +80,9 @@ describe('Counter', () => {
     player.tagsForTest = {city: 1};
     expect(counter.count({tag: Tag.CITY})).eq(2);
 
-    // Unset this so playedCards are counted more closely. It's a weird thing about tagsForTes.
+    // Unset this so playedCards are counted more closely. It's a weird thing about tagsForTest.
     player.tagsForTest = undefined;
-    player.playedCards = [fakeCard({tags: [Tag.CITY, Tag.CITY]})];
+    player.playedCards.set(fakeCard({tags: [Tag.CITY, Tag.CITY]}));
     expect(counter.count({tag: Tag.CITY})).eq(3);
 
     // Adding it to the player's tableau doesn't double-count it.
@@ -90,6 +90,22 @@ describe('Counter', () => {
     // New game state needs a new Counter.
     counter = new Counter(player, fake);
     expect(counter.count({tag: Tag.CITY})).eq(3);
+  });
+
+  it('tags, multiple, including this', () => {
+    let counter = new Counter(player, fake);
+
+    fake.tags = [Tag.MICROBE, Tag.PLANT];
+    expect(counter.count({tag: [Tag.VENUS, Tag.PLANT]})).eq(1);
+    player.tagsForTest = {plant: 1};
+    expect(counter.count({tag: [Tag.VENUS, Tag.PLANT]})).eq(2);
+
+    // Adding it to the player's tableau doesn't double-count it.
+    player.tagsForTest = undefined;
+    player.playedCards.push(fake);
+    // New game state needs a new Counter.
+    counter = new Counter(player, fake);
+    expect(counter.count({tag: [Tag.VENUS, Tag.PLANT]})).eq(1);
   });
 
   it('count cities', () => {
@@ -236,7 +252,7 @@ describe('Counter', () => {
 
 
 describe('Counter for Moon', () => {
-  let game: Game;
+  let game: IGame;
   let player: TestPlayer;
   let fake: IProjectCard;
 
@@ -325,7 +341,7 @@ describe('Counter for Moon', () => {
 });
 
 describe('Counter for Underworld', () => {
-  let game: Game;
+  let game: IGame;
   let player: TestPlayer;
   let player2: TestPlayer;
   let fake: IProjectCard;

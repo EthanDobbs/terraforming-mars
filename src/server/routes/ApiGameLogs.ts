@@ -1,4 +1,4 @@
-import * as responses from './responses';
+import * as responses from '../server/responses';
 import {Handler} from './Handler';
 import {Context} from './IHandler';
 import {GameLogs} from './GameLogs';
@@ -42,7 +42,7 @@ export class ApiGameLogs extends Handler {
     } else {
       const generation = searchParams.get('generation');
       const logs = this.gameLogs.getLogsForGameView(id, game, generation);
-      responses.writeJson(res, logs);
+      responses.writeJson(res, ctx, logs);
     }
   }
 }

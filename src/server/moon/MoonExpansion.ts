@@ -14,8 +14,10 @@ import {MAXIMUM_HABITAT_RATE, MAXIMUM_LOGISTICS_RATE, MAXIMUM_MINING_RATE} from 
 import {Resource} from '../../common/Resource';
 import {Phase} from '../../common/Phase';
 import {BoardType} from '../boards/BoardType';
-import {VictoryPointsBreakdown} from '../game/VictoryPointsBreakdown';
+import {VictoryPointsBreakdownBuilder} from '../game/VictoryPointsBreakdownBuilder';
 import {SpaceId} from '../../common/Types';
+import {Random} from '../../common/utils/Random';
+import {GameOptions} from '../game/GameOptions';
 
 export class MoonExpansion {
   public static readonly MOON_TILES: Set<TileType> = new Set([
@@ -63,9 +65,9 @@ export class MoonExpansion {
     throw new Error('Assertion error: Using a Moon feature when the Moon expansion is undefined.');
   }
 
-  public static initialize(): MoonData {
+  public static initialize(gameOptions: GameOptions, rng: Random): MoonData {
     return {
-      moon: MoonBoard.newInstance(),
+      moon: MoonBoard.newInstance(gameOptions, rng),
       habitatRate: 0,
       miningRate: 0,
       logisticRate: 0,
@@ -323,6 +325,7 @@ export class MoonExpansion {
     const reserveUnits: Units = card.reserveUnits || Units.EMPTY;
 
     const heat = reserveUnits.heat || 0;
+    const plants = reserveUnits.plants || 0;
     let steel = reserveUnits.steel || 0;
     let titanium = reserveUnits.titanium || 0;
 
@@ -330,7 +333,11 @@ export class MoonExpansion {
       switch (tileBuilt) {
       case TileType.MOON_HABITAT:
         if (player.cardIsInEffect(CardName.SUBTERRANEAN_HABITATS)) {
-          titanium -= 1;
+          // Edge case: Momentum Virum is a space habitat, not a habitat
+          // ON the moon.
+          if (card.name !== CardName.MOMENTUM_VIRUM_HABITAT) {
+            titanium -= 1;
+          }
         }
         break;
 
@@ -349,10 +356,10 @@ export class MoonExpansion {
 
     steel = Math.max(steel, 0);
     titanium = Math.max(titanium, 0);
-    return Units.of({steel, titanium, heat});
+    return Units.of({steel, titanium, heat, plants});
   }
 
-  public static calculateVictoryPoints(player: IPlayer, vpb: VictoryPointsBreakdown): void {
+  public static calculateVictoryPoints(player: IPlayer, builder: VictoryPointsBreakdownBuilder): void {
     MoonExpansion.ifMoon(player.game, (moonData) => {
       // Each road tile on the map awards 1VP to the player owning it.
       // Each mine and colony (habitat) tile on the map awards 1VP per road tile touching them.
@@ -363,17 +370,17 @@ export class MoonExpansion {
           const type = space.tile.tileType;
           switch (type) {
           case TileType.MOON_ROAD:
-            vpb.setVictoryPoints('moon road', 1);
+            builder.setVictoryPoints('moon road', 1);
             break;
           case TileType.MOON_MINE:
           case TileType.MOON_HABITAT:
           case TileType.LUNAR_MINE_URBANIZATION:
             const points = moon.getAdjacentSpaces(space).filter((adj) => MoonExpansion.spaceHasType(adj, TileType.MOON_ROAD)).length;
             if (type === TileType.MOON_MINE || type === TileType.LUNAR_MINE_URBANIZATION) {
-              vpb.setVictoryPoints('moon mine', points);
+              builder.setVictoryPoints('moon mine', points);
             }
             if (type === TileType.MOON_HABITAT || type === TileType.LUNAR_MINE_URBANIZATION) {
-              vpb.setVictoryPoints('moon habitat', points);
+              builder.setVictoryPoints('moon habitat', points);
             }
             break;
           }

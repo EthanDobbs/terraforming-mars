@@ -300,10 +300,20 @@ input[type="radio"]:checked + .filterDiv::after {
 }
 
 .prelude2-icon:after {
-  &:extend(.prelude-icon:after);
-  background-image: url("./assets/prelude2/prelude2-triangle16.png");
-  transform: rotate(0deg);
-  background-position: bottom 4px right 3px;
+  position: absolute;
+  border: 1px solid black;
+  font-family: Prototype;
+  background-color: rgb(235, 118, 171);
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 16px;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+  content: "2";
 }
 
 .venus-icon:after {
@@ -374,6 +384,7 @@ input[type="radio"]:checked + .filterDiv::after {
     border-radius: 50%;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
     content: "\25b2";
+    background: #d4d4d4;
 }
 
 .community-icon:after {
@@ -671,6 +682,9 @@ input[type="radio"]:checked + .filterDiv::after {
 }
 .tag-clone {
     background-image: url("./assets/tags/clone.png");
+}
+.tag-crime {
+    background-image: url("./assets/tags/crime.png");
 }
 .tag-none {
     background-image: url("./assets/tags/tag-none.png");
@@ -2736,12 +2750,6 @@ input[type="radio"]:checked + .filterDiv::after {
 
 /* refactored */
 .card-container {
-    .project-icon:after,
-    .preludeCard-icon:after {
-        bottom: 8px;
-        left: 8px;
-        margin: 0px;
-    }
     .card-content-wrapper {
         position: relative;
         .temporary-content-wrapper {
@@ -2775,19 +2783,20 @@ input[type="radio"]:checked + .filterDiv::after {
             .card-help {
                 float: left;
                 font-family: Prototype;
-                font-size: 26px;
-                width: 30px;
-                height: 50px;
+                font-size: 20px;
+                width: 24px;
+                height: 24px;
                 margin-left: -20px;
-                line-height: 48px;
-                border-radius: 20px;
-
-                background-color: black;
-                color: white;
+                line-height: 24px;
+                border-radius: 24px;
+                background-color: #444;
                 text-align: center;
-            }
-            .card-help-inner a:visited {
-                color: #FFF;
+                a {
+                  color: #C33;
+                  text-decoration: none;
+                }
+                position: static;
+                z-index: 1;
             }
             .card-tags {
                 display: flex;

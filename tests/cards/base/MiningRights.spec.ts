@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {MiningRights} from '../../../src/server/cards/base/MiningRights';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {OrOptions} from '../../../src/server/inputs/OrOptions';
 import {SelectSpace} from '../../../src/server/inputs/SelectSpace';
 import {TestPlayer} from '../../TestPlayer';
@@ -16,7 +16,7 @@ import {testGame} from '../../TestGame';
 describe('MiningRights', () => {
   let card: MiningRights;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(() => {
     card = new MiningRights();
@@ -72,7 +72,7 @@ describe('MiningRights', () => {
 
     action.cb(space);
 
-    expect(game.deferredActions.length).eq(1);
+    expect(game.deferredActions).has.length(1);
 
     const deferredAction = game.deferredActions.pop();
 
@@ -98,10 +98,12 @@ describe('MiningRights', () => {
     orOptions.options[0].cb();
     expect(player.production.asUnits()).deep.eq(Units.of({steel: 1}));
 
-    player.playedCards = [card];
+    player.playedCards.push(card);
 
     const roboticWorkforce = new RoboticWorkforce();
-    const selectCard = cast(roboticWorkforce.play(player), SelectCard);
+    cast(roboticWorkforce.play(player), undefined);
+    runAllActions(game);
+    const selectCard = cast(player.popWaitingFor(), SelectCard);
     expect(selectCard.cards).deep.eq([card]);
     selectCard.cb([selectCard.cards[0]]);
     runAllActions(game);

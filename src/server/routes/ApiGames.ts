@@ -1,4 +1,4 @@
-import * as responses from './responses';
+import * as responses from '../server/responses';
 import {Handler} from './Handler';
 import {Context} from './IHandler';
 import {Request} from '../Request';
@@ -16,6 +16,6 @@ export class ApiGames extends Handler {
       responses.notFound(req, res, 'could not load game list');
       return;
     }
-    responses.writeJson(res, list);
+    responses.writeJson(res, ctx, list);
   }
 }

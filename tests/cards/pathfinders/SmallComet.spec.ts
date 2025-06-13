@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {SmallComet} from '../../../src/server/cards/pathfinders/SmallComet';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {SpaceType} from '../../../src/common/boards/SpaceType';
 import {TileType} from '../../../src/common/TileType';
@@ -8,26 +8,26 @@ import {SelectSpace} from '../../../src/server/inputs/SelectSpace';
 import {cast, maxOutOceans, runAllActions, setOxygenLevel, setTemperature, testRedsCosts} from '../../TestingUtils';
 import {testGame} from '../../TestGame';
 
-describe('SmallComet', function() {
+describe('SmallComet', () => {
   let card: SmallComet;
   let player: TestPlayer;
   let player2: TestPlayer;
   let player3: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new SmallComet();
     [game, player, player2, player3] = testGame(3);
   });
 
-  it('play', function() {
+  it('play', () => {
     expect(player.getTerraformRating()).eq(20);
     expect(player.game.getTemperature()).eq(-30);
     player.plants = 5;
     player2.plants = 15;
     player3.plants = 400;
 
-    expect(card.play(player)).is.undefined;
+    cast(card.play(player), undefined);
     runAllActions(game);
     const action = cast(player.popWaitingFor(), SelectSpace);
 

@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {forceGenerationEnd} from '../../TestingUtils';
 import {testGame} from '../../TestGame';
@@ -9,13 +9,12 @@ import {SelectCard} from '../../../src/server/inputs/SelectCard';
 import {OrOptions} from '../../../src/server/inputs/OrOptions';
 import {SelectOption} from '../../../src/server/inputs/SelectOption';
 import {Tag} from '../../../src/common/cards/Tag';
-
 import {Tate} from '../../../src/server/cards/ceos/Tate';
 
-describe('Tate', function() {
+describe('Tate', () => {
   let card: Tate;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(() => {
     card = new Tate();
@@ -24,7 +23,7 @@ describe('Tate', function() {
     player.megaCredits = 6;
   });
 
-  it('Takes OPG action', function() {
+  it('Takes OPG action', () => {
     // Sanity:
     expect(player.megaCredits).eq(6);
     expect(player.cardsInHand).is.empty;
@@ -46,7 +45,7 @@ describe('Tate', function() {
     expect(player.cardsInHand[1].tags).contains(Tag.BUILDING);
   });
 
-  it('Takes OPG action, only buy one card', function() {
+  it('Takes OPG action, only buy one card', () => {
     // Sanity:
     expect(player.megaCredits).eq(6);
     expect(player.cardsInHand).is.empty;
@@ -67,7 +66,7 @@ describe('Tate', function() {
     expect(player.cardsInHand[0].tags).contains(Tag.BUILDING);
   });
 
-  it('Can only act once per game', function() {
+  it('Can only act once per game', () => {
     card.action(player);
     forceGenerationEnd(game);
     expect(card.isDisabled).is.true;

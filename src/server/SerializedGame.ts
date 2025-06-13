@@ -1,5 +1,4 @@
 import {Phase} from '../common/Phase';
-import {CardName} from '../common/cards/CardName';
 import {SerializedClaimedMilestone} from './milestones/ClaimedMilestone';
 import {SerializedFundedAward} from './awards/FundedAward';
 import {DeferredAction} from './deferredActions/DeferredAction';
@@ -17,6 +16,9 @@ import {SerializedDeck} from './cards/SerializedDeck';
 import {UnderworldData} from './underworld/UnderworldData';
 import {AwardName} from '../common/ma/AwardName';
 import {GlobalParameter} from '../common/GlobalParameter';
+import {MilestoneName} from '../common/ma/MilestoneName';
+import {Tag} from '../common/cards/Tag';
+import {Expansion} from '../common/cards/GameModule';
 
 export type SerializedGame = {
     activePlayer: PlayerId;
@@ -33,8 +35,9 @@ export type SerializedGame = {
     createdTimeMs: number;
     deferredActions: Array<DeferredAction>;
     donePlayers: Array<PlayerId>;
-    draftedPlayers: Array<PlayerId>;
     draftRound: number;
+    // TODO(kberg): Remove ? by 2025-08-01
+    expansions?: Record<Expansion, boolean>;
     first: PlayerId;
     fundedAwards: Array<SerializedFundedAward>;
     gagarinBase: Array<SpaceId>;
@@ -46,7 +49,7 @@ export type SerializedGame = {
     id: GameId;
     initialDraftIteration: number;
     lastSaveId: number;
-    milestones: Array<string>;
+    milestones: Array<MilestoneName>;
     moonData: SerializedMoonData | undefined;
     nomadSpace: SpaceId | undefined;
     pathfindersData: SerializedPathfindersData | undefined;
@@ -62,12 +65,13 @@ export type SerializedGame = {
     spectatorId: SpectatorId | undefined;
     stJosephCathedrals: Array<SpaceId>;
     syndicatePirateRaider: PlayerId | undefined;
+    tags: ReadonlyArray<Tag>
     temperature: number;
     tradeEmbargo?: boolean;
     turmoil?: SerializedTurmoil;
     undoCount: number;
-    underworldData?: UnderworldData;
-    unDraftedCards: Array<[PlayerId, Array<CardName>]>;
+    underworldData: UnderworldData;
     venusScaleLevel: number;
+    verminInEffect: boolean;
 }
 

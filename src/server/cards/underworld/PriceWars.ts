@@ -22,6 +22,7 @@ export class PriceWars extends Card implements IProjectCard {
 
       metadata: {
         cardNumber: 'U63',
+        hasExternalHelp: true,
         renderData: CardRenderer.builder((b) => {
           b.steel(1).titanium(1).colon().plus().megacredits(1).asterix().br;
           b.steel(1, {all}).titanium(1, {all}).colon().minus().megacredits(1, {all}).asterix().br;
@@ -59,9 +60,10 @@ export class PriceWars extends Card implements IProjectCard {
     }
   }
 
-  // TODO(kberg): log, log, log.
   public override bespokePlay(player: IPlayer) {
     this.increase(player);
+    player.game.log('${0} is in effect for the rest of this generation.', (b) => b.card(this));
+    player.game.log('Steel and titanium are worth 1 M€ less, except for ${0}, whose steel and titanium are worth 1 M€ more.', (b) => b.player(player));
     return undefined;
   }
 

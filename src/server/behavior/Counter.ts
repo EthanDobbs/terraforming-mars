@@ -1,17 +1,23 @@
+import * as utils from '../../common/utils/utils'; // Since there's already a sum variable.
 import {Units} from '../../common/Units';
 import {TileType} from '../../common/TileType';
 import {ICard} from '../cards/ICard';
 import {IPlayer} from '../IPlayer';
 import {Countable, CountableUnits} from './Countable';
-import {hasIntersection} from '../../common/utils/utils';
 import {MoonExpansion} from '../moon/MoonExpansion';
 import {CardResource} from '../../common/CardResource';
-import * as utils from '../../common/utils/utils'; // Since there's already a sum variable.
 
 /**
  * Counts things in game state.
  */
 export interface ICounter {
+  /**
+   * Count using the applied countable definition.
+   *
+   * context: describes what to do in different counting contexts. Most of the time 'default' is correct, but
+   * when counting victory points, use 'vp'. 'vp' applies to counting victory points. As of now, this only applies
+   * to how it counts wild tags and other substitutions that only apply during an action.
+   */
   count(countable: Countable, context?: 'default' | 'vps'): number;
   countUnits(countableUnits: Partial<CountableUnits>): Units;
 }
@@ -84,14 +90,14 @@ export class Counter {
       if (Array.isArray(tag)) { // Multiple tags
         // These two error cases could be coded up, but they don't have a case just yet, and if they do come
         // up, better for the code to error than silently ignore it.
-        if (this.cardIsUnplayed && hasIntersection(tag, card.tags)) {
-          throw new Error(`Not supporting the case counting tags ${tag} when played card tags are ${card.tags}`);
-        }
         if (countable.others === true) {
           throw new Error('Not counting others\' multiple Tags.');
         }
 
         sum += player.tags.multipleCount(tag);
+        if (this.cardIsUnplayed) { // And include the card itself if it isn't already on the tableau.
+          sum += player.tags.cardTagCount(card, tag);
+        }
       } else { // Single tag
         if (countable.others !== true) { // Just count player's own tags.
           sum += player.tags.count(tag, context === 'vps' ? 'raw' : context);

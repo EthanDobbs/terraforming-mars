@@ -11,8 +11,9 @@ import {Size} from '../../../common/cards/render/Size';
 import {MoonExpansion} from '../../moon/MoonExpansion';
 import {all} from '../Options';
 import {SpecialDesignProxy} from './SpecialDesignProxy';
+import {ICorporationCard} from '../corporation/ICorporationCard';
 
-export class Playwrights extends CorporationCard {
+export class Playwrights extends CorporationCard implements ICorporationCard {
   constructor() {
     super({
       name: CardName.PLAYWRIGHTS,
@@ -54,15 +55,14 @@ export class Playwrights extends CorporationCard {
     const replayableEvents = this.getReplayableEvents(player);
 
     return new SelectCard<IProjectCard>(
-      'Select event card to replay at cost in M€ and remove from play', 'Select', replayableEvents)
+      'Select event card to replay at cost in M€ and remove from play', 'Select', replayableEvents, {played: false})
       .andThen(
         ([card]) => {
           const selectedCard: IProjectCard = card;
 
           players.forEach((p) => {
-            const cardIndex = p.playedCards.findIndex((c) => c.name === selectedCard.name);
-            if (cardIndex !== -1) {
-              p.playedCards.splice(cardIndex, 1);
+            if (p.playedCards.get(selectedCard.name)) {
+              p.playedCards.remove(card);
             }
           });
 
@@ -80,9 +80,9 @@ export class Playwrights extends CorporationCard {
                */
                 player.defer(() => {
                   player.game.getPlayers().some((p) => {
-                    const card = p.playedCards[p.playedCards.length - 1];
+                    const card = p.playedCards.last();
                     if (card?.name === selectedCard.name) {
-                      p.playedCards.pop();
+                      p.playedCards.remove(card);
                       return true;
                     }
                     return false;

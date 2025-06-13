@@ -57,8 +57,8 @@ describe('LunarDustProcessingPlant', () => {
     expect(player.getPlayableCards().map((card) => card.name)).is.empty;
 
     // And this one shows that with Lunar Dust Processing Plant, steel isn't necessary
-    player.playedCards = [card];
-    expect(player.getPlayableCards().map((card) => card.name)).deep.eq([CardName.MARE_SERENITATIS_MINE]);
+    player.playedCards.push(card);
+    expect(player.getPlayableCards().map((card) => card.card.name)).deep.eq([CardName.MARE_SERENITATIS_MINE]);
   });
 
   it('applies to road standard project', () => {
@@ -72,7 +72,7 @@ describe('LunarDustProcessingPlant', () => {
     expect(projectCard.canAct(player)).is.false;
 
     // And this one shows that with Lunar Dust Processing Plant, steel isn't necessary
-    player.playedCards = [card];
+    player.playedCards.push(card);
     expect(projectCard.canAct(player)).is.true;
   });
 });

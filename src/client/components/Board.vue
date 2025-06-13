@@ -6,22 +6,18 @@
           </div>
         </div>
         <div class="board-outer-spaces" id="colony_spaces">
-            <board-space :space="getSpaceById('01')" text="Ganymede Colony" :tileView="tileView"></board-space>
-            <board-space :space="getSpaceById('02')" text="Phobos Space Haven" :tileView="tileView"></board-space>
-            <board-space :space="getSpaceById('69')" text="Stanford Torus" :tileView="tileView"></board-space>
-            <template v-if="venusNextExtension">
-              <board-space :space="getSpaceById('70')" text="Luna Metropolis" :tileView="tileView"></board-space>
-              <board-space :space="getSpaceById('71')" text="Dawn City" :tileView="tileView"></board-space>
-              <board-space :space="getSpaceById('72')" text="Stratopolis" :tileView="tileView"></board-space>
-              <board-space :space="getSpaceById('73')" text="Maxwell Base" :tileView="tileView"></board-space>
-            </template>
-            <template v-if="pathfindersExpansion">
-              <!-- <board-space :space="getSpaceById('74')" text="Martian Transhipment Station" :tileView="tileView"></board-space> -->
-              <board-space :space="getSpaceById('75')" text="Ceres Spaceport" :tileView="tileView"></board-space>
-              <board-space :space="getSpaceById('76')" text="Dyson Screens" :tileView="tileView"></board-space>
-              <board-space :space="getSpaceById('77')" text="Lunar Embassy" :tileView="tileView"></board-space>
-              <board-space :space="getSpaceById('78')" text="Venera Base" :tileView="tileView"></board-space>
-            </template>
+          <board-space :space="getSpaceOrUndefined(SpaceName.GANYMEDE_COLONY)" text="Ganymede Colony" :tileView="tileView"></board-space>
+          <board-space :space="getSpaceOrUndefined(SpaceName.PHOBOS_SPACE_HAVEN)" text="Phobos Space Haven" :tileView="tileView"></board-space>
+          <board-space :space="getSpaceOrUndefined(SpaceName.STANFORD_TORUS)" text="Stanford Torus" :tileView="tileView"></board-space>
+          <board-space :space="getSpaceOrUndefined(SpaceName.LUNA_METROPOLIS)" text="Luna Metropolis" :tileView="tileView"></board-space>
+          <board-space :space="getSpaceOrUndefined(SpaceName.DAWN_CITY)" text="Dawn City" :tileView="tileView"></board-space>
+          <board-space :space="getSpaceOrUndefined(SpaceName.STRATOPOLIS)" text="Stratopolis" :tileView="tileView"></board-space>
+          <board-space :space="getSpaceOrUndefined(SpaceName.MAXWELL_BASE)" text="Maxwell Base" :tileView="tileView"></board-space>
+          <!-- <board-space :space="getSpaceOrUndefined('74')" text="Martian Transhipment Station" :tileView="tileView"></board-space> -->
+          <board-space :space="getSpaceOrUndefined(SpaceName.CERES_SPACEPORT)" text="Ceres Spaceport" :tileView="tileView"></board-space>
+          <board-space :space="getSpaceOrUndefined(SpaceName.DYSON_SCREENS)" text="Dyson Screens" :tileView="tileView"></board-space>
+          <board-space :space="getSpaceOrUndefined(SpaceName.LUNAR_EMBASSY)" text="Lunar Embassy" :tileView="tileView"></board-space>
+          <board-space :space="getSpaceOrUndefined(SpaceName.VENERA_BASE)" text="Venera Base" :tileView="tileView"></board-space>
         </div>
 
         <div class="global-numbers">
@@ -33,7 +29,7 @@
                 <div :class="getScaleCSS(lvl)" v-for="(lvl, idx) in getValuesForParameter('oxygen')" :key="idx">{{ lvl.strValue }}</div>
             </div>
 
-            <div class="global-numbers-venus" v-if="venusNextExtension">
+            <div class="global-numbers-venus" v-if="expansions.venus">
                 <div :class="getScaleCSS(lvl)" v-for="(lvl, idx) in getValuesForParameter('venus')" :key="idx">{{ lvl.strValue }}</div>
             </div>
 
@@ -46,7 +42,7 @@
               </span>
             </div>
 
-            <div v-if="aresExtension && aresData !== undefined">
+            <div v-if="expansions.ares && aresData !== undefined">
                 <div v-if="aresData.hazardData.erosionOceanCount.available">
                     <div class="global-ares-erosions-icon"></div>
                     <div class="global-ares-erosions-val">{{aresData.hazardData.erosionOceanCount.threshold}}</div>
@@ -82,12 +78,23 @@
               v-for="curSpace in getAllSpacesOnMars()"
               :key="curSpace.id"
               :space="curSpace"
-              :aresExtension="aresExtension"
+              :aresExtension="expansions.ares"
               :tileView="tileView"
               data-test="board-space"
             />
 
             <svg id="board_legend" height="550" width="630" class="board-legend">
+              <g v-for="(key, idx) of LEGENDS[boardName]" :key="idx" :transform="`translate(${key.position[0]}, ${key.position[1]})`">
+                <text class="board-caption">
+                  <tspan y="0">{{key.text[0]}}</tspan>
+                  <tspan :x="key.secondRowX || 0" y="1.1em">{{key.text[1]}}</tspan>
+                </text>
+                <template v-if="key.line !== undefined">
+                  <line :x1="key.line.from[0]" :y1="key.line.from[1]" :x2="key.line.to[0]" :y2="key.line.to[1]" class="board-line"></line>
+                  <circle :cx="key.line.to[0]" :cy="key.line.to[1]" r="2" class="board-caption board_caption--black"/>
+                </template>
+              </g>
+
               <template v-if="boardName === BoardName.THARSIS">
                   <g id="ascraeus_mons" transform="translate(95, 192)">
                       <text class="board-caption">
@@ -161,6 +168,48 @@
                       <text class="board-caption">
                           <tspan x="-5" dy="15">Olympus</tspan>
                           <tspan x="4" dy="12">Mons</tspan>
+                      </text>
+                  </g>
+                </template>
+
+                <template v-if="boardName === BoardName.VASTITAS_BOREALIS_NOVUS">
+                  <g id="hectates_tholius_vastitas_borealis_novus"  transform="translate(270, 70)">
+                      <text class="board-caption">
+                          <tspan dy="15">Hectates</tspan>
+                          <tspan x="5" dy="12">Tholius</tspan>
+                      </text>
+                  </g>
+
+                  <g id="elysium_mons_vastitas_borealis_novus" transform="translate(480, 145)">
+                      <text class="board-caption">
+                          <tspan x="-5" dy="15">Elysium</tspan>
+                          <tspan x="4" dy="12">Mons</tspan>
+                      </text>
+                  </g>
+
+                  <g id="alba_mons_vastitas_borealis_novus" transform="translate(105, 230)">
+                      <text class="board-caption">
+                          <tspan x="0" dy="15">Alba</tspan>
+                          <tspan x="-1" dy="12">Mons</tspan>
+                      </text>
+                  </g>
+
+                  <g id="viking_2_vastitas_borealis_novus" transform="translate(530, 235)">
+                      <text class="board-caption">
+                          <tspan x="-5" dy="15">Viking 2</tspan>
+                      </text>
+                  </g>
+
+                  <g id="uranius_tholus_vastitas_borealis_novus" transform="translate(115, 370)">
+                      <text class="board-caption">
+                          <tspan x="0" dy="0">Uranius</tspan>
+                          <tspan x="2" dy="12">Tholus</tspan>
+                      </text>
+                  </g>
+
+                  <g id="viking_1_vastitas_borealis_novus" transform="translate(164, 445)">
+                      <text class="board-caption">
+                          <tspan x="-5" dy="15">Viking 1</tspan>
                       </text>
                   </g>
                 </template>
@@ -311,6 +360,9 @@ import {SpaceType} from '@/common/boards/SpaceType';
 import {SpaceId} from '@/common/Types';
 import {TileView} from '@/client/components/board/TileView';
 import {BoardName} from '@/common/boards/BoardName';
+import {LEGENDS} from '@/client/components/Legends';
+import {Expansion} from '@/common/cards/GameModule';
+import {SpaceName} from '@/common/boards/SpaceName';
 
 class GlobalParamLevel {
   constructor(public value: number, public isActive: boolean, public strValue: string) {
@@ -323,9 +375,6 @@ export default Vue.extend({
     spaces: {
       type: Array as () => Array<SpaceModel>,
     },
-    venusNextExtension: {
-      type: Boolean,
-    },
     venusScaleLevel: {
       type: Number,
     },
@@ -333,7 +382,7 @@ export default Vue.extend({
       type: Boolean,
     },
     boardName: {
-      type: String,
+      type: String as () => BoardName,
     },
     oceans_count: {
       type: Number,
@@ -344,11 +393,8 @@ export default Vue.extend({
     temperature: {
       type: Number,
     },
-    aresExtension: {
-      type: Boolean,
-    },
-    pathfindersExpansion: {
-      type: Boolean,
+    expansions: {
+      type: Object as () => Record<Expansion, boolean>,
     },
     aresData: {
       type: Object as () => AresData | undefined,
@@ -378,13 +424,8 @@ export default Vue.extend({
         return s.spaceType !== SpaceType.COLONY;
       });
     },
-    getSpaceById(spaceId: SpaceId): SpaceModel {
-      for (const space of this.spaces) {
-        if (space.id === spaceId) {
-          return space;
-        }
-      }
-      throw new Error('Board space not found by id \'' + spaceId + '\'');
+    getSpaceOrUndefined(spaceId: SpaceId): SpaceModel | undefined {
+      return this.spaces.find((space) => space.id === spaceId);
     },
     getValuesForParameter(targetParameter: string): Array<GlobalParamLevel> {
       const values = [];
@@ -442,12 +483,18 @@ export default Vue.extend({
       }
     },
     getGameBoardClassName(): string {
-      return this.venusNextExtension ? 'board-cont board-with-venus' : 'board-cont board-without-venus';
+      return this.expansions.venus ? 'board-cont board-with-venus' : 'board-cont board-without-venus';
     },
   },
   computed: {
     BoardName(): typeof BoardName {
       return BoardName;
+    },
+    LEGENDS(): typeof LEGENDS {
+      return LEGENDS;
+    },
+    SpaceName(): typeof SpaceName {
+      return SpaceName;
     },
   },
 });

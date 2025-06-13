@@ -3,9 +3,9 @@ import {expect} from 'chai';
 import {TunnelBoringMachine} from '../../../src/server/cards/underworld/TunnelBoringMachine';
 import {TestPlayer} from '../../TestPlayer';
 import {testGame} from '../../TestGame';
-import {runAllActions} from '../../TestingUtils';
+import {cast, runAllActions} from '../../TestingUtils';
 import {IGame} from '../../../src/server/IGame';
-import {UnderworldTestHelper} from '../../underworld/UnderworldTestHelper';
+import {assertIsExcavationAction} from '../../underworld/underworldAssertions';
 
 describe('TunnelBoringMachine', () => {
   let game: IGame;
@@ -22,7 +22,7 @@ describe('TunnelBoringMachine', () => {
   });
 
   it('play', () => {
-    expect(card.play(player)).is.undefined;
+    cast(card.play(player), undefined);
   });
 
   it('can act', () => {
@@ -39,9 +39,9 @@ describe('TunnelBoringMachine', () => {
     runAllActions(game);
 
     expect(player.energy).eq(0);
-    UnderworldTestHelper.assertIsExcavationAction(player, player.popWaitingFor());
+    assertIsExcavationAction(player, player.popWaitingFor());
     runAllActions(game);
-    UnderworldTestHelper.assertIsExcavationAction(player, player.popWaitingFor());
+    assertIsExcavationAction(player, player.popWaitingFor());
     runAllActions(game);
     expect(player.popWaitingFor()).is.undefined;
   });

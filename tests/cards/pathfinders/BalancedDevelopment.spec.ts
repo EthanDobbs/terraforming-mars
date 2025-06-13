@@ -1,22 +1,16 @@
 import {expect} from 'chai';
-import {PowerPlant} from '../../../src/server/cards/pathfinders/PowerPlant';
-import {Game} from '../../../src/server/Game';
 import {BalancedDevelopment} from '../../../src/server/cards/pathfinders/BalancedDevelopment';
-import {Turmoil} from '../../../src/server/turmoil/Turmoil';
-import {TestPlayer} from '../../TestPlayer';
+import {testGame} from '../../TestingUtils';
 
-describe('BalancedDevelopment', function() {
-  it('resolve play', function() {
+describe('BalancedDevelopment', () => {
+  it('resolve play', () => {
     const card = new BalancedDevelopment();
-    const player = TestPlayer.BLUE.newPlayer();
-    const player2 = TestPlayer.RED.newPlayer();
-    const game = Game.newInstance('gameid', [player, player2], player);
-    const turmoil = Turmoil.newInstance(game);
+    const [game, player, player2] = testGame(2, {turmoilExtension: true});
+    const turmoil = game.turmoil!;
 
     turmoil.initGlobalEvent(game);
-    player.playedCards.push(new PowerPlant());
-    player2.playedCards.push(new PowerPlant());
-    player2.playedCards.push(new PowerPlant());
+    player.tagsForTest = {mars: 1};
+    player2.tagsForTest = {mars: 2};
 
     turmoil.chairman = player2;
     turmoil.dominantParty.partyLeader = player2;

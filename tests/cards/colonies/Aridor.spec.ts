@@ -4,7 +4,7 @@ import {TestPlayer} from '../../TestPlayer';
 import {Predators} from '../../../src/server/cards/base/Predators';
 import {ResearchOutpost} from '../../../src/server/cards/base/ResearchOutpost';
 import {Aridor} from '../../../src/server/cards/colonies/Aridor';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {Venus} from '../../../src/server/cards/community/Venus';
 import {Celestic} from '../../../src/server/cards/venusNext/Celestic';
 import {Tag} from '../../../src/common/cards/Tag';
@@ -14,24 +14,23 @@ import {SelectColony} from '../../../src/server/inputs/SelectColony';
 import {InputResponse} from '../../../src/common/inputs/InputResponse';
 import {ColonyName} from '../../../src/common/colonies/ColonyName';
 import {GHGProducingBacteria} from '../../../src/server/cards/base/GHGProducingBacteria';
+import {Leavitt} from '../../../src/server/cards/community/Leavitt';
 
 let card: Aridor;
-let game: Game;
+let game: IGame;
 let player: TestPlayer;
 let player2: TestPlayer;
 
-describe('Aridor', function() {
+describe('Aridor', () => {
   beforeEach(() => {
     card = new Aridor();
     // 2-player so as to not bother with pre-game action that drops a colony.
     [game, player, player2] = testGame(2, {coloniesExtension: true});
-
-    player.setCorporationForTest(card);
+    player.corporations.push(card);
   });
 
-  it('Should play', function() {
-    const play = card.play(player);
-    expect(play).is.undefined;
+  it('Should play', () => {
+    cast(card.play(player), undefined);
 
     // Predators has an Animal tag
     card.onCardPlayed(player, new Predators());
@@ -86,7 +85,7 @@ describe('Aridor', function() {
   });
 
   it('initialAction - chooses Venus, which is activated', () => {
-    player2.setCorporationForTest(new Celestic());
+    player2.corporations.push(new Celestic());
     const venus = new Venus();
     game.discardedColonies.push(venus);
     player.deferInitialAction(card);
@@ -116,5 +115,17 @@ describe('Aridor', function() {
     const reserializedAridor = cast(reserializedPlayer.corporations?.[0], Aridor);
 
     expect(Array.from(reserializedAridor.allTags)).deep.eq([Tag.ANIMAL, Tag.SCIENCE, Tag.CITY, Tag.BUILDING]);
+  });
+
+  it('Compatible with Leavitt #6349', () => {
+    player.corporations.push(card);
+
+    expect(player.production.megacredits).eq(0);
+
+    const leavitt = new Leavitt();
+    leavitt.addColony(player);
+
+    runAllActions(game);
+    expect(player.production.megacredits).eq(1);
   });
 });

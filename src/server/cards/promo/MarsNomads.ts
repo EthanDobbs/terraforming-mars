@@ -26,7 +26,7 @@ export class MarsNomads extends Card implements IActionCard {
       cost: 13,
 
       metadata: {
-        cardNumber: '',
+        cardNumber: 'X59',
         renderData: CardRenderer.builder((b) => {
           b.action('MOVE THE NOMADS to an adjacent, non-reserved empty area and collect THE PLACEMENT BONUS ' +
             'as if placing a special tile there. No tiles may be placed on the Nomad area.', (ab) => {
@@ -62,7 +62,7 @@ export class MarsNomads extends Card implements IActionCard {
       return [];
     }
 
-    const availableSpaces = board.getAvailableSpacesOnLand(player);
+    const availableSpaces = board.getNonReservedLandSpaces();
     const currentNomadSpace = board.getSpaceOrThrow(game.nomadSpace);
     const adjacentSpaces = board.getAdjacentSpaces(currentNomadSpace);
     return intersection(availableSpaces, adjacentSpaces);
@@ -80,7 +80,7 @@ export class MarsNomads extends Card implements IActionCard {
       spaces)
       .andThen((space) => {
         player.game.nomadSpace = space.id;
-        player.game.grantPlacementBonuses(player, space, false);
+        player.game.grantPlacementBonuses(player, space);
 
         return undefined;
       });

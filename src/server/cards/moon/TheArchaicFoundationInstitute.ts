@@ -9,8 +9,9 @@ import {ICard} from '../ICard';
 import {Size} from '../../../common/cards/render/Size';
 import {digit} from '../Options';
 import {LogHelper} from '../../LogHelper';
+import {ICorporationCard} from '../corporation/ICorporationCard';
 
-export class TheArchaicFoundationInstitute extends CorporationCard {
+export class TheArchaicFoundationInstitute extends CorporationCard implements ICorporationCard {
   constructor() {
     super({
       name: CardName.THE_ARCHAIC_FOUNDATION_INSTITUTE,
@@ -23,18 +24,19 @@ export class TheArchaicFoundationInstitute extends CorporationCard {
       },
 
       metadata: {
+        hasExternalHelp: true,
+        cardNumber: 'MC10',
         description: 'You start with 55 M€.',
-        cardNumber: '',
         renderData: CardRenderer.builder((b) => {
           b.megacredits(55).nbsp;
           b.effect('When you play a Moon tag, including these, add a cube to this card.', (eb) => {
-            eb.moon().startEffect.resourceCube();
+            eb.tag(Tag.MOON).startEffect.resource(CardResource.RESOURCE_CUBE);
           }).br;
           b.effect('Automatically remove 3 cubes here and gain 1 TR.', (eb) => {
-            eb.resourceCube(3, {digit}).startEffect.tr(1, {size: Size.TINY});
+            eb.resource(CardResource.RESOURCE_CUBE, {amount: 3, digit}).startEffect.tr(1, {size: Size.TINY});
           }).br;
           b.action('Remove 3 cubes here; gain 1 TR.', (ab) => {
-            ab.resourceCube(3, {digit}).startAction.tr(1, {size: Size.TINY});
+            ab.resource(CardResource.RESOURCE_CUBE, {amount: 3, digit}).startAction.tr(1, {size: Size.TINY});
           });
         }),
       },

@@ -1,21 +1,16 @@
 import {expect} from 'chai';
-import {CorroderSuits} from '../../src/server/cards/venusNext/CorroderSuits';
-import {Game} from '../../src/server/Game';
 import {VenusInfrastructure} from '../../src/server/turmoil/globalEvents/VenusInfrastructure';
 import {Kelvinists} from '../../src/server/turmoil/parties/Kelvinists';
-import {Turmoil} from '../../src/server/turmoil/Turmoil';
-import {TestPlayer} from '../TestPlayer';
+import {testGame} from '../TestingUtils';
 
-describe('VenusInfrastructure', function() {
-  it('resolve play', function() {
+describe('VenusInfrastructure', () => {
+  it('resolve play', () => {
     const card = new VenusInfrastructure();
-    const player = TestPlayer.BLUE.newPlayer();
-    const player2 = TestPlayer.RED.newPlayer();
-    const game = Game.newInstance('gameid', [player, player2], player);
-    const turmoil = Turmoil.newInstance(game);
+    const [game, player, player2] = testGame(2, {turmoilExtension: true});
+    const turmoil = game.turmoil!;
+    player.tagsForTest = {venus: 1};
+    player2.tagsForTest = {venus: 3};
 
-    player.playedCards.push(new CorroderSuits());
-    player2.playedCards.push(new CorroderSuits(), new CorroderSuits(), new CorroderSuits());
 
     turmoil.chairman = player2;
     turmoil.dominantParty = new Kelvinists();

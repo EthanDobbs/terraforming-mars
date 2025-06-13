@@ -9,6 +9,7 @@ import {IPlayer} from '../IPlayer';
 import {IColony} from '../colonies/IColony';
 import {CardName} from '../../common/cards/CardName';
 import {Tag} from '../../common/cards/Tag';
+import {asArray} from '../../common/utils/utils';
 import {MoonExpansion} from '../moon/MoonExpansion';
 
 export function cardsToModel(
@@ -19,9 +20,9 @@ export function cardsToModel(
     showCalculatedCost?: boolean,
     enabled?: Array<boolean>, // If provided, then the cards with false in `enabled` are not selectable and grayed out
   } = {},
-): Array<CardModel> {
+): ReadonlyArray<CardModel> {
   return cards.map((card, index) => {
-    let discount = card.cardDiscount === undefined ? undefined : (Array.isArray(card.cardDiscount) ? card.cardDiscount : [card.cardDiscount]);
+    let discount = card.cardDiscount === undefined ? undefined : asArray(card.cardDiscount);
 
     // Too bad this is hard-coded
     if (card.name === CardName.CRESCENT_RESEARCH_ASSOCIATION) {
@@ -50,6 +51,11 @@ export function cardsToModel(
       model.reserveUnits = MoonExpansion.adjustedReserveCosts(player, card as IProjectCard);
     }
 
+    const isSelfReplicatingRobotsCard = isIProjectCard(card) && player.getSelfReplicatingRobotsTargetCards().includes(card);
+    if (isSelfReplicatingRobotsCard) {
+      model.resources = card.resourceCount;
+      model.isSelfReplicatingRobotsCard = true;
+    }
     if (card.warnings.size > 0) {
       model.warnings = Array.from(card.warnings);
     }

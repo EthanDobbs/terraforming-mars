@@ -2,26 +2,24 @@ import {expect} from 'chai';
 import {SpaceRelay} from '../../../src/server/cards/pathfinders/SpaceRelay';
 import {IProjectCard} from '../../../src/server/cards/IProjectCard';
 import {Tag} from '../../../src/common/cards/Tag';
-import {Game} from '../../../src/server/Game';
 import {TestPlayer} from '../../TestPlayer';
+import {testGame} from '../../TestingUtils';
 
-describe('SpaceRelay', function() {
+describe('SpaceRelay', () => {
   let card: SpaceRelay;
   let player: TestPlayer;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new SpaceRelay();
-    player = TestPlayer.BLUE.newPlayer();
-    Game.newInstance('gameid', [player], player);
-    player.playedCards.push(card);
+    [/* game */, player] = testGame(1);
   });
 
-  it('play', function() {
+  it('play', () => {
     card.play(player);
     expect(player.production.megacredits).eq(1);
   });
 
-  it('onCardPlayed', function() {
+  it('onCardPlayed', () => {
     card.onCardPlayed(player, {tags: [Tag.VENUS]} as IProjectCard);
     expect(player.cardsInHand).has.length(0);
     card.onCardPlayed(player, {tags: [Tag.JOVIAN]} as IProjectCard);

@@ -1,4 +1,4 @@
-import * as responses from './responses';
+import * as responses from '../server/responses';
 import {Handler} from './Handler';
 import {Context} from './IHandler';
 import {Database} from '../database/Database';
@@ -24,7 +24,7 @@ export class ApiCloneableGame extends Handler {
     }
     await Database.getInstance().getPlayerCount(gameId)
       .then((playerCount) => {
-        responses.writeJson(res, {gameId, playerCount});
+        responses.writeJson(res, ctx, {gameId, playerCount});
       })
       .catch((err) => {
         console.warn('Could not load cloneable game: ', err);

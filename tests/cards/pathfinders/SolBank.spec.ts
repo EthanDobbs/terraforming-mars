@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {SolBank} from '../../../src/server/cards/pathfinders/SolBank';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {cast, finishGeneration, runAllActions, setOxygenLevel} from '../../TestingUtils';
 import {testGame} from '../../TestGame';
@@ -23,7 +23,7 @@ import {SelectColony} from '../../../src/server/inputs/SelectColony';
 describe('SolBank', () => {
   let solBank: SolBank;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(() => {
     [game, player] = testGame(1, {coloniesExtension: true, turmoilExtension: true});
@@ -51,7 +51,7 @@ describe('SolBank', () => {
   });
 
   it('discounted card does not trigger', () => {
-    player.playedCards = [new IndenturedWorkers()];
+    player.playedCards.push(new IndenturedWorkers());
     player.lastCardPlayed = CardName.INDENTURED_WORKERS; // 8 MC discount
     player.cardsInHand = [new MicroMills()];
     const spctp = new SelectProjectCardToPlay(player);
@@ -96,7 +96,7 @@ describe('SolBank', () => {
   });
 
   it('paying for research cards', () => {
-    player.runResearchPhase(false);
+    player.runResearchPhase();
     runAllActions(game);
     const selectCard = cast(player.popWaitingFor(), SelectCard);
     selectCard.cb([selectCard.cards[1], selectCard.cards[2]]);

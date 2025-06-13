@@ -35,6 +35,8 @@ import {RemoveResourcesFromCard} from '../deferredActions/RemoveResourcesFromCar
 import {isIProjectCard} from '../cards/IProjectCard';
 import {MAXIMUM_HABITAT_RATE, MAXIMUM_LOGISTICS_RATE, MAXIMUM_MINING_RATE, MAX_OCEAN_TILES, MAX_OXYGEN_LEVEL, MAX_TEMPERATURE, MAX_VENUS_SCALE} from '../../common/constants';
 import {CardName} from '../../common/cards/CardName';
+import {asArray, inplaceRemove} from '../../common/utils/utils';
+import {SelectCard} from '../inputs/SelectCard';
 
 export class Executor implements BehaviorExecutor {
   public canExecute(behavior: Behavior, player: IPlayer, card: ICard, canAffordOptions?: CanAffordOptions) {
@@ -48,6 +50,14 @@ export class Executor implements BehaviorExecutor {
 
     if (behavior.or) {
       if (!behavior.or.behaviors.some((behavior) => this.canExecute(behavior, player, card, canAffordOptions))) {
+        return false;
+      }
+    }
+
+    if (behavior.drawCard !== undefined) {
+      const drawCard = behavior.drawCard;
+      const count = typeof(drawCard) === 'number' ? drawCard : ctx.count(drawCard.count);
+      if (game.projectDeck.canDraw(count) === false) {
         return false;
       }
     }
@@ -100,8 +110,17 @@ export class Executor implements BehaviorExecutor {
       if (spend.plants && player.plants < spend.plants) {
         return false;
       }
-      if (spend.energy && player.energy < spend.energy) {
-        return false;
+      if (spend.energy) {
+        if (player.energy < spend.energy) {
+          return false;
+        }
+        if (!player.canAfford({
+          cost: 0,
+          reserveUnits: Units.of({energy: spend.energy}),
+          tr: asTrSource,
+        })) {
+          return false;
+        }
       }
       if (spend.heat) {
         if (player.availableHeat() < spend.heat) {
@@ -123,6 +142,11 @@ export class Executor implements BehaviorExecutor {
       }
       if (spend.corruption && player.underworldData.corruption < spend.corruption) {
         return false;
+      }
+      if (spend.cards) {
+        if (player.cardsInHand.filter((c) => card !== c).length < spend.cards) {
+          return false;
+        }
       }
     }
 
@@ -160,7 +184,9 @@ export class Executor implements BehaviorExecutor {
     }
 
     if (behavior.greenery !== undefined) {
-      if (game.board.getAvailableSpacesForType(player, behavior.greenery.on ?? 'greenery', canAffordOptions).length === 0) {
+      const spaces = game.board.getAvailableSpacesForType(player, behavior.greenery.on ?? 'greenery', canAffordOptions);
+      const filtered = game.board.filterSpacesAroundRedCity(spaces);
+      if (filtered.length === 0) {
         return false;
       }
     }
@@ -181,16 +207,15 @@ export class Executor implements BehaviorExecutor {
           robotCards: arctac.robotCards !== undefined,
         });
         const cards = action.getCards();
-        const count = cards[0].length + cards[1].length;
-        if (count === 0) {
+        if (cards.length === 0) {
           return false;
         }
         // Not playable if the behavior is based on spending a resource
         // from itself to add to itself, like Applied Science.
-        if (count === 1 && (behavior.spend?.resourcesHere ?? 0 > 0)) {
+        if (cards.length === 1 && (behavior.spend?.resourcesHere ?? 0 > 0)) {
           // TODO(kberg): also check wither arctac.min + spend is enough.
           // but that's just to make this future-proof.
-          if (cards[0][0]?.name === card.name) {
+          if (cards[0]?.name === card.name) {
             return false;
           }
         }
@@ -208,8 +233,10 @@ export class Executor implements BehaviorExecutor {
     // }
 
     if (behavior.turmoil) {
+      const turmoil = Turmoil.getTurmoil(game);
       if (behavior.turmoil.sendDelegates) {
-        if (Turmoil.getTurmoil(game).getAvailableDelegateCount(player) < behavior.turmoil.sendDelegates.count) {
+        const count = ctx.count(behavior.turmoil.sendDelegates.count);
+        if (turmoil.getAvailableDelegateCount(player) < count) {
           return false;
         }
       }
@@ -327,6 +354,28 @@ export class Executor implements BehaviorExecutor {
       if (spend.corruption) {
         UnderworldExpansion.loseCorruption(player, spend.corruption);
       }
+      if ((spend.cards ?? 0) > 0) {
+        const count: number = spend.cards ?? 0;
+        const cards = player.cardsInHand.filter((c) => card !== c);
+        // TODO(kberg): this does not count preludes or CEOs. Same for canExecute.
+        player.defer(
+          new SelectCard(
+            message('Select ${0} card(s) to discard', (b) => b.number(count)),
+            undefined,
+            cards,
+            {min: count, max: count},
+          ).andThen((cards) => {
+            for (const c of cards) {
+              inplaceRemove(player.cardsInHand, c);
+              player.game.projectDeck.discard(c);
+            }
+            this.execute(remainder, player, card);
+            return undefined;
+          }),
+        );
+        // Exit early as the rest of handled by the deferred action.
+        return;
+      }
     }
 
     if (behavior.production !== undefined) {
@@ -340,19 +389,18 @@ export class Executor implements BehaviorExecutor {
     if (behavior.standardResource) {
       const entry = behavior.standardResource;
       const count = typeof(entry) === 'number' ? entry : entry.count;
-      const same = typeof(entry) === 'number' ? false : entry.same ?? false;
+      const same = typeof(entry) === 'number' ? true : entry.same ?? true;
       if (same === false) {
         player.defer(
-          new SelectResources(
-            player,
-            count,
-            message('Gain ${0} standard resources', (b) => b.number(count))));
+          new SelectResources(message('Gain ${0} standard resources', (b) => b.number(count)), count)
+            .andThen((units) => {
+              player.stock.addUnits(units, {log: true});
+              return undefined;
+            }));
       } else {
         player.defer(
-          new SelectResource(
-            message('Gain ${0} units of a standard resource', (b) => b.number(count)),
-            Units.keys,
-            (unit) => {
+          new SelectResource(message('Gain ${0} units of a standard resource', (b) => b.number(count)))
+            .andThen((unit) => {
               player.stock.add(Units.ResourceMap[unit], count, {log: true});
               return undefined;
             }));
@@ -396,19 +444,28 @@ export class Executor implements BehaviorExecutor {
     }
 
     if (behavior.tr !== undefined) {
-      player.increaseTerraformRating(ctx.count(behavior.tr));
+      const count = ctx.count(behavior.tr);
+      if (count >= 0) {
+        player.increaseTerraformRating(count);
+      } else {
+        player.decreaseTerraformRating(-count);
+      }
     }
     const addResources = behavior.addResources;
     if (addResources !== undefined) {
-      const count = ctx.count(addResources);
-      player.defer(() => {
-        player.addResourceTo(card, {qty: count, log: true});
-        return undefined;
-      });
+      if (player.game.inDoubleDown) {
+        player.game.log('Resources from ${0} cannot be added to ${1}', (b) => b.card(card).cardName(CardName.DOUBLE_DOWN));
+      } else {
+        const count = ctx.count(addResources);
+        player.defer(() => {
+          player.addResourceTo(card, {qty: count, log: true});
+          return undefined;
+        });
+      }
     }
 
     if (behavior.addResourcesToAnyCard) {
-      const array = Array.isArray(behavior.addResourcesToAnyCard) ? behavior.addResourcesToAnyCard : [behavior.addResourcesToAnyCard];
+      const array = asArray(behavior.addResourcesToAnyCard);
       for (const arctac of array) {
         const count = ctx.count(arctac.count);
         if (count > 0) {
@@ -497,12 +554,13 @@ export class Executor implements BehaviorExecutor {
 
       if (behavior.turmoil.sendDelegates) {
         const sendDelegates = behavior.turmoil.sendDelegates;
+        const count = ctx.count(sendDelegates.count);
         if (sendDelegates.manyParties) {
-          for (let i = 0; i < sendDelegates.count; i++) {
+          for (let i = 0; i < count; i++) {
             player.game.defer(new SendDelegateToArea(player, 'Select where to send delegate'));
           }
         } else {
-          player.game.defer(new SendDelegateToArea(player, `Select where to send ${sendDelegates.count} delegates`, {count: sendDelegates.count}));
+          player.game.defer(new SendDelegateToArea(player, `Select where to send ${sendDelegates.count} delegates`, {count: count}));
         }
       }
     }
@@ -567,6 +625,17 @@ export class Executor implements BehaviorExecutor {
         }
       }
     }
+
+    if (behavior.log !== undefined) {
+      this.log(behavior.log, player, card);
+    }
+  }
+
+  private log(message: string, player: IPlayer, card: ICard) {
+    const replaced = message
+      .replaceAll('${player}', '${0}')
+      .replaceAll('${card}', '${1}');
+    player.game.log(replaced, (b) => b.player(player).card(card));
   }
 
   public onDiscard(behavior: Behavior, player: IPlayer, _card: ICard) {
@@ -595,5 +664,28 @@ export class Executor implements BehaviorExecutor {
         player.colonies.tradeOffset -= colonies.tradeOffset;
       }
     }
+  }
+
+  public toTRSource(behavior: Behavior, ctx: ICounter): TRSource {
+    let tr: number | undefined = undefined;
+    if (behavior.tr !== undefined) {
+      if (typeof(behavior.tr) === 'number') {
+        tr = behavior.tr;
+      } else {
+        tr = ctx.count(behavior.tr);
+      }
+    }
+    const trSource: TRSource = {
+      tr: tr,
+      temperature: behavior.global?.temperature,
+      oxygen: (behavior.global?.oxygen ?? 0) + (behavior.greenery !== undefined ? 1 : 0),
+      venus: behavior.global?.venus,
+      oceans: behavior.ocean !== undefined ? (behavior.ocean.count ?? 1) : undefined,
+
+      moonHabitat: (behavior.moon?.habitatRate ?? 0) + (behavior.moon?.habitatTile !== undefined ? 1 : 0),
+      moonMining: (behavior.moon?.miningRate ?? 0) + (behavior.moon?.mineTile !== undefined ? 1 : 0),
+      moonLogistics: (behavior.moon?.logisticsRate ?? 0) + (behavior.moon?.roadTile !== undefined ? 1 : 0),
+    };
+    return trSource;
   }
 }

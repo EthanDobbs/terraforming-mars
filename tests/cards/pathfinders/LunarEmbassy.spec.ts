@@ -1,21 +1,20 @@
 import {expect} from 'chai';
 import {LunarEmbassy} from '../../../src/server/cards/pathfinders/LunarEmbassy';
-import {Game} from '../../../src/server/Game';
 import {TestPlayer} from '../../TestPlayer';
 import {Units} from '../../../src/common/Units';
-import {SpaceName} from '../../../src/server/SpaceName';
+import {SpaceName} from '../../../src/common/boards/SpaceName';
+import {testGame} from '../../TestingUtils';
 
-describe('LunarEmbassy', function() {
+describe('LunarEmbassy', () => {
   let card: LunarEmbassy;
   let player: TestPlayer;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new LunarEmbassy();
-    player = TestPlayer.BLUE.newPlayer();
-    Game.newInstance('gameid', [player], player, {pathfindersExpansion: true});
+    [/* game */, player] = testGame(1, {pathfindersExpansion: true});
   });
 
-  it('play', function() {
+  it('play', () => {
     player.production.override({});
     player.tagsForTest = {earth: 9};
     player.cardsInHand = [];

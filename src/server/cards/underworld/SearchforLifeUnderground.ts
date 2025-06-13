@@ -8,10 +8,10 @@ import {CardResource} from '../../../common/CardResource';
 import {CardName} from '../../../common/cards/CardName';
 import {SelectPaymentDeferred} from '../../deferredActions/SelectPaymentDeferred';
 import {CardRenderer} from '../render/CardRenderer';
-import {CardRenderDynamicVictoryPoints} from '../render/CardRenderDynamicVictoryPoints';
+import {searchForLife} from '../render/DynamicVictoryPoints';
 import {max} from '../Options';
 import {IdentifySpacesDeferred} from '../../underworld/IdentifySpacesDeferred';
-import {UndergroundResourceToken} from '../../../common/underworld/UndergroundResourceToken';
+import {undergroundResourceTokenDescription} from '../../../common/underworld/UndergroundResourceToken';
 import {TITLES} from '../../inputs/titles';
 
 // TODO(kberg): Copies a lot of Search For Life.
@@ -32,11 +32,11 @@ export class SearchforLifeUnderground extends Card implements IActionCard, IProj
         description: 'Temperature must -18° C or colder.',
         renderData: CardRenderer.builder((b) => {
           b.action('Spend 1 M€ to identify an underground resource. If it depicts at least 1 microbe, add a science resource here.', (eb) => {
-            eb.megacredits(1).startAction.identify().nbsp.text(',').microbes(1).asterix().colon().nbsp.science();
+            eb.megacredits(1).startAction.identify().nbsp.text(',').resource(CardResource.MICROBE).asterix().colon().nbsp.resource(CardResource.SCIENCE);
           }).br;
           b.vpText('3 VPs if you have one or more science resources here.');
         }),
-        victoryPoints: CardRenderDynamicVictoryPoints.searchForLife(),
+        victoryPoints: searchForLife(),
       },
     });
   }
@@ -50,14 +50,19 @@ export class SearchforLifeUnderground extends Card implements IActionCard, IProj
   public canAct(player: IPlayer): boolean {
     return player.canAfford(1);
   }
-  private static microbeResources: ReadonlyArray<UndergroundResourceToken | undefined> = ['microbe1', 'microbe2', 'microbe1pertemp'];
   public action(player: IPlayer) {
     player.game.defer(new SelectPaymentDeferred(player, 1, {title: TITLES.payForCardAction(this.name)}))
       .andThen(() => {
         const identify = new IdentifySpacesDeferred(player, 1);
         player.game.defer(identify);
         identify.andThen(([space]) => {
-          if (SearchforLifeUnderground.microbeResources.includes(space.undergroundResources)) {
+          const undergroundResources = space.undergroundResources;
+          if (undergroundResources === undefined) {
+            player.game.log('${0} had no underground resources to discard', (b) => b.player(player));
+            return;
+          }
+          player.game.log('${0} revealed ${1}', (b) => b.player(player).string(undergroundResourceTokenDescription[undergroundResources]));
+          if (['microbe1', 'microbe2', 'microbe1pertemp'].includes(undergroundResources)) {
             player.addResourceTo(this, 1);
             player.game.log('${0} found life!', (b) => b.player(player));
           }

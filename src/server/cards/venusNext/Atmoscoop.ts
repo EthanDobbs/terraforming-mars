@@ -34,7 +34,7 @@ export class Atmoscoop extends Card implements IProjectCard {
         description: 'Requires 3 science tags. Either raise the temperature 2 steps, or raise Venus 2 steps. Add 2 floaters to ANY card.',
         renderData: CardRenderer.builder((b) => {
           b.temperature(2).or(Size.SMALL).venus(2).br;
-          b.floaters(2).asterix();
+          b.resource(CardResource.FLOATER, 2).asterix();
         }),
       },
     });
@@ -71,8 +71,8 @@ export class Atmoscoop extends Card implements IProjectCard {
       game.increaseVenusScaleLevel(player, 2);
       return undefined;
     });
-    const increaseTempOrVenus = new OrOptions(increaseTemp, increaseVenus);
-    increaseTempOrVenus.title = 'Choose global parameter to raise';
+    const increaseTempOrVenus = new OrOptions(increaseTemp, increaseVenus)
+      .setTitle('Choose global parameter to raise');
 
     if (!this.temperatureIsMaxed(game) && this.venusIsMaxed(game)) {
       player.game.increaseTemperature(player, 2);

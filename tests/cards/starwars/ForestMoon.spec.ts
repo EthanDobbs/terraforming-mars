@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {ForestMoon} from '../../../src/server/cards/starwars/ForestMoon';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {testGame} from '../../TestGame';
 import {addGreenery, cast, runAllActions} from '../../TestingUtils';
@@ -12,7 +12,7 @@ describe('ForestMoon', () => {
   let player: TestPlayer;
   let player2: TestPlayer;
   let player3: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
   beforeEach(() => {
     card = new ForestMoon();
@@ -39,7 +39,7 @@ describe('ForestMoon', () => {
     player.production.override({energy: 2});
     player2.production.override({energy: 1});
     player3.production.override({energy: 2});
-    expect(card.play(player)).is.undefined;
+    cast(card.play(player), undefined);
     runAllActions(game);
     const selectPlayer = cast(player.popWaitingFor(), SelectPlayer);
 
@@ -58,7 +58,7 @@ describe('ForestMoon', () => {
     const fish = new Fish();
     player.playedCards.push(fish);
 
-    expect(card.play(player)).is.undefined;
+    cast(card.play(player), undefined);
 
     runAllActions(game);
     expect(player.popWaitingFor()).is.undefined;

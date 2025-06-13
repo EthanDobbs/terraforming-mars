@@ -65,19 +65,13 @@ export class RoadPiracy extends Card implements IProjectCard {
         throw new Error(`You may only steal up to ${limit} ${resource} from all players`);
       }
       for (const [target, count] of ledger) {
-        target.maybeBlockAttack(player, (proceed) => {
-          if (proceed) {
-            target.stock.steal(resource, count, player);
-          }
-          return undefined;
-        });
+        if (count > 0) {
+          target.attack(player, resource, count, {stealing: true});
+        }
       }
       return undefined;
     };
-    // TODO(kberg): does title always have to be set separately? That's fixable.
-    const option = new AndOptions(...selectAmounts).andThen(cb);
-    option.title = title;
-    return option;
+    return new AndOptions(...selectAmounts).andThen(cb).setTitle(title);
   }
 
 

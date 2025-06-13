@@ -10,6 +10,7 @@ import {CardRenderer} from '../render/CardRenderer';
 import {Size} from '../../../common/cards/render/Size';
 import {all} from '../Options';
 import {message} from '../../logs/MessageBuilder';
+import {Tag} from '../../../common/cards/Tag';
 
 export class HiredRaiders extends Card implements IProjectCard {
   constructor() {
@@ -17,9 +18,10 @@ export class HiredRaiders extends Card implements IProjectCard {
       type: CardType.EVENT,
       name: CardName.HIRED_RAIDERS_UNDERWORLD,
       cost: 1,
+      tags: [Tag.CRIME],
 
       metadata: {
-        cardNumber: 'U00',
+        cardNumber: 'UX02',
         renderData: CardRenderer.builder((b) => {
           b.text('steal', Size.MEDIUM, true).megacredits(3, {all})
             .plus().megacredits(2, {all}).slash().corruption();
@@ -46,12 +48,7 @@ export class HiredRaiders extends Card implements IProjectCard {
         const optionTitle = message('Steal ${0} M€ from ${1}', (b) => b.number(amountStolen).player(target));
 
         availableActions.options.push(new SelectOption(optionTitle).andThen(() => {
-          target.maybeBlockAttack(player, (proceed) => {
-            if (proceed) {
-              target.stock.steal(Resource.MEGACREDITS, amountStolen, player);
-            }
-            return undefined;
-          });
+          target.attack(player, Resource.MEGACREDITS, amountStolen, {log: true, stealing: true});
           return undefined;
         }));
       }

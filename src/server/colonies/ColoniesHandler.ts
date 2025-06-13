@@ -6,6 +6,7 @@ import {Tag} from '../../common/cards/Tag';
 import {SelectColony} from '../inputs/SelectColony';
 import {IPlayer} from '../IPlayer';
 import {inplaceRemove} from '../../common/utils/utils';
+import {CardName} from '../../common/cards/CardName';
 
 export class ColoniesHandler {
   public static getColony(game: IGame, colonyName: ColonyName, includeDiscardedColonies: boolean = false): IColony {
@@ -13,7 +14,9 @@ export class ColoniesHandler {
     if (colony !== undefined) return colony;
     if (includeDiscardedColonies === true) {
       colony = game.discardedColonies.find((c) => c.name === colonyName);
-      if (colony !== undefined) return colony;
+      if (colony !== undefined) {
+        return colony;
+      }
     }
     throw new Error(`Unknown colony '${colonyName}'`);
   }
@@ -22,7 +25,7 @@ export class ColoniesHandler {
     return game.colonies.filter((colony) => colony.isActive && colony.visitor === undefined);
   }
 
-  public static onCardPlayed(game: IGame, card: ICard) {
+  public static maybeActivateColonies(game: IGame, card: ICard) {
     if (!game.gameOptions.coloniesExtension) return;
     game.colonies.forEach((colony) => {
       if (colony.isActive === false && ColoniesHandler.cardActivatesColony(colony, card)) {
@@ -41,8 +44,13 @@ export class ColoniesHandler {
     if (colony.isActive) {
       return true;
     }
-    if (colony.metadata.cardResource !== undefined && colony.metadata.cardResource === card.resourceType) {
-      return true;
+    if (colony.metadata.cardResource !== undefined) {
+      if (colony.metadata.cardResource === card.resourceType) {
+        return true;
+      }
+      if (card.name === CardName.MARTIAN_EXPRESS) {
+        return true;
+      }
     }
     if (colony.name === ColonyName.VENUS && card.tags.includes(Tag.VENUS) && card.resourceType !== undefined) {
       return true;

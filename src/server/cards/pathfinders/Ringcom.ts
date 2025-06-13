@@ -5,10 +5,10 @@ import {IPlayer} from '../../IPlayer';
 import {Resource} from '../../../common/Resource';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import {all, played} from '../Options';
+import {all} from '../Options';
 import {ICard} from '../ICard';
 
-export class Ringcom extends CorporationCard {
+export class Ringcom extends CorporationCard implements ICorporationCard {
   constructor() {
     super({
       name: CardName.RINGCOM,
@@ -34,7 +34,7 @@ export class Ringcom extends CorporationCard {
           b.cards(2, {secondaryTag: Tag.JOVIAN});
           b.corpBox('effect', (ce) => {
             ce.effect('When any player plays a card with a Jovian tag (including this) gain 1 titanium.', (eb) => {
-              eb.jovian({all, played}).startEffect.titanium(1);
+              eb.tag(Tag.JOVIAN, {all}).asterix().startEffect.titanium(1);
             });
           });
         }),

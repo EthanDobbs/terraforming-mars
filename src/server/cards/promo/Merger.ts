@@ -44,6 +44,8 @@ export class Merger extends PreludeCard {
     player.defer(() => {
       return new SelectCard('Choose corporation card to play', 'Play', dealtCorps, {enabled: enabled})
         .andThen(([card]) => {
+          // Allow merged corps to add resources to themselves.
+          player.game.inDoubleDown = false;
           player.playAdditionalCorporationCard(card);
           dealtCorps.forEach((corp) => {
             if (corp.name !== card.name) {
@@ -107,7 +109,7 @@ export class Merger extends PreludeCard {
       sum += asNumber(production?.megacredits);
       incomingTitanium += asNumber(production?.titanium);
     }
-    if (corp.name === CardName.LUNA_TRADE_FEDERATION || player.isCorporation(CardName.LUNA_TRADE_FEDERATION)) {
+    if (corp.name === CardName.LUNA_TRADE_FEDERATION || player.canUseTitaniumAsMegacredits) {
       sum += (player.titanium + incomingTitanium) * (titaniumValue - 1);
     }
 

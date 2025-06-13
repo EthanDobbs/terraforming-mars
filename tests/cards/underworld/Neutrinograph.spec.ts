@@ -1,11 +1,12 @@
 import {expect} from 'chai';
 import {Neutrinograph} from '../../../src/server/cards/underworld/Neutrinograph';
 import {testGame} from '../../TestGame';
-import {cast, runAllActions} from '../../TestingUtils';
-import {UnderworldTestHelper} from '../../underworld/UnderworldTestHelper';
+import {cast, fakeCard, runAllActions} from '../../TestingUtils';
+import {assertIsIdentificationAction} from '../../underworld/underworldAssertions';
 import {IdentifySpacesDeferred} from '../../../src/server/underworld/IdentifySpacesDeferred';
 import {SelectSpace} from '../../../src/server/inputs/SelectSpace';
 import {UnderworldExpansion} from '../../../src/server/underworld/UnderworldExpansion';
+import {TileType} from '../../../src/common/TileType';
 
 describe('Neutrinograph', () => {
   it('canPlay', () => {
@@ -40,9 +41,9 @@ describe('Neutrinograph', () => {
     cast(card.play(player), undefined);
 
     runAllActions(game);
-    UnderworldTestHelper.assertIsIdentificationAction(player, player.popWaitingFor());
+    assertIsIdentificationAction(player, player.popWaitingFor());
     runAllActions(game);
-    UnderworldTestHelper.assertIsIdentificationAction(player, player.popWaitingFor());
+    assertIsIdentificationAction(player, player.popWaitingFor());
     runAllActions(game);
     cast(player.popWaitingFor(), undefined);
   });
@@ -85,4 +86,25 @@ describe('Neutrinograph', () => {
     expect(UnderworldExpansion.identifiedSpaces(game)).includes(space);
     expect(UnderworldExpansion.identifiableSpaces(player)).does.not.include(space);
   });
+});
+
+it('effect does not apply to adding tiles', () => {
+  const card = new Neutrinograph();
+  const fake = fakeCard({
+    onIdentification() {
+      throw new Error('Unexpected identification');
+    },
+  });
+
+  const [game, player] = testGame(2, {underworldExpansion: true});
+
+  const space = UnderworldExpansion.identifiableSpaces(player)[0];
+  UnderworldExpansion.identify(game, space);
+
+  player.playedCards.push(card);
+  player.playedCards.push(fake);
+
+  game.addTile(player, space, {tileType: TileType.CITY});
+
+  // Not throwing an error is success
 });

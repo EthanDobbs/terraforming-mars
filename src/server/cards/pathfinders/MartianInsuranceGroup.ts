@@ -6,9 +6,9 @@ import {CardName} from '../../../common/cards/CardName';
 import {CardType} from '../../../common/cards/CardType';
 import {CardRenderer} from '../render/CardRenderer';
 import {IProjectCard} from '../IProjectCard';
-import {played} from '../Options';
+import {ICorporationCard} from '../corporation/ICorporationCard';
 
-export class MartianInsuranceGroup extends CorporationCard {
+export class MartianInsuranceGroup extends CorporationCard implements ICorporationCard {
   constructor() {
     super({
       name: CardName.MARTIAN_INSURANCE_GROUP,
@@ -27,7 +27,7 @@ export class MartianInsuranceGroup extends CorporationCard {
           b.megacredits(42).production((pb) => pb.megacredits(1));
           b.corpBox('effect', (ce) => {
             ce.effect('Whenever you play an event card, raise your M€ production 1 step.', (eb) => {
-              eb.event({played}).startEffect.production((pb) => pb.megacredits(1));
+              eb.tag(Tag.EVENT).startEffect.production((pb) => pb.megacredits(1));
             });
           });
         }),

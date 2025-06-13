@@ -5,10 +5,11 @@ import {IPlayer} from '../../IPlayer';
 import {CardType} from '../../../common/cards/CardType';
 import {CardName} from '../../../common/cards/CardName';
 import {CardRenderer} from '../render/CardRenderer';
-import {digit, played} from '../Options';
+import {digit} from '../Options';
 import {Resource} from '../../../common/Resource';
+import {ICorporationCard} from './ICorporationCard';
 
-export class InterplanetaryCinematics extends CorporationCard {
+export class InterplanetaryCinematics extends CorporationCard implements ICorporationCard {
   constructor() {
     super({
       name: CardName.INTERPLANETARY_CINEMATICS,
@@ -27,7 +28,7 @@ export class InterplanetaryCinematics extends CorporationCard {
           b.megacredits(30).nbsp.steel(20, {digit});
           b.corpBox('effect', (ce) => {
             ce.effect('Each time you play an event, you gain 2 M€.', (eb) => {
-              eb.event({played}).startEffect.megacredits(2);
+              eb.tag(Tag.EVENT).startEffect.megacredits(2);
             });
           });
         }),

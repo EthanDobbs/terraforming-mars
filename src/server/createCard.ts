@@ -9,10 +9,11 @@ import {ALL_MODULE_MANIFESTS} from './cards/AllManifests';
 
 const CARD_RENAMES = new Map<string, CardName>([
   // When renaming a card, add the old name here (like the example below), and add a TODO (like the example below)
-  // And remember to add a test in spec.ts.
+  // And remember to add a test in createCard.spec.ts.
 
+  // eg
   // TODO(yournamehere): remove after 2021-04-05
-  // ['Earth Embasy', CardName.EARTH_EMBASSY],
+  // ['Space Corridors', CardName.SPACE_LANES],
 ]);
 
 function _createCard<T extends ICard>(cardName: CardName, cardManifestNames: Array<keyof ModuleManifest>): T | undefined {
@@ -55,14 +56,14 @@ export function newCeo(cardName: CardName): ICeoCard | undefined {
   return _createCard(cardName, ['ceoCards']);
 }
 
-export function preludesFromJSON(cards: Array<CardName>): Array<IPreludeCard> {
+function cfj<T extends ICard>(cards: ReadonlyArray<CardName>, resolver: (c: CardName) => T | undefined): Array<T> {
   if (cards === undefined) {
-    console.warn('missing cards calling cardsFromJSON');
+    console.warn('parameter of array of cards is undefined when calling cardsFromJSON');
     return [];
   }
-  const result: Array<IPreludeCard> = [];
+  const result: Array<T> = [];
   cards.forEach((element: CardName) => {
-    const card = newPrelude(element);
+    const card = resolver(element);
     if (card !== undefined) {
       result.push(card);
     } else {
@@ -72,53 +73,19 @@ export function preludesFromJSON(cards: Array<CardName>): Array<IPreludeCard> {
   return result;
 }
 
-export function ceosFromJSON(cards: Array<CardName>): Array<ICeoCard> {
-  if (cards === undefined) {
-    console.warn('missing cards calling ceosFromJSON');
-    return [];
-  }
-  const result: Array<ICeoCard> = [];
-  cards.forEach((element: CardName) => {
-    const card = newCeo(element);
-    if (card !== undefined) {
-      result.push(card);
-    } else {
-      console.warn(`card ${element} not found while loading game.`);
-    }
-  });
-  return result;
+export function cardsFromJSON(cards: ReadonlyArray<CardName>): Array<IProjectCard> {
+  return cfj(cards, newProjectCard);
 }
 
-export function cardsFromJSON(cards: Array<CardName>): Array<IProjectCard> {
-  if (cards === undefined) {
-    console.warn('missing cards calling cardsFromJSON');
-    return [];
-  }
-  const result: Array<IProjectCard> = [];
-  cards.forEach((element: CardName) => {
-    const card = newProjectCard(element);
-    if (card !== undefined) {
-      result.push(card);
-    } else {
-      console.warn(`card ${element} not found while loading game.`);
-    }
-  });
-  return result;
+export function corporationCardsFromJSON(cards: ReadonlyArray<CardName>): Array<ICorporationCard> {
+  return cfj(cards, newCorporationCard);
 }
 
-export function corporationCardsFromJSON(cards: Array<CardName>): Array<ICorporationCard> {
-  if (cards === undefined) {
-    console.warn('missing cards calling corporationCardsFromJSON');
-    return [];
-  }
-  const result: Array<ICorporationCard> = [];
-  cards.forEach((element: CardName) => {
-    const card = newCorporationCard(element);
-    if (card !== undefined) {
-      result.push(card);
-    } else {
-      console.warn(`corporation ${element} not found while loading game.`);
-    }
-  });
-  return result;
+export function ceosFromJSON(cards: ReadonlyArray<CardName>): Array<ICeoCard> {
+  return cfj(cards, newCeo);
 }
+
+export function preludesFromJSON(cards: ReadonlyArray<CardName>): Array<IPreludeCard> {
+  return cfj(cards, newPrelude);
+}
+

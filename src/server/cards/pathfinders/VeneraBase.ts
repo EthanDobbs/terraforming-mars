@@ -4,7 +4,7 @@ import {CardRenderer} from '../render/CardRenderer';
 import {CardResource} from '../../../common/CardResource';
 import {Tag} from '../../../common/cards/Tag';
 import {PartyName} from '../../../common/turmoil/PartyName';
-import {SpaceName} from '../../SpaceName';
+import {SpaceName} from '../../../common/boards/SpaceName';
 import {ActionCard} from '../ActionCard';
 
 export class VeneraBase extends ActionCard {
@@ -30,7 +30,7 @@ export class VeneraBase extends ActionCard {
       metadata: {
         cardNumber: 'Pf67',
         renderData: CardRenderer.builder((b) => {
-          b.action('Add 1 floater to ANY Venus card', (ab) => ab.empty().startAction.floaters(1, {secondaryTag: Tag.VENUS}).asterix());
+          b.action('Add 1 floater to ANY Venus card', (ab) => ab.empty().startAction.resource(CardResource.FLOATER, {secondaryTag: Tag.VENUS}).asterix());
           b.br;
           b.production((pb) => pb.megacredits(3)).nbsp.city({secondaryTag: Tag.SPACE}).asterix();
           b.br;

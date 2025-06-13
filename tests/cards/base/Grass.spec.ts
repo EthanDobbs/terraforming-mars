@@ -1,25 +1,25 @@
 import {expect} from 'chai';
 import {setTemperature} from '../../TestingUtils';
 import {Grass} from '../../../src/server/cards/base/Grass';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {testGame} from '../../TestGame';
 
-describe('Grass', function() {
+describe('Grass', () => {
   let card: Grass;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new Grass();
     [game, player] = testGame(2);
   });
 
-  it('Can not play', function() {
+  it('Can not play', () => {
     expect(card.canPlay(player)).is.not.true;
   });
 
-  it('Should play', function() {
+  it('Should play', () => {
     setTemperature(game, -16);
     expect(card.canPlay(player)).is.true;
     card.play(player);

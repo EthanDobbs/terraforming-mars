@@ -7,14 +7,14 @@ import {TileType} from '../../common/TileType';
 import {AresData, HazardConstraint} from '../../common/ares/AresData';
 
 /**
- * Package-private support for placing and upgrading hazard tiles.
+ * Support for placing and upgrading hazard tiles.
  */
-export class _AresHazardPlacement {
+export class AresHazards {
   public static putHazardAt(space: Space, tileType: TileType) {
     space.tile = {tileType: tileType, protectedHazard: false};
   }
 
-  public static randomlyPlaceHazard(game: IGame, tileType: TileType, direction: 1 | -1, cardCount: 1 | 2 = 1) {
+  public static randomlyPlaceHazard(game: IGame, tileType: TileType, direction: 'top' | 'bottom', cardCount: 1 | 2 = 1) {
     const space = game.getSpaceByOffset(direction, tileType, cardCount);
     this.putHazardAt(space, tileType);
     return space;
@@ -69,8 +69,8 @@ export class _AresHazardPlacement {
           type = TileType.EROSION_SEVERE;
         }
 
-        const space1 = this.randomlyPlaceHazard(player.game, type, 1);
-        const space2 = this.randomlyPlaceHazard(player.game, type, -1);
+        const space1 = this.randomlyPlaceHazard(player.game, type, 'top');
+        const space2 = this.randomlyPlaceHazard(player.game, type, 'bottom');
         [space1, space2].forEach((space) => {
           LogHelper.logTilePlacement(player, space, type);
         });

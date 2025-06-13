@@ -1,6 +1,6 @@
 import {expect} from 'chai';
 import {AsteroidResources} from '../../../src/server/cards/pathfinders/AsteroidResources';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {TestPlayer} from '../../TestPlayer';
 import {SelectSpace} from '../../../src/server/inputs/SelectSpace';
 import {testGame} from '../../TestGame';
@@ -10,24 +10,24 @@ import {SpaceType} from '../../../src/common/boards/SpaceType';
 import {TileType} from '../../../src/common/TileType';
 import {cast, runAllActions} from '../../TestingUtils';
 
-describe('AsteroidResources', function() {
+describe('AsteroidResources', () => {
   let card: AsteroidResources;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new AsteroidResources();
     [game, player] = testGame(1);
   });
 
-  it('canPlay', function() {
+  it('canPlay', () => {
     player.energy = 2;
     expect(card.canPlay(player)).is.false;
     player.energy = 3;
     expect(card.canPlay(player)).is.true;
   });
 
-  it('play, gain production', function() {
+  it('play, gain production', () => {
     player.energy = 3;
 
     card.play(player);
@@ -41,7 +41,7 @@ describe('AsteroidResources', function() {
     expect(player.steel).eq(0);
   });
 
-  it('play, place ocean', function() {
+  it('play, place ocean', () => {
     player.energy = 3;
 
     card.play(player);

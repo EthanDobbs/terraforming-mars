@@ -1,15 +1,15 @@
 import {expect} from 'chai';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {FairTradeComplaint} from '../../../src/server/cards/underworld/FairTradeComplaint';
 import {Turmoil} from '../../../src/server/turmoil/Turmoil';
 import {TestPlayer} from '../../TestPlayer';
 import {testGame} from '../../TestGame';
 import {fakeCard} from '../../TestingUtils';
 
-describe('FairTradeComplaint', function() {
+describe('FairTradeComplaint', () => {
   let card: FairTradeComplaint;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let turmoil: Turmoil;
 
   beforeEach(() => {

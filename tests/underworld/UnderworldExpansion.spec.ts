@@ -3,6 +3,7 @@ import {TestPlayer} from '../TestPlayer';
 import {testGame} from '../TestGame';
 import {UnderworldExpansion} from '../../src/server/underworld/UnderworldExpansion';
 import {Game} from '../../src/server/Game';
+import {IGame} from '../../src/server/IGame';
 import {UnderworldData} from '../../src/server/underworld/UnderworldData';
 import {cast, fakeCard, forceGenerationEnd, formatMessage, runAllActions} from '../TestingUtils';
 import {Units} from '../../src/common/Units';
@@ -19,10 +20,10 @@ import {PlayerInput} from '../../src/server/PlayerInput';
 import {OrOptions} from '../../src/server/inputs/OrOptions';
 import {PrivateMilitaryContractor} from '../../src/server/cards/underworld/PrivateMilitaryContractor';
 
-describe('UnderworldExpansion', function() {
+describe('UnderworldExpansion', () => {
   let player1: TestPlayer;
   let player2: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let underworldData: UnderworldData;
   let dataCard1: IProjectCard;
   let dataCard2: IProjectCard;
@@ -36,7 +37,7 @@ describe('UnderworldExpansion', function() {
     dataCard2 = new MartianCulture();
     microbeCard1 = new GHGProducingBacteria();
     microbeCard2 = new RegolithEaters();
-    player1.playedCards = [dataCard1, dataCard2, microbeCard1, microbeCard2];
+    player1.playedCards.set(dataCard1, dataCard2, microbeCard1, microbeCard2);
     game.phase = Phase.ACTION;
   });
 
@@ -536,7 +537,7 @@ describe('UnderworldExpansion', function() {
     public playerInput: PlayerInput | undefined = undefined;
 
     public run() {
-      this.playerInput = UnderworldExpansion.maybeBlockAttack(this.target, this.perpetrator, (proceed) => {
+      this.playerInput = UnderworldExpansion.maybeBlockAttack(this.target, this.perpetrator, '', (proceed) => {
         this.proceed = proceed;
         this.called = true;
         return undefined;
@@ -640,7 +641,7 @@ describe('UnderworldExpansion', function() {
 
     const orOptions = cast(tester.playerInput, OrOptions);
 
-    expect(orOptions.options.length).eq(2);
+    expect(orOptions.options).has.length(2);
     orOptions.options[0].cb();
 
     expect(tester.called).is.true;
@@ -662,7 +663,7 @@ describe('UnderworldExpansion', function() {
 
     const orOptions = cast(tester.playerInput, OrOptions);
 
-    expect(orOptions.options.length).eq(3);
+    expect(orOptions.options).has.length(3);
     expect(formatMessage(orOptions.options[0].title)).matches(/Private Military Contractor/);
     orOptions.options[0].cb();
 

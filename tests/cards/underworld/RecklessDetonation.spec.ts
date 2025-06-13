@@ -3,7 +3,7 @@ import {RecklessDetonation} from '../../../src/server/cards/underworld/RecklessD
 import {testGame} from '../../TestGame';
 import {cast, runAllActions} from '../../TestingUtils';
 import {OrOptions} from '../../../src/server/inputs/OrOptions';
-import {UnderworldTestHelper} from '../../underworld/UnderworldTestHelper';
+import {assertIsExcavationAction} from '../../underworld/underworldAssertions';
 
 describe('RecklessDetonation', () => {
   it('can play', () => {
@@ -18,7 +18,7 @@ describe('RecklessDetonation', () => {
     expect(card.canPlay(player)).is.true;
   });
 
-  it('Should play', function() {
+  it('Should play', () => {
     const card = new RecklessDetonation();
     const [game, player, player2] = testGame(2, {underworldExpansion: true});
     player2.titanium = 3;
@@ -35,6 +35,6 @@ describe('RecklessDetonation', () => {
     expect(player2.steel).to.eq(1);
 
     runAllActions(game);
-    UnderworldTestHelper.assertIsExcavationAction(player, player.popWaitingFor());
+    assertIsExcavationAction(player, player.popWaitingFor());
   });
 });

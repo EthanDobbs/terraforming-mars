@@ -12,8 +12,9 @@ import {Resource} from '../../../common/Resource';
 import {CardRenderer} from '../render/CardRenderer';
 import {Size} from '../../../common/cards/render/Size';
 import {digit} from '../Options';
+import {ICorporationCard} from '../corporation/ICorporationCard';
 
-export class Astrodrill extends CorporationCard implements IActionCard {
+export class Astrodrill extends CorporationCard implements ICorporationCard, IActionCard {
   constructor() {
     super({
       name: CardName.ASTRODRILL,
@@ -30,15 +31,15 @@ export class Astrodrill extends CorporationCard implements IActionCard {
         description: 'You start with 35 M€ and 3 asteroid resources.',
         renderData: CardRenderer.builder((b) => {
           b.br;
-          b.megacredits(35).nbsp.asteroids(3, {digit});
+          b.megacredits(35).nbsp.resource(CardResource.ASTEROID, {amount: 3, digit});
           b.corpBox('action', (ce) => {
             ce.vSpace(Size.LARGE);
             ce.action(undefined, (eb) => {
-              eb.empty().startAction.asteroids(1).asterix().slash().wild(1).or();
+              eb.empty().startAction.resource(CardResource.ASTEROID).asterix().slash().wild(1).or();
             });
             ce.vSpace();
             ce.action('Add an asteroid resource to ANY card OR gain any standard resource, OR remove an asteroid resource from this card to gain 3 titanium.', (eb) => {
-              eb.asteroids(1).startAction.titanium(3, {digit});
+              eb.resource(CardResource.ASTEROID).startAction.titanium(3, {digit});
             });
           });
         }),

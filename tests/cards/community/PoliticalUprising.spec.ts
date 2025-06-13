@@ -1,24 +1,23 @@
 import {expect} from 'chai';
 import {PoliticalUprising} from '../../../src/server/cards/community/PoliticalUprising';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {SelectParty} from '../../../src/server/inputs/SelectParty';
 import {PartyName} from '../../../src/common/turmoil/PartyName';
 import {cast} from '../../TestingUtils';
 import {TestPlayer} from '../../TestPlayer';
+import {testGame} from '../../TestingUtils';
 
-describe('PoliticalUprising', function() {
+describe('PoliticalUprising', () => {
   let card: PoliticalUprising;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new PoliticalUprising();
-    player = TestPlayer.BLUE.newPlayer();
-    const redPlayer = TestPlayer.RED.newPlayer();
-    game = Game.newInstance('gameid', [player, redPlayer], player, {turmoilExtension: true});
+    [game, player/* , player2 */] = testGame(2, {turmoilExtension: true});
   });
 
-  it('Should play', function() {
+  it('Should play', () => {
     card.play(player);
     expect(game.deferredActions).has.lengthOf(4);
 

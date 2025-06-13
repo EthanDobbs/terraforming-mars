@@ -4,22 +4,22 @@ import {JovianLanterns} from '../../../src/server/cards/colonies/JovianLanterns'
 import {NitrogenFromTitan} from '../../../src/server/cards/colonies/NitrogenFromTitan';
 import {TitanFloatingLaunchPad} from '../../../src/server/cards/colonies/TitanFloatingLaunchPad';
 import {ICard} from '../../../src/server/cards/ICard';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {SelectCard} from '../../../src/server/inputs/SelectCard';
 import {TestPlayer} from '../../TestPlayer';
 import {testGame} from '../../TestGame';
 
-describe('NitrogenFromTitan', function() {
+describe('NitrogenFromTitan', () => {
   let card: NitrogenFromTitan;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new NitrogenFromTitan();
     [game, player] = testGame(2);
   });
 
-  it('Can play without floaters', function() {
+  it('Can play without floaters', () => {
     const tr = player.getTerraformRating();
     card.play(player);
     expect(player.getTerraformRating()).to.eq(tr + 2);
@@ -27,7 +27,7 @@ describe('NitrogenFromTitan', function() {
     expect(input).is.undefined;
   });
 
-  it('Can play with single Jovian floater card', function() {
+  it('Can play with single Jovian floater card', () => {
     const jovianLanterns = new JovianLanterns();
     player.playedCards.push(jovianLanterns);
 
@@ -36,7 +36,7 @@ describe('NitrogenFromTitan', function() {
     expect(jovianLanterns.resourceCount).to.eq(2);
   });
 
-  it('Can play with multiple Jovian floater cards', function() {
+  it('Can play with multiple Jovian floater cards', () => {
     const jovianLanterns = new JovianLanterns();
     player.playedCards.push(jovianLanterns, new TitanFloatingLaunchPad());
 

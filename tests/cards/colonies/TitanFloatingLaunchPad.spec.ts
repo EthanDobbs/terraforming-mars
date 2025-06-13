@@ -4,7 +4,7 @@ import {TitanFloatingLaunchPad} from '../../../src/server/cards/colonies/TitanFl
 import {ICard} from '../../../src/server/cards/ICard';
 import {Luna} from '../../../src/server/colonies/Luna';
 import {Triton} from '../../../src/server/colonies/Triton';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {OrOptions} from '../../../src/server/inputs/OrOptions';
 import {SelectCard} from '../../../src/server/inputs/SelectCard';
 import {SelectColony} from '../../../src/server/inputs/SelectColony';
@@ -14,23 +14,23 @@ import {testGame} from '../../TestGame';
 import {cast, runAllActions} from '../../TestingUtils';
 import {Message} from '../../../src/common/logs/Message';
 
-describe('TitanFloatingLaunchPad', function() {
+describe('TitanFloatingLaunchPad', () => {
   let card: TitanFloatingLaunchPad;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new TitanFloatingLaunchPad();
     [game, player/* , player2 */] = testGame(2, {coloniesExtension: true});
   });
 
-  it('Should act', function() {
+  it('Should act', () => {
     player.playedCards.push(card);
     expect(card.canAct()).is.true;
     expect(card.getVictoryPoints(player)).to.eq(1);
   });
 
-  it('action with single targets', function() {
+  it('action with single targets', () => {
     player.game.colonies = []; // A way to simulate that no colonies are available.
     player.playedCards.push(card);
     game.colonies = []; // A way to fake out that no colonies are available.
@@ -52,7 +52,7 @@ describe('TitanFloatingLaunchPad', function() {
     expect(card.resourceCount).to.eq(2);
   });
 
-  it('action with multiple targets', function() {
+  it('action with multiple targets', () => {
     player.game.colonies = []; // A way to simulate that no colonies are available.
 
     const card2 = new JupiterFloatingStation();
@@ -66,7 +66,7 @@ describe('TitanFloatingLaunchPad', function() {
     expect(card.resourceCount).to.eq(1);
   });
 
-  it('action with multiple targets and colonies', function() {
+  it('action with multiple targets and colonies', () => {
     game.colonies = [new Luna(), new Triton()];
 
     const card2 = new JupiterFloatingStation();
@@ -91,7 +91,7 @@ describe('TitanFloatingLaunchPad', function() {
     expect(player.megaCredits).to.eq(2);
   });
 
-  it('Cannot take trade action during embargo #6348', function() {
+  it('Cannot take trade action during embargo #6348', () => {
     player.game.tradeEmbargo = true;
 
     game.colonies = [new Luna(), new Triton()];

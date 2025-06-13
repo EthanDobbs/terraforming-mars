@@ -1,41 +1,40 @@
 import {expect} from 'chai';
 import {Incite} from '../../../src/server/cards/community/Incite';
 import {EventAnalysts} from '../../../src/server/cards/turmoil/EventAnalysts';
-import {Game} from '../../../src/server/Game';
+import {IGame} from '../../../src/server/IGame';
 import {SelectParty} from '../../../src/server/inputs/SelectParty';
 import {PartyName} from '../../../src/common/turmoil/PartyName';
-import {cast, getSendADelegateOption, runAllActions} from '../../TestingUtils';
+import {cast, getSendADelegateOption, runAllActions, testGame} from '../../TestingUtils';
 import {TestPlayer} from '../../TestPlayer';
 import {Turmoil} from '../../../src/server/turmoil/Turmoil';
 
-describe('Incite', function() {
+describe('Incite', () => {
   let card: Incite;
   let player: TestPlayer;
-  let game: Game;
+  let game: IGame;
   let turmoil: Turmoil;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new Incite();
-    player = TestPlayer.BLUE.newPlayer();
 
-    game = Game.newInstance('gameid', [player], player, {turmoilExtension: true});
+    [game, player] = testGame(1, {turmoilExtension: true});
 
     card.play(player);
-    player.setCorporationForTest(card);
+    player.corporations.push(card);
     turmoil = game.turmoil!;
   });
 
-  it('Starts with +1 influence', function() {
+  it('Starts with +1 influence', () => {
     expect(game.turmoil!.getPlayerInfluence(player)).to.eq(1);
   });
 
-  it('Works with Event Analysts', function() {
+  it('Works with Event Analysts', () => {
     const eventAnalysts = new EventAnalysts();
     eventAnalysts.play(player);
     expect(game.turmoil!.getPlayerInfluence(player)).to.eq(2);
   });
 
-  it('Can perform initial action', function() {
+  it('Can perform initial action', () => {
     player.deferInitialAction(card);
     runAllActions(game);
 

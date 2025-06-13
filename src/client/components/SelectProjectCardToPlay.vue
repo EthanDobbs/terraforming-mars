@@ -25,8 +25,8 @@
           @minus="reduceValue(unit)"
           @max="setMaxValue(unit)">
         </payment-unit-component>
-        <div v-if="showReserveWarning(unit)" class="card-warning" v-i18n>
-        (Some {{unit}} are unavailable here in reserve for the project card.)
+        <div v-if="showReserveWarning(unit)" class="card-warning" v-i18n="$t(unit)">
+        (Some ${0} are unavailable here in reserve for the project card.)
         </div>
       </div>
     </template>
@@ -105,10 +105,8 @@ export default Vue.extend({
   },
   data(): SelectProjectCardToPlayDataModel {
     let card: CardModel | undefined;
-    let cards: Array<CardModel> = [];
-    if (this.playerinput !== undefined &&
-            this.playerinput.cards !== undefined &&
-            this.playerinput.cards.length > 0) {
+    let cards: ReadonlyArray<CardModel> = [];
+    if ((this.playerinput?.cards?.length ?? 0) > 0) {
       cards = CardOrderStorage.getOrdered(
         CardOrderStorage.getCardOrder(this.playerView.id),
         this.playerinput.cards,
@@ -142,7 +140,6 @@ export default Vue.extend({
       this.cost = this.card.calculatedCost ?? 0;
       this.tags = this.getCardTags(),
       this.reserveUnits = this.card.reserveUnits ?? Units.EMPTY;
-      this.payment.megaCredits = (this as unknown as typeof PaymentWidgetMixin.methods).getMegaCreditsMax();
 
       this.setDefaultValues();
     });
@@ -160,16 +157,7 @@ export default Vue.extend({
       return getCardOrThrow(this.cardName).tags;
     },
     setDefaultValues() {
-      for (const target of SPENDABLE_RESOURCES) {
-        if (target === 'megaCredits') {
-          continue;
-        }
-        this.payment[target] = 0;
-      }
-
-      let megacreditBalance = Math.max(this.cost - this.thisPlayer.megaCredits, 0);
-
-      // Calcualtes the optimal number of units to use given the unit value.
+      // Calculates the optimal number of units to use given the unit value.
       //
       // It reads `megacreditBalance` as the remaining balance, and deducts the
       // consumed balance as part of this method.
@@ -186,6 +174,8 @@ export default Vue.extend({
         const _tmp = megacreditBalance / unitValue;
         const balanceAsUnits = overpay ? Math.ceil(_tmp) : Math.floor(_tmp);
         const contributingUnits = Math.min(availableUnits, balanceAsUnits);
+
+        // console.log(megacreditBalance, unitValue, availableUnits, overpay, '-', _tmp, balanceAsUnits, contributingUnits);
 
         megacreditBalance -= contributingUnits * unitValue;
         return contributingUnits;
@@ -206,7 +196,33 @@ export default Vue.extend({
         return toSaveUnits;
       }
 
-      for (const unit of ['seeds', 'microbes', 'floaters', 'lunaArchivesScience', 'graphene', 'corruption'] as const) {
+      for (const target of SPENDABLE_RESOURCES) {
+        this.payment[target] = 0;
+      }
+      // This is defined down here, but is used in the functions above.
+      let megacreditBalance = this.cost;
+
+      // Prioritize special resource types that are only ever used for buying cards.
+      // Of course this runs the risk of a player not having special resources for some award,
+      // milestone, or requirement.
+      for (const unit of ['seeds', 'lunaArchivesScience', 'graphene'] as const) {
+        if (megacreditBalance > 0 && this.canUse(unit)) {
+          this.payment[unit] = deductUnits(this.getAvailableUnits(unit), this.getResourceRate(unit), false);
+        }
+      }
+
+      // Set MC payment after knowning how much of other resources are consumed
+      this.payment.megaCredits = Math.max(0, Math.min(this.thisPlayer.megaCredits, megacreditBalance));
+
+      // console.log('units: ' + JSON.stringify(this.payment, null, 2));
+      // console.log('balance', megacreditBalance);
+
+      // Use as much MC as possible.
+      megacreditBalance = Math.max(megacreditBalance - this.thisPlayer.megaCredits, 0);
+
+      // console.log('balance', megacreditBalance);
+
+      for (const unit of ['microbes', 'floaters', 'corruption'] as const) {
         if (megacreditBalance > 0 && this.canUse(unit)) {
           this.payment[unit] = deductUnits(this.getAvailableUnits(unit), this.getResourceRate(unit));
         }
@@ -253,6 +269,8 @@ export default Vue.extend({
           this.payment[key] -= saveOverspendingUnits(this.payment[key], this.getResourceRate(key));
         }
       }
+      // See top that sets megacreditBalance
+      // this.payment['megaCredits'] = megacreditBalance;
     },
     canUseTitaniumRegularly(): boolean {
       return this.tags.includes(Tag.SPACE) ||
@@ -307,7 +325,6 @@ export default Vue.extend({
       this.cost = this.card.calculatedCost || 0;
       this.tags = this.getCardTags();
       this.reserveUnits = this.card.reserveUnits ?? Units.EMPTY;
-      this.payment.megaCredits = (this as unknown as typeof PaymentWidgetMixin.methods).getMegaCreditsMax();
 
       this.setDefaultValues();
     },

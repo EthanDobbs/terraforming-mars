@@ -1,29 +1,27 @@
 import {expect} from 'chai';
 import {EcologyExperts} from '../../../src/server/cards/prelude/EcologyExperts';
-import {Game} from '../../../src/server/Game';
 import {TestPlayer} from '../../TestPlayer';
-import {cast, runAllActions} from '../../TestingUtils';
+import {cast, runAllActions, testGame} from '../../TestingUtils';
 import {AICentral} from '../../../src/server/cards/base/AICentral';
 import {Ants} from '../../../src/server/cards/base/Ants';
 import {SelectProjectCardToPlay} from '../../../src/server/inputs/SelectProjectCardToPlay';
 
-describe('EcologyExperts', function() {
+describe('EcologyExperts', () => {
   let card: EcologyExperts;
   let player: TestPlayer;
 
-  beforeEach(function() {
+  beforeEach(() => {
     card = new EcologyExperts();
-    player = TestPlayer.BLUE.newPlayer();
-    Game.newInstance('gameid', [player], player);
+    [/* game */, player] = testGame(1);
   });
 
-  it('Gets requirement bonus', function() {
+  it('Gets requirement bonus', () => {
     expect(card.getGlobalParameterRequirementBonus(player)).to.eq(0);
     player.lastCardPlayed = card.name;
     expect(card.getGlobalParameterRequirementBonus(player)).to.eq(50);
   });
 
-  it('Should play', function() {
+  it('Should play', () => {
     // AI Central needs 3 science tags.
     const aiCentral = new AICentral();
     // Ants needs 4% oxygen

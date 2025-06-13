@@ -28,8 +28,8 @@ export class SecretLabs extends Card implements IProjectCard {
       metadata: {
         cardNumber: 'Pf26',
         renderData: CardRenderer.builder((b) => {
-          b.oceans(1).microbes(2, {digit}).asterix().or().temperature(1).br;
-          b.plants(3, {digit}).or().oxygen(1).floaters(2, {digit}).asterix().br;
+          b.oceans(1).resource(CardResource.MICROBE, {amount: 2, digit}).asterix().or().temperature(1).br;
+          b.plants(3, {digit}).or().oxygen(1).resource(CardResource.FLOATER, {amount: 2, digit}).asterix().br;
         }),
         description: 'Requires 1 science tag and 1 Jovian tag. ' +
           'Place an ocean tile. Add 2 microbes to ANY card. ' +
@@ -63,7 +63,9 @@ export class SecretLabs extends Card implements IProjectCard {
       const oceanPlacementAvailable = player.game.board.getOceanSpaces().length < MAX_OCEAN_TILES;
       const optionTitle = oceanPlacementAvailable ? 'Place an ocean tile. Add 2 microbes to ANY card.': 'Add 2 microbes to ANY card.';
       options.options.push(new SelectOption(optionTitle).andThen(() => {
-        if (oceanPlacementAvailable) player.game.defer(new PlaceOceanTile(player));
+        if (oceanPlacementAvailable || player.cardIsInEffect(CardName.WHALES)) {
+          player.game.defer(new PlaceOceanTile(player));
+        }
         player.game.defer(new AddResourcesToCard(player, CardResource.MICROBE, {count: 2}));
         return undefined;
       }));

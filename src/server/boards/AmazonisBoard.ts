@@ -1,17 +1,14 @@
 import {SpaceBonus} from '../../common/boards/SpaceBonus';
-import {Board} from './Board';
 import {BoardBuilder} from './BoardBuilder';
-import {SpaceName} from '../SpaceName';
-import {IPlayer} from '../IPlayer';
-import {SerializedBoard} from './SerializedBoard';
+import {SpaceName} from '../../common/boards/SpaceName';
 import {Random} from '../../common/utils/Random';
 import {GameOptions} from '../game/GameOptions';
-import {SpaceId} from '../../common/Types';
 import {MarsBoard} from './MarsBoard';
+import {Space} from './Space';
 
 export class AmazonisBoard extends MarsBoard {
   public static newInstance(gameOptions: GameOptions, rng: Random): AmazonisBoard {
-    const builder = new BoardBuilder(gameOptions.venusNextExtension, gameOptions.pathfindersExpansion);
+    const builder = new BoardBuilder(gameOptions);
 
     const PLANT = SpaceBonus.PLANT;
     const STEEL = SpaceBonus.STEEL;
@@ -49,20 +46,12 @@ export class AmazonisBoard extends MarsBoard {
     return new AmazonisBoard(spaces);
   }
 
-  public static deserialize(board: SerializedBoard, players: ReadonlyArray<IPlayer>): AmazonisBoard {
-    return new AmazonisBoard(Board.deserializeSpaces(board.spaces, players));
-  }
-
-  public override getVolcanicSpaceIds(): ReadonlyArray<SpaceId> {
-    return [
+  public constructor(spaces: ReadonlyArray<Space>) {
+    super(spaces, undefined, [
       SpaceName.ALBOR_THOLUS,
       SpaceName.ANSERIS_MONS,
       SpaceName.PINDUS_MONS,
       SpaceName.ULYSSES_THOLUS,
-    ];
-  }
-
-  public override getNoctisCitySpaceId(): SpaceId | undefined {
-    return undefined;
+    ]);
   }
 }

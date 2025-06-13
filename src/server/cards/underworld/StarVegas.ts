@@ -4,7 +4,7 @@ import {Tag} from '../../../common/cards/Tag';
 import {CardType} from '../../../common/cards/CardType';
 import {Card} from '../Card';
 import {IPlayer} from '../../IPlayer';
-import {SpaceName} from '../../SpaceName';
+import {SpaceName} from '../../../common/boards/SpaceName';
 import {PlaceCityTile} from '../../deferredActions/PlaceCityTile';
 import {Space} from '../../boards/Space';
 import {Resource} from '../../../common/Resource';
@@ -47,7 +47,7 @@ export class StarVegas extends Card {
       type: CardType.AUTOMATED,
       name: CardName.STAR_VEGAS,
       cost: 32,
-      tags: [Tag.SPACE, Tag.CITY],
+      tags: [Tag.CRIME, Tag.SPACE, Tag.CITY],
       requirements: {cities: 3, all: true},
 
       behavior: {
@@ -63,7 +63,7 @@ export class StarVegas extends Card {
           b.production((pb) => pb.megacredits(1).slash().city({all}));
         }),
         description: 'Requires any 3 cities in play. Place a city on a space reserved for a different space city. ' +
-        'Gain 2 corruption. Increase your MC production one step for each city in play.',
+        'Gain 2 corruption. Increase your M€ production one step for each city in play.',
       },
     });
   }

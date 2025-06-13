@@ -7,37 +7,46 @@ import {Size} from '../../../common/cards/render/Size';
 import {Tag} from '../../../common/cards/Tag';
 import {ICardRenderItem} from '../../../common/cards/render/Types';
 import {AltSecondaryTag} from '../../../common/cards/render/AltSecondaryTag';
+import {CardResource} from '../../../common/CardResource';
 
-export interface ItemOptions {
-  size?: Size;
-  amount?: number;
-  all?: boolean;
-  digit?: boolean;
-  played?: boolean;
-  secondaryTag?: Tag | AltSecondaryTag;
-  clone?: boolean; /** Replace the amount with the clone tag */
-  cancelled?: boolean;
-  over?: number; /** Used for global events. */
-  questionMark?: boolean;
-  text?: string;
-}
+export type ItemOptions = Partial<{
+  size: Size;
+  amount: number;
+  all: boolean;
+  digit: boolean;
+  played: boolean;
+  secondaryTag: Tag | AltSecondaryTag;
+  /** Replace the amount with the clone tag */
+  clone: boolean;
+  cancelled: boolean;
+  /** Used for global events. */
+  over: number;
+  questionMark: boolean;
+  text: string;
+  superscript: boolean;
+  resource: CardResource;
+  tag: Tag;
+}>
 
 export class CardRenderItem implements ICardRenderItem {
   public readonly is = 'item';
   public anyPlayer?: boolean;
   public showDigit?: boolean;
   public amountInside?: boolean;
-  public isPlayed?: boolean;
   public text?: string;
   public isUppercase?: boolean;
   public isBold?: boolean;
   public isPlate?: boolean;
   public size?: Size;
   public secondaryTag?: Tag | AltSecondaryTag;
-  public clone?: boolean = false;
-  public cancelled?: boolean = false;
+  public clone?: boolean;
+  public cancelled?: boolean;
   public innerText?: string;
+  public isSuperscript?: boolean;
   public over?: number;
+  public resource?: CardResource | undefined;
+  public tag?: Tag | undefined;
+
   constructor(public type: CardRenderItemType, public amount: number = -1, options?: ItemOptions) {
     switch (options?.digit) {
     case true:
@@ -57,7 +66,6 @@ export class CardRenderItem implements ICardRenderItem {
       this.amount = options.amount;
     }
     this.anyPlayer = options.all;
-    this.isPlayed = options.played;
     this.secondaryTag = options.secondaryTag;
 
     if (options.clone === true) {
@@ -69,6 +77,15 @@ export class CardRenderItem implements ICardRenderItem {
     this.over = options.over;
     if (options.text !== undefined) {
       this.innerText = options.text;
+    }
+    if (options.superscript === true) {
+      this.isSuperscript = true;
+    }
+    if (options.resource !== undefined) {
+      this.resource = options.resource;
+    }
+    if (options.tag !== undefined) {
+      this.tag = options.tag;
     }
 
     return this;
